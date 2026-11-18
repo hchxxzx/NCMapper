@@ -111,7 +111,7 @@ Characteristics:
 
 ```mermaid
 flowchart TD
-    Start[Select&#60;T&#62;.AsDto&#40;&#41;.ToList&#60;TDto&#62;&#40;&#41;] --> Detect{Are all fields SQL-projectable?}
+    Start["Select<T>.AsDto().ToList<TDto>()"] --> Detect{Are all fields SQL-projectable?}
     Detect -->|Yes| Proj[Projection Path]
     Detect -->|No| Degrade[Fallback Path]
     Proj --> P1[Build SQL-side expression tree]

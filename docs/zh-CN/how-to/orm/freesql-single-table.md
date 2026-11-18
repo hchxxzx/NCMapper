@@ -108,7 +108,7 @@ ISelect<T>.AsDto().ToList<TDto>()
 
 ```mermaid
 flowchart TD
-    Start[Select&#60;T&#62;.AsDto&#40;&#41;.ToList&#60;TDto&#62;&#40;&#41;] --> Detect{字段可SQL投影?}
+    Start["Select<T>.AsDto().ToList<TDto>()"] --> Detect{字段可SQL投影?}
     Detect -->|是| Proj[投影路径]
     Detect -->|否| Degrade[降级路径]
     Proj --> P1[构建SQL侧表达式树]

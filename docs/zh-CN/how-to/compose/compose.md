@@ -74,7 +74,7 @@ flowchart TD
     E --> G[合成到目标 DTO]
     F --> G
     G --> H{有 Action 回调?}
-    H -->|是| I[执行 Action&#40;tgt&#41;]
+    H -->|是| I["执行 Action(tgt)"]
     H -->|否| J[跳过]
     I --> K{有 PostMap?}
     J --> K

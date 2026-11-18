@@ -113,65 +113,86 @@ fi
 #
 # 参数：$1=输入文件  $2=输出文件  $3=仓库根（解析 ~/ 前缀用）
 # 找不到 region 或源文件时，降级为一行指向 GitHub 的链接，绝不静默丢内容。
+#
+# 性能：纯 awk 单进程实现。早先用 shell 逐行 + grep/sed 的子进程版本跑单个语言要
+# 十分钟以上（每行 3~5 次 fork），全量同步会拖到 CI 超时。
 expand_code_refs() {
   local in="$1" out="$2" root="$3"
-  : > "$out"
-  while IFS= read -r line || [ -n "$line" ]; do
-    # 匹配整行的单条引用（标题里可能有 \] 转义，用贪婪到最后一个 ]( 的形式）
-    if printf '%s' "$line" | grep -qE '^[[:space:]]*\[!code-[A-Za-z]+\[.*\]\([^)]+\)\][[:space:]]*$'; then
-      local lang path frag
-      lang=$(printf '%s' "$line" | sed -E 's/^[[:space:]]*\[!code-([A-Za-z]+)\[.*/\1/')
-      # 取最后一个 ]( 与结尾 )] 之间的目标，避开标题里的 ] 字符
-      path=$(printf '%s' "$line" | sed -E 's/.*\]\(([^)]+)\)\][[:space:]]*$/\1/')
-      frag=""
-      case "$path" in
-        *#*) frag="${path##*#}"; path="${path%%#*}" ;;
-      esac
-      # ~/ 前缀 → 仓库根
-      case "$path" in
-        '~/'*) path="$root/${path#\~/}" ;;
-        /*)    path="$root$path" ;;
-      esac
-      if [ -f "$path" ] && [ -n "$frag" ]; then
-        # 抽 region：从 "#region <frag>" 到其配对的 "#endregion"
-        sed -n "/#region[[:space:]]\{1,\}${frag}\$/,/#endregion/p" "$path" \
-          | sed '1d;$d' \
-          | awk '
-              # 去掉公共缩进（以非空行的最小缩进为基准）
-              { lines[NR] = $0
-                if ($0 ~ /[^[:space:]]/) {
-                  match($0, /^[[:space:]]*/)
-                  ind = RLENGTH
-                  if (min == "" || ind < min) min = ind
-                } }
-              END {
-                if (min == "") min = 0
-                for (i = 1; i <= NR; i++) {
-                  s = lines[i]
-                  if (length(s) >= min) s = substr(s, min + 1)
-                  print s
-                }
-              }' > "$out.__frag"
-        if [ -s "$out.__frag" ]; then
-          {
-            printf '```%s\n' "$lang"
-            cat "$out.__frag"
-            printf '```\n'
-          } >> "$out"
-        else
-          # region 名对不上（改名/删除）：降级为源码链接，保留可追溯性
-          local repo_rel="${path#"$root"/}"
-          printf '> ⚠ Code snippet `%s` not found in `%s` — see the [source on GitHub](https://github.com/hchxxzx/NCMapper/blob/main/%s).\n' \
-            "$frag" "$repo_rel" "$repo_rel" >> "$out"
-        fi
-        rm -f "$out.__frag"
-      else
-        printf '%s\n' "$line" >> "$out"
-      fi
-    else
-      printf '%s\n' "$line" >> "$out"
-    fi
-  done < "$in"
+  awk -v ROOT="$root" '
+    # 从 "!code-LANG[标题](目标)" 解析 lang 与 target
+    function parse(line, A,   p, t, lang, target) {
+      # 找 "!code-"
+      p = index(line, "!code-")
+      if (p == 0) return 0
+      t = substr(line, p + 6)
+      # lang 到第一个 [
+      if (match(t, /^[A-Za-z]+\[/) == 0) return 0
+      lang = substr(t, 1, RLENGTH - 1)
+      # target：最后一个 "](" 之后、结尾 ")]" 之前
+      t = substr(t, RLENGTH + 1)
+      p = 0
+      s = t
+      while ((q = index(s, "](")) > 0) { p += q; s = substr(s, q + 2) }
+      if (p == 0) return 0
+      target = s
+      sub(/\)\][[:space:]]*$/, "", target)
+      A["lang"] = lang
+      A["target"] = target
+      return 1
+    }
+
+    {
+      line = $0
+      # 仅处理整行就是一条引用的形态（正文中提到语法名的保持原样）
+      if (line !~ /^[[:space:]]*\[!code-/) { print line; next }
+      if (line !~ /\)\][[:space:]]*$/)         { print line; next }
+
+      split("", A)
+      if (parse(line, A) == 0) { print line; next }
+
+      target = A["target"]; lang = A["lang"]
+      frag = ""
+      p = index(target, "#")
+      if (p > 0) { frag = substr(target, p + 1); target = substr(target, 1, p - 1) }
+
+      # ~/ 前缀 → 仓库根；/ 开头 → 仓库根
+      if (substr(target, 1, 2) == "~/")      target = ROOT "/" substr(target, 3)
+      else if (substr(target, 1, 1) == "/")  target = ROOT target
+
+      # 读源文件并抽 region
+      n = 0; inside = 0; min = ""
+      if (frag != "") {
+        while ((getline l < target) > 0) {
+          if (inside == 0) {
+            if (l ~ ("#region[[:space:]]+" frag "$")) { inside = 1 }
+            continue
+          }
+          if (l ~ /#endregion/) break
+          n++; body[n] = l
+          if (l ~ /[^[:space:]]/) {
+            match(l, /^[[:space:]]*/)
+            if (min == "" || RLENGTH < min) min = RLENGTH
+          }
+        }
+        close(target)
+      }
+
+      if (n > 0) {
+        if (min == "") min = 0
+        print "```" lang
+        for (i = 1; i <= n; i++) {
+          s = body[i]
+          if (length(s) >= min) s = substr(s, min + 1)
+          print s
+        }
+        print "```"
+      } else {
+        rel = target
+        sub("^" ROOT "/", "", rel)
+        printf "> ⚠ Code snippet `%s` not found in `%s` — see the [source on GitHub](https://github.com/hchxxzx/NCMapper/blob/main/%s).\n", frag, rel, rel
+      }
+    }
+  ' "$in" > "$out"
 }
 
 # 复制单页并剥离 Wiki 不渲染/不该显示的头部块：

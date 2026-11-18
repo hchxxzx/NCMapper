@@ -78,7 +78,7 @@ flowchart TD
     E --> G[Composition into Target DTO]
     F --> G
     G --> H{Has Action Callback?}
-    H -->|Yes| I[Execute Action&#40;tgt&#41;]
+    H -->|Yes| I["Execute Action(tgt)"]
     H -->|No| J[Skip]
     I --> K{Has PostMap?}
     J --> K

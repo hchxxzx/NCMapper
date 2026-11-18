@@ -99,7 +99,7 @@ NCMapper 的深拷贝由 `Mapper.DeepCopy<T>(src)` 驱动，实际执行分为�
 
 ```mermaid
 flowchart TD
-    Start[Mapper.DeepCopy&#60;T&#62;&#40;src&#41;] --> HasGen{类型带 [MapFrom]<br/>有源生成委托?}
+    Start["Mapper.DeepCopy<T>(src)"] --> HasGen{"类型带 [MapFrom]<br/>有源生成委托?"}
     HasGen -->|是| Gen[源生成器深拷贝 ~179ns<br/>编译期委托，最高优先]
     HasGen -->|否| Cls{Fast 策略下<br/>类型图三值分类}
     Cls -->|Acyclic| FastAcyclic[Fast 零检测快路径 ~401ns]

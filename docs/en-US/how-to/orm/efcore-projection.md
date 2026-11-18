@@ -108,7 +108,7 @@ Characteristics:
 
 ```mermaid
 flowchart TD
-    Start[Set&#60;T&#62;.AsDto&#40;&#41;.ToList&#60;TDto&#62;&#40;&#41;] --> Detect{Can all fields be projected in SQL?}
+    Start["Set<T>.AsDto().ToList<TDto>()"] --> Detect{Can all fields be projected in SQL?}
     Detect -->|Yes| Proj[Projection Path]
     Detect -->|No| Degrade[Degradation Path]
     Proj --> P1[EfCoreProjectionBuilder builds expression]

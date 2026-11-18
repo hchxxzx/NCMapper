@@ -21,16 +21,23 @@ on:
       - 'docs/en-US/getting-started/**'
       - 'docs/en-US/tutorials/**'
       - 'docs/en-US/explanation/**'
-      - 'docs/en-US/index.md'
+      - 'docs/zh-CN/how-to/**'
+      - 'docs/zh-CN/getting-started/**'
+      - 'docs/zh-CN/tutorials/**'
+      - 'docs/zh-CN/explanation/**'
+      - 'scripts/wiki-home/**'
       - 'scripts/wiki-sync-mapping.sh'
+      - 'scripts/wiki-build-languages.sh'
+      - '.github/workflows/wiki-sync.yml'
   workflow_dispatch:   # 允许手动重跑（切语言或首次铺页后无需空提交）
 
 permissions:
   contents: read
 
 env:
-  # 同步源语言：改这一处即可切换 Wiki 主体语言
-  WIKI_LANG: en-US
+  # 启用的语言（空格分隔，按顺序；第一个是主导语言，侧栏默认展开它）
+  # 改这一处即可增减语言。新增语言需先有 docs/<lang> 目录。
+  WIKI_LANGS: en-US zh-CN
 
 jobs:
   sync:
@@ -61,10 +68,17 @@ jobs:
           git config user.name "wiki-sync-bot"
           git config user.email "wiki-sync@users.noreply.github.com"
 
-      # 域映射 + 唯一性断言 + 复制 + Home/_Sidebar 生成（脚本内聚，可本地 dry-run）
-      - name: Sync narrative docs (domain mapping)
+      # 单语言：页名映射（<Lang>-<Group>-<Page> 全扁平）+ 正文链接改写
+      # 多语言：逐语言调用上者，再合并出共享 _Sidebar 与 /wiki/Home 语言入口
+      # 必须一次跑完所有语言——_Sidebar 全站只有一份，分两次跑会互相覆盖
+      - name: Sync all languages
         if: steps.wiki.outputs.sync == 'true'
-        run: bash scripts/wiki-sync-mapping.sh "$PWD" wiki "$WIKI_LANG"
+        run: |
+          # 清掉上一轮的产物，避免语言或页名变更后留下打不开的孤儿页
+          # （GitHub Wiki 子目录页不可访问，历史版本曾按目录存放）
+          find wiki -name '*.md' -type f -delete
+          find wiki -mindepth 1 -type d ! -name '.git' -empty -delete
+          bash scripts/wiki-build-languages.sh "$PWD" wiki $WIKI_LANGS
 
       - name: Commit and push
         if: steps.wiki.outputs.sync == 'true'
@@ -74,6 +88,6 @@ jobs:
           if git diff --cached --quiet; then
             echo "wiki 无变更，跳过推送"
           else
-            git commit -m "wiki-sync: ${GITHUB_SHA::7} docs/${WIKI_LANG} 叙事层同步（域结构映射）"
+            git commit -m "wiki-sync: ${GITHUB_SHA::7} 多语言叙事层同步（${WIKI_LANGS}）"
             git push
           fi

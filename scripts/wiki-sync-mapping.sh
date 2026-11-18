@@ -52,41 +52,68 @@ declare -a PLAN=()   # 每项 "相对源路径<TAB>wiki目标页名（含路径�
 declare -A SEEN=()
 conflict=0
 
-add_plan() {  # $1=src rel path  $2=wiki dest (page name or dir/page)
+add_plan() {  # $1=src rel path  $2=wiki dest page name（扁平，不含 .md）
   local src="$1" dst="$2"
-  local page
-  page="$(basename "$dst")"
-  if [ -n "${SEEN[$page]:-}" ]; then
-    echo "[CONFLICT] wiki 页名冲突：$page（${SEEN[$page]} vs $src）" >&2
+  if [ -n "${SEEN[$dst]:-}" ]; then
+    echo "[CONFLICT] wiki 页名冲突：$dst（${SEEN[$dst]} vs $src）" >&2
     conflict=1
     return
   fi
-  SEEN[$page]="$src"
+  SEEN[$dst]="$src"
   PLAN+=("$(printf '%s\t%s' "$src" "$dst")")
 }
 
-# --- ① how-to 域子目录页：how-to/<domain>/<page>.md → wiki/<Domain>-<Page> ---
+# ============================================================================
+# 页面命名：全语言统一「语言前缀 + 全路径 PascalCase 扁平」
+#
+#   中 how-to/fluent/basics.md  →  Zh-Fluent-Basics
+#   英 how-to/fluent/basics.md  →  En-Fluent-Basics
+#   英 getting-started/quickstart.md → En-GettingStarted-Quickstart
+#   英 explanation/dual-engine.md    → En-Explanation-DualEngine
+#   英 how-to/faq.md            →  En-Faq
+#
+# 为什么必须扁平：GitHub Wiki 的页面名就是文件名，官方文档《About wiki
+# filenames》明确禁止在标题中使用 `/`，实测子目录页 /wiki/A/B 直接 HTTP
+# 错误、页面打不开（探针页对照实验确认）。故所有页一律平铺于顶层。
+#
+# 为什么加语言前缀：多语言并存时同一篇文档的三种译本必须各有唯一页名，
+# 否则 En 与 Ja 会互撞。前缀同时让人一眼看出语种。规则见方案
+# 20261007-001 §4.2（候选 A：全语言统一前缀）。
+# ============================================================================
+LANG_PREFIX=""
+case "$LANG_ID" in
+  zh-CN) LANG_PREFIX="Zh" ;;
+  en-US) LANG_PREFIX="En" ;;
+  ja)    LANG_PREFIX="Ja" ;;
+  de)    LANG_PREFIX="De" ;;
+  *)
+    # 未登记语言：取主语言段首字母大写（pt-BR → Pt），保证仍有前缀、不与既有撞
+    LANG_PREFIX="$(printf '%s' "${LANG_ID%%-*}" | awk '{print toupper(substr($0,1,1)) substr($0,2)}')"
+    ;;
+esac
+
+# --- ① how-to 域子目录页：how-to/<domain>/<page>.md → <Lang>-<Domain>-<Page> ---
 shopt -s nullglob
 for dir in "$SRC"/how-to/*/; do
   domain="$(basename "$dir")"
   dp="$(pascal "$domain")"
   for f in "$dir"*.md; do
     stem="$(basename "$f" .md)"
-    add_plan "${f#"$ROOT"/}" "$dp-$(pascal "$stem")"
+    add_plan "${f#"$ROOT"/}" "$LANG_PREFIX-$dp-$(pascal "$stem")"
   done
 done
-# --- ② how-to 平铺页（过渡兼容）---
+# --- ② how-to 平铺页（faq / pitfalls 等）→ <Lang>-<Page> ---
 for f in "$SRC"/how-to/*.md; do
   stem="$(basename "$f" .md)"
-  add_plan "${f#"$ROOT"/}" "$stem"
+  add_plan "${f#"$ROOT"/}" "$LANG_PREFIX-$(pascal "$stem")"
 done
-# --- ③ 其余叙事目录同名复制 ---
+# --- ③ 其余叙事目录：<sub>/<page>.md → <Lang>-<Group>-<Page> ---
 for pair in "getting-started:GettingStarted" "tutorials:Tutorials" "explanation:Explanation"; do
-  sub="${pair%%:*}"; dst_dir="${pair##*:}"
+  sub="${pair%%:*}"; grp="${pair##*:}"
   for f in "$SRC/$sub"/*.md; do
     [ -e "$f" ] || continue
     stem="$(basename "$f" .md)"
-    add_plan "${f#"$ROOT"/}" "$dst_dir/$stem"
+    add_plan "${f#"$ROOT"/}" "$LANG_PREFIX-$grp-$(pascal "$stem")"
   done
 done
 
@@ -227,15 +254,116 @@ emit_page() {  # $1=源文件绝对路径  $2=目标文件
 }
 
 mkdir -p "$WIKI"
+
+# ============================================================================
+# 链接改写：页面扁平化 + 加语言前缀后，正文里的相对链接与原页名全部失效，
+# 必须按映射表重写，否则 554 个站内链接全断。
+#
+# 规则（方案 20261007-001 §4.3）：
+#   ① 同步面内目标（how-to/ getting-started/ tutorials/ explanation/）：
+#      改写为对应新页名（含语言前缀）。同语言链接，锚点照抄。
+#   ② 同步面外目标（reference/ diagnostics/ contributing/ index.md 等）：
+#      Wiki 上没有这些页，相对路径必断——改写为 GitHub 源码链接。
+#   ③ 未命中映射表的 .md 链接（点错路径等）：保持原样，交给后续检查暴露。
+#   ④ 代码块内的内容一律不动（避免误改示例里的伪链接）。
+# ============================================================================
+# 构造映射表文件：绝对源路径 -> 新页名
+MAPFILE="$WIKI/.__map"
+: > "$MAPFILE"
 for item in "${PLAN[@]}"; do
   src_rel="${item%%$'\t'*}"
   dst="${item##*$'\t'}"
-  mkdir -p "$WIKI/$(dirname "$dst")"
+  printf '%s\t%s\n' "$ROOT/$src_rel" "$dst" >> "$MAPFILE"
+done
+
+rewrite_links() {  # $1=待改写文件  $2=该文件对应的源绝对路径  $3=语言标识
+  local f="$1" srcabs="$2" lang="$3"
+  local srcdir
+  srcdir="$(dirname "$srcabs")"
+  awk -v MAP="$MAPFILE" -v SRCDIR="$srcdir" -v LANG="$lang" -v ROOT="$ROOT" '
+    BEGIN {
+      # 载入映射表
+      while ((getline line < MAP) > 0) {
+        p = index(line, "\t")
+        if (p > 0) TBL[substr(line, 1, p - 1)] = substr(line, p + 1)
+      }
+      close(MAP)
+      inFence = 0
+    }
+    # 代码围栏内不改写
+    /^[[:space:]]*(```|~~~)/ { inFence = !inFence; print; next }
+    inFence { print; next }
+    {
+      line = $0
+      out = ""
+      rest = line
+      # 逐个扫描 ](target) 形态
+      while (match(rest, /\]\([^)[:space:]]+\.md(#[^)]*)?\)/)) {
+        pre = substr(rest, 1, RSTART - 1)
+        hit = substr(rest, RSTART, RLENGTH)
+        rest = substr(rest, RSTART + RLENGTH)
+        out = out pre
+        # 拆出 target 与锚点。hit 形如 "](x.md)"，去掉前 2 与后 1 字符：
+        # 长度 = length(hit) - 3（早期写成 -4 会吃掉目标末尾的 d，导致映射表永不命中）
+        t = substr(hit, 3, length(hit) - 3)
+        anchor = ""
+        if (match(t, /#[^#]*$/)) { anchor = substr(t, RSTART); t = substr(t, 1, RSTART - 1) }
+        # 相对路径 → 绝对（用 SRCDIR 拼）
+        if (t ~ /^\//) { abs = t }
+        else { abs = SRCDIR "/" t }
+        # 归一化 ../ 与 ./ 与重复斜杠。
+        # 注意不能用"/"+拼接（会在 Windows 的 D:/... 前多出斜杠，与映射表键对不上）：
+        # 首段若含冒号（盘符）则保留原样，否则补前导斜杠。
+        n = split(abs, parts, "/")
+        depth = 0
+        for (i = 1; i <= n; i++) {
+          if (parts[i] == "" || parts[i] == ".") continue
+          if (parts[i] == "..") { if (depth > 0) depth-- ; continue }
+          stack[++depth] = parts[i]
+        }
+        norm = ""
+        for (i = 1; i <= depth; i++) {
+          if (i == 1) {
+            norm = (stack[i] ~ /:/) ? stack[i] : "/" stack[i]
+          } else {
+            norm = norm "/" stack[i]
+          }
+        }
+        delete stack
+        if (norm in TBL) {
+          out = out "](" TBL[norm] anchor ")"
+        } else if (index(norm, ROOT "/docs/") == 1) {
+          # 未命中映射表，但确实指向 docs/ 下的文件 → 同步面外
+          # （reference/ diagnostics/ contributing/ index.md 等：Wiki 上没有这些页，
+          #  相对路径必断，改写为 GitHub 源码链接）
+          #
+          # 注意判断顺序：不能先判「是否在 docs/<lang>/ 下」再判「是否同步面外」——
+          # 同步面外文件同样位于 docs/<lang>/ 内（如 docs/en-US/reference/），
+          # 先判语言会把它们误当成"面内未登记"而保持原样，导致链接照旧断掉。
+          rel = substr(norm, length(ROOT) + 2)
+          out = out "](https://github.com/hchxxzx/NCMapper/blob/main/" rel ")"
+        } else {
+          out = out hit
+        }
+      }
+      print out rest
+    }
+  ' "$f" > "$f.__rw"
+  mv "$f.__rw" "$f"
+}
+
+for item in "${PLAN[@]}"; do
+  src_rel="${item%%$'\t'*}"
+  dst="${item##*$'\t'}"
   emit_page "$ROOT/$src_rel" "$WIKI/$dst.md.__body"
-  # 第一阶段剥头部、第二阶段展开 DocFX 代码引用，两阶段分离便于单独调试
-  expand_code_refs "$WIKI/$dst.md.__body" "$WIKI/$dst.md" "$ROOT"
+  # 三阶段流水：剥头部 → 展开 DocFX 代码 → 改写站内链接
+  # 分阶段而非一次做完，任一步出错都能单独复现定位。
+  expand_code_refs "$WIKI/$dst.md.__body" "$WIKI/$dst.md.__code" "$ROOT"
+  rewrite_links "$WIKI/$dst.md.__code" "$ROOT/$src_rel" "$LANG_ID"
+  mv "$WIKI/$dst.md.__code" "$WIKI/$dst.md"
   rm -f "$WIKI/$dst.md.__body"
 done
+rm -f "$MAPFILE"
 
 # --- ④ _Sidebar.md / Home.md 导航块（域结构驱动）---
 # 侧栏小标题按语言取词：中文「操作指南」，其余语言用英文标题（Wiki 主体面向国际读者）
@@ -254,32 +382,34 @@ sidebar="$WIKI/_Sidebar.md"
     pages=()
     for f in "$dir"*.md; do
       stem="$(basename "$f" .md)"
-      pages+=("- [$(pascal "$stem")]($dp-$(pascal "$stem"))")
+      # 页名与映射口径一致：<Lang>-<Domain>-<Page>
+      pages+=("- [$(pascal "$stem")]($LANG_PREFIX-$dp-$(pascal "$stem"))")
     done
     [ ${#pages[@]} -eq 0 ] && continue
     echo "### $dp"
     printf '%s\n' "${pages[@]}"
   done
   # how-to 平铺页（faq、pitfalls 等无域子目录的页）：此前只并入映射计划、未进侧栏，
-  # 导致页面存在但导航里点不到。与 ② 的映射口径保持一致（页名 = 去 .md 的原文件名）。
+  # 导致页面存在但导航里点不到。与 ② 的映射口径保持一致。
   flat_pages=()
   for f in "$SRC"/how-to/*.md; do
     [ -e "$f" ] || continue
     stem="$(basename "$f" .md)"
-    flat_pages+=("- [$stem]($stem)")
+    flat_pages+=("- [$(pascal "$stem")]($LANG_PREFIX-$(pascal "$stem"))")
   done
   if [ ${#flat_pages[@]} -gt 0 ]; then
     if [ "$LANG_ID" = "zh-CN" ]; then echo "### 其他"; else echo "### Other"; fi
     printf '%s\n' "${flat_pages[@]}"
   fi
   for pair in "getting-started:GettingStarted" "tutorials:Tutorials" "explanation:Explanation"; do
-    sub="${pair%%:*}"; dst_dir="${pair##*:}"
-    label="$(pascal "$sub")"
+    sub="${pair%%:*}"; grp="${pair##*:}"
+    label="$grp"
     pages=()
     for f in "$SRC/$sub"/*.md; do
       [ -e "$f" ] || continue
       stem="$(basename "$f" .md)"
-      pages+=("- [$stem]($dst_dir/$stem)")
+      # 页名与映射口径一致：<Lang>-<Group>-<Page>
+      pages+=("- [$stem]($LANG_PREFIX-$grp-$(pascal "$stem"))")
     done
     [ ${#pages[@]} -eq 0 ] && continue
     echo "### $label"
@@ -287,19 +417,15 @@ sidebar="$WIKI/_Sidebar.md"
   done
 } > "$sidebar"
 
-home="$WIKI/Home.md"
-touch "$home"
-# 判定标记用语言无关的 HTML 注释（wiki 渲染时不可见）：
-# 若用可见标题做标记，切换同步语言后会因标题文本不同而失配，导致重复追加。
-MARKER="<!-- wiki-sync:generated -->"
-if ! grep -qF "$MARKER" "$home" 2>/dev/null; then
-  {
-    echo ""
-    echo "## $HOWTO_LABEL"
-    echo ""
-    echo "$MARKER"
-    echo "<!-- 由 docs/$LANG_ID/how-to 域结构自动同步；请勿直接编辑本页 -->"
-  } >> "$home"
-fi
+# ---------------------------------------------------------------------------
+# 多语言入口：_Sidebar 是全站唯一一份共享文件，按语言分批跑会互相覆盖，
+# 所以语言入口行不写在 sidebar 生成段里，而是由调用方（workflow）在全部语言
+# 跑完后统一插入一次。这里只写「本语言那一行」，交给 append_language_entry 汇总。
+# ---------------------------------------------------------------------------
 
-echo "wiki 映射暂存完成：${#PLAN[@]} 页 → $WIKI（含 _Sidebar.md / Home.md 导航块）"
+# 注意：本脚本不再生成 Home.md ——
+# 多语言下 /wiki/Home 由 scripts/wiki-build-languages.sh 统一生成为「语言选择入口」，
+# 各语言首页是 <Lang>-Home。单语言跑时若这里也写 Home.md，会与入口页互相覆盖，
+# 最终内容取决于执行顺序。故 Home 的生成职责完全上移到多语言编排脚本。
+
+echo "wiki 映射暂存完成：${#PLAN[@]} 页 → $WIKI（页名 <Lang>-<Group>-<Page> 全扁平）"

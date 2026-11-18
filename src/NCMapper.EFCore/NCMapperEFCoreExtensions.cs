@@ -130,7 +130,7 @@ public sealed class EFCoreDtoSelector<TSource>
     /// 降级路径查询（树挂载位导航排除版，A4）—— 收集导航树后过滤树挂载位路径再 Include
     /// <para>树挂载位导航（[MapTree].ChildrenProperty 命中的同名实体导航）不 Include：树构建靠 Id/ParentId，
     /// Include 预填只会制造 TreeBuilder 二次挂载源 + 自引用笛卡尔展开；非树 DTO 走全量 ApplyIncludes 原逻辑</para>
-    /// <para>Q6 形态①（复审 _002_Qoder I-3 定夺）：Collect + 过滤 FlattenPaths + 手动 Include，改动封闭于本文件</para>
+    /// <para>实现形态：Collect + 过滤 FlattenPaths + 手动 Include，改动封闭于本文件</para>
     /// <para>失败回退自动 Include（仅 Trace 警告，不阻断）——与 ApplyIncludes 容错姿态对齐，预填由防御清空兜底</para>
     /// </summary>
     /// <typeparam name="TTarget">目标 DTO 类型</typeparam>

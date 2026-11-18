@@ -3353,7 +3353,7 @@ Specifies a source field for automatic mapping (valid only on properties; may be
             <param name="metadata">Runtime metadata (SourceType/TargetType must not be null)</param>
             <exception cref="T:System.ArgumentNullException">Thrown when metadata or its SourceType/TargetType is null</exception>
             <remarks>
-                <para>Idempotent merge contract (dual-write merge — re-reviewed R-B): 
+                <para>Idempotent merge contract (dual-write merge): 
             For duplicate registrations under the same (Source, Target) key, merging follows “detail-first” priority — detail entries (those emitted after identity segments) fill in or override identity entries, while identity entries never overwrite already-registered details; order independence across ModuleInitializer file execution (identity-first/detail-first/same-content duplicates yield identical final state).</para>
                 <para>Manually registered property details (e.g., mask type name declarations) are consumed by the in-memory mapping decision chain: attribute-leg takes precedence; registry-leg serves as fallback when attribute-leg yields no match; no property receives dual application.</para>
             </remarks>

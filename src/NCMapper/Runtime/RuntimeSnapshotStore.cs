@@ -104,7 +104,7 @@ public static class RuntimeSnapshotStore
     /// <param name="metadata">运行时元数据（SourceType/TargetType 不可为 null）</param>
     /// <exception cref="ArgumentNullException">metadata 或其 SourceType/TargetType 为 null</exception>
     /// <remarks>
-    /// <para>幂等合并契约（双写合并——复审 R-B）：
+    /// <para>幂等合并契约（双写合并）：
     /// 同 (Source, Target) 键重复登记时按「明细优先」合并——明细条目（身份段之后发射的
     /// 明细段条目）补全/覆盖身份条目，身份条目不覆盖已登记明细；与 ModuleInitializer
     /// 跨文件执行顺序无关（先身份后明细 / 先明细后身份 / 同内容重复登记终态一致）。</para>

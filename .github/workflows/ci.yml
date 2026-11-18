@@ -31,12 +31,12 @@ jobs:
     runs-on: ubuntu-latest
 
     steps:
-    - uses: actions/checkout@v4
+    - uses: actions/checkout@v7
 
     - name: Setup .NET
       # 用 global.json 的精确版本（10.0.403）而非 10.0.x 通配符——
       # setup-dotnet@v4 的 10.0.x 解析到不存在的 patch（actions/setup-dotnet#711，2026-03）
-      uses: actions/setup-dotnet@v4
+      uses: actions/setup-dotnet@v6
       with:
         dotnet-version: '10.0.403'
         global-json-file: global.json
@@ -100,10 +100,10 @@ jobs:
     timeout-minutes: 25
 
     steps:
-    - uses: actions/checkout@v4
+    - uses: actions/checkout@v7
 
     - name: Setup .NET
-      uses: actions/setup-dotnet@v4
+      uses: actions/setup-dotnet@v6
       with:
         dotnet-version: '10.0.403'
         global-json-file: global.json
@@ -144,7 +144,7 @@ jobs:
     # artifacts/ci/ 下步骤侧落盘日志（Tee 产物，被杀场景的唯一现场）。
     - name: Upload TestResults logs
       if: always()
-      uses: actions/upload-artifact@v4
+      uses: actions/upload-artifact@v7
       with:
         name: testresults-logs
         path: |
@@ -163,10 +163,10 @@ jobs:
     timeout-minutes: 30
 
     steps:
-    - uses: actions/checkout@v4
+    - uses: actions/checkout@v7
 
     - name: Setup .NET
-      uses: actions/setup-dotnet@v4
+      uses: actions/setup-dotnet@v6
       with:
         dotnet-version: '10.0.403'
         global-json-file: global.json
@@ -191,7 +191,7 @@ jobs:
 
     - name: Upload coverage artifacts
       if: always()
-      uses: actions/upload-artifact@v4
+      uses: actions/upload-artifact@v7
       with:
         name: coverage-artifacts
         path: |
@@ -201,7 +201,7 @@ jobs:
 
     - name: Upload coverage to Codecov
       if: always()
-      uses: codecov/codecov-action@v4
+      uses: codecov/codecov-action@v7
       with:
         files: ./test/**/*.cobertura.xml
         fail_ci_if_error: false
@@ -214,12 +214,12 @@ jobs:
     runs-on: windows-latest
 
     steps:
-    - uses: actions/checkout@v4
+    - uses: actions/checkout@v7
 
     - name: Setup .NET
       # 用 global.json 的精确版本（10.0.403）而非 10.0.x 通配符——
       # setup-dotnet@v4 的 10.0.x 解析到不存在的 patch（actions/setup-dotnet#711，2026-03）
-      uses: actions/setup-dotnet@v4
+      uses: actions/setup-dotnet@v6
       with:
         dotnet-version: '10.0.403'
         global-json-file: global.json
@@ -239,12 +239,12 @@ jobs:
     runs-on: ubuntu-latest
 
     steps:
-    - uses: actions/checkout@v4
+    - uses: actions/checkout@v7
 
     - name: Setup .NET
       # 用 global.json 的精确版本（10.0.403）而非 10.0.x 通配符——
       # setup-dotnet@v4 的 10.0.x 解析到不存在的 patch（actions/setup-dotnet#711，2026-03）
-      uses: actions/setup-dotnet@v4
+      uses: actions/setup-dotnet@v6
       with:
         dotnet-version: '10.0.403'
         global-json-file: global.json
@@ -271,12 +271,12 @@ jobs:
     continue-on-error: true  # 观察期一轮后移除（转硬门禁）
 
     steps:
-    - uses: actions/checkout@v4
+    - uses: actions/checkout@v7
 
     - name: Setup .NET
       # 用 global.json 的精确版本（10.0.403）而非 10.0.x 通配符——
       # setup-dotnet@v4 的 10.0.x 解析到不存在的 patch（actions/setup-dotnet#711，2026-03）
-      uses: actions/setup-dotnet@v4
+      uses: actions/setup-dotnet@v6
       with:
         dotnet-version: '10.0.403'
         global-json-file: global.json
@@ -299,10 +299,10 @@ jobs:
     runs-on: ubuntu-latest
 
     steps:
-    - uses: actions/checkout@v4
+    - uses: actions/checkout@v7
 
     - name: Setup .NET
-      uses: actions/setup-dotnet@v4
+      uses: actions/setup-dotnet@v6
       with:
         dotnet-version: '10.0.403'
         global-json-file: global.json
@@ -325,10 +325,10 @@ jobs:
     timeout-minutes: 10
 
     steps:
-    - uses: actions/checkout@v4
+    - uses: actions/checkout@v7
 
     - name: Setup .NET
-      uses: actions/setup-dotnet@v4
+      uses: actions/setup-dotnet@v6
       with:
         dotnet-version: '10.0.403'
         global-json-file: global.json
@@ -352,7 +352,7 @@ jobs:
     if: github.event_name == 'pull_request' && !contains(github.event.pull_request.labels.*.name, 'skip-equivalence-gate')
 
     steps:
-    - uses: actions/checkout@v4
+    - uses: actions/checkout@v7
       with:
         # 全量历史：脚本对 BaseRef 做 merge-base 三点 diff，浅克隆无 origin/<base> 会 fail-closed
         fetch-depth: 0
@@ -371,12 +371,12 @@ jobs:
     continue-on-error: "${{ github.event_name == 'pull_request' }}"
 
     steps:
-    - uses: actions/checkout@v4
+    - uses: actions/checkout@v7
 
     - name: Setup .NET
       # 用 global.json 的精确版本（10.0.403）而非 10.0.x 通配符——
       # setup-dotnet@v4 的 10.0.x 解析到不存在的 patch（actions/setup-dotnet#711，2026-03）
-      uses: actions/setup-dotnet@v4
+      uses: actions/setup-dotnet@v6
       with:
         dotnet-version: '10.0.403'
         global-json-file: global.json
@@ -463,7 +463,7 @@ jobs:
         Write-Host "[PASS] snupkg 内 pdb 存在（SourceLink 嵌入正常）"
 
     - name: Upload packages
-      uses: actions/upload-artifact@v4
+      uses: actions/upload-artifact@v7
       with:
         name: ncmapper-packages
         path: ./nupkgs
@@ -479,18 +479,18 @@ jobs:
     continue-on-error: "${{ github.event_name == 'pull_request' }}"
 
     steps:
-    - uses: actions/checkout@v4
+    - uses: actions/checkout@v7
 
     - name: Setup .NET
       # 用 global.json 的精确版本（10.0.403）而非 10.0.x 通配符——
       # setup-dotnet@v4 的 10.0.x 解析到不存在的 patch（actions/setup-dotnet#711，2026-03）
-      uses: actions/setup-dotnet@v4
+      uses: actions/setup-dotnet@v6
       with:
         dotnet-version: '10.0.403'
         global-json-file: global.json
 
     - name: Download packages
-      uses: actions/download-artifact@v4
+      uses: actions/download-artifact@v8
       with:
         name: ncmapper-packages
         path: ./nupkgs

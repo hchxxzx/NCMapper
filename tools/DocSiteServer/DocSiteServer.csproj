@@ -10,6 +10,11 @@
     <!-- 离线包静态服务器：NativeAOT self-contained 单文件发布（-70% 体积，零运行时依赖）。
          编译期仅引用 Microsoft.AspNetCore.App 共享框架（FrameworkReference），不引任何额外 NuGet 包。 -->
     <PublishAot>true</PublishAot>
+    <!-- 声明双平台 RID：离线包由 build-offline-docs.sh 分平台发布（win-x64 / linux-x64）。
+         不声明时 packages.lock.json 只会记录「最近一次 restore 时的本机 RID」，Windows 上
+         生成即仅含 win-x64，Linux runner 上 restore 触发 NU1004。
+         与 samples/NCMapper.AotSample、test/NCMapper.AotTests 的既有写法一致。 -->
+    <RuntimeIdentifiers>win-x64;linux-x64</RuntimeIdentifiers>
     <PublishSingleFile>true</PublishSingleFile>
     <StripSymbols>true</StripSymbols>
     <InvariantGlobalization>true</InvariantGlobalization>

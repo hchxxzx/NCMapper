@@ -188,10 +188,16 @@ done
 echo "[4/7] 发布 DocSiteServer（$rid，NativeAOT）"
 # 注意：不吞输出——NativeAOT 需要本机/runner 的 C++ 链接器（clang/lld，VS C++ workload），
 # 失败时错误必须可见（P7：本地若缺工具链，publish 失败为环境性，实证以 CI offline-package.yml 为准）
+#
+# RID 传参用 -p:RuntimeIdentifier= 而非 --runtime：
+# DocSiteServer.csproj 已声明 RuntimeIdentifiers=win-x64;linux-x64（与 AotSample/AotTests 同款），
+# 使 packages.lock.json 同时记录两个 RID 段。而 --runtime 会把项目的 RID 集合收紧为单个，
+# 与 lock 里的双段在 RestoreLockedMode 下必然冲突（NU1004：「项目的运行时标识符已更改」）。
+# -p:RuntimeIdentifier= 只指定本次发布目标，不改变 RID 集合语义，与锁定模式相容。
 win_tmp_server="$win_root/temp/offline/_server_tmp_$rid"
 dotnet publish tools/DocSiteServer/DocSiteServer.csproj \
   --configuration Release \
-  --runtime "$rid" \
+  -p:RuntimeIdentifier="$rid" \
   --self-contained true \
   -p:PublishAot=true \
   --output "$win_tmp_server"

@@ -13,12 +13,12 @@ jobs:
   docs-gates:
     runs-on: ubuntu-latest
     steps:
-    - uses: actions/checkout@v4
+    - uses: actions/checkout@v7
 
     - name: Setup .NET
       # 同 ci.yml：与 global.json 10.0.403 对齐（rollForward=disable 精确匹配；
       # 勿用 10.0.x 通配符——actions/setup-dotnet#711 会解析到不存在的 patch）
-      uses: actions/setup-dotnet@v4
+      uses: actions/setup-dotnet@v6
       with:
         dotnet-version: '10.0.403'
         global-json-file: global.json
@@ -189,14 +189,14 @@ jobs:
       run: python3 scripts/check-doc-anchors.py
 
     - name: Upload site artifact (zh-Hans)
-      uses: actions/upload-artifact@v4
+      uses: actions/upload-artifact@v7
       with:
         name: docs-site-zh-Hans
         path: temp/site-zh
         if-no-files-found: error
 
     - name: Upload site artifact (en)
-      uses: actions/upload-artifact@v4
+      uses: actions/upload-artifact@v7
       with:
         name: docs-site-en
         path: temp/site-en

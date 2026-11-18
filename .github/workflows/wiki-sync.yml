@@ -1,14 +1,15 @@
 # =============================================================================
-# wiki-sync.yml — docs/zh-CN 叙事层 → GitHub Wiki 自动同步
+# wiki-sync.yml — docs/en-US 叙事层 → GitHub Wiki 自动同步
 #
-# ① 前缀修齐：on.push.paths 与复制源由双语拆分前旧前缀 docs/how-to/** 等修齐为
-#    docs/zh-CN/** 实态（旧前缀触发器永不命中、复制源恒空——双重失效）
-# ② 域映射与 Home/_Sidebar 生成逻辑抽取至 scripts/wiki-sync-mapping.sh
+# ① 同步语言：默认 en-US（Wiki 主体面向国际读者）；中文页暂不入 Wiki，
+#    中文读者走文档站 docs/zh-CN。切语言改 WIKI_LANG 一处即可，脚本支持
+#    任意 docs/<lang> 目录（zh-CN / en-US / ja / de …，见方案 20261007-001）。
+# ② 域映射与 Home/_Sidebar 生成逻辑在 scripts/wiki-sync-mapping.sh
 #    （how-to 域子目录 → wiki/<Domain>-<Page> 扁平页名；页名唯一性断言防镜像推错；
 #     支持 WIKI_DRY_RUN=1 本地演练）
-#   ③ 权限模型（2026-09-27 加固）：WIKI_PUSH_TOKEN（PAT）未配置或 clone 失败
-#      （token 过期/撤销/权限不足）均降级 warning 跳过同步，不阻塞；防呆检查
-#      前移至 clone 之前（原实现 clone 先于 token 检查执行，空/坏 token 必红）
+# ③ 权限模型（2026-09-27 加固）：WIKI_PUSH_TOKEN（PAT）未配置或 clone 失败
+#    （token 过期/撤销/权限不足）均降级 warning 跳过同步，不阻塞；防呆检查
+#    前移至 clone 之前（原实现 clone 先于 token 检查执行，空/坏 token 必红）
 # =============================================================================
 name: Wiki Sync
 
@@ -16,15 +17,20 @@ on:
   push:
     branches: [main]
     paths:
-      - 'docs/zh-CN/how-to/**'
-      - 'docs/zh-CN/getting-started/**'
-      - 'docs/zh-CN/tutorials/**'
-      - 'docs/zh-CN/explanation/**'
-      - 'docs/zh-CN/index.md'
+      - 'docs/en-US/how-to/**'
+      - 'docs/en-US/getting-started/**'
+      - 'docs/en-US/tutorials/**'
+      - 'docs/en-US/explanation/**'
+      - 'docs/en-US/index.md'
       - 'scripts/wiki-sync-mapping.sh'
+  workflow_dispatch:   # 允许手动重跑（切语言或首次铺页后无需空提交）
 
 permissions:
   contents: read
+
+env:
+  # 同步源语言：改这一处即可切换 Wiki 主体语言
+  WIKI_LANG: en-US
 
 jobs:
   sync:
@@ -58,7 +64,7 @@ jobs:
       # 域映射 + 唯一性断言 + 复制 + Home/_Sidebar 生成（脚本内聚，可本地 dry-run）
       - name: Sync narrative docs (domain mapping)
         if: steps.wiki.outputs.sync == 'true'
-        run: bash scripts/wiki-sync-mapping.sh "$PWD" wiki
+        run: bash scripts/wiki-sync-mapping.sh "$PWD" wiki "$WIKI_LANG"
 
       - name: Commit and push
         if: steps.wiki.outputs.sync == 'true'
@@ -68,6 +74,6 @@ jobs:
           if git diff --cached --quiet; then
             echo "wiki 无变更，跳过推送"
           else
-            git commit -m "wiki-sync: ${GITHUB_SHA::7} docs/zh-CN 叙事层同步（域结构映射）"
+            git commit -m "wiki-sync: ${GITHUB_SHA::7} docs/${WIKI_LANG} 叙事层同步（域结构映射）"
             git push
           fi

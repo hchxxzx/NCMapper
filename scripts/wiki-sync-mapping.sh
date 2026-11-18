@@ -1,11 +1,10 @@
 #!/usr/bin/env bash
 # ================================================================
-# wiki-sync-mapping.sh — docs/zh-CN 叙事层 → GitHub Wiki 扁平页映射与暂存
+# wiki-sync-mapping.sh — docs/<lang> 叙事层 → GitHub Wiki 扁平页映射与暂存
 # （从 wiki-sync.yml 内联逻辑抽取，支持本地 dry-run）
 #
 # 职责：
-#   ① 同步源前缀修齐：docs/zh-CN/**（双语拆分实态；修复 docs/how-to 旧前缀
-#      导致的触发器永不命中、复制源恒空双重失效）
+#   ① 同步源：docs/<lang>/**（lang 由第 3 参数或 WIKI_LANG 指定，默认 en-US）
 #   ② 域路径 → wiki 扁平页名映射：how-to/<domain>/<page>.md → wiki/<Domain>-<Page>
 #      （PascalCase 区分跨域重名，如 how-to/fluent/basics.md → wiki/Fluent-Basics）
 #      how-to 平铺页（域分章前遗留形态）→ wiki/<原文件名去 .md>（过渡兼容，后续自然空转）
@@ -15,19 +14,32 @@
 #   ⑤ 产物页名唯一性断言（冲突即失败，防镜像推错）
 #
 # 用法：
-#   bash scripts/wiki-sync-mapping.sh <repo_root> <wiki_dir>          # 实际复制+生成
-#   WIKI_DRY_RUN=1 bash scripts/wiki-sync-mapping.sh <repo_root> <out> # 仅打印映射计划，不写文件
-# 退出码：0=成功  1=页名冲突  2=源目录缺失
+#   bash scripts/wiki-sync-mapping.sh <repo_root> <wiki_dir> [lang]     # 实际复制+生成
+#   WIKI_DRY_RUN=1 bash scripts/wiki-sync-mapping.sh <repo_root> <out> [lang]
+#   lang 可省略，此时取 WIKI_LANG，再缺省为 en-US
+#   例：bash scripts/wiki-sync-mapping.sh "$PWD" wiki            # 英文（默认）
+#       bash scripts/wiki-sync-mapping.sh "$PWD" wiki zh-CN      # 中文
+# 退出码：0=成功  1=页名冲突  2=源目录缺失  3=语言标识非法
 # ================================================================
 set -euo pipefail
 
-ROOT="${1:?usage: wiki-sync-mapping.sh <repo_root> <wiki_dir>}"
-WIKI="${2:?usage: wiki-sync-mapping.sh <repo_root> <wiki_dir>}"
+ROOT="${1:?usage: wiki-sync-mapping.sh <repo_root> <wiki_dir> [lang]}"
+WIKI="${2:?usage: wiki-sync-mapping.sh <repo_root> <wiki_dir> [lang]}"
+LANG_ID="${3:-${WIKI_LANG:-en-US}}"
 DRY="${WIKI_DRY_RUN:-0}"
-SRC="$ROOT/docs/zh-CN"
+
+# 语言标识白名单：仅允许字母 + 连字符（防路径穿越与拼写噪音）
+case "$LANG_ID" in
+  *[!A-Za-z-]* | '')
+    echo "[ERROR] 语言标识非法：'$LANG_ID'（只允许字母与连字符，如 en-US / zh-CN）" >&2
+    exit 3
+    ;;
+esac
+
+SRC="$ROOT/docs/$LANG_ID"
 
 if [ ! -d "$SRC" ]; then
-  echo "[ERROR] 同步源缺失：$SRC（期望 docs/zh-CN，前缀已修齐至双语拆分实态）" >&2
+  echo "[ERROR] 同步源缺失：$SRC（期望 docs/$LANG_ID，前缀已修齐至双语拆分实态）" >&2
   exit 2
 fi
 
@@ -89,18 +101,56 @@ if [ "$DRY" = "1" ]; then
   exit 0
 fi
 
+# 复制单页并剥离 Wiki 不渲染/不该显示的头部块：
+#   ① 机器翻译声明（> [!WARNING] 引用块）——仓库内的翻译溯源提示，Wiki 不需要；
+#   ② 页头元信息块——Wiki 不解析，留着会被当正文渲染成横线与键值行。
+#      实测该块有三种分隔写法，都要认：
+#        ---  ... ---            （标准 YAML front matter）
+#        ***  ... ----------------（多数机翻页的变体）
+#      且 WARNING 块常排在元信息之前，此时元信息不在文件首行，必须按"块"剥而非只看首行。
+# 实现：循环剥离开头的 WARNING 块与元信息块，直到文件真正以正文开头。
+emit_page() {  # $1=源文件绝对路径  $2=目标文件
+  local src="$1" dst="$2"
+  awk '
+    # 判定是否为元信息块的分隔行：--- / *** / ___ / ---- 等纯符号行（>=3 个同类符号）
+    function is_rule(s) {
+      return (s ~ /^-[[:space:]]*-[-[:space:]]*$/ || s ~ /^\*[[:space:]]*\*[*[:space:]]*$/ || s ~ /^_[[:space:]]*_[_[:space:]]*$/)
+    }
+    BEGIN { s = 0 }   # s=0 扫头部  s=1 元信息块内  s=2 正文
+    s == 0 {
+      if ($0 ~ /^>[[:space:]]*\[!WARNING\]/) next      # WARNING 首行
+      if ($0 ~ /^>[[:space:]]*/)              next      # WARNING 续行
+      if ($0 ~ /^[[:space:]]*$/)              next      # 空行
+      if (is_rule($0))                        { s = 1; next }   # 元信息块起始
+      s = 2
+    }
+    s == 1 {
+      if (is_rule($0)) { s = 0; next }                 # 元信息块结束，回头部继续扫
+      next                                             # 块内键值行丢弃
+    }
+    { print }
+  ' "$src" > "$dst"
+}
+
 mkdir -p "$WIKI"
 for item in "${PLAN[@]}"; do
   src_rel="${item%%$'\t'*}"
   dst="${item##*$'\t'}"
   mkdir -p "$WIKI/$(dirname "$dst")"
-  cp "$ROOT/$src_rel" "$WIKI/$dst.md"
+  emit_page "$ROOT/$src_rel" "$WIKI/$dst.md"
 done
 
 # --- ④ _Sidebar.md / Home.md 导航块（域结构驱动）---
+# 侧栏小标题按语言取词：中文「操作指南」，其余语言用英文标题（Wiki 主体面向国际读者）
+if [ "$LANG_ID" = "zh-CN" ]; then
+  HOWTO_LABEL="操作指南"
+else
+  HOWTO_LABEL="How-to Guides"
+fi
+
 sidebar="$WIKI/_Sidebar.md"
 {
-  echo "## 操作指南"
+  echo "## $HOWTO_LABEL"
   for dir in "$SRC"/how-to/*/; do
     domain="$(basename "$dir")"
     dp="$(pascal "$domain")"
@@ -113,6 +163,18 @@ sidebar="$WIKI/_Sidebar.md"
     echo "### $dp"
     printf '%s\n' "${pages[@]}"
   done
+  # how-to 平铺页（faq、pitfalls 等无域子目录的页）：此前只并入映射计划、未进侧栏，
+  # 导致页面存在但导航里点不到。与 ② 的映射口径保持一致（页名 = 去 .md 的原文件名）。
+  flat_pages=()
+  for f in "$SRC"/how-to/*.md; do
+    [ -e "$f" ] || continue
+    stem="$(basename "$f" .md)"
+    flat_pages+=("- [$stem]($stem)")
+  done
+  if [ ${#flat_pages[@]} -gt 0 ]; then
+    if [ "$LANG_ID" = "zh-CN" ]; then echo "### 其他"; else echo "### Other"; fi
+    printf '%s\n' "${flat_pages[@]}"
+  fi
   for pair in "getting-started:GettingStarted" "tutorials:Tutorials" "explanation:Explanation"; do
     sub="${pair%%:*}"; dst_dir="${pair##*:}"
     label="$(pascal "$sub")"
@@ -130,12 +192,16 @@ sidebar="$WIKI/_Sidebar.md"
 
 home="$WIKI/Home.md"
 touch "$home"
-if ! grep -q "操作指南（自动生成）" "$home" 2>/dev/null; then
+# 判定标记用语言无关的 HTML 注释（wiki 渲染时不可见）：
+# 若用可见标题做标记，切换同步语言后会因标题文本不同而失配，导致重复追加。
+MARKER="<!-- wiki-sync:generated -->"
+if ! grep -qF "$MARKER" "$home" 2>/dev/null; then
   {
     echo ""
-    echo "## 操作指南（自动生成）"
+    echo "## $HOWTO_LABEL"
     echo ""
-    echo "<!-- wiki-sync 自动生成：docs/zh-CN/how-to 域结构 → wiki 扁平页（<Domain>-<Page>） -->"
+    echo "$MARKER"
+    echo "<!-- 由 docs/$LANG_ID/how-to 域结构自动同步；请勿直接编辑本页 -->"
   } >> "$home"
 fi
 

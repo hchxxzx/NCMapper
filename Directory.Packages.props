@@ -20,7 +20,7 @@
   <ItemGroup>
     <PackageVersion Include="xunit.v3" Version="3.2.2" />
     <PackageVersion Include="xunit.runner.visualstudio" Version="3.1.5" />
-    <PackageVersion Include="Microsoft.NET.Test.Sdk" Version="18.7.0" />
+    <PackageVersion Include="Microsoft.NET.Test.Sdk" Version="18.12.0" />
     <PackageVersion Include="FreeSql" Version="[3.5.103, 4.0.0)" />
     <PackageVersion Include="FreeSql.Provider.Sqlite" Version="[3.5.103, 4.0.0)" />
     <PackageVersion Include="Dapper" Version="[2.1.35, 3.0.0)" />
@@ -32,9 +32,9 @@
     <PackageVersion Include="Microsoft.Extensions.Configuration" Version="9.0.0" />
     <!-- Microsoft.Testing.Extensions.CodeCoverage 18.0.6 依赖 Microsoft.Testing.Platform >= 1.8.4，
          项目 MTP 1.9.1 满足；覆盖率链路经 MTP 原生扩展落地（coverlet.msbuild 路线不可行）。ci-only -->
-    <PackageVersion Include="Microsoft.Testing.Extensions.CodeCoverage" Version="18.0.6" />
+    <PackageVersion Include="Microsoft.Testing.Extensions.CodeCoverage" Version="18.12.0" />
     <PackageVersion Include="PublicApiGenerator" Version="11.1.0" />
-    <PackageVersion Include="FsCheck.Xunit.v3" Version="3.3.3" />
+    <PackageVersion Include="FsCheck.Xunit.v3" Version="3.6.0" />
     <!-- CVE-2025-6965 覆盖（2026-08-24）：EF Core Sqlite / Microsoft.Data.Sqlite 传递锁 bundle_e_sqlite3 2.1.10（内置 SQLite <3.50.2 受影响），
          显式升至 2.1.13（2.x 末版，内置 SQLite 3.53.x，同大版本零 API 风险）；上游约束为下限式（>=2.1.10），显式引用无冲突 -->
     <PackageVersion Include="SQLitePCLRaw.bundle_e_sqlite3" Version="2.1.13" />

@@ -18,6 +18,15 @@ import re
 import sys
 from pathlib import Path
 
+# Windows 控制台/管道默认用 ANSI 代码页（如 cp1252、cp936）编码 stdout，
+# 输出中文会抛 UnicodeEncodeError 而非打印乱码——在 CI 的 windows runner 上
+# 直接导致门禁假红（实测：python 3.12 走 cp1252，'链接闭合自检通过' 编码失败）。
+# 强制 UTF-8 并放宽错误策略，保证任何平台输出中文都不崩。
+if hasattr(sys.stdout, "reconfigure"):
+    sys.stdout.reconfigure(encoding="utf-8", errors="replace")
+if hasattr(sys.stderr, "reconfigure"):
+    sys.stderr.reconfigure(encoding="utf-8", errors="replace")
+
 REPO_ROOT = Path(__file__).resolve().parent.parent
 
 # 终止符码点（对齐原 perl 版 @termCodes）：空格/Tab/、/，/。/；/：/·/）/（/！/？/“/”/【/】/|

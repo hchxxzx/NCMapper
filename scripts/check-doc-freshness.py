@@ -47,6 +47,13 @@ import os
 import re
 import subprocess
 import sys
+# Windows 控制台/管道默认用 ANSI 代码页（cp1252 / cp936）编码 stdout，输出中文会抛
+# UnicodeEncodeError 而非打印乱码——在 CI 的 windows runner（英文系统 cp1252）上直接
+# 导致门禁假红。强制 UTF-8 并放宽错误策略，保证任何平台输出中文都不崩。
+if hasattr(sys.stdout, "reconfigure"):
+    sys.stdout.reconfigure(encoding="utf-8", errors="replace")
+if hasattr(sys.stderr, "reconfigure"):
+    sys.stderr.reconfigure(encoding="utf-8", errors="replace")
 
 ROOT = os.path.dirname(os.path.dirname(os.path.abspath(__file__)))
 

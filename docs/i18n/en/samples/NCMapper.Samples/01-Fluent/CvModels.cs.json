@@ -1,0 +1,552 @@
+{
+    "source":  "samples/NCMapper.Samples/01-Fluent/CvModels.cs",
+    "language":  "en",
+    "generatedFrom":  "dcc397da50747bfa2ec7eb326c4dd9c9bf0d376f1f280a7f2bb340c393a757c7",
+    "comments":  [
+                     {
+                         "i":  1,
+                         "zh":  "02 Fluent Convert — 模型、静态转换器与 Mapper 配置类",
+                         "en":  "02 Fluent Convert — Model, Static Converters, and Mapper Configuration Class"
+                     },
+                     {
+                         "i":  2,
+                         "zh":  "Convert 四形态（正向）/ ConvertBack 四形态（反向）/ 同锚点配对 /",
+                         "en":  "Four forms of Convert (forward) / Four forms of ConvertBack (reverse) / Paired anchors with the same name"
+                     },
+                     {
+                         "i":  3,
+                         "zh":  "方向性忽略 / 全局忽略豁免门 / FromJson / 反向转换（T 侧锚 ConvertBack + action 写回）。",
+                         "en":  "Directional ignore / Global ignore exemption gate / FromJson / Reverse conversion (T-side anchor ConvertBack + action for write-back)"
+                     },
+                     {
+                         "i":  4,
+                         "zh":  "源侧锚点均采用同名属性形态（Fluent Mask 源侧仅同名解析——执行期发现已登记）。",
+                         "en":  "Source-side anchors all adopt identically named property forms (Fluent Mask source-side performs name-matching only — registered anchors are discovered at runtime)"
+                     },
+                     {
+                         "i":  6,
+                         "zh":  "\u003csummary\u003e转换演示订单实体（Convert/ConvertBack 四形态 + 配对源）。\u003c/summary\u003e",
+                         "en":  "\u003csummary\u003eConversion demonstration order entity (four forms of Convert/ConvertBack + paired source).\u003c/summary\u003e"
+                     },
+                     {
+                         "i":  7,
+                         "zh":  "\u003csummary\u003e主键\u003c/summary\u003e",
+                         "en":  "\u003csummary\u003ePrimary key\u003c/summary\u003e"
+                     },
+                     {
+                         "i":  8,
+                         "zh":  "\u003csummary\u003e订单号\u003c/summary\u003e",
+                         "en":  "\u003csummary\u003eOrder number\u003c/summary\u003e"
+                     },
+                     {
+                         "i":  9,
+                         "zh":  "\u003csummary\u003e客户名\u003c/summary\u003e",
+                         "en":  "\u003csummary\u003eCustomer name\u003c/summary\u003e"
+                     },
+                     {
+                         "i":  10,
+                         "zh":  "\u003csummary\u003e年龄段（T1 字段值源，int）\u003c/summary\u003e",
+                         "en":  "\u003csummary\u003eAge group (source field value for T1, int)\u003c/summary\u003e"
+                     },
+                     {
+                         "i":  11,
+                         "zh":  "\u003csummary\u003e整要源占位（T2 整源形态同名锚点——值不读取）\u003c/summary\u003e",
+                         "en":  "\u003csummary\u003eInteger placeholder (T2 integer-source form with identically named anchor—value not read)\u003c/summary\u003e"
+                     },
+                     {
+                         "i":  12,
+                         "zh":  "\u003csummary\u003e修改时间（T3 组合形态字段源）\u003c/summary\u003e",
+                         "en":  "\u003csummary\u003eModification time (T3 composite-form field source)\u003c/summary\u003e"
+                     },
+                     {
+                         "i":  13,
+                         "zh":  "\u003csummary\u003e创建时间（配对场景字段源，DateTime→string）\u003c/summary\u003e",
+                         "en":  "\u003csummary\u003eCreation time (field source for paired scenario, DateTime → string)\u003c/summary\u003e"
+                     },
+                     {
+                         "i":  14,
+                         "zh":  "\u003csummary\u003e审计标签（ConvertBack T0 写回点）\u003c/summary\u003e",
+                         "en":  "\u003csummary\u003eAudit tag (ConvertBack T0 write-back point)\u003c/summary\u003e"
+                     },
+                     {
+                         "i":  15,
+                         "zh":  "\u003csummary\u003e创建时间（ConvertBack T1 写回点，DateTime）\u003c/summary\u003e",
+                         "en":  "\u003csummary\u003eCreation time (ConvertBack T1 write-back point, DateTime)\u003c/summary\u003e"
+                     },
+                     {
+                         "i":  16,
+                         "zh":  "\u003csummary\u003e变更备注（ConvertBack T2 写回点）\u003c/summary\u003e",
+                         "en":  "\u003csummary\u003eChange remarks (ConvertBack T2 write-back point)\u003c/summary\u003e"
+                     },
+                     {
+                         "i":  17,
+                         "zh":  "\u003csummary\u003e组合键（ConvertBack T3 写回点）\u003c/summary\u003e",
+                         "en":  "\u003csummary\u003eComposite key (ConvertBack T3 write-back point)\u003c/summary\u003e"
+                     },
+                     {
+                         "i":  18,
+                         "zh":  "\u003csummary\u003e批次号（Convert T0 常量形态同名锚点——值不读取）\u003c/summary\u003e",
+                         "en":  "\u003csummary\u003eBatch number (Convert T0 constant-form identically named anchor—value not read)\u003c/summary\u003e"
+                     },
+                     {
+                         "i":  19,
+                         "zh":  "\u003csummary\u003e转换演示订单 DTO。\u003c/summary\u003e",
+                         "en":  "\u003csummary\u003eConversion demonstration order DTO.\u003c/summary\u003e"
+                     },
+                     {
+                         "i":  20,
+                         "zh":  "\u003csummary\u003e主键\u003c/summary\u003e",
+                         "en":  "\u003csummary\u003ePrimary key\u003c/summary\u003e"
+                     },
+                     {
+                         "i":  21,
+                         "zh":  "\u003csummary\u003e订单号\u003c/summary\u003e",
+                         "en":  "\u003csummary\u003eOrder number\u003c/summary\u003e"
+                     },
+                     {
+                         "i":  22,
+                         "zh":  "\u003csummary\u003e客户名\u003c/summary\u003e",
+                         "en":  "\u003csummary\u003eCustomer name\u003c/summary\u003e"
+                     },
+                     {
+                         "i":  23,
+                         "zh":  "\u003csummary\u003e年龄段（T1：int → string）\u003c/summary\u003e",
+                         "en":  "\u003csummary\u003eAge group (T1: int → string)\u003c/summary\u003e"
+                     },
+                     {
+                         "i":  24,
+                         "zh":  "\u003csummary\u003e整要（T2 整源多字段组合产物）\u003c/summary\u003e",
+                         "en":  "\u003csummary\u003eInteger requirement (T2 integer-source multi-field composite result)\u003c/summary\u003e"
+                     },
+                     {
+                         "i":  25,
+                         "zh":  "\u003csummary\u003e修改时间（T3：DateTime → string）\u003c/summary\u003e",
+                         "en":  "\u003csummary\u003eModification time (T3: DateTime → string)\u003c/summary\u003e"
+                     },
+                     {
+                         "i":  26,
+                         "zh":  "\u003csummary\u003e创建文本（配对场景：Convert 正向 + ConvertBack 反向同锚点）\u003c/summary\u003e",
+                         "en":  "\u003csummary\u003eCreation text (paired scenario: forward Convert + reverse ConvertBack sharing the same anchor)\u003c/summary\u003e"
+                     },
+                     {
+                         "i":  27,
+                         "zh":  "\u003csummary\u003e审计标签（ConvertBack T0 常量写入源）\u003c/summary\u003e",
+                         "en":  "\u003csummary\u003eAudit Tag (ConvertBack T0: constant written to source)\u003c/summary\u003e"
+                     },
+                     {
+                         "i":  28,
+                         "zh":  "\u003csummary\u003e创建文本（ConvertBack T1 锚点，string → DateTime 解析）\u003c/summary\u003e",
+                         "en":  "\u003csummary\u003eCreation Text (ConvertBack T1 anchor point; string → DateTime parsing)\u003c/summary\u003e"
+                     },
+                     {
+                         "i":  29,
+                         "zh":  "\u003csummary\u003e变更备注（ConvertBack T2 整 DTO 入参）\u003c/summary\u003e",
+                         "en":  "\u003csummary\u003eChange Remarks (ConvertBack T2: entire DTO as input parameter)\u003c/summary\u003e"
+                     },
+                     {
+                         "i":  30,
+                         "zh":  "\u003csummary\u003e组合键（ConvertBack T3 双入参）\u003c/summary\u003e",
+                         "en":  "\u003csummary\u003eComposite Key (ConvertBack T3: dual input parameters)\u003c/summary\u003e"
+                     },
+                     {
+                         "i":  31,
+                         "zh":  "\u003csummary\u003e批次号（Convert T0 常量产物）\u003c/summary\u003e",
+                         "en":  "\u003csummary\u003eBatch Number (Convert T0: constant output)\u003c/summary\u003e"
+                     },
+                     {
+                         "i":  32,
+                         "zh":  "\u003csummary\u003e反向转换演示实体（ConvertBack 四形态 + 配对写回点；属性与 DTO 同型）。\u003c/summary\u003e",
+                         "en":  "\u003csummary\u003eReverse Conversion Demo Entity (ConvertBack: four forms + paired write-back points; properties match DTO types)\u003c/summary\u003e"
+                     },
+                     {
+                         "i":  33,
+                         "zh":  "\u003csummary\u003e主键\u003c/summary\u003e",
+                         "en":  "\u003csummary\u003ePrimary Key\u003c/summary\u003e"
+                     },
+                     {
+                         "i":  34,
+                         "zh":  "\u003csummary\u003e创建时间（CB T1 写回点 + 配对正向源，DateTime）\u003c/summary\u003e",
+                         "en":  "\u003csummary\u003eCreation Time (CB T1 write-back point + paired forward source; DateTime)\u003c/summary\u003e"
+                     },
+                     {
+                         "i":  35,
+                         "zh":  "\u003csummary\u003e审计标签（CB T0 写回点）\u003c/summary\u003e",
+                         "en":  "\u003csummary\u003eAudit Tag (CB T0 write-back point)\u003c/summary\u003e"
+                     },
+                     {
+                         "i":  36,
+                         "zh":  "\u003csummary\u003e变更备注（CB T2 写回点）\u003c/summary\u003e",
+                         "en":  "\u003csummary\u003eChange Remarks (CB T2 write-back point)\u003c/summary\u003e"
+                     },
+                     {
+                         "i":  37,
+                         "zh":  "\u003csummary\u003e组合键（CB T3 写回点）\u003c/summary\u003e",
+                         "en":  "\u003csummary\u003eComposite Key (CB T3 write-back point)\u003c/summary\u003e"
+                     },
+                     {
+                         "i":  38,
+                         "zh":  "\u003csummary\u003e反向转换演示 DTO（属性与实体同型——反向演示用）。\u003c/summary\u003e",
+                         "en":  "\u003csummary\u003eReverse Conversion Demo DTO (properties match entity types—used for reverse demonstration)\u003c/summary\u003e"
+                     },
+                     {
+                         "i":  39,
+                         "zh":  "\u003csummary\u003e主键\u003c/summary\u003e",
+                         "en":  "\u003csummary\u003ePrimary Key\u003c/summary\u003e"
+                     },
+                     {
+                         "i":  40,
+                         "zh":  "\u003csummary\u003e创建文本（CB T1 锚点 + 配对正向产物，string）\u003c/summary\u003e",
+                         "en":  "\u003csummary\u003eCreation Text (CB T1 anchor point + paired forward output; string)\u003c/summary\u003e"
+                     },
+                     {
+                         "i":  41,
+                         "zh":  "\u003csummary\u003e审计标签（CB T0 常量写入源）\u003c/summary\u003e",
+                         "en":  "\u003csummary\u003eAudit Tag (CB T0 constant source for writing)\u003c/summary\u003e"
+                     },
+                     {
+                         "i":  42,
+                         "zh":  "\u003csummary\u003e变更备注（CB T2 整 DTO 入参）\u003c/summary\u003e",
+                         "en":  "\u003csummary\u003eChange Remarks (CB T2: entire DTO as input parameter)\u003c/summary\u003e"
+                     },
+                     {
+                         "i":  43,
+                         "zh":  "\u003csummary\u003e组合键（CB T3 双入参）\u003c/summary\u003e",
+                         "en":  "\u003csummary\u003eComposite Key (CB T3: dual input parameters)\u003c/summary\u003e"
+                     },
+                     {
+                         "i":  44,
+                         "zh":  "\u003csummary\u003e方向忽略演示实体（Ignore 方向 + OverrideIgnore 豁免门源）。\u003c/summary\u003e",
+                         "en":  "\u003csummary\u003eDirection-Ignored Demo Entity (Ignore direction + OverrideIgnore exemption gate source)\u003c/summary\u003e"
+                     },
+                     {
+                         "i":  45,
+                         "zh":  "\u003csummary\u003e主键\u003c/summary\u003e",
+                         "en":  "\u003csummary\u003ePrimary Key\u003c/summary\u003e"
+                     },
+                     {
+                         "i":  46,
+                         "zh":  "\u003csummary\u003e标签（ToDto 方向忽略）\u003c/summary\u003e",
+                         "en":  "\u003csummary\u003eTag (ignored in ToDto direction)\u003c/summary\u003e"
+                     },
+                     {
+                         "i":  47,
+                         "zh":  "\u003csummary\u003e审计注（ToEntity 方向忽略）\u003c/summary\u003e",
+                         "en":  "\u003csummary\u003eAudit Note (ignored in ToEntity direction)\u003c/summary\u003e"
+                     },
+                     {
+                         "i":  48,
+                         "zh":  "\u003csummary\u003e行版本（全局 IgnoreNames 命中——OverrideIgnore 豁免演示）\u003c/summary\u003e",
+                         "en":  "\u003csummary\u003eRow Version (globally matched by IgnoreNames—OverrideIgnore exemption demonstration)\u003c/summary\u003e"
+                     },
+                     {
+                         "i":  49,
+                         "zh":  "\u003csummary\u003e行版本对照\u003c/summary\u003e",
+                         "en":  "\u003csummary\u003eRow Version Reference\u003c/summary\u003e"
+                     },
+                     {
+                         "i":  50,
+                         "zh":  "\u003csummary\u003e方向忽略演示 DTO。\u003c/summary\u003e",
+                         "en":  "\u003csummary\u003eDirection-Ignored Demo DTO\u003c/summary\u003e"
+                     },
+                     {
+                         "i":  51,
+                         "zh":  "\u003csummary\u003e主键\u003c/summary\u003e",
+                         "en":  "\u003csummary\u003ePrimary Key\u003c/summary\u003e"
+                     },
+                     {
+                         "i":  52,
+                         "zh":  "\u003csummary\u003e标签\u003c/summary\u003e",
+                         "en":  "\u003csummary\u003eTag\u003c/summary\u003e"
+                     },
+                     {
+                         "i":  53,
+                         "zh":  "\u003csummary\u003e审计注\u003c/summary\u003e",
+                         "en":  "\u003csummary\u003eAudit annotation\u003c/summary\u003e"
+                     },
+                     {
+                         "i":  54,
+                         "zh":  "\u003csummary\u003e行版本（豁免门：全局忽略命中仍生成映射）\u003c/summary\u003e",
+                         "en":  "\u003csummary\u003eRow version (exemption gate: global ignore hits still generate mappings)\u003c/summary\u003e"
+                     },
+                     {
+                         "i":  55,
+                         "zh":  "\u003csummary\u003e行版本对照（无豁免——保持默认）\u003c/summary\u003e",
+                         "en":  "\u003csummary\u003eRow version comparison (no exemption—retain default behavior)\u003c/summary\u003e"
+                     },
+                     {
+                         "i":  56,
+                         "zh":  "\u003csummary\u003eJSON 载荷（FromJson 反序列化目标）。\u003c/summary\u003e",
+                         "en":  "\u003csummary\u003eJSON payload (target for FromJson deserialization).\u003c/summary\u003e"
+                     },
+                     {
+                         "i":  57,
+                         "zh":  "\u003csummary\u003e城市\u003c/summary\u003e",
+                         "en":  "\u003csummary\u003eCity\u003c/summary\u003e"
+                     },
+                     {
+                         "i":  58,
+                         "zh":  "\u003csummary\u003e邮编\u003c/summary\u003e",
+                         "en":  "\u003csummary\u003ePostal code\u003c/summary\u003e"
+                     },
+                     {
+                         "i":  59,
+                         "zh":  "\u003csummary\u003e实体侧演示实体（方向性忽略/反向转换/FromJson 源）。\u003c/summary\u003e",
+                         "en":  "\u003csummary\u003eDemonstration entity on the entity side (directional ignore / reverse conversion / FromJson source).\u003c/summary\u003e"
+                     },
+                     {
+                         "i":  60,
+                         "zh":  "\u003csummary\u003e主键\u003c/summary\u003e",
+                         "en":  "\u003csummary\u003ePrimary key\u003c/summary\u003e"
+                     },
+                     {
+                         "i":  61,
+                         "zh":  "\u003csummary\u003e密钥（方向性忽略双向拦截）\u003c/summary\u003e",
+                         "en":  "\u003csummary\u003eKey (directional ignore with bidirectional interception)\u003c/summary\u003e"
+                     },
+                     {
+                         "i":  62,
+                         "zh":  "\u003csummary\u003e遗留注（ToDto 仅正向忽略）\u003c/summary\u003e",
+                         "en":  "\u003csummary\u003eLegacy annotation (forward-only ignore in ToDto)\u003c/summary\u003e"
+                     },
+                     {
+                         "i":  63,
+                         "zh":  "\u003csummary\u003eJSON 载荷（FromJson 源侧 string）\u003c/summary\u003e",
+                         "en":  "\u003csummary\u003eJSON payload (string source for FromJson)\u003c/summary\u003e"
+                     },
+                     {
+                         "i":  64,
+                         "zh":  "\u003csummary\u003e创建时间（ConvertBack 反向解析写回点）\u003c/summary\u003e",
+                         "en":  "\u003csummary\u003eCreation time (write-back point for ConvertBack reverse parsing)\u003c/summary\u003e"
+                     },
+                     {
+                         "i":  65,
+                         "zh":  "\u003csummary\u003e同步戳（action 重载反向写回点——时点性动作显式化）\u003c/summary\u003e",
+                         "en":  "\u003csummary\u003eSynchronization timestamp (action overload write-back point—explicit temporal action)\u003c/summary\u003e"
+                     },
+                     {
+                         "i":  66,
+                         "zh":  "\u003csummary\u003e实体侧锚点演示 DTO。\u003c/summary\u003e",
+                         "en":  "\u003csummary\u003eDTO demonstration anchor on the entity side.\u003c/summary\u003e"
+                     },
+                     {
+                         "i":  67,
+                         "zh":  "\u003csummary\u003e主键\u003c/summary\u003e",
+                         "en":  "\u003csummary\u003ePrimary key\u003c/summary\u003e"
+                     },
+                     {
+                         "i":  68,
+                         "zh":  "\u003csummary\u003e密钥（方向性忽略拦截——正向保持默认）\u003c/summary\u003e",
+                         "en":  "\u003csummary\u003eKey (directional ignore interception—forward direction retains default behavior)\u003c/summary\u003e"
+                     },
+                     {
+                         "i":  69,
+                         "zh":  "\u003csummary\u003e遗留注（ToDto 仅正向忽略）\u003c/summary\u003e",
+                         "en":  "\u003csummary\u003eLegacy annotation (forward-only ignore in ToDto)\u003c/summary\u003e"
+                     },
+                     {
+                         "i":  70,
+                         "zh":  "\u003csummary\u003e载荷对象（FromJson 反序列化产物）\u003c/summary\u003e",
+                         "en":  "\u003csummary\u003ePayload object (FromJson deserialization result)\u003c/summary\u003e"
+                     },
+                     {
+                         "i":  71,
+                         "zh":  "\u003csummary\u003e创建文本（ConvertBack T 侧锚点属性，string）\u003c/summary\u003e",
+                         "en":  "\u003csummary\u003eCreation text (anchor property on the T side of ConvertBack, string type)\u003c/summary\u003e"
+                     },
+                     {
+                         "i":  73,
+                         "zh":  "静态转换器组 —— 全部为 public static（生成代码同程序集可见；private 报 NCMAP_F25/F19）。",
+                         "en":  "Static converter group—all members are public static (generated code is visible within the same assembly; private members trigger NCMAP_F25/F19 errors)."
+                     },
+                     {
+                         "i":  75,
+                         "zh":  "\u003csummary\u003eConvert T0 常量形态（无参）。\u003c/summary\u003e",
+                         "en":  "\u003csummary\u003eConvert T0 constant form (parameterless).\u003c/summary\u003e"
+                     },
+                     {
+                         "i":  76,
+                         "zh":  "\u003csummary\u003eConvert T1 字段值形态（int → string）。\u003c/summary\u003e",
+                         "en":  "\u003csummary\u003eConvert T1 field-value form (int → string).\u003c/summary\u003e"
+                     },
+                     {
+                         "i":  77,
+                         "zh":  "\u003csummary\u003eConvert T2 整源形态（多字段组合；委托入参 TSource 类级固定——方法组可直用）。\u003c/summary\u003e",
+                         "en":  "\u003csummary\u003eConvert T2 full-source form (multi-field composition; delegate parameter TSource is class-level fixed—method groups can be used directly).\u003c/summary\u003e"
+                     },
+                     {
+                         "i":  78,
+                         "zh":  "\u003csummary\u003eConvert T3 组合形态（整源 + 字段值双入参）。\u003c/summary\u003e",
+                         "en":  "\u003csummary\u003eConvert T3 composite form (full-source + field-value dual parameters).\u003c/summary\u003e"
+                     },
+                     {
+                         "i":  79,
+                         "zh":  "\u003csummary\u003eConvertBack T0 常量形态（反向写固定值）。\u003c/summary\u003e",
+                         "en":  "\u003csummary\u003eConvertBack T0: Constant form (reverse writing of fixed values).\u003c/summary\u003e"
+                     },
+                     {
+                         "i":  80,
+                         "zh":  "\u003csummary\u003eConvertBack T1 单值形态（string → DateTime 解析）。\u003c/summary\u003e",
+                         "en":  "\u003csummary\u003eConvertBack T1: Single-value form (string → DateTime parsing).\u003c/summary\u003e"
+                     },
+                     {
+                         "i":  81,
+                         "zh":  "\u003csummary\u003eConvertBack T2 整源形态（整个 DTO 入参）。\u003c/summary\u003e",
+                         "en":  "\u003csummary\u003eConvertBack T2: Full-source form (entire DTO as input parameter).\u003c/summary\u003e"
+                     },
+                     {
+                         "i":  82,
+                         "zh":  "\u003csummary\u003eConvertBack T3 组合形态（整 DTO + 字段值双入参）。\u003c/summary\u003e",
+                         "en":  "\u003csummary\u003eConvertBack T3: Composite form (entire DTO + field value as dual input parameters).\u003c/summary\u003e"
+                     },
+                     {
+                         "i":  83,
+                         "zh":  "\u003csummary\u003e配对场景正向（DateTime → string 格式化）。\u003c/summary\u003e",
+                         "en":  "\u003csummary\u003ePaired scenario, forward direction (DateTime → string formatting).\u003c/summary\u003e"
+                     },
+                     {
+                         "i":  84,
+                         "zh":  "\u003csummary\u003e配对场景反向（string → DateTime 解析，与正向互逆）。\u003c/summary\u003e",
+                         "en":  "\u003csummary\u003ePaired scenario, reverse direction (string → DateTime parsing, inverse of forward direction).\u003c/summary\u003e"
+                     },
+                     {
+                         "i":  85,
+                         "zh":  "\u003csummary\u003e反向写回合成（整个 DTO 入参；供 action 重载调用）。\u003c/summary\u003e",
+                         "en":  "\u003csummary\u003eReverse write-back composition (entire DTO as input parameter; intended for action overload invocation).\u003c/summary\u003e"
+                     },
+                     {
+                         "i":  87,
+                         "zh":  "转换演示 Mapper 配置 —— 四条 For 链承载八类场景（同一 (S,T) 对的全部声明须并入单链，F16）。",
+                         "en":  "Conversion demonstration Mapper configuration — four For chains supporting eight scenarios (all declarations for the same (S,T) pair must be placed within a single chain, F16)."
+                     },
+                     {
+                         "i":  88,
+                         "zh":  "\u003cpara\u003eConvert 四形态（对 A1）与 ConvertBack 四形态（对 A2）分对承载：正向显式 Convert 声明",
+                         "en":  "\u003cpara\u003eFour Convert forms (for A1) and four ConvertBack forms (for A2) are separately handled in pairs: explicit Convert declarations for the forward direction.\u003c/para\u003e"
+                     },
+                     {
+                         "i":  89,
+                         "zh":  "反向翻转时不消费（特性侧 F3 同语义——反向按类型转换路径处理，跨类型 string→int 无路径将抛",
+                         "en":  "During reverse flipping, no consumption occurs (semantic equivalence on the attribute side, F3 — reverse processing follows type conversion paths; cross-type conversions such as string→int without a defined path will throw a MapException). Therefore, reverse demonstrations use same-type property pairs.\u003c/para\u003e"
+                     },
+                     {
+                         "i":  90,
+                         "zh":  "MapException），故反向演示使用同型属性对。\u003c/para\u003e",
+                         "en":  "\u003cpara\u003eMapException), hence reverse demonstrations use same-type property pairs.\u003c/para\u003e"
+                     },
+                     {
+                         "i":  93,
+                         "zh":  "链式声明入口。",
+                         "en":  "Chain declaration entry point."
+                     },
+                     {
+                         "i":  95,
+                         "zh":  "\u003cparam name=\"cfg\"\u003eFluent 配置根\u003c/param\u003e",
+                         "en":  "\u003cparam name=\"cfg\"\u003eFluent configuration root\u003c/param\u003e"
+                     },
+                     {
+                         "i":  96,
+                         "zh":  "Pair A1: four Convert forms (T0 constant / T1 field value / T2 whole source / T3 composite) -- forward demo",
+                         "en":  "For A1: Four Convert forms (T0 constant / T1 field value / T2 full source / T3 composite) — forward demonstration."
+                     },
+                     {
+                         "i":  97,
+                         "zh":  "T2 whole source (method group used directly)",
+                         "en":  "T2 full source (direct method group usage)."
+                     },
+                     {
+                         "i":  98,
+                         "zh":  "T0 constant (method group used directly)",
+                         "en":  "T0 constant (direct method group usage)."
+                     },
+                     {
+                         "i":  99,
+                         "zh":  "T1 field value (explicit type arg -- inference guidance)",
+                         "en":  "T1 field value (explicit type parameter — inference guidance)."
+                     },
+                     {
+                         "i":  100,
+                         "zh":  "T3 composite (explicit type arg)",
+                         "en":  "T3 composite (explicit type parameter)."
+                     },
+                     {
+                         "i":  101,
+                         "zh":  "Pair A2: four ConvertBack forms + same-anchor pairing (reverse demo; write-back point resolves by the entity-side same name)",
+                         "en":  "For A2: Four ConvertBack forms + same-anchor pairing (reverse demonstration; write-back points resolved by entity-side name matching)."
+                     },
+                     {
+                         "i":  102,
+                         "zh":  "CB T0 constant",
+                         "en":  "CB T0 constant."
+                     },
+                     {
+                         "i":  103,
+                         "zh":  "CB T1 single value (no inference at input position -- explicit delegate)",
+                         "en":  "CB T1 single value (no inference at input position — explicit delegate required)."
+                     },
+                     {
+                         "i":  104,
+                         "zh":  "CB T2 whole DTO (TTarget fixed at class level -- used directly)",
+                         "en":  "CB T2 full DTO (TTarget class-level fixed — direct usage)."
+                     },
+                     {
+                         "i":  105,
+                         "zh":  "CB T3 composite (explicit delegate)",
+                         "en":  "CB T3 composite (explicit delegate)."
+                     },
+                     {
+                         "i":  106,
+                         "zh":  "paired forward direction (coexists with CB T1 on the same anchor)",
+                         "en":  "Paired forward (coexists with CB T1 at the same anchor)."
+                     },
+                     {
+                         "i":  107,
+                         "zh":  "Pair B: directional ignore + global-ignore exemption gate",
+                         "en":  "For B: Directional ignore + global ignore exemption gate."
+                     },
+                     {
+                         "i":  108,
+                         "zh":  "ignore forward direction only (reverse still derives as usual)",
+                         "en":  "Forward-only ignore (backward derivation proceeds normally)"
+                     },
+                     {
+                         "i":  109,
+                         "zh":  "ignore reverse direction only (forward still maps as usual)",
+                         "en":  "Backward-only ignore (forward mapping proceeds normally)"
+                     },
+                     {
+                         "i":  110,
+                         "zh":  "global IgnoreNames hit still generates the mapping",
+                         "en":  "Global IgnoreNames hits still generate"
+                     },
+                     {
+                         "i":  111,
+                         "zh":  "Pair C: directional ignore (T-side anchor) + FromJson + ConvertBack reverse",
+                         "en":  "For C: directional ignore (T-side anchor) + FromJson + ConvertBack in backward direction"
+                     },
+                     {
+                         "i":  112,
+                         "zh":  "both directions: no forward mapping, reverse write-back skipped (matching pair: T-side equivalent)",
+                         "en":  "Bidirectional: forward mapping skipped, backward write-back skipped (matching pair: T-side equivalence)"
+                     },
+                     {
+                         "i":  113,
+                         "zh":  "ignore forward direction only",
+                         "en":  "Forward-only ignore"
+                     },
+                     {
+                         "i":  114,
+                         "zh":  "source-side same-name string -> complex type",
+                         "en":  "Source-side same-name string → complex type"
+                     },
+                     {
+                         "i":  115,
+                         "zh":  "reverse parsing (T-side anchor -- string -> DateTime)",
+                         "en":  "Backward parsing (T-side anchor — string → DateTime)"
+                     },
+                     {
+                         "i":  116,
+                         "zh":  "SyncStamp reverse write-back migrated to the action overload (call-site level explicit -- see FluentConvertScenarios.ConvertBackProbe).",
+                         "en":  "SyncStamp backward write-back migrated to action overload (call-site explicit — see FluentConvertScenarios.ConvertBackProbe)"
+                     }
+                 ]
+}

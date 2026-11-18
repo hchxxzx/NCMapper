@@ -1,0 +1,204 @@
+name: Docs
+
+# 文档 CI 门禁（G1 构建/元数据 + G2 零外链 + G3 诊断码对账 + DFM 引用完整性 + 三前哨五桶/覆盖/锚点直拦）
+# 链序约束：strip-external-xref 必须排在 metadata 之后、build 之前，
+# 与 scripts/strip-external-xref.sh 头部记录的 CI 链一致：metadata && strip && check-api-coverage && build
+on:
+  push:
+    branches: [main, master]
+  pull_request:
+    branches: [main, master]
+
+jobs:
+  docs-gates:
+    runs-on: ubuntu-latest
+    steps:
+    - uses: actions/checkout@v4
+
+    - name: Setup .NET
+      # 同 ci.yml：与 global.json 10.0.403 对齐（rollForward=disable 精确匹配；
+      # 勿用 10.0.x 通配符——actions/setup-dotnet#711 会解析到不存在的 patch）
+      uses: actions/setup-dotnet@v4
+      with:
+        dotnet-version: '10.0.403'
+        global-json-file: global.json
+
+    # G1 构建侧：metadata 前置构建（MSBuild 官方摘要为验证口径）
+    - name: Build NCMapper (Release/net8.0)
+      run: dotnet build src/NCMapper -c Release -f net8.0
+
+    - name: Restore local tools (docfx)
+      run: dotnet tool restore
+
+    # 双语 API metadata 源准备（统一 dll+XML 口径）：
+    # 复制 Release/net8.0 dll + 对应语言 locales/{lang}/NCMapper.xml → temp/{lang}-api-src/，
+    # 须在 docfx metadata 之前执行。
+    - name: Prepare zh-Hans API metadata source
+      run: bash scripts/prepare-api-src.sh zh-Hans net8.0
+    - name: Prepare en API metadata source
+      run: bash scripts/prepare-api-src.sh en net8.0
+    # 双语各自 metadata（docfx.zh.json / docfx.en.json）
+    - name: docfx metadata (zh-Hans)
+      run: dotnet docfx metadata docfx.zh.json
+    - name: docfx metadata (en)
+      run: dotnet docfx metadata docfx.en.json
+    # 防静默失败（F 条件）：metadata 声称成功但无 yml 产物时直接失败（三语参考都校验）
+    - name: Verify metadata artifact
+      run: |
+        test "$(ls docs/zh-CN/reference/api/*.yml 2>/dev/null | wc -l)" -gt 0
+        test "$(ls docs/en-US/reference/api/*.yml 2>/dev/null | wc -l)" -gt 0
+
+    # 剥离 BCL 外部 xref（isExternal + 外链 href），保证离线包零外链（中英两语）
+    - name: Strip external xref
+      run: bash scripts/strip-external-xref.sh
+
+    # API 覆盖率对账（approved.txt ↔ docs/zh-CN/reference/api 类型 FQN 集合）
+    # 注：zh API 已从 csproj(701) 升级为 dll(762) 生成；覆盖检查按「类型」对账，构造器/继承成员
+    # 属成员级差异不影响类型集合。若 EXTRA 侧报出类型级差异需更新 approved.txt。
+    - name: Check API coverage
+      run: bash scripts/check-api-coverage.sh
+
+    # 三语各自 build（单语言站点，无 uid 冲突）
+    # 断链门禁（PoC 实测定稿）：zh 站基线 0 告警 → --warningsAsErrors 使告警升级
+    # 非零退出码（默认模式断链仅告警 EXIT=0，退出码门禁不可用）；en 站以告警计数扫描实现
+    # "无新增告警"判据。
+    #
+    # 2026-10-01 基线订正：此前注释所称"zh 站基线 0 告警"在干净克隆下不成立——实测为 1 告警
+    # （toc 第 89 行 `reference/api/` 目录链接，metadata 生成目录内无 toc 文件），
+    # `--warningsAsErrors` 直接 exit 255。已修（改指 `reference/api/NCMapper.yml`），
+    # 现三站均为真 0 告警。教训：门禁基线必须在干净克隆下实证，不能凭本机（有 metadata 残留）推断。
+    #
+    # 2026-10-01 语言条删除（跨语言链接清零）：三站门户首页原各含一条跨语言切换链接
+    # （`../en-US/index.md`）。单语言离线包只含一种语言，该链接在包内必然断链——
+    # 此前靠 docfx.<lang>.json 把 `docs/en-US/index.md` 注册为 resource 强行"可解析"，
+    # 代价是包里混进一个未渲染的 .md 源文件，且 en 包根本没登记（链接指回自己）。
+    # 现语言条已从三站首页删除、resource 登记同步移除 → 跨语言 InvalidFileLink 豁免一并作废。
+    - name: docfx build (zh-Hans, warnings-as-errors gate)
+      run: dotnet docfx build docfx.zh.json -o temp/site-zh --warningsAsErrors
+    # en 站资产换入（2026-09-30）：build 前用英文派生文件替换演示 .cs（[!code-csharp] 构建期嵌入）
+    # 与 CONTRIBUTING.md（渲染页）；build 后还原中文原版 + 覆盖站点 raw 资产（CHANGELOG/samples README）
+    - name: Swap EN site sources (en)
+      run: bash scripts/prepare-en-site-sources.sh swap-on en
+    - name: docfx build (en)
+      run: |
+        dotnet docfx build docfx.en.json -o temp/site-en 2>&1 | tee temp/en-build.log
+        # en 站"无新增告警"门禁（以迁移后实态重测冻结基线 = 53）：
+        # 豁免类（已知问题，待译文统一重建后消除）：codesnippet-not-found 且指向
+        #   ~/samples/NCMapper.Samples/**（51 处——en 存量页引用重编前旧场景目录）。
+        # 任一豁免类之外的告警 → 门禁失败。
+        bad="$(grep ': warning ' temp/en-build.log \
+          | grep -v 'codesnippet-not-found.*~/samples/NCMapper.Samples/' || true)"
+        total="$(grep -c ': warning ' temp/en-build.log || true)"
+        echo "en 站告警: ${total}（豁免类：重编前 samples 路径——冻结期已知，人工翻译批次统一重建）"
+        if [ -n "$bad" ]; then
+          echo "::error::en 站出现豁免类之外的新增告警：" "$bad"
+          exit 1
+        fi
+
+    - name: Restore CN sources + overlay EN raw assets (en)
+      run: |
+        bash scripts/prepare-en-site-sources.sh swap-off en
+        bash scripts/prepare-en-site-sources.sh overlay temp/site-en
+
+    # 构建残留清理：xrefmap.yml 为 DocFX 交叉引用索引，运行时不读取（xrefService 关闭）
+    - name: Remove build residue (xrefmap.yml)
+      run: rm -f temp/site-zh/xrefmap.yml temp/site-en/xrefmap.yml
+
+    # G2：站点产物零 http(s) 外链（离线包门禁，双语都校验）
+    - name: Gate G2 — external link audit (zh-Hans)
+      run: bash scripts/check-doc-external-links.sh temp/site-zh
+    - name: Gate G2 — external link audit (en)
+      run: bash scripts/check-doc-external-links.sh temp/site-en
+    # G3：诊断码三方对账（rules.md × AnalyzerReleases.Shipped/Unshipped，ID 集合 + 严重度）
+    - name: Gate G3 — diagnostics sync
+      run: bash scripts/check-diagnostics-sync.sh
+
+    # DFM：docs 内联 [!code-] 示例引用完整性（目标存在 + 行号区间合法）
+    - name: Gate DFM — sample refs integrity
+      run: bash scripts/check-doc-sample-refs.sh
+
+    # ─── 五脚本接入（3 拦截／2 告警）───
+    # 接入前本地五脚本读数确认已在接入 commit message 逐条登记。
+
+    # ① readme-sync —— 拦截（逐表判定加固，应恒绿；不设 continue-on-error）
+    - name: Gate README-Sync — sample README vs ScenarioRegistry
+      run: bash scripts/check-sample-readme-sync.sh
+
+    # ② region-lang —— 拦截（期望态断言：态仍拦截、非裸跑）
+    #    常驻基线＝违规恰 2 条＝门禁自证植入（samples/NCMapper.Samples/_RegionLangSelftest.cs
+    #    ::Selftest_ChineseLeak；脚本 :9-10 自陈「常驻必报／不删除／不入归零范围」⇒ 永不归零）。
+    #    裸跑接拦截步＝接入即红撞验收 4，故断言四条件全满足才过：
+    #      脚本 exit 1 ∧ SUMMARY 违规数==2 ∧ [CJK_IN_COMMENT] 明细行数==2（与 SUMMARY 互对账）
+    #      ∧ 明细全部源自 _RegionLangSelftest.cs；任一不满足→exit 1（多一条真泄漏必拦，拦截力强于裸跑）。
+    - name: Gate Region-Lang — expected-state assert (2 permanent selftest violations)
+      run: |
+        rc=0
+        out="$(bash scripts/check-region-lang.sh)" || rc=$?
+        printf '%s\n' "$out"
+        sum_viol="$(printf '%s\n' "$out" | awk '/^SUMMARY:/{for(i=1;i<=NF;i++) if($i=="违规"){print $(i+1); exit}}')"
+        counts="$(printf '%s\n' "$out" | awk '/^\[CJK_IN_COMMENT\]/{v++; if ($0 !~ /_RegionLangSelftest\.cs/) bad++} END{print v+0, bad+0}')"
+        set -- $counts
+        detail_v="$1"; bad_v="$2"
+        if [ "$rc" -eq 1 ] && [ "$sum_viol" = "2" ] && [ "$detail_v" = "2" ] && [ "$bad_v" = "0" ]; then
+          echo "[expected-state OK] region-lang: 违规 2 条＝常驻门禁自证（_RegionLangSelftest.cs），真实泄漏 0"
+        else
+          echo "::error::region-lang 期望态被破：rc=$rc SUMMARY违规=${sum_viol:-UNPARSED} 明细行=$detail_v 非自证违规行=$bad_v"
+          exit 1
+        fi
+
+    # ③ demo-assertions -Strict —— 告警（接入原因登记于 commit message：断言强度尚无独立门禁，先观察 1 个迭代）
+    - name: Gate Demo-Assertions -Strict — zero-assertion count (advisory)
+      continue-on-error: true
+      run: bash scripts/check-demo-assertions.sh -Strict
+
+    # ④ codeblock-bind —— 告警（接入原因登记于 commit message：绑定率随样本变动，先观察）
+    - name: Gate Bind-Rate — doc codeblock bind rate (advisory)
+      continue-on-error: true
+      run: bash scripts/check-doc-codeblock-bind.sh
+
+    # ⑤ fakescan —— 拦截（过渡期唯一「写了不存在 API」守护；零命中应恒绿，阳性对照自检内建）。
+    #    命令用 python3：ubuntu-latest 无裸 python（shebang 亦 env python3；docs.yml 首个 python step，
+    #    形态沿 ci.yml:337 python3 先例；本机 Windows Git Bash 侧仅有裸 python——跨环境不对称已登记）。
+    - name: Gate Fakescan — ghost API scan (docs/zh-CN fenced blocks vs src)
+      run: python3 scripts/check-doc-fakescan.py
+
+    # ─── 三前哨直拦接入：buckets / demo-coverage / doc-anchors 三支永久门禁化。
+    #     三支现均 exit0 可直拦（判定＝无常驻红断言需求，region-lang 同款例外不适用）；
+    #     脚本本体零改动＝只接入不改判据；若接入跑出非零＝按契约停线呈报，不掩盖。
+    #     命令面与本地语义一致：anchors 本地 scan 取 --report-only＋[L1] 基线 0 比对，此处取直跑
+    #     gate 模式退出码（L1 硬失配即红／L2 软观察永不判红——本体 :59-63 设计），两者等价于 L1=0。
+
+    # ⑥ block-buckets —— 拦截（五桶互斥分桶＋和==实测总块数动态断言；假门禁防护 exit 2 内建）
+    - name: Gate Block-Buckets — doc code-block five-bucket reconciliation
+      run: python3 scripts/check-block-buckets.py
+
+    # ⑦ demo-coverage —— 接入（本体＝告警版设计：三查告警清单透出不判红，exit 恒 0；
+    #    对账源缺失 exit 2 拦截——本体 :12-14 设计语义，非本步放宽）。
+    #    本体 :130-169 「DFM 绑定区零调用点」观测列经裸 python heredoc——ubuntu 系 runner 无裸
+    #    python（本文件 :188 fakescan 同款备案），step 级 PATH shim 补 python→python3 桥＝观测列
+    #    在 runner 上真实执行、不静默失效（本体零改动；远端实测：无 shim 时该行 127 而告警版
+    #    exit 仍恒 0＝告警版设计点，接入不得留此假静默面）。
+    - name: Gate Demo-Coverage — doc/demo coverage three-check (advisory body)
+      run: |
+        mkdir -p "$RUNNER_TEMP/pyshim"
+        ln -sf "$(command -v python3)" "$RUNNER_TEMP/pyshim/python"
+        PATH="$RUNNER_TEMP/pyshim:$PATH" bash scripts/check-demo-coverage.sh
+
+    # ⑧ doc-anchors —— 拦截（L1 硬失配影响退出码；L2 软观察仅报告永不判红——本体设计）
+    - name: Gate Doc-Anchors — comment anchor L1 hard-mismatch gate
+      run: python3 scripts/check-doc-anchors.py
+
+    - name: Upload site artifact (zh-Hans)
+      uses: actions/upload-artifact@v4
+      with:
+        name: docs-site-zh-Hans
+        path: temp/site-zh
+        if-no-files-found: error
+
+    - name: Upload site artifact (en)
+      uses: actions/upload-artifact@v4
+      with:
+        name: docs-site-en
+        path: temp/site-en
+        if-no-files-found: error
+

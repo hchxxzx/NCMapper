@@ -1,0 +1,37 @@
+{
+    "source":  "samples/NCMapper.Samples/Models/Common/Dtos/UserDto.cs",
+    "language":  "en",
+    "generatedFrom":  "9ecaabd93c07df4f7f7bc801d023357ae058f2401708722afb586b8a1b655c42",
+    "comments":  [
+                     {
+                         "i":  1,
+                         "zh":  "用户 DTO — 演示基础同名属性映射。",
+                         "en":  "User DTO — Demonstrates basic property mapping by identical names."
+                     },
+                     {
+                         "i":  2,
+                         "zh":  "\u003cpara\u003e映射自 \u003csee cref=\"UserEntity\"/\u003e，按名称约定自动匹配。\u003c/para\u003e",
+                         "en":  "\u003cpara\u003eMaps from \u003csee cref=\"UserEntity\" /\u003e, automatically matched by naming convention.\u003c/para\u003e"
+                     },
+                     {
+                         "i":  5,
+                         "zh":  "用户 ID — 映射自 UserEntity.Id。",
+                         "en":  "User ID — Maps from UserEntity.Id."
+                     },
+                     {
+                         "i":  8,
+                         "zh":  "用户姓名 — 映射自 UserEntity.Name。",
+                         "en":  "User Name — Maps from UserEntity.Name."
+                     },
+                     {
+                         "i":  11,
+                         "zh":  "用户年龄 — 映射自 UserEntity.Age。",
+                         "en":  "User Age — Maps from UserEntity.Age."
+                     },
+                     {
+                         "i":  14,
+                         "zh":  "用户邮箱 — 映射自 UserEntity.Email。",
+                         "en":  "User Email — Maps from UserEntity.Email."
+                     }
+                 ]
+}

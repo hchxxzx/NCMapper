@@ -1,0 +1,9 @@
+<Project>
+  <Import Project="$([MSBuild]::GetPathOfFileAbove('Directory.Build.props', '$(MSBuildThisFileDirectory)../'))" />
+
+  <PropertyGroup>
+    <!-- 源码项目公共属性 -->
+    <GenerateDocumentationFile>true</GenerateDocumentationFile>
+    <!-- CS1591: 缺失 XML 注释警告 — 已移除抑制，所有 public API 需补全 XML 注释 -->
+  </PropertyGroup>
+</Project>

@@ -1,0 +1,197 @@
+{
+    "source":  "samples/NCMapper.Samples/01-Fluent/FsModels.cs",
+    "language":  "en",
+    "generatedFrom":  "a58ce13c8c53b583f34312ebefe76dec4fa3cdf8ecdd1f222aa5ed9f703a66a8",
+    "comments":  [
+                     {
+                         "i":  1,
+                         "zh":  "03 Fluent FromSource — 模型与 Mapper 配置类",
+                         "en":  "03 Fluent FromSource — Model and Mapper Configuration Class"
+                     },
+                     {
+                         "i":  2,
+                         "zh":  "FromSource 跨源绑定：速记（单字段）/ 分组块（同子源多字段）/ 顺序覆盖（同 dest 不同子源）/",
+                         "en":  "FromSource Cross-Source Binding: Shorthand (single field) / Grouped Block (multiple fields from the same sub-source) / Sequential Override (same destination field bound from different sub-sources)"
+                     },
+                     {
+                         "i":  3,
+                         "zh":  "块内 Mask/FromJson 修饰型消费。运行时双面向：Mapper.Map 主源面（FromSource 字段保持默认）",
+                         "en":  "Mask/FromJson modifiers within a block for consumption. Dual runtime perspectives: Mapper.Map\u0027s primary source perspective (FromSource fields retain default values)"
+                     },
+                     {
+                         "i":  4,
+                         "zh":  "+ Mapper.Compose 合成面（主链 + 全部子源一次合成）。",
+                         "en":  "+ Mapper.Compose\u0027s composition perspective (primary chain + all sub-sources composed in one pass)."
+                     },
+                     {
+                         "i":  6,
+                         "zh":  "\u003csummary\u003e订单实体（FromSource 主源）。\u003c/summary\u003e",
+                         "en":  "\u003csummary\u003eOrder entity (primary source for FromSource).\u003c/summary\u003e"
+                     },
+                     {
+                         "i":  7,
+                         "zh":  "\u003csummary\u003e主键\u003c/summary\u003e",
+                         "en":  "\u003csummary\u003ePrimary key\u003c/summary\u003e"
+                     },
+                     {
+                         "i":  8,
+                         "zh":  "\u003csummary\u003e订单号\u003c/summary\u003e",
+                         "en":  "\u003csummary\u003eOrder number\u003c/summary\u003e"
+                     },
+                     {
+                         "i":  9,
+                         "zh":  "\u003csummary\u003e金额\u003c/summary\u003e",
+                         "en":  "\u003csummary\u003eAmount\u003c/summary\u003e"
+                     },
+                     {
+                         "i":  10,
+                         "zh":  "\u003csummary\u003e客户子源（分组块演示源）。\u003c/summary\u003e",
+                         "en":  "\u003csummary\u003eCustomer sub-source (demonstrates grouped block binding).\u003c/summary\u003e"
+                     },
+                     {
+                         "i":  11,
+                         "zh":  "\u003csummary\u003e客户名（分组块 Map 绑定）\u003c/summary\u003e",
+                         "en":  "\u003csummary\u003eCustomer name (mapped via grouped block)\u003c/summary\u003e"
+                     },
+                     {
+                         "i":  12,
+                         "zh":  "\u003csummary\u003e客户手机号（块内 Mask 同名锚点）\u003c/summary\u003e",
+                         "en":  "\u003csummary\u003eCustomer mobile phone number (block-local Mask with same-name anchor)\u003c/summary\u003e"
+                     },
+                     {
+                         "i":  13,
+                         "zh":  "\u003csummary\u003eJSON 载荷（块内 FromJson 同名锚点）\u003c/summary\u003e",
+                         "en":  "\u003csummary\u003eJSON payload (block-local FromJson with same-name anchor)\u003c/summary\u003e"
+                     },
+                     {
+                         "i":  14,
+                         "zh":  "\u003csummary\u003e供应商子源（顺序覆盖演示源）。\u003c/summary\u003e",
+                         "en":  "\u003csummary\u003eVendor sub-source (demonstrates sequential override).\u003c/summary\u003e"
+                     },
+                     {
+                         "i":  15,
+                         "zh":  "\u003csummary\u003e供应商名（与 CustomerSub.Name 同 dest 绑定——后写覆盖先写）\u003c/summary\u003e",
+                         "en":  "\u003csummary\u003eVendor name (bound to same destination as CustomerSub.Name — later binding overrides earlier)\u003c/summary\u003e"
+                     },
+                     {
+                         "i":  16,
+                         "zh":  "\u003csummary\u003e订单 DTO（FromSource 合成目标）。\u003c/summary\u003e",
+                         "en":  "\u003csummary\u003eOrder DTO (composition target for FromSource).\u003c/summary\u003e"
+                     },
+                     {
+                         "i":  17,
+                         "zh":  "\u003csummary\u003e主键\u003c/summary\u003e",
+                         "en":  "\u003csummary\u003ePrimary key\u003c/summary\u003e"
+                     },
+                     {
+                         "i":  18,
+                         "zh":  "\u003csummary\u003e订单号\u003c/summary\u003e",
+                         "en":  "\u003csummary\u003eOrder number\u003c/summary\u003e"
+                     },
+                     {
+                         "i":  19,
+                         "zh":  "\u003csummary\u003e金额\u003c/summary\u003e",
+                         "en":  "\u003csummary\u003eAmount\u003c/summary\u003e"
+                     },
+                     {
+                         "i":  20,
+                         "zh":  "\u003csummary\u003e客户名（CustomerSub.Name 绑定 + VendorSub.VendorName 顺序覆盖）\u003c/summary\u003e",
+                         "en":  "\u003csummary\u003eCustomer name (bound from CustomerSub.Name + overridden sequentially by VendorSub.VendorName)\u003c/summary\u003e"
+                     },
+                     {
+                         "i":  21,
+                         "zh":  "\u003csummary\u003e客户手机号（块内 Mask 脱敏产物）\u003c/summary\u003e",
+                         "en":  "\u003csummary\u003eCustomer mobile phone number (masked result from block-local Mask)\u003c/summary\u003e"
+                     },
+                     {
+                         "i":  22,
+                         "zh":  "\u003csummary\u003e载荷对象（块内 FromJson 反序列化产物）\u003c/summary\u003e",
+                         "en":  "\u003csummary\u003ePayload object (deserialized result from block-local FromJson)\u003c/summary\u003e"
+                     },
+                     {
+                         "i":  23,
+                         "zh":  "\u003csummary\u003e载荷对象（FromJson 反序列化目标）。\u003c/summary\u003e",
+                         "en":  "\u003csummary\u003ePayload object (target for FromJson deserialization).\u003c/summary\u003e"
+                     },
+                     {
+                         "i":  24,
+                         "zh":  "\u003csummary\u003e城市\u003c/summary\u003e",
+                         "en":  "\u003csummary\u003eCity\u003c/summary\u003e"
+                     },
+                     {
+                         "i":  25,
+                         "zh":  "\u003csummary\u003e等级\u003c/summary\u003e",
+                         "en":  "\u003csummary\u003eGrade\u003c/summary\u003e"
+                     },
+                     {
+                         "i":  27,
+                         "zh":  "FromSource 演示 Mapper 配置 —— 速记/分组块/顺序覆盖/块内修饰型消费。",
+                         "en":  "FromSource demonstration Mapper configuration — shorthand / grouped block / sequential override / block-local modifier-based consumption."
+                     },
+                     {
+                         "i":  28,
+                         "zh":  "\u003cpara\u003e\u003cb\u003e声明冲突与块内禁区（NCMAP_F29~F32）触发样例\u003c/b\u003e（Error 级——真实声明会阻断编译，",
+                         "en":  "\u003cpara\u003e\u003cb\u003eDeclaration Conflict and In-Block Forbidden Zones (NCMAP_F29–F32) Examples\u003c/b\u003e (Error-level—actual declarations halt compilation,"
+                     },
+                     {
+                         "i":  29,
+                         "zh":  "以注释形态呈现，对齐 how-to/fluent/from-source.md「声明冲突与块内禁区」节）：\u003c/para\u003e",
+                         "en":  "presented as comments, aligned with the \u0027Declaration Conflict and In-Block Forbidden Zones\u0027 section in how-to/fluent/from-source.md):\u003c/para\u003e"
+                     },
+                     {
+                         "i":  31,
+                         "zh":  "// NCMAP_F29（同 dest 冲突）：主链 Map 与 FromSource 绑定指向同一属性",
+                         "en":  "// NCMAP_F29 (conflict with dest): Main-chain Map and FromSource bindings target the same property"
+                     },
+                     {
+                         "i":  33,
+                         "zh":  ".Member(d =\u003e d.OrderNo).From(s =\u003e s.OrderNo)          // 主链声明",
+                         "en":  ".Member(d =\u003e d.OrderNo).From(s =\u003e s.OrderNo)          // Main-chain declaration"
+                     },
+                     {
+                         "i":  34,
+                         "zh":  ".Member(d =\u0026gt; d.OrderNo).FromSource\u0026lt;FsCustomerSub\u0026gt;(s =\u0026gt; s.Name);  // Error：一个属性只能由一个源供给",
+                         "en":  ".Member(d =\u003e d.OrderNo).FromSource\u003cFsCustomerSub\u003e(s =\u003e s.Name);  // Error: A property can be supplied by only one source"
+                     },
+                     {
+                         "i":  36,
+                         "zh":  "// NCMAP_F30（块内禁止 ConvertBack）：FromSource 绑定仅正向映射，无反向写回落点",
+                         "en":  "// NCMAP_F30 (ConvertBack forbidden within block): FromSource bindings support forward mapping only; no reverse write-back endpoint exists"
+                     },
+                     {
+                         "i":  40,
+                         "zh":  "c.Member(d =\u003e d.CustomerName).ConvertBack(Conv);  // Error：块内禁止",
+                         "en":  "c.Member(d =\u003e d.CustomerName).ConvertBack(Conv);  // Error: Forbidden within block"
+                     },
+                     {
+                         "i":  43,
+                         "zh":  "// NCMAP_F31（块内禁止 NoAutoInclude）：子源字段全显式声明，无自动包含可禁",
+                         "en":  "// NCMAP_F31 (NoAutoInclude forbidden within block): All sub-source fields are explicitly declared; no automatic inclusion to disable"
+                     },
+                     {
+                         "i":  44,
+                         "zh":  "// NCMAP_F32（块内禁止 AfterMapping）：生成的 Compose 管线无钩子注入口，声明永不执行",
+                         "en":  "// NCMAP_F32 (AfterMapping forbidden within block): The generated Compose pipeline has no hook injection point; such declarations never execute"
+                     },
+                     {
+                         "i":  48,
+                         "zh":  "链式声明入口。",
+                         "en":  "Chained declaration entry point."
+                     },
+                     {
+                         "i":  50,
+                         "zh":  "\u003cparam name=\"cfg\"\u003eFluent 配置根\u003c/param\u003e",
+                         "en":  "\u003cparam name=\"cfg\"\u003eFluent configuration root\u003c/param\u003e"
+                     },
+                     {
+                         "i":  51,
+                         "zh":  "Group block: multiple fields on the same sub-source (Map + Mask + FromJson modifiers attached)",
+                         "en":  "Group block: Multiple fields from the same sub-source (with Map + Mask + FromJson modifier attachments)"
+                     },
+                     {
+                         "i":  52,
+                         "zh":  "Shorthand: bind a single field to another sub-source (same dest as the group block -- sequential override demo)",
+                         "en":  "Shorthand: Single-field binding to another sub-source (same destination as group block—demonstrating order-based override)"
+                     }
+                 ]
+}

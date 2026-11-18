@@ -1,0 +1,20 @@
+<Project Sdk="Microsoft.NET.Sdk.Web">
+
+  <PropertyGroup>
+    <OutputType>Exe</OutputType>
+    <TargetFramework>net10.0</TargetFramework>
+    <ImplicitUsings>enable</ImplicitUsings>
+    <Nullable>enable</Nullable>
+    <AssemblyName>DocSiteServer</AssemblyName>
+    <RootNamespace>DocSiteServer</RootNamespace>
+    <!-- 离线包静态服务器：NativeAOT self-contained 单文件发布（-70% 体积，零运行时依赖）。
+         编译期仅引用 Microsoft.AspNetCore.App 共享框架（FrameworkReference），不引任何额外 NuGet 包。 -->
+    <PublishAot>true</PublishAot>
+    <PublishSingleFile>true</PublishSingleFile>
+    <StripSymbols>true</StripSymbols>
+    <InvariantGlobalization>true</InvariantGlobalization>
+    <!-- 工具工程独立于主库发布链与包打包（参照 tools/AotReflectionGuard 先例，不入 NCMapper.slnx/Lib.slnf） -->
+    <IsPackable>false</IsPackable>
+  </PropertyGroup>
+
+</Project>

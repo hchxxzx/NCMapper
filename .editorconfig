@@ -1,0 +1,23 @@
+root = true
+
+[*]
+# charset = utf-8：EditorConfig 标准语义为"无 BOM 的 UTF-8"（编辑器不得写入 BOM）。
+# 全仓统一为无 BOM。
+charset = utf-8
+# LF 行尾：仓库 blob 实测 100% LF（git ls-files --eol：753 LF / 0 CRLF）；
+# 工作区检出行为由 .gitattributes（* text=auto eol=lf）协同强制，二者缺一不可。
+end_of_line = lf
+insert_final_newline = true
+trim_trailing_whitespace = true
+
+[*.cs]
+indent_style = space
+indent_size = 4
+
+[*.{csproj,props,targets}]
+indent_style = space
+indent_size = 2
+
+# Markdown 硬换行依赖行尾双空格，豁免尾随空格修剪
+[*.md]
+trim_trailing_whitespace = false

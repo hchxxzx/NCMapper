@@ -1,0 +1,52 @@
+{
+    "source":  "samples/NCMapper.Samples/Models/Common/Dtos/OrderDetailDto.cs",
+    "language":  "en",
+    "generatedFrom":  "5c4dad789fd748d107a4b53cbafacbccba301103dca061d4dd1fd80f2dc25dac",
+    "comments":  [
+                     {
+                         "i":  1,
+                         "zh":  "订单详情 DTO — Compose 目标，主源 OrderEntity + 副源 CustomerEntity。",
+                         "en":  "Order detail DTO — Compose target, primary source OrderEntity + secondary source CustomerEntity."
+                     },
+                     {
+                         "i":  2,
+                         "zh":  "\u003cpara\u003e映射自 \u003csee cref=\"OrderEntity\"/\u003e（主源）和 \u003csee cref=\"CustomerEntity\"/\u003e（副源）。\u003c/para\u003e",
+                         "en":  "\u003cpara\u003eMapped from \u003csee cref=\"OrderEntity\"/\u003e (primary source) and \u003csee cref=\"CustomerEntity\"/\u003e (secondary source).\u003c/para\u003e"
+                     },
+                     {
+                         "i":  5,
+                         "zh":  "订单 ID — 映射自 OrderEntity.OrderId（异名映射）。",
+                         "en":  "Order ID — mapped from OrderEntity.OrderId (name-mismatch mapping)."
+                     },
+                     {
+                         "i":  8,
+                         "zh":  "订单编号 — 映射自 OrderEntity.OrderNo（异名映射）。",
+                         "en":  "Order number — mapped from OrderEntity.OrderNo (name-mismatch mapping)."
+                     },
+                     {
+                         "i":  11,
+                         "zh":  "订单总金额 — 映射自 OrderEntity.Amount（异名映射）。",
+                         "en":  "Order total amount — mapped from OrderEntity.Amount (name-mismatch mapping)."
+                     },
+                     {
+                         "i":  14,
+                         "zh":  "订单状态文本 — 枚举→字符串转换（OrderStatus → 文本）。",
+                         "en":  "Order status text — enumeration-to-string conversion (OrderStatus → text)."
+                     },
+                     {
+                         "i":  17,
+                         "zh":  "客户姓名 — 映射自 CustomerEntity.Name（Compose 副源）。",
+                         "en":  "Customer name — mapped from CustomerEntity.Name (Compose secondary source)."
+                     },
+                     {
+                         "i":  20,
+                         "zh":  "客户等级文本 — 映射自 CustomerEntity.Level（枚举→字符串，Compose 副源）。",
+                         "en":  "Customer level text — mapped from CustomerEntity.Level (enumeration-to-string conversion, Compose secondary source)."
+                     },
+                     {
+                         "i":  23,
+                         "zh":  "客户电话 — 映射自 CustomerEntity.Phone（Compose 副源）。",
+                         "en":  "Customer phone — mapped from CustomerEntity.Phone (Compose secondary source)."
+                     }
+                 ]
+}

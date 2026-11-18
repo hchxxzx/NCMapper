@@ -1,0 +1,192 @@
+{
+    "source":  "samples/NCMapper.Samples/06-Infrastructure/MaskScenarios.cs",
+    "language":  "en",
+    "generatedFrom":  "eb201e7d21c11b1d6178ce9901eaf33d41789736dc9a3c69a6de7531adb5efdd",
+    "comments":  [
+                     {
+                         "i":  1,
+                         "zh":  "脱敏场景集 — 内置 Mask 规则、运行时 MaskProvider 替换与恢复。",
+                         "en":  "Data anonymization scenario set — built-in Mask rules, runtime MaskProvider replacement and restoration."
+                     },
+                     {
+                         "i":  4,
+                         "zh":  "UserEntity → UserDto 映射。",
+                         "en":  "UserEntity → UserDto mapping."
+                     },
+                     {
+                         "i":  5,
+                         "zh":  "注意：UserDto 未标注 [Mask]，本映射不执行脱敏；脱敏演示见",
+                         "en":  "Note: UserDto is not annotated with [Mask]; therefore, this mapping does not perform anonymization; see anonymization demonstration in"
+                     },
+                     {
+                         "i":  6,
+                         "zh":  "\u003csee cref=\"MaskedCustomerMap\"/\u003e（CustomerDto 经 ConvertUsing(PhoneMaskConverter) 脱敏电话）。",
+                         "en":  "\u003csee cref=\"MaskedCustomerMap\"/\u003e (CustomerDto anonymizes phone numbers via ConvertUsing(PhoneMaskConverter))."
+                     },
+                     {
+                         "i":  8,
+                         "zh":  "\u003cparam name=\"src\"\u003e源实体\u003c/param\u003e",
+                         "en":  "\u003cparam name=\"src\"\u003eSource entity\u003c/param\u003e"
+                     },
+                     {
+                         "i":  9,
+                         "zh":  "\u003creturns\u003e脱敏后的 DTO\u003c/returns\u003e",
+                         "en":  "\u003creturns\u003eAnonymized DTO\u003c/returns\u003e"
+                     },
+                     {
+                         "i":  11,
+                         "zh":  "CustomerEntity → CustomerDto 映射，通过 ConvertUsing(PhoneMaskConverter) 脱敏电话。",
+                         "en":  "CustomerEntity → CustomerDto mapping, anonymizing phone numbers via ConvertUsing(PhoneMaskConverter)."
+                     },
+                     {
+                         "i":  13,
+                         "zh":  "\u003cparam name=\"src\"\u003e源实体\u003c/param\u003e",
+                         "en":  "\u003cparam name=\"src\"\u003eSource entity\u003c/param\u003e"
+                     },
+                     {
+                         "i":  14,
+                         "zh":  "\u003creturns\u003e电话已脱敏的 DTO\u003c/returns\u003e",
+                         "en":  "\u003creturns\u003eDTO with anonymized phone number\u003c/returns\u003e"
+                     },
+                     {
+                         "i":  16,
+                         "zh":  "MaskProvider.Resolve：获取当前脱敏实例。",
+                         "en":  "MaskProvider.Resolve: Retrieves the current anonymization instance."
+                     },
+                     {
+                         "i":  18,
+                         "zh":  "\u003ctypeparam name=\"TMask\"\u003e脱敏类型\u003c/typeparam\u003e",
+                         "en":  "\u003ctypeparam name=\"TMask\"\u003eAnonymization type\u003c/typeparam\u003e"
+                     },
+                     {
+                         "i":  19,
+                         "zh":  "\u003creturns\u003e当前注册的脱敏实例\u003c/returns\u003e",
+                         "en":  "\u003creturns\u003eThe currently registered anonymization instance\u003c/returns\u003e"
+                     },
+                     {
+                         "i":  21,
+                         "zh":  "MaskProvider.Override：运行时替换脱敏实现。",
+                         "en":  "MaskProvider.Override: Replaces the anonymization implementation at runtime."
+                     },
+                     {
+                         "i":  23,
+                         "zh":  "\u003ctypeparam name=\"TMask\"\u003e脱敏类型\u003c/typeparam\u003e",
+                         "en":  "\u003ctypeparam name=\"TMask\"\u003eAnonymization type\u003c/typeparam\u003e"
+                     },
+                     {
+                         "i":  24,
+                         "zh":  "\u003cparam name=\"impl\"\u003e新的脱敏实例\u003c/param\u003e",
+                         "en":  "\u003cparam name=\"impl\"\u003eNew anonymization instance\u003c/param\u003e"
+                     },
+                     {
+                         "i":  26,
+                         "zh":  "MaskProvider.Clear：恢复默认脱敏实现。",
+                         "en":  "MaskProvider.Clear: Restores the default anonymization implementation."
+                     },
+                     {
+                         "i":  28,
+                         "zh":  "===== 场景注册入口=====",
+                         "en":  "===== Scenario registration entry point ====="
+                     },
+                     {
+                         "i":  29,
+                         "zh":  "MaskProvider 运行时替换",
+                         "en":  "Runtime MaskProvider replacement."
+                     },
+                     {
+                         "i":  30,
+                         "zh":  "9 内置实现对照 + 自定义注册闭环",
+                         "en":  "Nine built-in implementations comparison + custom registration closed loop."
+                     },
+                     {
+                         "i":  31,
+                         "zh":  "===== 9 内置实现对照 + 自定义注册闭环=====",
+                         "en":  "===== Nine built-in implementations comparison + custom registration closed loop ====="
+                     },
+                     {
+                         "i":  33,
+                         "zh":  "9 个内置脱敏实现逐个输出\"原值 → 脱敏值\"对照（全部假数据，不落真实敏感信息）。",
+                         "en":  "Nine built-in anonymization implementations, each outputting \"original value → anonymized value\" comparisons (all using synthetic data—no real sensitive information exposed)."
+                     },
+                     {
+                         "i":  35,
+                         "zh":  "Anonymous type instead of ValueTuple: OutputHelper.Dump goes through System.Text.Json serialization,",
+                         "en":  "Anonymous type instead of ValueTuple: OutputHelper.Dump uses System.Text.Json serialization."
+                     },
+                     {
+                         "i":  36,
+                         "zh":  "tuple Item1/Item2/Item3 are fields not properties, ignored by the serializer by default -> output would be all empty objects {}",
+                         "en":  "Tuple members Item1/Item2/Item3 are fields—not properties—and are ignored by the default serializer → output becomes empty object {}."
+                     },
+                     {
+                         "i":  37,
+                         "zh":  "Assert: each implementation's masked output must differ from the raw value and contain the mask character (anti \"fake mask\" -- unchanged output means the demo is void)",
+                         "en":  "Assertion: Each implementation’s anonymized output must differ from the original value and contain masking symbols (to prevent \u0027fake anonymization\u0027—i.e., returning original value unchanged, rendering the demo ineffective)."
+                     },
+                     {
+                         "i":  39,
+                         "zh":  "自定义 IMask 注册闭环（Provider 层）：OverrideMask 替换 MaskPhone 实现 →",
+                         "en":  "Custom IMask registration closed loop (Provider layer): OverrideMask replaces the MaskPhone implementation."
+                     },
+                     {
+                         "i":  40,
+                         "zh":  "Resolve 返回自定义实现 → Reset 恢复默认。",
+                         "en":  "Resolve returns a custom implementation → Reset restores the default."
+                     },
+                     {
+                         "i":  41,
+                         "zh":  "\u003cpara\u003e后效边界实证：生成代码把掩码实例缓存为映射类的静态只读字段（首次映射",
+                         "en":  "\u003cpara\u003ePost-effect boundary verification: Generated code caches the mask instance as a static readonly field in the mapping class (first mapping)."
+                     },
+                     {
+                         "i":  42,
+                         "zh":  "调用时经 MaskProvider.Resolve 解析一次），MaskProvider 约束\"Override 须在该",
+                         "en":  "During invocation, the mask is resolved once via MaskProvider.Resolve; MaskProvider constrains that \"Override must be executed before the first mapping invocation of that Mask type\"."
+                     },
+                     {
+                         "i":  43,
+                         "zh":  "Mask 类型首次被映射调用之前执行\"——本场景运行时 MaskPhone 已被前序片段",
+                         "en":  "In this scenario, MaskPhone has already been consumed by a prior fragment (605-masked-customer) at runtime;"
+                     },
+                     {
+                         "i":  44,
+                         "zh":  "（605-masked-customer）消费，故映射产物不再随 Override 变化，这是约束的",
+                         "en":  "thus, the mapping result no longer changes with Override — this is the constraint\u0027s intended behavior, not a defect."
+                     },
+                     {
+                         "i":  45,
+                         "zh":  "真实行为而非缺陷；需要影响映射产物时，须在首次映射调用前完成 Override。\u003c/para\u003e",
+                         "en":  "To affect the mapping result, Override must be completed before the first mapping invocation.\u003c/para\u003e"
+                     },
+                     {
+                         "i":  47,
+                         "zh":  "register a custom implementation (takes effect immediately at the Provider layer: Resolve consults _overrides first)",
+                         "en":  "Register a custom implementation (the Provider layer takes effect immediately: Resolve checks _overrides first)."
+                     },
+                     {
+                         "i":  48,
+                         "zh":  "Assert: the Provider-layer registration took effect (resolved to the custom implementation)",
+                         "en":  "Assert: The Provider-layer registration takes effect (resolves to the custom implementation)."
+                     },
+                     {
+                         "i":  49,
+                         "zh":  "Reset restores the default",
+                         "en":  "Reset restores the default."
+                     },
+                     {
+                         "i":  50,
+                         "zh":  "Assert: default implementation restored (JapanPhoneMask has been cleared)",
+                         "en":  "Assert: The default implementation is restored (JapanPhoneMask has been cleared)."
+                     },
+                     {
+                         "i":  52,
+                         "zh":  "JP locale: swap implementations before the first mapping call of each mask type",
+                         "en": "JP locale: swap implementations before the first mapping call of each mask type"
+                     },
+                     {
+                         "i":  56,
+                         "zh":  "<summary>",
+                         "en": "<summary>"
+                     }
+                 ]
+}

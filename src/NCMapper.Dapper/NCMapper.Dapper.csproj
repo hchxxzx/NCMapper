@@ -1,0 +1,28 @@
+<Project Sdk="Microsoft.NET.Sdk">
+
+  <PropertyGroup>
+    <TargetFrameworks>net8.0;net9.0;net10.0</TargetFrameworks>
+    <RootNamespace>NCMapper.Dapper</RootNamespace>
+    <AssemblyName>NCMapper.Dapper</AssemblyName>
+    <Description>NCMapper Dapper integration — AsDto unified entry with SQL-level pagination and full Mask/ConvertUsing/Pipeline support</Description>
+    <!-- 启用 trim/AOT 分析器，使公开 API 的 AOT 标注对消费者生效 -->
+    <IsAotCompatible>true</IsAotCompatible>
+    <!-- 包级 trim 兼容声明（主库裁剪标注后语义完整） -->
+    <IsTrimmable>true</IsTrimmable>
+  </PropertyGroup>
+
+  <ItemGroup>
+    <ProjectReference Include="../NCMapper/NCMapper.csproj" />
+  </ItemGroup>
+
+  <ItemGroup>
+    <PackageReference Include="Dapper" />
+  </ItemGroup>
+
+  <!-- PackageIcon -->
+  <ItemGroup>
+    <Content Include="..\..\assets\icon.png" Pack="true" PackagePath="\" />
+    <None Include="..\..\README.md" Pack="true" PackagePath="\" />
+  </ItemGroup>
+
+</Project>

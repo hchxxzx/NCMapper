@@ -1,0 +1,27 @@
+<Project Sdk="Microsoft.NET.Sdk">
+
+  <PropertyGroup>
+    <OutputType>Exe</OutputType>
+    <TargetFramework>net10.0</TargetFramework>
+    <ImplicitUsings>enable</ImplicitUsings>
+    <Nullable>enable</Nullable>
+    <IsPackable>false</IsPackable>
+    <IsTestProject>false</IsTestProject>
+    <PublishAot>true</PublishAot>
+    <!-- 跨平台 RID 声明：CI test job（ubuntu-latest）与 aot job（windows-latest）restore 时
+         SDK 按 OS 推断不同 RID（linux-x64 / win-x64），lock 文件与项目依赖将不一致（NU1004）。
+         显式声明双 RID 使 lock 同时锁定两平台依赖，任何平台 restore 均一致。 -->
+    <RuntimeIdentifiers>win-x64;linux-x64</RuntimeIdentifiers>
+    <!-- CS8621/CS8634 NoWarn 已移除
+         源生成器生成方法签名已改为非空 List<T>（null 透传），
+         AotTests 构建应零 CS8621/CS8634（IL2026/IL3050/NCMAP002/NCMAP012 为负面用例预期信号，保留）。 -->
+  </PropertyGroup>
+
+  <ItemGroup>
+    <ProjectReference Include="..\..\src\NCMapper\NCMapper.csproj" />
+    <!-- 负面用例 ②：验证 ORM 扩展 AsDto 的 AOT 不可用性（编译期 IL 警告探针） -->
+    <ProjectReference Include="..\..\src\NCMapper.FreeSql\NCMapper.FreeSql.csproj" />
+    <ProjectReference Include="..\..\src\NCMapper.SourceGen\NCMapper.SourceGen.csproj" OutputItemType="Analyzer" ReferenceOutputAssembly="false" />
+  </ItemGroup>
+
+</Project>

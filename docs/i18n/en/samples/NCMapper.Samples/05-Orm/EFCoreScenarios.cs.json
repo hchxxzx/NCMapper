@@ -1,0 +1,167 @@
+{
+    "source":  "samples/NCMapper.Samples/05-Orm/EFCoreScenarios.cs",
+    "language":  "en",
+    "generatedFrom":  "f718fa08d2ddca1d1b2f177e1d0e126dff83809558eb8c4ee0265393a88eaac0",
+    "comments":  [
+                     {
+                         "i":  1,
+                         "zh":  "EF Core 投影场景集 — AsDto、ToChunkDto、ToLookup、嵌套跨表投影。",
+                         "en":  "EF Core Projection Scenarios — AsDto, ToChunkDto, ToLookup, and Nested Cross-Table Projection."
+                     },
+                     {
+                         "i":  3,
+                         "zh":  "===== 单表投影 =====",
+                         "en":  "===== Single-Table Projection ====="
+                     },
+                     {
+                         "i":  5,
+                         "zh":  "单表 AsDto 投影，SQL 侧列裁剪。",
+                         "en":  "Single-table AsDto projection with column pruning on the SQL side."
+                     },
+                     {
+                         "i":  8,
+                         "zh":  "\u003creturns\u003e投影后的 DTO 列表\u003c/returns\u003e",
+                         "en":  "\u003creturns\u003eList of projected DTOs\u003c/returns\u003e"
+                     },
+                     {
+                         "i":  10,
+                         "zh":  "First + AsDto：单行投影。",
+                         "en":  "First + AsDto: Single-row projection."
+                     },
+                     {
+                         "i":  13,
+                         "zh":  "\u003creturns\u003e第一条匹配的 DTO\u003c/returns\u003e",
+                         "en":  "\u003creturns\u003eThe first matching DTO\u003c/returns\u003e"
+                     },
+                     {
+                         "i":  15,
+                         "zh":  "Single + AsDto：单行投影（严格模式，多条则抛异常）。",
+                         "en":  "Single + AsDto: Single-row projection (strict mode; throws exception if multiple results exist)."
+                     },
+                     {
+                         "i":  18,
+                         "zh":  "\u003creturns\u003e唯一匹配的 DTO\u003c/returns\u003e",
+                         "en":  "\u003creturns\u003eThe uniquely matching DTO\u003c/returns\u003e"
+                     },
+                     {
+                         "i":  20,
+                         "zh":  "ToChunkDto：分批回调读取。",
+                         "en":  "ToChunkDto: Batched callback-based reading."
+                     },
+                     {
+                         "i":  23,
+                         "zh":  "\u003creturns\u003e全部批次合并\u003c/returns\u003e",
+                         "en":  "\u003creturns\u003eConcatenated result from all batches\u003c/returns\u003e"
+                     },
+                     {
+                         "i":  24,
+                         "zh":  "===== 嵌套跨表投影 =====",
+                         "en":  "===== Nested Cross-Table Projection ====="
+                     },
+                     {
+                         "i":  26,
+                         "zh":  "嵌套跨表投影：EF Core 自动 LEFT JOIN 嵌套实体。",
+                         "en":  "Nested cross-table projection: EF Core automatically generates LEFT JOINs for nested entities."
+                     },
+                     {
+                         "i":  28,
+                         "zh":  "\u003ctypeparam name=\"TContext\"\u003eDbContext 类型（需含 DemoOrder/DemoOrderDetail/DemoProduct DbSet）\u003c/typeparam\u003e",
+                         "en":  "\u003ctypeparam name=\"TContext\"\u003eDbContext type (must include DbSet properties for DemoOrder, DemoOrderDetail, and DemoProduct)\u003c/typeparam\u003e"
+                     },
+                     {
+                         "i":  30,
+                         "zh":  "\u003creturns\u003e嵌套投影后的 DTO 列表\u003c/returns\u003e",
+                         "en":  "\u003creturns\u003eList of DTOs after nested projection\u003c/returns\u003e"
+                     },
+                     {
+                         "i":  33,
+                         "zh":  "ToLookup：按年龄分组查找。",
+                         "en":  "ToLookup: Group lookup by age."
+                     },
+                     {
+                         "i":  36,
+                         "zh":  "\u003creturns\u003e按 Age 分组的 Lookup\u003c/returns\u003e",
+                         "en":  "\u003creturns\u003eLookup grouped by Age\u003c/returns\u003e"
+                     },
+                     {
+                         "i":  38,
+                         "zh":  "EFCore ToTreeList：平铺自引用表 → 嵌套树 DTO（树挂载位三元组由 [MapTree] 声明）。",
+                         "en":  "EFCore ToTreeList: Flattened self-referencing table → nested tree DTO (tree mounting positions defined as a ternary tuple via [MapTree] attribute)."
+                     },
+                     {
+                         "i":  40,
+                         "zh":  "\u003cparam name=\"db\"\u003eEFCore 上下文（已播种平铺分类数据）\u003c/param\u003e",
+                         "en":  "\u003cparam name=\"db\"\u003eEFCore context (pre-seeded with flattened category data)\u003c/param\u003e"
+                     },
+                     {
+                         "i":  41,
+                         "zh":  "\u003creturns\u003e树形 DTO（Children 由 ToTreeList 组装）\u003c/returns\u003e",
+                         "en":  "\u003creturns\u003eTree-shaped DTO (Children populated by ToTreeList)\u003c/returns\u003e"
+                     },
+                     {
+                         "i":  43,
+                         "zh":  "Fluent 树查询：Fluent DTO（Tree() 对级构建配置，注册表承载）+ ToTreeList。",
+                         "en":  "Fluent Tree Query: Fluent DTO (Tree() method for hierarchical configuration, registered in configuration registry) + ToTreeList."
+                     },
+                     {
+                         "i":  44,
+                         "zh":  "树挂载位判定优先读 Fluent 注册表（GetTreeConfig），与 [MapTree] 特性等价。",
+                         "en":  "Tree mounting position resolution prioritizes the Fluent configuration registry (GetTreeConfig), equivalent to the [MapTree] attribute."
+                     },
+                     {
+                         "i":  46,
+                         "zh":  "\u003cparam name=\"db\"\u003eEFCore 上下文（已播种平铺树数据）\u003c/param\u003e",
+                         "en":  "\u003cparam name=\"db\"\u003eEFCore context (pre-seeded with flattened tree data)\u003c/param\u003e"
+                     },
+                     {
+                         "i":  47,
+                         "zh":  "\u003creturns\u003eFluent 树形 DTO\u003c/returns\u003e",
+                         "en":  "\u003creturns\u003eFluent tree-shaped DTO\u003c/returns\u003e"
+                     },
+                     {
+                         "i":  50,
+                         "zh":  "</summary>",
+                         "en":  "ToDictionaryAsync: Asynchronously maps to a dictionary."
+                     },
+                     {
+                         "i":  53,
+                         "zh":  "<summary>",
+                         "en":  "\u003creturns\u003eDictionary keyed by Id\u003c/returns\u003e"
+                     },
+                     {
+                         "i":  54,
+                         "zh":  "NoAutoIncludeManual：[MapNoAutoInclude] 排除引用导航自动 Include 后手动补 Include。",
+                         "en": "NoAutoIncludeManual\uff1a[MapNoAutoInclude] \u6392\u9664\u5f15\u7528\u5bfc\u822a\u81ea\u52a8 Include \u540e\u624b\u52a8\u8865 Include\u3002"
+                     },
+                     {
+                         "i":  56,
+                         "zh":  "<param name=\"db\">EF Core DbContext</param>",
+                         "en": "<param name=\"db\">EF Core DbContext</param>"
+                     },
+                     {
+                         "i":  57,
+                         "zh":  "<returns>手动 Include 导航后的扁平 DTO 列表</returns>",
+                         "en": "<returns>\u624b\u52a8 Include \u5bfc\u822a\u540e\u7684\u6241\u5e73 DTO \u5217\u8868</returns>"
+                     },
+                     {
+                         "i":  58,
+                         "zh":  "manual include after auto-include excluded",
+                         "en": "manual include after auto-include excluded"
+                     },
+                     {
+                         "i":  61,
+                         "zh":  "<para>AsDto 链路不支持链式 GroupBy（[Obsolete(error:true)] 拦截），聚合可 SQL 表达时优先本路径。</para>",
+                         "en": "<para>AsDto \u94fe\u8def\u4e0d\u652f\u6301\u94fe\u5f0f GroupBy\uff08[Obsolete(error:true)] \u62e6\u622a\uff09\uff0c\u805a\u5408\u53ef SQL \u8868\u8fbe\u65f6\u4f18\u5148\u672c\u8def\u5f84\u3002</para>"
+                     },
+                     {
+                         "i":  62,
+                         "zh":  "</summary>",
+                         "en": "</summary>"
+                     },
+                     {
+                         "i":  63,
+                         "zh":  "<param name=\"db\">EF Core DbContext</param>",
+                         "en": "<param name=\"db\">EF Core DbContext</param>"
+                     }
+                 ]
+}

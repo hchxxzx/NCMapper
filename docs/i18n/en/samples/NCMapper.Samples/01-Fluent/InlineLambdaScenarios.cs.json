@@ -1,0 +1,207 @@
+{
+    "source":  "samples/NCMapper.Samples/01-Fluent/InlineLambdaScenarios.cs",
+    "language":  "en",
+    "generatedFrom":  "3b0bd9f8f06349658ccadde28d7660ea8ccfcb88ae8f1d66bac5b99e90c87ed1",
+    "comments":  [
+                     {
+                         "i":  1,
+                         "zh":  "场景 108 — MapWhen 内联 lambda 转录运行对比。",
+                         "en":  "Scenario 108 — Runtime comparison of inline lambda transcription in MapWhen."
+                     },
+                     {
+                         "i":  2,
+                         "zh":  "F41（捕获变量/私有成员）与 F42（语句体/白名单外节点）是编译期拒绝，",
+                         "en":  "F41 (captured variables / private members) and F42 (statement-bodied / non-whitelisted nodes) are compile-time rejections."
+                     },
+                     {
+                         "i":  3,
+                         "zh":  "可运行工程不能内嵌编译失败示例——其拒绝形态由本文件注释与",
+                         "en":  "A runnable project must not embed compilation-failure examples—their rejection semantics are documented in this file\u0027s comments and"
+                     },
+                     {
+                         "i":  4,
+                         "zh":  "how-to/fluent/terminals.md 文档承载；本场景运行演示两个合法形态：",
+                         "en":  "the how-to/fluent/terminals.md document; this scenario demonstrates two valid forms at runtime:"
+                     },
+                     {
+                         "i":  5,
+                         "zh":  "① 无捕获内联 lambda 放行（转录进生成代码）",
+                         "en":  "① Inline lambdas without captures are permitted (transcribed into generated code)."
+                     },
+                     {
+                         "i":  6,
+                         "zh":  "② 捕获场景提取静态方法组后生效",
+                         "en":  "② Capturing scenarios become effective after extracting into static method groups."
+                     },
+                     {
+                         "i":  8,
+                         "zh":  "\u003csummary\u003e内联转录演示实体（Fluent 通道域内模型）。\u003c/summary\u003e",
+                         "en":  "\u003csummary\u003eEntity for demonstrating inline transcription (Fluent channel-domain model).\u003c/summary\u003e"
+                     },
+                     {
+                         "i":  9,
+                         "zh":  "\u003csummary\u003e分值（内联谓词入参）。\u003c/summary\u003e",
+                         "en":  "\u003csummary\u003eScore (parameter passed to the inline predicate).\u003c/summary\u003e"
+                     },
+                     {
+                         "i":  10,
+                         "zh":  "\u003csummary\u003e姓名。\u003c/summary\u003e",
+                         "en":  "\u003csummary\u003eName.\u003c/summary\u003e"
+                     },
+                     {
+                         "i":  11,
+                         "zh":  "\u003csummary\u003e内联转录演示 DTO。\u003c/summary\u003e",
+                         "en":  "\u003csummary\u003eDTO for demonstrating inline transcription.\u003c/summary\u003e"
+                     },
+                     {
+                         "i":  12,
+                         "zh":  "\u003csummary\u003e分值（守卫通过时映射，否则保持默认值）。\u003c/summary\u003e",
+                         "en":  "\u003csummary\u003eScore (mapped only when the guard condition passes; otherwise retains the default value).\u003c/summary\u003e"
+                     },
+                     {
+                         "i":  13,
+                         "zh":  "\u003csummary\u003e姓名。\u003c/summary\u003e",
+                         "en":  "\u003csummary\u003eName.\u003c/summary\u003e"
+                     },
+                     {
+                         "i":  15,
+                         "zh":  "内联转录运行对比场景集（01-Fluent 域，108）。",
+                         "en":  "Inline transcription runtime comparison scenario set (01-Fluent domain, 108)."
+                     },
+                     {
+                         "i":  18,
+                         "zh":  "链式声明：无捕获内联 lambda 谓词——编译期转录进生成代码，运行时零委托开销。",
+                         "en":  "Fluent chained declaration: inline lambda predicate without captures—transcribed at compile time into generated code, zero delegate overhead at runtime."
+                     },
+                     {
+                         "i":  20,
+                         "zh":  "\u003cparam name=\"cfg\"\u003eFluent 配置根\u003c/param\u003e",
+                         "en":  "\u003cparam name=\"cfg\"\u003eFluent configuration root\u003c/param\u003e"
+                     },
+                     {
+                         "i":  21,
+                         "zh":  "无捕获内联：仅访问 lambda 参数，放行转录",
+                         "en":  "No-capture inline: accesses only lambda parameters—permitted for transcription."
+                     },
+                     {
+                         "i":  23,
+                         "zh":  "捕获场景对照：谓词需要读取外层变量（threshold）——内联 lambda 捕获外层状态被",
+                         "en":  "Capturing-scenario comparison: predicate requires reading an outer variable (threshold)—inline lambda capturing outer state is"
+                     },
+                     {
+                         "i":  24,
+                         "zh":  "编译期拒绝（F41，转录禁令），提取为**静态方法组**（T1 字段值形态）后生效。",
+                         "en":  "rejected at compile time (F41, transcription prohibition); becomes effective after extraction into a **static method group** (T1 field-value form)."
+                     },
+                     {
+                         "i":  25,
+                         "zh":  "阈值以静态只读字段承载（编译期常量语义，方法组可静态解析）。",
+                         "en":  "The threshold is held in a static readonly field (compile-time constant semantics, enabling static resolution of the method group)."
+                     },
+                     {
+                         "i":  27,
+                         "zh":  "\u003csummary\u003e守卫阈值（静态只读——方法组内可静态解析的读取面）。\u003c/summary\u003e",
+                         "en":  "\u003csummary\u003eGuard threshold (static readonly—read surface statically resolvable within the method group).\u003c/summary\u003e"
+                     },
+                     {
+                         "i":  28,
+                         "zh":  "\u003csummary\u003eT1 形态谓词：分值 ≥ 阈值。\u003c/summary\u003e",
+                         "en":  "\u003csummary\u003eT1-form predicate: score ≥ threshold.\u003c/summary\u003e"
+                     },
+                     {
+                         "i":  29,
+                         "zh":  "\u003cparam name=\"score\"\u003e源字段值\u003c/param\u003e",
+                         "en":  "\u003cparam name=\"score\"\u003eSource field value\u003c/param\u003e"
+                     },
+                     {
+                         "i":  30,
+                         "zh":  "\u003creturns\u003e真则执行该属性映射\u003c/returns\u003e",
+                         "en":  "\u003creturns\u003eReturns true to execute the property mapping.\u003c/returns\u003e"
+                     },
+                     {
+                         "i":  32,
+                         "zh":  "捕获形态的 Fluent 声明（静态方法组谓词）。",
+                         "en":  "Fluent declaration with capture (using a static method group predicate)."
+                     },
+                     {
+                         "i":  34,
+                         "zh":  "\u003csummary\u003e链式声明：静态方法组谓词（可静态解析）。\u003c/summary\u003e",
+                         "en":  "\u003csummary\u003eFluent chained declaration: static method group predicate (statically resolvable).\u003c/summary\u003e"
+                     },
+                     {
+                         "i":  35,
+                         "zh":  "\u003cparam name=\"cfg\"\u003eFluent 配置根\u003c/param\u003e",
+                         "en":  "\u003cparam name=\"cfg\"\u003eFluent configuration root\u003c/param\u003e"
+                     },
+                     {
+                         "i":  36,
+                         "zh":  "\u003csummary\u003e静态方法组守卫演示 DTO。\u003c/summary\u003e",
+                         "en":  "\u003csummary\u003eDemonstration DTO for static method group guards.\u003c/summary\u003e"
+                     },
+                     {
+                         "i":  37,
+                         "zh":  "\u003csummary\u003e分值（守卫通过时映射）。\u003c/summary\u003e",
+                         "en":  "\u003csummary\u003eScore (mapped when guard passes).\u003c/summary\u003e"
+                     },
+                     {
+                         "i":  38,
+                         "zh":  "\u003csummary\u003e姓名。\u003c/summary\u003e",
+                         "en":  "\u003csummary\u003eName.\u003c/summary\u003e"
+                     },
+                     {
+                         "i":  40,
+                         "zh":  "场景 108 入口：内联放行与静态方法组两个运行形态的对比演示。",
+                         "en":  "Scenario 108 entry point: demonstration comparing two execution modes—inlined bypass versus static method group."
+                     },
+                     {
+                         "i":  42,
+                         "zh":  "\u003csummary\u003e场景注册入口（ScenarioRegistry 注册）。\u003c/summary\u003e",
+                         "en":  "\u003csummary\u003eScenario registration entry point (ScenarioRegistry registration).\u003c/summary\u003e"
+                     },
+                     {
+                         "i":  44,
+                         "zh":  "无捕获内联 lambda 放行：Score ≥ 60 的输入映射生效、\u0026lt; 60 的输入保持默认值——",
+                         "en":  "Non-capturing inline lambda bypass: mapping is applied for inputs with Score ≥ 60; inputs with Score \u003c 60 retain default values—"
+                     },
+                     {
+                         "i":  45,
+                         "zh":  "谓词已转录进生成代码，运行时按编译期产物执行。",
+                         "en":  "The predicate has been transcribed into generated code and executes at runtime using compile-time artifacts."
+                     },
+                     {
+                         "i":  47,
+                         "zh":  "Assert: the true path applies the mapping while the false path is intercepted by the guard (demo is valid once guard semantics are observable;",
+                         "en":  "Assertion: mapping is applied on the true path; guard intercepts on the false path (observable guard semantics confirm successful demonstration);"
+                     },
+                     {
+                         "i":  48,
+                         "zh":  "Map returns a nullable, so `?.` turns a \"null return\" into an assert failure instead of a null-reference crash)",
+                         "en":  "Map returns nullable; `?.` ensures that returning null also results in assertion failure instead of a null reference exception."
+                     },
+                     {
+                         "i":  50,
+                         "zh":  "捕获场景提取静态方法组后生效：捕获外层变量的内联 lambda 是 F41 编译期拒绝",
+                         "en":  "After extracting the capturing scenario into a static method group, it becomes effective: inline lambdas capturing outer variables are rejected at compile time by F41."
+                     },
+                     {
+                         "i":  51,
+                         "zh":  "（不可运行演示），提取为静态方法组（可静态解析）后映射正常工作。",
+                         "en":  "(Non-runnable demonstration) — after extraction into a static method group (statically resolvable), mapping functions correctly."
+                     },
+                     {
+                         "i":  53,
+                         "zh":  "[X] compile-time rejected form (F41: captures outer state) -- cannot be embedded in a runnable project:",
+                         "en":  "❌ Compile-time rejection form (F41: capturing outer state)—cannot be embedded in a runnable project:"
+                     },
+                     {
+                         "i":  57,
+                         "zh":  "[OK] extracted to a static method group (the actual declaration of this scenario, see InlineThresholdMapper):",
+                         "en":  "✅ Extracted static method group (actually declared in this scenario, see InlineThresholdMapper):"
+                     },
+                     {
+                         "i":  58,
+                         "zh":  "Assert: the static method group predicate takes effect at runtime (threshold decision correct; `?.` as above, a null result lands as an assert failure)",
+                         "en":  "Assertion: static method group predicate executes correctly (threshold evaluation is accurate; `?.` behavior as above—null result leads to assertion failure)."
+                     }
+                 ]
+}

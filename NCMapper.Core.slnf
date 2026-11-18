@@ -1,0 +1,19 @@
+{
+  "solution": {
+    "path": "NCMapper.slnx",
+    "projects": [
+      "samples\\NCMapper.AotSample\\NCMapper.AotSample.csproj",
+      "samples\\NCMapper.Samples\\NCMapper.Samples.csproj",
+      "src\\NCMapper.SourceGen\\NCMapper.SourceGen.csproj",
+      "src\\NCMapper\\NCMapper.csproj",
+      "test\\NCMapper.AotTests\\NCMapper.AotTests.csproj",
+      "test\\NCMapper.FuzzTests\\NCMapper.FuzzTests.csproj",
+      "test\\NCMapper.IntegrationTests\\NCMapper.IntegrationTests.csproj",
+      "test\\NCMapper.SourceGen.Tests\\NCMapper.SourceGen.Tests.csproj",
+      "test\\NCMapper.Tests\\NCMapper.Tests.csproj",
+      "tools\\AotReflectionGuard\\NCMapper.AotReflectionGuard.csproj",
+      "benchmarks\\NCMapper.Benchmarks\\NCMapper.Benchmarks.csproj",
+      "benchmarks\\NCMapper.SelfBench\\NCMapper.SelfBench.csproj"
+    ]
+  }
+}

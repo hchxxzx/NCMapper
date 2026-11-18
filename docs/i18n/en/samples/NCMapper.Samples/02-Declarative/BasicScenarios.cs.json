@@ -1,0 +1,677 @@
+{
+    "source":  "samples/NCMapper.Samples/02-Declarative/BasicScenarios.cs",
+    "language":  "en",
+    "generatedFrom":  "18f8c38a5426873e3304bef79f48089f619893d11719f00595eb510f3906d31d",
+    "comments":  [
+                     {
+                         "i":  1,
+                         "zh":  "基础映射场景集 — 每个静态方法对应一个子场景，返回映射结果供调度层输出。",
+                         "en":  "Basic mapping scenario set — Each static method corresponds to a sub-scenario and returns mapping results for output by the orchestration layer."
+                     },
+                     {
+                         "i":  3,
+                         "zh":  "===== 1. 单对象映射 =====",
+                         "en":  "===== 1. Single-object mapping ====="
+                     },
+                     {
+                         "i":  5,
+                         "zh":  "最基础的同名属性映射：UserEntity → UserDto。",
+                         "en":  "The most basic same-name property mapping: UserEntity → UserDto."
+                     },
+                     {
+                         "i":  7,
+                         "zh":  "\u003cparam name=\"src\"\u003e源实体\u003c/param\u003e",
+                         "en":  "\u003cparam name=\"src\"\u003eSource entity\u003c/param\u003e"
+                     },
+                     {
+                         "i":  8,
+                         "zh":  "\u003creturns\u003e映射后的 DTO\u003c/returns\u003e",
+                         "en":  "\u003creturns\u003eMapped DTO\u003c/returns\u003e"
+                     },
+                     {
+                         "i":  10,
+                         "zh":  "列表映射：List\u0026lt;UserEntity\u0026gt; → List\u0026lt;UserDto\u0026gt;。",
+                         "en":  "List mapping: List\u003cUserEntity\u003e → List\u003cUserDto\u003e."
+                     },
+                     {
+                         "i":  12,
+                         "zh":  "\u003cparam name=\"srcs\"\u003e源实体列表\u003c/param\u003e",
+                         "en":  "\u003cparam name=\"srcs\"\u003eSource entity list\u003c/param\u003e"
+                     },
+                     {
+                         "i":  13,
+                         "zh":  "\u003creturns\u003e映射后的 DTO 列表\u003c/returns\u003e",
+                         "en":  "\u003creturns\u003eMapped DTO list\u003c/returns\u003e"
+                     },
+                     {
+                         "i":  15,
+                         "zh":  "MapListInto 批量就地映射 — 复用预分配目标数组，仅覆盖映射字段，顶层零分配。",
+                         "en":  "MapListInto performs batch in-place mapping — reuses a pre-allocated destination array, overwrites only mapped fields, and incurs zero top-level allocations."
+                     },
+                     {
+                         "i":  16,
+                         "zh":  "\u003cpara\u003e对比 MapList（每次调用全量分配新 List + N 个 DTO）：MapListInto 复用已有目标对象，",
+                         "en":  "\u003cpara\u003eCompared with MapList (which allocates a new List and N DTOs on every call), MapListInto reuses existing destination objects.\u003c/para\u003e"
+                     },
+                     {
+                         "i":  17,
+                         "zh":  "适合 UI 高频刷新、批量同步到常驻缓冲区等场景（见 how-to/mapping/map-list-into.md）。\u003c/para\u003e",
+                         "en":  "Suitable for high-frequency UI refreshes, bulk synchronization into persistent buffers, etc. (see how-to/mapping/map-list-into.md)."
+                     },
+                     {
+                         "i":  19,
+                         "zh":  "\u003cparam name=\"srcs\"\u003e源实体列表\u003c/param\u003e",
+                         "en":  "\u003cparam name=\"srcs\"\u003eSource entity list\u003c/param\u003e"
+                     },
+                     {
+                         "i":  20,
+                         "zh":  "\u003cparam name=\"dtos\"\u003e预分配并初始化每个元素的目标数组（长度 ≥ srcs.Count）\u003c/param\u003e",
+                         "en":  "\u003cparam name=\"dtos\"\u003ePre-allocated destination array with each element initialized (length ≥ srcs.Count)\u003c/param\u003e"
+                     },
+                     {
+                         "i":  22,
+                         "zh":  "带 Action 回调的映射，映射后立即修改目标。",
+                         "en":  "Mapping with an Action callback — modifies the destination object immediately after mapping."
+                     },
+                     {
+                         "i":  24,
+                         "zh":  "\u003cparam name=\"src\"\u003e源实体\u003c/param\u003e",
+                         "en":  "\u003cparam name=\"src\"\u003eSource entity\u003c/param\u003e"
+                     },
+                     {
+                         "i":  25,
+                         "zh":  "\u003creturns\u003eName 带 [VIP] 前缀的 DTO\u003c/returns\u003e",
+                         "en":  "\u003creturns\u003eDTO with [VIP] prefix appended to Name\u003c/returns\u003e"
+                     },
+                     {
+                         "i":  27,
+                         "zh":  "更新已有目标对象（不创建新实例）。",
+                         "en":  "Updates an existing destination object (no new instance creation)."
+                     },
+                     {
+                         "i":  29,
+                         "zh":  "\u003cparam name=\"src\"\u003e源实体\u003c/param\u003e",
+                         "en":  "\u003cparam name=\"src\"\u003eSource entity\u003c/param\u003e"
+                     },
+                     {
+                         "i":  30,
+                         "zh":  "\u003cparam name=\"target\"\u003e待更新的目标对象\u003c/param\u003e",
+                         "en":  "\u003cparam name=\"target\"\u003eDestination object to be updated\u003c/param\u003e"
+                     },
+                     {
+                         "i":  31,
+                         "zh":  "===== 2. 异名字段与自定义转换 =====",
+                         "en":  "===== 2. Mapping with non-matching field names and custom conversions ====="
+                     },
+                     {
+                         "i":  33,
+                         "zh":  "[MapProperty] 异名映射 + [Convert] 自定义转换 + PascalCase 扁平化演示。",
+                         "en":  "[MapProperty] for non-matching field names + [Convert] for custom conversions + PascalCase flattening demonstration."
+                     },
+                     {
+                         "i":  35,
+                         "zh":  "\u003cparam name=\"src\"\u003e源实体\u003c/param\u003e",
+                         "en":  "\u003cparam name=\"src\"\u003eSource entity\u003c/param\u003e"
+                     },
+                     {
+                         "i":  36,
+                         "zh":  "\u003creturns\u003e含异名字段与转换结果的详情 DTO\u003c/returns\u003e",
+                         "en":  "\u003creturns\u003eDetail DTO containing non-matching fields and converted values\u003c/returns\u003e"
+                     },
+                     {
+                         "i":  37,
+                         "zh":  "===== 3. 双向映射与方向控制 =====",
+                         "en":  "===== 3. Bidirectional mapping and direction control ====="
+                     },
+                     {
+                         "i":  39,
+                         "zh":  "正向映射 Entity → DTO。",
+                         "en":  "Forward mapping: Entity → DTO."
+                     },
+                     {
+                         "i":  41,
+                         "zh":  "\u003cparam name=\"src\"\u003e源实体\u003c/param\u003e",
+                         "en":  "\u003cparam name=\"src\"\u003eSource entity\u003c/param\u003e"
+                     },
+                     {
+                         "i":  42,
+                         "zh":  "\u003creturns\u003e映射后的 DTO\u003c/returns\u003e",
+                         "en":  "\u003creturns\u003eMapped DTO\u003c/returns\u003e"
+                     },
+                     {
+                         "i":  44,
+                         "zh":  "反向映射 DTO → Entity，验证 [MapIgnore(Direction.ToEntity)] 生效。",
+                         "en":  "Reverse mapping DTO → Entity, verifying that [MapIgnore(Direction.ToEntity)] takes effect."
+                     },
+                     {
+                         "i":  46,
+                         "zh":  "\u003cparam name=\"src\"\u003e源 DTO\u003c/param\u003e",
+                         "en":  "\u003cparam name=\"src\"\u003eSource DTO\u003c/param\u003e"
+                     },
+                     {
+                         "i":  47,
+                         "zh":  "\u003creturns\u003e反向映射后的实体（DisplayLabel 被忽略）\u003c/returns\u003e",
+                         "en":  "\u003creturns\u003eReverse-mapped entity (DisplayLabel is ignored)\u003c/returns\u003e"
+                     },
+                     {
+                         "i":  48,
+                         "zh":  "===== 4. 源生成器扩展方法 =====",
+                         "en":  "===== 4. Source Generator Extension Methods ====="
+                     },
+                     {
+                         "i":  50,
+                         "zh":  "使用源生成器扩展方法，零委托直调。",
+                         "en":  "Using source generator extension methods for zero-delegate direct invocation."
+                     },
+                     {
+                         "i":  52,
+                         "zh":  "\u003cparam name=\"src\"\u003e源实体\u003c/param\u003e",
+                         "en":  "\u003cparam name=\"src\"\u003eSource entity\u003c/param\u003e"
+                     },
+                     {
+                         "i":  53,
+                         "zh":  "\u003creturns\u003e映射后的 DTO\u003c/returns\u003e",
+                         "en":  "\u003creturns\u003eMapped DTO\u003c/returns\u003e"
+                     },
+                     {
+                         "i":  55,
+                         "zh":  "源生成器扩展方法 + Action 回调。",
+                         "en":  "Source generator extension method with Action callback."
+                     },
+                     {
+                         "i":  57,
+                         "zh":  "\u003cparam name=\"src\"\u003e源实体\u003c/param\u003e",
+                         "en":  "\u003cparam name=\"src\"\u003eSource entity\u003c/param\u003e"
+                     },
+                     {
+                         "i":  58,
+                         "zh":  "\u003creturns\u003eName 带 [VIP] 前缀的 DTO\u003c/returns\u003e",
+                         "en":  "\u003creturns\u003eDTO with [VIP] prefix applied to Name\u003c/returns\u003e"
+                     },
+                     {
+                         "i":  60,
+                         "zh":  "源生成器扩展方法：更新已有对象（void 返回）。",
+                         "en":  "Source generator extension method: updating an existing object (void return)."
+                     },
+                     {
+                         "i":  62,
+                         "zh":  "\u003cparam name=\"src\"\u003e源实体\u003c/param\u003e",
+                         "en":  "\u003cparam name=\"src\"\u003eSource entity\u003c/param\u003e"
+                     },
+                     {
+                         "i":  63,
+                         "zh":  "\u003cparam name=\"target\"\u003e待更新的目标对象\u003c/param\u003e",
+                         "en":  "\u003cparam name=\"target\"\u003eTarget object to be updated\u003c/param\u003e"
+                     },
+                     {
+                         "i":  65,
+                         "zh":  "源生成器扩展方法：列表零委托直调。",
+                         "en":  "Source generator extension method: list-based zero-delegate direct invocation."
+                     },
+                     {
+                         "i":  67,
+                         "zh":  "\u003cparam name=\"srcs\"\u003e源实体列表\u003c/param\u003e",
+                         "en":  "\u003cparam name=\"srcs\"\u003eList of source entities\u003c/param\u003e"
+                     },
+                     {
+                         "i":  68,
+                         "zh":  "\u003creturns\u003e映射后的 DTO 列表\u003c/returns\u003e",
+                         "en":  "\u003creturns\u003eList of mapped DTOs\u003c/returns\u003e"
+                     },
+                     {
+                         "i":  69,
+                         "zh":  "===== 4.1 反向直调与反向自定义转换 =====",
+                         "en":  "===== 4.1 Reverse Direct Invocation and Reverse Custom Conversion ====="
+                     },
+                     {
+                         "i":  71,
+                         "zh":  "反向直调扩展：DTO → Entity 新建（dto.MapToUserEntity()，生成委托路径零反射）。",
+                         "en":  "Reverse direct invocation extension: DTO → Entity creation (dto.MapToUserEntity(), delegate path generated with zero reflection)."
+                     },
+                     {
+                         "i":  73,
+                         "zh":  "\u003cparam name=\"src\"\u003e源 DTO\u003c/param\u003e",
+                         "en":  "\u003cparam name=\"src\"\u003eSource DTO\u003c/param\u003e"
+                     },
+                     {
+                         "i":  74,
+                         "zh":  "\u003creturns\u003e反向映射新建的实体\u003c/returns\u003e",
+                         "en":  "\u003creturns\u003eNewly created entity from reverse mapping\u003c/returns\u003e"
+                     },
+                     {
+                         "i":  76,
+                         "zh":  "反向直调扩展：更新已有实体（编辑表单提交主场景，dto.MapToUserEntity(entity)）。",
+                         "en":  "Reverse direct invocation extension: updating an existing entity (primary scenario for edit form submission, dto.MapToUserEntity(entity))."
+                     },
+                     {
+                         "i":  78,
+                         "zh":  "\u003cparam name=\"src\"\u003e源 DTO\u003c/param\u003e",
+                         "en":  "\u003cparam name=\"src\"\u003eSource DTO\u003c/param\u003e"
+                     },
+                     {
+                         "i":  79,
+                         "zh":  "\u003cparam name=\"target\"\u003e待更新的实体\u003c/param\u003e",
+                         "en":  "\u003cparam name=\"target\"\u003eEntity to be updated\u003c/param\u003e"
+                     },
+                     {
+                         "i":  81,
+                         "zh":  "反向直调扩展：列表 DTO → Entity（dtos.MapToUserEntityList()）。",
+                         "en":  "Reverse direct mapping extension: List DTO → Entity (dtos.MapToUserEntityList())."
+                     },
+                     {
+                         "i":  83,
+                         "zh":  "\u003cparam name=\"srcs\"\u003e源 DTO 列表\u003c/param\u003e",
+                         "en":  "\u003cparam name=\"srcs\"\u003eSource DTO list\u003c/param\u003e"
+                     },
+                     {
+                         "i":  84,
+                         "zh":  "\u003creturns\u003e反向映射的实体列表\u003c/returns\u003e",
+                         "en":  "\u003creturns\u003eReversed-mapped entity list\u003c/returns\u003e"
+                     },
+                     {
+                         "i":  86,
+                         "zh":  "[ConvertBack] 往返演示：entity → dto（正向格式化）→ entity（反向解析）。",
+                         "en":  "[ConvertBack] Round-trip demonstration: entity → dto (forward formatting) → entity (reverse parsing)."
+                     },
+                     {
+                         "i":  87,
+                         "zh":  "\u003cpara\u003e正向 [Convert(typeof(DateTimeFormatter), nameof(DateTimeFormatter.Convert))] 将 CreatedAt 格式化为字符串；",
+                         "en":  "\u003cpara\u003eThe forward [Convert(typeof(DateTimeFormatter), nameof(DateTimeFormatter.Convert))] formats CreatedAt as a string;"
+                     },
+                     {
+                         "i":  88,
+                         "zh":  "反向 [ConvertBack(typeof(DateBackParser), nameof(DateBackParser.Convert))] 将 RegisterDate 解析回 CreatedAt——",
+                         "en":  "the reverse [ConvertBack(typeof(DateBackParser), nameof(DateBackParser.Convert))] parses RegisterDate back into CreatedAt—"
+                     },
+                     {
+                         "i":  89,
+                         "zh":  "正向转换器反向默认不消费（NCMAP033），往返闭环依赖显式反向转换器。\u003c/para\u003e",
+                         "en":  "Forward converters are not consumed by default in reverse direction (NCMAP033); round-trip closure requires an explicit reverse converter.\u003c/para\u003e"
+                     },
+                     {
+                         "i":  91,
+                         "zh":  "\u003cparam name=\"src\"\u003e源实体\u003c/param\u003e",
+                         "en":  "\u003cparam name=\"src\"\u003eSource entity\u003c/param\u003e"
+                     },
+                     {
+                         "i":  92,
+                         "zh":  "\u003creturns\u003e往返后的实体（CreatedAt 应等于源值）\u003c/returns\u003e",
+                         "en":  "\u003creturns\u003eRound-tripped entity (CreatedAt should equal the original value)\u003c/returns\u003e"
+                     },
+                     {
+                         "i":  93,
+                         "zh":  "正向：CreatedAt → \"yyyy-MM-dd\"",
+                         "en":  "Forward: CreatedAt → \"yyyy-MM-dd\""
+                     },
+                     {
+                         "i":  94,
+                         "zh":  "反向：RegisterDate → CreatedAt（DateBackParser）",
+                         "en":  "Reverse: RegisterDate → CreatedAt (via DateBackParser)"
+                     },
+                     {
+                         "i":  95,
+                         "zh":  "===== 5. JSON 字段映射 =====",
+                         "en":  "===== 5. JSON Field Mapping ====="
+                     },
+                     {
+                         "i":  97,
+                         "zh":  "[MapProperty(IsFromJson = true)]：string 列反序列化为强类型对象/集合。",
+                         "en":  "[MapProperty(IsFromJson = true)]: Deserializes string columns into strongly-typed objects/collections."
+                     },
+                     {
+                         "i":  99,
+                         "zh":  "\u003cparam name=\"src\"\u003e含 JSON 文本列的实体\u003c/param\u003e",
+                         "en":  "\u003cparam name=\"src\"\u003eEntity containing JSON text columns\u003c/param\u003e"
+                     },
+                     {
+                         "i":  100,
+                         "zh":  "\u003creturns\u003eJSON 字段被反序列化为强类型的 DTO\u003c/returns\u003e",
+                         "en":  "\u003creturns\u003eDTO with JSON fields deserialized into strongly-typed properties\u003c/returns\u003e"
+                     },
+                     {
+                         "i":  102,
+                         "zh":  "IsFromJson 反向：对象序列化为 JSON 字符串。",
+                         "en":  "IsFromJson reverse: Serializes objects into JSON strings."
+                     },
+                     {
+                         "i":  104,
+                         "zh":  "\u003cparam name=\"src\"\u003e含强类型对象的源\u003c/param\u003e",
+                         "en":  "\u003cparam name=\"src\"\u003eSource containing strongly-typed objects\u003c/param\u003e"
+                     },
+                     {
+                         "i":  105,
+                         "zh":  "\u003creturns\u003e对象被序列化为 JSON 字符串的 DTO\u003c/returns\u003e",
+                         "en":  "\u003creturns\u003eDTO with objects serialized into JSON strings\u003c/returns\u003e"
+                     },
+                     {
+                         "i":  107,
+                         "zh":  "值类型目标 — IsFromJson 不支持，属性被跳过（保持默认值）。",
+                         "en":  "Value-type targets — IsFromJson is unsupported; such properties are skipped (retaining default values)."
+                     },
+                     {
+                         "i":  109,
+                         "zh":  "\u003cparam name=\"src\"\u003e含 JSON 文本列的实体\u003c/param\u003e",
+                         "en":  "\u003cparam name=\"src\"\u003eEntity containing JSON text columns\u003c/param\u003e"
+                     },
+                     {
+                         "i":  110,
+                         "zh":  "\u003creturns\u003e值类型属性保持默认值的 DTO\u003c/returns\u003e",
+                         "en":  "\u003creturns\u003eDTO with value-type properties retaining default values\u003c/returns\u003e"
+                     },
+                     {
+                         "i":  112,
+                         "zh":  "畸形 JSON — 故意触发 MapException（D7 裁决：IsFromJson 反序列化异常被包装，InnerException 保留 JsonException 诊断）。",
+                         "en":  "Malformed JSON — intentionally triggers MapException (D7 ruling: IsFromJson deserialization exceptions are wrapped; InnerException preserves JsonException diagnostics)."
+                     },
+                     {
+                         "i":  114,
+                         "zh":  "\u003cparam name=\"src\"\u003e含非法 JSON 的实体\u003c/param\u003e",
+                         "en":  "\u003cparam name=\"src\"\u003eEntity containing invalid JSON\u003c/param\u003e"
+                     },
+                     {
+                         "i":  115,
+                         "zh":  "\u003creturns\u003e异常信息字符串\u003c/returns\u003e",
+                         "en":  "\u003creturns\u003eException message string\u003c/returns\u003e"
+                     },
+                     {
+                         "i":  116,
+                         "zh":  "D7 裁决后异常类型为 MapException，内部 JsonException 携带 Path/LineNumber 等诊断信息",
+                         "en":  "Post-D7 ruling exception type is MapException, with inner JsonException carrying diagnostic information such as Path and LineNumber."
+                     },
+                     {
+                         "i":  117,
+                         "zh":  "===== 4.2 集合索引路径运行时映射=====",
+                         "en":  "===== 4.2 Runtime Mapping of Collection Index Paths ====="
+                     },
+                     {
+                         "i":  119,
+                         "zh":  "集合索引路径运行时映射 — [MapProperty(typeof(T), \"Items[0].Name\")]。",
+                         "en":  "Runtime mapping of collection index paths — [MapProperty(typeof(T), \"Items[0].Name\")]."
+                     },
+                     {
+                         "i":  120,
+                         "zh":  "\u003cpara\u003e三种输入：正常（取到 Items[0]）、空集合（default）、越界（Items[1] 超出 Count → default），",
+                         "en":  "\u003cpara\u003eThree input cases: normal (retrieving Items[0]), empty collection (default), and out-of-bounds (e.g., Items[1] exceeding Count → default),\u003c/para\u003e"
+                     },
+                     {
+                         "i":  121,
+                         "zh":  "均不抛异常（ElementAtOrDefault 语义，与源生成器同形态）。\u003c/para\u003e",
+                         "en":  "all without throwing exceptions (ElementAtOrDefault semantics, consistent with the source generator).\u003c/para\u003e"
+                     },
+                     {
+                         "i":  123,
+                         "zh":  "\u003creturns\u003e三种输入的映射结果汇总（First/Second 索引取值）\u003c/returns\u003e",
+                         "en":  "\u003creturns\u003eSummary of mapping results for the three input cases (index-based retrieval for First/Second)\u003c/returns\u003e"
+                     },
+                     {
+                         "i":  124,
+                         "zh":  "正常：Items 有 2 个元素 → FirstItemName=\"A\"，SecondItemName=\"B\"",
+                         "en":  "Normal: Items contains two elements → FirstItemName=\"A\", SecondItemName=\"B\""
+                     },
+                     {
+                         "i":  125,
+                         "zh":  "空集合：Items 为空 → FirstItemName / SecondItemName 均为 default(null)",
+                         "en":  "Empty collection: Items is empty → both FirstItemName and SecondItemName are default(null)"
+                     },
+                     {
+                         "i":  126,
+                         "zh":  "越界：Items 只有 1 个元素 → SecondItemName（索引 1）越界 → default(null)",
+                         "en":  "Out-of-bounds: Items contains only one element → SecondItemName (index 1) is out-of-bounds → default(null)"
+                     },
+                     {
+                         "i":  127,
+                         "zh":  "===== 4.3 反向写回点路径=====",
+                         "en":  "===== 4.3 Reverse Write-Back Point Paths ====="
+                     },
+                     {
+                         "i":  129,
+                         "zh":  "反向写回点路径 — [MapProperty(typeof(T), \"Author.Name\")]。",
+                         "en":  "Reverse write-back point paths — [MapProperty(typeof(T), \"Author.Name\")]."
+                     },
+                     {
+                         "i":  130,
+                         "zh":  "\u003cpara\u003eDTO 扁平属性 AuthorName 写回实体嵌套路径 Author.Name：链存在则写叶值；",
+                         "en":  "\u003cpara\u003eFlattened DTO property AuthorName writes back to nested entity path Author.Name: if the chain exists, assign the leaf value;\u003c/para\u003e"
+                     },
+                     {
+                         "i":  131,
+                         "zh":  "源值 null 且链存在 → 清空叶。\u003c/para\u003e",
+                         "en":  "if the source value is null and the chain exists → clear the leaf."
+                     },
+                     {
+                         "i":  133,
+                         "zh":  "\u003creturns\u003e写回与清空两种场景的验证结果\u003c/returns\u003e",
+                         "en":  "\u003creturns\u003eVerification results for both write-back and leaf-clearing scenarios\u003c/returns\u003e"
+                     },
+                     {
+                         "i":  134,
+                         "zh":  "正常写回：AuthorName=\"Alice\" → entity.Author.Name 覆盖为 \"Alice\"",
+                         "en":  "Normal write-back: AuthorName=\"Alice\" → entity.Author.Name is overwritten with \"Alice\""
+                     },
+                     {
+                         "i":  135,
+                         "zh":  "null 源清空叶（D5）：AuthorName=null 且 Author 链存在 → Author.Name 清空为 null",
+                         "en":  "Null-source leaf clearing (D5): AuthorName=null and Author chain exists → Author.Name is cleared to null"
+                     },
+                     {
+                         "i":  137,
+                         "zh":  "MapListInto 复用循环 — 预分配数组跨轮复用，每轮仅覆盖映射字段（分页/流式形态，见 how-to/mapping/map-list-into.md）。",
+                         "en":  "MapListInto reuses loops — pre-allocated arrays are reused across iterations; each iteration overwrites only mapped fields (pagination/streaming pattern, see how-to/mapping/map-list-into.md)."
+                     },
+                     {
+                         "i":  139,
+                         "zh":  "\u003cparam name=\"pages\"\u003e多页源集合（逐轮填充同一目标数组）\u003c/param\u003e",
+                         "en":  "\u003cparam name=\"pages\"\u003eMultiple-page source collections (populated sequentially into the same target array)\u003c/param\u003e"
+                     },
+                     {
+                         "i":  140,
+                         "zh":  "\u003cparam name=\"dtos\"\u003e预分配并初始化每个元素的目标数组（长度 ≥ 最大页元素数）\u003c/param\u003e",
+                         "en":  "\u003cparam name=\"dtos\"\u003ePre-allocated and initialized target array (length ≥ maximum number of elements per page)\u003c/param\u003e"
+                     },
+                     {
+                         "i":  141,
+                         "zh":  "===== F3/F9 演示=====",
+                         "en":  "===== F3/F9 Demonstration ====="
+                     },
+                     {
+                         "i":  143,
+                         "zh":  "F3 — 反向映射默认不消费 [Convert]（NCMAP033 Info 提示）：",
+                         "en":  "F3 — Reverse mapping does not consume [Convert] by default (NCMAP033 Info warning):"
+                     },
+                     {
+                         "i":  144,
+                         "zh":  "正向经转换器输出非成员名文本（转换器调用计数 +1）；反向按类型转换路径（内建 string→enum 解析）",
+                         "en":  "Forward mapping invokes converters producing non-member-name text (converter invocation count +1); reverse mapping follows built-in type-conversion paths (e.g., built-in string→enum parsing)."
+                     },
+                     {
+                         "i":  145,
+                         "zh":  "写入——空串抛 MapException、成员名解析成功，且转换器调用计数不增长",
+                         "en":  "Write operation — empty string throws MapException; member-name parsing succeeds, and converter invocation count remains unchanged."
+                     },
+                     {
+                         "i":  146,
+                         "zh":  "（证明反向走的是内建路径而非转换器）。",
+                         "en":  "(proving reverse mapping uses built-in paths, not converters)."
+                     },
+                     {
+                         "i":  148,
+                         "zh":  "\u003cparam name=\"src\"\u003e源实体（Level=High）\u003c/param\u003e",
+                         "en":  "\u003cparam name=\"src\"\u003eSource entity (Level=High)\u003c/param\u003e"
+                     },
+                     {
+                         "i":  149,
+                         "zh":  "\u003creturns\u003e(正向 DTO, 空串反向异常, 成员名反向实体, 转换器调用计数) 对照\u003c/returns\u003e",
+                         "en":  "\u003creturns\u003e(Forward DTO, reverse mapping exception on empty string, reverse-mapped entity from member name, converter invocation count) comparison\u003c/returns\u003e"
+                     },
+                     {
+                         "i":  150,
+                         "zh":  "反向空串：内建路径抛 MapException；反向成员名：内建解析（ignoreCase）",
+                         "en":  "Reverse empty string: built-in path throws MapException; reverse member name: built-in parsing (case-insensitive)"
+                     },
+                     {
+                         "i":  152,
+                         "zh":  "F9 — string→enum 空串/可空语义：非成员名正常解析；空串抛 MapException；",
+                         "en":  "F9 — string→enum empty string/nullable semantics: non-member names parse normally; empty string throws MapException;"
+                     },
+                     {
+                         "i":  153,
+                         "zh":  "可空枚举 null 反向保持 null（解析不依赖区域设置）。",
+                         "en":  "Nullable enum null remains null in reverse mapping (parsing is culture-independent)."
+                     },
+                     {
+                         "i":  155,
+                         "zh":  "\u003cparam name=\"dto\"\u003estring 侧 DTO（三种文本形态）\u003c/param\u003e",
+                         "en":  "\u003cparam name=\"dto\"\u003eString-side DTO (three textual forms)\u003c/param\u003e"
+                     },
+                     {
+                         "i":  156,
+                         "zh":  "\u003creturns\u003e反向写回实体\u003c/returns\u003e",
+                         "en":  "\u003creturns\u003eReverse-mapped entity\u003c/returns\u003e"
+                     },
+                     {
+                         "i":  157,
+                         "zh":  "===== 场景注册入口=====",
+                         "en":  "===== Scene Registration Entry Point ====="
+                     },
+                     {
+                         "i":  158,
+                         "zh":  "MapListInto：预分配 + 复用循环演示（第二页仅 1 条，验证超量槽位保持原值 C3）",
+                         "en":  "MapListInto: Pre-allocation + reuse-loop demonstration (second page has only 1 item, verifying that excess slots retain original values, e.g., C3)"
+                     },
+                     {
+                         "i":  159,
+                         "zh":  "复用循环（how-to/mapping/map-list-into.md「复用循环」节演示）：多页逐轮填充同一数组",
+                         "en":  "Reuse loop (demonstrated in how-to/mapping/map-list-into.md \u0027Reuse Loop\u0027 section): multi-page sequential filling of the same array"
+                     },
+                     {
+                         "i":  160,
+                         "zh":  "期望值：特性 [MapIgnore(Direction.ToEntity)] 移交断言——BasicMapping_MapIgnore region 契约：",
+                         "en":  "Direct reverse-call extension"
+                     },
+                     {
+                         "i":  161,
+                         "zh":  "DisplayLabel 被 ToEntity 忽略的物理形态 = CustomerEntity 侧无该属性（编译期即排除），反向映射不阻断、",
+                         "en":  "[ConvertBack] round-trip conversion"
+                     },
+                     {
+                         "i":  162,
+                         "zh":  "其余字段照常落位",
+                         "en":  "JSON field mapping"
+                     },
+                     {
+                         "i":  163,
+                         "zh":  "反向直调扩展",
+                         "en":  "Runtime collection-index path mapping"
+                     },
+                     {
+                         "i":  164,
+                         "zh":  "[ConvertBack] 往返",
+                         "en":  "Reverse write-back dot-path"
+                     },
+                     {
+                         "i":  165,
+                         "zh":  "JSON 字段映射",
+                         "en":  "F3: Reverse mapping by default does not consume [Convert] attributes"
+                     },
+                     {
+                         "i":  166,
+                         "zh":  "集合索引路径运行时映射",
+                         "en":  "F9: string→enum empty string/nullable semantics (empty string throws MapException)"
+                     },
+                     {
+                         "i":  167,
+                         "zh":  "反向写回点路径",
+                         "en":  "Dot-path and direct reverse-call overview"
+                     },
+                     {
+                         "i":  168,
+                         "zh":  "F3：反向映射默认不消费 [Convert]",
+                         "en":  "The returned value is pattern ③ (callback-enabled creation): the callback writes Name as [Eve] — assert that both callback and reverse mapping take effect simultaneously"
+                     },
+                     {
+                         "i":  169,
+                         "zh":  "F9：string→enum 空串/可空语义（空串抛 MapException）",
+                         "en":  "===== 6. Dot-Path and Reverse Extension Overview ====="
+                     },
+                     {
+                         "i":  171,
+                         "zh":  "返回的是③带回调新建形态：回调把 Name 写为 [Eve]——断言回调与反向映射同时生效",
+                         "en":  "Dot-path and flattening: nested source path value extraction — AddressCity ← Address.City (PascalCase flattening)."
+                     },
+                     {
+                         "i":  173,
+                         "zh":  "Map(src, action)：带回调重载（场景契约「回调」语义）",
+                         "en":  "\u003cparam name=\"src\"\u003eSource entity containing nested Address\u003c/param\u003e"
+                     },
+                     {
+                         "i":  174,
+                         "zh":  "#3 Map(src, tgt)：更新已有对象重载（README 201 段「更新已有对象」）",
+                         "en":  "\u003creturns\u003eFlattened DTO\u003c/returns\u003e"
+                     },
+                     {
+                         "i":  176,
+                         "zh":  "#6 MapListInto<S,T>：复用预分配目标数组 + 越界槽位保持（README 201 段「MapListInto 复用」「越界槽位保持演示」；",
+                         "en":  "Six overloads of direct reverse-call overview: source generator produces dto.MapToXxxEntity family for each [MapFrom] DTO."
+                     },
+                     {
+                         "i":  177,
+                         "zh":  "签名 Mapper.MapListInto<TSource, TTarget>(IList<TSource> sources, TTarget[] destination)）",
+                         "en":  "(① Create new, ② Update existing, ③ Callback-enabled create, ④ Callback-enabled update, ⑤ List create, ⑥ Callback-enabled list)"
+                     },
+                     {
+                         "i":  179,
+                         "zh":  "#25 特性异名 [MapProperty(Name→DisplayName)]（UserDetailDto.cs:22；形态级缺口补强）",
+                         "en":  "\u003cparam name=\"src\"\u003eSource DTO\u003c/param\u003e"
+                     },
+                     {
+                         "i":  180,
+                         "zh":  "#26 特性 [Convert]（UserDetailDto.cs:46 RegisterDate ← CreatedAt 经 DateTimeFormatter；形态级缺口补强）",
+                         "en":  "\u003creturns\u003eReverse-mapped result (callback-enabled create form)\u003c/returns\u003e"
+                     },
+                     {
+                         "i":  181,
+                         "zh":  "#39 特性 IsFromJson（JsonFieldModels.cs:54 ShippingAddressJson→ShippingAddress 反序列化；形态级缺口补强）",
+                         "en":  "① Create new entity"
+                     },
+                     {
+                         "i":  182,
+                         "zh":  "===== 6. 点路径与反向扩展巡览=====",
+                         "en":  "② Update existing entity"
+                     },
+                     {
+                         "i":  183,
+                         "zh":  "<summary>",
+                         "en":  "③ Create with callback"
+                     },
+                     {
+                         "i":  184,
+                         "zh":  "点路径与扁平化：嵌套源路径取值——AddressCity ← Address.City（PascalCase 扁平化）。",
+                         "en":  "④ Update with callback"
+                     },
+                     {
+                         "i":  185,
+                         "zh":  "</summary>",
+                         "en":  "⑤ Batch create"
+                     },
+                     {
+                         "i":  186,
+                         "zh":  "<param name=\"src\">含嵌套 Address 的源实体</param>",
+                         "en":  "⑥ Batch create with callback"
+                     },
+                     {
+                         "i":  187,
+                         "zh":  "<returns>扁平化 DTO</returns>",
+                         "en":  "\u003csummary\u003ePoint-path demonstration DTO (flattened properties ← nested source path; model within attribute channel domain).\u003c/summary\u003e"
+                     },
+                     {
+                         "i":  188,
+                         "zh":  "<summary>",
+                         "en":  "\u003csummary\u003eFlattened property: nested source path Address.City.\u003c/summary\u003e"
+                     },
+                     {
+                         "i":  189,
+                         "zh":  "反向直调六重载巡览：源生成器为每个 [MapFrom] DTO 生成的 dto.MapToXxxEntity 族",
+                         "en":  "\u003csummary\u003eFlattened property: nested source path Address.Street.\u003c/summary\u003e"
+                     }
+                 ]
+}

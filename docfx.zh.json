@@ -1,0 +1,101 @@
+{
+  // DocFX 中文站配置（2026-09-01 双语言拆分，docfx.zh.json / docfx.en.json）。
+  // 架构：一个离线包 = 一种语言。中文站独立构建，仅含中文叙事 + 中文 API 参考，
+  // 消除中英 API 参考同站的 uid 冲突（原单站方案 547 个 DuplicateUids）。
+  //
+  // API 口径（2026-09-01 统一为 dll 生成）：中英两语 API 都用「dll + 对应语言 XML」，
+  // 中文从 csproj(701) 升级为 dll+zh-Hans XML(762，含构造器/运算符/继承成员)，与英文一致。
+  // 源由 scripts/prepare-api-src.sh 组装（复制 Release/net8.0 dll + locales/zh-Hans/NCMapper.xml
+  // → temp/zh-Hans-api-src/），须在 docfx metadata 之前执行。
+  //
+  // 离网纯净（方案 §4.4）：
+  //   1) xrefService 关闭 —— 禁止构建期联网拉取 xrefmap（构建零网络依赖）；
+  //   2) metadata.disableGitFeatures —— 禁止按 clone origin 生成「Go to Source」git 外链；
+  //   3) 外链清零 = scripts/strip-external-xref.sh（metadata 之后、build 之前）+ 审计兜底。
+  // 站内搜索：经典模板搜索索引由 ExtractSearchIndex 后处理器生成（index.json），
+  // 必须经 postProcessors 显式注册（默认不生成，搜索框将静默失效 —— 红线）。
+  "metadata": [
+    {
+      "src": [
+        {
+          "files": [ "temp/zh-Hans-api-src/*.dll" ]
+        }
+      ],
+      "dest": "docs/zh-CN/reference/api",
+      "disableGitFeatures": true
+    }
+  ],
+  "build": {
+    "content": [
+      {
+        // 注意：files 与 exclude 必须位于同一 content 对象内（分两个对象时 exclude 会被静默忽略）。
+        // 中文站只收录 zh 叙事 + zh API yml；en-US 完全不进入中文站构建。
+        "files": [
+          "docs/zh-CN/**/*.md",
+          "docs/zh-CN/reference/api/**/*.yml",
+          // 站点根导航 toc：docs/toc-zh.md 为中文站 navbar（显式 toc 声明）
+          // 2026-09-30：离线文档包只装 wiki 文档 + DEMO（samples），CONTRIBUTING.md（仓库级文件）移出
+          // 2026-10-01：navbar 三件套（toc/index/配置）收拢——toc 与 index 移入 docs/，
+          // 仅 docfx.<lang>.json 留仓库根（DocFX 的 ~ 基准绑定配置所在目录，无法下移）。
+          "docs/toc-zh.md"
+        ],
+        "toc": "docs/toc-zh.md",
+        // 导航分工：docs/toc-zh.md = 站点 navbar；docs/zh-CN/toc.md = 内容目录。
+        // 注：分工声明无法写入 toc.md 文件头——docfx markdown TOC 语法严格（blockquote/HTML 注释
+        // 均报 InvalidMarkdownToc，--warningsAsErrors 下构建失败实测），故声明落本配置注释
+        "exclude": [
+          // 原主技术文档（3000+ 行单体）：内容已拆入 reference/ 与 explanation/，不入站点
+          "docs/zh-CN/documentation/**",
+          // wiki 镜像目录（若存在）：站点导航由 DocFX toc 承担
+          "docs/zh-CN/wiki/**",
+          // 含全站唯一外链（仓库主页自引用），与零外链策略冲突
+          "docs/zh-CN/reference/competitors.md",
+          // wiki 侧边栏残留工件，与站点 toc 重复
+          "docs/zh-CN/how-to/_Sidebar.md",
+          // wiki 遗留首页：无扩展名链接在 DocFX 下全部 InvalidFileLink
+          "docs/zh-CN/how-to/Home.md"
+        ]
+      }
+    ],
+    "resource": [
+      {
+        "files": [
+          "docs/zh-CN/assets/**",
+          // 站点根跳转页：源在 docs/（2026-10-01 起）。DocFX 按源路径拷贝为 <site>/docs/index.html，
+          // 打包脚本 build-offline-docs.sh 再搬移到站点根 index.html（离线包默认文件要求）。
+          // 页面内链接按「站点根」视角书写（docs/zh-CN/index.html），搬移后即正确。
+          "docs/index.html",
+          "LICENSE",
+          // 2026-09-30：离线文档包只装 wiki 文档 + DEMO（samples），CHANGELOG.md（仓库级文件）移出
+          "samples/NCMapper.AotSample/README.md",
+          "samples/NCMapper.Samples/README.md",
+          // 存量清零：原 02_ComposeMapping/04_Projection 为重编号前失效路径（静默漂移实证），
+          // 修至迁移后实态域目录
+          "samples/NCMapper.Samples/03-Compose/ComposeScenarios.cs",
+          "samples/NCMapper.Samples/05-Orm/FreeSqlScenarios.cs",
+          "src/NCMapper/MaskProvider.cs"
+          // 原主技术文档单体 resource 随工件物理删除移除（内容已拆入 reference/ 与 explanation/）
+        ]
+      }
+    ],
+    "output": "temp/site-zh",
+    // 后处理器：生成站内搜索索引 index.json（lunr，模板 search-worker.min.js 消费）
+    "postProcessors": [ "ExtractSearchIndex" ],
+    // 模板：内置 default（classic）+ 自定义 templates/（覆盖 styles/search-worker.min.js，
+    // B1 中文搜索修复 —— CJK 2-gram + Unicode trimmer）
+    // 内容区加宽（2026-09-30 用户请求）：经 templates/styles/main.css 覆盖 default 模板空文件
+    // （Bootstrap 3 .container ≥1200px 视口 1170px → 1300px）；main.css 位于
+    // vendor/docfx.css 之后加载，同优先级下后加载生效
+    "template": [ "default", "templates" ],
+    "globalMetadata": {
+      "_appTitle": "NCMapper",
+      "_appFooter": "<span>NCMapper 文档 · 由 DocFX 构建</span>",
+      "_appBreadcrumbs": true,
+      "_enableSearchEngine": true,
+      "_lang": "zh-CN",
+      // 零外链门禁：关闭 classic 模板 git-contribution 渲染的「Edit this page」外链按钮
+      "_disableContribution": true
+    },
+    "xrefService": []
+  }
+}

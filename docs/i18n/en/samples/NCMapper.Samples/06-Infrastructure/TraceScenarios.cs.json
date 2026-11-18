@@ -1,0 +1,182 @@
+{
+    "source":  "samples/NCMapper.Samples/06-Infrastructure/TraceScenarios.cs",
+    "language":  "en",
+    "generatedFrom":  "bcbb249688650de8a99cd8ec10865a953f48badcc1264c293d827a4a42a41896",
+    "comments":  [
+                     {
+                         "i":  1,
+                         "zh":  "场景 607 — 映射追踪：",
+                         "en":  "Scenario 607 — Mapping Tracing:"
+                     },
+                     {
+                         "i":  2,
+                         "zh":  "全局 TraceEnabled 开关全流程 + 按调用 MapTraceOptions.Enable(writer) 单次报告。",
+                         "en":  "Global TraceEnabled switch applied end-to-end + per-call MapTraceOptions.Enable(writer) for single-report tracing."
+                     },
+                     {
+                         "i":  3,
+                         "zh":  "Trace 输出重定向到内存 TextWriter 断言，不污染控制台与其他场景。",
+                         "en":  "Trace output is redirected to an in-memory TextWriter for assertion, avoiding console pollution and interference with other scenarios."
+                     },
+                     {
+                         "i":  5,
+                         "zh":  "\u003csummary\u003e追踪演示客户实体（嵌套映射源）。\u003c/summary\u003e",
+                         "en":  "\u003csummary\u003eTracing demonstration of the Customer entity (nested mapping source).\u003c/summary\u003e"
+                     },
+                     {
+                         "i":  6,
+                         "zh":  "\u003csummary\u003e城市。\u003c/summary\u003e",
+                         "en":  "\u003csummary\u003eCity.\u003c/summary\u003e"
+                     },
+                     {
+                         "i":  7,
+                         "zh":  "\u003csummary\u003e追踪演示客户 DTO（嵌套映射目标）。\u003c/summary\u003e",
+                         "en":  "\u003csummary\u003eTracing demonstration of the Customer DTO (nested mapping destination).\u003c/summary\u003e"
+                     },
+                     {
+                         "i":  8,
+                         "zh":  "\u003csummary\u003e城市。\u003c/summary\u003e",
+                         "en":  "\u003csummary\u003eCity.\u003c/summary\u003e"
+                     },
+                     {
+                         "i":  9,
+                         "zh":  "\u003csummary\u003e追踪演示源实体——四类映射方式各占一个属性（direct/nested/convert/skipped）。\u003c/summary\u003e",
+                         "en":  "\u003csummary\u003eTracing demonstration of the source entity — four mapping methods each assigned to one property (direct/nested/convert/skipped).\u003c/summary\u003e"
+                     },
+                     {
+                         "i":  10,
+                         "zh":  "\u003csummary\u003e主键（direct：同名同型直赋）。\u003c/summary\u003e",
+                         "en":  "\u003csummary\u003ePrimary key (direct: same name and type, direct assignment).\u003c/summary\u003e"
+                     },
+                     {
+                         "i":  11,
+                         "zh":  "\u003csummary\u003e标题（direct）。\u003c/summary\u003e",
+                         "en":  "\u003csummary\u003eTitle (direct).\u003c/summary\u003e"
+                     },
+                     {
+                         "i":  12,
+                         "zh":  "\u003csummary\u003e下单时间（convert：[Convert] 格式化为字符串）。\u003c/summary\u003e",
+                         "en":  "\u003csummary\u003eOrder time (convert: formatted as string using [Convert] attribute).\u003c/summary\u003e"
+                     },
+                     {
+                         "i":  13,
+                         "zh":  "\u003csummary\u003e客户（nested：嵌套对象映射）。\u003c/summary\u003e",
+                         "en":  "\u003csummary\u003eCustomer (nested: nested object mapping).\u003c/summary\u003e"
+                     },
+                     {
+                         "i":  14,
+                         "zh":  "\u003csummary\u003e密钥（skipped：[MapIgnore] 忽略）。\u003c/summary\u003e",
+                         "en":  "\u003csummary\u003eKey (skipped: ignored via [MapIgnore]).\u003c/summary\u003e"
+                     },
+                     {
+                         "i":  15,
+                         "zh":  "\u003csummary\u003e追踪演示 DTO。\u003c/summary\u003e",
+                         "en":  "\u003csummary\u003eTracing demonstration of the DTO.\u003c/summary\u003e"
+                     },
+                     {
+                         "i":  16,
+                         "zh":  "\u003csummary\u003e主键（direct）。\u003c/summary\u003e",
+                         "en":  "\u003csummary\u003ePrimary key (direct).\u003c/summary\u003e"
+                     },
+                     {
+                         "i":  17,
+                         "zh":  "\u003csummary\u003e标题（direct）。\u003c/summary\u003e",
+                         "en":  "\u003csummary\u003eTitle (direct).\u003c/summary\u003e"
+                     },
+                     {
+                         "i":  18,
+                         "zh":  "\u003csummary\u003e下单时间（convert：静态转换器格式化）。\u003c/summary\u003e",
+                         "en":  "\u003csummary\u003eOrder time (convert: formatted using a static converter).\u003c/summary\u003e"
+                     },
+                     {
+                         "i":  19,
+                         "zh":  "\u003csummary\u003e客户（nested）。\u003c/summary\u003e",
+                         "en":  "\u003csummary\u003eCustomer (nested).\u003c/summary\u003e"
+                     },
+                     {
+                         "i":  20,
+                         "zh":  "\u003csummary\u003e密钥（skipped：MapIgnore）。\u003c/summary\u003e",
+                         "en":  "\u003csummary\u003eKey (skipped: ignored via MapIgnore).\u003c/summary\u003e"
+                     },
+                     {
+                         "i":  21,
+                         "zh":  "\u003csummary\u003e追踪演示日期转换器（T1 模板）。\u003c/summary\u003e",
+                         "en":  "\u003csummary\u003eTracing demonstration of the date converter (T1 template).\u003c/summary\u003e"
+                     },
+                     {
+                         "i":  22,
+                         "zh":  "\u003csummary\u003eDateTime → yyyy-MM-dd 字符串。\u003c/summary\u003e",
+                         "en":  "\u003csummary\u003eDateTime → yyyy-MM-dd string.\u003c/summary\u003e"
+                     },
+                     {
+                         "i":  23,
+                         "zh":  "\u003cparam name=\"value\"\u003e源时间\u003c/param\u003e",
+                         "en":  "\u003cparam name=\"value\"\u003eSource DateTime value\u003c/param\u003e"
+                     },
+                     {
+                         "i":  24,
+                         "zh":  "\u003creturns\u003e格式化文本\u003c/returns\u003e",
+                         "en":  "\u003creturns\u003eFormatted text\u003c/returns\u003e"
+                     },
+                     {
+                         "i":  26,
+                         "zh":  "映射追踪场景集（06-Infra 域，607）。",
+                         "en":  "Mapping tracing scenario suite (06-Infra domain, 607)."
+                     },
+                     {
+                         "i":  28,
+                         "zh":  "\u003csummary\u003e场景 607 入口（ScenarioRegistry 注册）。\u003c/summary\u003e",
+                         "en":  "\u003csummary\u003eEntry point for Scenario 607 (registered in ScenarioRegistry).\u003c/summary\u003e"
+                     },
+                     {
+                         "i":  30,
+                         "zh":  "全局 TraceEnabled 开关全流程：开启 → LogCallback 收集 → 映射 → 断言 → 关闭恢复。",
+                         "en":  "Global TraceEnabled toggle workflow: enable → LogCallback collection → mapping → assertion → disable and restore."
+                     },
+                     {
+                         "i":  32,
+                         "zh":  "Enable: global switch + callback channel (Trace content is written to both GlobalOutput and the callback)",
+                         "en":  "Enable: global toggle + callback channel (Trace content is written simultaneously to GlobalOutput and the callback)."
+                     },
+                     {
+                         "i":  33,
+                         "zh":  "Restore off: Trace is a global diagnostic surface; it must be turned off after use to avoid polluting other scenarios",
+                         "en":  "Disable and restore: Trace is a global diagnostic surface; it must be disabled after use to avoid polluting other scenarios."
+                     },
+                     {
+                         "i":  34,
+                         "zh":  "Assert: mapping-pair markers captured (type names appear in Trace output); failure means Error Summary -> exit code 1",
+                         "en":  "Assertion: capture mapping markers (type names appearing in Trace output); failure triggers an Error Summary → exit code 1."
+                     },
+                     {
+                         "i":  36,
+                         "zh":  "按调用追踪报告：MapTraceOptions.Enable(writer) 捕获到内存后做包含检查——",
+                         "en":  "Call-trace-based reporting: MapTraceOptions.Enable(writer) captures trace data in memory and performs inclusion checks."
+                     },
+                     {
+                         "i":  37,
+                         "zh":  "报告应覆盖四类映射方式标记（direct / nested / convert / skipped (MapIgnore)）。",
+                         "en":  "The report must cover markers for all four mapping methods: direct, nested, convert, and skipped (MapIgnore)."
+                     },
+                     {
+                         "i":  39,
+                         "zh":  "Trace is a forced-analysis mode (ignores the switch; the report is delivered via the return value -- not written to options.Output)",
+                         "en":  "Trace operates in forced analysis mode (ignores toggles; reports are delivered via return value—not written to options.Output)."
+                     },
+                     {
+                         "i":  40,
+                         "zh":  "Assert: all four mapping-kind markers appear (direct/nested/convert/skipped); a miss means non-zero exit code",
+                         "en":  "Assertion: all four mapping method markers (direct, nested, convert, skipped) must appear; missing any results in a non-zero exit code."
+                     },
+                     {
+                         "i":  41,
+                         "zh":  "\u003csummary\u003e构造四类映射方式齐备的源实体。\u003c/summary\u003e",
+                         "en":  "\u003csummary\u003eConstruct a source entity that fully supports all four mapping methods.\u003c/summary\u003e"
+                     },
+                     {
+                         "i":  42,
+                         "zh":  "\u003creturns\u003e源实体\u003c/returns\u003e",
+                         "en":  "\u003creturns\u003eThe source entity.\u003c/returns\u003e"
+                     }
+                 ]
+}

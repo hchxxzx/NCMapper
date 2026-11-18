@@ -1,0 +1,174 @@
+name: Publish to NuGet
+
+# 发布到 nuget.org 的唯一通道。
+#
+# 触发方式：发布 GitHub Release（推荐），或手动触发（默认只演练、不推送）。
+#
+# 认证：NuGet Trusted Publishing（用 OIDC 换取短时凭证），不存储任何长期 API Key。
+#   nuget.org 自 2026-08-17 起把 API Key 有效期上限收紧到 30 天，且 2026-11-01 起
+#   在此之前创建的所有 Key 一律失效，因此不采用长期密钥方案。
+#
+#   使用前需在 nuget.org 侧完成一次性配置：
+#     1. 登录 nuget.org → 账号菜单 → Trusted Publishing → 新建策略
+#     2. Repository Owner = hchxxzx
+#        Repository       = NCMapper
+#        Workflow File    = publish.yml   （只填文件名，不含 .github/workflows/ 前缀）
+#        Environment      = release       （留空亦可，留空表示不限定环境）
+#     3. 本仓库 Settings → Secrets and variables → Actions 增加 NUGET_USER，
+#        值为 nuget.org 的用户名（个人资料名，不是邮箱地址）
+#
+#   安全提示：Trusted Publishing 策略按「所有者」生效，覆盖该账号名下的所有包。
+#   因此本工作流与构建、测试工作流相互隔离，并绑定 environment 环境以便追加人工审批：
+#   建议在仓库 Settings → Environments 建立 release 环境并配置 Required reviewers。
+#   未配置时该环境会被自动创建，且不包含审批环节。
+#
+# 发布范围：4 个包 —— NCMapper（核心）+ NCMapper.EFCore / NCMapper.FreeSql / NCMapper.Dapper。
+#   NCMapper.SourceGen 不作为独立包发布：源生成器已以 Analyzer 资产内嵌于核心包
+#   （见 src/NCMapper/NCMapper.csproj 的 analyzers/dotnet/cs 打包项）。独立的 SourceGen
+#   包把程序集放在 lib/ 而非 analyzers/，安装后不会作为编译器扩展生效，发布它只会
+#   让用户误装。核心包已经包含全部源生成能力。
+#
+# 前置纪律：Release 应从 CI 全绿的提交上打标签。本工作流只负责打包与推送，不重复跑测试。
+
+on:
+  release:
+    types: [published]
+  workflow_dispatch:
+    inputs:
+      dry_run:
+        description: '仅打包与校验，不推送到 nuget.org'
+        type: boolean
+        default: true
+
+permissions:
+  contents: read
+
+jobs:
+  publish:
+    runs-on: ubuntu-latest
+
+    # 人工审批门（可选增强）：策略为账号级，环境审批能显著收窄凭证暴露面。
+    environment: release
+
+    permissions:
+      contents: write   # 将包附加到 GitHub Release 附件
+      id-token: write   # 申请 GitHub OIDC 令牌，用于换取 NuGet 临时凭证
+
+    env:
+      SOURCE: https://api.nuget.org/v3/index.json
+
+    steps:
+    - uses: actions/checkout@v4
+
+    - name: Setup .NET
+      uses: actions/setup-dotnet@v4
+      with:
+        dotnet-version: '10.0.403'
+        global-json-file: global.json
+
+    - name: Resolve version
+      shell: bash
+      run: |
+        TAG="${{ github.event.release.tag_name }}"
+        if [ -n "$TAG" ]; then
+          VERSION="${TAG#v}"
+          echo "来源：Release 标签 $TAG"
+        else
+          VERSION=$(sed -n 's:.*<Version>\(.*\)</Version>.*:\1:p' Directory.Build.props | head -1)
+          echo "来源：源码 Directory.Build.props（手动触发）"
+        fi
+        if [ -z "$VERSION" ]; then
+          echo "::error::无法解析出版本号"
+          exit 1
+        fi
+        echo "VERSION=$VERSION" >> "$GITHUB_ENV"
+        echo "版本号：$VERSION"
+
+    - name: Restore
+      run: dotnet restore NCMapper.Lib.slnf
+
+    - name: Pack
+      run: dotnet pack NCMapper.Lib.slnf --configuration Release --no-restore --output ./nupkgs
+
+    - name: Verify packages
+      shell: pwsh
+      run: |
+        # 1) tag 版本必须与源码中的版本号一致，避免发布错版本
+        $propsVersion = (Select-String -Path './Directory.Build.props' -Pattern '<Version>([^<]+)</Version>').Matches.Groups[1].Value
+        if ($propsVersion -ne $env:VERSION) {
+          throw "版本不一致：tag 为 $env:VERSION，Directory.Build.props 为 $propsVersion"
+        }
+        Write-Host "[PASS] tag 与源码版本号一致：$env:VERSION"
+
+        # 2) 待发布的 4 个包，nupkg 与 snupkg 都必须存在
+        $published = @('NCMapper', 'NCMapper.EFCore', 'NCMapper.FreeSql', 'NCMapper.Dapper')
+        foreach ($id in $published) {
+          foreach ($ext in @('nupkg', 'snupkg')) {
+            $path = "./nupkgs/$id.$env:VERSION.$ext"
+            if (-not (Test-Path $path)) { throw "缺少待发布产物：$path" }
+          }
+        }
+        Write-Host "[PASS] 4 个待发布包的 nupkg + snupkg 齐全"
+
+        # 3) 核心包必须内含源生成器 —— 这是「引用即生效」的前提
+        Add-Type -AssemblyName System.IO.Compression.FileSystem
+        $corePkg = (Resolve-Path "./nupkgs/NCMapper.$env:VERSION.nupkg").Path
+        $zip = [System.IO.Compression.ZipFile]::OpenRead($corePkg)
+        try {
+          $analyzer = $zip.Entries | Where-Object { $_.FullName -eq 'analyzers/dotnet/cs/NCMapper.SourceGen.dll' }
+          if (-not $analyzer) { throw "核心包缺少 analyzers/dotnet/cs/NCMapper.SourceGen.dll，源生成器不会生效" }
+        } finally { $zip.Dispose() }
+        Write-Host "[PASS] 核心包内含源生成器 Analyzer 资产"
+
+        Write-Host "[INFO] 本次不发布 NCMapper.SourceGen（其能力已内嵌于核心包）"
+
+    - name: NuGet login (OIDC to short-lived API key)
+      if: github.event_name == 'release' || inputs.dry_run == false
+      uses: NuGet/login@v1
+      id: nuget-login
+      with:
+        user: ${{ secrets.NUGET_USER }}
+
+    # 先推核心包，确认它在 nuget.org 上可获取后再推扩展包 ——
+    # 扩展包对核心包是精确版本依赖，顺序颠倒会让消费者在窗口期内还原失败。
+    - name: Publish core package
+      if: github.event_name == 'release' || inputs.dry_run == false
+      env:
+        NUGET_API_KEY: ${{ steps.nuget-login.outputs.NUGET_API_KEY }}
+      run: |
+        dotnet nuget push "./nupkgs/NCMapper.$VERSION.nupkg" --api-key "$NUGET_API_KEY" --source "$SOURCE" --skip-duplicate
+        dotnet nuget push "./nupkgs/NCMapper.$VERSION.snupkg" --api-key "$NUGET_API_KEY" --source "$SOURCE" --skip-duplicate
+        echo "核心包已推送，等待其在 nuget.org 上可获取…"
+        URL="https://api.nuget.org/v3-flatcontainer/ncmapper/$VERSION/ncmapper.$VERSION.nupkg"
+        for i in $(seq 1 40); do
+          code=$(curl -s -o /dev/null -w '%{http_code}' "$URL" || true)
+          if [ "$code" = "200" ]; then
+            echo "核心包已可获取（探测第 $i 次）"
+            exit 0
+          fi
+          sleep 15
+        done
+        echo "::warning::核心包在等待窗口内未被索引，继续推送扩展包；消费者可能需要稍后重试还原"
+
+    - name: Publish extension packages
+      if: github.event_name == 'release' || inputs.dry_run == false
+      env:
+        NUGET_API_KEY: ${{ steps.nuget-login.outputs.NUGET_API_KEY }}
+      run: |
+        for ID in NCMapper.EFCore NCMapper.FreeSql NCMapper.Dapper; do
+          echo "推送 $ID $VERSION"
+          dotnet nuget push "./nupkgs/$ID.$VERSION.nupkg" --api-key "$NUGET_API_KEY" --source "$SOURCE" --skip-duplicate
+          dotnet nuget push "./nupkgs/$ID.$VERSION.snupkg" --api-key "$NUGET_API_KEY" --source "$SOURCE" --skip-duplicate
+        done
+
+    - name: Attach packages to GitHub Release
+      if: github.event_name == 'release'
+      env:
+        GH_TOKEN: ${{ secrets.GITHUB_TOKEN }}
+        TAG: ${{ github.event.release.tag_name }}
+      run: |
+        FILES=""
+        for ID in NCMapper NCMapper.EFCore NCMapper.FreeSql NCMapper.Dapper; do
+          FILES="$FILES ./nupkgs/$ID.$VERSION.nupkg ./nupkgs/$ID.$VERSION.snupkg"
+        done
+        gh release upload "$TAG" $FILES --clobber

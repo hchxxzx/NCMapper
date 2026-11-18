@@ -1,0 +1,84 @@
+name: Offline Package
+
+# 离线文档包双平台打包
+# 触发：workflow_dispatch（手动）/ release: published（发布 Release 时自动）
+# 典型用法：在 GitHub 上「发布一个 Release（打 tag）」→ 本工作流自动产出双平台离线包
+#           并作为附件挂到该 Release 上，用户打开 Releases 页即可直接下载（无需自己构建）。
+#           手动验证用 workflow_dispatch：只产 artifact，不挂 Release。
+# 双 runner job：ubuntu-latest 发 linux-x64、windows-latest 发 win-x64（NativeAOT 不支持 Windows 交叉发布 linux-x64；
+# ubuntu-latest 预装 clang/zlib 等 AOT 工具链，windows-latest 由 ci.yml 的 aot job 实证）
+# 各 job 产 zip → upload artifact（workflow_dispatch 场景）；release 场景额外 gh release upload 附件（contents: write）
+# 注意：包名版本号取 `git describe --tags`，故 release 场景须由 tag 触发（附 fetch-depth: 0 拉全量 tag）。
+on:
+  workflow_dispatch:
+  release:
+    types: [published]
+
+permissions:
+  contents: write
+
+jobs:
+  package-linux:
+    name: Package linux-x64 (ubuntu)
+    runs-on: ubuntu-latest
+    steps:
+    - uses: actions/checkout@v4
+      with:
+        # 版本号取 git describe --tags，需拉全量 tag（release 场景 tag 刚打）
+        fetch-depth: 0
+
+    - name: Setup .NET
+      uses: actions/setup-dotnet@v4
+      with:
+        dotnet-version: '10.0.403'
+        global-json-file: global.json
+
+    - name: Build offline package (linux-x64)
+      # 2026-09-01 双语言拆分：`all` 产出中英两语两个独立离线包（zh-Hans + en）
+      run: bash scripts/build-offline-docs.sh linux-x64 all
+
+    - name: Upload artifact
+      uses: actions/upload-artifact@v4
+      with:
+        name: offline-docs-linux-x64
+        path: dist/offline/*.zip
+        if-no-files-found: error
+
+    - name: Attach to release
+      if: github.event_name == 'release'
+      run: gh release upload "${{ github.event.release.tag_name }}" dist/offline/*.zip --clobber
+      env:
+        GH_TOKEN: ${{ github.token }}
+
+  package-windows:
+    name: Package win-x64 (windows)
+    runs-on: windows-latest
+    steps:
+    - uses: actions/checkout@v4
+      with:
+        fetch-depth: 0
+
+    - name: Setup .NET
+      uses: actions/setup-dotnet@v4
+      with:
+        dotnet-version: '10.0.403'
+        global-json-file: global.json
+
+    - name: Build offline package (win-x64)
+      shell: bash
+      # 2026-09-01 双语言拆分：`all` 产出中英两语两个独立离线包（zh-Hans + en）
+      run: bash scripts/build-offline-docs.sh win-x64 all
+
+    - name: Upload artifact
+      uses: actions/upload-artifact@v4
+      with:
+        name: offline-docs-win-x64
+        path: dist/offline/*.zip
+        if-no-files-found: error
+
+    - name: Attach to release
+      if: github.event_name == 'release'
+      shell: bash
+      run: gh release upload "${{ github.event.release.tag_name }}" dist/offline/*.zip --clobber
+      env:
+        GH_TOKEN: ${{ github.token }}

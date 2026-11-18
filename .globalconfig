@@ -1,0 +1,13 @@
+# 本文件为 NCMAP019（Error）的唯一可行压制通道（globalconfig 子通道），豁免范围 = 5 个
+# Trace/方向歧义载体类：
+#   AmbiguitySource/AmbiguitySourceB/AmbiguitySourceC（方向歧义 Trace 触发载体——
+#     HasDirectionalMapIgnore 直接读特性，删除标注即摧毁测试意图）
+#   F09Dto/F09V3Target（F09 方向判定受限 Trace 引导载体——同上）
+# 其余 72 类无锚惰性标注已按分类①删除（豁免下零消费实证，删除行为不变）。
+# [MapTree] 不在 019 十项清单内（类级定义、非映射对）——CategoryDto 类级
+# [MapTree] 不再属 019 域，保留在豁免注释仅存档。
+# 其他压制通道对照：editorconfig 不可行（Batch-1 六组实验）/ 单码开关机制未建 /
+# #pragma 不可行 / globalconfig 可行（本文件）。
+is_global = true
+
+dotnet_diagnostic.NCMAP019.severity = none

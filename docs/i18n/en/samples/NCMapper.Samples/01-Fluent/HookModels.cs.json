@@ -1,0 +1,252 @@
+{
+    "source":  "samples/NCMapper.Samples/01-Fluent/HookModels.cs",
+    "language":  "en",
+    "generatedFrom":  "072b8b34bb06510289b3387b9825a75e466c469c5dccf22906140f082f3429e5",
+    "comments":  [
+                     {
+                         "i":  1,
+                         "zh":  "钩子源实体（订单）——Id/Title/Qty/UnitPrice 参与自动同名映射。",
+                         "en":  "Hook source entity (Order) — Id/Title/Qty/UnitPrice participate in automatic name-matching mapping."
+                     },
+                     {
+                         "i":  3,
+                         "zh":  "\u003csummary\u003e订单主键\u003c/summary\u003e",
+                         "en":  "\u003csummary\u003eOrder primary key\u003c/summary\u003e"
+                     },
+                     {
+                         "i":  4,
+                         "zh":  "\u003csummary\u003e订单标题（含首尾空白——Before 预处理 Trim+大写）\u003c/summary\u003e",
+                         "en":  "\u003csummary\u003eOrder title (including leading/trailing whitespace — preprocessed by Before handler: Trim + Uppercase)\u003c/summary\u003e"
+                     },
+                     {
+                         "i":  5,
+                         "zh":  "\u003csummary\u003e数量\u003c/summary\u003e",
+                         "en":  "\u003csummary\u003eQuantity\u003c/summary\u003e"
+                     },
+                     {
+                         "i":  6,
+                         "zh":  "\u003csummary\u003e单价\u003c/summary\u003e",
+                         "en":  "\u003csummary\u003eUnit price\u003c/summary\u003e"
+                     },
+                     {
+                         "i":  8,
+                         "zh":  "Fluent 侧钩子 DTO——NormalizedTitle/Total 为派生字段（无源侧同名属性，钩子写入不被映射覆盖）；",
+                         "en":  "Fluent-side hook DTO — NormalizedTitle/Total are derived fields (no corresponding source-side properties with identical names; hook writes are not overwritten by mapping)."
+                     },
+                     {
+                         "i":  9,
+                         "zh":  "可变属性（set 访问器）——_Update 形态生成的前提。",
+                         "en":  "Mutable property (with setter accessor) — prerequisite for generating the _Update pattern."
+                     },
+                     {
+                         "i":  11,
+                         "zh":  "\u003csummary\u003e订单主键（自动同名映射）\u003c/summary\u003e",
+                         "en":  "\u003csummary\u003eOrder primary key (mapped automatically by name matching)\u003c/summary\u003e"
+                     },
+                     {
+                         "i":  12,
+                         "zh":  "\u003csummary\u003e标题（自动同名映射，原样复制——Before 预处理只写派生字段，不碰映射将写的属性）\u003c/summary\u003e",
+                         "en":  "\u003csummary\u003eTitle (mapped automatically by name matching, copied verbatim — Before preprocessing writes only derived fields and does not modify properties targeted for mapping)\u003c/summary\u003e"
+                     },
+                     {
+                         "i":  13,
+                         "zh":  "\u003csummary\u003e数量（自动同名映射）\u003c/summary\u003e",
+                         "en":  "\u003csummary\u003eQuantity (mapped automatically by name matching)\u003c/summary\u003e"
+                     },
+                     {
+                         "i":  14,
+                         "zh":  "\u003csummary\u003e派生字段（无源侧同名属性）：BeforeMapping 在赋值前写入，映射不覆盖\u003c/summary\u003e",
+                         "en":  "\u003csummary\u003eDerived field (no corresponding source-side property with identical name): BeforeMapping writes before assignment; mapping does not overwrite.\u003c/summary\u003e"
+                     },
+                     {
+                         "i":  15,
+                         "zh":  "\u003csummary\u003e派生字段（无源侧同名属性）：AfterMapping 在映射完成后计算写入\u003c/summary\u003e",
+                         "en":  "\u003csummary\u003eDerived field (no corresponding source-side property with identical name): AfterMapping computes and writes after mapping completes.\u003c/summary\u003e"
+                     },
+                     {
+                         "i":  17,
+                         "zh":  "钩子宿主类——Before/After 回调方法组（须 public/internal static + 与生成代码同程序集可见）。",
+                         "en":  "Hook host class — group of Before/After callback methods (must be public/internal static and visible within the same assembly as the generated code)."
+                     },
+                     {
+                         "i":  18,
+                         "zh":  "每映射对一组方法：签名第二参为该对的 DTO 类型（方法签名即适用范围声明，D-d）。",
+                         "en":  "One method group per mapping pair: second parameter of signature is the DTO type for that pair (method signature declares applicability scope, D-to-D)."
+                     },
+                     {
+                         "i":  21,
+                         "zh":  "Fluent 对前置钩子——dst 已构造、属性尚未填充：写派生字段（源驱动预处理）；",
+                         "en":  "Fluent-side pre-hook — destination (dst) is already constructed but properties are not yet populated: write derived fields (source-driven preprocessing)."
+                     },
+                     {
+                         "i":  22,
+                         "zh":  "顺带记录 Before 时刻 dst.Title 的可见值（新建 = 初始化器默认，_Update = dst 旧值）。",
+                         "en":  "Concurrently record the observable value of dst.Title at the Before moment (new instance = initializer default; _Update = previous dst value)."
+                     },
+                     {
+                         "i":  24,
+                         "zh":  "\u003cparam name=\"src\"\u003e源实体\u003c/param\u003e",
+                         "en":  "\u003cparam name=\"src\"\u003eSource entity\u003c/param\u003e"
+                     },
+                     {
+                         "i":  25,
+                         "zh":  "\u003cparam name=\"dst\"\u003e目标 DTO（构造后未填充）\u003c/param\u003e",
+                         "en":  "\u003cparam name=\"dst\"\u003eTarget DTO (constructed but not yet populated)\u003c/param\u003e"
+                     },
+                     {
+                         "i":  27,
+                         "zh":  "Fluent 对后置钩子——映射完成：计算派生字段 Total（数量×单价）。",
+                         "en":  "Fluent-side post-hook — mapping completed: compute and write derived field Total (Quantity × UnitPrice)."
+                     },
+                     {
+                         "i":  29,
+                         "zh":  "\u003cparam name=\"src\"\u003e源实体\u003c/param\u003e",
+                         "en":  "\u003cparam name=\"src\"\u003eSource entity\u003c/param\u003e"
+                     },
+                     {
+                         "i":  30,
+                         "zh":  "\u003cparam name=\"dst\"\u003e目标 DTO（已映射）\u003c/param\u003e",
+                         "en":  "\u003cparam name=\"dst\"\u003eTarget DTO (already mapped)\u003c/param\u003e"
+                     },
+                     {
+                         "i":  31,
+                         "zh":  "\u003csummary\u003e特性对前置钩子——签名 (HookOrderEntity, AttrHookDto)，与 Fluent 对方法区分。\u003c/summary\u003e",
+                         "en":  "\u003csummary\u003eAttribute-based pre-hook — signature (HookOrderEntity, AttrHookDto), distinguished from Fluent-style methods.\u003c/summary\u003e"
+                     },
+                     {
+                         "i":  32,
+                         "zh":  "\u003cparam name=\"src\"\u003e源实体\u003c/param\u003e",
+                         "en":  "\u003cparam name=\"src\"\u003eSource entity\u003c/param\u003e"
+                     },
+                     {
+                         "i":  33,
+                         "zh":  "\u003cparam name=\"dst\"\u003e目标 DTO（构造后未填充）\u003c/param\u003e",
+                         "en":  "\u003cparam name=\"dst\"\u003eTarget DTO (constructed but not yet populated)\u003c/param\u003e"
+                     },
+                     {
+                         "i":  34,
+                         "zh":  "\u003csummary\u003e特性对后置钩子——签名 (HookOrderEntity, AttrHookDto)。\u003c/summary\u003e",
+                         "en":  "\u003csummary\u003eAttribute-based post-hook — signature (HookOrderEntity, AttrHookDto).\u003c/summary\u003e"
+                     },
+                     {
+                         "i":  35,
+                         "zh":  "\u003cparam name=\"src\"\u003e源实体\u003c/param\u003e",
+                         "en":  "\u003cparam name=\"src\"\u003eSource entity\u003c/param\u003e"
+                     },
+                     {
+                         "i":  36,
+                         "zh":  "\u003cparam name=\"dst\"\u003e目标 DTO（已映射）\u003c/param\u003e",
+                         "en":  "\u003cparam name=\"dst\"\u003eTarget DTO (already mapped)\u003c/param\u003e"
+                     },
+                     {
+                         "i":  38,
+                         "zh":  "钩子执行相位日志（场景断言 Before→赋值→After 次序与可见值）。",
+                         "en":  "Hook execution phase logging (scenario assertion: Before → assignment → After order and visible values)."
+                     },
+                     {
+                         "i":  40,
+                         "zh":  "\u003csummary\u003e相位序列（\"Before\"/\"After\" 按执行序追加）\u003c/summary\u003e",
+                         "en":  "\u003csummary\u003ePhase sequence (\"Before\"/\"After\" appended in execution order)\u003c/summary\u003e"
+                     },
+                     {
+                         "i":  41,
+                         "zh":  "\u003csummary\u003eBefore 时刻 dst.Title 的可见值\u003c/summary\u003e",
+                         "en":  "\u003csummary\u003eVisible value of dst.Title at the Before phase\u003c/summary\u003e"
+                     },
+                     {
+                         "i":  42,
+                         "zh":  "\u003csummary\u003e清空（每子场景调用）\u003c/summary\u003e",
+                         "en":  "\u003csummary\u003eClear (invoked per sub-scenario)\u003c/summary\u003e"
+                     },
+                     {
+                         "i":  44,
+                         "zh":  "Fluent 侧钩子 Mapper（对应 how-to/fluent/hooks.md「BeforeMapping/AfterMapping」节）——",
+                         "en":  "Fluent-side hook mapper (corresponding to the \"BeforeMapping/AfterMapping\" section in how-to/fluent/hooks.md) —"
+                     },
+                     {
+                         "i":  45,
+                         "zh":  "Before/After 双钩子连写（方法组编译期绑定）。",
+                         "en":  "Chained Before/After dual hooks (method group bound at compile time)."
+                     },
+                     {
+                         "i":  47,
+                         "zh":  "\u003csummary\u003e链式声明入口（方法名任意，签名固定）\u003c/summary\u003e",
+                         "en":  "\u003csummary\u003eFluent chain declaration entry point (method name arbitrary, signature fixed)\u003c/summary\u003e"
+                     },
+                     {
+                         "i":  48,
+                         "zh":  "\u003cparam name=\"cfg\"\u003eFluent 配置根\u003c/param\u003e",
+                         "en":  "\u003cparam name=\"cfg\"\u003eFluent configuration root\u003c/param\u003e"
+                     },
+                     {
+                         "i":  50,
+                         "zh":  "跨源过滤演示源（D-d：钩子随 DTO、按方法签名适用逐对生效——",
+                         "en":  "Cross-source filtering demonstration source (D-d: hooks travel with DTOs and are applied pairwise according to method signatures —"
+                     },
+                     {
+                         "i":  51,
+                         "zh":  "本源与 AttrHookDto 的 Fluent 对签名不匹配，特性侧钩子经跨对传播注入后被过滤，不发射、不发诊断）。",
+                         "en":  "This source and AttrHookDto have mismatched Fluent signatures; attribute-side hooks, after cross-pair propagation injection, are filtered out and neither executed nor diagnosed."
+                     },
+                     {
+                         "i":  53,
+                         "zh":  "\u003csummary\u003e备注（跨对绑定 Title）\u003c/summary\u003e",
+                         "en":  "\u003csummary\u003eRemark (cross-pair binding for Title)\u003c/summary\u003e"
+                     },
+                     {
+                         "i":  55,
+                         "zh":  "特性侧钩子 Mapper（对应 how-to/fluent/hooks.md「BeforeMapping/AfterMapping」节的特性通道）——",
+                         "en":  "Attribute-side hook mapper (corresponding to the attribute channel in the \"BeforeMapping/AfterMapping\" section of how-to/fluent/hooks.md) —"
+                     },
+                     {
+                         "i":  56,
+                         "zh":  "[BeforeMapping]/[AfterMapping] 类级特性（双参宿主形态）+ [MapFrom] 锚定；Inherited=false 不随继承传播。",
+                         "en":  "[BeforeMapping]/[AfterMapping] class-level attributes (two-parameter host form) + [MapFrom] anchoring; Inherited=false prevents propagation via inheritance."
+                     },
+                     {
+                         "i":  58,
+                         "zh":  "\u003csummary\u003e链式声明入口\u003c/summary\u003e",
+                         "en":  "\u003csummary\u003eChain declaration entry point\u003c/summary\u003e"
+                     },
+                     {
+                         "i":  59,
+                         "zh":  "\u003cparam name=\"cfg\"\u003eFluent 配置根\u003c/param\u003e",
+                         "en":  "\u003cparam name=\"cfg\"\u003eFluent configuration root\u003c/param\u003e"
+                     },
+                     {
+                         "i":  61,
+                         "zh":  "特性侧钩子 DTO——与 Fluent 侧填充同构的派生字段（双通道等价）；",
+                         "en":  "Attribute-side hook DTO — derived fields populated identically to Fluent-side (equivalent dual-channel behavior);"
+                     },
+                     {
+                         "i":  62,
+                         "zh":  "钩子随 DTO：HookOrderEntity→AttrHookDto 对签名匹配发射，HookNoteSource→AttrHookDto 对签名不匹配不发射。",
+                         "en":  "Hooks travel with DTOs: HookOrderEntity → AttrHookDto pair matches signatures and triggers hooks; HookNoteSource → AttrHookDto pair mismatches signatures and suppresses hook execution."
+                     },
+                     {
+                         "i":  64,
+                         "zh":  "\u003csummary\u003e订单主键（自动同名映射）\u003c/summary\u003e",
+                         "en":  "\u003csummary\u003eOrder primary key (automatically mapped by identical name)\u003c/summary\u003e"
+                     },
+                     {
+                         "i":  65,
+                         "zh":  "\u003csummary\u003e标题（自动同名映射）\u003c/summary\u003e",
+                         "en":  "\u003csummary\u003eTitle (automatically mapped by identical name)\u003c/summary\u003e"
+                     },
+                     {
+                         "i":  66,
+                         "zh":  "\u003csummary\u003e数量（自动同名映射）\u003c/summary\u003e",
+                         "en":  "\u003csummary\u003eQuantity (automatically mapped by identical name)\u003c/summary\u003e"
+                     },
+                     {
+                         "i":  67,
+                         "zh":  "\u003csummary\u003e派生字段：BeforeMapping 写入\u003c/summary\u003e",
+                         "en":  "\u003csummary\u003eDerived field: written by BeforeMapping\u003c/summary\u003e"
+                     },
+                     {
+                         "i":  68,
+                         "zh":  "\u003csummary\u003e派生字段：AfterMapping 写入\u003c/summary\u003e",
+                         "en":  "\u003csummary\u003eDerived field: written by AfterMapping\u003c/summary\u003e"
+                     }
+                 ]
+}

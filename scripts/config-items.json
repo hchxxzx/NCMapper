@@ -1,0 +1,99 @@
+{
+  "meta": {
+    "generator": "gen-global-config.ps1",
+    "items": 11,
+    "typeClass": { "Enum": 1, "StringList": 8, "TypeList": 2 },
+    "note": "全局配置族单一事实来源。默认值均为'未设置'（int -1 / string[]? null），清单不写默认字面量。"
+  },
+  "items": [
+    {
+      "msbuildName": "NCMapperNamingStrategy",
+      "attrName": "NamingStrategy",
+      "snapshotName": "NamingStrategy",
+      "type": "Enum",
+      "attrDefault": " = NamingStrategy.Default",
+      "convert": "特性侧 NamingStrategy 枚举 → 快照侧 int（Default=0 / CaseSensitive=1 / SnakeCase=2 / UpperSnakeCase=3，生成代码不依赖枚举符号）；MSBuild 侧枚举名字符串 → ParseNamingStrategy（OrdinalIgnoreCase，非法值未设置 + NCMAP020）",
+      "comment": "命名策略（默认 Default = 现状行为）"
+    },
+    {
+      "msbuildName": "NCMapperPrefixes",
+      "attrName": "Prefixes",
+      "snapshotName": "Prefixes",
+      "type": "StringList",
+      "convert": "直传：特性侧 string[]? ↔ 快照侧 string[]；MSBuild 侧逗号分隔 → ParseStringList",
+      "comment": "源属性名前缀剥离清单（如 \"Get\"），≤8 项；仅作用于源侧"
+    },
+    {
+      "msbuildName": "NCMapperPostfixes",
+      "attrName": "Postfixes",
+      "snapshotName": "Postfixes",
+      "type": "StringList",
+      "convert": "直传：特性侧 string[]? ↔ 快照侧 string[]；MSBuild 侧逗号分隔 → ParseStringList",
+      "comment": "源属性名后缀剥离清单，≤8 项；仅作用于源侧"
+    },
+    {
+      "msbuildName": "NCMapperIgnoreTypes",
+      "attrName": "IgnoreTypes",
+      "snapshotName": "IgnoreTypeFullNames",
+      "type": "TypeList",
+      "convert": "特性侧 Type[] → 快照侧 Type.FullName 字符串（精确匹配语义）；MSBuild 侧逗号分隔全名 → ParseTypeFullNameList",
+      "comment": "双向忽略：属性类型精确命中即忽略（开放泛型不匹配任何封闭构造类型）"
+    },
+    {
+      "msbuildName": "NCMapperIgnoreNames",
+      "attrName": "IgnoreNames",
+      "snapshotName": "IgnoreNames",
+      "type": "StringList",
+      "convert": "直传：特性侧 string[]? ↔ 快照侧 string[]；MSBuild 侧逗号分隔 → ParseStringList",
+      "comment": "双向忽略：属性名精确命中即忽略"
+    },
+    {
+      "msbuildName": "NCMapperIgnoreNamePrefixes",
+      "attrName": "IgnoreNamePrefixes",
+      "snapshotName": "IgnoreNamePrefixes",
+      "type": "StringList",
+      "convert": "直传：特性侧 string[]? ↔ 快照侧 string[]；MSBuild 侧逗号分隔 → ParseStringList",
+      "comment": "双向忽略：属性名前缀命中即忽略"
+    },
+    {
+      "msbuildName": "NCMapperIgnoreNameSuffixes",
+      "attrName": "IgnoreNameSuffixes",
+      "snapshotName": "IgnoreNameSuffixes",
+      "type": "StringList",
+      "convert": "直传：特性侧 string[]? ↔ 快照侧 string[]；MSBuild 侧逗号分隔 → ParseStringList",
+      "comment": "双向忽略：属性名后缀命中即忽略"
+    },
+    {
+      "msbuildName": "NCMapperIgnoreTypesToEntity",
+      "attrName": "IgnoreTypesToEntity",
+      "snapshotName": "IgnoreTypeFullNamesToEntity",
+      "type": "TypeList",
+      "convert": "特性侧 Type[] → 快照侧 Type.FullName 字符串（精确匹配语义）；MSBuild 侧逗号分隔全名 → ParseTypeFullNameList",
+      "comment": "ToEntity 方向额外忽略：属性类型精确命中（仅实体侧生效）"
+    },
+    {
+      "msbuildName": "NCMapperIgnoreNamesToEntity",
+      "attrName": "IgnoreNamesToEntity",
+      "snapshotName": "IgnoreNamesToEntity",
+      "type": "StringList",
+      "convert": "直传：特性侧 string[]? ↔ 快照侧 string[]；MSBuild 侧逗号分隔 → ParseStringList",
+      "comment": "ToEntity 方向额外忽略：属性名精确命中"
+    },
+    {
+      "msbuildName": "NCMapperIgnoreNamePrefixesToEntity",
+      "attrName": "IgnoreNamePrefixesToEntity",
+      "snapshotName": "IgnoreNamePrefixesToEntity",
+      "type": "StringList",
+      "convert": "直传：特性侧 string[]? ↔ 快照侧 string[]；MSBuild 侧逗号分隔 → ParseStringList",
+      "comment": "ToEntity 方向额外忽略：属性名前缀命中"
+    },
+    {
+      "msbuildName": "NCMapperIgnoreNameSuffixesToEntity",
+      "attrName": "IgnoreNameSuffixesToEntity",
+      "snapshotName": "IgnoreNameSuffixesToEntity",
+      "type": "StringList",
+      "convert": "直传：特性侧 string[]? ↔ 快照侧 string[]；MSBuild 侧逗号分隔 → ParseStringList",
+      "comment": "ToEntity 方向额外忽略：属性名后缀命中"
+    }
+  ]
+}

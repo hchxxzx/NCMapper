@@ -1,0 +1,17 @@
+<Project Sdk="Microsoft.NET.Sdk">
+  <PropertyGroup>
+    <OutputType>Exe</OutputType>
+    <TargetFrameworks>net8.0;net9.0;net10.0</TargetFrameworks>
+    <ImplicitUsings>enable</ImplicitUsings>
+    <Nullable>enable</Nullable>
+    <ServerGarbageCollection>true</ServerGarbageCollection>
+    <IsPackable>false</IsPackable>
+    <NoWarn>$(NoWarn);MSB3277</NoWarn>
+    <RootNamespace>NCMapper.LoadBench</RootNamespace>
+  </PropertyGroup>
+  <ItemGroup>
+    <ProjectReference Include="..\..\src\NCMapper\NCMapper.csproj" />
+    <ProjectReference Include="..\..\src\NCMapper.SourceGen\NCMapper.SourceGen.csproj" OutputItemType="Analyzer" ReferenceOutputAssembly="true" />
+    <ProjectReference Include="..\NCMapper.Benchmarks\NCMapper.Benchmarks.csproj" />
+  </ItemGroup>
+</Project>

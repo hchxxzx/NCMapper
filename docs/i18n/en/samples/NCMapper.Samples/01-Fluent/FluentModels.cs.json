@@ -1,0 +1,522 @@
+{
+    "source":  "samples/NCMapper.Samples/01-Fluent/FluentModels.cs",
+    "language":  "en",
+    "generatedFrom":  "9c05f126907046d87bce262b108c62750c08aff029eab23b7fe538f5bfe47ce1",
+    "comments":  [
+                     {
+                         "i":  1,
+                         "zh":  "01 Fluent Basics — 模型与 Mapper 配置类",
+                         "en":  "01 Fluent Basics — Model and Mapper Configuration Class"
+                     },
+                     {
+                         "i":  2,
+                         "zh":  "链式声明写在 [MapperConfig] 类内（DTO 保持干净）；源生成器编译期",
+                         "en":  "Fluent declarations are written inside the [MapperConfig] class (keeping DTOs clean); source generator runs at compile time."
+                     },
+                     {
+                         "i":  3,
+                         "zh":  "扫描 Configure 方法体生成与 [MapFrom] 通道相同的 GeneratedMapper。",
+                         "en":  "The Configure method body is scanned to generate a GeneratedMapper equivalent to the [MapFrom] channel."
+                     },
+                     {
+                         "i":  5,
+                         "zh":  "\u003csummary\u003e订单实体（基础链示例源）。\u003c/summary\u003e",
+                         "en":  "\u003csummary\u003eOrder entity (source for basic fluent chain example).\u003c/summary\u003e"
+                     },
+                     {
+                         "i":  6,
+                         "zh":  "\u003csummary\u003e订单主键（Map 单段异名源：Id → DTO OrderId）\u003c/summary\u003e",
+                         "en":  "\u003csummary\u003eOrder primary key (Map single-segment, differently-named source: Id → DTO OrderId)\u003c/summary\u003e"
+                     },
+                     {
+                         "i":  7,
+                         "zh":  "\u003csummary\u003e客户姓名（嵌套对象）\u003c/summary\u003e",
+                         "en":  "\u003csummary\u003eCustomer name (nested object)\u003c/summary\u003e"
+                     },
+                     {
+                         "i":  8,
+                         "zh":  "\u003csummary\u003e客户手机号（Mask 源侧同名属性）\u003c/summary\u003e",
+                         "en":  "\u003csummary\u003eCustomer phone number (Mask same-name property on source side)\u003c/summary\u003e"
+                     },
+                     {
+                         "i":  9,
+                         "zh":  "\u003csummary\u003e备注（演示 Ignore 终端）\u003c/summary\u003e",
+                         "en":  "\u003csummary\u003eRemarks (demonstrates Ignore terminal)\u003c/summary\u003e"
+                     },
+                     {
+                         "i":  10,
+                         "zh":  "\u003csummary\u003e订单明细（演示 AfterMapping 汇总）\u003c/summary\u003e",
+                         "en":  "\u003csummary\u003eOrder items (demonstrates AfterMapping aggregation)\u003c/summary\u003e"
+                     },
+                     {
+                         "i":  11,
+                         "zh":  "\u003csummary\u003e客户信息（嵌套路径源）。\u003c/summary\u003e",
+                         "en":  "\u003csummary\u003eCustomer information (nested path source).\u003c/summary\u003e"
+                     },
+                     {
+                         "i":  12,
+                         "zh":  "\u003csummary\u003e姓名\u003c/summary\u003e",
+                         "en":  "\u003csummary\u003eName\u003c/summary\u003e"
+                     },
+                     {
+                         "i":  13,
+                         "zh":  "\u003csummary\u003e订单明细项。\u003c/summary\u003e",
+                         "en":  "\u003csummary\u003eOrder item.\u003c/summary\u003e"
+                     },
+                     {
+                         "i":  14,
+                         "zh":  "\u003csummary\u003e重量（AfterMapping 汇总源）\u003c/summary\u003e",
+                         "en":  "\u003csummary\u003eWeight (AfterMapping aggregated source)\u003c/summary\u003e"
+                     },
+                     {
+                         "i":  15,
+                         "zh":  "\u003csummary\u003e订单 DTO（基础链示例目标）。\u003c/summary\u003e",
+                         "en":  "\u003csummary\u003eOrder DTO (target for basic fluent chain example).\u003c/summary\u003e"
+                     },
+                     {
+                         "i":  16,
+                         "zh":  "\u003csummary\u003e订单主键（Map 单段异名目标：← Id）\u003c/summary\u003e",
+                         "en":  "\u003csummary\u003eOrder primary key (Map single-segment, differently-named target: ← Id)\u003c/summary\u003e"
+                     },
+                     {
+                         "i":  17,
+                         "zh":  "\u003csummary\u003e客户姓名（Map 嵌套源路径：Customer.Name）\u003c/summary\u003e",
+                         "en":  "\u003csummary\u003eCustomer name (Map nested source path: Customer.Name)\u003c/summary\u003e"
+                     },
+                     {
+                         "i":  18,
+                         "zh":  "\u003csummary\u003e客户手机号（Mask 脱敏：MaskPhone，源侧同名属性）\u003c/summary\u003e",
+                         "en":  "\u003csummary\u003eCustomer phone number (Mask obfuscation: MaskPhone, same-name property on source side)\u003c/summary\u003e"
+                     },
+                     {
+                         "i":  19,
+                         "zh":  "\u003csummary\u003e备注（Ignore 忽略——目标保持默认值）\u003c/summary\u003e",
+                         "en":  "\u003csummary\u003eRemarks (Ignore — target retains default value)\u003c/summary\u003e"
+                     },
+                     {
+                         "i":  20,
+                         "zh":  "\u003csummary\u003e总重量（AfterMapping 汇总写入）\u003c/summary\u003e",
+                         "en":  "\u003csummary\u003eTotal weight (written via AfterMapping aggregation)\u003c/summary\u003e"
+                     },
+                     {
+                         "i":  22,
+                         "zh":  "基础链 Mapper 配置（对应 how-to/fluent/basics.md「概述」示例块）——",
+                         "en":  "Basic fluent chain Mapper configuration (corresponding to the \u0027Overview\u0027 example block in how-to/fluent/basics.md)"
+                     },
+                     {
+                         "i":  23,
+                         "zh":  "Map 单段异名 + 嵌套源路径 + Ignore + Mask + AfterMapping 连写；",
+                         "en":  "Chained Map of single-segment differently-named properties + nested source paths + Ignore + Mask + AfterMapping;"
+                     },
+                     {
+                         "i":  24,
+                         "zh":  "显式 Map 声明为符号级路径，不受全局 NamingStrategy 名称规范化影响。",
+                         "en":  "Explicit Map declarations use symbol-level paths, unaffected by global NamingStrategy name normalization."
+                     },
+                     {
+                         "i":  27,
+                         "zh":  "链式声明入口（方法名任意，签名固定）。",
+                         "en":  "Fluent declaration entry point (method name arbitrary, signature fixed)."
+                     },
+                     {
+                         "i":  29,
+                         "zh":  "\u003cparam name=\"cfg\"\u003eFluent 配置根\u003c/param\u003e",
+                         "en":  "\u003cparam name=\"cfg\"\u003eFluent configuration root\u003c/param\u003e"
+                     },
+                     {
+                         "i":  31,
+                         "zh":  "AfterMapping 目标方法（须 public/internal static——private 报 NCMAP_F12）。",
+                         "en":  "AfterMapping target method (must be public/internal static — private causes NCMAP_F12 error)."
+                     },
+                     {
+                         "i":  33,
+                         "zh":  "\u003cparam name=\"src\"\u003e源实体\u003c/param\u003e",
+                         "en":  "\u003cparam name=\"src\"\u003eSource entity\u003c/param\u003e"
+                     },
+                     {
+                         "i":  34,
+                         "zh":  "\u003cparam name=\"dst\"\u003e目标 DTO\u003c/param\u003e",
+                         "en":  "\u003cparam name=\"dst\"\u003eTarget DTO\u003c/param\u003e"
+                     },
+                     {
+                         "i":  35,
+                         "zh":  "\u003csummary\u003e分类节点实体（MapTree 递归映射源，自引用树）。\u003c/summary\u003e",
+                         "en":  "\u003csummary\u003eCategory node entity (MapTree recursive mapping source, self-referencing tree).\u003c/summary\u003e"
+                     },
+                     {
+                         "i":  36,
+                         "zh":  "\u003csummary\u003e节点主键\u003c/summary\u003e",
+                         "en":  "\u003csummary\u003eNode primary key\u003c/summary\u003e"
+                     },
+                     {
+                         "i":  37,
+                         "zh":  "\u003csummary\u003e节点名称\u003c/summary\u003e",
+                         "en":  "\u003csummary\u003eNode name\u003c/summary\u003e"
+                     },
+                     {
+                         "i":  38,
+                         "zh":  "\u003csummary\u003e子节点（MapTree 递归映射位）\u003c/summary\u003e",
+                         "en":  "\u003csummary\u003eChild nodes (MapTree recursive mapping field)\u003c/summary\u003e"
+                     },
+                     {
+                         "i":  39,
+                         "zh":  "\u003csummary\u003e分类节点 DTO（MapTree 递归映射目标）。\u003c/summary\u003e",
+                         "en":  "\u003csummary\u003eCategory node DTO (MapTree recursive mapping target).\u003c/summary\u003e"
+                     },
+                     {
+                         "i":  40,
+                         "zh":  "\u003csummary\u003e节点主键\u003c/summary\u003e",
+                         "en":  "\u003csummary\u003eNode primary key\u003c/summary\u003e"
+                     },
+                     {
+                         "i":  41,
+                         "zh":  "\u003csummary\u003e节点名称\u003c/summary\u003e",
+                         "en":  "\u003csummary\u003eNode name\u003c/summary\u003e"
+                     },
+                     {
+                         "i":  42,
+                         "zh":  "\u003csummary\u003e子节点（递归映射产物）\u003c/summary\u003e",
+                         "en":  "\u003csummary\u003eChild nodes (recursive mapping result)\u003c/summary\u003e"
+                     },
+                     {
+                         "i":  44,
+                         "zh":  "MapTree 递归映射配置——Children 声明为递归映射属性（源侧按同名解析，递归走相同配置）。",
+                         "en":  "MapTree recursive mapping configuration—\u0027Children\u0027 is declared as a recursive mapping property (source side resolved by matching name; recursion follows the same configuration)."
+                     },
+                     {
+                         "i":  47,
+                         "zh":  "链式声明入口。",
+                         "en":  "Fluent-style configuration entry point."
+                     },
+                     {
+                         "i":  49,
+                         "zh":  "\u003cparam name=\"cfg\"\u003eFluent 配置根\u003c/param\u003e",
+                         "en":  "\u003cparam name=\"cfg\"\u003eFluent configuration root\u003c/param\u003e"
+                     },
+                     {
+                         "i":  50,
+                         "zh":  "\u003csummary\u003e审计实体（NoAutoInclude 对级示例源）。\u003c/summary\u003e",
+                         "en":  "\u003csummary\u003eAudit entity (example source for NoAutoInclude at class level).\u003c/summary\u003e"
+                     },
+                     {
+                         "i":  51,
+                         "zh":  "\u003csummary\u003e主键（显式 Map 保留）\u003c/summary\u003e",
+                         "en":  "\u003csummary\u003ePrimary key (explicitly mapped and preserved)\u003c/summary\u003e"
+                     },
+                     {
+                         "i":  52,
+                         "zh":  "\u003csummary\u003e名称（对级 NoAutoInclude 后不映射）\u003c/summary\u003e",
+                         "en":  "\u003csummary\u003eName (not mapped after NoAutoInclude at class level)\u003c/summary\u003e"
+                     },
+                     {
+                         "i":  53,
+                         "zh":  "\u003csummary\u003e密钥（对级 NoAutoInclude 后不映射）\u003c/summary\u003e",
+                         "en":  "\u003csummary\u003eKey (not mapped after NoAutoInclude at class level)\u003c/summary\u003e"
+                     },
+                     {
+                         "i":  54,
+                         "zh":  "\u003csummary\u003e审计 DTO（仅显式 Map 声明的属性被填充）。\u003c/summary\u003e",
+                         "en":  "\u003csummary\u003eAudit DTO (only properties explicitly declared via Map are populated).\u003c/summary\u003e"
+                     },
+                     {
+                         "i":  55,
+                         "zh":  "\u003csummary\u003e主键\u003c/summary\u003e",
+                         "en":  "\u003csummary\u003ePrimary key\u003c/summary\u003e"
+                     },
+                     {
+                         "i":  56,
+                         "zh":  "\u003csummary\u003e名称（保持默认）\u003c/summary\u003e",
+                         "en":  "\u003csummary\u003eName (retains default behavior)\u003c/summary\u003e"
+                     },
+                     {
+                         "i":  57,
+                         "zh":  "\u003csummary\u003e密钥（保持默认）\u003c/summary\u003e",
+                         "en":  "\u003csummary\u003eKey (retains default behavior)\u003c/summary\u003e"
+                     },
+                     {
+                         "i":  59,
+                         "zh":  "NoAutoInclude 对级配置——该 (S,T) 对禁用自动匹配，仅映射显式 Map 声明。",
+                         "en":  "NoAutoInclude class-level configuration—automatic property matching is disabled for this (S,T) pair; only explicitly declared Map operations are performed."
+                     },
+                     {
+                         "i":  62,
+                         "zh":  "链式声明入口。",
+                         "en":  "Fluent-style configuration entry point."
+                     },
+                     {
+                         "i":  64,
+                         "zh":  "\u003cparam name=\"cfg\"\u003eFluent 配置根\u003c/param\u003e",
+                         "en":  "\u003cparam name=\"cfg\"\u003eFluent configuration root\u003c/param\u003e"
+                     },
+                     {
+                         "i":  65,
+                         "zh":  "\u003csummary\u003e报表实体（AfterMapping 独立场景源）。\u003c/summary\u003e",
+                         "en":  "\u003csummary\u003eReport entity (source for standalone AfterMapping scenario).\u003c/summary\u003e"
+                     },
+                     {
+                         "i":  66,
+                         "zh":  "\u003csummary\u003e报表名\u003c/summary\u003e",
+                         "en":  "\u003csummary\u003eReport name\u003c/summary\u003e"
+                     },
+                     {
+                         "i":  67,
+                         "zh":  "\u003csummary\u003e报表 DTO（AfterMapping 写入派生标签）。\u003c/summary\u003e",
+                         "en":  "\u003csummary\u003eReport DTO (derived tags written during AfterMapping).\u003c/summary\u003e"
+                     },
+                     {
+                         "i":  68,
+                         "zh":  "\u003csummary\u003e报表名\u003c/summary\u003e",
+                         "en":  "\u003csummary\u003eReport name\u003c/summary\u003e"
+                     },
+                     {
+                         "i":  69,
+                         "zh":  "\u003csummary\u003e派生标签（AfterMapping 写入）\u003c/summary\u003e",
+                         "en":  "\u003csummary\u003eDerived tags (written during AfterMapping)\u003c/summary\u003e"
+                     },
+                     {
+                         "i":  71,
+                         "zh":  "AfterMapping 独立场景配置——映射完成后注入派生字段。",
+                         "en":  "AfterMapping standalone scenario configuration—inject derived fields after mapping completes."
+                     },
+                     {
+                         "i":  74,
+                         "zh":  "链式声明入口。",
+                         "en":  "Fluent-style declaration entry point."
+                     },
+                     {
+                         "i":  76,
+                         "zh":  "\u003cparam name=\"cfg\"\u003eFluent 配置根\u003c/param\u003e",
+                         "en":  "\u003cparam name=\"cfg\"\u003eFluent configuration root\u003c/param\u003e"
+                     },
+                     {
+                         "i":  78,
+                         "zh":  "后置回调：写入派生标签。",
+                         "en":  "Post-mapping callback: write derived tags."
+                     },
+                     {
+                         "i":  80,
+                         "zh":  "\u003cparam name=\"src\"\u003e源实体\u003c/param\u003e",
+                         "en":  "\u003cparam name=\"src\"\u003eSource entity\u003c/param\u003e"
+                     },
+                     {
+                         "i":  81,
+                         "zh":  "\u003cparam name=\"dst\"\u003e目标 DTO\u003c/param\u003e",
+                         "en":  "\u003cparam name=\"dst\"\u003eTarget DTO\u003c/param\u003e"
+                     },
+                     {
+                         "i":  82,
+                         "zh":  "\u003csummary\u003e树节点实体（Tree 自定义三元组示例源，平铺存储形态）。\u003c/summary\u003e",
+                         "en":  "\u003csummary\u003eTree node entity (example source for custom tree triplet, stored in flattened form).\u003c/summary\u003e"
+                     },
+                     {
+                         "i":  83,
+                         "zh":  "\u003csummary\u003e主键（自定义三元组：Key）\u003c/summary\u003e",
+                         "en":  "\u003csummary\u003ePrimary key (custom triplet: Key)\u003c/summary\u003e"
+                     },
+                     {
+                         "i":  84,
+                         "zh":  "\u003csummary\u003e父键（自定义三元组：ParentKey）\u003c/summary\u003e",
+                         "en":  "\u003csummary\u003eParent key (custom triplet: ParentKey)\u003c/summary\u003e"
+                     },
+                     {
+                         "i":  85,
+                         "zh":  "\u003csummary\u003e节点名\u003c/summary\u003e",
+                         "en":  "\u003csummary\u003eNode name\u003c/summary\u003e"
+                     },
+                     {
+                         "i":  86,
+                         "zh":  "\u003csummary\u003e树节点 DTO（自定义三元组挂载位：Nodes）。\u003c/summary\u003e",
+                         "en":  "\u003csummary\u003eTree node DTO (custom triplet mount point: Nodes).\u003c/summary\u003e"
+                     },
+                     {
+                         "i":  87,
+                         "zh":  "\u003csummary\u003e主键\u003c/summary\u003e",
+                         "en":  "\u003csummary\u003ePrimary key\u003c/summary\u003e"
+                     },
+                     {
+                         "i":  88,
+                         "zh":  "\u003csummary\u003e父键\u003c/summary\u003e",
+                         "en":  "\u003csummary\u003eParent key\u003c/summary\u003e"
+                     },
+                     {
+                         "i":  89,
+                         "zh":  "\u003csummary\u003e节点名\u003c/summary\u003e",
+                         "en":  "\u003csummary\u003eNode name\u003c/summary\u003e"
+                     },
+                     {
+                         "i":  90,
+                         "zh":  "\u003csummary\u003e子节点挂载位（自定义三元组：Nodes）\u003c/summary\u003e",
+                         "en":  "\u003csummary\u003eChild nodes mount point (custom triplet: Nodes)\u003c/summary\u003e"
+                     },
+                     {
+                         "i":  92,
+                         "zh":  "Tree 自定义三元组配置——",
+                         "en":  "Tree custom triplet configuration—"
+                     },
+                     {
+                         "i":  93,
+                         "zh":  "声明树按 Key/ParentKey/Nodes 构建（opt-in：未调用 .Tree() 时注册表 TreeConfig=null，不启用树语义）；",
+                         "en":  "Declare tree construction using Key/ParentKey/Nodes (opt-in: TreeConfig=null in the registry if .Tree() is not invoked, disabling tree semantics)."
+                     },
+                     {
+                         "i":  94,
+                         "zh":  "ToTreeList/投影树挂载位判定经注册表消费。",
+                         "en":  "ToTreeList/tree projection mount-point resolution consumes the registry."
+                     },
+                     {
+                         "i":  97,
+                         "zh":  "链式声明入口。",
+                         "en":  "Fluent-style declaration entry point."
+                     },
+                     {
+                         "i":  99,
+                         "zh":  "\u003cparam name=\"cfg\"\u003eFluent 配置根\u003c/param\u003e",
+                         "en":  "\u003cparam name=\"cfg\"\u003eFluent configuration root\u003c/param\u003e"
+                     },
+                     {
+                         "i":  100,
+                         "zh":  "\u003csummary\u003e文章实体（属性级 NoAutoInclude 示例源）。\u003c/summary\u003e",
+                         "en":  "\u003csummary\u003eArticle entity (example source for property-level NoAutoInclude).\u003c/summary\u003e"
+                     },
+                     {
+                         "i":  101,
+                         "zh":  "\u003csummary\u003e主键\u003c/summary\u003e",
+                         "en":  "\u003csummary\u003ePrimary key\u003c/summary\u003e"
+                     },
+                     {
+                         "i":  102,
+                         "zh":  "\u003csummary\u003e标题\u003c/summary\u003e",
+                         "en":  "\u003csummary\u003eTitle\u003c/summary\u003e"
+                     },
+                     {
+                         "i":  103,
+                         "zh":  "\u003csummary\u003e审计日志集合（属性级 NoAutoInclude 锚点）\u003c/summary\u003e",
+                         "en":  "\u003csummary\u003eAudit log collection (property-level NoAutoInclude anchor)\u003c/summary\u003e"
+                     },
+                     {
+                         "i":  104,
+                         "zh":  "\u003csummary\u003e文章 DTO。\u003c/summary\u003e",
+                         "en":  "\u003csummary\u003eArticle DTO.\u003c/summary\u003e"
+                     },
+                     {
+                         "i":  105,
+                         "zh":  "\u003csummary\u003e主键\u003c/summary\u003e",
+                         "en":  "\u003csummary\u003ePrimary key\u003c/summary\u003e"
+                     },
+                     {
+                         "i":  106,
+                         "zh":  "\u003csummary\u003e标题\u003c/summary\u003e",
+                         "en":  "\u003csummary\u003eTitle\u003c/summary\u003e"
+                     },
+                     {
+                         "i":  107,
+                         "zh":  "\u003csummary\u003e审计日志集合\u003c/summary\u003e",
+                         "en":  "\u003csummary\u003eAudit log collection\u003c/summary\u003e"
+                     },
+                     {
+                         "i":  109,
+                         "zh":  "属性级 NoAutoInclude 配置——",
+                         "en":  "Property-level NoAutoInclude configuration—"
+                     },
+                     {
+                         "i":  110,
+                         "zh":  "仅 AuditLogs 属性跳过 ORM 降级路径的导航树自动收集（其余属性照常自动匹配）；",
+                         "en":  "Only the AuditLogs property skips automatic navigation tree collection along the ORM downgrade path (all other properties retain standard automatic matching);"
+                     },
+                     {
+                         "i":  111,
+                         "zh":  "与对级 NoAutoInclude() 语义粒度不同（对级 = 整对禁用自动匹配）。",
+                         "en":  "Its semantic granularity differs from pair-level NoAutoInclude() (pair-level = complete disablement of automatic matching for the entire pair)."
+                     },
+                     {
+                         "i":  112,
+                         "zh":  "\u003cpara\u003e属性级 NoAutoInclude 的主要使用场景即导航属性——dest 为实体/DTO 导航类型",
+                         "en":  "\u003cpara\u003eThe primary usage scenario for property-level NoAutoInclude is navigation properties—where \u0027dest\u0027 is an entity/DTO navigation type"
+                     },
+                     {
+                         "i":  113,
+                         "zh":  "（如 AuthorDto ← AuthorEntity）同样受支持，且 dest 不参与可映射性校验",
+                         "en":  "(e.g., AuthorDto ← AuthorEntity), which is equally supported, and where \u0027dest\u0027 does not participate in mappability validation"
+                     },
+                     {
+                         "i":  114,
+                         "zh":  "；本演示采用集合属性锚点（与 006 测试发射路径同构）。\u003c/para\u003e",
+                         "en":  "; this demonstration uses a collection-property anchor (isomorphic with the emission path in test 006).\u003c/para\u003e"
+                     },
+                     {
+                         "i":  117,
+                         "zh":  "链式声明入口。",
+                         "en":  "Chained declaration entry point."
+                     },
+                     {
+                         "i":  119,
+                         "zh":  "\u003cparam name=\"cfg\"\u003eFluent 配置根\u003c/param\u003e",
+                         "en":  "\u003cparam name=\"cfg\"\u003eFluent configuration root\u003c/param\u003e"
+                     },
+                     {
+                         "i":  120,
+                         "zh":  "\u003csummary\u003e明细项实体（索引段 lambda 源）。\u003c/summary\u003e",
+                         "en":  "\u003csummary\u003eDetail item entity (index-segment lambda source).\u003c/summary\u003e"
+                     },
+                     {
+                         "i":  121,
+                         "zh":  "\u003csummary\u003e明细标题\u003c/summary\u003e",
+                         "en":  "\u003csummary\u003eDetail title\u003c/summary\u003e"
+                     },
+                     {
+                         "i":  122,
+                         "zh":  "\u003csummary\u003e容器实体（索引段 lambda 源根）。\u003c/summary\u003e",
+                         "en":  "\u003csummary\u003eContainer entity (index-segment lambda source root).\u003c/summary\u003e"
+                     },
+                     {
+                         "i":  123,
+                         "zh":  "\u003csummary\u003e主键\u003c/summary\u003e",
+                         "en":  "\u003csummary\u003ePrimary key\u003c/summary\u003e"
+                     },
+                     {
+                         "i":  124,
+                         "zh":  "\u003csummary\u003e明细集合（索引段访问目标）\u003c/summary\u003e",
+                         "en":  "\u003csummary\u003eDetail collection (index-segment access target)\u003c/summary\u003e"
+                     },
+                     {
+                         "i":  125,
+                         "zh":  "\u003csummary\u003e容器 DTO（索引段 lambda 目标）。\u003c/summary\u003e",
+                         "en":  "\u003csummary\u003eContainer DTO (index-segment lambda target).\u003c/summary\u003e"
+                     },
+                     {
+                         "i":  126,
+                         "zh":  "\u003csummary\u003e主键\u003c/summary\u003e",
+                         "en":  "\u003csummary\u003ePrimary key\u003c/summary\u003e"
+                     },
+                     {
+                         "i":  127,
+                         "zh":  "\u003csummary\u003e首条明细标题（Items[0].Title 索引段映射）\u003c/summary\u003e",
+                         "en":  "\u003csummary\u003eTitle of the first detail item (mapped via index segment Items[0].Title)\u003c/summary\u003e"
+                     },
+                     {
+                         "i":  129,
+                         "zh":  "索引段 lambda 配置——",
+                         "en":  "Index-segment lambda configuration—"
+                     },
+                     {
+                         "i":  130,
+                         "zh":  "Map 源路径支持常量整数索引段（ElementAtOrDefault 语义：越界/空集合取 null 不抛）；",
+                         "en":  "Source-path mapping supports constant integer index segments (with ElementAtOrDefault semantics: returns null instead of throwing on out-of-bounds or empty-collection access);"
+                     },
+                     {
+                         "i":  131,
+                         "zh":  "变量/方法调用索引仍被 F06 拒绝。",
+                         "en":  "Variable/method call indexing is still rejected by F06."
+                     },
+                     {
+                         "i":  134,
+                         "zh":  "链式声明入口。",
+                         "en":  "Chained declaration entry point."
+                     },
+                     {
+                         "i":  136,
+                         "zh":  "\u003cparam name=\"cfg\"\u003eFluent 配置根\u003c/param\u003e",
+                         "en":  "\u003cparam name=\"cfg\"\u003eFluent configuration root\u003c/param\u003e"
+                     }
+                 ]
+}

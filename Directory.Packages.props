@@ -1,0 +1,61 @@
+<Project>
+  <PropertyGroup>
+    <ManagePackageVersionsCentrally>true</ManagePackageVersionsCentrally>
+    <CentralPackageTransitivePinningEnabled>false</CentralPackageTransitivePinningEnabled>
+  </PropertyGroup>
+  <!-- 核心库依赖 — net8/9 用稳定版，net10 用预览版（通过 VersionOverride） -->
+  <ItemGroup>
+    <PackageVersion Include="Microsoft.Extensions.DependencyInjection.Abstractions" Version="10.0.10" />
+    <PackageVersion Include="Microsoft.Extensions.DependencyInjection" Version="9.0.0" />
+    <PackageVersion Include="Microsoft.Extensions.Configuration.Abstractions" Version="9.0.0" />
+    <PackageVersion Include="Microsoft.Extensions.Configuration.Binder" Version="9.0.0" />
+    <!-- DI 版本分裂：net10 预览 vs net8/9 稳定，构建实证兼容 -->
+  </ItemGroup>
+  <!-- 源生成器依赖 -->
+  <ItemGroup>
+    <PackageVersion Include="Microsoft.CodeAnalysis.CSharp" Version="4.8.0" />
+    <PackageVersion Include="Microsoft.SourceLink.GitHub" Version="10.0.301" />
+  </ItemGroup>
+  <!-- 测试依赖（全库仅 xunit.v3，ci-only） -->
+  <ItemGroup>
+    <PackageVersion Include="xunit.v3" Version="3.2.2" />
+    <PackageVersion Include="xunit.runner.visualstudio" Version="3.1.5" />
+    <PackageVersion Include="Microsoft.NET.Test.Sdk" Version="18.7.0" />
+    <PackageVersion Include="FreeSql" Version="[3.5.103, 4.0.0)" />
+    <PackageVersion Include="FreeSql.Provider.Sqlite" Version="[3.5.103, 4.0.0)" />
+    <PackageVersion Include="Dapper" Version="[2.1.35, 3.0.0)" />
+    <PackageVersion Include="Microsoft.Data.Sqlite" Version="[9.0.0, 10.0.0)" />
+    <PackageVersion Include="Microsoft.EntityFrameworkCore" Version="[9.0.0, 10.0.0)" />
+    <PackageVersion Include="Microsoft.EntityFrameworkCore.Relational" Version="[9.0.0, 10.0.0)" />
+    <PackageVersion Include="Microsoft.EntityFrameworkCore.Sqlite" Version="[9.0.0, 10.0.0)" />
+    <!-- 区间意图：锁定 lock 文件时候选版本范围，实际版本由 lock 文件确定 -->
+    <PackageVersion Include="Microsoft.Extensions.Configuration" Version="9.0.0" />
+    <!-- Microsoft.Testing.Extensions.CodeCoverage 18.0.6 依赖 Microsoft.Testing.Platform >= 1.8.4，
+         项目 MTP 1.9.1 满足；覆盖率链路经 MTP 原生扩展落地（coverlet.msbuild 路线不可行）。ci-only -->
+    <PackageVersion Include="Microsoft.Testing.Extensions.CodeCoverage" Version="18.0.6" />
+    <PackageVersion Include="PublicApiGenerator" Version="11.1.0" />
+    <PackageVersion Include="FsCheck.Xunit.v3" Version="3.3.3" />
+    <!-- CVE-2025-6965 覆盖（2026-08-24）：EF Core Sqlite / Microsoft.Data.Sqlite 传递锁 bundle_e_sqlite3 2.1.10（内置 SQLite <3.50.2 受影响），
+         显式升至 2.1.13（2.x 末版，内置 SQLite 3.53.x，同大版本零 API 风险）；上游约束为下限式（>=2.1.10），显式引用无冲突 -->
+    <PackageVersion Include="SQLitePCLRaw.bundle_e_sqlite3" Version="2.1.13" />
+  </ItemGroup>
+  <!-- 工具依赖 -->
+  <ItemGroup>
+    <PackageVersion Include="System.CommandLine" Version="2.0.0-beta4.22272.1" />
+    <PackageVersion Include="System.Reflection.MetadataLoadContext" Version="9.0.0" />
+    <PackageVersion Include="BootstrapBlazor" Version="9.5.6" />
+    <PackageVersion Include="Microsoft.AspNetCore.Components.WebView.WindowsForms" Version="10.0.0" />
+    <PackageVersion Include="MudBlazor" Version="8.5.1" />
+  </ItemGroup>
+  <!-- 基准测试依赖 -->
+  <ItemGroup>
+    <PackageVersion Include="BenchmarkDotNet" Version="0.14.0" />
+    <PackageVersion Include="Riok.Mapperly" Version="4.3.1" />
+    <PackageVersion Include="Mapster" Version="10.0.9" />
+    <PackageVersion Include="AutoMapper" Version="16.1.1" />
+    <PackageVersion Include="MemoryPack" Version="1.21.4" />
+    <!-- 3.1.3 存在 12 条已知漏洞（GHSA-382j 高危等，NU1902/NU1903），
+         全部在 3.1.7 修复（3.1.4-3.1.6 仍受影响）；patch 升级无 API 变更 -->
+    <PackageVersion Include="MessagePack" Version="3.1.7" />
+  </ItemGroup>
+</Project>

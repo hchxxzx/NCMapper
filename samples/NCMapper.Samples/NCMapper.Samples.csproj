@@ -1,0 +1,42 @@
+<Project Sdk="Microsoft.NET.Sdk">
+
+  <PropertyGroup>
+    <OutputType>Exe</OutputType>
+    <TargetFramework>net10.0</TargetFramework>
+    <ImplicitUsings>enable</ImplicitUsings>
+    <Nullable>enable</Nullable>
+    <IsPackable>false</IsPackable>
+    <!-- 示例项目使用实验性 API（BuildProjection/Compose/Validate），抑制诊断 -->
+    <!-- NCMapper001: 实验性 API 警告；NCMAP001/NCMAP002: 源生成器映射诊断 -->
+    <NoWarn>$(NoWarn);NCMapper001;NCMAP001;NCMAP002</NoWarn>
+    <!-- 源生成器生成代码(.g.cs)的 nullable 标注警告不升级为 error（生成逻辑待后续优化） -->
+    <WarningsNotAsErrors>CS8601;CS8602;CS8603;CS8604;CS8610;CS8614;CS8618;CS8620;CS8621;CS8625;CS8634</WarningsNotAsErrors>
+    <!-- 本机 CET 崩溃缓解（samples 运行阶段 net10.0 进程 CET fail-fast） -->
+    <CetCompat>false</CetCompat>
+  </PropertyGroup>
+
+  <ItemGroup>
+    <ProjectReference Include="..\..\src\NCMapper\NCMapper.csproj" />
+    <ProjectReference Include="..\..\src\NCMapper.SourceGen\NCMapper.SourceGen.csproj" OutputItemType="Analyzer" ReferenceOutputAssembly="false" />
+    <ProjectReference Include="..\..\src\NCMapper.FreeSql\NCMapper.FreeSql.csproj" />
+    <ProjectReference Include="..\..\src\NCMapper.EFCore\NCMapper.EFCore.csproj" />
+    <ProjectReference Include="..\..\src\NCMapper.Dapper\NCMapper.Dapper.csproj" />
+  </ItemGroup>
+
+  <ItemGroup>
+    <!-- DI 集成演示所需 -->
+    <PackageReference Include="Microsoft.Extensions.DependencyInjection" />
+    <!-- Dapper + SQLite 演示所需 -->
+    <PackageReference Include="Dapper" />
+    <PackageReference Include="Microsoft.Data.Sqlite" />
+    <!-- CVE-2025-6965 覆盖（2026-08-24）：Microsoft.Data.Sqlite/EF Core Sqlite 传递锁 bundle_e_sqlite3 2.1.10 → 2.1.13（内置 SQLite 3.53.x 已修复） -->
+    <PackageReference Include="SQLitePCLRaw.bundle_e_sqlite3" />
+    <!-- FreeSql + SQLite 演示所需 -->
+    <PackageReference Include="FreeSql" />
+    <PackageReference Include="FreeSql.Provider.Sqlite" />
+    <!-- EF Core + SQLite 演示所需 -->
+    <PackageReference Include="Microsoft.EntityFrameworkCore" />
+    <PackageReference Include="Microsoft.EntityFrameworkCore.Sqlite" />
+  </ItemGroup>
+
+</Project>

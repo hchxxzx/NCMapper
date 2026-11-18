@@ -1,0 +1,9 @@
+# 行尾治理：与 .editorconfig 配套——
+# .editorconfig 管编辑器写入行为，.gitattributes 管 git 检出/入库行为。
+# text=auto：git 自动识别文本文件，入库规范化为 LF（仓库 blob 实测 100% LF，保持不变）；
+# eol=lf：所有文本文件检出统一 LF——根治 core.autocrlf=true 环境下
+# "工作区 CRLF（检出转换产物）vs 规范 LF"的持续噪音。
+* text=auto eol=lf
+
+# 与 .editorconfig [*.cs] end_of_line=lf 显式对齐
+*.cs text eol=lf

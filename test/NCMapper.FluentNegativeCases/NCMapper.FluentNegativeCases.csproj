@@ -1,0 +1,29 @@
+<Project Sdk="Microsoft.NET.Sdk">
+  <!--
+    （= 仓内 test 工程 + csproj exclude + 脚本驱动）
+    Fluent Member 三段式「结构性反例」编译期承载（Spike 8 例 N1-N8——docs/06-方案与分析/
+    ..._Spike结论记录.md）。每文件一条非法写法（独立 namespace 防冲突）
+    断言 = 逐例错误码 + 计数（双态期望表，scripts/check-fluent-negative-cases.sh / .ps1）。
+    承载先例 = test/NCMapper.CrashProbe（独立 csproj 不入 slnx + 退出根 CPM/lock 继承——经验库 #27）。
+    本工程编译必失败（非法写法本体）——刻意不入 NCMapper.slnx / 不入 verify-linux，
+    仅经脚本显式构建并解析输出断言。
+    并存期态：7/8 拦截（N5 第二个 NoAutoInclude 解析对级旧名编译通过——src FluentMappingConfig.cs
+    AfterIgnore 类型注释并存期行为差异登记）；终态（删旧名 + 卸 new 后）翻转 8/8（脚本 mode final 参数）。
+  -->
+  <PropertyGroup>
+    <TargetFramework>net10.0</TargetFramework>
+    <RootNamespace>NCMapper.FluentNegativeCases</RootNamespace>
+    <LangVersion>latest</LangVersion>
+    <ImplicitUsings>enable</ImplicitUsings>
+    <Nullable>enable</Nullable>
+    <!-- 经验库 #27：显式退出根 Directory.Build.props 的 CPM/lock 继承（防 NU1008/NU1015/NU1004） -->
+    <ManagePackageVersionsCentrally>false</ManagePackageVersionsCentrally>
+    <IsPackable>false</IsPackable>
+    <RestorePackagesWithLockFile>false</RestorePackagesWithLockFile>
+    <RestoreLockedMode>false</RestoreLockedMode>
+  </PropertyGroup>
+  <ItemGroup>
+    <ProjectReference Include="..\..\src\NCMapper\NCMapper.csproj" />
+    <ProjectReference Include="..\..\src\NCMapper.SourceGen\NCMapper.SourceGen.csproj" OutputItemType="Analyzer" ReferenceOutputAssembly="true" />
+  </ItemGroup>
+</Project>

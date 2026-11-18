@@ -1,0 +1,44 @@
+<Project Sdk="Microsoft.NET.Sdk">
+  <PropertyGroup>
+    <OutputType>Exe</OutputType>
+    <TargetFrameworks>net8.0;net9.0;net10.0</TargetFrameworks>
+    <ImplicitUsings>enable</ImplicitUsings>
+    <Nullable>enable</Nullable>
+    <RootNamespace>NCMapper.Benchmarks</RootNamespace>
+    <ServerGarbageCollection>true</ServerGarbageCollection>
+    <EmitCompilerGeneratedFiles>true</EmitCompilerGeneratedFiles>
+    <!-- NCMAP002/NCMAP009：基线既有夹具（Models.cs 自 initial commit 未改）与本次新增
+         benchmarks 独立编译门（verify-linux 无 benchmarks 构建腿）首跑暴露的基线债务：
+         NestedDto.Child 嵌套场景（:86）与 NameDiffDto Id/AccountId 异名场景（:95）为基准设计意图，
+         抑制不动产物（gate 逐字节一致不变）、不动基准语义；后续由基准重跑重立。 -->
+    <NoWarn>NU1109;NU1603;NCMapper001;MSB3277;NCMAP002;NCMAP009</NoWarn>
+  </PropertyGroup>
+  <ItemGroup>
+    <PackageReference Include="BenchmarkDotNet" />
+    <PackageReference Include="Riok.Mapperly" />
+    <PackageReference Include="Mapster" />
+    <PackageReference Include="AutoMapper" />
+    <PackageReference Include="MemoryPack" />
+    <PackageReference Include="MessagePack" />
+    <PackageReference Include="Dapper" />
+    <PackageReference Include="Microsoft.Data.Sqlite" />
+    <!-- CVE-2025-6965 覆盖（2026-08-24）：Microsoft.Data.Sqlite 传递锁 bundle_e_sqlite3 2.1.10 → 2.1.13（内置 SQLite 3.53.x 已修复） -->
+    <PackageReference Include="SQLitePCLRaw.bundle_e_sqlite3" />
+    <!-- 编译期基准骨架（SourceGenDriverBench）直接使用 CSharpGeneratorDriver。
+         ProjectReference→NCMapper.SourceGen（本文件 :28）以 OutputItemType="Analyzer" 引入，其
+         Microsoft.CodeAnalysis.CSharp 为 PrivateAssets="all"（NCMapper.SourceGen.csproj:21）不传递，
+         故此处自补；版本与测试侧同口径（NCMapper.SourceGen.Tests.csproj:29 VersionOverride 5.6.0，
+         中心版本 CPM 4.8.0 见 Directory.Packages.props:16）。 -->
+    <PackageReference Include="Microsoft.CodeAnalysis.CSharp" VersionOverride="5.6.0" />
+  </ItemGroup>
+  <ItemGroup>
+    <ProjectReference Include="..\..\src\NCMapper\NCMapper.csproj" />
+    <ProjectReference Include="..\..\src\NCMapper.SourceGen\NCMapper.SourceGen.csproj" OutputItemType="Analyzer" ReferenceOutputAssembly="true" />
+    <ProjectReference Include="..\..\src\NCMapper.Dapper\NCMapper.Dapper.csproj" />
+    <!-- C-13 夹具（ClearTreeChildren）经公开 API
+         NCMapperEFCoreExtensions.AsDto().ToTreeList() 触发 ClearTreeChildrenSlot 热路径
+         （夹具对照表第 6 行）。仅加工程引用，零包依赖变更
+         （Directory.Packages.props 未动 → MANIFEST 版本策略条款 1 不触发）。 -->
+    <ProjectReference Include="..\..\src\NCMapper.EFCore\NCMapper.EFCore.csproj" />
+  </ItemGroup>
+</Project>

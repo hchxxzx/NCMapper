@@ -1,0 +1,67 @@
+{
+    "source":  "samples/NCMapper.Samples/05-Orm/FxScenarios.cs",
+    "language":  "en",
+    "generatedFrom":  "cc48146c1d37a6d25c95b71f073a9acbe2f9ef6caa7036fc7e6e5afdc189472e",
+    "comments":  [
+                     {
+                         "i":  1,
+                         "zh":  "Runtime×ORM 演示场景集 — Fluent DTO + EFCore/FreeSql AsDto 双态：",
+                         "en":  "Runtime × ORM demonstration scenario set — Fluent DTO + EFCore/FreeSql AsDto dual-state:"
+                     },
+                     {
+                         "i":  2,
+                         "zh":  "纯可翻译声明走投影（SQL 侧列裁剪）；Mask 声明一律强制降级（内存映射 + 脱敏不落明文）。",
+                         "en":  "Purely translatable declarations use projection (column pruning on the SQL side); Mask declarations are always forcibly downgraded (in-memory mapping + obfuscation without storing plaintext)."
+                     },
+                     {
+                         "i":  5,
+                         "zh":  "EFCore 纯可翻译 Fluent DTO 投影：AsDto 正常返回（SQL 侧列裁剪）。",
+                         "en":  "EFCore purely translatable Fluent DTO projection: AsDto returns normally (column pruning on the SQL side)."
+                     },
+                     {
+                         "i":  8,
+                         "zh":  "\u003creturns\u003e投影后的 Fluent DTO 列表\u003c/returns\u003e",
+                         "en":  "\u003creturns\u003eList of projected Fluent DTOs\u003c/returns\u003e"
+                     },
+                     {
+                         "i":  10,
+                         "zh":  "EFCore 含 Mask 声明的 Fluent DTO：一律强制降级（内存映射承载，不抛异常、脱敏不落明文）。",
+                         "en":  "EFCore Fluent DTO containing Mask declarations: always forcibly downgraded (in-memory mapping, no exceptions thrown, obfuscation without storing plaintext)."
+                     },
+                     {
+                         "i":  13,
+                         "zh":  "\u003creturns\u003e降级路径产物（脱敏后）\u003c/returns\u003e",
+                         "en":  "\u003creturns\u003eDowngraded-path result (obfuscated)\u003c/returns\u003e"
+                     },
+                     {
+                         "i":  15,
+                         "zh":  "FreeSql 纯可翻译 Fluent DTO 投影。",
+                         "en":  "FreeSql purely translatable Fluent DTO projection."
+                     },
+                     {
+                         "i":  17,
+                         "zh":  "\u003cparam name=\"fsql\"\u003eFreeSql 实例\u003c/param\u003e",
+                         "en":  "\u003cparam name=\"fsql\"\u003eFreeSql instance\u003c/param\u003e"
+                     },
+                     {
+                         "i":  18,
+                         "zh":  "\u003creturns\u003e投影后的 Fluent DTO 列表\u003c/returns\u003e",
+                         "en":  "\u003creturns\u003eList of projected Fluent DTOs\u003c/returns\u003e"
+                     },
+                     {
+                         "i":  20,
+                         "zh":  "FreeSql 含 Mask 声明的 Fluent DTO：一律强制降级（内存映射 + 脱敏不落明文）。",
+                         "en":  "FreeSql Fluent DTO containing Mask declarations: always forcibly downgraded (in-memory mapping + obfuscation without storing plaintext)."
+                     },
+                     {
+                         "i":  22,
+                         "zh":  "\u003cparam name=\"fsql\"\u003eFreeSql 实例\u003c/param\u003e",
+                         "en":  "\u003cparam name=\"fsql\"\u003eFreeSql instance\u003c/param\u003e"
+                     },
+                     {
+                         "i":  23,
+                         "zh":  "\u003creturns\u003e降级路径产物（脱敏后）\u003c/returns\u003e",
+                         "en":  "\u003creturns\u003eDowngraded-path result (obfuscated)\u003c/returns\u003e"
+                     }
+                 ]
+}

@@ -1,0 +1,177 @@
+{
+    "source":  "samples/NCMapper.Samples/06-Infrastructure/ValidationScenarios.cs",
+    "language":  "en",
+    "generatedFrom":  "d17e74ff06c57dd1dbb790049551f4d0a69894d72b25e38a2369267b04a27e80",
+    "comments":  [
+                     {
+                         "i":  1,
+                         "zh":  "验证诊断场景集 — MapValidator、MapTracer、错误诊断。",
+                         "en":  "Validate the diagnostic scenario set — MapValidator, MapTracer, and error diagnostics."
+                     },
+                     {
+                         "i":  4,
+                         "zh":  "\u003cpara\u003e\u003cb\u003e编译期诊断码最小复现指引\u003c/b\u003e：",
+                         "en":  "\u003cpara\u003e\u003cb\u003eMinimal reproduction guide for compile-time diagnostic codes\u003c/b\u003e:"
+                     },
+                     {
+                         "i":  5,
+                         "zh":  "NCMAP001（源字段不存在）/ NCMAP002（类型不兼容）为\u003cb\u003e编译期诊断\u003c/b\u003e——真实触发会阻断",
+                         "en":  "NCMAP001 (source field does not exist) / NCMAP002 (type incompatibility) are \u003cb\u003ecompile-time diagnostics\u003c/b\u003e — actual triggering blocks compilation."
+                     },
+                     {
+                         "i":  6,
+                         "zh":  "samples 编译，本组以运行时验证/诊断演示为主；最小复现样例与负向先验锚由",
+                         "en":  "The \u0027samples\u0027 project compiles; this group primarily demonstrates runtime validation/diagnosis; minimal reproduction examples and negative prior anchors are defined by"
+                     },
+                     {
+                         "i":  7,
+                         "zh":  "源生成器测试套锁定（NCMapper.SourceGen.Tests：NCMAP019FluentExemptionTests 的",
+                         "en":  "the source generator test suite (NCMapper.SourceGen.Tests: NCMAP019FluentExemptionTests\u0027s"
+                     },
+                     {
+                         "i":  8,
+                         "zh":  "PlainDto_StillReported_WithPositiveAnchor 为 019 先验锚基准；001/002 触发样例见",
+                         "en":  "PlainDto_StillReported_WithPositiveAnchor serves as the baseline prior anchor for diagnostic code 019; examples triggering 001/002 are located in"
+                     },
+                     {
+                         "i":  9,
+                         "zh":  "Models/Dtos 各诊断 fixture）。18 号页诊断码全索引（docs/zh-CN/reference/18-Diagnostics-Index.md）",
+                         "en":  "the Models/Dtos diagnostic fixtures for each diagnostic code). Full index of diagnostic codes on page 18 (docs/zh-CN/reference/18-Diagnostics-Index.md)"
+                     },
+                     {
+                         "i":  10,
+                         "zh":  "与测试套一一对应。\u003c/para\u003e",
+                         "en":  "corresponds one-to-one with the test suite.\u003c/para\u003e"
+                     },
+                     {
+                         "i":  13,
+                         "zh":  "扫描当前程序集中所有 [MapFrom] 类型对，验证映射完整性。",
+                         "en":  "Scan all [MapFrom] type pairs in the current assembly and validate mapping completeness."
+                     },
+                     {
+                         "i":  15,
+                         "zh":  "\u003creturns\u003e验证结果列表\u003c/returns\u003e",
+                         "en":  "\u003creturns\u003eList of validation results\u003c/returns\u003e"
+                     },
+                     {
+                         "i":  17,
+                         "zh":  "验证特定类型对的映射。",
+                         "en":  "Validate mapping for a specific type pair."
+                     },
+                     {
+                         "i":  19,
+                         "zh":  "\u003creturns\u003e单条验证结果\u003c/returns\u003e",
+                         "en":  "\u003creturns\u003eA single validation result\u003c/returns\u003e"
+                     },
+                     {
+                         "i":  21,
+                         "zh":  "ValidateOrThrow：启动时全量校验，Error 级别抛异常。",
+                         "en":  "ValidateOrThrow: Perform full validation at startup; throw exceptions at Error level."
+                     },
+                     {
+                         "i":  23,
+                         "zh":  "\u003creturns\u003e异常信息或 null（校验通过）\u003c/returns\u003e",
+                         "en":  "\u003creturns\u003eError message or null (if validation passes)\u003c/returns\u003e"
+                     },
+                     {
+                         "i":  25,
+                         "zh":  "Validate(assembly)：指定程序集校验。",
+                         "en":  "Validate(assembly): Validate the specified assembly."
+                     },
+                     {
+                         "i":  27,
+                         "zh":  "\u003creturns\u003e验证结果列表\u003c/returns\u003e",
+                         "en":  "\u003creturns\u003eList of validation results\u003c/returns\u003e"
+                     },
+                     {
+                         "i":  29,
+                         "zh":  "null 源对象映射：Map(null) 返回 null。",
+                         "en":  "Null source object mapping: Map(null) returns null."
+                     },
+                     {
+                         "i":  31,
+                         "zh":  "\u003creturns\u003e映射结果（预期 null）\u003c/returns\u003e",
+                         "en":  "\u003creturns\u003eMapping result (expected to be null)\u003c/returns\u003e"
+                     },
+                     {
+                         "i":  33,
+                         "zh":  "开启 MapTracer 输出属性映射路径诊断。",
+                         "en":  "Enable MapTracer to output property-mapping path diagnostics."
+                     },
+                     {
+                         "i":  35,
+                         "zh":  "\u003cparam name=\"src\"\u003e源实体\u003c/param\u003e",
+                         "en":  "\u003cparam name=\"src\"\u003eSource entity\u003c/param\u003e"
+                     },
+                     {
+                         "i":  36,
+                         "zh":  "\u003creturns\u003e映射后的 DTO\u003c/returns\u003e",
+                         "en":  "\u003creturns\u003eMapped DTO\u003c/returns\u003e"
+                     },
+                     {
+                         "i":  38,
+                         "zh":  "TraceOutput 设置 StringWriter 输出目标。",
+                         "en":  "Set TraceOutput to a StringWriter as the output target."
+                     },
+                     {
+                         "i":  40,
+                         "zh":  "\u003cparam name=\"src\"\u003e源实体\u003c/param\u003e",
+                         "en":  "\u003cparam name=\"src\"\u003eSource entity\u003c/param\u003e"
+                     },
+                     {
+                         "i":  41,
+                         "zh":  "\u003creturns\u003e捕获的 Trace 行数\u003c/returns\u003e",
+                         "en":  "\u003creturns\u003eNumber of captured trace lines\u003c/returns\u003e"
+                     },
+                     {
+                         "i":  43,
+                         "zh":  "MapTraceOptions.Enable() 工厂 + MapTracer.LogCallback 集成日志框架。",
+                         "en":  "MapTraceOptions.Enable() factory method + MapTracer.LogCallback integration with logging frameworks."
+                     },
+                     {
+                         "i":  45,
+                         "zh":  "\u003cparam name=\"src\"\u003e源实体\u003c/param\u003e",
+                         "en":  "\u003cparam name=\"src\"\u003eSource entity\u003c/param\u003e"
+                     },
+                     {
+                         "i":  46,
+                         "zh":  "\u003creturns\u003eLogCallback 捕获的消息条数\u003c/returns\u003e",
+                         "en":  "\u003creturns\u003eNumber of messages captured by LogCallback\u003c/returns\u003e"
+                     },
+                     {
+                         "i":  48,
+                         "zh":  "MapTraceOptions.Enable() 工厂方法：按调用创建配置。",
+                         "en":  "MapTraceOptions.Enable() factory method: creates configuration per call."
+                     },
+                     {
+                         "i":  50,
+                         "zh":  "\u003creturns\u003e配置的 Enabled 状态\u003c/returns\u003e",
+                         "en":  "\u003creturns\u003eThe Enabled state of the configuration\u003c/returns\u003e"
+                     },
+                     {
+                         "i":  52,
+                         "zh":  "ValidationEnabled 开关双态：false 时 Validate() 一律返回空列表，恢复 true 后非空。",
+                         "en":  "Error diagnosis: deliberately trigger MapException to verify exception message completeness."
+                     },
+                     {
+                         "i":  54,
+                         "zh":  "</summary>",
+                         "en":  "\u003creturns\u003eThe captured MapException message, or null\u003c/returns\u003e"
+                     },
+                     {
+                         "i":  55,
+                         "zh":  "<returns>(关闭态结果数, 恢复态结果数)</returns>",
+                         "en":  "===== Scenario registration entry point ====="
+                     },
+                     {
+                         "i":  57,
+                         "zh":  "PrintReport 重载双态：showOk 默认 false 跳过 OK 行，true 全行输出。",
+                         "en":  "DTO for error diagnosis — Id is of type string, incompatible with UserEntity.Id (int), triggering MapException."
+                     },
+                     {
+                         "i":  60,
+                         "zh":  "</summary>",
+                         "en":  "Deliberately use string instead of int to trigger a type incompatibility exception."
+                     }
+                 ]
+}

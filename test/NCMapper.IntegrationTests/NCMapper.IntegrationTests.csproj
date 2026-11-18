@@ -1,0 +1,52 @@
+<Project Sdk="Microsoft.NET.Sdk">
+  <PropertyGroup>
+    <TargetFrameworks>net8.0;net9.0;net10.0</TargetFrameworks>
+    <ImplicitUsings>enable</ImplicitUsings>
+    <Nullable>enable</Nullable>
+    <RootNamespace>NCMapper.IntegrationTests</RootNamespace>
+    <IsPackable>false</IsPackable>
+    <OutputType>Exe</OutputType>
+    <UseMicrosoftTestingPlatformRunner>true</UseMicrosoftTestingPlatformRunner>
+    <TestingPlatformDotnetTestSupport>true</TestingPlatformDotnetTestSupport>
+      <CetCompat>false</CetCompat>
+  </PropertyGroup>
+  <ItemGroup>
+    <PackageReference Include="xunit.v3" />
+    <PackageReference Include="xunit.runner.visualstudio">
+      <PrivateAssets>all</PrivateAssets>
+      <IncludeAssets>runtime; build; native; contentfiles; analyzers</IncludeAssets>
+    </PackageReference>
+    <PackageReference Include="Microsoft.NET.Test.Sdk" />
+    <!-- W3D-4 方案 A 路径 3（2026-08-08 裁决修订）：MTP 原生覆盖率扩展，替代方案 B 移除的 coverlet.collector -->
+    <PackageReference Include="Microsoft.Testing.Extensions.CodeCoverage" />
+    <PackageReference Include="FreeSql" />
+    <PackageReference Include="FreeSql.Provider.Sqlite" />
+    <PackageReference Include="Dapper" />
+    <!-- CVE-2025-6965 覆盖（2026-08-24）：EF Core Sqlite 传递锁 bundle_e_sqlite3 2.1.10 → 2.1.13（内置 SQLite 3.53.x 已修复） -->
+    <PackageReference Include="SQLitePCLRaw.bundle_e_sqlite3" />
+  </ItemGroup>
+  <ItemGroup Condition="'$(TargetFramework)' == 'net8.0'">
+    <!-- 与 NCMapper.EFCore 引用的核心包 Microsoft.EntityFrameworkCore 9.0.0 保持一致（EF Core 9 支持 net8.0）；
+         此前用 8.0.11 会与 9.0.0 核心包冲突，运行时抛 TypeLoadException(AdHocMapper) -->
+    <PackageReference Include="Microsoft.EntityFrameworkCore.Sqlite" VersionOverride="9.0.0" />
+  </ItemGroup>
+  <ItemGroup Condition="'$(TargetFramework)' == 'net9.0'">
+    <PackageReference Include="Microsoft.EntityFrameworkCore.Sqlite" VersionOverride="9.0.0" />
+  </ItemGroup>
+  <ItemGroup Condition="'$(TargetFramework)' == 'net10.0'">
+    <PackageReference Include="Microsoft.EntityFrameworkCore.Sqlite" VersionOverride="10.0.0-preview.4.25258.110" />
+  </ItemGroup>
+  <ItemGroup>
+    <ProjectReference Include="..\..\src\NCMapper\NCMapper.csproj" />
+    <ProjectReference Include="..\..\src\NCMapper.FreeSql\NCMapper.FreeSql.csproj" />
+    <ProjectReference Include="..\..\src\NCMapper.EFCore\NCMapper.EFCore.csproj" />
+    <ProjectReference Include="..\..\src\NCMapper.Dapper\NCMapper.Dapper.csproj" />
+  </ItemGroup>
+  <ItemGroup>
+    <!-- N-6: 关闭测试集合并行 — 本程序集共享进程级全局状态（Mapper.Pipeline/降级缓存/MaskProvider），
+         集合间并行会引发 Pipeline.Clear 与 MapList 迭代竞争（flaky：PostMap 仅作用于部分元素）。
+         套件仅约 3s，串行化成本可忽略；DegradationConcurrencyTests 的内部并发线程不受影响。 -->
+    <None Include="xunit.runner.json" CopyToOutputDirectory="PreserveNewest" />
+  </ItemGroup>
+  <!-- W3D-4 方案 A 路径 3（2026-08-08 裁决修订）：覆盖率链路恢复，ci-only -->
+</Project>

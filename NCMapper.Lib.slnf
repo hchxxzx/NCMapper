@@ -1,0 +1,12 @@
+{
+  "solution": {
+    "path": "NCMapper.slnx",
+    "projects": [
+      "src\\NCMapper.SourceGen\\NCMapper.SourceGen.csproj",
+      "src\\NCMapper\\NCMapper.csproj",
+      "src\\NCMapper.Dapper\\NCMapper.Dapper.csproj",
+      "src\\NCMapper.EFCore\\NCMapper.EFCore.csproj",
+      "src\\NCMapper.FreeSql\\NCMapper.FreeSql.csproj"
+    ]
+  }
+}

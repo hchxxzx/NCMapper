@@ -1,0 +1,157 @@
+{
+    "source":  "samples/NCMapper.AotSample/Program.cs",
+    "language":  "en",
+    "generatedFrom":  "3333e043dd0029f55e43e38894b5012a9868417c0084b5344a9a5805201630e6",
+    "comments":  [
+                     {
+                         "i":  1,
+                         "zh":  "NativeAOT 部署示例程序 — 演示标 [MapFrom] 的 AOT 安全用法。",
+                         "en":  "NativeAOT deployment example application — demonstrates AOT-safe usage of [MapFrom]."
+                     },
+                     {
+                         "i":  2,
+                         "zh":  "\u003cpara\u003e全部 DTO 标注 [MapFrom] 走源生成器路径（零反射），可完整 NativeAOT 发布。\u003c/para\u003e",
+                         "en":  "All DTOs annotated with [MapFrom] use the source generator path (zero reflection) and support full NativeAOT publishing."
+                     },
+                     {
+                         "i":  3,
+                         "zh":  "\u003cpara\u003e发布命令：dotnet publish -c Release -r win-x64 --self-contained\u003c/para\u003e",
+                         "en":  "\u003cpara\u003ePublish command: dotnet publish -c Release -r win-x64 --self-contained\u003c/para\u003e"
+                     },
+                     {
+                         "i":  5,
+                         "zh":  "1. Map (source-generator path)",
+                         "en":  "1. Map (source generator path)"
+                     },
+                     {
+                         "i":  6,
+                         "zh":  "DTO carries [MapFrom], so runtime takes the source-generated path (AOT-safe); the IL warning is only the conservative signal from Mapper.Map's public UC annotations, known safe",
+                         "en":  "DTOs are annotated with [MapFrom]; at runtime, the source generator path is used (AOT-safe); IL warnings are conservative signals from public usage annotations on Mapper.Map and are known to be safe."
+                     },
+                     {
+                         "i":  7,
+                         "zh":  "2. MapList (source-generator path)",
+                         "en":  "2. MapList (source generator path)"
+                     },
+                     {
+                         "i":  8,
+                         "zh":  "DTO carries [MapFrom], so runtime takes the source-generated path (AOT-safe); the IL warning is only the conservative signal from Mapper.MapList's public UC annotations, known safe",
+                         "en":  "DTOs are annotated with [MapFrom]; at runtime, the source generator path is used (AOT-safe); IL warnings are conservative signals from public usage annotations on Mapper.MapList and are known to be safe."
+                     },
+                     {
+                         "i":  9,
+                         "zh":  "3. DeepCopy (source-generator path)",
+                         "en":  "3. DeepCopy (source generator path)"
+                     },
+                     {
+                         "i":  10,
+                         "zh":  "DTO carries [MapFrom], so runtime takes the source-generated path (AOT-safe); the IL warning is only the conservative signal from Mapper.DeepCopy's public UC annotations, known safe",
+                         "en":  "DTOs are annotated with [MapFrom]; at runtime, the source generator path is used (AOT-safe); IL warnings are conservative signals from public usage annotations on Mapper.DeepCopy and are known to be safe."
+                     },
+                     {
+                         "i":  11,
+                         "zh":  "4. Validate (source-generator compile-time validation results, zero reflection)",
+                         "en":  "4. Validate (compile-time validation via source generator, zero reflection)"
+                     },
+                     {
+                         "i":  12,
+                         "zh":  "5. Compose (source-generated path -- RegisterGeneratedCompose)",
+                         "en":  "5. Compose (source generator path — RegisterGeneratedCompose)"
+                     },
+                     {
+                         "i":  13,
+                         "zh":  "DTO carries [MapFrom], so runtime takes the source-generated path (AOT-safe); the IL warning is only the conservative signal from Mapper.Compose's public UC annotations, known safe",
+                         "en":  "DTOs are annotated with [MapFrom]; at runtime, the source generator path is used (AOT-safe); IL warnings are conservative signals from public usage annotations on Mapper.Compose and are known to be safe."
+                     },
+                     {
+                         "i":  15,
+                         "zh":  "断言辅助 — 失败抛出异常使进程以非零码退出（NativeAOT 冒烟检测）",
+                         "en":  "Assertion helper — throws an exception on failure, causing the process to exit with a non-zero exit code (NativeAOT smoke test)."
+                     },
+                     {
+                         "i":  18,
+                         "zh":  "用户实体 — 源类型",
+                         "en":  "User entity — source type"
+                     },
+                     {
+                         "i":  21,
+                         "zh":  "主键",
+                         "en":  "Primary key"
+                     },
+                     {
+                         "i":  24,
+                         "zh":  "名称",
+                         "en":  "Name"
+                     },
+                     {
+                         "i":  27,
+                         "zh":  "邮箱",
+                         "en":  "Email"
+                     },
+                     {
+                         "i":  30,
+                         "zh":  "用户 DTO — 标 [MapFrom] 走源生成器路径（AOT 安全）",
+                         "en":  "User DTO — annotated with [MapFrom] to use the source generator path (AOT-safe)"
+                     },
+                     {
+                         "i":  33,
+                         "zh":  "主键",
+                         "en":  "Primary key"
+                     },
+                     {
+                         "i":  36,
+                         "zh":  "名称",
+                         "en":  "Name"
+                     },
+                     {
+                         "i":  39,
+                         "zh":  "邮箱",
+                         "en":  "Email"
+                     },
+                     {
+                         "i":  42,
+                         "zh":  "订单实体 — Compose 源",
+                         "en":  "Order entity — Compose source"
+                     },
+                     {
+                         "i":  45,
+                         "zh":  "订单标识",
+                         "en":  "Order ID"
+                     },
+                     {
+                         "i":  48,
+                         "zh":  "金额",
+                         "en":  "Amount"
+                     },
+                     {
+                         "i":  51,
+                         "zh":  "客户实体 — Compose 源",
+                         "en":  "Customer entity — Compose source"
+                     },
+                     {
+                         "i":  54,
+                         "zh":  "客户名称",
+                         "en":  "Customer Name"
+                     },
+                     {
+                         "i":  57,
+                         "zh":  "订单详情 DTO — Compose 目标（标 [MapFrom] + [MapProperty] 走源生成路径）",
+                         "en":  "Order Details DTO — Composition Target (source generation path via [MapFrom] + [MapProperty])"
+                     },
+                     {
+                         "i":  60,
+                         "zh":  "订单标识",
+                         "en":  "Order ID"
+                     },
+                     {
+                         "i":  63,
+                         "zh":  "金额",
+                         "en":  "Amount"
+                     },
+                     {
+                         "i":  66,
+                         "zh":  "客户名称",
+                         "en":  "Customer Name"
+                     }
+                 ]
+}

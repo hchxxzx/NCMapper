@@ -1,0 +1,87 @@
+{
+    "source":  "samples/NCMapper.Samples/01-Fluent/MapWhenScenarios.cs",
+    "language":  "en",
+    "generatedFrom":  "4d4c2f82680045e03aa4b00e64f067cc52dd8a4d6f215b5139d3e38a8eae1f8d",
+    "comments":  [
+                     {
+                         "i":  1,
+                         "zh":  "场景 105 — 条件守卫 MapWhen（how-to/fluent/terminals.md「MapWhen」节）：",
+                         "en":  "Scenario 105 — Conditional Guard MapWhen (see the \u0027MapWhen\u0027 section in how-to/fluent/terminals.md)."
+                     },
+                     {
+                         "i":  2,
+                         "zh":  "命名方法组 / 内联转录 / 整源 / 同锚点组合 + 跳过值语义（新建 default、_Update 保留既有值）+ 特性侧 [MapWhen]。",
+                         "en":  "Named method group / inline transcription / full-source / same-anchor composition + skip-value semantics (new default; _Update retains existing values) + attribute-side [MapWhen]."
+                     },
+                     {
+                         "i":  5,
+                         "zh":  "Fluent 侧映射（四守卫形态同链）。",
+                         "en":  "Fluent-side mapping (all four guard forms share the same chain)."
+                     },
+                     {
+                         "i":  7,
+                         "zh":  "\u003cparam name=\"src\"\u003e源条目实体\u003c/param\u003e",
+                         "en":  "\u003cparam name=\"src\"\u003eSource entity instance.\u003c/param\u003e"
+                     },
+                     {
+                         "i":  8,
+                         "zh":  "\u003creturns\u003e映射后的 DTO（守卫真才映射）\u003c/returns\u003e",
+                         "en":  "\u003creturns\u003eMapped DTO (mapping occurs only if the guard condition evaluates to true).\u003c/returns\u003e"
+                     },
+                     {
+                         "i":  10,
+                         "zh":  "Fluent 侧 _Update 形态——条件假 → 保留 dst 既有值。",
+                         "en":  "Fluent-side _Update form — when the condition evaluates to false, retain the existing value in \u0027dst\u0027."
+                     },
+                     {
+                         "i":  12,
+                         "zh":  "\u003cparam name=\"src\"\u003e源条目实体\u003c/param\u003e",
+                         "en":  "\u003cparam name=\"src\"\u003eSource entity instance.\u003c/param\u003e"
+                     },
+                     {
+                         "i":  13,
+                         "zh":  "\u003cparam name=\"existing\"\u003e既有 DTO（含旧值）\u003c/param\u003e",
+                         "en":  "\u003cparam name=\"existing\"\u003eExisting DTO (containing previous values).\u003c/param\u003e"
+                     },
+                     {
+                         "i":  15,
+                         "zh":  "特性侧映射——[MapWhen(nameof(HasContent))] 属性级守卫。",
+                         "en":  "Attribute-side mapping — property-level guard via [MapWhen(nameof(HasContent))]."
+                     },
+                     {
+                         "i":  17,
+                         "zh":  "\u003cparam name=\"src\"\u003e源条目实体\u003c/param\u003e",
+                         "en":  "\u003cparam name=\"src\"\u003eSource entity instance.\u003c/param\u003e"
+                     },
+                     {
+                         "i":  18,
+                         "zh":  "\u003creturns\u003e映射后的 DTO（Name 受属性级守卫）\u003c/returns\u003e",
+                         "en":  "\u003creturns\u003eMapped DTO (with \u0027Name\u0027 subject to property-level guard).\u003c/returns\u003e"
+                     },
+                     {
+                         "i":  20,
+                         "zh":  "场景调度 — 顺序执行全部子场景并输出。",
+                         "en":  "Scenario orchestration — sequentially execute all sub-scenarios and output results."
+                     },
+                     {
+                         "i":  22,
+                         "zh":  "1. Fluent all-true: all four guards hit",
+                         "en":  "1. Fluent all-true: all four guards evaluate to true."
+                     },
+                     {
+                         "i":  23,
+                         "zh":  "2. Fluent all-false (new instance): false condition -- keep default / initializer values",
+                         "en":  "2. Fluent all-false (new instance): when conditions evaluate to false, retain default/initializer values."
+                     },
+                     {
+                         "i":  24,
+                         "zh":  "3. Fluent _Update: false condition -- keep dst existing values; true condition -- update",
+                         "en":  "3. Fluent _Update: when condition evaluates to false, retain existing \u0027dst\u0027 values; when true, update."
+                     },
+                     {
+                         "i":  25,
+                         "zh":  "4. Attribute side [MapWhen]: property-level guard (predicate method declared on the DTO itself)",
+                         "en":  "4. Attribute-side [MapWhen]: property-level guard (predicate method declared within the DTO itself)."
+                     }
+                 ]
+}

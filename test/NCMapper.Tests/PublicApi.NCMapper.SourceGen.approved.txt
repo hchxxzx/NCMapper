@@ -1,0 +1,23 @@
+[assembly: System.Runtime.CompilerServices.InternalsVisibleTo("NCMapper.SourceGen.Tests")]
+namespace NCMapper.SourceGen
+{
+    [Microsoft.CodeAnalysis.Diagnostics.DiagnosticAnalyzer("C#", new string[0])]
+    public sealed class ArrayContainsInExpressionAnalyzer : Microsoft.CodeAnalysis.Diagnostics.DiagnosticAnalyzer
+    {
+        public ArrayContainsInExpressionAnalyzer() { }
+        public override System.Collections.Immutable.ImmutableArray<Microsoft.CodeAnalysis.DiagnosticDescriptor> SupportedDiagnostics { get; }
+        public override void Initialize(Microsoft.CodeAnalysis.Diagnostics.AnalysisContext context) { }
+    }
+    [Microsoft.CodeAnalysis.Generator]
+    public class NCMapperSourceGenerator : Microsoft.CodeAnalysis.IIncrementalGenerator
+    {
+        public NCMapperSourceGenerator() { }
+        public void Initialize(Microsoft.CodeAnalysis.IncrementalGeneratorInitializationContext context) { }
+    }
+    [Microsoft.CodeAnalysis.Generator]
+    public class RuntimeSnapshotGenerator : Microsoft.CodeAnalysis.IIncrementalGenerator
+    {
+        public RuntimeSnapshotGenerator() { }
+        public void Initialize(Microsoft.CodeAnalysis.IncrementalGeneratorInitializationContext context) { }
+    }
+}

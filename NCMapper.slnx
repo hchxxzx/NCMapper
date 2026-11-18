@@ -1,0 +1,27 @@
+<Solution>
+  <Folder Name="/samples/">
+    <Project Path="samples/NCMapper.AotSample/NCMapper.AotSample.csproj" />
+    <Project Path="samples/NCMapper.Samples/NCMapper.Samples.csproj" />
+  </Folder>
+  <Folder Name="/src/">
+    <Project Path="src/NCMapper.Dapper/NCMapper.Dapper.csproj" />
+    <Project Path="src/NCMapper.EFCore/NCMapper.EFCore.csproj" />
+    <Project Path="src/NCMapper.FreeSql/NCMapper.FreeSql.csproj" />
+    <Project Path="src/NCMapper.SourceGen/NCMapper.SourceGen.csproj" />
+    <Project Path="src/NCMapper/NCMapper.csproj" />
+  </Folder>
+  <Folder Name="/test/">
+    <Project Path="test/NCMapper.AotTests/NCMapper.AotTests.csproj" />
+    <Project Path="test/NCMapper.FuzzTests/NCMapper.FuzzTests.csproj" />
+    <Project Path="test/NCMapper.IntegrationTests/NCMapper.IntegrationTests.csproj" />
+    <Project Path="test/NCMapper.SourceGen.Tests/NCMapper.SourceGen.Tests.csproj" />
+    <Project Path="test/NCMapper.Tests/NCMapper.Tests.csproj" />
+  </Folder>
+  <Folder Name="/tools/">
+    <Project Path="tools/AotReflectionGuard/NCMapper.AotReflectionGuard.csproj" />
+  </Folder>
+  <Folder Name="/benchmarks/">
+    <Project Path="benchmarks/NCMapper.Benchmarks/NCMapper.Benchmarks.csproj" />
+    <Project Path="benchmarks/NCMapper.SelfBench/NCMapper.SelfBench.csproj" />
+  </Folder>
+</Solution>

@@ -1,0 +1,85 @@
+<Project>
+  <PropertyGroup>
+    <!-- 公共属性 -->
+    <ImplicitUsings>enable</ImplicitUsings>
+    <Nullable>enable</Nullable>
+
+    <!-- NuGet 包信息 -->
+    <Authors>hchxxzx</Authors>
+    <Description>Free (Apache-2.0), AOT-ready object mapper for .NET. Dual engine — compile-time source generator + runtime expression tree — with built-in EF Core / FreeSql / Dapper projection (AsDto), deep copy, masking and compile-time diagnostics. A practical AutoMapper alternative for teams migrating from its commercial license.</Description>
+    <PackageLicenseExpression>Apache-2.0</PackageLicenseExpression>
+    <PackageProjectUrl>https://github.com/hchxxzx/NCMapper</PackageProjectUrl>
+    <RepositoryUrl>https://github.com/hchxxzx/NCMapper</RepositoryUrl>
+    <RepositoryType>git</RepositoryType>
+    <PackageTags>mapping;mapper;object-mapper;automapper-alternative;source-generator;aot;native-aot;dto;dto-mapping;orm;projection;efcore;ef-core;entity-framework-core;freesql;dapper;deepcopy;deep-copy;masking;performance;dotnet;csharp</PackageTags>
+    <PackageReadmeFile>README.md</PackageReadmeFile>
+    <PackageIcon>icon.png</PackageIcon>
+    <Copyright>Copyright (c) 2026 hchxxzx</Copyright>
+    <Version>1.0.0-preview.1</Version>
+
+    <!-- 强名称签名已移除 — .NET Core 默认不验证，且对性能有 -25% 影响。 -->
+    <!-- P1-13 修正：供应链安全暂依赖 SourceLink + SBOM，NuGet Author Signing 待后续实现 -->
+
+    <!-- P1-02: Source Link -->
+    <PublishRepositoryUrl>true</PublishRepositoryUrl>
+    <EmbedUntrackedSources>true</EmbedUntrackedSources>
+
+    <!-- P1-03: 确定性构建（CI 中通过 ContinuousIntegrationBuild=true 启用路径映射） -->
+    <Deterministic>true</Deterministic>
+
+    <!-- 启用 packages.lock.json 锁文件，保证依赖还原可复现 -->
+    <RestorePackagesWithLockFile>true</RestorePackagesWithLockFile>
+    <!-- 锁定模式：restore 时不更新 lock 文件，版本漂移时报错而非静默更新。需手动 dotnet restore /p:RestoreLockedMode=false 来更新 -->
+    <RestoreLockedMode>true</RestoreLockedMode>
+
+    <!-- P1-04: 符号包 -->
+    <IncludeSymbols>true</IncludeSymbols>
+    <SymbolPackageFormat>snupkg</SymbolPackageFormat>
+    <IncludeSource>false</IncludeSource>
+
+    <!-- SDK 检测条件 -->
+    <DefineConstants Condition="$([MSBuild]::GetTargetFrameworkIdentifier('$(TargetFramework)')) == '.NETCoreApp'">$(DefineConstants);NET</DefineConstants>
+
+    <!-- NuGet 漏洞审计：direct 模式直接审计传递依赖，不依赖资产文件 -->
+    <NuGetAuditMode>direct</NuGetAuditMode>
+  </PropertyGroup>
+
+  <!-- P1-02: Source Link 包（所有环境一致启用 — RestoreLockedMode 下 lock 文件须与项目依赖
+       在所有环境一致，CI 条件会导致 CI（CI=true）与本地（无 CI 变量）依赖集分裂，restore 报 NU1004；
+       本地多 remote 下构建需 -p:EnableSourceLink=false（Gitee 在前致 GitHub 无法解析）） -->
+  <ItemGroup Condition="'$(IsPackable)' != 'false'">
+    <PackageReference Include="Microsoft.SourceLink.GitHub" PrivateAssets="all" />
+  </ItemGroup>
+
+  <!-- 源生成器可见的 MSBuild 属性 -->
+  <ItemGroup>
+    <CompilerVisibleProperty Include="NCMapperSourceGenEnabled" />
+    <CompilerVisibleProperty Include="NCMapperGenerateReport" />
+    <!-- 快照运行时元数据发射开关（in-repo 通道）——
+         NuGet 消费链由 buildTransitive/NCMapper.targets 提供（NCMapper.csproj 打包）；
+         仓库内 ProjectReference→Analyzer 路径 targets 不加载，经本声明 + 默认值流入生成器 GlobalOptions -->
+    <CompilerVisibleProperty Include="NCMapperEmitRuntimeSnapshot" />
+    <!-- 全局映射配置 11 属性（方案 §3.6）：仓库内 ProjectReference→Analyzer 路径的可见性声明；
+         NuGet 消费者路径由 buildTransitive/NCMapper.targets 提供（NCMapper.csproj 打包） -->
+    <CompilerVisibleProperty Include="NCMapperNamingStrategy" />
+    <CompilerVisibleProperty Include="NCMapperPrefixes" />
+    <CompilerVisibleProperty Include="NCMapperPostfixes" />
+    <CompilerVisibleProperty Include="NCMapperIgnoreTypes" />
+    <CompilerVisibleProperty Include="NCMapperIgnoreNames" />
+    <CompilerVisibleProperty Include="NCMapperIgnoreNamePrefixes" />
+    <CompilerVisibleProperty Include="NCMapperIgnoreNameSuffixes" />
+    <CompilerVisibleProperty Include="NCMapperIgnoreTypesToEntity" />
+    <CompilerVisibleProperty Include="NCMapperIgnoreNamesToEntity" />
+    <CompilerVisibleProperty Include="NCMapperIgnoreNamePrefixesToEntity" />
+    <CompilerVisibleProperty Include="NCMapperIgnoreNameSuffixesToEntity" />
+  </ItemGroup>
+  <!-- 快照运行时元数据发射开关，默认 on
+       Batch-3 切 on 达成 L-1 消除 Fluent 降级缺口核心目标；显式 -p:NCMapperEmitRuntimeSnapshot=false 关闭 -->
+  <PropertyGroup>
+    <NCMapperEmitRuntimeSnapshot Condition="'$(NCMapperEmitRuntimeSnapshot)' == ''">true</NCMapperEmitRuntimeSnapshot>
+    <!-- 本机（Win10 LTSC）CET Shadow Stack 半支持环境适配——
+         net9.0+ 可执行工程（测试 exe/工具/samples/benchmarks）启动即 CET fail-fast；
+         CetCompat=false 为官方退出项（类库无 runtimeconfig 无副作用，产品包不受影响） -->
+    <CetCompat>false</CetCompat>
+  </PropertyGroup>
+</Project>

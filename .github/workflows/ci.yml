@@ -1,0 +1,587 @@
+name: CI
+
+on:
+  push:
+    branches: [main, master]
+  pull_request:
+    branches: [main, master]
+
+# 顶层 permissions 硬化：
+# 限制 GITHUB_TOKEN 默认权限为只读 contents，遵循最小权限原则
+permissions:
+  contents: read
+
+# SDK 确定性（2026-10-21 起 NU1004 治理；2026-10-29 基线升至 10.0.402；2026-11-18 基线升至 10.0.403）：
+# 本文件所有 setup-dotnet 步骤配合 global.json rollForward=disable 钉死精确版本，本地与 CI 必须同版。
+# 历史成因：2026-10-13 补丁日 SDK 10.0.402 发布（runtime 10.0.13/9.0.21/8.0.32 同批）后
+# runner 镜像预装 402 并被 dotnet 选中，其内置隐式包表整体上移（Microsoft.NET.ILLink.Tasks：
+# net8 8.0.31→8.0.32、net9 9.0.20→9.0.21、net10 10.0.12→10.0.13；AOT 目标另加
+# Microsoft.DotNet.ILCompiler 10.0.12→10.0.13），与 packages.lock.json 不一致，
+# RestoreLockedMode 下报 NU1004（test job CrashProbe 步骤三连实测）。
+# 403 升级动因：2026-10-25 OOB 安全更新 runtime 10.0.14 修复 CVE-2026-111497（Brotli 解码器越界写，
+# GHSA-p3jp-9v83-76w9，高危）。402 隐式引用 ILCompiler/runtime pack 10.0.13 触发 NU1903，
+# samples job "Build AotSample" 步骤 --warnaserror 下升级为 error。403 为含 10.0.14 的对应 SDK。
+# 铁律：升 SDK 须与全部 packages.lock.json 重新生成（dotnet restore --force-evaluate）同批提交，
+# 并跑一次 dotnet restore --locked-mode --force 自证锁定通过。
+
+jobs:
+  # 库严格门禁：主库 + SourceGen + 三个 ORM 扩展，warnaserror 保证零警告
+  # （Core.slnf 不含 ORM 三项目，故此作业用 NCMapper.Lib.slnf 显式纳入）
+  build:
+    runs-on: ubuntu-latest
+
+    steps:
+    - uses: actions/checkout@v4
+
+    - name: Setup .NET
+      # 用 global.json 的精确版本（10.0.403）而非 10.0.x 通配符——
+      # setup-dotnet@v4 的 10.0.x 解析到不存在的 patch（actions/setup-dotnet#711，2026-03）
+      uses: actions/setup-dotnet@v4
+      with:
+        dotnet-version: '10.0.403'
+        global-json-file: global.json
+
+    - name: Restore
+      run: dotnet restore NCMapper.Lib.slnf
+
+    # Requires* 消息语言门禁（fail fast，免等编译）
+    # Requires* 消息由编译器输出给消费者的 IL2026/IL3050 警告，必须为英文；
+    # 脚本对 src/**/*.cs（排除 bin/obj）整段参数匹配 CJK，防止中文消息再生。
+    # 注意：ubuntu-latest 镜像预装 PowerShell 7.6.3（runner-images 文档确认），
+    # `shell: pwsh` 直接可用，无需额外安装 action（actions/setup-powershell 不存在）。
+    - name: Check Requires* message language
+      shell: pwsh
+      run: ./scripts/check-requires-messages.ps1
+
+    - name: Build
+      run: dotnet build NCMapper.Lib.slnf --configuration Release --no-restore --warnaserror
+
+    # 全局配置生成区与清单一致性检查（强制门禁）
+    # 脚本 -Apply 重写生成区后 git diff 非零即失败——防手改生成区/清单漏同步；
+    # 豁免须在 PR 描述登记理由。
+    - name: Check global-config consistency
+      shell: pwsh
+      run: |
+        ./scripts/gen-global-config.ps1 -Apply
+        git diff --exit-code -- src/NCMapper/MapDefaultsAttribute.cs src/NCMapper/GeneratedMapConfig.cs src/NCMapper/GlobalConfigView.cs src/NCMapper/GlobalMapConfig.cs src/NCMapper.SourceGen/GlobalConfigReader.cs src/NCMapper.SourceGen/CodeGenerator.cs src/NCMapper/NCMapper.targets
+
+    # locales key-diff 门禁
+    # 构建后 zh-Hans/NCMapper.xml 为权威基准（csproj 构建时复制生成），逐语 key 集合差检测
+    # 缺失/多余漂移，漂移时脚本非零退出。
+    # 注意：当前为 -Warn 报告模式——12 种语言的译文依赖人工翻译，漂移暂不阻塞 CI；
+    # 步骤保留以便日志观察各语缺失/多余 key 数量，译文补齐并复验零漂移后可移除 -Warn 转为强制门禁。
+    - name: Check locales drift
+      shell: pwsh
+      run: ./scripts/check-locales-drift.ps1 -Language en -Warn
+
+    # AOT 反射守护——三扩展公开方法体 IL 含反射调用但无 Requires* 标注即失败，
+    # 确保已备案的反射约束不静默断裂。
+    # 工具工程独立于 Lib.slnf（不在 Restore 步骤覆盖范围），构建时自带 restore。
+    - name: Build AotReflectionGuard
+      run: dotnet build tools/AotReflectionGuard/NCMapper.AotReflectionGuard.csproj --configuration Release
+
+    - name: Check AOT reflection guard
+      run: dotnet run --project tools/AotReflectionGuard/NCMapper.AotReflectionGuard.csproj --configuration Release --no-build
+
+  # 全量测试门禁（含 AotTests 构建，其 IL 警告为 PublishAot 程序本性，不启用 warnaserror）
+  # 覆盖率链路：MTP 原生扩展 Microsoft.Testing.Extensions.CodeCoverage，
+  # dotnet test 传 --coverage 产出 cobertura。
+  # 2026-09-23 拆分：覆盖率移出本门禁 job → 独立 observe-only job（见 coverage）。
+  # 依据：codecov 上传步骤本就 fail_ci_if_error: false，覆盖率对门禁结论零影响，却让门禁步骤
+  # 多背 10 个 test module × CodeCoverage 原生插桩进程（4 vCPU runner 上的资源扰动面）；
+  # 拆出后门禁更快、更抗扰动，覆盖率照常产出。
+  test:
+    runs-on: ubuntu-latest
+    # 显式墙钟上限（2026-09-23 增，143 归因）：默认 360 分钟过长，用例一旦挂起，失败现场只剩一个
+    # 无从归因的 143。判据口径：超时被杀 → 结论 cancelled + "exceeded the maximum execution time" 注解；
+    # 2026-09-23 那次 143 的结论是 failure 且无超时注解 → 非 job 超时，属宿主/runner 侧终止（见步骤内注释）。
+    # 取值依据：2026-09-23 绿 run 实测 test job = 10m57s（当时含覆盖率），本 job 已不含覆盖率应更快，
+    # 取 25 分钟 ≈ 2.5 倍余量——够容纳 runner 争用抖动，又能让真挂起在半小时内显性失败。
+    timeout-minutes: 25
+
+    steps:
+    - uses: actions/checkout@v4
+
+    - name: Setup .NET
+      uses: actions/setup-dotnet@v4
+      with:
+        dotnet-version: '10.0.403'
+        global-json-file: global.json
+
+    # 崩溃类红测依赖的子进程 runner 须先行构建。
+    # CrashProbe 刻意独立于 slnx（净控制台最小形态，显式退出根 CPM/lock 继承约束，见其 csproj），
+    # 故 dotnet test NCMapper.slnx 不会构建它；而 RedTestRunner 靠 test/NCMapper.CrashProbe/bin
+    # 目录探测定位可执行输出（非 ProjectReference），CI 干净环境下必须先构建，否则 2 个
+    # Red_B01_SelfRefContainer 用例抛 InvalidOperationException（找不到构建输出）。
+    - name: Build CrashProbe
+      run: dotnet build test/NCMapper.CrashProbe/NCMapper.CrashProbe.csproj --configuration Release
+
+    # 旧实现把 dotnet test 全量输出缓冲进 $out 后一次性回放，
+    # 步骤被外部信号终止（SIGTERM → 143）时一行都来不及落地——"143 + 全无输出"零诊断即由此而来。
+    # 改为 Tee-Object 流式落盘（边进 GH 日志边写文件），被杀也保住已产出行；汇总行判据改为回读文件。
+    # 同时开 MTP 诊断日志：每个测试程序集产出诊断日志（默认落各工程 TestResults/），
+    # 可定位挂起点；同步写变量名在 MTP 1.9.1 的可用性未实证（Docs 记为 MTP 2.3.0 正式名，
+    # 旧名 deprecate 但保留），故新旧名同设——未识别的环境变量被忽略，无副作用。
+    # 注意：--logger 是 VSTest 专属参数，MTP 生效时被忽略并报 MTP0001，故控制台只有模块级粒度。
+    - name: Test (gating)
+      shell: pwsh
+      env:
+        TESTINGPLATFORM_DIAGNOSTIC: '1'
+        TESTINGPLATFORM_DIAGNOSTIC_FILELOGGER_SYNCHRONOUSWRITE: '1'
+      run: |
+        $logDir = Join-Path $PWD 'artifacts/ci'
+        New-Item -ItemType Directory -Force -Path $logDir | Out-Null
+        $logPath = Join-Path $logDir 'dotnet-test.log'
+
+        dotnet test NCMapper.slnx --configuration Release 2>&1 |
+          Tee-Object -FilePath $logPath -Encoding utf8
+        $code = $LASTEXITCODE
+        $out = @(Get-Content -LiteralPath $logPath -ErrorAction SilentlyContinue)
+        if ($code -ne 0) { throw "dotnet test 退出码非零: $code" }
+        if (-not ($out -match '已通过!|Passed!|failed:|失败:')) { throw "测试输出无汇总行——疑似测试进程崩溃" }
+
+    # 诊断增强：无论测试成败都上传各 TFM 的 TestResults/**（含 MTP 诊断日志与 cobertura）与
+    # artifacts/ci/ 下步骤侧落盘日志（Tee 产物，被杀场景的唯一现场）。
+    - name: Upload TestResults logs
+      if: always()
+      uses: actions/upload-artifact@v4
+      with:
+        name: testresults-logs
+        path: |
+          test/**/TestResults/**
+          artifacts/ci/**
+        if-no-files-found: warn
+
+  # 覆盖率观测（2026-09-23 从 test job 拆出）：observe-only，不参与门禁。
+  # continue-on-error: true —— 覆盖率链路任何失败都不阻塞合并；码率趋势仍由 codecov 侧呈现。
+  # 与 test job 并行跑（独立 runner），故不拖慢门禁；代价是每轮 CI 多跑一遍全套件（分钟数翻倍），
+  # 若需省分钟数可加 `if: github.event_name == 'push'` 让其仅在主分支推送时运行。
+  coverage:
+    runs-on: ubuntu-latest
+    continue-on-error: true
+    # 含覆盖率插桩 → 比门禁重，按 2026-09-23 绿 run 实测 test job = 10m57s（带覆盖率）取 30 分钟 ≈ 2.7 倍余量。
+    timeout-minutes: 30
+
+    steps:
+    - uses: actions/checkout@v4
+
+    - name: Setup .NET
+      uses: actions/setup-dotnet@v4
+      with:
+        dotnet-version: '10.0.403'
+        global-json-file: global.json
+
+    # 同 test job：RedTestRunner 依赖 CrashProbe 构建输出，独立 job 须自行构建。
+    - name: Build CrashProbe
+      run: dotnet build test/NCMapper.CrashProbe/NCMapper.CrashProbe.csproj --configuration Release
+
+    - name: Test with coverage (observe-only)
+      shell: pwsh
+      run: |
+        $logDir = Join-Path $PWD 'artifacts/ci-coverage'
+        New-Item -ItemType Directory -Force -Path $logDir | Out-Null
+        $logPath = Join-Path $logDir 'dotnet-test-coverage.log'
+
+        dotnet test NCMapper.slnx --configuration Release -- --coverage --coverage-output-format cobertura 2>&1 |
+          Tee-Object -FilePath $logPath -Encoding utf8
+        $code = $LASTEXITCODE
+        $out = @(Get-Content -LiteralPath $logPath -ErrorAction SilentlyContinue)
+        if ($code -ne 0) { throw "dotnet test 退出码非零: $code" }
+        if (-not ($out -match '已通过!|Passed!|failed:|失败:')) { throw "测试输出无汇总行——疑似测试进程崩溃" }
+
+    - name: Upload coverage artifacts
+      if: always()
+      uses: actions/upload-artifact@v4
+      with:
+        name: coverage-artifacts
+        path: |
+          test/**/TestResults/**
+          artifacts/ci-coverage/**
+        if-no-files-found: warn
+
+    - name: Upload coverage to Codecov
+      if: always()
+      uses: codecov/codecov-action@v4
+      with:
+        files: ./test/**/*.cobertura.xml
+        fail_ci_if_error: false
+
+  # NativeAOT 冒烟（A-2：本机无 Windows SDK，native link 移交 CI 承担；
+  # windows-latest 自带 Windows SDK + MSVC，可完成完整 publish AOT）。
+  # 注意：publish 不带 -p:PublishAot=true（NETSDK1207 会污染 netstandard2.0 的 SourceGen），
+  # AotTests.csproj 内已声明 PublishAot=true。
+  aot:
+    runs-on: windows-latest
+
+    steps:
+    - uses: actions/checkout@v4
+
+    - name: Setup .NET
+      # 用 global.json 的精确版本（10.0.403）而非 10.0.x 通配符——
+      # setup-dotnet@v4 的 10.0.x 解析到不存在的 patch（actions/setup-dotnet#711，2026-03）
+      uses: actions/setup-dotnet@v4
+      with:
+        dotnet-version: '10.0.403'
+        global-json-file: global.json
+
+    # AOT 反射契约门禁：publish 输出必须含 IL2026/IL3050 警告（Requires* 契约已声明）。
+    # 说明：负面④⑤ 运行时断言移除后，AOT 契约从"运行时靠撞运气断言必抛"改为
+    # 构建期硬校验——脚本内部执行 publish 并断言 IL 警告存在，任一反射路径契约断裂即失败。
+    # 与旧的 `dotnet publish` 步骤职责合一：本步骤同时产出 publish 二进制供 Run AOT binary 使用。
+    - name: Publish AOT + check IL warnings
+      shell: pwsh
+      run: ./scripts/check-aot-il-warnings.ps1 -RequiredMembers '*DeepCopyRuntimeOnly*','*Validate*'
+
+    - name: Run AOT binary
+      run: ./test/NCMapper.AotTests/bin/Release/net10.0/win-x64/publish/NCMapper.AotTests.exe
+
+  samples:
+    runs-on: ubuntu-latest
+
+    steps:
+    - uses: actions/checkout@v4
+
+    - name: Setup .NET
+      # 用 global.json 的精确版本（10.0.403）而非 10.0.x 通配符——
+      # setup-dotnet@v4 的 10.0.x 解析到不存在的 patch（actions/setup-dotnet#711，2026-03）
+      uses: actions/setup-dotnet@v4
+      with:
+        dotnet-version: '10.0.403'
+        global-json-file: global.json
+
+    - name: Build Samples
+      run: dotnet build samples/NCMapper.Samples/NCMapper.Samples.csproj --configuration Release --warnaserror
+
+    - name: Run All Samples
+      run: dotnet run --project samples/NCMapper.Samples/NCMapper.Samples.csproj --configuration Release -- --all
+
+    # warnaserror 门禁固化：AotSample 构建零警告，故升级为零警告门禁。
+    - name: Build AotSample
+      run: dotnet build samples/NCMapper.AotSample/NCMapper.AotSample.csproj --configuration Release --warnaserror
+
+    - name: Run AotSample
+      run: dotnet run --project samples/NCMapper.AotSample/NCMapper.AotSample.csproj --configuration Release
+
+  # CI 基准回归门禁 — 基线在 CI runner 自身建立与对照（同机对比免疫环境漂移），
+  # 禁止对照本地入库基线的绝对值；
+  # 阈值 10% 依据：本地同机噪声实测（同场景 3 次运行均值极差 7.3%）。
+  # 观察期策略：continue-on-error=true 运行一轮（首次 init 建基线 + 校准阈值）后转硬门禁。
+  benchmark:
+    runs-on: ubuntu-latest
+    continue-on-error: true  # 观察期一轮后移除（转硬门禁）
+
+    steps:
+    - uses: actions/checkout@v4
+
+    - name: Setup .NET
+      # 用 global.json 的精确版本（10.0.403）而非 10.0.x 通配符——
+      # setup-dotnet@v4 的 10.0.x 解析到不存在的 patch（actions/setup-dotnet#711，2026-03）
+      uses: actions/setup-dotnet@v4
+      with:
+        dotnet-version: '10.0.403'
+        global-json-file: global.json
+
+    - name: Check CI benchmark baseline
+      id: bench-check
+      # CI 基线文件已在仓库则门禁对照，否则提示建立（不阻塞——观察期首轮）
+      run: |
+        if [ -f benchmarks/ci-baseline/ci-baseline.json ]; then
+          bash scripts/ci-benchmark.sh check
+        else
+          echo "CI 基线不存在（首次运行）。观察期首轮：跳过门禁，提示建立基线。"
+          echo "需人工执行: bash scripts/ci-benchmark.sh init 后提交 benchmarks/ci-baseline/ci-baseline.json"
+        fi
+
+  # 生成产物基线一致性门禁
+  # 构建 samples/test/benchmarks 三项目 → 与 generated-baseline/ 逐字节对比（归一化行尾口径），
+  # 任一 DIFF 即失败——防止生成格式意外变更无人值守（配合测试侧 GeneratedSnapshotBaselineTests）。
+  generated-baseline:
+    runs-on: ubuntu-latest
+
+    steps:
+    - uses: actions/checkout@v4
+
+    - name: Setup .NET
+      uses: actions/setup-dotnet@v4
+      with:
+        dotnet-version: '10.0.403'
+        global-json-file: global.json
+
+    - name: Verify generated-baseline consistency
+      shell: pwsh
+      run: ./scripts/verify-generated-baseline.ps1
+
+  # Fluent 换代常驻回归门（2026-10-10 挂接）。
+  # 与 scripts/verify-linux.sh 阶段 [7]/[8] 共用同一脚本（本地=CI 单一事实源，防双执行面口径漂移）：
+  # [7] 断代反例回归 = check-fluent-negative-cases.sh——test/NCMapper.FluentNegativeCases 独立工程
+  #     （不入 slnx）默认 final 态 18/18 拦截；编译失败为承载形态——脚本只解析逐例 CS 码断言，
+  #     不作构建退出码判据（该工程编译必失败为设计本体）。
+  # [8] 旧形态常驻扫描 = check-fluent-legacy-scan.py——旧 26 签名/旧对级名/`new` 压制复活检测
+  #     + test/samples/benchmarks 面旧形态调用扫描；豁免表 3 项逐条归因（见脚本头注释），
+  #     新增命中须先归因再显式豁免，不得直接放宽判据。
+  fluent-gates:
+    runs-on: ubuntu-latest
+    # 秒/分钟级门——10 分钟上限防挂起无现场（先例 test job 143 归因口径）。
+    timeout-minutes: 10
+
+    steps:
+    - uses: actions/checkout@v4
+
+    - name: Setup .NET
+      uses: actions/setup-dotnet@v4
+      with:
+        dotnet-version: '10.0.403'
+        global-json-file: global.json
+
+    - name: Fluent negative cases (final 18/18)
+      run: bash scripts/check-fluent-negative-cases.sh
+
+    - name: Fluent legacy scan
+      run: python3 scripts/check-fluent-legacy-scan.py
+
+  # 双通道等价性 gate
+  # PR diff 触碰物化面前缀清单（MappingExtractor*/FluentExtractor*/ChainCallParser/
+  # Models.Snapshots/MappingSnapshotBuilder*）而未变更 test/.../Equivalence/ → 失败。
+  # 逃生门：PR 打 skip-equivalence-gate label（须在 PR 描述登记理由）→ job 级跳过。
+  # 仅 PR 事件运行：push 直推无 PR diff 语义，跳过。
+  # 本地对偶：scripts/local-ci-check.ps1 默认阶段集合已含
+  # equivalence-gate，调同一脚本、BaseRef 取起点 commit（-GateBaseRef，直推语义）——
+  # CI 侧 PR-only 语义不变，本 job 不改。
+  equivalence-gate:
+    runs-on: ubuntu-latest
+    if: github.event_name == 'pull_request' && !contains(github.event.pull_request.labels.*.name, 'skip-equivalence-gate')
+
+    steps:
+    - uses: actions/checkout@v4
+      with:
+        # 全量历史：脚本对 BaseRef 做 merge-base 三点 diff，浅克隆无 origin/<base> 会 fail-closed
+        fetch-depth: 0
+
+    - name: Verify equivalence gate (check 3)
+      shell: pwsh
+      run: ./scripts/verify-equivalence-gate.ps1 -BaseRef "origin/${{ github.base_ref }}"
+
+
+  # pack 发布实证 — nupkg 完整性门禁（G1）
+  # 两段式门禁：PR 阶段 observe-only（continue-on-error 表达式，不阻塞合并），
+  # push/main 阶段即硬门禁；GA 阶段（release/tag）启用 release 触发并保持强制。
+  # 与 benchmark job（固定 continue-on-error:true + 人工转硬）不同：本 job 用 PR/push 动态表达式，无需人工转硬。
+  pack:
+    runs-on: ubuntu-latest
+    continue-on-error: "${{ github.event_name == 'pull_request' }}"
+
+    steps:
+    - uses: actions/checkout@v4
+
+    - name: Setup .NET
+      # 用 global.json 的精确版本（10.0.403）而非 10.0.x 通配符——
+      # setup-dotnet@v4 的 10.0.x 解析到不存在的 patch（actions/setup-dotnet#711，2026-03）
+      uses: actions/setup-dotnet@v4
+      with:
+        dotnet-version: '10.0.403'
+        global-json-file: global.json
+
+    # CI 单 remote（origin=github）下 SourceLink 正常生成，不加 -p:EnableSourceLink=false（该参数仅本地多 remote 场景需要）
+    - name: Pack
+      shell: pwsh
+      run: |
+        $out = dotnet pack NCMapper.Lib.slnf --configuration Release --output ./nupkgs 2>&1
+        $out | ForEach-Object { Write-Host $_ }
+        if ($out -match 'warning NU5128') { throw "pack 存在 NU5128 警告（locales 依赖组）" }
+        Write-Host "[PASS] pack 零 NU5128 警告"
+
+    # G1 包完整性断言（六项：产出/元数据/空包/snupkg/SourceLink/零警告——零警告已在 Pack 步骤内）
+    - name: Verify package integrity
+      shell: pwsh
+      run: |
+        $ErrorActionPreference = 'Stop'
+        $packDir = './nupkgs'
+
+        # 兼容 PS 5.1/7.x：Expand-Archive 在 5.1 下不接受 .nupkg 扩展名，先复制为 .zip 再解压
+        function Expand-Pkg([string]$pkgPath, [string]$dest) {
+          $zipPath = Join-Path $env:RUNNER_TEMP ([guid]::NewGuid().ToString('N') + '.zip')
+          Copy-Item $pkgPath $zipPath
+          Expand-Archive -Path $zipPath -DestinationPath $dest
+          Remove-Item $zipPath
+        }
+
+        # 1. 产出清单：5 个 nupkg 齐全；核心包解包 TFM + 12 语 locales；SourceGen 含 lib/netstandard2.0
+        $pkgs = Get-ChildItem "$packDir/*.nupkg"
+        if ($pkgs.Count -ne 5) { throw "期望 5 个 nupkg，实际 $($pkgs.Count)" }
+        Write-Host "[PASS] 5 个 nupkg 齐全: $($pkgs.Name -join ', ')"
+
+        $corePkg = $pkgs | Where-Object { $_.Name -like 'NCMapper.*.nupkg' -and $_.Name -notlike '*.Dapper*' -and $_.Name -notlike '*.EFCore*' -and $_.Name -notlike '*.FreeSql*' -and $_.Name -notlike '*.SourceGen*' } | Select-Object -First 1
+        if (-not $corePkg) { throw "未找到 NCMapper 核心包" }
+        $tmpCore = Join-Path $env:RUNNER_TEMP ('core_' + [guid]::NewGuid().ToString('N'))
+        Expand-Pkg $corePkg.FullName $tmpCore
+        $locales = @('zh-Hans','en')
+        foreach ($tfm in @('net8.0','net9.0','net10.0')) {
+          if (-not (Test-Path "$tmpCore/lib/$tfm/NCMapper.dll")) { throw "核心包缺 TFM 程序集: $tfm" }
+          foreach ($loc in $locales) {
+            if (-not (Test-Path "$tmpCore/lib/$tfm/$loc/NCMapper.xml")) { throw "核心包缺 locales: $tfm/$loc" }
+          }
+        }
+        Write-Host "[PASS] 核心包 3 TFM + 双语 locales 齐全"
+
+        $sgPkg = $pkgs | Where-Object { $_.Name -like 'NCMapper.SourceGen.*.nupkg' } | Select-Object -First 1
+        $tmpSg = Join-Path $env:RUNNER_TEMP ('sg_' + [guid]::NewGuid().ToString('N'))
+        Expand-Pkg $sgPkg.FullName $tmpSg
+        if (-not (Test-Path "$tmpSg/lib/netstandard2.0/NCMapper.SourceGen.dll")) { throw "SourceGen 包缺 lib/netstandard2.0" }
+        Write-Host "[PASS] SourceGen 包含 lib/netstandard2.0"
+
+        # 2. 元数据：nuspec 含 license/readme/icon 节点 + repository 节点（url 属性）
+        $nuspec = Get-ChildItem $tmpCore -Filter '*.nuspec' | Select-Object -First 1
+        $nuspecText = Get-Content $nuspec.FullName -Raw
+        foreach ($meta in @('license','readme','icon','repository')) {
+          if ($nuspecText -notmatch $meta) { throw "nuspec 缺元数据项: $meta" }
+        }
+        if ($nuspecText -notmatch '<repository[^>]*url=') { throw "nuspec repository 节点缺 url 属性" }
+        Write-Host "[PASS] nuspec 元数据齐全（license/readme/icon/repository url）"
+
+        # 3. 空包防护：核心包解包文件数 > 40（3 TFM × (dll+xml+12 locales) + 元数据），
+        #    其余包 > 5（nuspec+README+icon+dll+[Content_Types]，SourceGen 单 TFM 实测 7 文件）
+        foreach ($p in $pkgs) {
+          $tmp = Join-Path $env:RUNNER_TEMP ('chk_' + [guid]::NewGuid().ToString('N'))
+          Expand-Pkg $p.FullName $tmp
+          $count = (Get-ChildItem $tmp -Recurse -File).Count
+          $isCore = $p.Name -like 'NCMapper.*.nupkg' -and $p.Name -notlike '*.Dapper*' -and $p.Name -notlike '*.EFCore*' -and $p.Name -notlike '*.FreeSql*' -and $p.Name -notlike '*.SourceGen*'
+          $minCount = if ($isCore) { 40 } else { 5 }
+          if ($count -lt $minCount) { throw "疑似空包: $($p.Name) 仅 $count 文件（阈值 $minCount）" }
+        }
+        Write-Host "[PASS] 全部 nupkg 非空（核心包 >40 文件，其余 >5）"
+
+        # 4. 符号包：snupkg 产出齐全（SymbolPackageFormat=snupkg）
+        $snupkgs = Get-ChildItem "$packDir/*.snupkg"
+        if ($snupkgs.Count -ne 5) { throw "期望 5 个 snupkg，实际 $($snupkgs.Count)" }
+        Write-Host "[PASS] 5 个 snupkg 齐全"
+
+        # 5. SourceLink 嵌入：核心包 snupkg 内 pdb 存在（CI 单 remote 构建下 SourceLink 正常）
+        $coreSnupkg = $snupkgs | Where-Object { $_.Name -like 'NCMapper.*.snupkg' -and $_.Name -notlike '*.Dapper*' -and $_.Name -notlike '*.EFCore*' -and $_.Name -notlike '*.FreeSql*' -and $_.Name -notlike '*.SourceGen*' } | Select-Object -First 1
+        $tmpSnp = Join-Path $env:RUNNER_TEMP ('snp_' + [guid]::NewGuid().ToString('N'))
+        Expand-Pkg $coreSnupkg.FullName $tmpSnp
+        if (-not (Get-ChildItem $tmpSnp -Recurse -Filter '*.pdb')) { throw "snupkg 内无 pdb（SourceLink 嵌入缺失）" }
+        Write-Host "[PASS] snupkg 内 pdb 存在（SourceLink 嵌入正常）"
+
+    - name: Upload packages
+      uses: actions/upload-artifact@v4
+      with:
+        name: ncmapper-packages
+        path: ./nupkgs
+        if-no-files-found: error
+
+  # windows 消费实证 — nupkg → 空白消费项目 → 编译 → 运行（G2）
+  # 与 aot job 职责分离：aot 验证 NativeAOT publish 链路，本 job 验证 NuGet 包消费链路；
+  # NCMapper 为纯托管库，windows 验证价值 = Windows 工具链上走通完整包消费链路（restore 路径/TFM 选择/源生成器）。
+  # 两段式门禁同 pack job；needs: pack 保证只实证通过完整性的产物（pack 断言失败时跳过实证，合理短路）。
+  windows-pack:
+    runs-on: windows-latest
+    needs: pack
+    continue-on-error: "${{ github.event_name == 'pull_request' }}"
+
+    steps:
+    - uses: actions/checkout@v4
+
+    - name: Setup .NET
+      # 用 global.json 的精确版本（10.0.403）而非 10.0.x 通配符——
+      # setup-dotnet@v4 的 10.0.x 解析到不存在的 patch（actions/setup-dotnet#711，2026-03）
+      uses: actions/setup-dotnet@v4
+      with:
+        dotnet-version: '10.0.403'
+        global-json-file: global.json
+
+    - name: Download packages
+      uses: actions/download-artifact@v4
+      with:
+        name: ncmapper-packages
+        path: ./nupkgs
+
+    # G2 消费实证（命令序列）：本地源 → 空白 console 项目 → 装包 → 编译运行最小映射冒烟
+    # 消费项目须在"真实外部消费者"语境下构建：不得继承本仓的 Directory.Build.props /
+    # Directory.Packages.props / NuGet.config——否则 CPM(ManagePackageVersionsCentrally) +
+    # RestoreLockedMode + packageSourceMapping(pattern="*" 仅映射 nuget.org) 会把 NCMapper 版本
+    # 解析约束到 nuget.org（该包尚未上架），触发 "no versions available for the package 'NCMapper'"
+    # 并连带 CS0246。故在仓外独立目录（RUNNER_TEMP 下）建消费项目，并自带自包含 NuGet.config。
+    # 自包含 config = 双源（2026-09-23 NU1101 修复）：local-ncmapper 解析 NCMapper 本体 +
+    # nuget.org 解析其包依赖（Microsoft.Extensions.DependencyInjection/Configuration.Abstractions、
+    # Configuration.Binder 三件——单本地源时 NU1101: no packages exist with this id in source(s):
+    # local-ncmapper，见 windows-pack 首跑实测）。局部 config 无 packageSourceMapping 节 →
+    # 不启用源映射约束，两源并存互不干扰。
+    - name: Smoke test from package
+      shell: pwsh
+      run: |
+        $ErrorActionPreference = 'Stop'
+
+        # 仓外独立工作目录（不继承本仓 MSBuild/NuGet 配置）+ 本地源路径
+        $smokeRoot = Join-Path $env:RUNNER_TEMP 'ncmapper-packsmoke'
+        if (Test-Path $smokeRoot) { Remove-Item $smokeRoot -Recurse -Force }
+        New-Item -ItemType Directory -Path $smokeRoot | Out-Null
+        $nupkgDir = (Resolve-Path (Join-Path $PWD 'nupkgs')).Path
+
+        # 1. 消费项目专用 NuGet.config：双源（pack job 产物本地源 + nuget.org 依赖源），无 mapping/CPM/锁
+        #    （NU1101 修复：NCMapper 包声明 M.E.* 三依赖，须 nuget.org 解析——单本地源首跑实测红，见上方注释）
+        @"
+        <?xml version="1.0" encoding="utf-8"?>
+        <configuration>
+        <packageSources>
+        <clear />
+        <add key="nuget.org" value="https://api.nuget.org/v3/index.json" protocolVersion="3" />
+        <add key="local-ncmapper" value="$nupkgDir" />
+        </packageSources>
+        </configuration>
+        "@ | Set-Content -Path (Join-Path $smokeRoot 'NuGet.config') -Encoding utf8
+
+        # 2. 仓外建空白消费项目（不继承本仓构建/包管理配置）
+        Set-Location $smokeRoot
+        dotnet new console -n PackSmoke -f net10.0
+
+        # 3. 装包：不得传 --source。该参数会【覆盖】NuGet.config 的全部源（NuGet 文档口径：
+        #    "overrides all of the sources specified in the nuget.config files"），只留本地目录 →
+        #    NCMapper 自身声明的 M.E.Configuration.Abstractions/Binder、M.E.DependencyInjection.
+        #    Abstractions 三依赖无处解析，必现 NU1101 + "incompatible with all frameworks" + CS0246 连锁。
+        #    2026-09-23 净缓存实证（windows-pack job 不 restore 本仓 → 全局包缓存对 M.E.* 为空，
+        #    用缓存验证会假绿）：--source 单源 → 三条 NU1101 与 CI 逐字一致；去掉 --source →
+        #    三依赖自 nuget.org 解析成功、本地源取本批 NCMapper、冒烟 MAPPED:smoke-ok RC=0。
+        #    源集完全交由上方双源 config 决定（此前 41ae28c "命名源解析缺陷" 的绕法即由此废弃）。
+        dotnet add PackSmoke package NCMapper --prerelease
+
+        # 3b. 防假绿断言：实际取到的必须就是本批 pack 产物版本，而非（将来上架后）nuget.org 上的同 ID 包。
+        #     注意判据写法：-not (表达式) -match (模式) 中 -not 结合更紧（等价于 (-not expr) -match ...，
+        #     恒为 $false），必须先把两侧落成变量再取反——2026-09-23 真值表实证暴露过该陷阱。
+        $expectedVersion = (Get-ChildItem "$nupkgDir/NCMapper.*.nupkg" |
+          Where-Object { $_.Name -notlike '*.Dapper*' -and $_.Name -notlike '*.EFCore*' -and $_.Name -notlike '*.FreeSql*' -and $_.Name -notlike '*.SourceGen*' } |
+          Select-Object -First 1).BaseName -replace '^NCMapper\.', ''
+        $csprojText = Get-Content PackSmoke/PackSmoke.csproj -Raw
+        $versionNeedle = 'Include="NCMapper" Version="' + [regex]::Escape($expectedVersion) + '"'
+        if (-not ($csprojText -match $versionNeedle)) {
+          throw "装包版本与本批产物不符（期望 $expectedVersion）——装配源选择已被污染，冒烟结论不成立"
+        }
+        Write-Host "[PASS] 装包版本与本批 pack 产物一致: $expectedVersion"
+
+        # 4. 冒烟代码：最小映射 + [MapFrom] 触发源生成路径（NCMapper 主包随包分发 analyzer，R4 打包项）
+        @'
+        using NCMapper;
+        using NCMapper.Attributes;
+
+        var src = new SourceEntity { Name = "smoke-ok" };
+        var dst = Mapper.Map<SourceEntity, TargetDto>(src)!;
+        System.Console.WriteLine($"MAPPED:{dst.Name}");
+        if (dst.Name != "smoke-ok") { System.Environment.Exit(1); }
+
+        public class SourceEntity
+        {
+            public string Name { get; set; } = "";
+        }
+
+        [MapFrom(typeof(SourceEntity))]
+        public class TargetDto
+        {
+            public string Name { get; set; } = "";
+        }
+        '@ | Set-Content -Path PackSmoke/Program.cs -Encoding utf8
+
+        # 5. 编译 + 运行，断言输出含映射标记
+        $run = dotnet run --project PackSmoke 2>&1
+        $run | ForEach-Object { Write-Host $_ }
+        if ($LASTEXITCODE -ne 0) { throw "冒烟运行失败，退出码 $LASTEXITCODE" }
+        if (-not ($run -match 'MAPPED:smoke-ok')) { throw "冒烟输出未含映射标记" }
+        Write-Host "[PASS] windows 包消费链路通过（restore/TFM/源生成/运行）"

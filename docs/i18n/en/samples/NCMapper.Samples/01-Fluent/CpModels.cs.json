@@ -1,0 +1,157 @@
+{
+    "source":  "samples/NCMapper.Samples/01-Fluent/CpModels.cs",
+    "language":  "en",
+    "generatedFrom":  "0e1061785cd411ebcab50607d528ec6e61296a9728ff2e866192ba3abefaa706",
+    "comments":  [
+                     {
+                         "i":  1,
+                         "zh":  "构造参数绑定源实体（人员）——FullName/Age 为绑定源。",
+                         "en":  "Construct parameter binding source entity (Person) — FullName/Age serve as the binding source."
+                     },
+                     {
+                         "i":  3,
+                         "zh":  "\u003csummary\u003e全名（绑定形参 name）\u003c/summary\u003e",
+                         "en":  "\u003csummary\u003eFull name (bound to constructor parameter \u0027name\u0027)\u003c/summary\u003e"
+                     },
+                     {
+                         "i":  4,
+                         "zh":  "\u003csummary\u003e年龄（绑定形参 age）\u003c/summary\u003e",
+                         "en":  "\u003csummary\u003eAge (bound to constructor parameter \u0027age\u0027)\u003c/summary\u003e"
+                     },
+                     {
+                         "i":  6,
+                         "zh":  "不可变目标（真实缺口场景）——无公共无参构造 + 全 get-only 属性：",
+                         "en":  "Immutable target (real-world gap scenario) — no public parameterless constructor + all properties are get-only:"
+                     },
+                     {
+                         "i":  7,
+                         "zh":  "形参不对应任何可写属性，自动同名匹配不产生 PropertyMapping，须 .MapCtorParam 直喂形参。",
+                         "en":  "Constructor parameters do not correspond to any writable properties; automatic name-matching does not generate PropertyMapping; therefore, .MapCtorParam must be used to directly feed constructor parameters."
+                     },
+                     {
+                         "i":  9,
+                         "zh":  "\u003csummary\u003e构造——形参 name/age（与属性 Name/Age 异名+get-only，无自动匹配锚点）\u003c/summary\u003e",
+                         "en":  "\u003csummary\u003eConstructor — parameters \u0027name\u0027/\u0027age\u0027 (mismatched names and get-only properties relative to \u0027Name\u0027/\u0027Age\u0027; no automatic matching anchor)\u003c/summary\u003e"
+                     },
+                     {
+                         "i":  10,
+                         "zh":  "\u003cparam name=\"name\"\u003e名称\u003c/param\u003e",
+                         "en":  "\u003cparam name=\"name\"\u003eName\u003c/param\u003e"
+                     },
+                     {
+                         "i":  11,
+                         "zh":  "\u003cparam name=\"age\"\u003e年龄\u003c/param\u003e",
+                         "en":  "\u003cparam name=\"age\"\u003eAge\u003c/param\u003e"
+                     },
+                     {
+                         "i":  12,
+                         "zh":  "\u003csummary\u003e名称（get-only）\u003c/summary\u003e",
+                         "en":  "\u003csummary\u003eName (get-only)\u003c/summary\u003e"
+                     },
+                     {
+                         "i":  13,
+                         "zh":  "\u003csummary\u003e年龄（get-only）\u003c/summary\u003e",
+                         "en":  "\u003csummary\u003eAge (get-only)\u003c/summary\u003e"
+                     },
+                     {
+                         "i":  15,
+                         "zh":  "构造参数绑定源实体（订单，形态 2 字符串辅形态场景）。",
+                         "en":  "Construct parameter binding source entity (Order), variant 2 — string-based source property name binding scenario."
+                     },
+                     {
+                         "i":  17,
+                         "zh":  "\u003csummary\u003e订单主键（绑定形参 id）\u003c/summary\u003e",
+                         "en":  "\u003csummary\u003eOrder primary key (bound to constructor parameter \u0027id\u0027)\u003c/summary\u003e"
+                     },
+                     {
+                         "i":  18,
+                         "zh":  "\u003csummary\u003e订单号（绑定形参 orderNo）\u003c/summary\u003e",
+                         "en":  "\u003csummary\u003eOrder number (bound to constructor parameter \u0027orderNo\u0027)\u003c/summary\u003e"
+                     },
+                     {
+                         "i":  20,
+                         "zh":  "不可变目标（形态 2：源属性名字符串绑定）。",
+                         "en":  "Immutable target (variant 2: source property name binding via string)."
+                     },
+                     {
+                         "i":  22,
+                         "zh":  "\u003csummary\u003e构造——形参 orderNo/id\u003c/summary\u003e",
+                         "en":  "\u003csummary\u003eConstructor — parameters \u0027orderNo\u0027/\u0027id\u0027\u003c/summary\u003e"
+                     },
+                     {
+                         "i":  23,
+                         "zh":  "\u003cparam name=\"orderNo\"\u003e订单号\u003c/param\u003e",
+                         "en":  "\u003cparam name=\"orderNo\"\u003eOrder number\u003c/param\u003e"
+                     },
+                     {
+                         "i":  24,
+                         "zh":  "\u003cparam name=\"id\"\u003e订单主键\u003c/param\u003e",
+                         "en":  "\u003cparam name=\"id\"\u003eOrder primary key\u003c/param\u003e"
+                     },
+                     {
+                         "i":  25,
+                         "zh":  "\u003csummary\u003e订单号（get-only）\u003c/summary\u003e",
+                         "en":  "\u003csummary\u003eOrder number (get-only)\u003c/summary\u003e"
+                     },
+                     {
+                         "i":  26,
+                         "zh":  "\u003csummary\u003e订单主键（get-only）\u003c/summary\u003e",
+                         "en":  "\u003csummary\u003eOrder primary key (get-only)\u003c/summary\u003e"
+                     },
+                     {
+                         "i":  28,
+                         "zh":  "record 目标（边界澄清场景）——位置参数 = 同名 init 属性：",
+                         "en":  "Record target (boundary clarification scenario) — positional parameters = identically named init-only properties."
+                     },
+                     {
+                         "i":  29,
+                         "zh":  "既有 .Map 即可喂构造器（匹配键 = 目标属性名），MapCtorParam 仅为免 dest 锚的便利性补充。",
+                         "en":  "Both .Map (matching by target property name) and .MapCtorParam (convenience supplement avoiding destination anchors) can feed the constructor."
+                     },
+                     {
+                         "i":  31,
+                         "zh":  "\u003cparam name=\"Name\"\u003e名称（init 属性）\u003c/param\u003e",
+                         "en":  "\u003cparam name=\"Name\"\u003eName (init-only property)\u003c/param\u003e"
+                     },
+                     {
+                         "i":  32,
+                         "zh":  "\u003cparam name=\"Age\"\u003e年龄（init 属性）\u003c/param\u003e",
+                         "en":  "\u003cparam name=\"Age\"\u003eAge (init-only property)\u003c/param\u003e"
+                     },
+                     {
+                         "i":  34,
+                         "zh":  "Fluent 侧构造参数绑定 Mapper（对应 how-to/fluent/terminals.md「MapCtorParam」节）——",
+                         "en":  "Fluent-style constructor parameter binding Mapper (corresponding to the \u0027MapCtorParam\u0027 section in how-to/fluent/terminals.md):"
+                     },
+                     {
+                         "i":  35,
+                         "zh":  "形态 1（源 lambda）/ 形态 2（源属性名字符串）+ record 经既有 .Map。",
+                         "en":  "Variant 1 (source lambda) / Variant 2 (source property name string) + record handled via existing .Map."
+                     },
+                     {
+                         "i":  37,
+                         "zh":  "\u003csummary\u003e链式声明入口（方法名任意，签名固定）\u003c/summary\u003e",
+                         "en":  "\u003csummary\u003eChained declaration entry point (method name is arbitrary, signature is fixed)\u003c/summary\u003e"
+                     },
+                     {
+                         "i":  38,
+                         "zh":  "\u003cparam name=\"cfg\"\u003eFluent 配置根\u003c/param\u003e",
+                         "en":  "\u003cparam name=\"cfg\"\u003eFluent configuration root\u003c/param\u003e"
+                     },
+                     {
+                         "i":  39,
+                         "zh":  "Form 1 (primary, recommended): source-lambda symbol anchor (single-segment pure property path)",
+                         "en":  "Form 1 (primary, recommended): source lambda symbol anchor (single-segment, pure property path)"
+                     },
+                     {
+                         "i":  40,
+                         "zh":  "Form 2 (secondary): source property-name string (generation-time symbol resolution + typo diagnostic F51)",
+                         "en":  "Form 2 (secondary): source property name string (symbol resolution at generation time + typo diagnostics F51)"
+                     },
+                     {
+                         "i":  41,
+                         "zh":  "record scenario: the existing .Map suffices (match key = target property name, ctor params receive it automatically)",
+                         "en":  "record scenario: .Map alone suffices (matching key = target property name; constructor parameters are automatically populated)"
+                     }
+                 ]
+}

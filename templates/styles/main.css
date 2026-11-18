@@ -1,0 +1,20 @@
+/* NCMapper 站点自定义样式（覆盖 default 模板的空 main.css；DocFX 模板文件同名替换机制，
+   中英两语离线包共用本文件 —— 2026-09-30 用户请求：内容区加宽）
+   classic 主题复用 Bootstrap 3 .container：≥1200px 视口时固定 1170px。
+   加宽策略（2026-09-30 三轮定稿：封顶流式 max-width 1600px）：
+   * .container = 100% 跟屏，封顶 1600px 后居中 —— 正文列 950px(1170) → 1080px(1300) → 1100px(1600 封顶)
+   * 右侧章节导航列（.article.grid-right > .col-md-2）钉死 190px（1170 时原宽 16.67%×1140），
+     容器增量全部给正文列（col-md-10 = calc(100% - 190px)）
+   仅覆盖宽度单值，不改主题其它规则；768/992 两档响应式断点保持原值。 */
+@media (min-width: 1200px) {
+  .container {
+    width: 100%;
+    max-width: 1600px;
+  }
+  .article.grid-right > .col-md-10 {
+    width: calc(100% - 190px);
+  }
+  .article.grid-right > .col-md-2 {
+    width: 190px;
+  }
+}

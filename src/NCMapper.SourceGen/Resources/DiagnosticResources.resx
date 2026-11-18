@@ -1,0 +1,1047 @@
+<?xml version="1.0" encoding="utf-8"?>
+<root>
+  <!--
+    编译期诊断资源化（34 规则 × 3 字段 = 102 键）。
+    键命名：{RuleId}_{Title|Message|Description}。
+    强类型访问器：Resources/DiagnosticResources.Designer.cs（手写提交）。
+  -->
+  <xsd:schema id="root" xmlns="" xmlns:xsd="http://www.w3.org/2001/XMLSchema" xmlns:msdata="urn:schemas-microsoft-com:xml-msdata">
+    <xsd:import namespace="http://www.w3.org/XML/1998/namespace" />
+    <xsd:element name="root" msdata:IsDataSet="true">
+      <xsd:complexType>
+        <xsd:choice maxOccurs="unbounded">
+          <xsd:element name="metadata">
+            <xsd:complexType>
+              <xsd:sequence>
+                <xsd:element name="value" type="xsd:string" minOccurs="0" />
+              </xsd:sequence>
+              <xsd:attribute name="name" use="required" type="xsd:string" />
+              <xsd:attribute name="type" type="xsd:string" />
+              <xsd:attribute name="mimetype" type="xsd:string" />
+              <xsd:attribute ref="xml:space" />
+            </xsd:complexType>
+          </xsd:element>
+          <xsd:element name="assembly">
+            <xsd:complexType>
+              <xsd:attribute name="alias" type="xsd:string" />
+              <xsd:attribute name="name" type="xsd:string" />
+            </xsd:complexType>
+          </xsd:element>
+          <xsd:element name="data">
+            <xsd:complexType>
+              <xsd:sequence>
+                <xsd:element name="value" type="xsd:string" minOccurs="0" msdata:Ordinal="1" />
+                <xsd:element name="comment" type="xsd:string" minOccurs="0" msdata:Ordinal="2" />
+              </xsd:sequence>
+              <xsd:attribute name="name" type="xsd:string" use="required" msdata:Ordinal="1" />
+              <xsd:attribute name="type" type="xsd:string" msdata:Ordinal="3" />
+              <xsd:attribute name="mimetype" type="xsd:string" msdata:Ordinal="4" />
+              <xsd:attribute ref="xml:space" />
+            </xsd:complexType>
+          </xsd:element>
+          <xsd:element name="resheader">
+            <xsd:complexType>
+              <xsd:sequence>
+                <xsd:element name="value" type="xsd:string" minOccurs="0" msdata:Ordinal="1" />
+              </xsd:sequence>
+              <xsd:attribute name="name" type="xsd:string" use="required" />
+            </xsd:complexType>
+          </xsd:element>
+        </xsd:choice>
+      </xsd:complexType>
+    </xsd:element>
+  </xsd:schema>
+  <resheader name="resmimetype">
+    <value>text/microsoft-resx</value>
+  </resheader>
+  <resheader name="version">
+    <value>2.0</value>
+  </resheader>
+  <resheader name="reader">
+    <value>System.Resources.ResXResourceReader, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  </resheader>
+  <resheader name="writer">
+    <value>System.Resources.ResXResourceWriter, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  </resheader>
+  <data name="NCMAP001_Title" xml:space="preserve">
+    <value>Source field not found</value>
+  </data>
+  <data name="NCMAP001_Message" xml:space="preserve">
+    <value>The source field '{1}' specified by mapped property '{0}' does not exist in type '{2}'</value>
+  </data>
+  <data name="NCMAP001_Description" xml:space="preserve">
+    <value>The DTO property is annotated with [MapProperty] but the specified source field does not exist in the source type; the property will not be mapped.</value>
+  </data>
+  <data name="NCMAP002_Title" xml:space="preserve">
+    <value>Type incompatible</value>
+  </data>
+  <data name="NCMAP002_Message" xml:space="preserve">
+    <value>Property '{0}' of type '{1}' is incompatible with source field '{2}' of type '{3}'; cannot assign directly or convert implicitly. Fix guidance: check whether the FromField source field type of [MapProperty] matches the target property type, or use [Convert] for a custom conversion.</value>
+  </data>
+  <data name="NCMAP002_Description" xml:space="preserve">
+    <value>The target property type is incompatible with the source field type; the runtime TypeConvertHelper fallback will be used, which may produce unexpected behavior.</value>
+  </data>
+  <data name="NCMAP003_Title" xml:space="preserve">
+    <value>No mappable properties</value>
+  </data>
+  <data name="NCMAP003_Message" xml:space="preserve">
+    <value>Type '{0}' is annotated with [MapFrom(typeof({1}))] but no property can be mapped</value>
+  </data>
+  <data name="NCMAP003_Description" xml:space="preserve">
+    <value>The DTO is annotated with [MapFrom] but no property matches the source type; the source type may be specified incorrectly.</value>
+  </data>
+  <data name="NCMAP005_Title" xml:space="preserve">
+    <value>Compose cross-table field not found</value>
+  </data>
+  <data name="NCMAP005_Message" xml:space="preserve">
+    <value>The field '{2}' specified by [MapProperty(typeof({1}), "{2}")] on property '{0}' does not exist in type '{1}'; the property will not be mapped by Compose</value>
+  </data>
+  <data name="NCMAP005_Description" xml:space="preserve">
+    <value>The DTO property is annotated with [MapProperty] specifying a cross-table source field, but the field does not exist in the specified sub-source type; the property will not be mapped during Compose. Check whether the FromSource type and FromField name of [MapProperty] are correct.</value>
+  </data>
+  <data name="NCMAP006_Title" xml:space="preserve">
+    <value>Target property unmapped</value>
+  </data>
+  <data name="NCMAP006_Message" xml:space="preserve">
+    <value>Property '{0}' (type '{1}') has a same-named property in source type '{2}', but the target setter is {3}; the property will not be mapped. Annotate [MapIgnore] if you intend to ignore it.</value>
+  </data>
+  <data name="NCMAP006_Description" xml:space="preserve">
+    <value>The source type has a same-named property, but the target setter is not public (private/protected/internal/init or no setter); generated code cannot assign. Change it to public set, or annotate [MapIgnore] to ignore it explicitly.</value>
+  </data>
+  <data name="NCMAP007_Title" xml:space="preserve">
+    <value>Source property unmapped</value>
+  </data>
+  <data name="NCMAP007_Message" xml:space="preserve">
+    <value>Property '{1}' (type '{2}') of source type '{0}' has no corresponding target property; this source property will not be mapped</value>
+  </data>
+  <data name="NCMAP007_Description" xml:space="preserve">
+    <value>The source property has no corresponding target property; data will not be mapped to the target object. If this is intentional, annotate [MapIgnore] on the source property to silence this hint.</value>
+  </data>
+  <data name="NCMAP009_Title" xml:space="preserve">
+    <value>Duplicate mapping of source property</value>
+  </data>
+  <data name="NCMAP009_Message" xml:space="preserve">
+    <value>Properties '{0}' and '{1}' both map to the same property '{3}' of source type '{2}'; this may cause duplicate data overwriting</value>
+  </data>
+  <data name="NCMAP009_Description" xml:space="preserve">
+    <value>Multiple target properties' [MapProperty] point to the same source property, usually a copy-paste error. Check whether the source field configuration of [MapProperty] is correct.</value>
+  </data>
+  <data name="NCMAP010_Title" xml:space="preserve">
+    <value>No overlapping enum members</value>
+  </data>
+  <data name="NCMAP010_Message" xml:space="preserve">
+    <value>Source enum '{0}' and target enum '{1}' have no overlapping member names; casting by value may produce unexpected results</value>
+  </data>
+  <data name="NCMAP010_Description" xml:space="preserve">
+    <value>For enum-to-enum mapping, the source and target enums have completely different member names. Casting by underlying value may produce unexpected enum values. Check the enum definitions or use [Convert] for a custom conversion.</value>
+  </data>
+  <data name="NCMAP011_Title" xml:space="preserve">
+    <value>Non-public type skipped by source generator</value>
+  </data>
+  <data name="NCMAP011_Message" xml:space="preserve">
+    <value>Type '{0}' has accessibility '{1}'; the source generator only supports public types. This type will use the runtime engine path and no compile-time code will be generated.</value>
+  </data>
+  <data name="NCMAP011_Description" xml:space="preserve">
+    <value>The mapper class generated by the source generator is internal. The current version does not generate compile-time code for non-public types; it automatically falls back to the runtime expression tree engine. Functionality is unaffected, but the AOT-friendliness and zero-reflection benefits of the source generator are not available.</value>
+  </data>
+  <data name="NCMAP012_Title" xml:space="preserve">
+    <value>Record circular reference or unresolvable graph; DeepCopy falls back to runtime</value>
+  </data>
+  <data name="NCMAP012_Message" xml:space="preserve">
+    <value>The DeepCopy property graph of record type '{0}' contains a circular reference or statically unresolvable edge; it cannot be generated safely via the constructor path and has been fallen back to the runtime path</value>
+  </data>
+  <data name="NCMAP012_Description" xml:space="preserve">
+    <value>DeepCopy of record types is generated recursively via constructor arguments, but dst is created inside new T(...), so it cannot be registered in the cycle detection cache before construction. When the property graph contains a circular reference (e.g. record Node(Node? Next)) or statically unresolvable edges (object/interface-typed properties, overridable virtual reference properties), the constructor path cannot defend against cycles and risks infinite recursion. This type automatically falls back to the Mapper.DeepCopyRuntimeOnly runtime path; functionality is unaffected but the performance benefits of the source generator are not available.</value>
+  </data>
+  <data name="NCMAP016_Title" xml:space="preserve">
+    <value>DeepCopy graph statically unresolvable; full cycle detection retained</value>
+  </data>
+  <data name="NCMAP016_Message" xml:space="preserve">
+    <value>Property '{1}' (type {2}) of type '{0}' cannot be statically resolved for cycle reachability; DeepCopy of this type retains full cycle detection</value>
+  </data>
+  <data name="NCMAP016_Description" xml:space="preserve">
+    <value>The deep copy property graph of the type contains statically unresolvable edges (object/dynamic/interface-typed properties, open or unconstrained generic parameters, virtual reference properties overridable by derived classes, etc.). Static analysis cannot prove acyclicity, so DeepCopy of this type retains full cycle detection (CycleCache). Functionality is unaffected, but the zero-detection fast path for acyclic graphs is not available.</value>
+  </data>
+  <data name="NCMAP013_Title" xml:space="preserve">
+    <value>Reverse mapping property skipped</value>
+  </data>
+  <data name="NCMAP013_Message" xml:space="preserve">
+    <value>Property '{0}' was skipped in reverse mapping ({1} →{2}): {3}</value>
+  </data>
+  <data name="NCMAP013_Description" xml:space="preserve">
+    <value>A property from the forward mapping was skipped in reverse mapping. Common reasons: Convert has no source property, the target setter is not public, collection index path reverse registration, or the intermediate node setter of the reverse write-back path is unavailable. This is an inherent semantic limitation, not a configuration error.</value>
+  </data>
+  <data name="NCMAP031_Title" xml:space="preserve">
+    <value>Intermediate node of reverse write-back path not instantiable</value>
+  </data>
+  <data name="NCMAP031_Message" xml:space="preserve">
+    <value>Intermediate node '{1}' (type {0}) of reverse write-back path '{2}' is not instantiable (interface/abstract class/no public parameterless constructor); reverse mapping ({3} →{4}) cannot create this node; the property is skipped</value>
+  </data>
+  <data name="NCMAP031_Description" xml:space="preserve">
+    <value>Reverse path write-back (DTO flat property →entity nested path assignment) must create a new instance when an intermediate node is null. When the intermediate node is an interface, abstract class, or has no public parameterless constructor, it cannot be instantiated; this configuration necessarily fails in the reverse direction (the forward read path is fully legal). Blocked at compile time by an Error diagnostic to avoid generating invalid code (task book B10).</value>
+  </data>
+  <data name="NCMAP032_Title" xml:space="preserve">
+    <value>init-only property skipped on update path</value>
+  </data>
+  <data name="NCMAP032_Message" xml:space="preserve">
+    <value>Property '{0}' is init-only; update mapping ({1} →{2}) cannot assign on an existing target object; the property is skipped (only the creation path can write it)</value>
+  </data>
+  <data name="NCMAP032_Description" xml:space="preserve">
+    <value>init-only properties can only be assigned at object construction (the creation path); the update path (an existing target object) cannot assign again, so the generator skips the property. This is a semantic limitation of C# init accessors, not a configuration error.</value>
+  </data>
+  <data name="NCMAP033_Title" xml:space="preserve">
+    <value>Reverse mapping does not consume [Convert] by default</value>
+  </data>
+  <data name="NCMAP033_Message" xml:space="preserve">
+    <value>Property '{0}' is annotated with [Convert]; reverse mapping ({1} → {2}) does not consume it by default (the converter's generic binding is the forward direction); the reverse direction writes via the type conversion path. Annotate [ConvertBack] if a custom reverse conversion is needed.</value>
+  </data>
+  <data name="NCMAP033_Description" xml:space="preserve">
+    <value>The generic arguments of a [Convert] converter bind the forward direction (entity source type →DTO output type); reverse mapping does not consume the converter by default, and the generator writes via the type conversion path. If a custom reverse conversion is needed, annotate [ConvertBack].</value>
+  </data>
+  <data name="NCMAP034_Title" xml:space="preserve">
+    <value>[Mask] property participates in reverse write-back (masked value written back as-is)</value>
+  </data>
+  <data name="NCMAP034_Message" xml:space="preserve">
+    <value>Property '{0}' is annotated with [Mask] and participates in reverse write-back ({1} →{2}); the masked value will be written to the target entity as-is (masking is lossy and irreversible; confirm the business semantics)</value>
+  </data>
+  <data name="NCMAP034_Description" xml:space="preserve">
+    <value>[Mask] masking is a lossy (irreversible) operation; reverse write-back writes the masked value back to the entity property as-is, potentially overwriting complete data in the entity. For CRUD update scenarios, annotating [MapIgnore(ToEntity)] on the masked DTO property to block the reverse write-back is recommended.</value>
+  </data>
+  <data name="NCMAP035_Title" xml:space="preserve">
+    <value>Converter method not found or inaccessible</value>
+  </data>
+  <data name="NCMAP035_Message" xml:space="preserve">
+    <value>Property '{0}': no accessible static method '{1}' on anchor type '{2}'. The method must be declared on the anchor type itself (inherited static methods are not considered), be static, and be public, internal (same assembly), or protected internal (same assembly). For the single-name form the anchor type is the type containing the annotated property; to target a method on another type, use the two-argument form [Convert(typeof(X), nameof(X.M))].</value>
+  </data>
+  <data name="NCMAP035_Description" xml:space="preserve">
+    <value>The method-reference form of [Convert]/[ConvertBack] resolves a static method on the anchor type with DeclaredOnly semantics (base-type inheritance is not considered) and the accessibility whitelist public / internal (same assembly) / protected internal (same assembly); private, protected, and private protected methods are rejected. A name that only exists on another type — e.g. the single-name form with nameof(OtherType.M), whose qualifier the compiler silently drops — is reported here; use the two-argument form to target another type.</value>
+  </data>
+  <data name="NCMAP036_Title" xml:space="preserve">
+    <value>Converter method overload is ambiguous</value>
+  </data>
+  <data name="NCMAP036_Message" xml:space="preserve">
+    <value>Property '{0}': multiple overloads of static method '{1}' on anchor type '{2}' match the signature templates. Rename the method or remove the conflicting overloads; a constructor form that selects an overload by signature is intentionally not provided.</value>
+  </data>
+  <data name="NCMAP036_Description" xml:space="preserve">
+    <value>When multiple same-name static overloads on the anchor type pass shape exclusion and signature template matching, the call target is ambiguous. Disambiguate by renaming the method or moving it; overload selection by signature is deliberately not supported.</value>
+  </data>
+  <data name="NCMAP037_Title" xml:space="preserve">
+    <value>Converter method signature mismatch</value>
+  </data>
+  <data name="NCMAP037_Message" xml:space="preserve">
+    <value>Property '{0}': no overload of static method '{1}' on anchor type '{2}' matches the signature templates (expected return type '{3}'). Details: {4}.</value>
+  </data>
+  <data name="NCMAP037_Description" xml:space="preserve">
+    <value>A matching overload must be a non-generic static method without optional/params/ref-out-in parameters, returning the target property type (only non-nullable to nullable lifting is allowed), with parameters exactly equal (after Nullable unwrap; no assignable widening) to T0 M(), T1 M(TField), T2 M(TSource), or T3 M(TSource, TField). Generic anchor types are unsupported in the single-name form; use the two-argument form with a closed generic type.</value>
+  </data>
+  <data name="NCMAP038_Title" xml:space="preserve">
+    <value>Lifecycle hook method unresolved</value>
+  </data>
+  <data name="NCMAP038_Message" xml:space="preserve">
+    <value>Attribute '{0}': no accessible static method '{1}' was found on anchor type '{2}'. The hook method must be public or internal (same assembly); if the method is declared on a host type other than the annotated DTO, use the two-argument constructor form to specify the host type.</value>
+  </data>
+  <data name="NCMAP038_Description" xml:space="preserve">
+    <value>A lifecycle hook attribute ([BeforeMapping]/[AfterMapping]) resolves a static method with the void(TSource, TTarget) signature. The method must be declared on the annotated type (single-argument form) or on the host type passed explicitly (two-argument form), and must be visible to the anchor type as public or same-assembly internal.</value>
+  </data>
+  <data name="NCMAP039_Title" xml:space="preserve">
+    <value>Lifecycle hook signature mismatch</value>
+  </data>
+  <data name="NCMAP039_Message" xml:space="preserve">
+    <value>Attribute '{0}': method '{1}' does not satisfy the lifecycle hook contract: {2}</value>
+  </data>
+  <data name="NCMAP039_Description" xml:space="preserve">
+    <value>A lifecycle hook method must be a static method with the void(TSource, TTarget) signature, with parameter types assignable from the mapping pair. In the single-argument form the anchor type must be a closed (non-open-generic) type; open generic hosts require the two-argument constructor form with a closed generic type.</value>
+  </data>
+  <data name="NCMAP040_Title" xml:space="preserve">
+    <value>Lifecycle hook ambiguous overload</value>
+  </data>
+  <data name="NCMAP040_Message" xml:space="preserve">
+    <value>Attribute '{0}': multiple accessible overloads of static method '{1}' on anchor type '{2}' are signature-compatible with the mapping pair and none is an exact match; specify a single unambiguous method</value>
+  </data>
+  <data name="NCMAP040_Description" xml:space="preserve">
+    <value>When several overloads of a lifecycle hook method are signature-compatible with the mapping pair, an exact match (parameter types equal to the mapping pair types) is required for deterministic resolution.</value>
+  </data>
+  <data name="NCMAP099_Title" xml:space="preserve">
+    <value>Source generation failed for mapping</value>
+  </data>
+  <data name="NCMAP099_Message" xml:space="preserve">
+    <value>Failed to generate mapping code for {0} →{1}: {2}</value>
+  </data>
+  <data name="NCMAP099_Description" xml:space="preserve">
+    <value>An unexpected exception occurred while generating mapping code for a specific type pair. Other mappings are unaffected.</value>
+  </data>
+  <data name="NCMAP014_Title" xml:space="preserve">
+    <value>Mask type mismatch</value>
+  </data>
+  <data name="NCMAP014_Message" xml:space="preserve">
+    <value>The type specified by [Mask(typeof({1}))] on property '{0}' does not implement the NCMapper.IMask interface</value>
+  </data>
+  <data name="NCMAP014_Description" xml:space="preserve">
+    <value>The type specified by [Mask] must implement the NCMapper.IMask interface (string Mask(string? value)).</value>
+  </data>
+  <data name="NCMAP015_Title" xml:space="preserve">
+    <value>Mask target property type invalid</value>
+  </data>
+  <data name="NCMAP015_Message" xml:space="preserve">
+    <value>Property '{0}' is annotated with [Mask], but the target property type is '{1}'; masking only supports string-typed properties</value>
+  </data>
+  <data name="NCMAP015_Description" xml:space="preserve">
+    <value>[Mask] can only be annotated on string-typed properties (IMask.Mask(string?) →string).</value>
+  </data>
+  <data name="NCMAP017_Title" xml:space="preserve">
+    <value>[MapNoAutoInclude] on a reference property</value>
+  </data>
+  <data name="NCMAP017_Message" xml:space="preserve">
+    <value>Property '{0}' is annotated with [MapNoAutoInclude], but it is a reference type (non-collection); automatic Include has significant overhead only for collection navigations, so this annotation is usually meaningless</value>
+  </data>
+  <data name="NCMAP017_Description" xml:space="preserve">
+    <value>[MapNoAutoInclude] is designed to exclude the auto-loading overhead of large collection navigations; annotating it on a reference property usually has no practical effect.</value>
+  </data>
+  <data name="NCMAP018_Title" xml:space="preserve">
+    <value>Array Contains in expression tree binds to MemoryExtensions.Contains</value>
+  </data>
+  <data name="NCMAP018_Message" xml:space="preserve">
+    <value>In an expression tree lambda, Contains on the '{0}' array binds to MemoryExtensions.Contains(ReadOnlySpan&lt;T&gt;, T) under .NET 10/C# 14; ORM expression parsers such as FreeSql only recognize Enumerable.Contains and will throw NotSupportedException. Use {0}.AsEnumerable().Contains(...) or a List&lt;T&gt; instead.</value>
+  </data>
+  <data name="NCMAP018_Description" xml:space="preserve">
+    <value>.NET 10/C# 14 overload resolution change: T[].Contains in an expression tree lambda now binds to MemoryExtensions.Contains; FreeSql's expression parser only recognizes Enumerable.Contains and will throw NotSupportedException.</value>
+  </data>
+  <data name="NCMAP019_Title" xml:space="preserve">
+    <value>Mapping configuration attributes present without [MapFrom]; the configuration has no activation path</value>
+  </data>
+  <data name="NCMAP019_Message" xml:space="preserve">
+    <value>Type '{0}' has mapping configuration attributes ([MapProperty]/[Convert]/[ConvertBack]/[MapIgnore]/[BeforeMapping]/[AfterMapping]/[Mask]/[MapWhen]/[MapNoAutoInclude]/[MapFormat]/[MapNoAutoMatch]) but is not annotated with [MapFrom]; the configuration has no activation path and is silently inert. Annotate [MapFrom] on the configuration-owning side, or remove the attributes (undeclared pairs still map by property name).</value>
+  </data>
+  <data name="NCMAP019_Description" xml:space="preserve">
+    <value>Mapping configuration annotations (eleven attribute-level items) are only effective when the containing type has a mapping declaration anchor ([MapFrom] or a Fluent For&lt;S,T&gt;() declaration). An unanchored configuration has no activation path and is silently ignored at runtime. This is a paired-rule compile-time enforcement (Error).</value>
+  </data>
+  <data name="NCMAP020_Title" xml:space="preserve">
+    <value>Invalid global mapping configuration value; treated as unset</value>
+  </data>
+  <data name="NCMAP020_Message" xml:space="preserve">
+    <value>The value '{1}' of global mapping configuration item '{0}' is invalid ({2}); the item is treated as unset (inheriting lower-level configuration)</value>
+  </data>
+  <data name="NCMAP020_Description" xml:space="preserve">
+    <value>When a global mapping configuration value is invalid (enum out of range, unresolvable type full name, list exceeding 8 entries, or complex syntax beyond the MVP scope), the item is treated as unset without blocking compilation, aligned with Mapperly RMG095 behavior.</value>
+  </data>
+  <data name="NCMAP021_Title" xml:space="preserve">
+    <value>Explicit annotation hit global ignore (fail-closed ignore)</value>
+  </data>
+  <data name="NCMAP021_Message" xml:space="preserve">
+    <value>Property '{0}' is annotated with an explicit mapping attribute but hits the global ignore list ({1}); the property is ignored. Action: add OverrideIgnore = true to exempt, or remove the redundant annotation (global ignore already covers it).</value>
+  </data>
+  <data name="NCMAP021_Description" xml:space="preserve">
+    <value>An explicit annotation ([MapProperty]/[Convert]/[Mask]/[ConvertBack]) hits the global ignore without OverrideIgnore, so it is ignored fail-closed; the message gives two-way guidance (exempt via OverrideIgnore, or remove the redundant annotation).</value>
+  </data>
+  <data name="NCMAP022_Title" xml:space="preserve">
+    <value>[MapIgnore] and OverrideIgnore=true are contradictory</value>
+  </data>
+  <data name="NCMAP022_Message" xml:space="preserve">
+    <value>Property '{0}' is annotated with both [MapIgnore] and OverrideIgnore=true, a contradictory configuration: the ignore takes effect ([MapIgnore] does not participate in the global ignore exemption). Remove either [MapIgnore] or OverrideIgnore=true.</value>
+  </data>
+  <data name="NCMAP022_Description" xml:space="preserve">
+    <value>The property-level [MapIgnore] is an explicit ignore and does not participate in the OverrideIgnore exemption; annotating both with OverrideIgnore=true is contradictory, and the ignore takes effect (fail-closed semantics).</value>
+  </data>
+  <data name="NCMAP023_Title" xml:space="preserve">
+    <value>Enum member names differ only by case; string→enum degrades to exact match</value>
+  </data>
+  <data name="NCMAP023_Message" xml:space="preserve">
+    <value>Enum type '{0}' has member names that differ only by case (violates the CLS specification); string→enum conversion degrades to exact name matching (case-sensitive). Rename the members to remove the ambiguity.</value>
+  </data>
+  <data name="NCMAP023_Description" xml:space="preserve">
+    <value>When enum member names collide except for case (e.g. Red and RED), the string→enum generated switch degrades to exact matching (case-sensitive); invalid values still throw MapException. Such enums violate the CLS specification; renaming the members is recommended.</value>
+  </data>
+  <data name="NCMAP024_Title" xml:space="preserve">
+    <value>Duplicate enum member values; string→enum numeric labels degraded</value>
+  </data>
+  <data name="NCMAP024_Message" xml:space="preserve">
+    <value>Enum type '{0}' has members with duplicate values (alias enum); the numeric-string label dimension of string→enum degrades to exact name matching, so numeric strings (e.g. "1") cannot be converted on the generated side. Eliminate the duplicate values or use [Convert].</value>
+  </data>
+  <data name="NCMAP024_Description" xml:space="preserve">
+    <value>When enum member values are duplicated (alias enum), numeric-string labels would produce duplicate switch labels; the numeric-string dimension degrades to exact name matching and this diagnostic is emitted.</value>
+  </data>
+  <data name="NCMAP025_Title" xml:space="preserve">
+    <value>Mutual mapping declaration (double true)</value>
+  </data>
+  <data name="NCMAP025_Message" xml:space="preserve">
+    <value>Types '{0}' and '{1}' declare the mapping relationship on both sides ([MapFrom] or Fluent For), forming a mutual declaration. Remove one side's declaration; the pair is not generated and the runtime falls back to name matching.</value>
+  </data>
+  <data name="NCMAP025_Description" xml:space="preserve">
+    <value>For a double-true mutual reference (A [MapFrom(B)] and B [MapFrom(A)]), the generated side cannot define a unique generation source; the pair is not generated and an Error-level diagnostic is emitted (build fails). The runtime falls back to name matching; removing one declaration restores generation.</value>
+  </data>
+  <data name="NCMAP026_Title" xml:space="preserve">
+    <value>Mask annotation in non-canonical position (source side)</value>
+  </data>
+  <data name="NCMAP026_Message" xml:space="preserve">
+    <value>Non-canonical annotation position — [Mask] should be annotated on the target side (same side as [MapFrom]); source-side annotation has no effect. Move [Mask] to the target property.</value>
+  </data>
+  <data name="NCMAP026_Description" xml:space="preserve">
+    <value>When the class carrying the Mask annotation differs from the class annotated with [MapFrom] (Mask on the source side), the source-side Mask annotation has no effect (Mask semantics are one-way: masking the target string); a Warning is emitted suggesting the canonical position. For mutual reference pairs, NCMAP025 takes precedence and this diagnostic is not stacked.</value>
+  </data>
+  <data name="NCMAP027_Title" xml:space="preserve">
+    <value>Incompatible member skipped (AutoMapper semantics aligned)</value>
+  </data>
+  <data name="NCMAP027_Message" xml:space="preserve">
+    <value>Mapping property '{0}' skipped: source type '{1}' and target type '{2}' are incompatible (aligned with AutoMapper semantics; this member is not mapped)</value>
+  </data>
+  <data name="NCMAP027_Description" xml:space="preserve">
+    <value>When auto-matched same-named properties under [MapFrom] have completely incompatible source/target types, mapping is skipped (aligned with AutoMapper's semantics of not mapping incompatible members) and an Info hint is emitted; an explicit [MapProperty(FromField=...)] incompatibility still goes through the NCMAP002 fallback.</value>
+  </data>
+  <data name="NCMAP028_Title" xml:space="preserve">
+    <value>Inaccessible member skipped</value>
+  </data>
+  <data name="NCMAP028_Message" xml:space="preserve">
+    <value>Mapping property '{0}' skipped: member '{1}' is inaccessible (visibility {2}; generated code only accesses public)</value>
+  </data>
+  <data name="NCMAP028_Description" xml:space="preserve">
+    <value>Generated code can only access public members (cross-assembly access to internal/protected/private triggers CS0122); inaccessible members are skipped and an Info hint is emitted.</value>
+  </data>
+  <data name="NCMAP029_Title" xml:space="preserve">
+    <value>Nested mutual-call cycle degraded</value>
+  </data>
+  <data name="NCMAP029_Message" xml:space="preserve">
+    <value>Nested mutual-call cycle detected: '{0}' →'{1}' call each other via nested property delegates —registration pairs on the cycle are degraded and skipped (target properties keep their default values, preventing StackOverflow)</value>
+  </data>
+  <data name="NCMAP029_Description" xml:space="preserve">
+    <value>The DTOs of two registration pairs reference each other's DTOs via nested properties (mutual calls in generated code without depth counting); registration pairs on the cycle are degraded and skipped to prevent StackOverflow from cyclic data. Direct self-reference is kept safe by depth protection.</value>
+  </data>
+  <data name="NCMAP030_Title" xml:space="preserve">
+    <value>Dot path does not consume [Mask]/[Convert]</value>
+  </data>
+  <data name="NCMAP030_Message" xml:space="preserve">
+    <value>The explicit dot path '{1}' of property '{0}' does not consume [{2}] (mapped values are not masked/converted); consumption fix is scheduled for phase B</value>
+  </data>
+  <data name="NCMAP030_Description" xml:space="preserve">
+    <value>The explicit dot path mapping succeeds, but the generated side does not consume [Mask]/[Convert]: the target property is not masked/converted. This is a known limitation of the current version (consumption added in phase B); this diagnostic only guarantees observability and does not block mapping.</value>
+  </data>
+  <data name="NCMAP_F02_Title" xml:space="preserve">
+    <value>Fluent lambda property not found</value>
+  </data>
+  <data name="NCMAP_F02_Message" xml:space="preserve">
+    <value>The property '{0}' referenced by the Fluent lambda does not exist on type '{1}'</value>
+  </data>
+  <data name="NCMAP_F02_Description" xml:space="preserve">
+    <value>A lambda in the Fluent chain references a property that cannot be resolved on the declared source/target type (typo or insufficient accessibility). The declaration is skipped; fix the property name or make the property accessible.</value>
+  </data>
+  <data name="NCMAP_F04_Title" xml:space="preserve">
+    <value>Fluent lambda root is not a parameter</value>
+  </data>
+  <data name="NCMAP_F04_Message" xml:space="preserve">
+    <value>Fluent lambdas cannot reference local variables or static classes; only property paths starting from the lambda parameter are supported</value>
+  </data>
+  <data name="NCMAP_F04_Description" xml:space="preserve">
+    <value>The root expression of the lambda is not the lambda parameter (e.g. a local variable or a static class reference). The Fluent channel only supports pure property paths rooted at the lambda parameter; the declaration is skipped.</value>
+  </data>
+  <data name="NCMAP_F05_Title" xml:space="preserve">
+    <value>Fluent lambda null-conditional access</value>
+  </data>
+  <data name="NCMAP_F05_Message" xml:space="preserve">
+    <value>Fluent lambdas do not support null-conditional access '{0}'; use a direct property path instead</value>
+  </data>
+  <data name="NCMAP_F05_Description" xml:space="preserve">
+    <value>The lambda body contains a null-conditional access '?.' which cannot be statically resolved into a property path. Replace it with a direct property path; the declaration is skipped.</value>
+  </data>
+  <data name="NCMAP_F06_Title" xml:space="preserve">
+    <value>Fluent lambda indexer access</value>
+  </data>
+  <data name="NCMAP_F06_Message" xml:space="preserve">
+    <value>Fluent lambdas do not support indexer access '{0}'</value>
+  </data>
+  <data name="NCMAP_F06_Description" xml:space="preserve">
+    <value>The lambda body contains an indexer access '[]' which cannot be statically resolved into a property path. The declaration is skipped; use a direct property path instead.</value>
+  </data>
+  <data name="NCMAP_F07_Title" xml:space="preserve">
+    <value>Fluent lambda method call</value>
+  </data>
+  <data name="NCMAP_F07_Message" xml:space="preserve">
+    <value>Fluent lambdas do not support method calls '{0}'; only property paths are supported</value>
+  </data>
+  <data name="NCMAP_F07_Description" xml:space="preserve">
+    <value>The lambda body contains a method invocation '()' which cannot be statically resolved into a property path. The declaration is skipped; extract the computed value via an explicit static converter if needed.</value>
+  </data>
+  <data name="NCMAP_F08_Title" xml:space="preserve">
+    <value>Fluent dynamic configuration rejected</value>
+  </data>
+  <data name="NCMAP_F08_Message" xml:space="preserve">
+    <value>Dynamic configuration statement '{0}' is not allowed in the Fluent Configure method body; only pure chained static calls are supported</value>
+  </data>
+  <data name="NCMAP_F08_Description" xml:space="preserve">
+    <value>The Configure method body contains control flow (if/for/foreach/while/switch/try), a ternary expression, an assignment, or a local variable declaration. The Fluent channel only supports statically analyzable pure chains; the offending statement is rejected.</value>
+  </data>
+  <data name="NCMAP_F11_Title" xml:space="preserve">
+    <value>Dual-driver type pair conflict</value>
+  </data>
+  <data name="NCMAP_F11_Message" xml:space="preserve">
+    <value>[MapFrom] on DTO class '{0}' and Fluent Configure on mapper class '{1}' both declare the type pair ({2}, {3}), violating the mutual-exclusion rule; remove one of the declarations</value>
+  </data>
+  <data name="NCMAP_F11_Description" xml:space="preserve">
+    <value>The same (Source, Target) type pair is declared by both the [MapFrom] attribute channel and the Fluent Configure channel. Both channels write the same GeneratedCache slot and would produce duplicate generated methods; both declarations are suppressed. Using the two channels for different type pairs (pattern coexistence) is allowed.</value>
+  </data>
+  <data name="NCMAP_F12_Title" xml:space="preserve">
+    <value>AfterMapping target method is private</value>
+  </data>
+  <data name="NCMAP_F12_Message" xml:space="preserve">
+    <value>The AfterMapping target method '{0}' is private and inaccessible across classes; generated code lives in the GeneratedMapper static class (a separate type), so the target method must be public or internal static</value>
+  </data>
+  <data name="NCMAP_F12_Description" xml:space="preserve">
+    <value>The AfterMapping target method's accessibility makes it unreachable from the generated GeneratedMapper static class. Promote the method to public or internal static so the generated invocation compiles.</value>
+  </data>
+  <data name="NCMAP_F14_Title" xml:space="preserve">
+    <value>AfterMapping target is not a method group</value>
+  </data>
+  <data name="NCMAP_F14_Message" xml:space="preserve">
+    <value>The AfterMapping target must be a statically resolvable method group reference; lambdas/closures/captured variables cannot be statically resolved as generated-code references</value>
+  </data>
+  <data name="NCMAP_F14_Description" xml:space="preserve">
+    <value>AfterMapping requires a method group reference that the source generator can emit as a direct call in generated code. Lambdas, closures, captured variables, and local functions have no statically addressable entry point; the declaration is skipped.</value>
+  </data>
+  <data name="NCMAP_F15_Title" xml:space="preserve">
+    <value>MapperConfig class has no matching method</value>
+  </data>
+  <data name="NCMAP_F15_Message" xml:space="preserve">
+    <value>The [MapperConfig] class '{0}' contains no method matching the required signature; the Fluent channel entry convention is 'public static void M(NCMapper.FluentMappingConfig cfg)' with any method name</value>
+  </data>
+  <data name="NCMAP_F15_Description" xml:space="preserve">
+    <value>The class is annotated with [MapperConfig] (explicit Fluent channel intent) but declares no 'static void M(NCMapper.FluentMappingConfig cfg)' method. Add such a method to declare mappings, or remove the attribute.</value>
+  </data>
+  <data name="NCMAP_F16_Title" xml:space="preserve">
+    <value>Fluent type pair duplicate declaration</value>
+  </data>
+  <data name="NCMAP_F16_Message" xml:space="preserve">
+    <value>The type pair ({0}, {1}) is declared {2} times in the Fluent channel (mapper classes: {3}); all duplicate declarations are suppressed and no mapping method is generated; merge them into a single declaration or remove the duplicates</value>
+  </data>
+  <data name="NCMAP_F16_Description" xml:space="preserve">
+    <value>Declaring the same (Source, Target) type pair more than once in the Fluent channel (across [MapperConfig] classes or via multiple chains in one Configure) would generate duplicate methods with the same name and fail at the consumer side with CS0111. Every conflicting declaration is suppressed and each declaration site reports this error. Merge the declarations into a single chain or remove the duplicates.</value>
+  </data>
+  <data name="NCMAP_F17_Title" xml:space="preserve">
+    <value>Fluent declaration conflict: Ignore + ConvertBack</value>
+  </data>
+  <data name="NCMAP_F17_Message" xml:space="preserve">
+    <value>Fluent declaration conflict: property '{0}' on '{1}' declares both Ignore and ConvertBack — reverse write would never execute</value>
+  </data>
+  <data name="NCMAP_F17_Description" xml:space="preserve">
+    <value>The same DTO anchor property is declared with both Ignore and ConvertBack in one chain. Ignore removes the property from mapping candidates (no forward property mapping means no reverse derivation), so the ConvertBack reverse write would never execute. Remove the Ignore declaration or the ConvertBack declaration.</value>
+  </data>
+  <data name="NCMAP_F18_Title" xml:space="preserve">
+    <value>ConvertBack reverse target not found</value>
+  </data>
+  <data name="NCMAP_F18_Message" xml:space="preserve">
+    <value>ConvertBack reverse target not found: no property '{0}' on source type '{1}' (anchor '{2}' on '{3}')</value>
+  </data>
+  <data name="NCMAP_F18_Description" xml:space="preserve">
+    <value>The ConvertBack anchor property name has no same-name property (case-insensitive) on the source (entity) type, so the reverse write has no target. Add the property to the entity type, rename the anchor, or remove the ConvertBack declaration.</value>
+  </data>
+  <data name="NCMAP_F19_Title" xml:space="preserve">
+    <value>ConvertBack converter not accessible from generated code</value>
+  </data>
+  <data name="NCMAP_F19_Message" xml:space="preserve">
+    <value>ConvertBack converter '{0}' must be public/internal static and accessible from generated code (same assembly)</value>
+  </data>
+  <data name="NCMAP_F19_Description" xml:space="preserve">
+    <value>The ConvertBack converter method is declared private or protected. Generated code lives in an internal static class within the same assembly and cannot access such members; generated calls would fail with CS0122. Make the converter public or internal static, or move it into a class visible to the generated code.</value>
+  </data>
+  <data name="NCMAP_F20_Title" xml:space="preserve">
+    <value>ConvertBack converter must be a static method group or a transcribable lambda</value>
+  </data>
+  <data name="NCMAP_F20_Message" xml:space="preserve">
+    <value>ConvertBack converter must be a statically resolvable method group, or a capture-free expression lambda (transcribed into generated code); closures/local functions/instance bindings remain unsupported</value>
+  </data>
+  <data name="NCMAP_F20_Description" xml:space="preserve">
+    <value>The ConvertBack converter argument resolved to a delegate variable or an instance method bound to a receiver, which has no statically addressable entry point. Pass a public/internal static method group, or an inline capture-free expression lambda (transcribed into a private static method of the generated mapper). Lambdas that capture variables, access private/protected members, or use statement bodies are rejected with NCMAP_F41/NCMAP_F42.</value>
+  </data>
+  <data name="NCMAP_F21_Title" xml:space="preserve">
+    <value>ConvertBack converter signature mismatch</value>
+  </data>
+  <data name="NCMAP_F21_Message" xml:space="preserve">
+    <value>ConvertBack converter '{0}' matches no supported shape; expected one of: M() / M(TField) / M(TSource) / M(TSource, TField) with TField='{1}', TSource='{2}', return '{3}'</value>
+  </data>
+  <data name="NCMAP_F21_Description" xml:space="preserve">
+    <value>The ConvertBack converter signature matches none of the four supported shapes (T0 constant / T1 field value / T2 whole source / T3 combined, including Nullable guard variants). Generic methods, optional parameters, params arrays, and ref/out/in parameters are also excluded. Align the converter signature with the anchor property type, the DTO type, and the entity-side property type.</value>
+  </data>
+  <data name="NCMAP_F22_Title" xml:space="preserve">
+    <value>ConvertBack anchor property has no public setter or init accessor</value>
+  </data>
+  <data name="NCMAP_F22_Message" xml:space="preserve">
+    <value>ConvertBack anchor property '{0}' on '{1}' has no public setter or init accessor — the declaration will be ignored by materialization; consider adding a public or init setter, or use the attribute channel with entity-side [ConvertBack]</value>
+  </data>
+  <data name="NCMAP_F22_Description" xml:space="preserve">
+    <value>Although a ConvertBack declaration only reads the DTO anchor property, the materialization traversal drops properties without a public setter before declarations are processed (the same write gate that protects forward mapping). The declaration is therefore silently ignored. Add a public or init setter to the anchor property, or express the reverse conversion via the attribute channel with an entity-side [ConvertBack] annotation (the ReverseOnly path does not pass through the DTO traversal gate).</value>
+  </data>
+  <data name="NCMAP_F23_Title" xml:space="preserve">
+    <value>Fluent declaration conflict: Ignore + Convert</value>
+  </data>
+  <data name="NCMAP_F23_Message" xml:space="preserve">
+    <value>Fluent declaration conflict: property '{0}' on '{1}' declares both Ignore and Convert — forward conversion would never execute</value>
+  </data>
+  <data name="NCMAP_F23_Description" xml:space="preserve">
+    <value>The same target property is declared with both Ignore and Convert in one chain. Ignore removes the property from mapping candidates (no property mapping means no converter attachment), so the Convert forward conversion would never execute. Remove the Ignore declaration or the Convert declaration.</value>
+  </data>
+  <data name="NCMAP_F24_Title" xml:space="preserve">
+    <value>Convert source property not found</value>
+  </data>
+  <data name="NCMAP_F24_Message" xml:space="preserve">
+    <value>Convert source not found: no source property '{0}' on '{1}' for anchor '{2}' (same-name, flattening, and [MapProperty] reverse lookup all failed)</value>
+  </data>
+  <data name="NCMAP_F24_Description" xml:space="preserve">
+    <value>The source-side resolution flow (same-name property, automatic flattening, [MapProperty] reverse lookup) found no source property for the Convert anchor, so the declaration has no source input and is dropped. Unlike the attribute channel's converter-with-no-source form (which emits a default(TField) call), the Fluent channel requires a reachable source property. Ensure a same-name source property exists, or one reachable via flattening or a [MapProperty] reverse annotation.</value>
+  </data>
+  <data name="NCMAP_F25_Title" xml:space="preserve">
+    <value>Convert converter not accessible from generated code</value>
+  </data>
+  <data name="NCMAP_F25_Message" xml:space="preserve">
+    <value>Convert converter '{0}' must be public/internal static and accessible from generated code (same assembly)</value>
+  </data>
+  <data name="NCMAP_F25_Description" xml:space="preserve">
+    <value>The Convert converter method is declared private or protected. Generated code lives in an internal static class within the same assembly and cannot access such members; generated calls would fail with CS0122. Make the converter public or internal static, or move it into a class visible to the generated code.</value>
+  </data>
+  <data name="NCMAP_F26_Title" xml:space="preserve">
+    <value>Convert converter must be a static method group or a transcribable lambda</value>
+  </data>
+  <data name="NCMAP_F26_Message" xml:space="preserve">
+    <value>Convert converter must be a statically resolvable method group, or a capture-free expression lambda (transcribed into generated code); closures/local functions/instance bindings remain unsupported</value>
+  </data>
+  <data name="NCMAP_F26_Description" xml:space="preserve">
+    <value>The Convert converter argument resolved to a delegate variable or an instance method bound to a receiver, which has no statically addressable entry point. Pass a public/internal static method group, or an inline capture-free expression lambda (transcribed into a private static method of the generated mapper). Lambdas that capture variables, access private/protected members, or use statement bodies are rejected with NCMAP_F41/NCMAP_F42.</value>
+  </data>
+  <data name="NCMAP_F27_Title" xml:space="preserve">
+    <value>Convert converter signature mismatch</value>
+  </data>
+  <data name="NCMAP_F27_Message" xml:space="preserve">
+    <value>Convert converter '{0}' matches none of the supported shapes; expected M() / M(TField) / M(TSource) / M(TSource, TField) with TField='{1}', TSource='{2}', returning '{3}'</value>
+  </data>
+  <data name="NCMAP_F27_Description" xml:space="preserve">
+    <value>The Convert converter signature matches none of the four supported shapes (T0 constant / T1 field value / T2 whole source / T3 combined, including Nullable guard variants). Generic methods, optional parameters, params arrays, and ref/out/in parameters are also excluded. Align the converter signature with the source property type, the source entity type, and the anchor property type.</value>
+  </data>
+  <data name="NCMAP_F28_Title" xml:space="preserve">
+    <value>Convert anchor property has no public setter or init accessor</value>
+  </data>
+  <data name="NCMAP_F28_Message" xml:space="preserve">
+    <value>Convert anchor property '{0}' on '{1}' has no public setter or init accessor — the declaration will be ignored by materialization; consider adding a public or init setter, or use the attribute channel with [Convert] on the property</value>
+  </data>
+  <data name="NCMAP_F28_Description" xml:space="preserve">
+    <value>Although a Convert declaration only reads the source side, the materialization traversal drops target properties without a public setter before declarations are processed (the same write gate that protects forward mapping). The declaration is therefore silently ignored. Add a public or init setter to the anchor property, or express the conversion via the attribute channel with a [Convert] annotation on the property.</value>
+  </data>
+  <data name="NCMAP_F29_Title" xml:space="preserve">
+    <value>Fluent declaration conflict: main chain × FromSource binding / multiple bindings on one sub-source</value>
+  </data>
+  <data name="NCMAP_F29_Message" xml:space="preserve">
+    <value>Fluent declaration conflict: property '{0}' on '{1}' — a main-chain declaration and a FromSource sub-source binding cannot target the same property (a property can be fed by only one source); multiple path-carrying bindings (Map/MapTree) or multiple Convert declarations on the same sub-source also conflict (a single Convert/Mask/FromJson is attach-only and not counted)</value>
+  </data>
+  <data name="NCMAP_F29_Description" xml:space="preserve">
+    <value>A target property cannot simultaneously participate in the primary-source mapping chain and in a FromSource sub-source binding: the FromSource binding feeds the property from a sub-source, while the main-chain declaration feeds it from the primary source (or excludes/transforms it), which is ambiguous; multiple path-carrying bindings (Map/MapTree) on the same sub-source likewise create multi-source ambiguity (Mask/FromJson are attach-only and not counted; a Convert combined with a Map is merged as an attachment, while multiple Convert declarations on the same sub-source still conflict). Keep exactly one declaration, or bind the property to a different sub-source.</value>
+  </data>
+  <data name="NCMAP_F30_Title" xml:space="preserve">
+    <value>ConvertBack is not allowed inside a FromSource block</value>
+  </data>
+  <data name="NCMAP_F30_Message" xml:space="preserve">
+    <value>ConvertBack is not supported inside a FromSource block (sub-source '{0}') — the FromSource binding is forward-only and has no reverse write-back target</value>
+  </data>
+  <data name="NCMAP_F30_Description" xml:space="preserve">
+    <value>The FromSource sub-source binding only performs forward sub-source to target mapping. Reverse write-back (ConvertBack) has no semantic landing point inside a sub-source block; move the conversion to the main chain or the attribute channel.</value>
+  </data>
+  <data name="NCMAP_F31_Title" xml:space="preserve">
+    <value>NoAutoInclude is not allowed inside a FromSource block</value>
+  </data>
+  <data name="NCMAP_F31_Message" xml:space="preserve">
+    <value>NoAutoInclude is not supported inside a FromSource block (sub-source '{0}') — sub-source fields are always explicitly declared, so there is no auto-inclusion to disable</value>
+  </data>
+  <data name="NCMAP_F31_Description" xml:space="preserve">
+    <value>Inside a FromSource sub-source block every bound field must be declared explicitly; the primary-source auto-include machinery does not apply to sub-source blocks, so NoAutoInclude has no effect there.</value>
+  </data>
+  <data name="NCMAP_F32_Title" xml:space="preserve">
+    <value>AfterMapping is not allowed inside a FromSource block</value>
+  </data>
+  <data name="NCMAP_F32_Message" xml:space="preserve">
+    <value>AfterMapping is not supported inside a FromSource block (sub-source '{0}') — the generated Compose pipeline has no hook injection point; the hook would never run</value>
+  </data>
+  <data name="NCMAP_F32_Description" xml:space="preserve">
+    <value>The runtime Compose pipeline (generated delegate or ComposeRuntime fallback) provides no after-mapping hook injection point, so an AfterMapping declared inside a sub-source block could never execute. Declare the hook on the main chain instead.</value>
+  </data>
+  <data name="NCMAP_F35_Title" xml:space="preserve">
+    <value>BeforeMapping target method is private</value>
+  </data>
+  <data name="NCMAP_F35_Message" xml:space="preserve">
+    <value>The BeforeMapping target method '{0}' is private and inaccessible across classes; generated code lives in the GeneratedMapper static class (a separate type), so the target method must be public or internal static</value>
+  </data>
+  <data name="NCMAP_F35_Description" xml:space="preserve">
+    <value>The BeforeMapping target method's accessibility makes it unreachable from the generated GeneratedMapper static class. Promote the method to public or internal static so the generated invocation compiles.</value>
+  </data>
+  <data name="NCMAP_F36_Title" xml:space="preserve">
+    <value>BeforeMapping target is not a method group</value>
+  </data>
+  <data name="NCMAP_F36_Message" xml:space="preserve">
+    <value>The BeforeMapping target must be a statically resolvable method group reference; lambdas/closures/captured variables cannot be statically resolved as generated-code references</value>
+  </data>
+  <data name="NCMAP_F36_Description" xml:space="preserve">
+    <value>BeforeMapping requires a method group reference that the source generator can emit as a direct call in generated code. Lambdas, closures, captured variables, and local functions have no statically addressable entry point; the declaration is skipped.</value>
+  </data>
+  <data name="NCMAP_F37_Title" xml:space="preserve">
+    <value>BeforeMapping target has no insertion point (constructor-integrated form)</value>
+  </data>
+  <data name="NCMAP_F37_Message" xml:space="preserve">
+    <value>Target type '{0}' constructs via a parameterized/init-only constructor whose construction and assignment are inseparable, so the BeforeMapping hook cannot be emitted before any assignment; use a settable-property target or remove the hook</value>
+  </data>
+  <data name="NCMAP_F37_Description" xml:space="preserve">
+    <value>BeforeMapping must run after the target instance exists but before the first property assignment. Constructor-integrated targets (records with all-init properties, positional records, immutable constructors) have no such point; the generator reports this instead of silently dropping the hook.</value>
+  </data>
+  <data name="NCMAP_F38_Title" xml:space="preserve">
+    <value>BeforeMapping is not allowed inside a FromSource block</value>
+  </data>
+  <data name="NCMAP_F38_Message" xml:space="preserve">
+    <value>BeforeMapping is not supported inside a FromSource block (sub-source '{0}') — the generated Compose pipeline has no hook injection point; the hook would never run</value>
+  </data>
+  <data name="NCMAP_F38_Description" xml:space="preserve">
+    <value>The runtime Compose pipeline (generated delegate or ComposeRuntime fallback) provides no before-mapping hook injection point, so a BeforeMapping declared inside a sub-source block could never execute. Declare the hook on the main chain instead.</value>
+  </data>
+  <data name="NCMAP_F39_Title" xml:space="preserve">
+    <value>Same-kind lifecycle hook declared on both channels for one mapping pair</value>
+  </data>
+  <data name="NCMAP_F39_Message" xml:space="preserve">
+    <value>Both channels declare the same-kind '{0}' hook for {1} → {2}: attribute side '{3}' vs Fluent side '{4}'; declare the hook on only one channel</value>
+  </data>
+  <data name="NCMAP_F39_Description" xml:space="preserve">
+    <value>Before×Before / After×After coexistence on the same (source, target) pair is a semantic error — silently merging the two hook declarations would make the executed one depend on channel arbitration order. Cross combinations (attribute After + Fluent Before) do not conflict. Hook refs are only counted after signature-applicability filtering.</value>
+  </data>
+  <data name="NCMAP_F40_Title" xml:space="preserve">
+    <value>MapWhen predicate method contract violated</value>
+  </data>
+  <data name="NCMAP_F40_Message" xml:space="preserve">
+    <value>MapWhen predicate '{0}' failed its contract: {1}. The predicate must be a statically addressable public/internal static method group with signature static bool M(T) where the parameter equals the source field type (T1) or the source entity type (T2).</value>
+  </data>
+  <data name="NCMAP_F40_Description" xml:space="preserve">
+    <value>The named method-group form of MapWhen requires a public or internal static method visible from generated code. Rejections cover: unresolvable method group (delegate variable / instance binding), non-static methods, signature mismatch (single parameter returning bool, no ref/out/in), insufficient visibility, and missing implicit conversion from the source field type to the predicate parameter type.</value>
+  </data>
+  <data name="NCMAP_F41_Title" xml:space="preserve">
+    <value>Inline lambda captures variables or accesses private members</value>
+  </data>
+  <data name="NCMAP_F41_Message" xml:space="preserve">
+    <value>Inline expression cannot be transcribed: {0} ('{1}'). Captured outer locals/parameters/local functions/this and private or protected member access cannot be emitted into the generated static method — move the logic into a named static method and use the method-group form instead.</value>
+  </data>
+  <data name="NCMAP_F41_Description" xml:space="preserve">
+    <value>The transcription engine emits inline lambdas as private static methods, which have no closure semantics. References to outer-scope state (locals, parameters, local functions, this) or to members inaccessible from generated code (private/protected) are rejected at the exact sub-expression location rather than producing semantically divergent code.</value>
+  </data>
+  <data name="NCMAP_F42_Title" xml:space="preserve">
+    <value>Inline lambda contains statement body or non-transcribable nodes</value>
+  </data>
+  <data name="NCMAP_F42_Message" xml:space="preserve">
+    <value>Inline expression cannot be transcribed ('{0}'): {1}. Only expression-bodied lambdas over the whitelisted node set (member chains, arithmetic/comparison, conditional access, static and instance calls, nameof, literals) can be transcribed into the generated code.</value>
+  </data>
+  <data name="NCMAP_F42_Description" xml:space="preserve">
+    <value>Statement-bodied lambdas, dynamic bindings, unsafe/await/query syntax and other non-whitelisted nodes have no semantics-preserving textual transcription. The diagnostic points at the exact offending sub-expression. Extract the logic into a named static method (method-group form) to express it.</value>
+  </data>
+  <data name="NCMAP_F43_Title" xml:space="preserve">
+    <value>MapWhen guard anchor has no mapping</value>
+  </data>
+  <data name="NCMAP_F43_Message" xml:space="preserve">
+    <value>MapWhen anchor property '{0}' on {1} has no mapping to guard: the property has no auto-matched source and no explicit .Map declaration, or it is excluded by a static .Ignore declaration — the guard would never take effect</value>
+  </data>
+  <data name="NCMAP_F43_Description" xml:space="preserve">
+    <value>A conditional guard must attach to a property that actually gets mapped. Anchoring a guard on an unmapped or statically ignored property is a declaration error (likely a typo or leftover) and is rejected at compile time instead of being silently dropped.</value>
+  </data>
+  <data name="NCMAP_F44_Title" xml:space="preserve">
+    <value>Duplicate MapWhen declaration on one property</value>
+  </data>
+  <data name="NCMAP_F44_Message" xml:space="preserve">
+    <value>Property '{0}' on {1} declares MapWhen more than once: a mapping carries a single condition — express negative filtering by negating the predicate, or combine multiple criteria inside one predicate</value>
+  </data>
+  <data name="NCMAP_F44_Description" xml:space="preserve">
+    <value>MapWhen is single-condition by design. Two guards on the same property would make the effective condition depend on conjunction/disjunction intent that the API cannot express; declare one predicate and compose the criteria inside it.</value>
+  </data>
+  <data name="NCMAP_F45_Title" xml:space="preserve">
+    <value>MapWhen declared on a main-chain Compose-only mapping</value>
+  </data>
+  <data name="NCMAP_F45_Message" xml:space="preserve">
+    <value>MapWhen anchor property '{0}' on {1} is only covered by a FromSource cross-source mapping: the main-chain Compose generator does not expand per-property assignment chains, so the guard has no emission site. Declare the guard inside the FromSource block instead.</value>
+  </data>
+  <data name="NCMAP_F45_Description" xml:space="preserve">
+    <value>Inside a FromSource block the sub-mapping assignments are emitted (Update_{Sub}_To_{Target}), so a block-internal MapWhen has a real emission site. On the main chain, a property covered only by cross-source bindings never enters the per-property assignment generation, and silently dropping a filter is a correctness hazard — the declaration is rejected instead.</value>
+  </data>
+  <data name="NCMAP_F46_Title" xml:space="preserve">
+    <value>[MapSubclass] type arguments do not satisfy the inheritance contract</value>
+  </data>
+  <data name="NCMAP_F46_Message" xml:space="preserve">
+    <value>[MapSubclass(typeof({0}), typeof({1}))] on {2}: the source type must derive from the base pair source {3} and the target type must derive from the base pair target {4} (the attribute form has no generic constraint, so this check runs at extraction time)</value>
+  </data>
+  <data name="NCMAP_F46_Description" xml:space="preserve">
+    <value>Unlike the Fluent terminal MapSubclass&lt;TSrcDerived, TTargetDerived&gt;() whose where clauses reject invalid arguments at the call site (CS0311/CS0314), the attribute form accepts arbitrary typeof arguments. The extractor validates the inheritance relation; a failing registration is dropped (no dispatch entry is produced).</value>
+  </data>
+  <data name="NCMAP_F47_Title" xml:space="preserve">
+    <value>Invalid MapSubclass registration (duplicate pair or base-type self registration)</value>
+  </data>
+  <data name="NCMAP_F47_Message" xml:space="preserve">
+    <value>MapSubclass registration on ({0}, {1}) is invalid ({2}): "duplicate-pair" = the exact same (TSrcDerived, TTargetDerived) pair registered twice (the first is kept); "base-self" = TSrcDerived equals TSource, dispatching the base pair to itself creates an infinite loop (rejected). Partially overlapping registrations (same source at different levels or same source to different targets) are legal and resolved by most-derived-first arbitration.</value>
+  </data>
+  <data name="NCMAP_F47_Description" xml:space="preserve">
+    <value>Two invalid forms share this code: (1) the exact same (TSrcDerived, TTargetDerived) pair registered twice — the dispatch chain only needs one entry; (2) TSrcDerived equals TSource — the generic constraint allows a type to satisfy where TSrcDerived : TSource with itself, but dispatching a base pair to its own method creates an infinite self-referencing loop. Both are rejected at materialization time.</value>
+  </data>
+  <data name="NCMAP_F48_Title" xml:space="preserve">
+    <value>MapSubclass registered target has no mappable surface</value>
+  </data>
+  <data name="NCMAP_F48_Message" xml:space="preserve">
+    <value>MapSubclass registration ({0}, {1}) on ({2}, {3}) produces no mappable output: the derived target type has no public mappable surface or fails construction constraints (synthesized snapshot is skipped or has zero property mappings)</value>
+  </data>
+  <data name="NCMAP_F48_Description" xml:space="preserve">
+    <value>The synthesized subclass pair reuses the regular single-pair generation pipeline; when the derived target exposes no public writable/constructible surface the synthesized snapshot is skipped. The registration is reported as empty (fail-fast) instead of silently dropping subclass-specific fields.</value>
+  </data>
+  <data name="NCMAP_F49_Title" xml:space="preserve">
+    <value>[MapSubclass] annotation lacks a [MapFrom] anchor</value>
+  </data>
+  <data name="NCMAP_F49_Message" xml:space="preserve">
+    <value>[MapSubclass(typeof({0}), typeof({1}))] on {2}: the annotated class has no [MapFrom] anchor, so no base mapping pair exists to consume the registration — the subclass pair is never referenced by any dispatch surface</value>
+  </data>
+  <data name="NCMAP_F49_Description" xml:space="preserve">
+    <value>Attribute-side polymorphic registration anchors on the base DTO class that carries [MapFrom] (the declaration carrier of the attribute channel). An orphan [MapSubclass] without that anchor has no base pair; annotate the base DTO with [MapFrom(typeof(BaseSource))] or move the registration to a Fluent .For&lt;TSource, TTarget&gt;().MapSubclass(...) chain.</value>
+  </data>
+  <data name="NCMAP_F50_Title" xml:space="preserve">
+    <value>Polymorphic dispatch advisory (reverse asymmetry / dual-instance fallback surface)</value>
+  </data>
+  <data name="NCMAP_F50_Message" xml:space="preserve">
+    <value>({0}, {1}) has MapSubclass registrations; advisories: {2} — "reverse-asymmetry" = the reverse base pair is generated but never dispatches (O-2: the reverse destination is a caller-supplied entity, subclass-specific fields are not populated); "dual-instance-fallback" = Update/MapListInto use dual-instance matching, when the destination's runtime type is not the registered subclass target the base-class body runs and subclass-specific fields are not written. Both are by-design semantics; this Info makes the silent surfaces visible.</value>
+  </data>
+  <data name="NCMAP_F50_Description" xml:space="preserve">
+    <value>Static, compile-time advisory (emitted once per pair when SubclassPairs is non-empty): (2) the reverse base pair does not dispatch — reverse mapping targets a caller-supplied entity instance (dst is fixed), so reverse subclass fields are never populated; (3) Update/MapListInto use dual-instance matching — when the destination's runtime type is not the registered subclass target, the base-class body runs and subclass-specific fields are not written. Both are by-design semantics (O-2 ruling); this Info makes the silent surfaces visible.</value>
+  </data>
+  <data name="NCMAP_F51_Title" xml:space="preserve">
+    <value>MapCtorParam binding source property not found</value>
+  </data>
+  <data name="NCMAP_F51_Message" xml:space="preserve">
+    <value>.MapCtorParam("{0}", "{1}") on {2}: the source property '{1}' does not exist on the source type or has no readable getter — pass a single-segment lambda (form 1) or a valid public property name (form 2)</value>
+  </data>
+  <data name="NCMAP_F51_Description" xml:space="preserve">
+    <value>The string form of the explicit constructor-parameter binding resolves the source property by name at extraction time (single-point resolution). A misspelled or non-readable name would otherwise silently bind nothing and the constructor parameter would fall back to default/null without any diagnostic.</value>
+  </data>
+  <data name="NCMAP_F52_Title" xml:space="preserve">
+    <value>MapCtorParam target constructor parameter not found</value>
+  </data>
+  <data name="NCMAP_F52_Message" xml:space="preserve">
+    <value>.MapCtorParam("{0}", ...) on {1}: no public constructor of the target type declares a bindable parameter named '{0}' (by-ref/pointer parameters cannot be bound). Available parameter names: {2}.</value>
+  </data>
+  <data name="NCMAP_F52_Description" xml:space="preserve">
+    <value>The binding parameter name must exist in the parameter set of at least one public constructor of the target type. When it exists in only some candidates, that constructor is preferred by the selector weighting; by-ref/pointer parameters are excluded from the comparison. The message lists the available parameter names to fix the typo.</value>
+  </data>
+  <data name="NCMAP_F53_Title" xml:space="preserve">
+    <value>MapCtorParam duplicate binding / conflict with .Map on the same constructor parameter</value>
+  </data>
+  <data name="NCMAP_F53_Message" xml:space="preserve">
+    <value>.MapCtorParam("{0}", ...) on {1}: {2}. Duplicate bindings on the same constructor parameter or a binding that targets a parameter also fed by an explicit .Map entry are contradictory declarations (fail-fast, not a silent override).</value>
+  </data>
+  <data name="NCMAP_F53_Description" xml:space="preserve">
+    <value>Two MapCtorParam calls naming the same constructor parameter (duplicate) or a MapCtorParam whose parameter name matches an explicit .Map declaration target (map-conflict, record same-name scenario) are contradictory — aligned with the F39 dual-declaration / NCMAP_F23 same-anchor conflict discipline. Remove one of the declarations; for record name-mismatch pairs the existing .Map already solves the binding.</value>
+  </data>
+  <data name="NCMAP_F54_Title" xml:space="preserve">
+    <value>Ambiguous equal-parameter-count constructors (advisory)</value>
+  </data>
+  <data name="NCMAP_F54_Message" xml:space="preserve">
+    <value>{0}: {1} public constructors tie on the maximum parameter count — the generated selector silently picks by parameter count. Declare .MapCtorParam to make the constructor choice explicit and disambiguate.</value>
+  </data>
+  <data name="NCMAP_F54_Description" xml:space="preserve">
+    <value>Mechanical criterion: more than one public constructor ties on the maximum parameter count AND the MapCtorParam binding set is empty. With bindings present the selector weighting already resolves the choice, so no advisory is emitted. Run-time constructor resolution keeps its current silent behavior (declared blind spot).</value>
+  </data>
+  <data name="NCMAP_F55_Title" xml:space="preserve">
+    <value>Fluent multi-segment destination path</value>
+  </data>
+  <data name="NCMAP_F55_Message" xml:space="preserve">
+    <value>Fluent destinations support a single property only; '{0}' is a multi-segment path</value>
+  </data>
+  <data name="NCMAP_F55_Description" xml:space="preserve">
+    <value>The destination lambda resolves to more than one path segment (for example d.Address.City). A Fluent declaration maps exactly one target property, so the declaration is skipped. Use a single property path instead, or declare the nested mapping separately.</value>
+  </data>
+  <data name="NCMAP_F56_Title" xml:space="preserve">
+    <value>Fluent property argument is not a lambda expression</value>
+  </data>
+  <data name="NCMAP_F56_Message" xml:space="preserve">
+    <value>Fluent property arguments must be lambda expressions; '{0}' is not</value>
+  </data>
+  <data name="NCMAP_F56_Description" xml:space="preserve">
+    <value>A destination or source argument does not resolve to a lambda expression (method group, delegate variable, or other expression), so the property path cannot be determined and no mapping is generated for this declaration. Pass an inline lambda such as d =&gt; d.Name.</value>
+  </data>
+  <data name="NCMAP_F57_Title" xml:space="preserve">
+    <value>Fluent lambda block body or conditional expression</value>
+  </data>
+  <data name="NCMAP_F57_Message" xml:space="preserve">
+    <value>Fluent property paths do not support block bodies or conditional expressions ('{0}')</value>
+  </data>
+  <data name="NCMAP_F57_Description" xml:space="preserve">
+    <value>The lambda body is a statement block or contains a conditional (?:) expression that cannot be reduced to a property path, so the declaration is skipped. Use a plain expression-bodied property path; conditional logic belongs to a [MapWhen] guard or a converter.</value>
+  </data>
+  <data name="NCMAP_F58_Title" xml:space="preserve">
+    <value>Fluent argument is not statically evaluable</value>
+  </data>
+  <data name="NCMAP_F58_Message" xml:space="preserve">
+    <value>Fluent argument '{0}' is not statically evaluable; the value is ignored and the default applies</value>
+  </data>
+  <data name="NCMAP_F58_Description" xml:space="preserve">
+    <value>The overrideIgnore/Direction argument must be a literal, an enum member, or a const identifier so the source generator can evaluate it at compile time. The declaration is still generated, but the argument value is ignored and the default applies (overrideIgnore=false, direction=Both). Use a semantic constant argument instead.</value>
+  </data>
+  <data name="NCMAP_F59_Title" xml:space="preserve">
+    <value>True conflict between Fluent declarations on the same member</value>
+  </data>
+  <data name="NCMAP_F59_Message" xml:space="preserve">
+    <value>Property '{0}' has a true conflict: the {1} declaration conflicts with the {2} declaration (same-slot repetition, or coexistence with an ignore). True conflicts are rejected — keep only one declaration or resolve the conflict; see the conflict list for legal combinations.</value>
+  </data>
+  <data name="NCMAP_F59_Description" xml:space="preserve">
+    <value>Only true conflicts are reported (error level): ignore vs. any mapping operation, mask/format vs. tree recursion, mask vs. JSON expansion, format vs. JSON expansion, and same-dimension repetition (same slot or same kind across member segments). Conflict-free scenarios (single source with single transform, or newly opened combinations such as explicit source + mask/format) produce no diagnostic.</value>
+  </data>
+  <data name="NCMAP_F60_Title" xml:space="preserve">
+    <value>Unknown Fluent chain terminal drops declarations</value>
+  </data>
+  <data name="NCMAP_F60_Message" xml:space="preserve">
+    <value>Fluent chain method '{0}' is not a recognized terminal; its declaration is skipped (in a main chain the entire chain is dropped). Remove the unrecognized call or use a supported terminal.</value>
+  </data>
+  <data name="NCMAP_F60_Description" xml:space="preserve">
+    <value>The chain parser dispatches on method names extracted from syntax. Object-inherited members (e.g. ToString) or unrelated extension methods compile fine but are not Fluent terminals; in a main chain such a node causes the whole chain snapshot to be dropped without further diagnostics, while a block statement skips only that node. The drop semantics are unchanged — this diagnostic makes the loss visible.</value>
+  </data>
+  <data name="NCMAP_F62_Title" xml:space="preserve">
+    <value>Fluent lambda source chain exceeds the maximum member access depth</value>
+  </data>
+  <data name="NCMAP_F62_Message" xml:space="preserve">
+    <value>The source chain of the Fluent lambda exceeds the maximum member access depth of {0}; the declaration is dropped. Split the chain into intermediate projections or flatten the source hierarchy.</value>
+  </data>
+  <data name="NCMAP_F62_Description" xml:space="preserve">
+    <value>The lambda parser walks member access segments recursively without a bound; an unbounded deep chain can exhaust parser depth and silently snapshot ultra-deep paths. Chains within the configured depth limit remain legal; deeper chains are rejected with this warning.</value>
+  </data>
+  <data name="NCMAP_F63_Title" xml:space="preserve">
+    <value>Cycle detection stopped: registered-mapping graph exceeds the visit budget</value>
+  </data>
+  <data name="NCMAP_F63_Message" xml:space="preserve">
+    <value>Cycle detection for mapping pair '{0}' stopped after exceeding the visit budget of {1}; the result for this start point is undetermined (no NCMAP029 is emitted and no degradation is marked). Consider splitting the mapping domain into smaller registration graphs.</value>
+  </data>
+  <data name="NCMAP_F63_Description" xml:space="preserve">
+    <value>The DFS cycle detector visits each registered pair reachable from a start point; dense registration graphs can exceed the defensive visit budget (the same budget discipline as the deep-copy graph classifier). When the budget is exhausted the start point is reported as undetermined instead of crashing or blocking generation.</value>
+  </data>
+  <data name="NCMAP041_Title" xml:space="preserve">
+    <value>[MapWhen] predicate method resolution failed</value>
+  </data>
+  <data name="NCMAP041_Message" xml:space="preserve">
+    <value>[MapWhen] on property '{0}' of {1} failed to resolve predicate '{2}': {3}. The method must be declared on the annotated property's containing type (including partial parts) as public/internal static bool M(T) where the parameter equals the source field type (T1) or the source entity type (T2).</value>
+  </data>
+  <data name="NCMAP041_Description" xml:space="preserve">
+    <value>The attribute form of the conditional guard resolves the predicate by name on the annotated property's declaring type. Rejections cover: method not found, ambiguous overloads, non-static method, insufficient visibility (private/protected), signature mismatch (single parameter returning bool, no ref/out/in), and parameter type matching neither the source field type nor the source entity type.</value>
+  </data>
+  <data name="NCMAP042_Title" xml:space="preserve">
+    <value>DTO naming pattern without [MapFrom]; runtime reflection fallback unavailable under AOT</value>
+  </data>
+  <data name="NCMAP042_Message" xml:space="preserve">
+    <value>Type '{0}' follows the DTO naming pattern but is not annotated with [MapFrom]; source-generated mapping code cannot be produced and the runtime reflection fallback is unavailable in AOT/trimmed scenarios</value>
+  </data>
+  <data name="NCMAP042_Description" xml:space="preserve">
+    <value>The type name ends with Dto/DTO, which suggests it participates in object mapping. Without [MapFrom] no source-generated mapping code is produced; the runtime reflection fallback is unavailable in AOT/trimmed scenarios. Annotate [MapFrom] to enable the AOT-safe path. Types carrying mapping configuration attributes are reported as NCMAP019 (Error) instead.</value>
+  </data>
+  <data name="NCMAP043_Title" xml:space="preserve">
+    <value>[MapFormat] target property type must be string</value>
+  </data>
+  <data name="NCMAP043_Message" xml:space="preserve">
+    <value>Property '{0}' is annotated with [MapFormat], but the target property type is {1}; it must be string — change the property to string or use [Convert] instead</value>
+  </data>
+  <data name="NCMAP043_Description" xml:space="preserve">
+    <value>[MapFormat] outputs formatted text (IFormattable.ToString(format, null)), so the target property must be string-typed.</value>
+  </data>
+  <data name="NCMAP044_Title" xml:space="preserve">
+    <value>[MapFormat] source property type must implement IFormattable</value>
+  </data>
+  <data name="NCMAP044_Message" xml:space="preserve">
+    <value>Property '{0}' is annotated with [MapFormat], but the source type {1} does not implement IFormattable — supported: DateTime/DateTimeOffset/TimeSpan/Guid/numeric/enum (including Nullable wrappers); string sources are not supported, use [Convert] instead</value>
+  </data>
+  <data name="NCMAP044_Description" xml:space="preserve">
+    <value>[MapFormat] binds IFormattable.ToString(string, IFormatProvider); the source property must implement IFormattable (enums qualify — Enum implements IFormattable).</value>
+  </data>
+  <data name="NCMAP045_Title" xml:space="preserve">
+    <value>[MapFormat] and [Convert] cannot be applied to the same property</value>
+  </data>
+  <data name="NCMAP045_Message" xml:space="preserve">
+    <value>[MapFormat] and [Convert] cannot both be annotated on property '{0}' — their semantics overlap; choose one of them</value>
+  </data>
+  <data name="NCMAP045_Description" xml:space="preserve">
+    <value>[MapFormat] (format-string output) and [Convert] (custom converter) are mutually exclusive value transforms on the same property.</value>
+  </data>
+  <data name="NCMAP046_Title" xml:space="preserve">
+    <value>[MapFormat] property is skipped in reverse mapping</value>
+  </data>
+  <data name="NCMAP046_Message" xml:space="preserve">
+    <value>Format output cannot be reverse-parsed, so property '{0}' is skipped in reverse mapping (the entity property keeps its default value). Add [ConvertBack] if the property needs round-tripping.</value>
+  </data>
+  <data name="NCMAP046_Description" xml:space="preserve">
+    <value>Format output is a one-way display transform (lossy and culture-dependent). Reverse mapping skips the property instead of guessing a value; declare [ConvertBack] yourself when round-tripping is needed. On the attribute side the write-back target is determined by the forward source field, so mismatched names require no extra specification.</value>
+  </data>
+  <data name="NCMAP047_Title" xml:space="preserve">
+    <value>Property has a mapping transform attribute but no [MapProperty] under [MapNoAutoMatch] whitelist; it is not mapped</value>
+  </data>
+  <data name="NCMAP047_Message" xml:space="preserve">
+    <value>Property '{0}' carries a mapping transform attribute but no [MapProperty]; under the [MapNoAutoMatch] whitelist it does not participate in mapping (not mapped, not added to candidates). Action: add an explicit [MapProperty] declaration to map it, or remove the transform attribute.</value>
+  </data>
+  <data name="NCMAP047_Description" xml:space="preserve">
+    <value>[MapNoAutoMatch] turns the (S,T) pair into a whitelist: only properties explicitly declared with [MapProperty] are mapped. A transform attribute ([Convert]/[Mask]/[MapFormat]/[MapWhen]) without that head declaration has no activation path (mirrors the Fluent rule that transform terminals require a Member declaration) and would otherwise be silently inert, so compilation fails fast (Error).</value>
+  </data>
+  <data name="NCMAP_F64_Title" xml:space="preserve">
+    <value>Fluent .Format target property type must be string</value>
+  </data>
+  <data name="NCMAP_F64_Message" xml:space="preserve">
+    <value>The target property '{0}' declared by .Format has type {1}; it must be string — change the property to string or use .Convert instead</value>
+  </data>
+  <data name="NCMAP_F64_Description" xml:space="preserve">
+    <value>.Format outputs formatted text (IFormattable.ToString(format, null)), so the target property must be string-typed.</value>
+  </data>
+  <data name="NCMAP_F65_Title" xml:space="preserve">
+    <value>Fluent .Format source property is unreachable or does not implement IFormattable</value>
+  </data>
+  <data name="NCMAP_F65_Message" xml:space="preserve">
+    <value>The source property bound by .Format for target '{0}' is {1}, which does not implement IFormattable — supported: DateTime/DateTimeOffset/TimeSpan/Guid/numeric/enum (including Nullable wrappers); use .Convert instead</value>
+  </data>
+  <data name="NCMAP_F65_Description" xml:space="preserve">
+    <value>.Format binds IFormattable.ToString(string, IFormatProvider); the source property must implement IFormattable (enums qualify — Enum implements IFormattable).</value>
+  </data>
+  <data name="NCMAP_F66_Title" xml:space="preserve">
+    <value>.Format and .Convert cannot target the same property</value>
+  </data>
+  <data name="NCMAP_F66_Message" xml:space="preserve">
+    <value>.Format and .Convert cannot both target property '{0}' — their semantics overlap; choose one of them</value>
+  </data>
+  <data name="NCMAP_F66_Description" xml:space="preserve">
+    <value>.Format (format-string output) and .Convert (custom converter) are mutually exclusive value transforms on the same anchor.</value>
+  </data>
+  <data name="NCMAP_F67_Title" xml:space="preserve">
+    <value>Fluent .Format property is skipped in reverse mapping</value>
+  </data>
+  <data name="NCMAP_F67_Message" xml:space="preserve">
+    <value>Format output cannot be reverse-parsed, so property '{0}' is skipped in reverse mapping (the entity property keeps its default value). If the property needs round-tripping, declare an explicit reverse target: .ConvertBack(converter) when the entity property has the same name, or the lambda form .ConvertBack&lt;TEntityProp&gt;((dto) =&gt; ...) when it has a different one (the write-back target is then read from the lambda body instead of by name).</value>
+  </data>
+  <data name="NCMAP_F67_Description" xml:space="preserve">
+    <value>Format output is a one-way display transform (lossy and culture-dependent). Reverse mapping skips the property instead of guessing a value; declare an explicit reverse target yourself when round-tripping is needed. A same-named entity property takes .ConvertBack(converter); a differently-named one takes the lambda form .ConvertBack&lt;TEntityProp&gt;((dto) =&gt; ...), which reads the write-back target (a member access on the lambda parameter) from the lambda body instead of looking it up by name.</value>
+  </data>
+  <data name="NCMAP_F68_Title" xml:space="preserve">
+    <value>Member declaration has no follow-up</value>
+  </data>
+  <data name="NCMAP_F68_Message" xml:space="preserve">
+    <value>The member '{0}' carries no declaration after Member. Add a source (From / FromSource), an ignore (Ignore), or a transform such as Mask or Format.</value>
+  </data>
+  <data name="NCMAP_F68_Description" xml:space="preserve">
+    <value>A bare .Member(d =&gt; d.X) with nothing following it in the member segment produces no mapping or ignore effect. The segment boundary is the next Member call, a type-pair-level terminal, or the end of the chain; at least one head declaration or config call inside the segment keeps the diagnostic silent.</value>
+  </data>
+  <data name="NCMAP_F69_Title" xml:space="preserve">
+    <value>Omitted source has no same-named source member</value>
+  </data>
+  <data name="NCMAP_F69_Message" xml:space="preserve">
+    <value>Property '{0}' has no source specified, and source type '{1}' has no member with the same name. Specify a source with .From(...).</value>
+  </data>
+  <data name="NCMAP_F69_Description" xml:space="preserve">
+    <value>Member-segment transforms (Mask / Format / FromJson / MapTree) resolve the source by the destination member name when From is omitted; when the source type (or FromSource sub-source) has no same-named member, the declaration would silently vanish under the legacy auto-match rule. The new form makes this an explicit error so the declaration is never lost quietly.</value>
+  </data>
+  <data name="NCMAP_F70_Title" xml:space="preserve">
+    <value>Same-dimension declaration repeated</value>
+  </data>
+  <data name="NCMAP_F70_Message" xml:space="preserve">
+    <value>Property '{0}' repeats its {1} declaration. The same slot allows only one declaration (first '{2}', duplicate '{3}').</value>
+  </data>
+  <data name="NCMAP_F70_Description" xml:space="preserve">
+    <value>The source slot and transform slots of a member accept a single declaration each; compile-time structure already guarantees uniqueness within one segment, so the reachable repetition is across segments (e.g. MemberHead and MemberConfig carrying the same method). Cross-segment same-slot and same-kind repetitions are rejected; the NoAutoInclude list stays idempotent (HashSet) and is out of scope.</value>
+  </data>
+  <data name="NCMAP_F71_Title" xml:space="preserve">
+    <value>MapWhen whole-source type argument does not match</value>
+  </data>
+  <data name="NCMAP_F71_Message" xml:space="preserve">
+    <value>The MapWhen type argument '{1}' on property '{0}' matches neither the target property type nor the source type '{2}'. For the whole-source form use .MapWhen&lt;{2}&gt;(...); for the field-value form (condition parameter of the target property type) omit the type argument.</value>
+  </data>
+  <data name="NCMAP_F71_Description" xml:space="preserve">
+    <value>The member-level MapWhen mixed overload pair resolves as: non-generic T1 (field-value form, inline lambda binds directly) and generic T2 (whole-source form with an explicit type argument). The explicit type argument must be the target property type or the source type; anything else is rejected so a mistyped condition never gets silently dropped.</value>
+  </data>
+</root>

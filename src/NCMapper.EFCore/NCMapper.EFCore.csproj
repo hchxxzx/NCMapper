@@ -1,0 +1,36 @@
+<Project Sdk="Microsoft.NET.Sdk">
+
+  <PropertyGroup>
+    <TargetFrameworks>net8.0;net9.0;net10.0</TargetFrameworks>
+    <RootNamespace>NCMapper.EFCore</RootNamespace>
+    <AssemblyName>NCMapper.EFCore</AssemblyName>
+    <Description>NCMapper EF Core integration — AsDto terminal operation with automatic projection/downgrade</Description>
+    <!-- 启用 trim/AOT 分析器，使公开 API 的 AOT 标注对消费者生效 -->
+    <IsAotCompatible>true</IsAotCompatible>
+    <!-- 包级 trim 兼容声明（主库裁剪标注后语义完整） -->
+    <IsTrimmable>true</IsTrimmable>
+  </PropertyGroup>
+
+  <ItemGroup>
+    <ProjectReference Include="../NCMapper/NCMapper.csproj" />
+  </ItemGroup>
+
+  <ItemGroup>
+    <InternalsVisibleTo Include="NCMapper.IntegrationTests" />
+    <InternalsVisibleTo Include="NCMapper.Tests" />
+  </ItemGroup>
+
+  <ItemGroup>
+    <PackageReference Include="Microsoft.EntityFrameworkCore" />
+    <!-- AsSplitQuery 属 Relational 程序集（RelationalQueryableExtensions），
+         主包不含——降级路径分页查询防多集合导航行数相乘所需 -->
+    <PackageReference Include="Microsoft.EntityFrameworkCore.Relational" />
+  </ItemGroup>
+
+  <!-- PackageIcon -->
+  <ItemGroup>
+    <Content Include="..\..\assets\icon.png" Pack="true" PackagePath="\" />
+    <None Include="..\..\README.md" Pack="true" PackagePath="\" />
+  </ItemGroup>
+
+</Project>

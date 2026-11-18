@@ -1,0 +1,62 @@
+{
+    "source":  "samples/NCMapper.Samples/06-Infrastructure/DIScenarios.cs",
+    "language":  "en",
+    "generatedFrom":  "ebaacb57a1bbb090982967a26c2ecec31f297f6c73909ddf0a233cbd6be6b2ff",
+    "comments":  [
+                     {
+                         "i":  1,
+                         "zh":  "DI 集成场景集 — AddNCMapper 注册、IMapper 注入、NCMapperOptions 配置。",
+                         "en":  "DI integration scenarios — Register AddNCMapper, inject IMapper, and configure NCMapperOptions."
+                     },
+                     {
+                         "i":  4,
+                         "zh":  "通过 DI 注册 NCMapper（默认配置），解析 IMapper。",
+                         "en":  "Register NCMapper via DI (using default configuration) and resolve IMapper."
+                     },
+                     {
+                         "i":  6,
+                         "zh":  "\u003creturns\u003e配置好的 IMapper 实例\u003c/returns\u003e",
+                         "en":  "\u003creturns\u003eThe configured IMapper instance\u003c/returns\u003e"
+                     },
+                     {
+                         "i":  8,
+                         "zh":  "通过 DI 注册 NCMapper（自定义 NCMapperOptions）。",
+                         "en":  "Register NCMapper via DI with custom NCMapperOptions."
+                     },
+                     {
+                         "i":  10,
+                         "zh":  "\u003cparam name=\"configure\"\u003eOptions 配置委托\u003c/param\u003e",
+                         "en":  "\u003cparam name=\"configure\"\u003eDelegate for configuring Options\u003c/param\u003e"
+                     },
+                     {
+                         "i":  11,
+                         "zh":  "\u003creturns\u003e配置好的 IMapper 实例\u003c/returns\u003e",
+                         "en":  "\u003creturns\u003eThe configured IMapper instance\u003c/returns\u003e"
+                     },
+                     {
+                         "i":  13,
+                         "zh":  "从 IConfiguration 配置节绑定注册 — AddNCMapper(IConfiguration) 重载（appsettings 场景，巡览不挂 Run）。",
+                         "en": "\u4ece IConfiguration \u914d\u7f6e\u8282\u7ed1\u5b9a\u6ce8\u518c \u2014 AddNCMapper(IConfiguration) \u91cd\u8f7d\uff08appsettings \u573a\u666f\uff0c\u5de1\u89c8\u4e0d\u6302 Run\uff09\u3002"
+                     },
+                     {
+                         "i":  15,
+                         "zh":  "<param name=\"services\">目标容器</param>",
+                         "en": "<param name=\"services\">\u76ee\u6807\u5bb9\u5668</param>"
+                     },
+                     {
+                         "i":  16,
+                         "zh":  "<param name=\"configuration\">应用配置根（含 \"NCMapper\" 节）</param>",
+                         "en": "<param name=\"configuration\">\u5e94\u7528\u914d\u7f6e\u6839\uff08\u542b \"NCMapper\" \u8282\uff09</param>"
+                     },
+                     {
+                         "i":  17,
+                         "zh":  "<returns>注册完成的容器（链式返回）</returns>",
+                         "en": "<returns>\u6ce8\u518c\u5b8c\u6210\u7684\u5bb9\u5668\uff08\u94fe\u5f0f\u8fd4\u56de\uff09</returns>"
+                     },
+                     {
+                         "i":  18,
+                         "zh":  "<summary>",
+                         "en": "<summary>"
+                     }
+                 ]
+}

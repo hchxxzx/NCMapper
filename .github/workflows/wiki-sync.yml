@@ -1,0 +1,73 @@
+# =============================================================================
+# wiki-sync.yml — docs/zh-CN 叙事层 → GitHub Wiki 自动同步
+#
+# ① 前缀修齐：on.push.paths 与复制源由双语拆分前旧前缀 docs/how-to/** 等修齐为
+#    docs/zh-CN/** 实态（旧前缀触发器永不命中、复制源恒空——双重失效）
+# ② 域映射与 Home/_Sidebar 生成逻辑抽取至 scripts/wiki-sync-mapping.sh
+#    （how-to 域子目录 → wiki/<Domain>-<Page> 扁平页名；页名唯一性断言防镜像推错；
+#     支持 WIKI_DRY_RUN=1 本地演练）
+#   ③ 权限模型（2026-09-27 加固）：WIKI_PUSH_TOKEN（PAT）未配置或 clone 失败
+#      （token 过期/撤销/权限不足）均降级 warning 跳过同步，不阻塞；防呆检查
+#      前移至 clone 之前（原实现 clone 先于 token 检查执行，空/坏 token 必红）
+# =============================================================================
+name: Wiki Sync
+
+on:
+  push:
+    branches: [main]
+    paths:
+      - 'docs/zh-CN/how-to/**'
+      - 'docs/zh-CN/getting-started/**'
+      - 'docs/zh-CN/tutorials/**'
+      - 'docs/zh-CN/explanation/**'
+      - 'docs/zh-CN/index.md'
+      - 'scripts/wiki-sync-mapping.sh'
+
+permissions:
+  contents: read
+
+jobs:
+  sync:
+    runs-on: ubuntu-latest
+    steps:
+      - name: Checkout
+        uses: actions/checkout@v4
+
+      - name: Clone wiki repository
+        id: wiki
+        env:
+          WIKI_PUSH_TOKEN_SET: ${{ secrets.WIKI_PUSH_TOKEN != '' && 'true' || 'false' }}
+        run: |
+          if [ "$WIKI_PUSH_TOKEN_SET" != "true" ]; then
+            echo "::warning::WIKI_PUSH_TOKEN 未配置，wiki 同步跳过（配置 PAT 后自动生效）"
+            echo "sync=false" >> "$GITHUB_OUTPUT"
+            exit 0
+          fi
+          if git clone "https://x-access-token:${{ secrets.WIKI_PUSH_TOKEN }}@github.com/${{ github.repository }}.wiki.git" wiki; then
+            echo "sync=true" >> "$GITHUB_OUTPUT"
+          else
+            echo "::warning::wiki clone 失败——WIKI_PUSH_TOKEN 可能已过期/被撤销/权限不足（需含 repo 权限的 PAT），请更新仓库 secret 后重跑；本次同步跳过不阻塞"
+            echo "sync=false" >> "$GITHUB_OUTPUT"
+            exit 0
+          fi
+          cd wiki
+          # 清理 wiki git 身份，用 bot 身份提交
+          git config user.name "wiki-sync-bot"
+          git config user.email "wiki-sync@users.noreply.github.com"
+
+      # 域映射 + 唯一性断言 + 复制 + Home/_Sidebar 生成（脚本内聚，可本地 dry-run）
+      - name: Sync narrative docs (domain mapping)
+        if: steps.wiki.outputs.sync == 'true'
+        run: bash scripts/wiki-sync-mapping.sh "$PWD" wiki
+
+      - name: Commit and push
+        if: steps.wiki.outputs.sync == 'true'
+        run: |
+          cd wiki
+          git add -A
+          if git diff --cached --quiet; then
+            echo "wiki 无变更，跳过推送"
+          else
+            git commit -m "wiki-sync: ${GITHUB_SHA::7} docs/zh-CN 叙事层同步（域结构映射）"
+            git push
+          fi

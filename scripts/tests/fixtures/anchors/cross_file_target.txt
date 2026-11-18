@@ -1,0 +1,5 @@
+Plain text fixture of the anchors self-test.
+
+It exists on disk but is only ever referenced with a non-whitelisted extension (.txt), which the
+anchor whitelist must NOT match. Line 5 exists so that an accidental .txt anchor would at least
+resolve if the whitelist were ever widened by mistake.

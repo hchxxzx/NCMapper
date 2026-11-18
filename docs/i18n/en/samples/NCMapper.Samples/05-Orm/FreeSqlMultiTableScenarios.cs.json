@@ -1,0 +1,167 @@
+{
+    "source":  "samples/NCMapper.Samples/05-Orm/FreeSqlMultiTableScenarios.cs",
+    "language":  "en",
+    "generatedFrom":  "b71d4712e98fee7e7ae7401cc56462860fc8d167688138d6755dd7733b7070ff",
+    "comments":  [
+                     {
+                         "i":  1,
+                         "zh":  "场景 503 — FreeSql 多表与高级终端：",
+                         "en":  "Scenario 503 — FreeSql Multi-Table and Advanced Terminal:"
+                     },
+                     {
+                         "i":  2,
+                         "zh":  "双表 JOIN 投影 / IncludeMany 一对多导航 / ToChunkDtoAsync 异步分批 /",
+                         "en":  "Dual-table JOIN projection / IncludeMany one-to-many navigation / ToChunkDtoAsync asynchronous chunked retrieval /"
+                     },
+                     {
+                         "i":  3,
+                         "zh":  "ToLookup 分组 / Fluent DTO 投影。全部内存 SQLite 形态，不依赖外部数据库。",
+                         "en":  "ToLookup grouping / Fluent DTO projection. Entirely in-memory SQLite mode, no external database dependency."
+                     },
+                     {
+                         "i":  5,
+                         "zh":  "\u003csummary\u003e场景 503 入口（ScenarioRegistry 注册）。\u003c/summary\u003e",
+                         "en":  "\u003csummary\u003eEntry point for Scenario 503 (registered via ScenarioRegistry).\u003c/summary\u003e"
+                     },
+                     {
+                         "i":  6,
+                         "zh":  "===== 片段 1+4+5：目录/商品两表演示数据 =====",
+                         "en":  "===== Fragment 1+4+5: Demo data for Category and Product tables ====="
+                     },
+                     {
+                         "i":  7,
+                         "zh":  "\u003csummary\u003e播种目录/商品两表演示数据（AutoSyncStructure 自动建表）。\u003c/summary\u003e",
+                         "en":  "\u003csummary\u003eSeeds demo data for Category and Product tables (with AutoSyncStructure enabling automatic table creation).\u003c/summary\u003e"
+                     },
+                     {
+                         "i":  8,
+                         "zh":  "\u003cparam name=\"fsql\"\u003eFreeSql 实例（内存模式）\u003c/param\u003e",
+                         "en":  "\u003cparam name=\"fsql\"\u003eFreeSql instance (in-memory mode)\u003c/param\u003e"
+                     },
+                     {
+                         "i":  10,
+                         "zh":  "双表 JOIN 投影：ISelect\u0026lt;T1, T2\u0026gt; + LeftJoin + AsDto → SQL 侧完成 JOIN 与列裁剪。",
+                         "en":  "Dual-table JOIN projection: ISelect\u003cT1, T2\u003e + LeftJoin + AsDto → JOIN and column projection executed entirely on the SQL side."
+                     },
+                     {
+                         "i":  11,
+                         "zh":  "跨表字段（CatalogName）由 [MapProperty(typeof(CatalogEntity), ...)] 声明取数来源。",
+                         "en":  "Cross-table field (CatalogName) is declared via [MapProperty(typeof(CatalogEntity), ...)] to specify its data source."
+                     },
+                     {
+                         "i":  13,
+                         "zh":  "\u003cparam name=\"fsql\"\u003eFreeSql 实例（已播种目录/商品）\u003c/param\u003e",
+                         "en":  "\u003cparam name=\"fsql\"\u003eFreeSql instance (with seeded Category and Product data)\u003c/param\u003e"
+                     },
+                     {
+                         "i":  14,
+                         "zh":  "\u003creturns\u003e双表组合投影结果\u003c/returns\u003e",
+                         "en":  "\u003creturns\u003eProjection result combining both tables\u003c/returns\u003e"
+                     },
+                     {
+                         "i":  15,
+                         "zh":  "Assert: row count after JOIN = product count, and cross-table fields are non-empty (failure -> Error Summary -> exit code 1)",
+                         "en":  "Assertion: Number of rows after JOIN equals the number of Products, and cross-table fields are non-null (failure → Error Summary → exit code 1)."
+                     },
+                     {
+                         "i":  17,
+                         "zh":  "一对多导航集合投影：IncludeMany(c =\u003e c.Products) 先加载子表集合，",
+                         "en":  "One-to-many navigation collection projection: IncludeMany(c =\u003e c.Products) first loads the child-table collection."
+                     },
+                     {
+                         "i":  18,
+                         "zh":  "AsDto 后导航集合逐元素走 CatalogProductEntity → CatalogProductDto 同名映射（嵌套集合非空）。",
+                         "en":  "After AsDto, each element in the navigation collection undergoes CatalogProductEntity → CatalogProductDto mapping by property name (nested collection must be non-empty)."
+                     },
+                     {
+                         "i":  20,
+                         "zh":  "\u003cparam name=\"fsql\"\u003eFreeSql 实例（已播种目录/商品）\u003c/param\u003e",
+                         "en":  "\u003cparam name=\"fsql\"\u003eFreeSql instance (with seeded Category and Product data)\u003c/param\u003e"
+                     },
+                     {
+                         "i":  21,
+                         "zh":  "\u003creturns\u003e含商品集合的目录 DTO\u003c/returns\u003e",
+                         "en":  "\u003creturns\u003eCategory DTO containing the Product collection\u003c/returns\u003e"
+                     },
+                     {
+                         "i":  22,
+                         "zh":  "Assert: nested collections non-empty with correct content (Electronics catalog 3 items, Books catalog 1 item)",
+                         "en":  "Assertion: Nested collection is non-empty and contains correct content (3 electronics items, 1 book item)."
+                     },
+                     {
+                         "i":  24,
+                         "zh":  "异步分批读取：ToChunkDtoAsync 真异步实现——逐页 Skip/Take + ToListAsync(ct)，",
+                         "en":  "Asynchronous chunked retrieval: ToChunkDtoAsync implements true asynchrony—per-page Skip/Take followed by ToListAsync(ct)."
+                     },
+                     {
+                         "i":  25,
+                         "zh":  "每轮取数前检查取消令牌。分批读取要求**稳定排序**（OrderBy）作为分页前提，",
+                         "en":  "Cancellation token is checked before each round of data retrieval. Chunked retrieval requires **stable sorting** (OrderBy) as a prerequisite for pagination."
+                     },
+                     {
+                         "i":  26,
+                         "zh":  "否则各页边界在无序结果集上不可复现。",
+                         "en":  "Otherwise, page boundaries become unreproducible over an unsorted result set."
+                     },
+                     {
+                         "i":  28,
+                         "zh":  "\u003cparam name=\"fsql\"\u003eFreeSql 实例（已播种商品）\u003c/param\u003e",
+                         "en":  "\u003cparam name=\"fsql\"\u003eFreeSql instance (with seeded Product data)\u003c/param\u003e"
+                     },
+                     {
+                         "i":  29,
+                         "zh":  "stable ordering is the prerequisite of chunked reading",
+                         "en":  "Stable sorting is a prerequisite for chunked retrieval."
+                     },
+                     {
+                         "i":  30,
+                         "zh":  "Assert: 4 rows at 2 per batch = 2 batches, total count conserved",
+                         "en":  "Assertion: 4 total records split into chunks of size 2 yield exactly 2 chunks, preserving total count."
+                     },
+                     {
+                         "i":  32,
+                         "zh":  "分组查找表：ToLookup 按 keySelector 分组并批量映射 DTO",
+                         "en":  "Grouping lookup table: ToLookup groups by keySelector and maps DTOs in bulk."
+                     },
+                     {
+                         "i":  33,
+                         "zh":  "（FreeSql 3.5.103 无原生 ToLookup，实现为取实体 + 内存分组 + 每组 MapList）。",
+                         "en":  "(FreeSql 3.5.103 lacks native ToLookup; implemented as entity retrieval + in-memory grouping + MapList per group)."
+                     },
+                     {
+                         "i":  35,
+                         "zh":  "\u003cparam name=\"fsql\"\u003eFreeSql 实例（已播种商品）\u003c/param\u003e",
+                         "en":  "\u003cparam name=\"fsql\"\u003eFreeSql instance (with seeded products)\u003c/param\u003e"
+                     },
+                     {
+                         "i":  36,
+                         "zh":  "Assert: two groups (catalog 1/2), catalog 1 group holds 3 products",
+                         "en":  "Assert: two groups (Category 1/2); Category 1 group contains three products."
+                     },
+                     {
+                         "i":  38,
+                         "zh":  "Fluent DTO 参与投影：CatalogFluentDto 由 [MapperConfig] 配置类声明映射，",
+                         "en":  "Fluent DTO participates in projection: CatalogFluentDto mapping is declared by the [MapperConfig] configuration class."
+                     },
+                     {
+                         "i":  39,
+                         "zh":  "源生成器登记后 AsDto 走逐声明翻译判定（纯可翻译声明 → SQL 侧投影）。",
+                         "en":  "After source generator registration, AsDto performs per-declaration translation evaluation (purely translatable declarations → SQL-side projection)."
+                     },
+                     {
+                         "i":  41,
+                         "zh":  "\u003cparam name=\"fsql\"\u003eFreeSql 实例（已播种目录）\u003c/param\u003e",
+                         "en":  "\u003cparam name=\"fsql\"\u003eFreeSql instance (with seeded categories)\u003c/param\u003e"
+                     },
+                     {
+                         "i":  42,
+                         "zh":  "\u003creturns\u003eFluent DTO 投影结果\u003c/returns\u003e",
+                         "en":  "\u003creturns\u003eFluent DTO projection result\u003c/returns\u003e"
+                     },
+                     {
+                         "i":  43,
+                         "zh":  "Assert: the Fluent DTO projection output is isomorphic with the attribute-channel one",
+                         "en":  "Assert: Fluent DTO projection output is isomorphic to the attribute-based pipeline."
+                     }
+                 ]
+}

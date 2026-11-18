@@ -1,0 +1,52 @@
+# CODEOWNERS
+#
+# NCMapper is currently maintained by a single owner. Every path is assigned to
+# the maintainer so that pull requests receive a review request automatically.
+#
+# Once co-maintainers exist, split the sections below so that each area has a
+# reviewer who actually knows it. GitHub picks the last matching pattern, so the
+# more specific rules go further down.
+
+# Default owner for everything in the repository.
+*                               @hchxxzx
+
+# Core library and source generator — changes here affect every consumer.
+/src/NCMapper/                  @hchxxzx
+/src/NCMapper.SourceGen/        @hchxxzx
+
+# Public API surface. A change in these files requires a snapshot update and,
+# for breaking changes, a CHANGELOG entry with migration guidance.
+/src/NCMapper/IMapper.cs        @hchxxzx
+/src/NCMapper/Mapper.cs         @hchxxzx
+
+# ORM extensions. Behaviour is coupled to the upstream provider versions.
+/src/NCMapper.EFCore/           @hchxxzx
+/src/NCMapper.FreeSql/          @hchxxzx
+/src/NCMapper.Dapper/           @hchxxzx
+
+# Generated-code byte baseline — the CI gate compares against these files.
+/generated-baseline/            @hchxxzx
+
+# Public API approval snapshots.
+/test/NCMapper.Tests/PublicApi* @hchxxzx
+
+# Diagnostics: codes are registered in four places and must stay in sync.
+/locales/                       @hchxxzx
+/src/NCMapper.SourceGen/Resources/ @hchxxzx
+
+# Documentation. The Chinese site is authoritative; the English site mirrors it.
+/docs/zh-CN/                    @hchxxzx
+/docs/en-US/                    @hchxxzx
+
+# CI and release machinery.
+/.github/workflows/             @hchxxzx
+/Directory.Build.props          @hchxxzx
+/Directory.Packages.props       @hchxxzx
+
+# Community health files and legal notices.
+/.github/ISSUE_TEMPLATE/        @hchxxzx
+/CODE_OF_CONDUCT.md             @hchxxzx
+/CONTRIBUTING.md                @hchxxzx
+/SECURITY.md                    @hchxxzx
+/LICENSE                        @hchxxzx
+/NOTICE                         @hchxxzx

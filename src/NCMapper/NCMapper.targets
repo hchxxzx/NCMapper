@@ -1,0 +1,53 @@
+<Project>
+  <!-- NCMapper 全局映射配置 — MSBuild 属性白名单（用户文档见 docs/zh-CN/how-to/infrastructure/global-config.md）
+       职责边界：仅让 11 个 NCMapperXxx 属性对源生成器可见（CompilerVisibleProperty），
+       不做校验、不做默认值填充（校验在 SourceGen 读取器 GlobalConfigReader，
+       默认值在核心库配置模型）。
+       消费者用法（csproj / Directory.Build.props）：
+       <PropertyGroup>
+         <NCMapperNamingStrategy>SnakeCase</NCMapperNamingStrategy>
+         <NCMapperIgnoreNames>RowVersion,CreatedAt,UpdatedAt</NCMapperIgnoreNames>
+       </PropertyGroup>
+       注意：清单分隔符为逗号（分号在 editorconfig 值语法中是行内注释符，
+       会被截断，见 GlobalConfigReader.ParseStringList 说明）。
+       三层优先链：属性级显式标注 > [assembly: MapDefaults] > MSBuild 属性 > 内建默认。 -->
+  <ItemGroup>
+    <!-- GENERATED:tgt-cvp -->
+    <CompilerVisibleProperty Include="NCMapperNamingStrategy" />
+    <CompilerVisibleProperty Include="NCMapperPrefixes" />
+    <CompilerVisibleProperty Include="NCMapperPostfixes" />
+    <CompilerVisibleProperty Include="NCMapperIgnoreTypes" />
+    <CompilerVisibleProperty Include="NCMapperIgnoreNames" />
+    <CompilerVisibleProperty Include="NCMapperIgnoreNamePrefixes" />
+    <CompilerVisibleProperty Include="NCMapperIgnoreNameSuffixes" />
+    <CompilerVisibleProperty Include="NCMapperIgnoreTypesToEntity" />
+    <CompilerVisibleProperty Include="NCMapperIgnoreNamesToEntity" />
+    <CompilerVisibleProperty Include="NCMapperIgnoreNamePrefixesToEntity" />
+    <CompilerVisibleProperty Include="NCMapperIgnoreNameSuffixesToEntity" />
+    <!-- /GENERATED:tgt-cvp -->
+    <!-- 功能开关（编译时诊断 / Markdown 映射报告）— 消费者可在 csproj 中直接设置 -->
+    <CompilerVisibleProperty Include="NCMapperSourceGenEnabled" />
+    <CompilerVisibleProperty Include="NCMapperGenerateReport" />
+    <!-- 快照运行时元数据发射开关 ——
+         on：生成 NCMapper_RuntimeSnapshotMetadata.g.cs（[ModuleInitializer] 注册行）；
+         off：零发射产物，消费端双读回退反射（行为与现状一致）。
+         默认 on（Fluent 通道无降级缺口）；显式 -p:NCMapperEmitRuntimeSnapshot=false 关闭。
+         注：属性值须单行书写，跨行会被 MSBuild 原样保留换行/缩进导致值污染。 -->
+    <CompilerVisibleProperty Include="NCMapperEmitRuntimeSnapshot" />
+  </ItemGroup>
+  <PropertyGroup>
+    <NCMapperEmitRuntimeSnapshot Condition="'$(NCMapperEmitRuntimeSnapshot)' == ''">true</NCMapperEmitRuntimeSnapshot>
+  </PropertyGroup>
+  <!-- 源生成产物落盘开关（默认关闭）——NCMapperEmitGeneratedFiles=true 时
+       编译器把源生成产物写出为物理 .cs 便于开发者审查/对比；产物入 obj 中间目录，clean 即清，不进源码。
+       纯编译期 MSBuild 行为，源生成器不读取 → 无需 CompilerVisibleProperty（不进 GlobalConfig）。
+       用法：<NCMapperEmitGeneratedFiles>true</NCMapperEmitGeneratedFiles>
+       注：属性值须单行书写，跨行会被 MSBuild 原样保留换行/缩进导致路径污染。 -->
+  <PropertyGroup>
+    <NCMapperEmitGeneratedFilesPath Condition="'$(NCMapperEmitGeneratedFilesPath)' == ''">$(BaseIntermediateOutputPath)NCMapper/Generated</NCMapperEmitGeneratedFilesPath>
+  </PropertyGroup>
+  <PropertyGroup Condition="'$(NCMapperEmitGeneratedFiles)' == 'true'">
+    <EmitCompilerGeneratedFiles>true</EmitCompilerGeneratedFiles>
+    <CompilerGeneratedFilesOutputPath>$(NCMapperEmitGeneratedFilesPath)</CompilerGeneratedFilesOutputPath>
+  </PropertyGroup>
+</Project>

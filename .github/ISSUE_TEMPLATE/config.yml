@@ -1,0 +1,14 @@
+blank_issues_enabled: false
+contact_links:
+  - name: Documentation
+    url: https://github.com/hchxxzx/NCMapper#readme
+    about: Installation, quick start, how-to guides, and the full API reference.
+  - name: FAQ and common pitfalls
+    url: https://github.com/hchxxzx/NCMapper/blob/main/docs/en-US/how-to/faq.md
+    about: Answers to frequently asked questions, and traps that bite most newcomers.
+  - name: Question or design discussion
+    url: https://github.com/hchxxzx/NCMapper/discussions
+    about: Ask a usage question or discuss a design idea before filing an issue.
+  - name: Report a security vulnerability
+    url: https://github.com/hchxxzx/NCMapper/security/policy
+    about: Please do not open a public issue for security problems. See SECURITY.md.

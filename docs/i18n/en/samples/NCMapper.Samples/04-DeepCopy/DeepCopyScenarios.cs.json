@@ -1,0 +1,197 @@
+{
+    "source":  "samples/NCMapper.Samples/04-DeepCopy/DeepCopyScenarios.cs",
+    "language":  "en",
+    "generatedFrom":  "73c7a2e0f8a26cc8a363a905bb8664e85ad8876731d52408579a26d944de7efe",
+    "comments":  [
+                     {
+                         "i":  1,
+                         "zh":  "深拷贝场景集 — 同类型/跨类型克隆、Action 回调、策略对比、集合深拷贝。",
+                         "en":  "Deep copy scenario set — same-type/cross-type cloning, Action callbacks, strategy comparison, and deep copying of collections."
+                     },
+                     {
+                         "i":  4,
+                         "zh":  "同类型深拷贝：UserEntity → UserEntity（完全独立副本）。",
+                         "en":  "Same-type deep copy: UserEntity → UserEntity (completely independent copy)."
+                     },
+                     {
+                         "i":  6,
+                         "zh":  "\u003cparam name=\"src\"\u003e源对象\u003c/param\u003e",
+                         "en":  "\u003cparam name=\"src\"\u003eSource object\u003c/param\u003e"
+                     },
+                     {
+                         "i":  7,
+                         "zh":  "\u003creturns\u003e深拷贝（独立副本）\u003c/returns\u003e",
+                         "en":  "\u003creturns\u003eDeep copy (independent copy)\u003c/returns\u003e"
+                     },
+                     {
+                         "i":  9,
+                         "zh":  "带 Action 回调的深拷贝：克隆后修改目标。",
+                         "en":  "Deep copy with Action callback: modify the target after cloning."
+                     },
+                     {
+                         "i":  11,
+                         "zh":  "\u003cparam name=\"src\"\u003e源对象\u003c/param\u003e",
+                         "en":  "\u003cparam name=\"src\"\u003eSource object\u003c/param\u003e"
+                     },
+                     {
+                         "i":  12,
+                         "zh":  "\u003creturns\u003eName 带 [COPY] 前缀的深拷贝\u003c/returns\u003e",
+                         "en":  "\u003creturns\u003eDeep copy with [COPY] prefix added to Name\u003c/returns\u003e"
+                     },
+                     {
+                         "i":  14,
+                         "zh":  "跨类型深拷贝：OrderEntity → OrderEntity（转发到 Map）。",
+                         "en":  "Cross-type deep copy: OrderEntity → OrderEntity (delegated to Map)."
+                     },
+                     {
+                         "i":  16,
+                         "zh":  "\u003cparam name=\"src\"\u003e源订单\u003c/param\u003e",
+                         "en":  "\u003cparam name=\"src\"\u003eSource order\u003c/param\u003e"
+                     },
+                     {
+                         "i":  17,
+                         "zh":  "\u003creturns\u003e订单深拷贝\u003c/returns\u003e",
+                         "en":  "\u003creturns\u003eDeep copy of the order\u003c/returns\u003e"
+                     },
+                     {
+                         "i":  19,
+                         "zh":  "使用 FastDeepCopyProvider 深拷贝（默认策略，~125ns，无循环引用检测）。",
+                         "en":  "Deep copy using FastDeepCopyProvider (default strategy, ~125ns, no circular reference detection)."
+                     },
+                     {
+                         "i":  21,
+                         "zh":  "\u003cparam name=\"src\"\u003e源对象\u003c/param\u003e",
+                         "en":  "\u003cparam name=\"src\"\u003eSource object\u003c/param\u003e"
+                     },
+                     {
+                         "i":  22,
+                         "zh":  "\u003creturns\u003eFast 深拷贝结果\u003c/returns\u003e",
+                         "en":  "\u003creturns\u003eFast deep copy result\u003c/returns\u003e"
+                     },
+                     {
+                         "i":  24,
+                         "zh":  "使用 ExpressionTree 提供程序深拷贝（~676ns，含循环引用检测）。",
+                         "en":  "Deep copy using ExpressionTree provider (~676ns, with circular reference detection)."
+                     },
+                     {
+                         "i":  26,
+                         "zh":  "\u003cparam name=\"src\"\u003e源对象\u003c/param\u003e",
+                         "en":  "\u003cparam name=\"src\"\u003eSource object\u003c/param\u003e"
+                     },
+                     {
+                         "i":  27,
+                         "zh":  "\u003creturns\u003eExpressionTree 深拷贝结果\u003c/returns\u003e",
+                         "en":  "\u003creturns\u003eExpressionTree deep copy result\u003c/returns\u003e"
+                     },
+                     {
+                         "i":  29,
+                         "zh":  "使用 JSON 提供程序深拷贝（序列化 + 反序列化）。",
+                         "en":  "Deep copy using JSON provider (serialization + deserialization)."
+                     },
+                     {
+                         "i":  31,
+                         "zh":  "\u003cparam name=\"src\"\u003e源对象\u003c/param\u003e",
+                         "en":  "\u003cparam name=\"src\"\u003eSource object\u003c/param\u003e"
+                     },
+                     {
+                         "i":  32,
+                         "zh":  "\u003creturns\u003eJSON 深拷贝结果\u003c/returns\u003e",
+                         "en":  "\u003creturns\u003eJSON deep copy result\u003c/returns\u003e"
+                     },
+                     {
+                         "i":  33,
+                         "zh":  "===== 集合深拷贝 =====",
+                         "en":  "===== Deep copy of collections ====="
+                     },
+                     {
+                         "i":  35,
+                         "zh":  "List\u0026lt;OrderEntity\u0026gt; 深拷贝 — 每个元素独立克隆。",
+                         "en":  "Deep copy of List\u0026lt;OrderEntity\u0026gt; — each element independently cloned."
+                     },
+                     {
+                         "i":  37,
+                         "zh":  "\u003cparam name=\"src\"\u003e源列表\u003c/param\u003e",
+                         "en":  "\u003cparam name=\"src\"\u003eSource list\u003c/param\u003e"
+                     },
+                     {
+                         "i":  38,
+                         "zh":  "\u003creturns\u003e深拷贝后的列表\u003c/returns\u003e",
+                         "en":  "\u003creturns\u003eDeep copied list\u003c/returns\u003e"
+                     },
+                     {
+                         "i":  40,
+                         "zh":  "UserEntity[] 数组深拷贝 — 数组元素独立克隆。",
+                         "en":  "Deep copy of UserEntity[] array — each array element independently cloned."
+                     },
+                     {
+                         "i":  42,
+                         "zh":  "\u003cparam name=\"src\"\u003e源数组\u003c/param\u003e",
+                         "en":  "\u003cparam name=\"src\"\u003eSource array\u003c/param\u003e"
+                     },
+                     {
+                         "i":  43,
+                         "zh":  "\u003creturns\u003e深拷贝后的数组\u003c/returns\u003e",
+                         "en":  "\u003creturns\u003eArray after deep cloning\u003c/returns\u003e"
+                     },
+                     {
+                         "i":  45,
+                         "zh":  "Dictionary 深拷贝 — Key 保留，Value 克隆。",
+                         "en":  "Deep clone of Dictionary — keys are preserved, values are cloned."
+                     },
+                     {
+                         "i":  47,
+                         "zh":  "\u003cparam name=\"src\"\u003e源字典\u003c/param\u003e",
+                         "en":  "\u003cparam name=\"src\"\u003eSource dictionary\u003c/param\u003e"
+                     },
+                     {
+                         "i":  48,
+                         "zh":  "\u003creturns\u003e深拷贝后的字典\u003c/returns\u003e",
+                         "en":  "\u003creturns\u003eDictionary after deep cloning\u003c/returns\u003e"
+                     },
+                     {
+                         "i":  50,
+                         "zh":  "HashSet\u0026lt;string\u0026gt; 深拷贝。",
+                         "en":  "Deep clone of HashSet\u003cstring\u003e."
+                     },
+                     {
+                         "i":  52,
+                         "zh":  "\u003cparam name=\"src\"\u003e源 HashSet\u003c/param\u003e",
+                         "en":  "\u003cparam name=\"src\"\u003eSource HashSet\u003c/param\u003e"
+                     },
+                     {
+                         "i":  53,
+                         "zh":  "\u003creturns\u003e深拷贝后的 HashSet\u003c/returns\u003e",
+                         "en":  "\u003creturns\u003eHashSet after deep cloning\u003c/returns\u003e"
+                     },
+                     {
+                         "i":  56,
+                         "zh":  "读取 Mapper.MaxRecursionDepth 当前值。",
+                         "en":  "Reads the current value of Mapper.MaxRecursionDepth."
+                     },
+                     {
+                         "i":  58,
+                         "zh":  "\u003creturns\u003e当前递归深度上限\u003c/returns\u003e",
+                         "en":  "\u003creturns\u003eCurrent maximum recursion depth\u003c/returns\u003e"
+                     },
+                     {
+                         "i":  60,
+                         "zh":  "演示设置 MaxRecursionDepth = 1 后深拷贝受限。",
+                         "en":  "Demonstrates deep cloning being restricted after setting MaxRecursionDepth = 1."
+                     },
+                     {
+                         "i":  62,
+                         "zh":  "\u003cparam name=\"src\"\u003e含嵌套对象的源\u003c/param\u003e",
+                         "en":  "\u003cparam name=\"src\"\u003eSource object containing nested objects\u003c/param\u003e"
+                     },
+                     {
+                         "i":  63,
+                         "zh":  "\u003creturns\u003e异常信息（MaxRecursionDepth=1 触发递归深度超限）\u003c/returns\u003e",
+                         "en":  "\u003creturns\u003eException message (recursion depth exceeded due to MaxRecursionDepth=1)\u003c/returns\u003e"
+                     },
+                     {
+                         "i":  64,
+                         "zh":  "<summary>",
+                         "en":  "===== Scenario Registration Entry Point====="
+                     }
+                 ]
+}

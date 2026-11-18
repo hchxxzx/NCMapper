@@ -1,0 +1,25 @@
+<Project Sdk="Microsoft.NET.Sdk">
+
+  <PropertyGroup>
+    <OutputType>Exe</OutputType>
+    <TargetFramework>net10.0</TargetFramework>
+    <ImplicitUsings>enable</ImplicitUsings>
+    <Nullable>enable</Nullable>
+    <IsPackable>false</IsPackable>
+    <IsTestProject>false</IsTestProject>
+    <!-- AOT 部署示例：全部 DTO 标 [MapFrom] 走源生成器路径，NativeAOT 下可完整发布运行 -->
+    <PublishAot>true</PublishAot>
+    <!-- 跨平台 RID 声明：CI samples job（ubuntu-latest）与本地（Windows）restore 时
+         SDK 按 OS 推断不同 RID，lock 文件与项目依赖将不一致（NU1004，同 AotTests 口径）。
+         显式声明双 RID 使 lock 同时锁定两平台依赖。 -->
+    <RuntimeIdentifiers>win-x64;linux-x64</RuntimeIdentifiers>
+    <!-- 示例项目演示 Validate()/Compose() 实验性 API（NCMapper001），抑制诊断（同 NCMapper.Samples 口径） -->
+    <NoWarn>$(NoWarn);NCMapper001</NoWarn>
+  </PropertyGroup>
+
+  <ItemGroup>
+    <ProjectReference Include="..\..\src\NCMapper\NCMapper.csproj" />
+    <ProjectReference Include="..\..\src\NCMapper.SourceGen\NCMapper.SourceGen.csproj" OutputItemType="Analyzer" ReferenceOutputAssembly="false" />
+  </ItemGroup>
+
+</Project>

@@ -1,0 +1,1047 @@
+<?xml version="1.0" encoding="utf-8"?>
+<root>
+  <!--
+    编译期诊断资源化（34 规则 × 3 字段 = 102 键）。
+    键命名：{RuleId}_{Title|Message|Description}。
+    强类型访问器：Resources/DiagnosticResources.Designer.cs（手写提交）。
+  -->
+  <xsd:schema id="root" xmlns="" xmlns:xsd="http://www.w3.org/2001/XMLSchema" xmlns:msdata="urn:schemas-microsoft-com:xml-msdata">
+    <xsd:import namespace="http://www.w3.org/XML/1998/namespace" />
+    <xsd:element name="root" msdata:IsDataSet="true">
+      <xsd:complexType>
+        <xsd:choice maxOccurs="unbounded">
+          <xsd:element name="metadata">
+            <xsd:complexType>
+              <xsd:sequence>
+                <xsd:element name="value" type="xsd:string" minOccurs="0" />
+              </xsd:sequence>
+              <xsd:attribute name="name" use="required" type="xsd:string" />
+              <xsd:attribute name="type" type="xsd:string" />
+              <xsd:attribute name="mimetype" type="xsd:string" />
+              <xsd:attribute ref="xml:space" />
+            </xsd:complexType>
+          </xsd:element>
+          <xsd:element name="assembly">
+            <xsd:complexType>
+              <xsd:attribute name="alias" type="xsd:string" />
+              <xsd:attribute name="name" type="xsd:string" />
+            </xsd:complexType>
+          </xsd:element>
+          <xsd:element name="data">
+            <xsd:complexType>
+              <xsd:sequence>
+                <xsd:element name="value" type="xsd:string" minOccurs="0" msdata:Ordinal="1" />
+                <xsd:element name="comment" type="xsd:string" minOccurs="0" msdata:Ordinal="2" />
+              </xsd:sequence>
+              <xsd:attribute name="name" type="xsd:string" use="required" msdata:Ordinal="1" />
+              <xsd:attribute name="type" type="xsd:string" msdata:Ordinal="3" />
+              <xsd:attribute name="mimetype" type="xsd:string" msdata:Ordinal="4" />
+              <xsd:attribute ref="xml:space" />
+            </xsd:complexType>
+          </xsd:element>
+          <xsd:element name="resheader">
+            <xsd:complexType>
+              <xsd:sequence>
+                <xsd:element name="value" type="xsd:string" minOccurs="0" msdata:Ordinal="1" />
+              </xsd:sequence>
+              <xsd:attribute name="name" type="xsd:string" use="required" />
+            </xsd:complexType>
+          </xsd:element>
+        </xsd:choice>
+      </xsd:complexType>
+    </xsd:element>
+  </xsd:schema>
+  <resheader name="resmimetype">
+    <value>text/microsoft-resx</value>
+  </resheader>
+  <resheader name="version">
+    <value>2.0</value>
+  </resheader>
+  <resheader name="reader">
+    <value>System.Resources.ResXResourceReader, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  </resheader>
+  <resheader name="writer">
+    <value>System.Resources.ResXResourceWriter, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  </resheader>
+  <data name="NCMAP001_Title" xml:space="preserve">
+    <value>源字段未找到</value>
+  </data>
+  <data name="NCMAP001_Message" xml:space="preserve">
+    <value>映射属性 '{0}' 标注的源字段 '{1}' 在类型 '{2}' 中不存在</value>
+  </data>
+  <data name="NCMAP001_Description" xml:space="preserve">
+    <value>DTO 属性标注了 [MapProperty] 但指定的源字段在源类型中不存在，该属性不会被映射.</value>
+  </data>
+  <data name="NCMAP002_Title" xml:space="preserve">
+    <value>类型不兼容</value>
+  </data>
+  <data name="NCMAP002_Message" xml:space="preserve">
+    <value>属性 '{0}' 的类型 '{1}' 与源字段 '{2}' 的类型 '{3}' 不兼容，无法直接赋值或隐式转换。修复指引：检查 [MapProperty] 的 FromField 源字段类型是否与目标属性类型匹配，或为该属性改用 [Convert] 自定义转换处理类型差异</value>
+  </data>
+  <data name="NCMAP002_Description" xml:space="preserve">
+    <value>目标属性类型与源字段类型不兼容，将走运行时 TypeConvertHelper fallback，可能产生非预期行为.</value>
+  </data>
+  <data name="NCMAP003_Title" xml:space="preserve">
+    <value>无可映射属性</value>
+  </data>
+  <data name="NCMAP003_Message" xml:space="preserve">
+    <value>类型 '{0}' 标注了 [MapFrom(typeof({1}))] 但没有任何属性可以映射</value>
+  </data>
+  <data name="NCMAP003_Description" xml:space="preserve">
+    <value>DTO 标注了 [MapFrom] 但没有任何属性能与源类型匹配，可能是源类型指定错误.</value>
+  </data>
+  <data name="NCMAP005_Title" xml:space="preserve">
+    <value>Compose 跨表字段未找到</value>
+  </data>
+  <data name="NCMAP005_Message" xml:space="preserve">
+    <value>属性 '{0}' 标注的 [MapProperty(typeof({1}), "{2}")] 指定的字段 '{2}' 在类型 '{1}' 中不存在，该属性不会被 Compose 映射</value>
+  </data>
+  <data name="NCMAP005_Description" xml:space="preserve">
+    <value>DTO 属性标注了 [MapProperty] 指定跨表源字段，但该字段在指定的子源类型中不存在，Compose 合成时该属性不会被映射。请检查 [MapProperty] 的 FromSource 类型和 FromField 名称是否正确.</value>
+  </data>
+  <data name="NCMAP006_Title" xml:space="preserve">
+    <value>目标属性未映射</value>
+  </data>
+  <data name="NCMAP006_Message" xml:space="preserve">
+    <value>属性 '{0}'（类型 '{1}'）在源类型 '{2}' 中存在同名属性，但目标 setter 为 {3}，该属性不会被映射；如需忽略请标注 [MapIgnore]</value>
+  </data>
+  <data name="NCMAP006_Description" xml:space="preserve">
+    <value>源类型存在同名属性，但目标属性的 setter 非 public（private/protected/internal/init 或无 setter），生成代码无法赋值。请改为 public set，或标注 [MapIgnore] 显式忽略.</value>
+  </data>
+  <data name="NCMAP007_Title" xml:space="preserve">
+    <value>源属性未映射</value>
+  </data>
+  <data name="NCMAP007_Message" xml:space="preserve">
+    <value>源类型 '{0}' 的属性 '{1}'（类型 '{2}'）没有对应的目标属性，该源属性不会被映射</value>
+  </data>
+  <data name="NCMAP007_Description" xml:space="preserve">
+    <value>源属性没有对应的目标属性，数据不会映射到目标对象。如果这是预期的，可以在源属性上标注 [MapIgnore] 消除此提示.</value>
+  </data>
+  <data name="NCMAP009_Title" xml:space="preserve">
+    <value>重复映射源属性</value>
+  </data>
+  <data name="NCMAP009_Message" xml:space="preserve">
+    <value>属性 '{0}' 和 '{1}' 都映射到源类型 '{2}' 的同一属性 '{3}'，可能导致数据重复覆盖</value>
+  </data>
+  <data name="NCMAP009_Description" xml:space="preserve">
+    <value>多个目标属性的 [MapProperty] 指向同一源属性，通常为复制粘贴错误。请检查 [MapProperty] 的源字段配置是否正确.</value>
+  </data>
+  <data name="NCMAP010_Title" xml:space="preserve">
+    <value>枚举映射成员无重叠</value>
+  </data>
+  <data name="NCMAP010_Message" xml:space="preserve">
+    <value>源枚举 '{0}' 和目标枚举 '{1}' 的成员名称无任何重叠，按值强转可能导致非预期结果</value>
+  </data>
+  <data name="NCMAP010_Description" xml:space="preserve">
+    <value>枚举↔枚举映射时，源和目标枚举的成员名称完全不同。按底层值强转可能产生非预期的枚举值。建议检查枚举定义或使用 [Convert] 自定义转换.</value>
+  </data>
+  <data name="NCMAP011_Title" xml:space="preserve">
+    <value>非 public 类型跳过源生成器</value>
+  </data>
+  <data name="NCMAP011_Message" xml:space="preserve">
+    <value>类型 '{0}' 的可访问性为 '{1}'，源生成器仅支持 public 类型。该类型将走运行时引擎路径，不生成编译时代码</value>
+  </data>
+  <data name="NCMAP011_Description" xml:space="preserve">
+    <value>源生成器生成的映射器类是 internal。当前版本对 non-public 类型不生成编译时代码，自动 fallback 到运行时表达式树引擎，功能不受影响，但无法享受源生成器的 AOT 友好和零反射优势.</value>
+  </data>
+  <data name="NCMAP012_Title" xml:space="preserve">
+    <value>Record 循环引用或不可解析图 DeepCopy 回退运行时</value>
+  </data>
+  <data name="NCMAP012_Message" xml:space="preserve">
+    <value>record 类型 '{0}' 的 DeepCopy 属性图存在循环引用或静态不可解析边，无法通过构造器路径安全生成，已回退到运行时路径</value>
+  </data>
+  <data name="NCMAP012_Description" xml:space="preserve">
+    <value>record 类型的 DeepCopy 通过构造器参数递归生成，但 dst 在 new T(...) 内部创建，无法在构造前登记到循环引用检测表。当属性图存在循环引用（如 record Node(Node? Next)）或静态不可解析边（object/接口类型属性、可被重写的 virtual 引用属性）时，构造器路径无法防御环，存在无限递归风险。此类型自动回退到 Mapper.DeepCopyRuntimeOnly 运行时路径，功能不受影响但无法享受源生成器的性能优势.</value>
+  </data>
+  <data name="NCMAP016_Title" xml:space="preserve">
+    <value>DeepCopy 图静态不可解析，保留完整循环检测</value>
+  </data>
+  <data name="NCMAP016_Message" xml:space="preserve">
+    <value>类型 '{0}' 的属性 '{1}'（类型 {2}）无法静态解析循环可达性，该类型 DeepCopy 将保留完整循环检测</value>
+  </data>
+  <data name="NCMAP016_Description" xml:space="preserve">
+    <value>类型的深拷贝属性图包含静态不可解析边（object/dynamic/接口类型属性、开放泛型或未约束泛型参数、可被派生类重写的 virtual 引用属性等）。静态分析无法证明无环，该类型的 DeepCopy 保留完整循环检测（CycleCache）。功能不受影响，但无法享受无环图的零检测快路径.</value>
+  </data>
+  <data name="NCMAP013_Title" xml:space="preserve">
+    <value>反向映射属性跳过</value>
+  </data>
+  <data name="NCMAP013_Message" xml:space="preserve">
+    <value>属性 '{0}' 在反向映射（{1} → {2}）中被跳过：{3}</value>
+  </data>
+  <data name="NCMAP013_Description" xml:space="preserve">
+    <value>正向映射中的属性在反向映射中被跳过。常见原因：Convert 无源属性、目标 setter 非 public、集合索引路径反向登记、反向写回路径中间节点 setter 不可用。这是语义上的固有限制，非配置错误.</value>
+  </data>
+  <data name="NCMAP031_Title" xml:space="preserve">
+    <value>反向写回路径中间节点不可实例化</value>
+  </data>
+  <data name="NCMAP031_Message" xml:space="preserve">
+    <value>反向写回路径 '{2}' 的中间节点 '{1}'（类型 {0}）不可实例化（接口/抽象类/无公共无参构造器），反向映射（{3} → {4}）无法创建该节点，属性跳过</value>
+  </data>
+  <data name="NCMAP031_Description" xml:space="preserve">
+    <value>反向路径写回（DTO 扁平属性 → 实体嵌套路径赋值）在中间节点为 null 时需创建新实例。中间节点为接口、抽象类或无公共无参构造器时无法实例化，该配置在反向方向必然失败（正向读路径完全合法）。编译期以 Error 诊断阻断，避免生成非法代码.</value>
+  </data>
+  <data name="NCMAP032_Title" xml:space="preserve">
+    <value>init-only 属性在更新路径被跳过</value>
+  </data>
+  <data name="NCMAP032_Message" xml:space="preserve">
+    <value>属性 '{0}' 为 init-only，更新映射（{1} → {2}）无法对已有目标对象赋值，属性跳过（仅创建路径可写）</value>
+  </data>
+  <data name="NCMAP032_Description" xml:space="preserve">
+    <value>init-only 属性只能在对象构造（创建路径）时赋值，更新路径（已有目标对象）无法再次赋值，生成器跳过该属性。这是 C# init 访问器的语义限制，非配置错误.</value>
+  </data>
+  <data name="NCMAP033_Title" xml:space="preserve">
+    <value>反向映射默认不消费 [Convert] 转换器</value>
+  </data>
+  <data name="NCMAP033_Message" xml:space="preserve">
+    <value>属性 '{0}' 标注了 [Convert]，反向映射（{1} → {2}）默认不消费（转换器泛型绑定正向方向），反向按类型转换路径写入；如需反向自定义转换，请标注 [ConvertBack]</value>
+  </data>
+  <data name="NCMAP033_Description" xml:space="preserve">
+    <value>[Convert] 转换器的泛型参数绑定正向方向（实体源类型 → DTO 输出类型），反向映射默认不消费该转换器，生成器按类型转换路径写入。若反向需要自定义转换，请标注 [ConvertBack]。</value>
+  </data>
+  <data name="NCMAP034_Title" xml:space="preserve">
+    <value>[Mask] 属性参与反向写回（脱敏值将原样写回）</value>
+  </data>
+  <data name="NCMAP034_Message" xml:space="preserve">
+    <value>属性 '{0}' 标注了 [Mask] 且参与反向写回（{1} → {2}），脱敏值将原样写入目标实体（脱敏有损不可逆，请确认业务语义）</value>
+  </data>
+  <data name="NCMAP034_Description" xml:space="preserve">
+    <value>[Mask] 脱敏为有损操作（不可逆），反向写回会把脱敏后的值原样写入实体属性，可能覆盖实体中的完整数据。CRUD 更新场景建议对脱敏 DTO 属性标注 [MapIgnore(ToEntity)] 阻断反向写回.</value>
+  </data>
+  <data name="NCMAP035_Title" xml:space="preserve">
+    <value>转换方法不存在或不可访问</value>
+  </data>
+  <data name="NCMAP035_Message" xml:space="preserve">
+    <value>属性 '{0}'：锚定类型 '{2}' 上不存在可访问的静态方法 '{1}'。方法必须声明于锚定类型自身（不含基类继承）、为静态，且可访问性为 public / internal（同程序集）/ protected internal（同程序集）。单参形态的锚定类型即标注属性所属类型；若方法位于其他类型，请改用双参形态 [Convert(typeof(X), nameof(X.M))]</value>
+  </data>
+  <data name="NCMAP035_Description" xml:space="preserve">
+    <value>[Convert]/[ConvertBack] 的方法引用形态在锚定类型上解析静态方法：DeclaredOnly 语义（不考虑基类继承），可访问性白名单为 public / internal（同程序集）/ protected internal（同程序集），private、protected、private protected 一律拒绝。方法名仅存在于其他类型时（如单参形态 nameof(OtherType.M) 的限定符被编译器静默丢弃）在此报错，请改用双参形态定位其他类型.</value>
+  </data>
+  <data name="NCMAP036_Title" xml:space="preserve">
+    <value>转换方法重载歧义</value>
+  </data>
+  <data name="NCMAP036_Message" xml:space="preserve">
+    <value>属性 '{0}'：锚定类型 '{2}' 上静态方法 '{1}' 有多个重载同时命中签名模板。请重命名方法或移除冲突重载；刻意不提供按签名选择重载的构造形态</value>
+  </data>
+  <data name="NCMAP036_Description" xml:space="preserve">
+    <value>锚定类型上多个同名静态重载同时通过形态排除与签名模板匹配时，调用目标歧义。请重命名方法或移走方法消歧；刻意不支持按签名选择重载。</value>
+  </data>
+  <data name="NCMAP037_Title" xml:space="preserve">
+    <value>转换方法签名不匹配</value>
+  </data>
+  <data name="NCMAP037_Message" xml:space="preserve">
+    <value>属性 '{0}'：锚定类型 '{2}' 上静态方法 '{1}' 的任何重载均未命中签名模板（期望返回类型 '{3}'）。细节：{4}。</value>
+  </data>
+  <data name="NCMAP037_Description" xml:space="preserve">
+    <value>命中的重载须为非泛型静态方法、无可选/params/ref-out-in 参数、返回目标属性类型（仅允许非空→可空提升）、参数与 T0 M() / T1 M(TField) / T2 M(TSource) / T3 M(TSource, TField) 完全相等（Nullable 解包后相等匹配，不做 assignable 放宽）。单参形态不支持泛型锚定类型，请改用双参形态显式传入封闭泛型.</value>
+  </data>
+  <data name="NCMAP038_Title" xml:space="preserve">
+    <value>生命周期钩子方法不可解析</value>
+  </data>
+  <data name="NCMAP038_Message" xml:space="preserve">
+    <value>特性 '{0}'：锚定类型 '{2}' 上不存在可访问的静态方法 '{1}'。钩子方法须为 public 或 internal（同程序集）静态方法；若方法声明在标注 DTO 之外的宿主类型上，请改用双参构造形态显式指定宿主类型。</value>
+  </data>
+  <data name="NCMAP038_Description" xml:space="preserve">
+    <value>生命周期钩子特性（[BeforeMapping]/[AfterMapping]）解析一个 void(TSource, TTarget) 签名的静态方法。方法须声明在标注类型上（单参形态）或显式传入的宿主类型上（双参形态），且对锚定类型为 public 或同程序集 internal 可见。</value>
+  </data>
+  <data name="NCMAP039_Title" xml:space="preserve">
+    <value>生命周期钩子签名不匹配</value>
+  </data>
+  <data name="NCMAP039_Message" xml:space="preserve">
+    <value>特性 '{0}'：方法 '{1}' 不满足生命周期钩子契约：{2}。</value>
+  </data>
+  <data name="NCMAP039_Description" xml:space="preserve">
+    <value>钩子方法须为 void(TSource, TTarget) 签名的静态方法（参数类型与映射对赋值兼容）。单参形态的锚定类型须为封闭（非开放泛型）类型；开放泛型宿主请改用双参构造形态显式传入封闭泛型类型。</value>
+  </data>
+  <data name="NCMAP040_Title" xml:space="preserve">
+    <value>生命周期钩子重载歧义</value>
+  </data>
+  <data name="NCMAP040_Message" xml:space="preserve">
+    <value>特性 '{0}'：锚定类型 '{2}' 上静态方法 '{1}' 存在多个与映射对签名兼容且无精确匹配的可访问重载，无法确定性解析；请收敛为单一无歧义方法。</value>
+  </data>
+  <data name="NCMAP040_Description" xml:space="preserve">
+    <value>当钩子方法的多个重载均与映射对签名兼容时，要求存在唯一精确匹配（参数类型与映射对类型完全相等）以支持确定性解析。</value>
+  </data>
+  <data name="NCMAP099_Title" xml:space="preserve">
+    <value>映射的源生成失败</value>
+  </data>
+  <data name="NCMAP099_Message" xml:space="preserve">
+    <value>为 {0} → {1} 生成映射代码失败：{2}</value>
+  </data>
+  <data name="NCMAP099_Description" xml:space="preserve">
+    <value>为特定类型对生成映射代码时发生未预期异常，其他映射不受影响。</value>
+  </data>
+  <data name="NCMAP014_Title" xml:space="preserve">
+    <value>脱敏类型不匹配</value>
+  </data>
+  <data name="NCMAP014_Message" xml:space="preserve">
+    <value>属性 '{0}' 标注的 [Mask(typeof({1}))] 指定的类型未实现 NCMapper.IMask 接口</value>
+  </data>
+  <data name="NCMAP014_Description" xml:space="preserve">
+    <value>[Mask] 指定的类型必须实现 NCMapper.IMask 接口（string Mask(string? value)）.</value>
+  </data>
+  <data name="NCMAP015_Title" xml:space="preserve">
+    <value>脱敏目标属性类型错误</value>
+  </data>
+  <data name="NCMAP015_Message" xml:space="preserve">
+    <value>属性 '{0}' 标注了 [Mask]，但目标属性类型为 '{1}'，脱敏仅支持 string 类型属性</value>
+  </data>
+  <data name="NCMAP015_Description" xml:space="preserve">
+    <value>[Mask] 只能标注在 string 类型的属性上（IMask.Mask(string?) → string）.</value>
+  </data>
+  <data name="NCMAP017_Title" xml:space="preserve">
+    <value>[MapNoAutoInclude] 标注在引用属性上</value>
+  </data>
+  <data name="NCMAP017_Message" xml:space="preserve">
+    <value>属性 '{0}' 标注了 [MapNoAutoInclude]，但该属性为引用类型（非集合），自动 Include 仅对集合导航有显著开销，此标注通常无意义</value>
+  </data>
+  <data name="NCMAP017_Description" xml:space="preserve">
+    <value>[MapNoAutoInclude] 设计用于排除大集合导航的自动加载开销，标注在引用属性上通常无实际效果.</value>
+  </data>
+  <data name="NCMAP018_Title" xml:space="preserve">
+    <value>表达式树中数组 Contains 绑定到 MemoryExtensions.Contains</value>
+  </data>
+  <data name="NCMAP018_Message" xml:space="preserve">
+    <value>在表达式树 lambda 中，'{0}' 数组的 Contains 在 .NET 10/C# 14 下绑定到 MemoryExtensions.Contains(ReadOnlySpan&lt;T&gt;, T)，FreeSql 等 ORM 表达式解析器仅识别 Enumerable.Contains 将抛 NotSupportedException。请改用 {0}.AsEnumerable().Contains(...) 或使用 List&lt;T&gt;</value>
+  </data>
+  <data name="NCMAP018_Description" xml:space="preserve">
+    <value>.NET 10/C# 14 重载决议变更：表达式树 lambda 中 T[].Contains 改绑 MemoryExtensions.Contains, FreeSql 表达式解析器仅识别 Enumerable.Contains 将抛 NotSupportedException.</value>
+  </data>
+  <data name="NCMAP019_Title" xml:space="preserve">
+    <value>标注了映射配置特性但缺少 [MapFrom]——配置无激活路径</value>
+  </data>
+  <data name="NCMAP019_Message" xml:space="preserve">
+    <value>类型 '{0}' 标注了映射配置特性（[MapProperty]/[Convert]/[ConvertBack]/[MapIgnore]/[BeforeMapping]/[AfterMapping]/[Mask]/[MapWhen]/[MapNoAutoInclude]/[MapFormat]/[MapNoAutoMatch]）但未标 [MapFrom]，该配置无激活路径、将静默失效。请在配置承载侧补标 [MapFrom]，或移除特性（未声明的映射对仍按属性名映射）</value>
+  </data>
+  <data name="NCMAP019_Description" xml:space="preserve">
+    <value>映射配置标注（属性级十一项）仅当所在类型存在映射声明锚（[MapFrom] 或 Fluent For&lt;S,T&gt;() 声明）时生效；无锚配置无激活路径、运行时静默忽略。成对规则编译期强制信号（Error）。</value>
+  </data>
+  <data name="NCMAP020_Title" xml:space="preserve">
+    <value>全局映射配置值非法，该项按未设置处理</value>
+  </data>
+  <data name="NCMAP020_Message" xml:space="preserve">
+    <value>全局映射配置项 '{0}' 的值 '{1}' 非法（{2}），该项按未设置处理（继承下层配置）</value>
+  </data>
+  <data name="NCMAP020_Description" xml:space="preserve">
+    <value>全局映射配置值非法（枚举越界、类型全名不可解析、清单超 8 项或复杂语法超出 MVP 范围）时，该项按未设置处理，不阻断编译，与 Mapperly RMG095 行为对齐.</value>
+  </data>
+  <data name="NCMAP021_Title" xml:space="preserve">
+    <value>显式标注命中全局忽略（fail-closed 忽略）</value>
+  </data>
+  <data name="NCMAP021_Message" xml:space="preserve">
+    <value>属性 '{0}' 标注了显式映射特性但命中全局忽略清单（{1}），属性被忽略。处置：加 OverrideIgnore = true 豁免，或删除冗余标注（全局忽略已兜底）</value>
+  </data>
+  <data name="NCMAP021_Description" xml:space="preserve">
+    <value>显式标注（[MapProperty]/[Convert]/[Mask]/[ConvertBack]）命中全局忽略且无 OverrideIgnore 时 fail-closed 忽略，消息给双向处置指引（OverrideIgnore 豁免或删除冗余标注）.</value>
+  </data>
+  <data name="NCMAP022_Title" xml:space="preserve">
+    <value>[MapIgnore] 与 OverrideIgnore=true 矛盾标注</value>
+  </data>
+  <data name="NCMAP022_Message" xml:space="preserve">
+    <value>属性 '{0}' 同时标注了 [MapIgnore] 与 OverrideIgnore=true，为矛盾配置：忽略生效（[MapIgnore] 不参与全局忽略豁免）。请移除 [MapIgnore] 或 OverrideIgnore=true 之一</value>
+  </data>
+  <data name="NCMAP022_Description" xml:space="preserve">
+    <value>属性级 [MapIgnore] 为显式忽略，不参与 OverrideIgnore 豁免；与 OverrideIgnore=true 同标即矛盾，忽略生效（fail-closed 语义）.</value>
+  </data>
+  <data name="NCMAP023_Title" xml:space="preserve">
+    <value>枚举成员名仅大小写区分，string→enum 退化为精确匹配</value>
+  </data>
+  <data name="NCMAP023_Message" xml:space="preserve">
+    <value>枚举类型 '{0}' 存在仅大小写区分的成员名（违反 CLS 规范），string→enum 转换退化为精确名称匹配（大小写敏感）。建议重命名成员以消除歧义</value>
+  </data>
+  <data name="NCMAP023_Description" xml:space="preserve">
+    <value>枚举成员名全小化冲突（如 Red 与 RED）时，string→enum 生成 switch 退化为精确匹配（大小写敏感），非法值仍抛 MapException；此类枚举违反 CLS 规范，建议重命名成员.</value>
+  </data>
+  <data name="NCMAP024_Title" xml:space="preserve">
+    <value>枚举成员数值重复，string→enum 数字串标签退化</value>
+  </data>
+  <data name="NCMAP024_Message" xml:space="preserve">
+    <value>枚举类型 '{0}' 存在数值重复的成员（别名枚举），string→enum 数字串标签维度退化为精确名称匹配，数字字符串（如 "1"）在生成侧无法转换。建议消除数值重复或改用 [Convert]</value>
+  </data>
+  <data name="NCMAP024_Description" xml:space="preserve">
+    <value>枚举成员数值重复（别名枚举）时，数字串标签会产生重复 switch 标签，数字串维度退化为精确名称匹配并输出本诊断.</value>
+  </data>
+  <data name="NCMAP025_Title" xml:space="preserve">
+    <value>互指映射声明（双 true）</value>
+  </data>
+  <data name="NCMAP025_Message" xml:space="preserve">
+    <value>类型 '{0}' 与 '{1}' 双侧声明映射关系（[MapFrom] 或 Fluent For），构成互指声明。请删除一侧声明；该对不生成，运行时按名匹配兜底。</value>
+  </data>
+  <data name="NCMAP025_Description" xml:space="preserve">
+    <value>双 true 互指（A [MapFrom(B)] 且 B [MapFrom(A)]）时，生成侧无法界定单一生成来源，该对不生成并输出 Error 级诊断（构建失败）；运行时按名匹配兜底，删除一侧声明可恢复生成.</value>
+  </data>
+  <data name="NCMAP026_Title" xml:space="preserve">
+    <value>Mask 标注位置非规范（源侧）</value>
+  </data>
+  <data name="NCMAP026_Message" xml:space="preserve">
+    <value>非规范标注位置——[Mask] 应标在目标侧（与 [MapFrom] 同侧），源侧标注不生效；请将 [Mask] 移至目标属性</value>
+  </data>
+  <data name="NCMAP026_Description" xml:space="preserve">
+    <value>Mask 标注所在类与 [MapFrom] 标注类不同（Mask 标在源侧）时，源侧 Mask 标注不生效（Mask 语义单向：目标 string 脱敏），输出 Warning 提示改规范位置；互指对场景由 NCMAP025 优先，本诊断不叠加.</value>
+  </data>
+  <data name="NCMAP027_Title" xml:space="preserve">
+    <value>类型不兼容成员已跳过（AutoMapper 语义对齐）</value>
+  </data>
+  <data name="NCMAP027_Message" xml:space="preserve">
+    <value>跳过映射属性 '{0}'：源类型 '{1}' 与目标类型 '{2}' 类型不兼容（对齐 AutoMapper 语义，不映射该成员）</value>
+  </data>
+  <data name="NCMAP027_Description" xml:space="preserve">
+    <value>[MapFrom] 自动匹配的同名属性源/目标类型完全不相容时跳过映射（对齐 AutoMapper 不兼容成员不映射语义），输出 Info 提示；显式 [MapProperty(FromField=...)] 不兼容仍走 NCMAP002 fallback.</value>
+  </data>
+  <data name="NCMAP028_Title" xml:space="preserve">
+    <value>不可访问成员已跳过</value>
+  </data>
+  <data name="NCMAP028_Message" xml:space="preserve">
+    <value>跳过映射属性 '{0}'：成员 '{1}' 不可访问（可见性 {2}，生成代码仅访问 public）</value>
+  </data>
+  <data name="NCMAP028_Description" xml:space="preserve">
+    <value>生成代码只能访问 public 成员（跨程序集访问 internal/protected/private 触发 CS0122），不可访问成员被跳过并输出 Info 提示.</value>
+  </data>
+  <data name="NCMAP029_Title" xml:space="preserve">
+    <value>嵌套互调环已降级</value>
+  </data>
+  <data name="NCMAP029_Message" xml:space="preserve">
+    <value>检测到嵌套互调环：'{0}' ↔ '{1}' 经嵌套属性委托互调——环上注册对降级跳过（目标属性保持默认值，防止 StackOverflow）</value>
+  </data>
+  <data name="NCMAP029_Description" xml:space="preserve">
+    <value>两个注册对的 DTO 经嵌套属性互相引用对方 DTO（生成代码互调无深度计数），环上注册对降级跳过防止成环数据 StackOverflow；直接自引用由深度保护维持.</value>
+  </data>
+  <data name="NCMAP030_Title" xml:space="preserve">
+    <value>点路径不消费 [Mask]/[Convert]</value>
+  </data>
+  <data name="NCMAP030_Message" xml:space="preserve">
+    <value>属性 '{0}' 的显式点路径 '{1}' 不消费 [{2}]（映射值不脱敏/不转换），消费修复登记阶段 B</value>
+  </data>
+  <data name="NCMAP030_Description" xml:space="preserve">
+    <value>显式点路径映射成功，但生成端不消费 [Mask]/[Convert]：目标属性不会脱敏/转换。这是当前版本的已知限制（阶段 B 补消费），本诊断仅保证可观测，不阻断映射.</value>
+  </data>
+  <data name="NCMAP_F02_Title" xml:space="preserve">
+    <value>Fluent lambda 属性不存在</value>
+  </data>
+  <data name="NCMAP_F02_Message" xml:space="preserve">
+    <value>Fluent lambda 引用的属性 '{0}' 在类型 '{1}' 上不存在</value>
+  </data>
+  <data name="NCMAP_F02_Description" xml:space="preserve">
+    <value>Fluent 链中的 lambda 引用了声明源/目标类型上无法解析的属性（拼写错误或可见性不足）。该声明被跳过；请修正属性名或提升属性可见性。</value>
+  </data>
+  <data name="NCMAP_F04_Title" xml:space="preserve">
+    <value>Fluent lambda 根不是参数</value>
+  </data>
+  <data name="NCMAP_F04_Message" xml:space="preserve">
+    <value>Fluent lambda 不能引用局部变量或静态类，仅支持从 lambda 参数出发的属性路径</value>
+  </data>
+  <data name="NCMAP_F04_Description" xml:space="preserve">
+    <value>lambda 根表达式不是 lambda 参数（如局部变量或静态类引用）。Fluent 通道仅支持以 lambda 参数为根的纯属性路径；该声明被跳过。</value>
+  </data>
+  <data name="NCMAP_F05_Title" xml:space="preserve">
+    <value>Fluent lambda null 条件访问</value>
+  </data>
+  <data name="NCMAP_F05_Message" xml:space="preserve">
+    <value>Fluent lambda 不支持 null 条件访问 '{0}'，请改用直接属性路径</value>
+  </data>
+  <data name="NCMAP_F05_Description" xml:space="preserve">
+    <value>lambda body 包含 null 条件访问 '?.'，无法静态解析为属性路径。请改用直接属性路径；该声明被跳过。</value>
+  </data>
+  <data name="NCMAP_F06_Title" xml:space="preserve">
+    <value>Fluent lambda 索引器访问</value>
+  </data>
+  <data name="NCMAP_F06_Message" xml:space="preserve">
+    <value>Fluent lambda 不支持索引器访问 '{0}'</value>
+  </data>
+  <data name="NCMAP_F06_Description" xml:space="preserve">
+    <value>lambda body 包含索引器访问 '[]'，无法静态解析为属性路径。该声明被跳过；请改用直接属性路径。</value>
+  </data>
+  <data name="NCMAP_F07_Title" xml:space="preserve">
+    <value>Fluent lambda 方法调用</value>
+  </data>
+  <data name="NCMAP_F07_Message" xml:space="preserve">
+    <value>Fluent lambda 不支持方法调用 '{0}'，仅支持属性路径</value>
+  </data>
+  <data name="NCMAP_F07_Description" xml:space="preserve">
+    <value>lambda body 包含方法调用 '()'，无法静态解析为属性路径。该声明被跳过；如需计算值请提取显式静态转换。</value>
+  </data>
+  <data name="NCMAP_F08_Title" xml:space="preserve">
+    <value>Fluent 动态配置拒绝</value>
+  </data>
+  <data name="NCMAP_F08_Message" xml:space="preserve">
+    <value>Fluent Configure 方法体不允许动态配置语句 '{0}'，仅支持纯链式静态调用</value>
+  </data>
+  <data name="NCMAP_F08_Description" xml:space="preserve">
+    <value>Configure 方法体包含控制流（if/for/foreach/while/switch/try）、三元表达式、赋值或局部变量声明。Fluent 通道仅支持可静态分析的纯链式调用；违规语句被拒绝。</value>
+  </data>
+  <data name="NCMAP_F11_Title" xml:space="preserve">
+    <value>双驱动类型对冲突</value>
+  </data>
+  <data name="NCMAP_F11_Message" xml:space="preserve">
+    <value>[MapFrom] 在 DTO 类 '{0}' 与 Fluent Configure 在 Mapper 类 '{1}' 同时声明类型对 ({2}, {3})，违反互斥禁止规则；请在两处之一移除声明</value>
+  </data>
+  <data name="NCMAP_F11_Description" xml:space="preserve">
+    <value>同一 (Source, Target) 类型对同时被 [MapFrom] 特性通道与 Fluent Configure 通道声明。两通道写同一 GeneratedCache 槽位并会生成重复方法；两侧声明均被抑制。对不同类型对混合使用两通道（模式并存）不受影响。</value>
+  </data>
+  <data name="NCMAP_F12_Title" xml:space="preserve">
+    <value>AfterMapping 目标方法为 private</value>
+  </data>
+  <data name="NCMAP_F12_Message" xml:space="preserve">
+    <value>AfterMapping 目标方法 '{0}' 为 private，跨类不可访问；生成代码位于 GeneratedMapper 静态类（独立类型），须将目标方法提为 public 或 internal static</value>
+  </data>
+  <data name="NCMAP_F12_Description" xml:space="preserve">
+    <value>AfterMapping 目标方法的可见性使其无法从生成的 GeneratedMapper 静态类访问。请将方法提为 public 或 internal static，使生成调用可编译。</value>
+  </data>
+  <data name="NCMAP_F14_Title" xml:space="preserve">
+    <value>AfterMapping 目标不是方法组</value>
+  </data>
+  <data name="NCMAP_F14_Message" xml:space="preserve">
+    <value>AfterMapping 目标必须为可静态解析的方法组引用，lambda/闭包/捕获变量无法静态解析为生成代码引用</value>
+  </data>
+  <data name="NCMAP_F14_Description" xml:space="preserve">
+    <value>AfterMapping 需要源生成器可在生成代码中直接调用的方法组引用。lambda、闭包、捕获变量与局部函数没有可静态寻址的入口点；该声明被跳过。</value>
+  </data>
+  <data name="NCMAP_F15_Title" xml:space="preserve">
+    <value>MapperConfig 类无匹配方法</value>
+  </data>
+  <data name="NCMAP_F15_Message" xml:space="preserve">
+    <value>[MapperConfig] 类 '{0}' 内没有匹配签名的方法；Fluent 通道入口约定为 'public static void M(NCMapper.FluentMappingConfig cfg)'，方法名任意</value>
+  </data>
+  <data name="NCMAP_F15_Description" xml:space="preserve">
+    <value>该类标注了 [MapperConfig]（显式 Fluent 通道意图）但未声明任何 'static void M(NCMapper.FluentMappingConfig cfg)' 方法。请添加此方法声明映射，或移除该特性。</value>
+  </data>
+  <data name="NCMAP_F16_Title" xml:space="preserve">
+    <value>Fluent 类型对重复声明</value>
+  </data>
+  <data name="NCMAP_F16_Message" xml:space="preserve">
+    <value>类型对 ({0}, {1}) 在 Fluent 通道中被声明 {2} 次（涉及 Mapper 类：{3}）；全部重复声明均被抑制，不生成映射方法；请合并为单一声明或移除重复项</value>
+  </data>
+  <data name="NCMAP_F16_Description" xml:space="preserve">
+    <value>在 Fluent 通道内重复声明同一 (Source, Target) 类型对（跨 [MapperConfig] 类或同一 Configure 内多条链）会生成同名重复方法，导致消费端 CS0111。全部冲突声明均被抑制，且每处声明位置各报一条本错误。请将声明合并为单一链或移除重复项。</value>
+  </data>
+  <data name="NCMAP_F17_Title" xml:space="preserve">
+    <value>Fluent 声明冲突：Ignore 与 ConvertBack 并存</value>
+  </data>
+  <data name="NCMAP_F17_Message" xml:space="preserve">
+    <value>Fluent 声明冲突：'{1}' 上的属性 '{0}' 同时声明了 Ignore 与 ConvertBack——反向写回永远不会执行</value>
+  </data>
+  <data name="NCMAP_F17_Description" xml:space="preserve">
+    <value>同一 DTO 锚点属性在同一条链上既声明了 Ignore 又声明了 ConvertBack。Ignore 使属性不进入映射候选（无正向属性映射即无反向派生），ConvertBack 的反向写回永远不会执行。请移除 Ignore 声明或 ConvertBack 声明之一。</value>
+  </data>
+  <data name="NCMAP_F18_Title" xml:space="preserve">
+    <value>ConvertBack 反向写回目标不存在</value>
+  </data>
+  <data name="NCMAP_F18_Message" xml:space="preserve">
+    <value>ConvertBack 反向写回目标不存在：源类型 '{1}' 上不存在属性 '{0}'（锚点 '{3}' 上的 '{2}'）</value>
+  </data>
+  <data name="NCMAP_F18_Description" xml:space="preserve">
+    <value>ConvertBack 锚点属性名在源（实体）类型上不存在同名属性（不区分大小写），反向写回没有目标。请为实体类型补充该属性、修改锚点名称，或移除 ConvertBack 声明。</value>
+  </data>
+  <data name="NCMAP_F19_Title" xml:space="preserve">
+    <value>ConvertBack 转换器对生成代码不可见</value>
+  </data>
+  <data name="NCMAP_F19_Message" xml:space="preserve">
+    <value>ConvertBack 转换器 '{0}' 必须为 public/internal static 且对生成代码（同程序集）可见</value>
+  </data>
+  <data name="NCMAP_F19_Description" xml:space="preserve">
+    <value>ConvertBack 转换器方法声明为 private 或 protected。生成代码位于同程序集的 internal static 类中，无法访问此类成员；生成的调用将以 CS0122 失败。请将转换器改为 public 或 internal static，或将其移入对生成代码可见的类。</value>
+  </data>
+  <data name="NCMAP_F20_Title" xml:space="preserve">
+    <value>ConvertBack 转换器必须是静态方法组或可转录 lambda</value>
+  </data>
+  <data name="NCMAP_F20_Message" xml:space="preserve">
+    <value>ConvertBack 转换器必须是可静态解析的方法组，或无捕获表达式 lambda（转录进生成代码）；闭包/局部函数/实例绑定仍不支持</value>
+  </data>
+  <data name="NCMAP_F20_Description" xml:space="preserve">
+    <value>ConvertBack 转换器实参解析为委托变量或绑定了接收者的实例方法——无静态可寻址入口点。请传入 public/internal static 方法组，或内联无捕获表达式 lambda（经符号级限定名重写转录为生成映射器的私有静态方法）。捕获变量、访问私有/受保护成员或语句体的 lambda 将被 NCMAP_F41/NCMAP_F42 拒绝。</value>
+  </data>
+  <data name="NCMAP_F21_Title" xml:space="preserve">
+    <value>ConvertBack 转换器签名不匹配</value>
+  </data>
+  <data name="NCMAP_F21_Message" xml:space="preserve">
+    <value>ConvertBack 转换器 '{0}' 不匹配任何受支持形态；应为 M() / M(TField) / M(TSource) / M(TSource, TField) 之一，其中 TField='{1}'、TSource='{2}'、返回 '{3}'</value>
+  </data>
+  <data name="NCMAP_F21_Description" xml:space="preserve">
+    <value>ConvertBack 转换器签名与四种受支持形态（T0 常量 / T1 字段值 / T2 整源 / T3 组合，含 Nullable 守卫变体）均不匹配。泛型方法、可选参数、params 数组与 ref/out/in 参数同样被排除。请将转换器签名对齐锚点属性类型、DTO 类型与实体侧属性类型。</value>
+  </data>
+  <data name="NCMAP_F22_Title" xml:space="preserve">
+    <value>ConvertBack 锚点属性无 public setter 或 init 访问器</value>
+  </data>
+  <data name="NCMAP_F22_Message" xml:space="preserve">
+    <value>ConvertBack 锚点属性 '{0}'（类型 '{1}'）无 public setter 或 init 访问器——该声明将被物化阶段忽略；请为锚点属性添加 public 或 init setter，或改用特性通道的实体侧 [ConvertBack]</value>
+  </data>
+  <data name="NCMAP_F22_Description" xml:space="preserve">
+    <value>尽管 ConvertBack 声明只读取 DTO 锚点属性，物化遍历仍会在处理声明之前丢弃无 public setter 的属性（与保护正向映射的写门同源），该声明因此被静默忽略。请为锚点属性添加 public 或 init setter，或改用特性通道的实体侧 [ConvertBack] 标注表达反向转换（ReverseOnly 路径不经 DTO 遍历门）。</value>
+  </data>
+  <data name="NCMAP_F23_Title" xml:space="preserve">
+    <value>Fluent 声明冲突：Ignore 与 Convert 并存</value>
+  </data>
+  <data name="NCMAP_F23_Message" xml:space="preserve">
+    <value>Fluent 声明冲突：'{1}' 上的属性 '{0}' 同时声明了 Ignore 与 Convert——正向转换永远不会执行</value>
+  </data>
+  <data name="NCMAP_F23_Description" xml:space="preserve">
+    <value>同一目标属性在同一条链上既声明了 Ignore 又声明了 Convert。Ignore 使属性不进入映射候选（无属性映射即无转换器附着），Convert 的正向转换永远不会执行。请移除 Ignore 声明或 Convert 声明之一。</value>
+  </data>
+  <data name="NCMAP_F24_Title" xml:space="preserve">
+    <value>Convert 源侧属性不可达</value>
+  </data>
+  <data name="NCMAP_F24_Message" xml:space="preserve">
+    <value>Convert 源侧不可达：'{1}' 上不存在属性 '{0}'（锚点 '{2}'——同名、扁平化与 [MapProperty] 反向查找均未命中）</value>
+  </data>
+  <data name="NCMAP_F24_Description" xml:space="preserve">
+    <value>Convert 的源侧解析流程（同名属性、自动扁平化、[MapProperty] 反向查找）未找到源属性，声明没有源侧输入而被丢弃。与特性侧的"无源转换器 default 调用"形态不同（该形态生成 default(TField) 调用），Fluent 通道要求源属性可达。请确保存在同名源属性，或经扁平化 / [MapProperty] 反向标注可达。</value>
+  </data>
+  <data name="NCMAP_F25_Title" xml:space="preserve">
+    <value>Convert 转换器对生成代码不可见</value>
+  </data>
+  <data name="NCMAP_F25_Message" xml:space="preserve">
+    <value>Convert 转换器 '{0}' 必须为 public/internal static 且对生成代码（同程序集）可见</value>
+  </data>
+  <data name="NCMAP_F25_Description" xml:space="preserve">
+    <value>Convert 转换器方法声明为 private 或 protected。生成代码位于同程序集的 internal static 类中，无法访问此类成员；生成的调用将以 CS0122 失败。请将转换器改为 public 或 internal static，或将其移入对生成代码可见的类。</value>
+  </data>
+  <data name="NCMAP_F26_Title" xml:space="preserve">
+    <value>Convert 转换器必须是静态方法组或可转录 lambda</value>
+  </data>
+  <data name="NCMAP_F26_Message" xml:space="preserve">
+    <value>Convert 转换器必须是可静态解析的方法组，或无捕获表达式 lambda（转录进生成代码）；闭包/局部函数/实例绑定仍不支持</value>
+  </data>
+  <data name="NCMAP_F26_Description" xml:space="preserve">
+    <value>Convert 转换器实参解析为委托变量或绑定了接收者的实例方法——无静态可寻址入口点。请传入 public/internal static 方法组，或内联无捕获表达式 lambda（经符号级限定名重写转录为生成映射器的私有静态方法）。捕获变量、访问私有/受保护成员或语句体的 lambda 将被 NCMAP_F41/NCMAP_F42 拒绝。</value>
+  </data>
+  <data name="NCMAP_F27_Title" xml:space="preserve">
+    <value>Convert 转换器签名不匹配</value>
+  </data>
+  <data name="NCMAP_F27_Message" xml:space="preserve">
+    <value>Convert 转换器 '{0}' 不匹配任何受支持形态；应为 M() / M(TField) / M(TSource) / M(TSource, TField) 之一，其中 TField='{1}'、TSource='{2}'、返回 '{3}'</value>
+  </data>
+  <data name="NCMAP_F27_Description" xml:space="preserve">
+    <value>Convert 转换器签名与四种受支持形态（T0 常量 / T1 字段值 / T2 整源 / T3 组合，含 Nullable 守卫变体）均不匹配。泛型方法、可选参数、params 数组与 ref/out/in 参数同样被排除。请将转换器签名对齐源属性类型、源实体类型与锚点属性类型。</value>
+  </data>
+  <data name="NCMAP_F28_Title" xml:space="preserve">
+    <value>Convert 锚点属性无 public setter 或 init 访问器</value>
+  </data>
+  <data name="NCMAP_F28_Message" xml:space="preserve">
+    <value>Convert 锚点属性 '{0}'（类型 '{1}'）无 public setter 或 init 访问器——该声明将被物化阶段忽略；请为锚点属性添加 public 或 init setter，或改用特性通道的 [Convert] 属性级标注</value>
+  </data>
+  <data name="NCMAP_F28_Description" xml:space="preserve">
+    <value>尽管 Convert 声明只读取源侧，物化遍历仍会在处理声明之前丢弃无 public setter 的目标属性（与保护正向映射的写门同源），该声明因此被静默忽略。请为锚点属性添加 public 或 init setter，或改用特性通道在属性上标注 [Convert] 表达该转换。</value>
+  </data>
+  <data name="NCMAP_F29_Title" xml:space="preserve">
+    <value>Fluent 声明冲突：主链×FromSource 绑定 / 同子源多绑定</value>
+  </data>
+  <data name="NCMAP_F29_Message" xml:space="preserve">
+    <value>Fluent 声明冲突：属性 '{0}'（类型 '{1}'）——主链声明与 FromSource 子源绑定不可指向同一属性（一个属性只能由一个源供给）；同一子源上多个路径承载型绑定（Map/MapTree）或多个 Convert 亦构成冲突（单个 Convert/Mask/FromJson 为修饰型附着，不参与计数）</value>
+  </data>
+  <data name="NCMAP_F29_Description" xml:space="preserve">
+    <value>目标属性不能同时参与主源映射链与 FromSource 子源绑定：FromSource 绑定由子源供给该属性，主链声明则由主源供给（或排除/转换）该属性，两者语义矛盾；同一子源上多个路径承载型绑定（Map/MapTree）同样构成多源歧义（Mask/FromJson 为修饰型附着不入计数；Convert 与 Map 组合按附着合并放行，同子源多 Convert 仍冲突）。请仅保留一种声明，或将该属性改由其他子源绑定。</value>
+  </data>
+  <data name="NCMAP_F30_Title" xml:space="preserve">
+    <value>FromSource 块内禁止 ConvertBack</value>
+  </data>
+  <data name="NCMAP_F30_Message" xml:space="preserve">
+    <value>FromSource 块（子源 '{0}'）内不支持 ConvertBack——FromSource 绑定仅正向映射，无反向写回落点</value>
+  </data>
+  <data name="NCMAP_F30_Description" xml:space="preserve">
+    <value>FromSource 子源绑定仅执行子源到目标的正向映射，块内反向写回（ConvertBack）无语义落点；请将转换移至主链或改用特性通道。</value>
+  </data>
+  <data name="NCMAP_F31_Title" xml:space="preserve">
+    <value>FromSource 块内禁止 NoAutoInclude</value>
+  </data>
+  <data name="NCMAP_F31_Message" xml:space="preserve">
+    <value>FromSource 块（子源 '{0}'）内不支持 NoAutoInclude——子源字段须显式声明，块上下文无自动包含可禁</value>
+  </data>
+  <data name="NCMAP_F31_Description" xml:space="preserve">
+    <value>FromSource 子源块内每个绑定字段均须显式声明，主源自动包含机制不适用于子源块，NoAutoInclude 在块内无作用对象。</value>
+  </data>
+  <data name="NCMAP_F32_Title" xml:space="preserve">
+    <value>FromSource 块内禁止 AfterMapping</value>
+  </data>
+  <data name="NCMAP_F32_Message" xml:space="preserve">
+    <value>FromSource 块（子源 '{0}'）内不支持 AfterMapping——生成的 Compose 管线无钩子注入口，该钩子永远不会执行</value>
+  </data>
+  <data name="NCMAP_F32_Description" xml:space="preserve">
+    <value>运行时 Compose 管线（生成委托或 ComposeRuntime 兜底）不提供映射后钩子注入口，块内声明的 AfterMapping 永远无法执行；请将钩子声明移至主链。</value>
+  </data>
+  <data name="NCMAP_F35_Title" xml:space="preserve">
+    <value>BeforeMapping 目标方法为 private</value>
+  </data>
+  <data name="NCMAP_F35_Message" xml:space="preserve">
+    <value>BeforeMapping 目标方法“{0}”为 private，跨类不可访问；生成代码位于 GeneratedMapper 静态类（独立类型），目标方法必须为 public 或 internal static</value>
+  </data>
+  <data name="NCMAP_F35_Description" xml:space="preserve">
+    <value>BeforeMapping 目标方法的可访问性使其无法从生成的 GeneratedMapper 静态类访问。请将方法提升为 public 或 internal static，以保证生成的调用可编译。</value>
+  </data>
+  <data name="NCMAP_F36_Title" xml:space="preserve">
+    <value>BeforeMapping 目标不是方法组引用</value>
+  </data>
+  <data name="NCMAP_F36_Message" xml:space="preserve">
+    <value>BeforeMapping 目标必须是可静态解析的方法组引用；lambda/闭包/捕获变量无法静态解析为生成代码引用</value>
+  </data>
+  <data name="NCMAP_F36_Description" xml:space="preserve">
+    <value>BeforeMapping 需要源生成器可作为直接调用写入生成代码的方法组引用。lambda、闭包、捕获变量与局部函数没有可静态寻址的入口点；该声明将被跳过。</value>
+  </data>
+  <data name="NCMAP_F37_Title" xml:space="preserve">
+    <value>BeforeMapping 目标无插入点（构造器一体化形态）</value>
+  </data>
+  <data name="NCMAP_F37_Message" xml:space="preserve">
+    <value>目标类型“{0}”经带参/init-only 构造器构造，构造与赋值不可分离，BeforeMapping 钩子无法发射到任何赋值之前；请改用可写属性目标或移除钩子</value>
+  </data>
+  <data name="NCMAP_F37_Description" xml:space="preserve">
+    <value>BeforeMapping 必须在目标实例存在之后、首条属性赋值之前执行。构造器一体化目标（全 init 属性 record、位置记录、不可变构造器）不存在该时点；生成器报出本诊断而非静默丢弃钩子。</value>
+  </data>
+  <data name="NCMAP_F38_Title" xml:space="preserve">
+    <value>FromSource 块内不允许 BeforeMapping</value>
+  </data>
+  <data name="NCMAP_F38_Message" xml:space="preserve">
+    <value>FromSource 块内不支持 BeforeMapping（子源“{0}”）——生成的 Compose 管线没有钩子注入口；钩子永远不会执行</value>
+  </data>
+  <data name="NCMAP_F38_Description" xml:space="preserve">
+    <value>运行时 Compose 管线（生成委托或 ComposeRuntime 兜底）不提供前置钩子注入口，因此 FromSource 子源块内声明的 BeforeMapping 永远不会执行。请改为在主链上声明钩子。</value>
+  </data>
+  <data name="NCMAP_F39_Title" xml:space="preserve">
+    <value>同一映射对的双通道声明了同类生命周期钩子</value>
+  </data>
+  <data name="NCMAP_F39_Message" xml:space="preserve">
+    <value>两通道为 {1} → {2} 声明了同类“{0}”钩子：特性侧“{3}”与 Fluent 侧“{4}”——请只在单一通道声明钩子</value>
+  </data>
+  <data name="NCMAP_F39_Description" xml:space="preserve">
+    <value>同一（源，目标）映射对上 Before×Before / After×After 同类并存属语义错误——静默合并将使实际执行的钩子取决于通道仲裁顺序。交叉组合（特性 After + Fluent Before）不构成冲突。钩子引用仅在签名适用过滤之后参与判定。</value>
+  </data>
+  <data name="NCMAP_F40_Title" xml:space="preserve">
+    <value>MapWhen 谓词方法组契约失败</value>
+  </data>
+  <data name="NCMAP_F40_Message" xml:space="preserve">
+    <value>MapWhen 谓词“{0}”未通过契约检查：{1}。谓词必须为生成代码可见的 public/internal static 方法组，签名为 static bool M(T)（参数类型 == 源字段类型（T1）或 == 源实体类型（T2））</value>
+  </data>
+  <data name="NCMAP_F40_Description" xml:space="preserve">
+    <value>MapWhen 命名方法组形态要求 public 或 internal 静态方法（生成代码同程序集可见）。拒绝面覆盖：方法组不可解析（委托变量/实例绑定）、非静态方法、签名不符（单参返回 bool、无 ref/out/in）、可见性不足，以及源字段类型到谓词入参类型缺少隐式转换。</value>
+  </data>
+  <data name="NCMAP_F41_Title" xml:space="preserve">
+    <value>内联 lambda 捕获变量或访问私有成员</value>
+  </data>
+  <data name="NCMAP_F41_Message" xml:space="preserve">
+    <value>内联表达式不可转录：{0}（“{1}”）。捕获外层局部变量/参数/本地函数/this、私有或受保护成员访问无法发射进生成静态方法——请将逻辑提取为命名静态方法并改用方法组形态</value>
+  </data>
+  <data name="NCMAP_F41_Description" xml:space="preserve">
+    <value>转录引擎将内联 lambda 发射为生成私有静态方法，无闭包语义承载。对外层状态（局部变量/参数/本地函数/this）的引用、或对生成代码不可达成员（private/protected）的访问，在精确子表达式位置拒绝——而非产出语义分叉的代码。</value>
+  </data>
+  <data name="NCMAP_F42_Title" xml:space="preserve">
+    <value>内联 lambda 含语句体或不可转录节点</value>
+  </data>
+  <data name="NCMAP_F42_Message" xml:space="preserve">
+    <value>内联表达式不可转录（“{0}”）：{1}。仅支持表达式体 lambda 且节点在白名单内（成员链/算术比较/条件访问/静态与实例调用/nameof/字面量）方可转录进生成代码</value>
+  </data>
+  <data name="NCMAP_F42_Description" xml:space="preserve">
+    <value>语句体 lambda、dynamic 绑定、unsafe/await/查询语法等白名单外节点不存在保语义的文本转录。诊断定位到精确子表达式位置。请将逻辑提取为命名静态方法（方法组形态）表达。</value>
+  </data>
+  <data name="NCMAP_F43_Title" xml:space="preserve">
+    <value>MapWhen 守卫锚点无映射</value>
+  </data>
+  <data name="NCMAP_F43_Message" xml:space="preserve">
+    <value>{1} 的 MapWhen 锚点属性“{0}”无可守卫的映射：该属性无自动匹配源且无显式 .Map 声明，或被静态 .Ignore 声明排除——守卫永不生效</value>
+  </data>
+  <data name="NCMAP_F43_Description" xml:space="preserve">
+    <value>条件守卫必须附着到实际参与映射的属性。在未映射或被静态忽略的属性上锚定守卫属声明错误（多为拼写错误或遗留），编译期拒绝而非静默丢弃。</value>
+  </data>
+  <data name="NCMAP_F44_Title" xml:space="preserve">
+    <value>同一属性重复声明 MapWhen</value>
+  </data>
+  <data name="NCMAP_F44_Message" xml:space="preserve">
+    <value>{1} 的属性“{0}”声明了多次 MapWhen：映射仅承载单一条件——负向过滤请用谓词取反表达，多判据请在单一谓词内组合</value>
+  </data>
+  <data name="NCMAP_F44_Description" xml:space="preserve">
+    <value>MapWhen 设计为单条件。同一属性双守卫将使有效条件取决于 API 无法表达的合取/析取意图；请声明单一谓词并在其内部组合判据。</value>
+  </data>
+  <data name="NCMAP_F45_Title" xml:space="preserve">
+    <value>MapWhen 声明于主链 Compose 覆盖属性</value>
+  </data>
+  <data name="NCMAP_F45_Message" xml:space="preserve">
+    <value>{1} 的 MapWhen 锚点属性“{0}”仅由 FromSource 跨源映射覆盖：主链 Compose 生成器不展开逐属性赋值链，守卫无发射落点。请将守卫声明在 FromSource 块内</value>
+  </data>
+  <data name="NCMAP_F45_Description" xml:space="preserve">
+    <value>FromSource 块内子映射赋值真实发射（Update_{Sub}_To_{Target}），块内 MapWhen 有真实发射落点；主链上仅跨源覆盖的属性不进入逐属性赋值生成——静默丢失过滤语义属正确性危害，故拒绝该声明。</value>
+  </data>
+  <data name="NCMAP_F46_Title" xml:space="preserve">
+    <value>[MapSubclass] 实参不满足继承约束</value>
+  </data>
+  <data name="NCMAP_F46_Message" xml:space="preserve">
+    <value>{2} 上的 [MapSubclass(typeof({0}), typeof({1}))]：源类型须派生自基类对源 {3}、目标类型须派生自基类对目标 {4}（特性形态无泛型约束，本校验在提取期执行）</value>
+  </data>
+  <data name="NCMAP_F46_Description" xml:space="preserve">
+    <value>与 Fluent 终端 MapSubclass&lt;TSrcDerived, TTargetDerived&gt;() 的 where 约束（调用点 CS0311/CS0314 拦截非法实参）不同，特性形态接受任意 typeof 实参，由提取器校验继承关系；不满足的登记被丢弃（不产生分派条目）。</value>
+  </data>
+  <data name="NCMAP_F47_Title" xml:space="preserve">
+    <value>MapSubclass 登记无效（同对重复或登记基类自身）</value>
+  </data>
+  <data name="NCMAP_F47_Message" xml:space="preserve">
+    <value>({0}, {1}) 上的 MapSubclass 登记无效（{2}）："duplicate-pair" = 完全相同 (TSrcDerived, TTargetDerived) 对重复登记（首条保留）；"base-self" = TSrcDerived == TSource 登记基类自身，基类对分派到自身产生无限循环（已拒绝）。部分重叠登记（同源异层/同源异目标）合法，按最派生优先仲裁不报</value>
+  </data>
+  <data name="NCMAP_F47_Description" xml:space="preserve">
+    <value>两种无效形态共用本码：①完全相同 (TSrcDerived, TTargetDerived) 对重复登记——分派链仅需一条；②TSrcDerived == TSource 登记基类自身——泛型约束允许类型以自身满足 where TSrcDerived : TSource，但基类对分派到自身方法将产生无限自引用循环。两者均在物化期拒绝。</value>
+  </data>
+  <data name="NCMAP_F48_Title" xml:space="preserve">
+    <value>MapSubclass 登记的子类目标无可映射面</value>
+  </data>
+  <data name="NCMAP_F48_Message" xml:space="preserve">
+    <value>({2}, {3}) 上的 MapSubclass 登记 ({0}, {1}) 无可映射产物：子类目标类型无公共可映射面或不满足构造约束（合成快照被跳过或零属性映射）</value>
+  </data>
+  <data name="NCMAP_F48_Description" xml:space="preserve">
+    <value>合成子类对复用常规单对生成管线；子类目标无公共可写/可构造面时合成快照被跳过。登记按落空即诊断（fail-fast）上报，而非静默丢弃子类专有字段。</value>
+  </data>
+  <data name="NCMAP_F49_Title" xml:space="preserve">
+    <value>[MapSubclass] 标注缺少 [MapFrom] 锚定</value>
+  </data>
+  <data name="NCMAP_F49_Message" xml:space="preserve">
+    <value>{2} 上的 [MapSubclass(typeof({0}), typeof({1}))]：标注类无 [MapFrom] 锚定，基类映射对不存在——该登记未被任何分派面引用</value>
+  </data>
+  <data name="NCMAP_F49_Description" xml:space="preserve">
+    <value>特性侧多态登记锚定在承载 [MapFrom] 的基类 DTO 类上（特性通道的声明载体）。无锚定的孤儿 [MapSubclass] 不存在基类对；请在基类 DTO 上补 [MapFrom(typeof(基类源))]，或改用 Fluent .For&lt;TSource, TTarget&gt;().MapSubclass(...) 链声明。</value>
+  </data>
+  <data name="NCMAP_F50_Title" xml:space="preserve">
+    <value>多态分派静态提示（反向不对称 / 双实例匹配回落面）</value>
+  </data>
+  <data name="NCMAP_F50_Message" xml:space="preserve">
+    <value>({0}, {1}) 含 MapSubclass 登记；提示项：{2} ——"reverse-asymmetry" = 反向基类对已生成但永不分派（O-2：反向目标是调用方已存在的实体实例，子类专有字段不填充）；"dual-instance-fallback" = Update/MapListInto 为双实例匹配，目标运行时类型非登记子类目标时回落基类体、子类专有字段不写入。两者均为既定语义；本 Info 为静默面提供可见性</value>
+  </data>
+  <data name="NCMAP_F50_Description" xml:space="preserve">
+    <value>编译期静态提示（SubclassPairs 非空时每对一次）：②反向基类对不分派——反向映射目标是调用方已存在的实体实例（dst 固定型），反向子类专有字段不会被填充；③Update/MapListInto 为双实例匹配——目标运行时类型非登记的子类目标时回落基类体，子类专有字段不写入。两者均为既定语义（O-2 裁定）；本 Info 为静默面提供可见性。</value>
+  </data>
+  <data name="NCMAP_F51_Title" xml:space="preserve">
+    <value>MapCtorParam 绑定源属性不存在</value>
+  </data>
+  <data name="NCMAP_F51_Message" xml:space="preserve">
+    <value>{2} 上的 .MapCtorParam("{0}", "{1}")：源属性“{1}”在源类型上不存在或无公共可读 getter——请传入单段 lambda（形态 1）或有效的公共属性名（形态 2）</value>
+  </data>
+  <data name="NCMAP_F51_Description" xml:space="preserve">
+    <value>显式构造器形参绑定的字符串形态在提取期按名解析源属性（单点解析）。拼错或不可读的属性名若放任将静默绑空，构造器形参回落 default/null 且无任何诊断。</value>
+  </data>
+  <data name="NCMAP_F52_Title" xml:space="preserve">
+    <value>MapCtorParam 目标构造器形参不存在</value>
+  </data>
+  <data name="NCMAP_F52_Message" xml:space="preserve">
+    <value>{1} 上的 .MapCtorParam("{0}", ...)：目标类型没有任何公共构造器声明名为“{0}”的可绑定形参（ByRef/指针形参不可绑定）。可用参数名：{2}</value>
+  </data>
+  <data name="NCMAP_F52_Description" xml:space="preserve">
+    <value>绑定形参名须存在于目标类型至少一个公共构造器的参数集。仅存在于部分候选时该构造器经选器加权被优先选中；ByRef/指针形参跳过比对。消息列出可用参数名以修正拼写。</value>
+  </data>
+  <data name="NCMAP_F53_Title" xml:space="preserve">
+    <value>MapCtorParam 重复绑定 / 与 .Map 同形参矛盾</value>
+  </data>
+  <data name="NCMAP_F53_Message" xml:space="preserve">
+    <value>{1} 上的 .MapCtorParam("{0}", ...)：{2}。同一构造器形参的重复绑定、或绑定目标与显式 .Map 条目指向同一 ctor 形参，均构成矛盾声明（fail-fast，非静默覆盖）</value>
+  </data>
+  <data name="NCMAP_F53_Description" xml:space="preserve">
+    <value>两次 MapCtorParam 指向同一构造器形参（duplicate），或 MapCtorParam 的形参名与显式 .Map 声明目标同名（map-conflict，record 同形参场景）均为矛盾——对齐 F39 双声明/NCMAP_F23 同锚矛盾纪律。请移除其一；record 名不一致对的绑定用既有 .Map 即可解决。</value>
+  </data>
+  <data name="NCMAP_F54_Title" xml:space="preserve">
+    <value>多等权构造器歧义（提示）</value>
+  </data>
+  <data name="NCMAP_F54_Message" xml:space="preserve">
+    <value>{0}：{1} 个公共构造器在参数数量上并列第一——生成选器静默按参数数量裁决。声明 .MapCtorParam 可显式消解构造器选择</value>
+  </data>
+  <data name="NCMAP_F54_Description" xml:space="preserve">
+    <value>机械口径：参数数量并列第一的公共构造器 &gt;1 且 MapCtorParam 绑定集合为空。绑定存在时选器加权已消解选择，不再报本提示。运行期构造器裁决维持现状静默（盲区声明）。</value>
+  </data>
+  <data name="NCMAP_F55_Title" xml:space="preserve">
+    <value>Fluent 目标路径为多段路径</value>
+  </data>
+  <data name="NCMAP_F55_Message" xml:space="preserve">
+    <value>Fluent 目标仅支持单段属性；'{0}' 为多段路径</value>
+  </data>
+  <data name="NCMAP_F55_Description" xml:space="preserve">
+    <value>目标 lambda 解析出多于一个路径段（如 d.Address.City）。Fluent 声明只映射一个目标属性，该声明已跳过。请改用单段属性路径，或将嵌套映射单独声明。</value>
+  </data>
+  <data name="NCMAP_F56_Title" xml:space="preserve">
+    <value>Fluent 属性实参不是 lambda 表达式</value>
+  </data>
+  <data name="NCMAP_F56_Message" xml:space="preserve">
+    <value>Fluent 属性实参须为 lambda 表达式；'{0}' 不是</value>
+  </data>
+  <data name="NCMAP_F56_Description" xml:space="preserve">
+    <value>dest/src 位实参解析结果不是 lambda 表达式（方法组、委托变量或其他表达式），无法确定属性路径，该声明不生成任何映射。请传入内联 lambda（如 d =&gt; d.Name）。</value>
+  </data>
+  <data name="NCMAP_F57_Title" xml:space="preserve">
+    <value>Fluent lambda 块体或三元表达式</value>
+  </data>
+  <data name="NCMAP_F57_Message" xml:space="preserve">
+    <value>Fluent 属性路径不支持块体或三元表达式（'{0}'）</value>
+  </data>
+  <data name="NCMAP_F57_Description" xml:space="preserve">
+    <value>lambda 体为语句块或含无法归约为属性路径的三元（?:）表达式，该声明已跳过。请使用纯表达式体属性路径；条件逻辑应交给 [MapWhen] 守卫或转换器。</value>
+  </data>
+  <data name="NCMAP_F58_Title" xml:space="preserve">
+    <value>Fluent 实参不可静态求值</value>
+  </data>
+  <data name="NCMAP_F58_Message" xml:space="preserve">
+    <value>Fluent 实参 '{0}' 不可静态求值；该值被忽略并按默认值生效</value>
+  </data>
+  <data name="NCMAP_F58_Description" xml:space="preserve">
+    <value>overrideIgnore/Direction 实参须为字面量、枚举成员或 const 标识符，源生成器方能在编译期求值。声明照常生成，但实参值被忽略并按默认值生效（overrideIgnore=false、direction=Both）。请改用语义常量实参。</value>
+  </data>
+  <data name="NCMAP_F59_Title" xml:space="preserve">
+    <value>同成员 Fluent 声明存在真冲突</value>
+  </data>
+  <data name="NCMAP_F59_Message" xml:space="preserve">
+    <value>字段“{0}”存在真冲突：{1} 声明与 {2} 声明冲突（同槽位重复，或与忽略并存）。真冲突将被拒绝——请仅保留一处声明或消除冲突；合法组合见真冲突清单。</value>
+  </data>
+  <data name="NCMAP_F59_Description" xml:space="preserve">
+    <value>仅真冲突报错（Error 级）：忽略与任意映射操作并存、脱敏/格式化与树递归并存、脱敏与 JSON 展开并存、格式化与 JSON 展开并存、同维度重复（跨字段段同槽位或同种类重复）。无冲突场景（单来源单变换，或"显式来源 + 脱敏/格式化"等新放开组合）零诊断。</value>
+  </data>
+  <data name="NCMAP_F60_Title" xml:space="preserve">
+    <value>未知 Fluent 链终端导致声明丢弃</value>
+  </data>
+  <data name="NCMAP_F60_Message" xml:space="preserve">
+    <value>Fluent 链方法“{0}”不是受支持的终端；其声明被跳过（主链中整条链被丢弃）。请移除该调用或改用受支持的终端。</value>
+  </data>
+  <data name="NCMAP_F60_Description" xml:space="preserve">
+    <value>链解析按语法提取的方法名分派。object 继承成员（如 ToString）或无关扩展方法可通过编译但并非 Fluent 终端；主链中此类节点导致整条链快照被丢弃且无后续诊断，块内语句则仅跳过该节点。丢弃语义保持不变——本诊断将丢失显式化。</value>
+  </data>
+  <data name="NCMAP_F62_Title" xml:space="preserve">
+    <value>Fluent lambda 源链超出成员访问深度上限</value>
+  </data>
+  <data name="NCMAP_F62_Message" xml:space="preserve">
+    <value>Fluent lambda 的源链超出成员访问深度上限 {0}；该声明被丢弃。请将链拆分为中间投影，或拍平源层级结构。</value>
+  </data>
+  <data name="NCMAP_F62_Description" xml:space="preserve">
+    <value>lambda 解析器按递归逐段下行解析成员访问链且原先无上界；超深链既可撑爆解析深度，又会让超深路径静默落入快照。深度上限以内的链保持合法；更深的链以本 Warning 拒绝。</value>
+  </data>
+  <data name="NCMAP_F63_Title" xml:space="preserve">
+    <value>环检测中止：注册映射图超出访问预算</value>
+  </data>
+  <data name="NCMAP_F63_Message" xml:space="preserve">
+    <value>映射对“{0}”的环检测在超出访问预算 {1} 后中止；该起点的结论为“未决”（不发射 NCMAP029、不标记降级）。建议将映射域拆分为更小的注册图。</value>
+  </data>
+  <data name="NCMAP_F63_Description" xml:space="preserve">
+    <value>DFS 环检测器从每个起点访问其可达的注册对；密集注册图可能超出防御性访问预算（与深拷贝图分类器同款预算纪律）。预算耗尽时该起点按“未决”上报，而非崩溃或阻断生成。</value>
+  </data>
+  <data name="NCMAP041_Title" xml:space="preserve">
+    <value>[MapWhen] 特性谓词方法解析失败</value>
+  </data>
+  <data name="NCMAP041_Message" xml:space="preserve">
+    <value>{1} 属性“{0}”上的 [MapWhen] 解析谓词“{2}”失败：{3}。方法须声明于被标注属性所在类型（含 partial 各部分），为 public/internal static bool M(T)（参数类型 == 源字段类型（T1）或 == 源实体类型（T2））</value>
+  </data>
+  <data name="NCMAP041_Description" xml:space="preserve">
+    <value>条件守卫特性形态在被标注属性声明类型上按名解析谓词。拒绝面覆盖：方法不存在、多重载歧义、非静态方法、可见性不足（private/protected）、签名不符（单参返回 bool、无 ref/out/in），以及参数类型既不等于源字段类型也不等于源实体类型。</value>
+  </data>
+  <data name="NCMAP042_Title" xml:space="preserve">
+    <value>DTO 命名模式未标 [MapFrom]——AOT 下运行时反射回退不可用</value>
+  </data>
+  <data name="NCMAP042_Message" xml:space="preserve">
+    <value>类型 '{0}' 命名符合 DTO 模式但未标 [MapFrom]，无法生成源生成映射代码；运行时回退反射路径在 AOT/Trimmed 场景下不可用</value>
+  </data>
+  <data name="NCMAP042_Description" xml:space="preserve">
+    <value>类型名以 Dto/DTO 结尾，提示其参与对象映射。未标 [MapFrom] 时无法生成源生成映射代码；运行时回退反射路径在 AOT/Trimmed 场景下不可用。请标注 [MapFrom] 启用 AOT 安全路径。携带映射配置特性的类型改报 NCMAP019（Error）。</value>
+  </data>
+  <data name="NCMAP043_Title" xml:space="preserve">
+    <value>[MapFormat] 目标属性类型必须为 string</value>
+  </data>
+  <data name="NCMAP043_Message" xml:space="preserve">
+    <value>[MapFormat] 标注的属性 '{0}' 目标类型为 {1}，须为 string——请改为 string 属性或改用 [Convert]</value>
+  </data>
+  <data name="NCMAP043_Description" xml:space="preserve">
+    <value>[MapFormat] 输出格式化文本（IFormattable.ToString(format, null)），目标属性必须为 string 类型。</value>
+  </data>
+  <data name="NCMAP044_Title" xml:space="preserve">
+    <value>[MapFormat] 源属性类型未实现 IFormattable</value>
+  </data>
+  <data name="NCMAP044_Message" xml:space="preserve">
+    <value>[MapFormat] 标注的属性 '{0}' 源类型为 {1}，未实现 IFormattable——支持 DateTime/DateTimeOffset/TimeSpan/Guid/数值/枚举（含 Nullable 包装）；string 源不支持，请改用 [Convert]</value>
+  </data>
+  <data name="NCMAP044_Description" xml:space="preserve">
+    <value>[MapFormat] 绑定 IFormattable.ToString(string, IFormatProvider)；源属性必须实现 IFormattable（枚举满足——Enum 实现该接口）。</value>
+  </data>
+  <data name="NCMAP045_Title" xml:space="preserve">
+    <value>[MapFormat] 与 [Convert] 不能同时标注于同一属性</value>
+  </data>
+  <data name="NCMAP045_Message" xml:space="preserve">
+    <value>[MapFormat] 与 [Convert] 不能同时标注于属性 '{0}'——两者语义重叠，请二选一</value>
+  </data>
+  <data name="NCMAP045_Description" xml:space="preserve">
+    <value>[MapFormat]（格式串输出）与 [Convert]（自定义转换器）是同一属性上互斥的值变换声明。</value>
+  </data>
+  <data name="NCMAP046_Title" xml:space="preserve">
+    <value>[MapFormat] 属性在反向映射中被跳过</value>
+  </data>
+  <data name="NCMAP046_Message" xml:space="preserve">
+    <value>格式化输出不可反解析，属性 '{0}' 在反向映射中不赋值（实体属性保持默认值）。该属性需要往返时请自行声明 [ConvertBack]。</value>
+  </data>
+  <data name="NCMAP046_Description" xml:space="preserve">
+    <value>格式化输出是单向展示变换（有损且随文化）。反向映射跳过该属性而不是猜测赋值；需要往返时请自行声明 [ConvertBack]。特性侧写回点由正向来源字段决定，异名无需额外指定。</value>
+  </data>
+  <data name="NCMAP047_Title" xml:space="preserve">
+    <value>[MapNoAutoMatch] 白名单下属性带映射变换特性但未标注 [MapProperty]——不参与映射</value>
+  </data>
+  <data name="NCMAP047_Message" xml:space="preserve">
+    <value>属性 '{0}' 标注了映射变换特性但未标注 [MapProperty]，在 [MapNoAutoMatch] 白名单模式下不参与映射（不映射、不入候选）。两条出路：补 [MapProperty] 显式声明以映射该属性，或移除该变换特性。</value>
+  </data>
+  <data name="NCMAP047_Description" xml:space="preserve">
+    <value>[MapNoAutoMatch] 将 (S,T) 对转为白名单：仅同身标注 [MapProperty] 的属性参与映射。变换特性（[Convert]/[Mask]/[MapFormat]/[MapWhen]）缺该头声明即无激活路径（对齐 Fluent 侧"变换终端须 Member 头声明"同构语义），否则静默失效——故编译期 fail-fast（Error）。纯反射模式（生成器缺席）不发射本码，由 MapTracer 提示承载可观测性。</value>
+  </data>
+  <data name="NCMAP_F64_Title" xml:space="preserve">
+    <value>Fluent .Format 目标属性类型必须为 string</value>
+  </data>
+  <data name="NCMAP_F64_Message" xml:space="preserve">
+    <value>.Format 声明的目标属性 '{0}' 类型为 {1}，须为 string——请改为 string 属性或改用 .Convert</value>
+  </data>
+  <data name="NCMAP_F64_Description" xml:space="preserve">
+    <value>.Format 输出格式化文本（IFormattable.ToString(format, null)），目标属性必须为 string 类型。</value>
+  </data>
+  <data name="NCMAP_F65_Title" xml:space="preserve">
+    <value>Fluent .Format 源属性不可达或未实现 IFormattable</value>
+  </data>
+  <data name="NCMAP_F65_Message" xml:space="preserve">
+    <value>.Format 为目标 '{0}' 绑定的源属性 {1} 未实现 IFormattable——支持 DateTime/DateTimeOffset/TimeSpan/Guid/数值/枚举（含 Nullable 包装）；请改用 .Convert</value>
+  </data>
+  <data name="NCMAP_F65_Description" xml:space="preserve">
+    <value>.Format 绑定 IFormattable.ToString(string, IFormatProvider)；源属性必须实现 IFormattable（枚举满足——Enum 实现该接口）。</value>
+  </data>
+  <data name="NCMAP_F66_Title" xml:space="preserve">
+    <value>.Format 与 .Convert 不能指向同一属性</value>
+  </data>
+  <data name="NCMAP_F66_Message" xml:space="preserve">
+    <value>.Format 与 .Convert 不能同时指向属性 '{0}'——两者语义重叠，请二选一</value>
+  </data>
+  <data name="NCMAP_F66_Description" xml:space="preserve">
+    <value>.Format（格式串输出）与 .Convert（自定义转换器）是同一锚点上互斥的值变换声明。</value>
+  </data>
+  <data name="NCMAP_F67_Title" xml:space="preserve">
+    <value>Fluent .Format 属性在反向映射中被跳过</value>
+  </data>
+  <data name="NCMAP_F67_Message" xml:space="preserve">
+    <value>格式化输出不可反解析，属性 '{0}' 在反向映射中不赋值（实体属性保持默认值）。该属性需要往返时请自行声明反向转换：实体侧同名用 .ConvertBack(converter)；两侧名字不同用 lambda 形态 .ConvertBack&lt;TEntityProp&gt;((dto) =&gt; ...)，写回目标由 lambda 体解析，不再按名查找。</value>
+  </data>
+  <data name="NCMAP_F67_Description" xml:space="preserve">
+    <value>格式化输出是单向展示变换（有损且随文化）。反向映射跳过该属性而不是猜测赋值；需要往返时请自行声明反向转换。实体侧存在同名属性时用 .ConvertBack(converter)；两侧属性名不同时用 lambda 形态 .ConvertBack&lt;TEntityProp&gt;((dto) =&gt; ...)，写回目标取自 lambda 体（形参上的成员访问），而不是按同名查找。</value>
+  </data>
+  <data name="NCMAP_F68_Title" xml:space="preserve">
+    <value>Member 字段声明缺少内容</value>
+  </data>
+  <data name="NCMAP_F68_Message" xml:space="preserve">
+    <value>Member 之后未跟随任何声明。请补充来源（From / FromSource）、忽略（Ignore）或配置（Mask / Format / …）。</value>
+  </data>
+  <data name="NCMAP_F68_Description" xml:space="preserve">
+    <value>裸 .Member(d =&gt; d.X) 之后字段段内无任何跟随时不产生映射/忽略效果。字段段边界 = 下一个 Member、对级终端或链尾；段内至少存在一个头声明或配置调用则不报告。</value>
+  </data>
+  <data name="NCMAP_F69_Title" xml:space="preserve">
+    <value>省略来源但源类型无同名成员</value>
+  </data>
+  <data name="NCMAP_F69_Message" xml:space="preserve">
+    <value>字段“{0}”未指定来源，且源类型“{1}”中不存在同名成员。请用 .From(...) 指定来源。</value>
+  </data>
+  <data name="NCMAP_F69_Description" xml:space="preserve">
+    <value>字段段变换声明（Mask / Format / FromJson / MapTree）省略 From 时按目标字段名解析源属性；源类型（或 FromSource 子源）不存在同名成员时，旧写法由自动匹配口径（NCMAP001）静默承载、声明悄悄消失——新形态显式报错，杜绝静默丢声明。</value>
+  </data>
+  <data name="NCMAP_F70_Title" xml:space="preserve">
+    <value>同维度声明重复</value>
+  </data>
+  <data name="NCMAP_F70_Message" xml:space="preserve">
+    <value>字段“{0}”的{1}声明重复。同一槽位只允许声明一次（已声明“{2}”，重复“{3}”）。</value>
+  </data>
+  <data name="NCMAP_F70_Description" xml:space="preserve">
+    <value>字段的来源槽/变换槽各只接受一次声明；编译期结构已保证单段内唯一，提取期可达的重复为跨段形态（如 MemberHead 与 MemberConfig 同名方法两段声明）。跨段同槽/同种类重复必报错；NoAutoInclude 清单重复保持幂等（HashSet 承载），不在此列。</value>
+  </data>
+  <data name="NCMAP_F71_Title" xml:space="preserve">
+    <value>MapWhen 整源形态类型参不符</value>
+  </data>
+  <data name="NCMAP_F71_Message" xml:space="preserve">
+    <value>字段“{0}”的 MapWhen 类型参数“{1}”与目标字段类型、源类型“{2}”均不符。整源形态请用 .MapWhen&lt;{2}&gt;(...)；字段值形态（条件入参为目标字段类型）请勿写类型参数。</value>
+  </data>
+  <data name="NCMAP_F71_Description" xml:space="preserve">
+    <value>字段级 MapWhen 混合载两形态：T1 字段值形态（非泛型，内联 lambda 直接绑定）/ T2 整源形态（泛型，显式类型参）。显式类型参须为目标字段类型或源类型；不符报错，防写错类型参的条件被静默丢弃。</value>
+  </data>
+</root>

@@ -1,0 +1,1125 @@
+[assembly: System.Runtime.CompilerServices.InternalsVisibleTo("NCMapper.AotTests")]
+[assembly: System.Runtime.CompilerServices.InternalsVisibleTo("NCMapper.Benchmarks")]
+[assembly: System.Runtime.CompilerServices.InternalsVisibleTo("NCMapper.Dapper")]
+[assembly: System.Runtime.CompilerServices.InternalsVisibleTo("NCMapper.EFCore")]
+[assembly: System.Runtime.CompilerServices.InternalsVisibleTo("NCMapper.FreeSql")]
+[assembly: System.Runtime.CompilerServices.InternalsVisibleTo("NCMapper.FuzzTests")]
+[assembly: System.Runtime.CompilerServices.InternalsVisibleTo("NCMapper.IntegrationTests")]
+[assembly: System.Runtime.CompilerServices.InternalsVisibleTo("NCMapper.SelfBench")]
+[assembly: System.Runtime.CompilerServices.InternalsVisibleTo("NCMapper.SourceGen.Tests")]
+[assembly: System.Runtime.CompilerServices.InternalsVisibleTo("NCMapper.Tests")]
+namespace NCMapper
+{
+    public class AfterIgnore<TSource, TTarget> : NCMapper.FluentTypeConfig<TSource, TTarget>
+    {
+        public NCMapper.FluentTypeConfig<TSource, TTarget> NoAutoInclude() { }
+    }
+    public sealed class DeepCopyContext
+    {
+        public System.Collections.Generic.Dictionary<object, object>? CycleCache;
+        public int Depth;
+        public DeepCopyContext() { }
+    }
+    public abstract class DeepCopyProviderBase
+    {
+        protected DeepCopyProviderBase() { }
+        public static NCMapper.DeepCopyProviderBase JsonProvider { get; }
+        public static NCMapper.DeepCopyProviderBase Current { get; set; }
+        [System.Diagnostics.CodeAnalysis.RequiresDynamicCode("CreateInstance is implemented by concrete providers using MakeGenericMethod/MakeG" +
+            "enericType or Expression.Compile(). Not supported in AOT.")]
+        [System.Diagnostics.CodeAnalysis.RequiresUnreferencedCode("CreateInstance is implemented by concrete providers scanning type members and att" +
+            "ributes via reflection. Some members may be trimmed.")]
+        protected abstract T CreateInstance<T>(T source)
+            where T :  class;
+        [System.Diagnostics.CodeAnalysis.RequiresDynamicCode("DeepCopy uses RuntimeHelpers.GetUninitializedObject and Expression.Compile in the" +
+            " runtime fallback path. Not supported in AOT. Use the source-generated deep copy" +
+            " path to make this AOT-safe.")]
+        [System.Diagnostics.CodeAnalysis.RequiresUnreferencedCode("DeepCopy scans type members via reflection in the runtime fallback path. Some mem" +
+            "bers may be trimmed. Use the source-generated deep copy path to make this AOT-sa" +
+            "fe.")]
+        public virtual T? DeepCopy<T>(T source)
+            where T :  class { }
+        [System.Diagnostics.CodeAnalysis.RequiresDynamicCode("DeepCopyObject uses MakeGenericMethod to call the generic DeepCopy method at runt" +
+            "ime. This is not supported in AOT/Trimmed scenarios.")]
+        [System.Diagnostics.CodeAnalysis.RequiresUnreferencedCode("DeepCopyObject scans type members and attributes via reflection. Some members may" +
+            " be trimmed.")]
+        public object? DeepCopyObject(object source) { }
+        [System.Diagnostics.CodeAnalysis.RequiresDynamicCode("FillProperties is implemented by concrete providers using MakeGenericMethod/MakeG" +
+            "enericType or Expression.Compile(). Not supported in AOT.")]
+        [System.Diagnostics.CodeAnalysis.RequiresUnreferencedCode("FillProperties is implemented by concrete providers scanning type members and att" +
+            "ributes via reflection. Some members may be trimmed.")]
+        protected abstract void FillProperties<T>(T source, T target)
+            where T :  class;
+    }
+    public enum DeepCopyStrategy
+    {
+        Fast = 0,
+        ExpressionTree = 1,
+        Json = 2,
+    }
+    public enum DotPathFailureKind
+    {
+        InvalidIndexSyntax = 0,
+        IndexNotNonNegative = 1,
+        PropertyNotFound = 2,
+        NotNavigableValueType = 3,
+        NotIndexableType = 4,
+        ReverseWriteBackSegmentPropertyNotFound = 5,
+        ReverseWriteBackSegmentNotNavigable = 6,
+    }
+    public static class ErrorMessages
+    {
+        public static string BatchSizeMustBePositive() { }
+        public static string ChainedGroupByNotSupported(string featureName) { }
+        public static string ComposeProjectionSourceTypeMismatch(string primaryName, string t1Name, string t2Name) { }
+        public static string ComposeProjectionSourceTypeMismatch3(string primaryName, string t1Name, string t2Name, string t3Name) { }
+        public static string ComposeSourceNotFound(string primarySourceName) { }
+        public static string ConversionFailedUnsupported(string sourceName, string targetName) { }
+        public static string ConverterExpressionNull(string propertyName, string? scenario = null) { }
+        public static string ConverterMethodAmbiguous(string propertyName, string anchorTypeName, string methodName, bool isReverse, string? scenario = null) { }
+        public static string ConverterMethodInaccessible(string propertyName, string anchorTypeName, string methodName, bool isReverse, string? scenario = null) { }
+        public static string ConverterMethodSignatureMismatch(string propertyName, string anchorTypeName, string methodName, string targetTypeName, string detail, bool isReverse, string? scenario = null) { }
+        public static string CopyDictionaryNotGeneric(string typeFullName) { }
+        public static string CopyEnumerableNoIEnumerableCtor(string typeFullName) { }
+        public static string DapperReadOverloadNotFound(string dapperVersion) { }
+        public static string DeepCopyAllFallbacksFailed(string typeName, string formatterMessage, string jsonMessage) { }
+        public static string DeepCopyCtorIncompatible(string detail) { }
+        public static string DeepCopySameTypeNotSupported(string typeName) { }
+        public static string DotPathSegmentFailed(string path, string segment, NCMapper.DotPathFailureKind kind, string targetProperty, string? detailTypeName = null) { }
+        public static string DtoMissingMapFrom(string dtoTypeFullName) { }
+        public static string EnumConversionFailedInvalidString(string sourceName, string targetName) { }
+        public static string EnumConversionFailedNoMatch(string sourceName, string targetName) { }
+        public static string GlobalConfigConflict(string assemblyName, string frozenSources) { }
+        public static string GlobalConfigMultiAssemblyConflict(string assemblyNames) { }
+        public static string GroupByNotSupported(string featureName) { }
+        public static string IEnumerableDomainReached(string methodName) { }
+        public static string JsonDeepCopyFailed(string typeName, string innerMessage) { }
+        public static string JsonDeserializeFailed(string targetTypeName) { }
+        public static string JsonExpressionRequiresString(string actualType) { }
+        public static string JsonSerializeFailed(string sourceTypeName) { }
+        public static string MapCtorIncompatible(string detail) { }
+        public static string MapFromNotApplied(string typeName, string feature) { }
+        public static string MapListOverloadNotFound(string ncMapperVersion) { }
+        public static string MapPropertyFromFieldEmpty(string fieldName) { }
+        public static string MappingValidationFailed(int errorCount, string summary) { }
+        public static string MaskCreateInstanceFailed(string maskTypeFullName) { }
+        public static string MaskMaskMethodNotFound(string detail) { }
+        public static string MaskResolveMethodNotFound(string detail) { }
+        public static string MaskTypeNotImplementIMask(string propertyName, string maskTypeName) { }
+        public static string NamingStrategyOutOfRange(int value, string legalRange) { }
+        public static string NoMappablePropertiesForProjection(string typeName) { }
+        public static string NoPublicConstructor(string typeName) { }
+        public static string NullableConversionNotSupported(string sourceTypeName, string targetTypeName) { }
+        public static string PageNumberMustBePositive() { }
+        public static string PageSizeMustBePositive() { }
+        public static string ProjectionAttributeNotSqlTranslatable(string targetType, string property, string attrName) { }
+        public static string ProjectionRequiresParameterlessConstructor(string typeName) { }
+        public static string ProjectionSourceTypeMismatch(string sourceName, string declaredName) { }
+        public static string RecursionDepthExceeded(int maxDepth, string sourceType, string targetType, string? propertyName = null) { }
+        public static string ReflectionCtorNotFound(string typeFullName, string paramList) { }
+        public static string ReflectionMethodNotFound(string typeFullName, string methodName) { }
+        public static string ReflectionMethodNotFoundWithFlags(string typeFullName, string methodName, string flags) { }
+        public static string ReflectionMethodNotFoundWithParams(string typeFullName, string methodName, string paramList) { }
+        public static string ReflectionPropertyNotFound(string typeFullName, string propertyName) { }
+        public static string ReverseWriteBackPathFailed(string path, string segment, NCMapper.DotPathFailureKind kind, string sourceProperty, string? detailTypeName = null) { }
+        public static string SequenceMultipleElements(string targetTypeName) { }
+        public static string SequenceNoElements(string targetTypeName) { }
+        public static string TreeChildrenPropertyInvalid(string typeFullName, string typeName, string childrenPropertyName, string actualPropertyTypeName, bool isReadOnly = false) { }
+        public static string TreeDtoChildrenNameMismatch(string sourceTypeName, string targetTypeName, string sourceNavName, string dtoChildrenName) { }
+        public static string TreeDtoMissingChildProperty(string targetTypeName) { }
+        public static string TreeMissingChildrenCollectionProperty(string typeFullName, string typeName, string childrenPropertyName) { }
+        public static string TreeMissingIdParentId(string typeFullName, string idPropName, string parentIdPropName) { }
+        public static string UnknownCollectionType(string typeName, string methodName) { }
+        public static string UnknownCollectionTypeNoMethod(string typeName) { }
+        public static string UnsupportedListToDictionaryConversion(string sourceTypeName, string targetTypeName) { }
+    }
+    [System.Diagnostics.CodeAnalysis.RequiresDynamicCode("ExpressionTreeDeepCopyProvider uses Expression.Compile() for deep copy. Use sourc" +
+        "e-generated deep copy for AOT scenarios.")]
+    public sealed class ExpressionTreeDeepCopyProvider : NCMapper.DeepCopyProviderBase
+    {
+        public ExpressionTreeDeepCopyProvider() { }
+        [System.Diagnostics.CodeAnalysis.RequiresDynamicCode("CreateInstance builds expressions via MakeGenericMethod/MakeGenericType or Expres" +
+            "sion.Compile(). Not supported in AOT.")]
+        [System.Diagnostics.CodeAnalysis.RequiresUnreferencedCode("CreateInstance scans type members and attributes via reflection. Some members may" +
+            " be trimmed.")]
+        protected override T CreateInstance<T>(T source)
+            where T :  class { }
+        [System.Diagnostics.CodeAnalysis.RequiresDynamicCode("FillProperties builds expressions via MakeGenericMethod/MakeGenericType or Expres" +
+            "sion.Compile(). Not supported in AOT.")]
+        [System.Diagnostics.CodeAnalysis.RequiresUnreferencedCode("FillProperties scans type members and attributes via reflection. Some members may" +
+            " be trimmed.")]
+        protected override void FillProperties<T>(T source, T target)
+            where T :  class { }
+    }
+    public sealed class FastDeepCopyProvider : NCMapper.DeepCopyProviderBase
+    {
+        public FastDeepCopyProvider() { }
+        [System.Diagnostics.CodeAnalysis.RequiresDynamicCode("CreateInstance builds expressions via MakeGenericMethod/MakeGenericType or Expres" +
+            "sion.Compile(). Not supported in AOT.")]
+        [System.Diagnostics.CodeAnalysis.RequiresUnreferencedCode("CreateInstance scans type members and attributes via reflection. Some members may" +
+            " be trimmed.")]
+        protected override T CreateInstance<T>(T source)
+            where T :  class { }
+        [System.Diagnostics.CodeAnalysis.RequiresDynamicCode("DeepCopy uses RuntimeHelpers.GetUninitializedObject and Expression.Compile in the" +
+            " runtime fallback path. Not supported in AOT. Use the source-generated deep copy" +
+            " path to make this AOT-safe.")]
+        [System.Diagnostics.CodeAnalysis.RequiresUnreferencedCode("DeepCopy scans type members via reflection in the runtime fallback path. Some mem" +
+            "bers may be trimmed. Use the source-generated deep copy path to make this AOT-sa" +
+            "fe.")]
+        public override T? DeepCopy<T>(T source)
+            where T :  class { }
+        [System.Diagnostics.CodeAnalysis.RequiresDynamicCode("FillProperties builds expressions via MakeGenericMethod/MakeGenericType or Expres" +
+            "sion.Compile(). Not supported in AOT.")]
+        [System.Diagnostics.CodeAnalysis.RequiresUnreferencedCode("FillProperties scans type members and attributes via reflection. Some members may" +
+            " be trimmed.")]
+        protected override void FillProperties<T>(T source, T target)
+            where T :  class { }
+    }
+    public sealed class FluentMappingConfig
+    {
+        public FluentMappingConfig() { }
+        public NCMapper.FluentTypeConfig<TSource, TTarget> For<TSource, TTarget>() { }
+    }
+    public class FluentTypeConfig<TSource, TTarget>
+    {
+        public NCMapper.FluentTypeConfig<TSource, TTarget> AfterMapping(System.Action<TSource, TTarget> handler) { }
+        public NCMapper.FluentTypeConfig<TSource, TTarget> BeforeMapping(System.Action<TSource, TTarget> handler) { }
+        public NCMapper.FluentTypeConfig<TSource, TTarget> FromSource<TSubSource>(System.Action<NCMapper.FluentTypeConfig<TSubSource, TTarget>> configure) { }
+        public NCMapper.FluentTypeConfig<TSource, TTarget> MapCtorParam(string paramName, string sourcePropertyName) { }
+        public NCMapper.FluentTypeConfig<TSource, TTarget> MapCtorParam<TSrcProp>(string paramName, System.Linq.Expressions.Expression<System.Func<TSource, TSrcProp>> sourceProp) { }
+        public NCMapper.FluentTypeConfig<TSource, TTarget> MapSubclass<TSrcDerived, TTargetDerived>()
+            where TSrcDerived : TSource
+            where TTargetDerived : TTarget { }
+        public NCMapper.MemberHead<TSource, TTarget, TProp> Member<TProp>(System.Linq.Expressions.Expression<System.Func<TTarget, TProp>> dest) { }
+        public NCMapper.FluentTypeConfig<TSource, TTarget> NoAutoMatch() { }
+        public NCMapper.FluentTypeConfig<TSource, TTarget> Tree() { }
+        public NCMapper.FluentTypeConfig<TSource, TTarget> Tree(string idProperty, string parentIdProperty, string childrenProperty) { }
+    }
+    public sealed class GeneratedMapConfig
+    {
+        public GeneratedMapConfig() { }
+        public string[] IgnoreNamePrefixes { get; set; }
+        public string[] IgnoreNamePrefixesToEntity { get; set; }
+        public string[] IgnoreNameSuffixes { get; set; }
+        public string[] IgnoreNameSuffixesToEntity { get; set; }
+        public string[] IgnoreNames { get; set; }
+        public string[] IgnoreNamesToEntity { get; set; }
+        public string[] IgnoreTypeFullNames { get; set; }
+        public string[] IgnoreTypeFullNamesToEntity { get; set; }
+        public int NamingStrategy { get; set; }
+        public string[] Postfixes { get; set; }
+        public string[] Prefixes { get; set; }
+    }
+    public sealed class GlobalConfigView : System.IEquatable<NCMapper.GlobalConfigView>
+    {
+        public System.Collections.Generic.IReadOnlyList<string> IgnoreNamePrefixes { get; }
+        public System.Collections.Generic.IReadOnlyList<string> IgnoreNamePrefixesToEntity { get; }
+        public System.Collections.Generic.IReadOnlyList<string> IgnoreNameSuffixes { get; }
+        public System.Collections.Generic.IReadOnlyList<string> IgnoreNameSuffixesToEntity { get; }
+        public System.Collections.Generic.IReadOnlyList<string> IgnoreNames { get; }
+        public System.Collections.Generic.IReadOnlyList<string> IgnoreNamesToEntity { get; }
+        public System.Collections.Generic.IReadOnlyList<string> IgnoreTypeFullNames { get; }
+        public System.Collections.Generic.IReadOnlyList<string> IgnoreTypeFullNamesToEntity { get; }
+        public NCMapper.NamingStrategy NamingStrategy { get; }
+        public System.Collections.Generic.IReadOnlyList<string> Postfixes { get; }
+        public System.Collections.Generic.IReadOnlyList<string> Prefixes { get; }
+    }
+    public interface IMapper
+    {
+        [System.Diagnostics.CodeAnalysis.RequiresDynamicCode("Compose uses MakeGenericType and MakeGenericMethod to build the compose delegate." +
+            " Not supported in AOT. Register a source-generated compose delegate via Register" +
+            "GeneratedCompose to make this AOT-safe.")]
+        [System.Diagnostics.CodeAnalysis.RequiresUnreferencedCode("Compose scans type members and attributes via reflection. Some members may be tri" +
+            "mmed. Register a source-generated compose delegate via RegisterGeneratedCompose " +
+            "to make this AOT-safe.")]
+        TTarget? Compose<TTarget>(params object[] sources)
+            where TTarget :  class;
+        [System.Diagnostics.CodeAnalysis.RequiresDynamicCode("DeepCopy uses Expression.Compile and MakeGenericMethod in the runtime fallback pa" +
+            "th. Not supported in AOT. Use the source-generated deep copy path to make this A" +
+            "OT-safe.")]
+        [System.Diagnostics.CodeAnalysis.RequiresUnreferencedCode("DeepCopy scans type members via reflection in the runtime fallback path. Some mem" +
+            "bers may be trimmed. Use the source-generated deep copy path to make this AOT-sa" +
+            "fe.")]
+        T? DeepCopy<T>(T source)
+            where T :  class;
+        [System.Diagnostics.CodeAnalysis.RequiresDynamicCode("Map uses Expression.Compile and reflection in the runtime fallback path. Not supp" +
+            "orted in AOT. Mark the DTO with [MapFrom] to use the AOT-safe source-generated p" +
+            "ath.")]
+        [System.Diagnostics.CodeAnalysis.RequiresUnreferencedCode("Map scans type members and attributes via reflection in the runtime fallback path" +
+            ". Some members may be trimmed. Mark the DTO with [MapFrom] to use the AOT-safe s" +
+            "ource-generated path.")]
+        TSource? Map<TSource>(TSource source, System.Action<TSource, TSource>? action = null)
+            where TSource :  class;
+        [System.Diagnostics.CodeAnalysis.RequiresDynamicCode("Map uses Expression.Compile and reflection in the runtime fallback path. Not supp" +
+            "orted in AOT. Mark the DTO with [MapFrom] to use the AOT-safe source-generated p" +
+            "ath.")]
+        [System.Diagnostics.CodeAnalysis.RequiresUnreferencedCode("Map scans type members and attributes via reflection in the runtime fallback path" +
+            ". Some members may be trimmed. Mark the DTO with [MapFrom] to use the AOT-safe s" +
+            "ource-generated path.")]
+        TTarget? Map<TSource, TTarget>(TSource source, System.Action<TSource, TTarget>? action = null)
+            where TSource :  class
+            where TTarget :  class;
+        [System.Diagnostics.CodeAnalysis.RequiresDynamicCode("Map uses Expression.Compile and reflection in the runtime fallback path. Not supp" +
+            "orted in AOT. Mark the DTO with [MapFrom] to use the AOT-safe source-generated p" +
+            "ath.")]
+        [System.Diagnostics.CodeAnalysis.RequiresUnreferencedCode("Map scans type members and attributes via reflection in the runtime fallback path" +
+            ". Some members may be trimmed. Mark the DTO with [MapFrom] to use the AOT-safe s" +
+            "ource-generated path.")]
+        void Map<TSource, TTarget>(TSource source, TTarget target, System.Action<TSource, TTarget>? action = null)
+            where TSource :  class
+            where TTarget :  class;
+        [System.Diagnostics.CodeAnalysis.RequiresDynamicCode("MapList uses Expression.Compile and reflection in the runtime fallback path. Not " +
+            "supported in AOT. Mark the DTO with [MapFrom] to use the AOT-safe source-generat" +
+            "ed path.")]
+        [System.Diagnostics.CodeAnalysis.RequiresUnreferencedCode("MapList scans type members and attributes via reflection in the runtime fallback " +
+            "path. Some members may be trimmed. Mark the DTO with [MapFrom] to use the AOT-sa" +
+            "fe source-generated path.")]
+        System.Collections.Generic.List<TTarget>? MapList<TTarget>(System.Collections.Generic.IEnumerable<TTarget> sources, System.Action<TTarget, TTarget>? action = null)
+            where TTarget :  class;
+        [System.Diagnostics.CodeAnalysis.RequiresDynamicCode("MapList uses Expression.Compile and reflection in the runtime fallback path. Not " +
+            "supported in AOT. Mark the DTO with [MapFrom] to use the AOT-safe source-generat" +
+            "ed path.")]
+        [System.Diagnostics.CodeAnalysis.RequiresUnreferencedCode("MapList scans type members and attributes via reflection in the runtime fallback " +
+            "path. Some members may be trimmed. Mark the DTO with [MapFrom] to use the AOT-sa" +
+            "fe source-generated path.")]
+        System.Collections.Generic.List<TTarget>? MapList<TSource, TTarget>(System.Collections.Generic.IEnumerable<TSource> sources, System.Action<TSource, TTarget>? action = null)
+            where TSource :  class
+            where TTarget :  class;
+    }
+    public interface IMask
+    {
+        string Mask(string? value);
+    }
+    public interface IProjectionPolicy
+    {
+        bool RequiresDowngrade { get; }
+    }
+    public static class JsonConverter
+    {
+        [System.Diagnostics.CodeAnalysis.RequiresDynamicCode("JSON deserialization uses reflection. Not supported in AOT. Provide a source-gene" +
+            "rated JsonSerializerContext via JsonSerializerBase.Current to make this AOT-safe" +
+            ".")]
+        [System.Diagnostics.CodeAnalysis.RequiresUnreferencedCode("JSON deserialization uses reflection. Some members may be trimmed. Provide a sour" +
+            "ce-generated JsonSerializerContext via JsonSerializerBase.Current to make this A" +
+            "OT-safe.")]
+        public static T? JsonConvertToObject<T>(string json) { }
+        [System.Diagnostics.CodeAnalysis.RequiresDynamicCode("JSON round-trip conversion uses reflection. Not supported in AOT. Provide a sourc" +
+            "e-generated JsonSerializerContext via JsonSerializerBase.Current to make this AO" +
+            "T-safe.")]
+        [System.Diagnostics.CodeAnalysis.RequiresUnreferencedCode("JSON round-trip conversion uses reflection. Some members may be trimmed. Provide " +
+            "a source-generated JsonSerializerContext via JsonSerializerBase.Current to make " +
+            "this AOT-safe.")]
+        public static Tout? JsonConvertToTarget<Tin, Tout>(Tin? source) { }
+        [System.Diagnostics.CodeAnalysis.RequiresDynamicCode("JSON serialization uses reflection. Not supported in AOT. Provide a source-genera" +
+            "ted JsonSerializerContext via JsonSerializerBase.Current to make this AOT-safe.")]
+        [System.Diagnostics.CodeAnalysis.RequiresUnreferencedCode("JSON serialization uses reflection. Some members may be trimmed. Provide a source" +
+            "-generated JsonSerializerContext via JsonSerializerBase.Current to make this AOT" +
+            "-safe.")]
+        public static string ObjectConvertToJson(object info) { }
+    }
+    public abstract class JsonSerializerBase
+    {
+        protected JsonSerializerBase() { }
+        public static NCMapper.JsonSerializerBase Current { get; set; }
+        [System.Diagnostics.CodeAnalysis.RequiresDynamicCode("JSON deserialization uses reflection. This is not supported in AOT/Trimmed scenar" +
+            "ios. Consider using a source-generated JsonSerializerContext.")]
+        [System.Diagnostics.CodeAnalysis.RequiresUnreferencedCode("JSON deserialization uses reflection. Some types may be trimmed in AOT/Trimmed sc" +
+            "enarios.")]
+        public abstract object? Deserialize(string json, [System.Diagnostics.CodeAnalysis.DynamicallyAccessedMembers(System.Diagnostics.CodeAnalysis.DynamicallyAccessedMemberTypes.None | System.Diagnostics.CodeAnalysis.DynamicallyAccessedMemberTypes.PublicParameterlessConstructor | System.Diagnostics.CodeAnalysis.DynamicallyAccessedMemberTypes.PublicConstructors | System.Diagnostics.CodeAnalysis.DynamicallyAccessedMemberTypes.PublicProperties)] System.Type targetType);
+        [System.Diagnostics.CodeAnalysis.RequiresDynamicCode("JSON serialization uses reflection. This is not supported in AOT/Trimmed scenario" +
+            "s. Consider using a source-generated JsonSerializerContext.")]
+        [System.Diagnostics.CodeAnalysis.RequiresUnreferencedCode("JSON serialization uses reflection. Some types may be trimmed in AOT/Trimmed scen" +
+            "arios.")]
+        public abstract string Serialize(object? obj);
+    }
+    public class MapConfigurationException : NCMapper.MapException
+    {
+        public MapConfigurationException() { }
+        public MapConfigurationException(string message) { }
+        public MapConfigurationException(string message, System.Exception innerException) { }
+        public MapConfigurationException(string message, System.Type? sourceType, System.Type? targetType) { }
+    }
+    public class MapException : System.InvalidOperationException
+    {
+        public MapException() { }
+        public MapException(string message) { }
+        public MapException(string message, System.Exception innerException) { }
+        public MapException(string message, System.Type? sourceType, System.Type? targetType) { }
+        public MapException(string message, System.Type? sourceType, System.Type? targetType, System.Exception innerException) { }
+        public MapException(string message, System.Type? sourceType, System.Type? targetType, string? propertyName) { }
+        public MapException(string message, System.Type? sourceType, System.Type? targetType, string? propertyName, System.Exception innerException) { }
+        public string? PropertyName { get; }
+        public System.Type? SourceType { get; }
+        public System.Type? TargetType { get; }
+    }
+    [System.Diagnostics.CodeAnalysis.Experimental("NCMapper001")]
+    public sealed class MapPipeline
+    {
+        public MapPipeline() { }
+        public bool IsEnabled { get; }
+        public static bool IsPipelineEnabled { get; }
+        public NCMapper.MapPipeline AddPostMap<TSource, TTarget>(System.Action<TSource, TTarget> callback)
+            where TSource :  class
+            where TTarget :  class { }
+        public void Clear() { }
+        public static void RunPostMap<TSource, TTarget>(TSource source, TTarget target)
+            where TSource :  class
+            where TTarget :  class { }
+    }
+    public sealed class MapTraceOptions
+    {
+        public MapTraceOptions() { }
+        public bool Enabled { get; set; }
+        public System.IO.TextWriter Output { get; set; }
+        public bool ShowValues { get; set; }
+        public static NCMapper.MapTraceOptions Enable() { }
+        public static NCMapper.MapTraceOptions Enable(System.IO.TextWriter writer) { }
+    }
+    public static class MapTracer
+    {
+        public static System.IO.TextWriter GlobalOutput { get; set; }
+        public static bool GloballyEnabled { get; set; }
+        public static System.Action<string>? LogCallback { get; set; }
+        [System.Diagnostics.CodeAnalysis.RequiresUnreferencedCode("Trace enumerates type properties and attributes via reflection. Some members may " +
+            "be trimmed. Diagnostics tracing is not available on the AOT-safe source-generate" +
+            "d path.")]
+        public static string Trace<TSource, TTarget>(TSource source, NCMapper.MapTraceOptions? options = null)
+            where TSource :  class
+            where TTarget :  class { }
+    }
+    public enum MapValidationLevel
+    {
+        OK = 0,
+        Warn = 1,
+        Error = 2,
+    }
+    public sealed class MapValidationResult
+    {
+        public MapValidationResult() { }
+        public NCMapper.MapValidationLevel Level { get; init; }
+        public int MappedCount { get; init; }
+        public string Message { get; init; }
+        public string ProjectionDowngradeReason { get; init; }
+        public bool RequiresProjectionDowngrade { get; init; }
+        public System.Type SourceType { get; init; }
+        public System.Type TargetType { get; init; }
+        public int TotalCount { get; init; }
+        public System.Collections.Generic.List<string> TypeMismatchProperties { get; init; }
+        public System.Collections.Generic.List<string> UnmappedProperties { get; init; }
+        public override string ToString() { }
+    }
+    public static class MapValidator
+    {
+        public static void PrintReport(System.Collections.Generic.List<NCMapper.MapValidationResult> results, System.IO.TextWriter? output = null, bool showOk = false) { }
+        [System.Diagnostics.CodeAnalysis.RequiresDynamicCode("MapValidator.Validate uses reflection to scan assemblies and types. This is not s" +
+            "upported in AOT/Trimmed scenarios.")]
+        [System.Diagnostics.CodeAnalysis.RequiresUnreferencedCode("MapValidator.Validate uses reflection to scan assemblies and types. Some types ma" +
+            "y be trimmed in AOT/Trimmed scenarios.")]
+        public static System.Collections.Generic.List<NCMapper.MapValidationResult> Validate() { }
+        [System.Diagnostics.CodeAnalysis.RequiresDynamicCode("MapValidator.Validate uses reflection to scan assemblies and types. This is not s" +
+            "upported in AOT/Trimmed scenarios.")]
+        [System.Diagnostics.CodeAnalysis.RequiresUnreferencedCode("MapValidator.Validate uses reflection to scan assemblies and types. Some types ma" +
+            "y be trimmed in AOT/Trimmed scenarios.")]
+        public static System.Collections.Generic.List<NCMapper.MapValidationResult> Validate(params System.Reflection.Assembly[] assemblies) { }
+        [System.Diagnostics.CodeAnalysis.RequiresUnreferencedCode("ValidateMapping enumerates type properties and attributes via reflection. Some me" +
+            "mbers may be trimmed. Use the source-generated Mapper.Validate() for AOT-safe va" +
+            "lidation.")]
+        public static NCMapper.MapValidationResult ValidateMapping(System.Type sourceType, System.Type targetType) { }
+    }
+    public class Mapper
+    {
+        public const int MaxInlineDepthUpperBound = 16;
+        public const int MaxRecursionDepthUpperBound = 4096;
+        [System.Diagnostics.CodeAnalysis.Experimental("NCMapper001")]
+        public static readonly NCMapper.MapPipeline Pipeline;
+        public Mapper() { }
+        public static long CacheHits { get; }
+        public static long CompilationCount { get; }
+        public static long TotalMapCalls { get; }
+        public static int MaxInlineDepth { get; set; }
+        public static int MaxRecursionDepth { get; set; }
+        public static bool MetricsEnabled { get; set; }
+        public static bool TraceEnabled { get; set; }
+        public static System.IO.TextWriter TraceOutput { get; set; }
+        public static bool ValidationEnabled { get; set; }
+        public static void ClearCache() { }
+        public static void ClearGenerated() { }
+        [System.Diagnostics.CodeAnalysis.Experimental("NCMapper001")]
+        [System.Diagnostics.CodeAnalysis.RequiresDynamicCode("Compose uses MakeGenericType and MakeGenericMethod to build the compose delegate." +
+            " Not supported in AOT. Register a source-generated compose delegate via Register" +
+            "GeneratedCompose to make this AOT-safe.")]
+        [System.Diagnostics.CodeAnalysis.RequiresUnreferencedCode("Compose scans type members and attributes via reflection. Some members may be tri" +
+            "mmed. Register a source-generated compose delegate via RegisterGeneratedCompose " +
+            "to make this AOT-safe.")]
+        public static TTarget? Compose<TTarget>(params object[] sources)
+            where TTarget :  class { }
+        [System.Diagnostics.CodeAnalysis.Experimental("NCMapper001")]
+        [System.Diagnostics.CodeAnalysis.RequiresDynamicCode("Compose uses MakeGenericType and MakeGenericMethod to build the compose delegate." +
+            " Not supported in AOT. Register a source-generated compose delegate via Register" +
+            "GeneratedCompose to make this AOT-safe.")]
+        [System.Diagnostics.CodeAnalysis.RequiresUnreferencedCode("Compose scans type members and attributes via reflection. Some members may be tri" +
+            "mmed. Register a source-generated compose delegate via RegisterGeneratedCompose " +
+            "to make this AOT-safe.")]
+        public static TTarget? Compose<TTarget>(System.Action<TTarget>? action, params object[] sources)
+            where TTarget :  class { }
+        [System.Diagnostics.CodeAnalysis.Experimental("NCMapper001")]
+        [System.Diagnostics.CodeAnalysis.RequiresDynamicCode("ComposeList uses MakeGenericType and MakeGenericMethod to build the compose deleg" +
+            "ate. Not supported in AOT. Register a source-generated compose delegate via Regi" +
+            "sterGeneratedCompose to make this AOT-safe.")]
+        [System.Diagnostics.CodeAnalysis.RequiresUnreferencedCode("ComposeList scans type members and attributes via reflection. Some members may be" +
+            " trimmed. Register a source-generated compose delegate via RegisterGeneratedComp" +
+            "ose to make this AOT-safe.")]
+        public static System.Collections.Generic.List<TTarget>? ComposeList<TTarget>(params object[][] sourceGroups)
+            where TTarget :  class { }
+        [System.Diagnostics.CodeAnalysis.Experimental("NCMapper001")]
+        [System.Diagnostics.CodeAnalysis.RequiresDynamicCode("ComposeList uses MakeGenericType and MakeGenericMethod to build the compose deleg" +
+            "ate. Not supported in AOT. Register a source-generated compose delegate via Regi" +
+            "sterGeneratedCompose to make this AOT-safe.")]
+        [System.Diagnostics.CodeAnalysis.RequiresUnreferencedCode("ComposeList scans type members and attributes via reflection. Some members may be" +
+            " trimmed. Register a source-generated compose delegate via RegisterGeneratedComp" +
+            "ose to make this AOT-safe.")]
+        public static System.Collections.Generic.List<TTarget>? ComposeList<TTarget>(System.Action<TTarget>? action, params object[][] sourceGroups)
+            where TTarget :  class { }
+        [System.Diagnostics.CodeAnalysis.RequiresDynamicCode("DeepCopy uses Expression.Compile and MakeGenericMethod in the runtime fallback pa" +
+            "th. Not supported in AOT. Use the source-generated deep copy registered by Regis" +
+            "terGeneratedDeepCopy to make this AOT-safe.")]
+        [System.Diagnostics.CodeAnalysis.RequiresUnreferencedCode("DeepCopy scans type members via reflection in the runtime fallback path. Some mem" +
+            "bers may be trimmed. Use the source-generated deep copy registered by RegisterGe" +
+            "neratedDeepCopy to make this AOT-safe.")]
+        public static T? DeepCopy<T>(T source)
+            where T :  class { }
+        [System.Diagnostics.CodeAnalysis.RequiresDynamicCode("DeepCopy uses Expression.Compile and MakeGenericMethod in the runtime fallback pa" +
+            "th. Not supported in AOT. Use the source-generated deep copy registered by Regis" +
+            "terGeneratedDeepCopy to make this AOT-safe.")]
+        [System.Diagnostics.CodeAnalysis.RequiresUnreferencedCode("DeepCopy scans type members via reflection in the runtime fallback path. Some mem" +
+            "bers may be trimmed. Use the source-generated deep copy registered by RegisterGe" +
+            "neratedDeepCopy to make this AOT-safe.")]
+        public static T? DeepCopy<T>(T source, NCMapper.DeepCopyContext ctx)
+            where T :  class { }
+        [System.Diagnostics.CodeAnalysis.RequiresDynamicCode("DeepCopy uses Expression.Compile and MakeGenericMethod in the runtime fallback pa" +
+            "th. Not supported in AOT. Use the source-generated deep copy registered by Regis" +
+            "terGeneratedDeepCopy to make this AOT-safe.")]
+        [System.Diagnostics.CodeAnalysis.RequiresUnreferencedCode("DeepCopy scans type members via reflection in the runtime fallback path. Some mem" +
+            "bers may be trimmed. Use the source-generated deep copy registered by RegisterGe" +
+            "neratedDeepCopy to make this AOT-safe.")]
+        public static T? DeepCopy<T>(T source, System.Action<T, T>? action)
+            where T :  class { }
+        [System.Diagnostics.CodeAnalysis.RequiresDynamicCode("Cross-type DeepCopy forwards to Map, which uses Expression.Compile and reflection" +
+            " in the runtime fallback path. Not supported in AOT. Mark the DTO with [MapFrom]" +
+            " to use the AOT-safe source-generated path.")]
+        [System.Diagnostics.CodeAnalysis.RequiresUnreferencedCode("Cross-type DeepCopy forwards to Map, which scans type members and attributes via " +
+            "reflection. Some members may be trimmed. Mark the DTO with [MapFrom] to use the " +
+            "AOT-safe source-generated path.")]
+        public static TTarget? DeepCopy<TSource, TTarget>(TSource source)
+            where TSource :  class
+            where TTarget :  class { }
+        [System.Diagnostics.CodeAnalysis.RequiresDynamicCode("Cross-type DeepCopy forwards to Map, which uses Expression.Compile and reflection" +
+            " in the runtime fallback path. Not supported in AOT. Mark the DTO with [MapFrom]" +
+            " to use the AOT-safe source-generated path.")]
+        [System.Diagnostics.CodeAnalysis.RequiresUnreferencedCode("Cross-type DeepCopy forwards to Map, which scans type members and attributes via " +
+            "reflection. Some members may be trimmed. Mark the DTO with [MapFrom] to use the " +
+            "AOT-safe source-generated path.")]
+        public static TTarget? DeepCopy<TSource, TTarget>(TSource source, System.Action<TSource, TTarget>? action)
+            where TSource :  class
+            where TTarget :  class { }
+        [System.Diagnostics.CodeAnalysis.RequiresDynamicCode("DeepCopyRuntimeOnly always takes the runtime provider path (Expression.Compile / " +
+            "MakeGenericMethod), bypassing the source-generated delegate. Not supported in AO" +
+            "T. Generated code calls this only for members the generator cannot handle.")]
+        [System.Diagnostics.CodeAnalysis.RequiresUnreferencedCode("DeepCopyRuntimeOnly scans type members via reflection. Some members may be trimme" +
+            "d. Generated code calls this only for members the generator cannot handle.")]
+        public static T? DeepCopyRuntimeOnly<T>(T source, NCMapper.DeepCopyContext ctx)
+            where T :  class { }
+        [System.Diagnostics.CodeAnalysis.RequiresUnreferencedCode("GetGlobalConfig triggers config freeze, which reflects over [assembly: MapDefault" +
+            "s] when no generated snapshot exists. Types annotated with [MapFrom] use the gen" +
+            "erated snapshot path with zero reflection.")]
+        public static NCMapper.GlobalConfigView? GetGlobalConfig() { }
+        public static bool HasGenerated<TSource, TTarget>()
+            where TSource :  class
+            where TTarget :  class { }
+        public static bool HasGeneratedDeepCopy<T>()
+            where T :  class { }
+        [System.Diagnostics.CodeAnalysis.RequiresDynamicCode("Map uses Expression.Compile and reflection in the runtime fallback path. Not supp" +
+            "orted in AOT. Mark the DTO with [MapFrom] to use the AOT-safe source-generated p" +
+            "ath.")]
+        [System.Diagnostics.CodeAnalysis.RequiresUnreferencedCode("Map scans type members and attributes via reflection in the runtime fallback path" +
+            ". Some members may be trimmed. Mark the DTO with [MapFrom] to use the AOT-safe s" +
+            "ource-generated path.")]
+        public static TSource? Map<TSource>(TSource source, System.Action<TSource, TSource>? action = null)
+            where TSource :  class { }
+        [System.Diagnostics.CodeAnalysis.RequiresDynamicCode("Map uses Expression.Compile and reflection in the runtime fallback path. Not supp" +
+            "orted in AOT. Mark the DTO with [MapFrom] to use the AOT-safe source-generated p" +
+            "ath.")]
+        [System.Diagnostics.CodeAnalysis.RequiresUnreferencedCode("Map scans type members and attributes via reflection in the runtime fallback path" +
+            ". Some members may be trimmed. Mark the DTO with [MapFrom] to use the AOT-safe s" +
+            "ource-generated path.")]
+        public static TTarget? Map<TSource, TTarget>(TSource source, System.Action<TSource, TTarget>? action = null)
+            where TSource :  class
+            where TTarget :  class { }
+        [System.Diagnostics.CodeAnalysis.RequiresDynamicCode("Map uses Expression.Compile and reflection in the runtime fallback path. Not supp" +
+            "orted in AOT. Mark the DTO with [MapFrom] to use the AOT-safe source-generated p" +
+            "ath.")]
+        [System.Diagnostics.CodeAnalysis.RequiresUnreferencedCode("Map scans type members and attributes via reflection in the runtime fallback path" +
+            ". Some members may be trimmed. Mark the DTO with [MapFrom] to use the AOT-safe s" +
+            "ource-generated path.")]
+        public static void Map<TSource, TTarget>(TSource source, TTarget target, System.Action<TSource, TTarget>? action = null)
+            where TSource :  class
+            where TTarget :  class { }
+        [System.Diagnostics.CodeAnalysis.RequiresDynamicCode("MapList uses Expression.Compile and reflection in the runtime fallback path. Not " +
+            "supported in AOT. Mark the DTO with [MapFrom] to use the AOT-safe source-generat" +
+            "ed path.")]
+        [System.Diagnostics.CodeAnalysis.RequiresUnreferencedCode("MapList scans type members and attributes via reflection in the runtime fallback " +
+            "path. Some members may be trimmed. Mark the DTO with [MapFrom] to use the AOT-sa" +
+            "fe source-generated path.")]
+        public static System.Collections.Generic.List<TTarget>? MapList<TTarget>(System.Collections.Generic.IEnumerable<TTarget> sources, System.Action<TTarget, TTarget>? action = null)
+            where TTarget :  class { }
+        [System.Diagnostics.CodeAnalysis.RequiresDynamicCode("MapList uses Expression.Compile and reflection in the runtime fallback path. Not " +
+            "supported in AOT. Mark the DTO with [MapFrom] to use the AOT-safe source-generat" +
+            "ed path.")]
+        [System.Diagnostics.CodeAnalysis.RequiresUnreferencedCode("MapList scans type members and attributes via reflection in the runtime fallback " +
+            "path. Some members may be trimmed. Mark the DTO with [MapFrom] to use the AOT-sa" +
+            "fe source-generated path.")]
+        public static System.Collections.Generic.List<TTarget>? MapList<TSource, TTarget>(System.Collections.Generic.IEnumerable<TSource> sources, System.Action<TSource, TTarget>? action = null)
+            where TSource :  class
+            where TTarget :  class { }
+        [System.Diagnostics.CodeAnalysis.RequiresDynamicCode("MapListInto uses Expression.Compile and reflection in the runtime fallback path. " +
+            "Not supported in AOT. Mark the DTO with [MapFrom] to use the AOT-safe source-gen" +
+            "erated path.")]
+        [System.Diagnostics.CodeAnalysis.RequiresUnreferencedCode("MapListInto scans type members and attributes via reflection in the runtime fallb" +
+            "ack path. Some members may be trimmed. Mark the DTO with [MapFrom] to use the AO" +
+            "T-safe source-generated path.")]
+        public static void MapListInto<TSource, TTarget>(System.Collections.Generic.IList<TSource> sources, TTarget[] destination, System.Action<TSource, TTarget>? action = null)
+            where TSource :  class
+            where TTarget :  class { }
+        public static void RegisterDeepCopyTarget(object src, object dst, NCMapper.DeepCopyContext ctx) { }
+        public static void RegisterGenerated<TSource, TTarget>(System.Func<TSource, System.Action<TSource, TTarget>?, TTarget?>? func)
+            where TSource :  class
+            where TTarget :  class { }
+        public static void RegisterGeneratedCompose<TTarget>(System.Func<object[], TTarget?>? func)
+            where TTarget :  class { }
+        public static void RegisterGeneratedConfig(NCMapper.GeneratedMapConfig? config, string assemblyName) { }
+        public static void RegisterGeneratedCore<TSource, TTarget>(System.Func<TSource, TTarget?>? func)
+            where TSource :  class
+            where TTarget :  class { }
+        public static void RegisterGeneratedDeepCopy<T>(System.Func<T, T>? func)
+            where T :  class { }
+        public static void RegisterGeneratedDeepCopy<T>(System.Func<T, NCMapper.DeepCopyContext, T>? func)
+            where T :  class { }
+        public static void RegisterGeneratedDeepCopy<T>(System.Func<T, NCMapper.DeepCopyContext, T>? func, bool acyclic)
+            where T :  class { }
+        public static void RegisterGeneratedList<TSource, TTarget>(System.Func<System.Collections.Generic.List<TSource>, System.Collections.Generic.List<TTarget>>? func)
+            where TSource :  class
+            where TTarget :  class { }
+        public static void RegisterGeneratedListInto<TSource, TTarget>(System.Action<System.Collections.Generic.IList<TSource>, TTarget[], System.Action<TSource, TTarget>?>? action)
+            where TSource :  class
+            where TTarget :  class { }
+        public static void RegisterGeneratedUpdate<TSource, TTarget>(System.Action<TSource, TTarget, System.Action<TSource, TTarget>?>? action)
+            where TSource :  class
+            where TTarget :  class { }
+        public static void RegisterGeneratedValidate(System.Func<System.Collections.Generic.List<NCMapper.MapValidationResult>>? func) { }
+        public static void ResetMetrics() { }
+        [System.Diagnostics.CodeAnalysis.Experimental("NCMapper001")]
+        public static System.Collections.Generic.List<NCMapper.MapValidationResult> Validate() { }
+        [System.Diagnostics.CodeAnalysis.Experimental("NCMapper001")]
+        [System.Diagnostics.CodeAnalysis.RequiresDynamicCode("Validate(params Assembly[]) uses reflection to scan assemblies and types. Use Val" +
+            "idate() for AOT-compatible validation.")]
+        [System.Diagnostics.CodeAnalysis.RequiresUnreferencedCode("Validate(params Assembly[]) uses reflection to scan assemblies and types. Use Val" +
+            "idate() for AOT-compatible validation.")]
+        public static System.Collections.Generic.List<NCMapper.MapValidationResult> Validate(params System.Reflection.Assembly[] assemblies) { }
+        [System.Diagnostics.CodeAnalysis.Experimental("NCMapper001")]
+        public static void ValidateOrThrow() { }
+    }
+    [System.AttributeUsage(System.AttributeTargets.Class, AllowMultiple=false, Inherited=false)]
+    public sealed class MapperConfigAttribute : System.Attribute
+    {
+        public MapperConfigAttribute() { }
+    }
+    public sealed class MaskAddress : NCMapper.IMask
+    {
+        public MaskAddress() { }
+        public string Mask(string? value) { }
+    }
+    public sealed class MaskBankCard : NCMapper.IMask
+    {
+        public MaskBankCard() { }
+        public string Mask(string? value) { }
+    }
+    public sealed class MaskChineseName : NCMapper.IMask
+    {
+        public MaskChineseName() { }
+        public string Mask(string? value) { }
+    }
+    public sealed class MaskEmail : NCMapper.IMask
+    {
+        public MaskEmail() { }
+        public string Mask(string? value) { }
+    }
+    public sealed class MaskIdCard : NCMapper.IMask
+    {
+        public MaskIdCard() { }
+        public string Mask(string? value) { }
+    }
+    public sealed class MaskIp : NCMapper.IMask
+    {
+        public MaskIp() { }
+        public string Mask(string? value) { }
+    }
+    public sealed class MaskLandline : NCMapper.IMask
+    {
+        public MaskLandline() { }
+        public string Mask(string? value) { }
+    }
+    public sealed class MaskLicensePlate : NCMapper.IMask
+    {
+        public MaskLicensePlate() { }
+        public string Mask(string? value) { }
+    }
+    public sealed class MaskPhone : NCMapper.IMask
+    {
+        public MaskPhone() { }
+        public string Mask(string? value) { }
+    }
+    public static class MaskProvider
+    {
+        public static void Clear() { }
+        public static void Override<TMask>(NCMapper.IMask replacement)
+            where TMask : NCMapper.IMask { }
+        [System.Diagnostics.CodeAnalysis.RequiresDynamicCode("Resolve(Type) uses Activator.CreateInstance to instantiate the mask type at runti" +
+            "me. Not supported in AOT. Use the generic Resolve<TMask>() overload, which the s" +
+            "ource-generated path calls.")]
+        [System.Diagnostics.CodeAnalysis.RequiresUnreferencedCode("Resolve scans type members and attributes via reflection. Some members may be tri" +
+            "mmed.")]
+        public static NCMapper.IMask Resolve(System.Type maskType) { }
+        public static NCMapper.IMask Resolve<TMask>()
+            where TMask : NCMapper.IMask, new () { }
+    }
+    public class MemberConfig<TSource, TTarget, TProp> : NCMapper.FluentTypeConfig<TSource, TTarget>
+    {
+        public NCMapper.MemberConfig<TSource, TTarget, TProp> Convert(System.Func<TProp> converter, bool overrideIgnore = false) { }
+        public NCMapper.MemberConfig<TSource, TTarget, TProp> Convert(System.Func<TSource, TProp> converter, bool overrideIgnore = false) { }
+        public NCMapper.MemberConfig<TSource, TTarget, TProp> Convert<TSrcProp>(System.Func<TSrcProp, TProp> converter, bool overrideIgnore = false) { }
+        public NCMapper.MemberConfig<TSource, TTarget, TProp> Convert<TSrcProp>(System.Func<TSource, TSrcProp, TProp> converter, bool overrideIgnore = false) { }
+        public NCMapper.MemberConfig<TSource, TTarget, TProp> ConvertBack<TEntityProp>(System.Func<TEntityProp> converter, bool overrideIgnore = false) { }
+        public NCMapper.MemberConfig<TSource, TTarget, TProp> ConvertBack<TEntityProp>(System.Func<TProp, TEntityProp> converter, bool overrideIgnore = false) { }
+        public NCMapper.MemberConfig<TSource, TTarget, TProp> ConvertBack<TEntityProp>(System.Func<TTarget, TEntityProp> converter, bool overrideIgnore = false) { }
+        public NCMapper.MemberConfig<TSource, TTarget, TProp> ConvertBack<TEntityProp>(System.Func<TTarget, TProp, TEntityProp> converter, bool overrideIgnore = false) { }
+        public NCMapper.MemberConfig<TSource, TTarget, TProp> Format(string format, bool overrideIgnore = false) { }
+        public NCMapper.MemberConfig<TSource, TTarget, TProp> FromJson() { }
+        public NCMapper.MemberConfig<TSource, TTarget, TProp> MapTree() { }
+        public NCMapper.MemberConfig<TSource, TTarget, TProp> MapWhen(System.Func<TProp, bool> predicate) { }
+        public NCMapper.MemberConfig<TSource, TTarget, TProp> MapWhen<TInput>(System.Func<TInput, bool> condition) { }
+        public NCMapper.MemberConfig<TSource, TTarget, TProp> Mask<TMask>(bool overrideIgnore = false)
+            where TMask : NCMapper.IMask { }
+        public NCMapper.MemberConfig<TSource, TTarget, TProp> NoAutoInclude() { }
+    }
+    public class MemberHead<TSource, TTarget, TProp>
+    {
+        public NCMapper.MemberConfig<TSource, TTarget, TProp> Convert(System.Func<TProp> converter, bool overrideIgnore = false) { }
+        public NCMapper.MemberConfig<TSource, TTarget, TProp> Convert(System.Func<TSource, TProp> converter, bool overrideIgnore = false) { }
+        public NCMapper.MemberConfig<TSource, TTarget, TProp> Convert<TSrcProp>(System.Func<TSrcProp, TProp> converter, bool overrideIgnore = false) { }
+        public NCMapper.MemberConfig<TSource, TTarget, TProp> Convert<TSrcProp>(System.Func<TSource, TSrcProp, TProp> converter, bool overrideIgnore = false) { }
+        public NCMapper.MemberConfig<TSource, TTarget, TProp> ConvertBack<TEntityProp>(System.Func<TEntityProp> converter, bool overrideIgnore = false) { }
+        public NCMapper.MemberConfig<TSource, TTarget, TProp> ConvertBack<TEntityProp>(System.Func<TProp, TEntityProp> converter, bool overrideIgnore = false) { }
+        public NCMapper.MemberConfig<TSource, TTarget, TProp> ConvertBack<TEntityProp>(System.Func<TTarget, TEntityProp> converter, bool overrideIgnore = false) { }
+        public NCMapper.MemberConfig<TSource, TTarget, TProp> ConvertBack<TEntityProp>(System.Func<TTarget, TProp, TEntityProp> converter, bool overrideIgnore = false) { }
+        public NCMapper.MemberConfig<TSource, TTarget, TProp> Format(string format, bool overrideIgnore = false) { }
+        public NCMapper.MemberConfig<TSource, TTarget, TProp> From<TSrcProp>(System.Linq.Expressions.Expression<System.Func<TSource, TSrcProp>> src, bool overrideIgnore = false) { }
+        public NCMapper.MemberConfig<TSource, TTarget, TProp> FromJson() { }
+        public NCMapper.MemberConfig<TSource, TTarget, TProp> FromSource<TSubSource>(System.Linq.Expressions.Expression<System.Func<TSubSource, object>> src) { }
+        public NCMapper.AfterIgnore<TSource, TTarget> Ignore() { }
+        public NCMapper.AfterIgnore<TSource, TTarget> Ignore(NCMapper.Attributes.Direction direction) { }
+        public NCMapper.MemberConfig<TSource, TTarget, TProp> MapTree() { }
+        public NCMapper.MemberConfig<TSource, TTarget, TProp> MapWhen(System.Func<TProp, bool> predicate) { }
+        public NCMapper.MemberConfig<TSource, TTarget, TProp> MapWhen<TInput>(System.Func<TInput, bool> condition) { }
+        public NCMapper.MemberConfig<TSource, TTarget, TProp> Mask<TMask>(bool overrideIgnore = false)
+            where TMask : NCMapper.IMask { }
+        public NCMapper.MemberConfig<TSource, TTarget, TProp> NoAutoInclude() { }
+    }
+    public sealed class NCMapperMapper : NCMapper.IMapper
+    {
+        public NCMapperMapper() { }
+        [System.Diagnostics.CodeAnalysis.RequiresDynamicCode("Compose uses MakeGenericType and MakeGenericMethod to build the compose delegate." +
+            " Not supported in AOT. Register a source-generated compose delegate via Register" +
+            "GeneratedCompose to make this AOT-safe.")]
+        [System.Diagnostics.CodeAnalysis.RequiresUnreferencedCode("Compose scans type members and attributes via reflection. Some members may be tri" +
+            "mmed. Register a source-generated compose delegate via RegisterGeneratedCompose " +
+            "to make this AOT-safe.")]
+        public TTarget? Compose<TTarget>(params object[] sources)
+            where TTarget :  class { }
+        [System.Diagnostics.CodeAnalysis.RequiresDynamicCode("DeepCopy uses Expression.Compile and MakeGenericMethod in the runtime fallback pa" +
+            "th. Not supported in AOT. Use the source-generated deep copy path to make this A" +
+            "OT-safe.")]
+        [System.Diagnostics.CodeAnalysis.RequiresUnreferencedCode("DeepCopy scans type members via reflection in the runtime fallback path. Some mem" +
+            "bers may be trimmed. Use the source-generated deep copy path to make this AOT-sa" +
+            "fe.")]
+        public T? DeepCopy<T>(T source)
+            where T :  class { }
+        [System.Diagnostics.CodeAnalysis.RequiresDynamicCode("Map uses Expression.Compile and reflection in the runtime fallback path. Not supp" +
+            "orted in AOT. Mark the DTO with [MapFrom] to use the AOT-safe source-generated p" +
+            "ath.")]
+        [System.Diagnostics.CodeAnalysis.RequiresUnreferencedCode("Map scans type members and attributes via reflection in the runtime fallback path" +
+            ". Some members may be trimmed. Mark the DTO with [MapFrom] to use the AOT-safe s" +
+            "ource-generated path.")]
+        public TSource? Map<TSource>(TSource source, System.Action<TSource, TSource>? action = null)
+            where TSource :  class { }
+        [System.Diagnostics.CodeAnalysis.RequiresDynamicCode("Map uses Expression.Compile and reflection in the runtime fallback path. Not supp" +
+            "orted in AOT. Mark the DTO with [MapFrom] to use the AOT-safe source-generated p" +
+            "ath.")]
+        [System.Diagnostics.CodeAnalysis.RequiresUnreferencedCode("Map scans type members and attributes via reflection in the runtime fallback path" +
+            ". Some members may be trimmed. Mark the DTO with [MapFrom] to use the AOT-safe s" +
+            "ource-generated path.")]
+        public TTarget? Map<TSource, TTarget>(TSource source, System.Action<TSource, TTarget>? action = null)
+            where TSource :  class
+            where TTarget :  class { }
+        [System.Diagnostics.CodeAnalysis.RequiresDynamicCode("Map uses Expression.Compile and reflection in the runtime fallback path. Not supp" +
+            "orted in AOT. Mark the DTO with [MapFrom] to use the AOT-safe source-generated p" +
+            "ath.")]
+        [System.Diagnostics.CodeAnalysis.RequiresUnreferencedCode("Map scans type members and attributes via reflection in the runtime fallback path" +
+            ". Some members may be trimmed. Mark the DTO with [MapFrom] to use the AOT-safe s" +
+            "ource-generated path.")]
+        public void Map<TSource, TTarget>(TSource source, TTarget target, System.Action<TSource, TTarget>? action = null)
+            where TSource :  class
+            where TTarget :  class { }
+        [System.Diagnostics.CodeAnalysis.RequiresDynamicCode("MapList uses Expression.Compile and reflection in the runtime fallback path. Not " +
+            "supported in AOT. Mark the DTO with [MapFrom] to use the AOT-safe source-generat" +
+            "ed path.")]
+        [System.Diagnostics.CodeAnalysis.RequiresUnreferencedCode("MapList scans type members and attributes via reflection in the runtime fallback " +
+            "path. Some members may be trimmed. Mark the DTO with [MapFrom] to use the AOT-sa" +
+            "fe source-generated path.")]
+        public System.Collections.Generic.List<TTarget>? MapList<TTarget>(System.Collections.Generic.IEnumerable<TTarget> sources, System.Action<TTarget, TTarget>? action = null)
+            where TTarget :  class { }
+        [System.Diagnostics.CodeAnalysis.RequiresDynamicCode("MapList uses Expression.Compile and reflection in the runtime fallback path. Not " +
+            "supported in AOT. Mark the DTO with [MapFrom] to use the AOT-safe source-generat" +
+            "ed path.")]
+        [System.Diagnostics.CodeAnalysis.RequiresUnreferencedCode("MapList scans type members and attributes via reflection in the runtime fallback " +
+            "path. Some members may be trimmed. Mark the DTO with [MapFrom] to use the AOT-sa" +
+            "fe source-generated path.")]
+        public System.Collections.Generic.List<TTarget>? MapList<TSource, TTarget>(System.Collections.Generic.IEnumerable<TSource> sources, System.Action<TSource, TTarget>? action = null)
+            where TSource :  class
+            where TTarget :  class { }
+    }
+    public class NCMapperOptions
+    {
+        public NCMapperOptions() { }
+        public NCMapper.DeepCopyStrategy DeepCopyStrategy { get; set; }
+        public int MaxInlineDepth { get; set; }
+        public int MaxRecursionDepth { get; set; }
+        public bool TraceEnabled { get; set; }
+        public System.IO.TextWriter? TraceOutput { get; set; }
+        public bool ValidationEnabled { get; set; }
+    }
+    public static class NCMapperServiceExtensions
+    {
+        public static Microsoft.Extensions.DependencyInjection.IServiceCollection AddNCMapper(this Microsoft.Extensions.DependencyInjection.IServiceCollection services) { }
+        [System.Diagnostics.CodeAnalysis.RequiresDynamicCode("configuration.Bind may require dynamic code to construct bound types. Not support" +
+            "ed in AOT. Use the AddNCMapper(IServiceCollection, Action<NCMapperOptions>) over" +
+            "load for an AOT-safe alternative.")]
+        [System.Diagnostics.CodeAnalysis.RequiresUnreferencedCode("configuration.Bind uses reflection to set NCMapperOptions members. Some members m" +
+            "ay be trimmed. Use the AddNCMapper(IServiceCollection, Action<NCMapperOptions>) " +
+            "overload for an AOT-safe alternative.")]
+        public static Microsoft.Extensions.DependencyInjection.IServiceCollection AddNCMapper(this Microsoft.Extensions.DependencyInjection.IServiceCollection services, Microsoft.Extensions.Configuration.IConfiguration configuration) { }
+        [System.Diagnostics.CodeAnalysis.RequiresDynamicCode("AddNCMapper builds expressions via MakeGenericMethod/MakeGenericType or Expressio" +
+            "n.Compile(). Not supported in AOT.")]
+        public static Microsoft.Extensions.DependencyInjection.IServiceCollection AddNCMapper(this Microsoft.Extensions.DependencyInjection.IServiceCollection services, System.Action<NCMapper.NCMapperOptions>? configure) { }
+    }
+    public enum NamingStrategy
+    {
+        Default = 0,
+        CaseSensitive = 1,
+        SnakeCase = 2,
+        UpperSnakeCase = 3,
+    }
+    public sealed class PagedList<T>
+    {
+        public PagedList() { }
+        public bool HasNext { get; }
+        public bool HasPrev { get; }
+        public int TotalPages { get; }
+        public System.Collections.Generic.List<T> Items { get; init; }
+        public int PageSize { get; init; }
+        public int Page { get; init; }
+        public long TotalCount { get; init; }
+    }
+    public static class TypeConvertHelper
+    {
+        [System.Diagnostics.CodeAnalysis.RequiresDynamicCode("ConvertValue uses Convert.ChangeType/Enum.Parse/Enum.ToObject which rely on TypeD" +
+            "escriptor and runtime type conversion. Not supported in AOT.")]
+        [System.Diagnostics.CodeAnalysis.RequiresUnreferencedCode("ConvertValue resolves types and enum members via runtime type conversion. Some me" +
+            "mbers may be trimmed.")]
+        public static TTarget? ConvertValue<TSource, TTarget>(TSource source) { }
+    }
+}
+namespace NCMapper.Attributes
+{
+    [System.AttributeUsage(System.AttributeTargets.Class, AllowMultiple=false, Inherited=false)]
+    public sealed class AfterMappingAttribute : System.Attribute, NCMapper.IProjectionPolicy
+    {
+        public AfterMappingAttribute(string methodName) { }
+        public AfterMappingAttribute(System.Type declaringType, string methodName) { }
+        public System.Type? DeclaringType { get; }
+        public string MethodName { get; }
+        public bool RequiresDowngrade { get; }
+    }
+    [System.AttributeUsage(System.AttributeTargets.Class, AllowMultiple=false, Inherited=false)]
+    public sealed class BeforeMappingAttribute : System.Attribute, NCMapper.IProjectionPolicy
+    {
+        public BeforeMappingAttribute(string methodName) { }
+        public BeforeMappingAttribute(System.Type declaringType, string methodName) { }
+        public System.Type? DeclaringType { get; }
+        public string MethodName { get; }
+        public bool RequiresDowngrade { get; }
+    }
+    [System.AttributeUsage(System.AttributeTargets.Property, AllowMultiple=false, Inherited=true)]
+    public class ConvertAttribute : System.Attribute, NCMapper.IProjectionPolicy
+    {
+        public ConvertAttribute(string methodName) { }
+        public ConvertAttribute(System.Type declaringType, string methodName) { }
+        public System.Type? DeclaringType { get; }
+        public string MethodName { get; }
+        public bool OverrideIgnore { get; set; }
+        public bool RequiresDowngrade { get; }
+    }
+    [System.AttributeUsage(System.AttributeTargets.Property, AllowMultiple=false, Inherited=true)]
+    public sealed class ConvertBackAttribute : System.Attribute, NCMapper.IProjectionPolicy
+    {
+        public ConvertBackAttribute(string methodName) { }
+        public ConvertBackAttribute(System.Type declaringType, string methodName) { }
+        public System.Type? DeclaringType { get; }
+        public string MethodName { get; }
+        public bool OverrideIgnore { get; set; }
+        public bool RequiresDowngrade { get; }
+    }
+    public enum Direction
+    {
+        Both = 0,
+        ToDto = 1,
+        ToEntity = 2,
+    }
+    [System.AttributeUsage(System.AttributeTargets.Assembly, AllowMultiple=false, Inherited=false)]
+    public sealed class MapDefaultsAttribute : System.Attribute
+    {
+        public MapDefaultsAttribute() { }
+        public string[]? IgnoreNamePrefixes { get; set; }
+        public string[]? IgnoreNamePrefixesToEntity { get; set; }
+        public string[]? IgnoreNameSuffixes { get; set; }
+        public string[]? IgnoreNameSuffixesToEntity { get; set; }
+        public string[]? IgnoreNames { get; set; }
+        public string[]? IgnoreNamesToEntity { get; set; }
+        public System.Type[]? IgnoreTypes { get; set; }
+        public System.Type[]? IgnoreTypesToEntity { get; set; }
+        public NCMapper.NamingStrategy NamingStrategy { get; set; }
+        public string[]? Postfixes { get; set; }
+        public string[]? Prefixes { get; set; }
+    }
+    [System.AttributeUsage(System.AttributeTargets.Property, AllowMultiple=false, Inherited=false)]
+    public class MapFormatAttribute : System.Attribute, NCMapper.IProjectionPolicy
+    {
+        public MapFormatAttribute(string format) { }
+        public string Format { get; }
+        public bool OverrideIgnore { get; set; }
+        public bool RequiresDowngrade { get; }
+    }
+    [System.AttributeUsage(System.AttributeTargets.Class, Inherited=true)]
+    public class MapFromAttribute : System.Attribute, NCMapper.IProjectionPolicy
+    {
+        public MapFromAttribute(System.Type fromSource) { }
+        public System.Type FromSource { get; }
+        public bool RequiresDowngrade { get; }
+    }
+    [System.AttributeUsage(System.AttributeTargets.Property, AllowMultiple=false, Inherited=true)]
+    public class MapIgnoreAttribute : System.Attribute, NCMapper.IProjectionPolicy
+    {
+        public MapIgnoreAttribute() { }
+        public MapIgnoreAttribute(NCMapper.Attributes.Direction direction) { }
+        public NCMapper.Attributes.Direction Direction { get; set; }
+        public bool RequiresDowngrade { get; }
+    }
+    [System.AttributeUsage(System.AttributeTargets.Property, Inherited=true)]
+    public class MapNoAutoIncludeAttribute : System.Attribute
+    {
+        public MapNoAutoIncludeAttribute() { }
+    }
+    [System.AttributeUsage(System.AttributeTargets.Class, Inherited=true)]
+    public class MapNoAutoMatchAttribute : System.Attribute, NCMapper.IProjectionPolicy
+    {
+        public MapNoAutoMatchAttribute() { }
+        public bool RequiresDowngrade { get; }
+    }
+    [System.AttributeUsage(System.AttributeTargets.Property, Inherited=true)]
+    public class MapPropertyAttribute : System.Attribute, NCMapper.IProjectionPolicy
+    {
+        public MapPropertyAttribute(System.Type fromSource, string fromField) { }
+        public string FromField { get; }
+        public System.Type FromSource { get; }
+        public bool IsFromJson { get; set; }
+        public bool OverrideIgnore { get; set; }
+        public bool RequiresDowngrade { get; }
+    }
+    [System.AttributeUsage(System.AttributeTargets.Class, AllowMultiple=true, Inherited=false)]
+    public sealed class MapSubclassAttribute : System.Attribute, NCMapper.IProjectionPolicy
+    {
+        public MapSubclassAttribute(System.Type sourceType, System.Type targetType) { }
+        public bool RequiresDowngrade { get; }
+        public System.Type SourceType { get; }
+        public System.Type TargetType { get; }
+    }
+    [System.AttributeUsage(System.AttributeTargets.Class, AllowMultiple=false, Inherited=false)]
+    public sealed class MapTreeAttribute : System.Attribute
+    {
+        public MapTreeAttribute(string idProperty = "Id", string parentIdProperty = "ParentId", string childrenProperty = "Children") { }
+        public string ChildrenProperty { get; }
+        public string IdProperty { get; }
+        public string ParentIdProperty { get; }
+    }
+    [System.AttributeUsage(System.AttributeTargets.Property, AllowMultiple=false, Inherited=true)]
+    public sealed class MapWhenAttribute : System.Attribute, NCMapper.IProjectionPolicy
+    {
+        public MapWhenAttribute(string methodName) { }
+        public string MethodName { get; }
+        public bool RequiresDowngrade { get; }
+    }
+    [System.AttributeUsage(System.AttributeTargets.Property, AllowMultiple=false, Inherited=false)]
+    public class MaskAttribute : System.Attribute, NCMapper.IProjectionPolicy
+    {
+        public MaskAttribute(System.Type maskType) { }
+        public System.Type MaskType { get; }
+        public bool OverrideIgnore { get; set; }
+        public bool RequiresDowngrade { get; }
+    }
+    [System.AttributeUsage(System.AttributeTargets.Assembly | System.AttributeTargets.Class, AllowMultiple=false)]
+    public sealed class NCMapperOptionsAttribute : System.Attribute
+    {
+        public NCMapperOptionsAttribute() { }
+        public bool ReportUnmappedSourceMembers { get; set; }
+        public bool ReportUnmappedTargetMembers { get; set; }
+    }
+}
+namespace NCMapper.Runtime
+{
+    public sealed class MappingMetaView : System.IEquatable<NCMapper.Runtime.MappingMetaView>
+    {
+        public MappingMetaView() { }
+        public bool IsDto { get; init; }
+        public bool IsRegistered { get; init; }
+        public NCMapper.Attributes.MapFromAttribute? MapFromAttribute { get; init; }
+        public NCMapper.Runtime.RuntimeMapperMetadata? Metadata { get; init; }
+        public System.Type? PrimarySource { get; init; }
+    }
+    public sealed class RuntimeComposeMapping
+    {
+        public RuntimeComposeMapping() { }
+        public string? ConditionMethodRef { get; init; }
+        public string? ConverterDeclaringType { get; init; }
+        public string? ConverterMethodName { get; init; }
+        public string? FormatString { get; init; }
+        public bool HasConverter { get; init; }
+        public bool HasIndex { get; init; }
+        public bool HasMask { get; init; }
+        public bool IsFromJson { get; init; }
+        public string? MaskTypeName { get; init; }
+        public int[]? SourceIndexes { get; init; }
+        public string[] SourcePathNames { get; init; }
+        public string SubSourceTypeName { get; init; }
+        public System.Type? SubSourceTypeRef { get; init; }
+        public string TargetPropertyName { get; init; }
+    }
+    public sealed class RuntimeMapperMetadata
+    {
+        public RuntimeMapperMetadata() { }
+        public string? AfterMappingMethodRef { get; init; }
+        public NCMapper.Runtime.RuntimeTargetPropertySlot[] AllTargetSlots { get; init; }
+        public string? BeforeMappingMethodRef { get; init; }
+        public NCMapper.Runtime.RuntimeMappingChannel Channel { get; init; }
+        public NCMapper.Runtime.RuntimeComposeMapping[] ComposeMappings { get; init; }
+        public bool HasComposeMappings { get; init; }
+        public bool HasSubclassDispatch { get; init; }
+        public bool IsFluentForward { get; init; }
+        public bool NoAutoInclude { get; init; }
+        public NCMapper.Runtime.RuntimePropertyMapping[] Properties { get; init; }
+        public string[] PropertyNoAutoIncludeTargets { get; init; }
+        public string SourceTypeFqn { get; init; }
+        public System.Type SourceType { get; init; }
+        public string TargetTypeFqn { get; init; }
+        public System.Type TargetType { get; init; }
+        public NCMapper.Runtime.RuntimeTreeConfig? TreeConfig { get; init; }
+    }
+    public enum RuntimeMappingChannel
+    {
+        MapFrom = 0,
+        Fluent = 1,
+    }
+    public sealed class RuntimePropertyMapping
+    {
+        public RuntimePropertyMapping() { }
+        public string? ConditionMethodRef { get; init; }
+        public int ConditionShape { get; init; }
+        public string? ConverterDeclaringType { get; init; }
+        public string? ConverterMethodName { get; init; }
+        public string? FormatString { get; init; }
+        public bool HasConverter { get; init; }
+        public bool HasIndex { get; init; }
+        public bool HasMask { get; init; }
+        public bool IsFlattened { get; init; }
+        public bool IsFromJson { get; init; }
+        public bool IsPropertyNoAutoInclude { get; init; }
+        public bool IsReverseWriteBack { get; init; }
+        public string? MaskTypeName { get; init; }
+        public int[]? SourceIndexes { get; init; }
+        public string? SourceName { get; init; }
+        public string[] SourcePathNames { get; init; }
+        public string? SourcePropertyTypeName { get; init; }
+        public System.Type? SourcePropertyTypeRef { get; init; }
+        public NCMapper.Runtime.RuntimeTargetPropertySlot Target { get; init; }
+    }
+    public static class RuntimeSnapshotPair<TSource, TTarget>
+        where TSource :  class
+        where TTarget :  class
+    {
+        public static volatile NCMapper.Runtime.RuntimeMapperMetadata? Metadata;
+    }
+    public static class RuntimeSnapshotStore
+    {
+        public static void Clear() { }
+        public static NCMapper.Runtime.RuntimeMapperMetadata? FindByPair(System.Type sourceType, System.Type targetType) { }
+        public static System.Collections.Generic.IReadOnlyList<NCMapper.Runtime.RuntimeMapperMetadata> FindByTarget(System.Type targetType) { }
+        public static System.Type? GetPrimarySource(System.Type dtoType) { }
+        public static NCMapper.Runtime.RuntimeTreeConfig? GetTreeConfig(System.Type dtoType) { }
+        public static bool IsFluentRegisteredDto(System.Type dtoType) { }
+        public static bool IsNoAutoMatch(System.Type sourceType, System.Type targetType) { }
+        public static bool IsPropertyNoAutoInclude(System.Type dtoType, string propertyName) { }
+        public static bool IsRegisteredDto(System.Type type) { }
+        public static void Register(NCMapper.Runtime.RuntimeMapperMetadata metadata) { }
+        public static bool TryGetFluentDetailMeta(System.Type dtoType, [System.Diagnostics.CodeAnalysis.MaybeNullWhen(false)] out NCMapper.Runtime.RuntimeMapperMetadata meta) { }
+        public static bool TryGetMappingMeta(System.Type type, [System.Diagnostics.CodeAnalysis.MaybeNullWhen(false)] out NCMapper.Runtime.MappingMetaView view) { }
+    }
+    public sealed class RuntimeTargetPropertySlot
+    {
+        public RuntimeTargetPropertySlot() { }
+        public string? ConverterBackDeclaringType { get; init; }
+        public string? ConverterBackMethodName { get; init; }
+        public string? ConverterDeclaringType { get; init; }
+        public string? ConverterMethodName { get; init; }
+        public string? FromField { get; init; }
+        public string? FromSourceTypeName { get; init; }
+        public bool HasConvertBack { get; init; }
+        public bool HasConverter { get; init; }
+        public bool HasMapFromAttribute { get; init; }
+        public bool HasMapIgnore { get; init; }
+        public bool HasMapProperty { get; init; }
+        public bool HasMask { get; init; }
+        public bool HasOverrideIgnore { get; init; }
+        public bool IsFromJson { get; init; }
+        public NCMapper.Attributes.MapFromAttribute? MapFromAttribute { get; init; }
+        public int MapIgnoreDirection { get; init; }
+        public string? MaskTypeName { get; init; }
+        public string Name { get; init; }
+        public string TypeName { get; init; }
+        public System.Type? TypeRef { get; init; }
+    }
+    public sealed class RuntimeTreeConfig
+    {
+        public RuntimeTreeConfig() { }
+        public string ChildrenProperty { get; init; }
+        public string IdProperty { get; init; }
+        public string ParentIdProperty { get; init; }
+    }
+}

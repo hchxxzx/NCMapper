@@ -1,0 +1,167 @@
+{
+    "source":  "samples/NCMapper.Samples/01-Fluent/MwModels.cs",
+    "language":  "en",
+    "generatedFrom":  "0b5078b2c66f27a0cd56117fbf83aa3408185a507e1baf1af4d2c6cf0a358d64",
+    "comments":  [
+                     {
+                         "i":  1,
+                         "zh":  "守卫源实体（条目）——Name/Score/Kind 为谓词输入。",
+                         "en":  "Guard the source entity (entry) — Name/Score/Kind serve as predicate inputs."
+                     },
+                     {
+                         "i":  3,
+                         "zh":  "\u003csummary\u003e条目主键\u003c/summary\u003e",
+                         "en":  "\u003csummary\u003eEntry primary key\u003c/summary\u003e"
+                     },
+                     {
+                         "i":  4,
+                         "zh":  "\u003csummary\u003e名称（命名方法组谓词入参）\u003c/summary\u003e",
+                         "en":  "\u003csummary\u003eName (predicate input for named method group)\u003c/summary\u003e"
+                     },
+                     {
+                         "i":  5,
+                         "zh":  "\u003csummary\u003e分值（内联谓词入参）\u003c/summary\u003e",
+                         "en":  "\u003csummary\u003eScore (predicate input for inline lambda)\u003c/summary\u003e"
+                     },
+                     {
+                         "i":  6,
+                         "zh":  "\u003csummary\u003e分类（T2 整源谓词判定输入）\u003c/summary\u003e",
+                         "en":  "\u003csummary\u003eCategory (predicate input for T2 full-source predicate)\u003c/summary\u003e"
+                     },
+                     {
+                         "i":  7,
+                         "zh":  "\u003csummary\u003e有界源值（组合专用——独立于自动同名属性 Score，显式 .Map 与其同锚点 MapWhen 共享）\u003c/summary\u003e",
+                         "en":  "\u003csummary\u003eBounded source value (dedicated to composition — independent of the auto-mapped property Score; explicitly .Map shares the same anchor point with MapWhen)\u003c/summary\u003e"
+                     },
+                     {
+                         "i":  9,
+                         "zh":  "Fluent 侧守卫 DTO——四个属性各锚一种谓词形态（命名方法组 / 内联转录 / 整源 / 同锚点组合）。",
+                         "en":  "Fluent-side guard DTO — each of the four properties anchors a distinct predicate form (named method group / inline transcription / full-source / same-anchor composition)."
+                     },
+                     {
+                         "i":  11,
+                         "zh":  "\u003csummary\u003e条目主键（自动同名，无守卫）\u003c/summary\u003e",
+                         "en":  "\u003csummary\u003eEntry primary key (auto-mapped by name, no guard)\u003c/summary\u003e"
+                     },
+                     {
+                         "i":  12,
+                         "zh":  "\u003csummary\u003e名称（命名静态方法组谓词 HasContent）\u003c/summary\u003e",
+                         "en":  "\u003csummary\u003eName (named static method group predicate HasContent)\u003c/summary\u003e"
+                     },
+                     {
+                         "i":  13,
+                         "zh":  "\u003csummary\u003e分值（无捕获内联 lambda 谓词，转录进生成代码）\u003c/summary\u003e",
+                         "en":  "\u003csummary\u003eScore (capture-free inline lambda predicate, transcribed into generated code)\u003c/summary\u003e"
+                     },
+                     {
+                         "i":  14,
+                         "zh":  "\u003csummary\u003e分类标签（T2 整源谓词 + 显式 Map——条件→转换→赋值）\u003c/summary\u003e",
+                         "en":  "\u003csummary\u003eCategory tag (T2 full-source predicate + explicit .Map — condition → transformation → assignment)\u003c/summary\u003e"
+                     },
+                     {
+                         "i":  15,
+                         "zh":  "\u003csummary\u003e有界分值（同锚点：.Member(d =\u0026gt; d.BoundedScore).From(s =\u0026gt; s.BoundedSource) + .Member(d =\u0026gt; d.BoundedScore).MapWhen()——条件假则跳过赋值）\u003c/summary\u003e",
+                         "en":  "\u003csummary\u003eBounded score (same anchor: .Member(d =\u003e d.BoundedScore).From(s =\u003e s.BoundedSource) + .Member(d =\u003e d.BoundedScore).MapWhen() — assignment skipped if condition evaluates to false)\u003c/summary\u003e"
+                     },
+                     {
+                         "i":  17,
+                         "zh":  "谓词宿主类——A 形态命名静态方法组（须 public/internal static + 同程序集可见）。",
+                         "en":  "Predicate host class — Form A: named static method group (must be public/internal static and visible within the same assembly)."
+                     },
+                     {
+                         "i":  19,
+                         "zh":  "\u003csummary\u003eT1 字段值谓词——非空非空白\u003c/summary\u003e",
+                         "en":  "\u003csummary\u003eT1 field-value predicate — non-null and non-whitespace\u003c/summary\u003e"
+                     },
+                     {
+                         "i":  20,
+                         "zh":  "\u003cparam name=\"value\"\u003e源字段值\u003c/param\u003e",
+                         "en":  "\u003cparam name=\"value\"\u003eSource field value\u003c/param\u003e"
+                     },
+                     {
+                         "i":  21,
+                         "zh":  "\u003creturns\u003etrue 才映射\u003c/returns\u003e",
+                         "en":  "\u003creturns\u003etrue to perform mapping\u003c/returns\u003e"
+                     },
+                     {
+                         "i":  22,
+                         "zh":  "\u003csummary\u003eT2 整源谓词——单参 == 源实体类型判 T2（与 Convert 族同规则）\u003c/summary\u003e",
+                         "en":  "\u003csummary\u003eT2 full-source predicate — single parameter equals source entity type for T2 classification (same rules as the Convert family)\u003c/summary\u003e"
+                     },
+                     {
+                         "i":  23,
+                         "zh":  "\u003cparam name=\"src\"\u003e源实体\u003c/param\u003e",
+                         "en":  "\u003cparam name=\"src\"\u003eSource entity\u003c/param\u003e"
+                     },
+                     {
+                         "i":  24,
+                         "zh":  "\u003creturns\u003eKind==\"A\" 才映射\u003c/returns\u003e",
+                         "en":  "\u003creturns\u003etrue to map only when Kind==\"A\"\u003c/returns\u003e"
+                     },
+                     {
+                         "i":  26,
+                         "zh":  "Fluent 侧守卫 Mapper（对应 how-to/fluent/terminals.md「MapWhen」节）——",
+                         "en":  "Fluent-side guard Mapper (corresponding to the \u0027MapWhen\u0027 section in how-to/fluent/terminals.md) —"
+                     },
+                     {
+                         "i":  27,
+                         "zh":  "命名方法组 + 内联转录 + 整源 + 同锚点（Map+MapWhen）四形态同链。",
+                         "en":  "Four predicate forms in one chain: named method group + inline transcription + full-source + same-anchor (.Map + .MapWhen)."
+                     },
+                     {
+                         "i":  29,
+                         "zh":  "\u003csummary\u003e链式声明入口（方法名任意，签名固定）\u003c/summary\u003e",
+                         "en":  "\u003csummary\u003eChained declaration entry point (method name arbitrary, signature fixed)\u003c/summary\u003e"
+                     },
+                     {
+                         "i":  30,
+                         "zh":  "\u003cparam name=\"cfg\"\u003eFluent 配置根\u003c/param\u003e",
+                         "en":  "\u003cparam name=\"cfg\"\u003eFluent configuration root\u003c/param\u003e"
+                     },
+                     {
+                         "i":  32,
+                         "zh":  "特性侧守卫 DTO（对应 how-to/fluent/terminals.md「MapWhen」节的特性通道）——",
+                         "en":  "Attribute-side guard DTO (corresponding to the attribute channel in the \u0027MapWhen\u0027 section of how-to/fluent/terminals.md) —"
+                     },
+                     {
+                         "i":  33,
+                         "zh":  "[MapWhen(nameof(HasContent))] 属性级：谓词方法在被标注属性的声明类型上按名解析（单类型自足）；",
+                         "en":  "[MapWhen(nameof(HasContent))] Attribute-level: predicate method resolved by name on the declaring type of the annotated property (self-contained within a single type);"
+                     },
+                     {
+                         "i":  34,
+                         "zh":  "Inherited=true 随属性继承（与钩子特性 Inherited=false 不同）。",
+                         "en":  "Inherited=true means the attribute is inherited (unlike hook attributes with Inherited=false)."
+                     },
+                     {
+                         "i":  36,
+                         "zh":  "\u003csummary\u003e条目主键（自动同名）\u003c/summary\u003e",
+                         "en":  "\u003csummary\u003eEntry primary key (automatically named identically).\u003c/summary\u003e"
+                     },
+                     {
+                         "i":  37,
+                         "zh":  "\u003csummary\u003e名称（[MapWhen] 属性级守卫——谓词 HasContent 声明于本类型）\u003c/summary\u003e",
+                         "en":  "\u003csummary\u003eName ([MapWhen] property-level guard—predicate HasContent is declared in this type).\u003c/summary\u003e"
+                     },
+                     {
+                         "i":  38,
+                         "zh":  "\u003csummary\u003e分值（自动同名，无守卫）\u003c/summary\u003e",
+                         "en":  "\u003csummary\u003eScore (automatically named identically, no guard).\u003c/summary\u003e"
+                     },
+                     {
+                         "i":  39,
+                         "zh":  "\u003csummary\u003eT1 字段值谓词（public static，签名 bool(string)——与 [Convert(string)] 单参形态同规则）\u003c/summary\u003e",
+                         "en":  "\u003csummary\u003eT1 field value predicate (public static, signature bool(string)—same rules as the single-parameter [Convert(string)] form).\u003c/summary\u003e"
+                     },
+                     {
+                         "i":  40,
+                         "zh":  "\u003cparam name=\"value\"\u003e源字段值\u003c/param\u003e",
+                         "en":  "\u003cparam name=\"value\"\u003eSource field value.\u003c/param\u003e"
+                     },
+                     {
+                         "i":  41,
+                         "zh":  "\u003creturns\u003etrue 才映射\u003c/returns\u003e",
+                         "en":  "\u003creturns\u003etrue to perform mapping.\u003c/returns\u003e"
+                     }
+                 ]
+}

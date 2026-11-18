@@ -1,0 +1,135 @@
+name: Bug report
+description: Report a defect in NCMapper (runtime behaviour, source generator output, diagnostics, or documentation)
+title: "[Bug]: "
+labels: ["bug", "needs-triage"]
+body:
+  - type: markdown
+    attributes:
+      value: |
+        Thanks for taking the time to file a report. NCMapper is a compile-time-first
+        library, so the exact versions and a minimal reproduction matter a lot —
+        most defects turn out to be version- or configuration-specific.
+
+        Before filing, please check the [documentation](https://github.com/hchxxzx/NCMapper#readme)
+        and search existing issues.
+
+  - type: checkboxes
+    id: preflight
+    attributes:
+      label: Preflight checks
+      options:
+        - label: I have searched existing issues and this is not a duplicate.
+          required: true
+        - label: I am using the latest release of NCMapper.
+          required: true
+        - label: I have read the FAQ and Common Pitfalls pages in the documentation.
+          required: false
+
+  - type: input
+    id: ncmapper-version
+    attributes:
+      label: NCMapper version
+      description: The exact package version. Find it in your `.csproj` or `packages.lock.json`.
+      placeholder: "1.0.0-preview.1"
+    validations:
+      required: true
+
+  - type: dropdown
+    id: target-framework
+    attributes:
+      label: Target framework
+      description: The target framework of the project where the problem occurs.
+      options:
+        - net8.0
+        - net9.0
+        - net10.0
+        - Multiple / not sure
+    validations:
+      required: true
+
+  - type: input
+    id: dotnet-sdk
+    attributes:
+      label: .NET SDK version
+      description: Output of `dotnet --version`.
+      placeholder: "10.0.100"
+    validations:
+      required: true
+
+  - type: dropdown
+    id: channel
+    attributes:
+      label: Mapping channel
+      description: |
+        Which declaration channel are you using? Pick the one that is closest —
+        if the problem reproduces in both, say so in the description.
+      options:
+        - Fluent configuration class ([MapperConfig])
+        - Attribute-based ([MapFrom] and friends)
+        - Composition ([MapFrom] with multiple sources / Compose)
+        - Deep copy (Mapper.DeepCopy)
+        - ORM projection (EF Core / FreeSql / Dapper)
+        - Runtime reflection fallback (no source generator)
+        - Not sure
+    validations:
+      required: true
+
+  - type: dropdown
+    id: build-mode
+    attributes:
+      label: Build mode
+      description: This affects which engine handles the mapping.
+      options:
+        - Source generator (default, compile-time)
+        - Runtime expression trees
+        - NativeAOT publish
+        - Trimmed / single-file
+        - Not sure
+    validations:
+      required: true
+
+  - type: textarea
+    id: description
+    attributes:
+      label: Description
+      description: What went wrong? Include the diagnostic code if the compiler reported one.
+    validations:
+      required: true
+
+  - type: textarea
+    id: reproduction
+    attributes:
+      label: Minimal reproduction
+      description: |
+        A small, self-contained snippet is worth more than a description.
+        Include the source and target types with their mapping declarations,
+        and the call site.
+      render: csharp
+      placeholder: |
+        // Paste the smallest code that still shows the problem.
+    validations:
+      required: true
+
+  - type: textarea
+    id: expected
+    attributes:
+      label: Expected behaviour
+    validations:
+      required: true
+
+  - type: textarea
+    id: actual
+    attributes:
+      label: Actual behaviour
+      description: Include the full exception message and stack trace, or the full compiler output.
+      render: shell
+    validations:
+      required: true
+
+  - type: textarea
+    id: extra
+    attributes:
+      label: Anything else?
+      description: Generated code, build logs, screenshots, related issues.
+    validations:
+      required: false

@@ -1,0 +1,278 @@
+namespace NCMapper.Dapper
+{
+    public sealed class DapperDtoSelector<TSource>
+        where TSource :  class
+    {
+        [System.Diagnostics.CodeAnalysis.RequiresDynamicCode("Query uses Expression.Compile() for the mapping delegate. Not supported in AOT. [" +
+            "MapFrom] makes mapping AOT-safe but delegate compilation still requires dynamic " +
+            "code.")]
+        [System.Diagnostics.CodeAnalysis.RequiresUnreferencedCode("Query scans attributes via reflection.")]
+        public System.Collections.Generic.IEnumerable<TDto> Query<TDto>(Dapper.CommandDefinition command)
+            where TDto :  class { }
+        [System.Diagnostics.CodeAnalysis.RequiresDynamicCode("Query uses Expression.Compile() for the mapping delegate. Not supported in AOT. [" +
+            "MapFrom] makes mapping AOT-safe but delegate compilation still requires dynamic " +
+            "code.")]
+        [System.Diagnostics.CodeAnalysis.RequiresUnreferencedCode("Query scans attributes via reflection.")]
+        public System.Collections.Generic.IEnumerable<TDto> Query<TDto>(string sql, object? param = null, System.Data.IDbTransaction? transaction = null, bool buffered = true, int? commandTimeout = default, System.Data.CommandType? commandType = default)
+            where TDto :  class { }
+        [System.Diagnostics.CodeAnalysis.RequiresDynamicCode("QueryAsync uses Expression.Compile() for the mapping delegate. Not supported in A" +
+            "OT. [MapFrom] makes mapping AOT-safe but delegate compilation still requires dyn" +
+            "amic code.")]
+        [System.Diagnostics.CodeAnalysis.RequiresUnreferencedCode("QueryAsync scans attributes via reflection.")]
+        public System.Threading.Tasks.Task<System.Collections.Generic.IEnumerable<TDto>> QueryAsync<TDto>(Dapper.CommandDefinition command)
+            where TDto :  class { }
+        [System.Diagnostics.CodeAnalysis.RequiresDynamicCode("QueryAsync uses Expression.Compile() for the mapping delegate. Not supported in A" +
+            "OT. [MapFrom] makes mapping AOT-safe but delegate compilation still requires dyn" +
+            "amic code.")]
+        [System.Diagnostics.CodeAnalysis.RequiresUnreferencedCode("QueryAsync scans attributes via reflection.")]
+        public System.Threading.Tasks.Task<System.Collections.Generic.IEnumerable<TDto>> QueryAsync<TDto>(string sql, object? param = null, System.Data.IDbTransaction? transaction = null, int? commandTimeout = default, System.Data.CommandType? commandType = default, System.Threading.CancellationToken cancellationToken = default)
+            where TDto :  class { }
+        [System.Diagnostics.CodeAnalysis.RequiresDynamicCode("QueryFirst uses Expression.Compile() for the mapping delegate. Not supported in A" +
+            "OT. [MapFrom] makes mapping AOT-safe but delegate compilation still requires dyn" +
+            "amic code.")]
+        [System.Diagnostics.CodeAnalysis.RequiresUnreferencedCode("QueryFirst scans attributes via reflection.")]
+        public TDto QueryFirst<TDto>(Dapper.CommandDefinition command)
+            where TDto :  class { }
+        [System.Diagnostics.CodeAnalysis.RequiresDynamicCode("QueryFirst uses Expression.Compile() for the mapping delegate. Not supported in A" +
+            "OT. [MapFrom] makes mapping AOT-safe but delegate compilation still requires dyn" +
+            "amic code.")]
+        [System.Diagnostics.CodeAnalysis.RequiresUnreferencedCode("QueryFirst scans attributes via reflection.")]
+        public TDto QueryFirst<TDto>(string sql, object? param = null, System.Data.IDbTransaction? transaction = null, int? commandTimeout = default, System.Data.CommandType? commandType = default)
+            where TDto :  class { }
+        [System.Diagnostics.CodeAnalysis.RequiresDynamicCode("QueryFirstAsync uses Expression.Compile() for the mapping delegate. Not supported" +
+            " in AOT. [MapFrom] makes mapping AOT-safe but delegate compilation still require" +
+            "s dynamic code.")]
+        [System.Diagnostics.CodeAnalysis.RequiresUnreferencedCode("QueryFirstAsync scans attributes via reflection.")]
+        public System.Threading.Tasks.Task<TDto> QueryFirstAsync<TDto>(Dapper.CommandDefinition command)
+            where TDto :  class { }
+        [System.Diagnostics.CodeAnalysis.RequiresDynamicCode("QueryFirstAsync uses Expression.Compile() for the mapping delegate. Not supported" +
+            " in AOT. [MapFrom] makes mapping AOT-safe but delegate compilation still require" +
+            "s dynamic code.")]
+        [System.Diagnostics.CodeAnalysis.RequiresUnreferencedCode("QueryFirstAsync scans attributes via reflection.")]
+        public System.Threading.Tasks.Task<TDto> QueryFirstAsync<TDto>(string sql, object? param = null, System.Data.IDbTransaction? transaction = null, int? commandTimeout = default, System.Data.CommandType? commandType = default, System.Threading.CancellationToken cancellationToken = default)
+            where TDto :  class { }
+        [System.Diagnostics.CodeAnalysis.RequiresDynamicCode("QueryFirstOrDefault uses Expression.Compile() for the mapping delegate. Not suppo" +
+            "rted in AOT. [MapFrom] makes mapping AOT-safe but delegate compilation still req" +
+            "uires dynamic code.")]
+        [System.Diagnostics.CodeAnalysis.RequiresUnreferencedCode("QueryFirstOrDefault scans attributes via reflection.")]
+        public TDto? QueryFirstOrDefault<TDto>(Dapper.CommandDefinition command)
+            where TDto :  class { }
+        [System.Diagnostics.CodeAnalysis.RequiresDynamicCode("QueryFirstOrDefault uses Expression.Compile() for the mapping delegate. Not suppo" +
+            "rted in AOT. [MapFrom] makes mapping AOT-safe but delegate compilation still req" +
+            "uires dynamic code.")]
+        [System.Diagnostics.CodeAnalysis.RequiresUnreferencedCode("QueryFirstOrDefault scans attributes via reflection.")]
+        public TDto? QueryFirstOrDefault<TDto>(string sql, object? param = null, System.Data.IDbTransaction? transaction = null, int? commandTimeout = default, System.Data.CommandType? commandType = default)
+            where TDto :  class { }
+        [System.Diagnostics.CodeAnalysis.RequiresDynamicCode("QueryFirstOrDefaultAsync uses Expression.Compile() for the mapping delegate. Not " +
+            "supported in AOT. [MapFrom] makes mapping AOT-safe but delegate compilation stil" +
+            "l requires dynamic code.")]
+        [System.Diagnostics.CodeAnalysis.RequiresUnreferencedCode("QueryFirstOrDefaultAsync scans attributes via reflection.")]
+        public System.Threading.Tasks.Task<TDto?> QueryFirstOrDefaultAsync<TDto>(Dapper.CommandDefinition command)
+            where TDto :  class { }
+        [System.Diagnostics.CodeAnalysis.RequiresDynamicCode("QueryFirstOrDefaultAsync uses Expression.Compile() for the mapping delegate. Not " +
+            "supported in AOT. [MapFrom] makes mapping AOT-safe but delegate compilation stil" +
+            "l requires dynamic code.")]
+        [System.Diagnostics.CodeAnalysis.RequiresUnreferencedCode("QueryFirstOrDefaultAsync scans attributes via reflection.")]
+        public System.Threading.Tasks.Task<TDto?> QueryFirstOrDefaultAsync<TDto>(string sql, object? param = null, System.Data.IDbTransaction? transaction = null, int? commandTimeout = default, System.Data.CommandType? commandType = default, System.Threading.CancellationToken cancellationToken = default)
+            where TDto :  class { }
+        [System.Diagnostics.CodeAnalysis.RequiresDynamicCode("QueryMultiple uses Expression.Compile() for the mapping delegate. Not supported i" +
+            "n AOT. [MapFrom] makes mapping AOT-safe but delegate compilation still requires " +
+            "dynamic code.")]
+        [System.Diagnostics.CodeAnalysis.RequiresUnreferencedCode("QueryMultiple scans attributes via reflection.")]
+        [return: System.Runtime.CompilerServices.TupleElementNames(new string[] {
+                "Items1",
+                "Items2"})]
+        public System.ValueTuple<System.Collections.Generic.List<TDto1>, System.Collections.Generic.List<TDto2>> QueryMultiple<TDto1, TDto2>(string sql, object? param = null, System.Data.IDbTransaction? transaction = null, int? commandTimeout = default, System.Data.CommandType? commandType = default)
+            where TDto1 :  class
+            where TDto2 :  class { }
+        [System.Diagnostics.CodeAnalysis.RequiresDynamicCode("QueryMultiple uses Expression.Compile() for the mapping delegate. Not supported i" +
+            "n AOT. [MapFrom] makes mapping AOT-safe but delegate compilation still requires " +
+            "dynamic code.")]
+        [System.Diagnostics.CodeAnalysis.RequiresUnreferencedCode("QueryMultiple scans attributes via reflection.")]
+        [return: System.Runtime.CompilerServices.TupleElementNames(new string[] {
+                "Items1",
+                "Items2",
+                "Items3"})]
+        public System.ValueTuple<System.Collections.Generic.List<TDto1>, System.Collections.Generic.List<TDto2>, System.Collections.Generic.List<TDto3>> QueryMultiple<TDto1, TDto2, TDto3>(string sql, object? param = null, System.Data.IDbTransaction? transaction = null, int? commandTimeout = default, System.Data.CommandType? commandType = default)
+            where TDto1 :  class
+            where TDto2 :  class
+            where TDto3 :  class { }
+        [System.Diagnostics.CodeAnalysis.RequiresDynamicCode("QuerySingle uses Expression.Compile() for the mapping delegate. Not supported in " +
+            "AOT. [MapFrom] makes mapping AOT-safe but delegate compilation still requires dy" +
+            "namic code.")]
+        [System.Diagnostics.CodeAnalysis.RequiresUnreferencedCode("QuerySingle scans attributes via reflection.")]
+        public TDto QuerySingle<TDto>(Dapper.CommandDefinition command)
+            where TDto :  class { }
+        [System.Diagnostics.CodeAnalysis.RequiresDynamicCode("QuerySingle uses Expression.Compile() for the mapping delegate. Not supported in " +
+            "AOT. [MapFrom] makes mapping AOT-safe but delegate compilation still requires dy" +
+            "namic code.")]
+        [System.Diagnostics.CodeAnalysis.RequiresUnreferencedCode("QuerySingle scans attributes via reflection.")]
+        public TDto QuerySingle<TDto>(string sql, object? param = null, System.Data.IDbTransaction? transaction = null, int? commandTimeout = default, System.Data.CommandType? commandType = default)
+            where TDto :  class { }
+        [System.Diagnostics.CodeAnalysis.RequiresDynamicCode("QuerySingleAsync uses Expression.Compile() for the mapping delegate. Not supporte" +
+            "d in AOT. [MapFrom] makes mapping AOT-safe but delegate compilation still requir" +
+            "es dynamic code.")]
+        [System.Diagnostics.CodeAnalysis.RequiresUnreferencedCode("QuerySingleAsync scans attributes via reflection.")]
+        public System.Threading.Tasks.Task<TDto> QuerySingleAsync<TDto>(Dapper.CommandDefinition command)
+            where TDto :  class { }
+        [System.Diagnostics.CodeAnalysis.RequiresDynamicCode("QuerySingleAsync uses Expression.Compile() for the mapping delegate. Not supporte" +
+            "d in AOT. [MapFrom] makes mapping AOT-safe but delegate compilation still requir" +
+            "es dynamic code.")]
+        [System.Diagnostics.CodeAnalysis.RequiresUnreferencedCode("QuerySingleAsync scans attributes via reflection.")]
+        public System.Threading.Tasks.Task<TDto> QuerySingleAsync<TDto>(string sql, object? param = null, System.Data.IDbTransaction? transaction = null, int? commandTimeout = default, System.Data.CommandType? commandType = default, System.Threading.CancellationToken cancellationToken = default)
+            where TDto :  class { }
+        [System.Diagnostics.CodeAnalysis.RequiresDynamicCode("QuerySingleOrDefault uses Expression.Compile() for the mapping delegate. Not supp" +
+            "orted in AOT. [MapFrom] makes mapping AOT-safe but delegate compilation still re" +
+            "quires dynamic code.")]
+        [System.Diagnostics.CodeAnalysis.RequiresUnreferencedCode("QuerySingleOrDefault scans attributes via reflection.")]
+        public TDto? QuerySingleOrDefault<TDto>(Dapper.CommandDefinition command)
+            where TDto :  class { }
+        [System.Diagnostics.CodeAnalysis.RequiresDynamicCode("QuerySingleOrDefault uses Expression.Compile() for the mapping delegate. Not supp" +
+            "orted in AOT. [MapFrom] makes mapping AOT-safe but delegate compilation still re" +
+            "quires dynamic code.")]
+        [System.Diagnostics.CodeAnalysis.RequiresUnreferencedCode("QuerySingleOrDefault scans attributes via reflection.")]
+        public TDto? QuerySingleOrDefault<TDto>(string sql, object? param = null, System.Data.IDbTransaction? transaction = null, int? commandTimeout = default, System.Data.CommandType? commandType = default)
+            where TDto :  class { }
+        [System.Diagnostics.CodeAnalysis.RequiresDynamicCode("QuerySingleOrDefaultAsync uses Expression.Compile() for the mapping delegate. Not" +
+            " supported in AOT. [MapFrom] makes mapping AOT-safe but delegate compilation sti" +
+            "ll requires dynamic code.")]
+        [System.Diagnostics.CodeAnalysis.RequiresUnreferencedCode("QuerySingleOrDefaultAsync scans attributes via reflection.")]
+        public System.Threading.Tasks.Task<TDto?> QuerySingleOrDefaultAsync<TDto>(Dapper.CommandDefinition command)
+            where TDto :  class { }
+        [System.Diagnostics.CodeAnalysis.RequiresDynamicCode("QuerySingleOrDefaultAsync uses Expression.Compile() for the mapping delegate. Not" +
+            " supported in AOT. [MapFrom] makes mapping AOT-safe but delegate compilation sti" +
+            "ll requires dynamic code.")]
+        [System.Diagnostics.CodeAnalysis.RequiresUnreferencedCode("QuerySingleOrDefaultAsync scans attributes via reflection.")]
+        public System.Threading.Tasks.Task<TDto?> QuerySingleOrDefaultAsync<TDto>(string sql, object? param = null, System.Data.IDbTransaction? transaction = null, int? commandTimeout = default, System.Data.CommandType? commandType = default, System.Threading.CancellationToken cancellationToken = default)
+            where TDto :  class { }
+        [System.Diagnostics.CodeAnalysis.RequiresDynamicCode("QueryUnbufferedAsync uses Expression.Compile() for the mapping delegate. Not supp" +
+            "orted in AOT. [MapFrom] makes mapping AOT-safe but delegate compilation still re" +
+            "quires dynamic code.")]
+        [System.Diagnostics.CodeAnalysis.RequiresUnreferencedCode("QueryUnbufferedAsync scans attributes via reflection.")]
+        [System.Runtime.CompilerServices.AsyncIteratorStateMachine(typeof(NCMapper.Dapper.DapperDtoSelector<TSource>.<QueryUnbufferedAsync>d__31<TDto>))]
+        public System.Collections.Generic.IAsyncEnumerable<TDto> QueryUnbufferedAsync<TDto>(string sql, object? param = null, System.Data.IDbTransaction? transaction = null, int? commandTimeout = default, System.Data.CommandType? commandType = default, [System.Runtime.CompilerServices.EnumeratorCancellation] System.Threading.CancellationToken cancellationToken = default)
+            where TDto :  class { }
+        [System.Diagnostics.CodeAnalysis.RequiresDynamicCode("ToChunkDto uses Expression.Compile() for the mapping delegate. Not supported in A" +
+            "OT. [MapFrom] makes mapping AOT-safe but delegate compilation still requires dyn" +
+            "amic code.")]
+        [System.Diagnostics.CodeAnalysis.RequiresUnreferencedCode("ToChunkDto scans attributes via reflection.")]
+        public void ToChunkDto<TDto>(string sql, object? param, int size, System.Action<System.Collections.Generic.List<TDto>> done, System.Data.IDbTransaction? transaction = null, int? commandTimeout = default, System.Data.CommandType? commandType = default)
+            where TDto :  class { }
+        [System.Diagnostics.CodeAnalysis.RequiresDynamicCode("ToChunkDtoAsync uses Expression.Compile() for the mapping delegate. Not supported" +
+            " in AOT. [MapFrom] makes mapping AOT-safe but delegate compilation still require" +
+            "s dynamic code.")]
+        [System.Diagnostics.CodeAnalysis.RequiresUnreferencedCode("ToChunkDtoAsync scans attributes via reflection.")]
+        public System.Threading.Tasks.Task ToChunkDtoAsync<TDto>(string sql, object? param, int size, System.Func<System.Collections.Generic.List<TDto>, System.Threading.Tasks.Task> done, System.Data.IDbTransaction? transaction = null, int? commandTimeout = default, System.Data.CommandType? commandType = default, System.Threading.CancellationToken cancellationToken = default)
+            where TDto :  class { }
+        [System.Diagnostics.CodeAnalysis.RequiresDynamicCode("ToDictionary uses Expression.Compile() for the mapping delegate. Not supported in" +
+            " AOT. [MapFrom] makes mapping AOT-safe but delegate compilation still requires d" +
+            "ynamic code.")]
+        [System.Diagnostics.CodeAnalysis.RequiresUnreferencedCode("ToDictionary scans attributes via reflection.")]
+        public System.Collections.Generic.Dictionary<TKey, TDto> ToDictionary<TKey, TDto>(string sql, object? param, System.Func<TSource, TKey> keySelector, System.Data.IDbTransaction? transaction = null, int? commandTimeout = default, System.Data.CommandType? commandType = default)
+            where TKey :  notnull
+            where TDto :  class { }
+        [System.Diagnostics.CodeAnalysis.RequiresDynamicCode("ToDictionaryAsync uses Expression.Compile() for the mapping delegate. Not support" +
+            "ed in AOT. [MapFrom] makes mapping AOT-safe but delegate compilation still requi" +
+            "res dynamic code.")]
+        [System.Diagnostics.CodeAnalysis.RequiresUnreferencedCode("ToDictionaryAsync scans attributes via reflection.")]
+        public System.Threading.Tasks.Task<System.Collections.Generic.Dictionary<TKey, TDto>> ToDictionaryAsync<TKey, TDto>(string sql, object? param, System.Func<TSource, TKey> keySelector, System.Data.IDbTransaction? transaction = null, int? commandTimeout = default, System.Data.CommandType? commandType = default, System.Threading.CancellationToken cancellationToken = default)
+            where TKey :  notnull
+            where TDto :  class { }
+        [System.Diagnostics.CodeAnalysis.RequiresDynamicCode("ToLookup uses Expression.Compile() for the mapping delegate. Not supported in AOT" +
+            ". [MapFrom] makes mapping AOT-safe but delegate compilation still requires dynam" +
+            "ic code.")]
+        [System.Diagnostics.CodeAnalysis.RequiresUnreferencedCode("ToLookup scans attributes via reflection.")]
+        public System.Linq.ILookup<TKey, TDto> ToLookup<TKey, TDto>(string sql, object? param, System.Func<TSource, TKey> keySelector, System.Data.IDbTransaction? transaction = null, int? commandTimeout = default, System.Data.CommandType? commandType = default)
+            where TKey :  notnull
+            where TDto :  class { }
+        [System.Diagnostics.CodeAnalysis.RequiresDynamicCode("ToLookupAsync uses Expression.Compile() for the mapping delegate. Not supported i" +
+            "n AOT. [MapFrom] makes mapping AOT-safe but delegate compilation still requires " +
+            "dynamic code.")]
+        [System.Diagnostics.CodeAnalysis.RequiresUnreferencedCode("ToLookupAsync scans attributes via reflection.")]
+        public System.Threading.Tasks.Task<System.Linq.ILookup<TKey, TDto>> ToLookupAsync<TKey, TDto>(string sql, object? param, System.Func<TSource, TKey> keySelector, System.Data.IDbTransaction? transaction = null, int? commandTimeout = default, System.Data.CommandType? commandType = default, System.Threading.CancellationToken cancellationToken = default)
+            where TKey :  notnull
+            where TDto :  class { }
+        [System.Diagnostics.CodeAnalysis.RequiresDynamicCode("ToPagedList uses Expression.Compile() for the mapping delegate. Not supported in " +
+            "AOT. [MapFrom] makes mapping AOT-safe but delegate compilation still requires dy" +
+            "namic code.")]
+        [System.Diagnostics.CodeAnalysis.RequiresUnreferencedCode("ToPagedList scans attributes via reflection.")]
+        public NCMapper.PagedList<TDto> ToPagedList<TDto>(string sql, object? param, int page, int pageSize, System.Data.IDbTransaction? transaction = null, int? commandTimeout = default, System.Data.CommandType? commandType = default)
+            where TDto :  class { }
+        [System.Diagnostics.CodeAnalysis.RequiresDynamicCode("ToPagedListAsync uses Expression.Compile() for the mapping delegate. Not supporte" +
+            "d in AOT. [MapFrom] makes mapping AOT-safe but delegate compilation still requir" +
+            "es dynamic code.")]
+        [System.Diagnostics.CodeAnalysis.RequiresUnreferencedCode("ToPagedListAsync scans attributes via reflection.")]
+        public System.Threading.Tasks.Task<NCMapper.PagedList<TDto>> ToPagedListAsync<TDto>(string sql, object? param, int page, int pageSize, System.Data.IDbTransaction? transaction = null, int? commandTimeout = default, System.Data.CommandType? commandType = default, System.Threading.CancellationToken cancellationToken = default)
+            where TDto :  class { }
+        [System.Diagnostics.CodeAnalysis.RequiresDynamicCode("ToTreeList uses Expression.Compile() for the mapping delegate. Not supported in A" +
+            "OT. [MapFrom] makes mapping AOT-safe but delegate compilation still requires dyn" +
+            "amic code.")]
+        [System.Diagnostics.CodeAnalysis.RequiresUnreferencedCode("ToTreeList scans attributes via reflection.")]
+        public System.Collections.Generic.List<TDto> ToTreeList<TDto>(string sql, object? param = null, System.Data.IDbTransaction? transaction = null, bool buffered = true, int? commandTimeout = default, System.Data.CommandType? commandType = default)
+            where TDto :  class { }
+        [System.Diagnostics.CodeAnalysis.RequiresDynamicCode("ToTreeListAsync uses Expression.Compile() for the mapping delegate. Not supported" +
+            " in AOT. [MapFrom] makes mapping AOT-safe but delegate compilation still require" +
+            "s dynamic code.")]
+        [System.Diagnostics.CodeAnalysis.RequiresUnreferencedCode("ToTreeListAsync scans attributes via reflection.")]
+        public System.Threading.Tasks.Task<System.Collections.Generic.List<TDto>> ToTreeListAsync<TDto>(string sql, object? param = null, System.Data.IDbTransaction? transaction = null, int? commandTimeout = default, System.Data.CommandType? commandType = default, System.Threading.CancellationToken cancellationToken = default)
+            where TDto :  class { }
+    }
+    public sealed class Db2Dialect : NCMapper.Dapper.ISqlDialect
+    {
+        public Db2Dialect() { }
+        public string CountSql(string originalSql) { }
+        public string PageSql(string originalSql, string offsetParam, string pageSizeParam) { }
+    }
+    public interface ISqlDialect
+    {
+        string ParameterPrefix { get; }
+        string CountSql(string originalSql);
+        string PageSql(string originalSql, string offsetParam, string pageSizeParam);
+    }
+    public abstract class LimitOffsetDialect : NCMapper.Dapper.ISqlDialect
+    {
+        protected LimitOffsetDialect() { }
+        public string CountSql(string originalSql) { }
+        public string PageSql(string originalSql, string offsetParam, string pageSizeParam) { }
+    }
+    public sealed class MySqlDialect : NCMapper.Dapper.LimitOffsetDialect
+    {
+        public MySqlDialect() { }
+    }
+    public static class NCMapperDapperExtensions
+    {
+        [System.Diagnostics.CodeAnalysis.RequiresDynamicCode("AsDto uses Expression.Compile() for the mapping delegate. Not supported in AOT. [" +
+            "MapFrom] makes mapping AOT-safe but delegate compilation still requires dynamic " +
+            "code.")]
+        [System.Diagnostics.CodeAnalysis.RequiresUnreferencedCode("AsDto scans attributes via reflection.")]
+        public static NCMapper.Dapper.DapperDtoSelector<TSource> AsDto<TSource>(this System.Data.IDbConnection connection, NCMapper.Dapper.ISqlDialect? dialect = null)
+            where TSource :  class { }
+    }
+    public sealed class OracleDialect : NCMapper.Dapper.ISqlDialect
+    {
+        public OracleDialect() { }
+        public string ParameterPrefix { get; }
+        public string CountSql(string originalSql) { }
+        public string PageSql(string originalSql, string offsetParam, string pageSizeParam) { }
+    }
+    public sealed class PostgreSqlDialect : NCMapper.Dapper.LimitOffsetDialect
+    {
+        public PostgreSqlDialect() { }
+    }
+    public static class SqlDialectResolver
+    {
+        [System.Diagnostics.CodeAnalysis.RequiresUnreferencedCode("SqlDialectResolver.Resolve unwraps wrapper connections via reflection (GetPropert" +
+            "y/GetValue). Wrapped connection types may be trimmed.")]
+        public static NCMapper.Dapper.ISqlDialect Resolve(System.Data.IDbConnection connection) { }
+    }
+    public sealed class SqlServerDialect : NCMapper.Dapper.ISqlDialect
+    {
+        public SqlServerDialect() { }
+        public string CountSql(string originalSql) { }
+        public string PageSql(string originalSql, string offsetParam, string pageSizeParam) { }
+    }
+    public sealed class SqliteDialect : NCMapper.Dapper.LimitOffsetDialect
+    {
+        public SqliteDialect() { }
+    }
+}

@@ -1,0 +1,23 @@
+<Project Sdk="Microsoft.NET.Sdk">
+
+  <PropertyGroup>
+    <OutputType>Exe</OutputType>
+    <TargetFramework>net10.0</TargetFramework>
+    <ImplicitUsings>enable</ImplicitUsings>
+    <Nullable>enable</Nullable>
+    <InvariantGlobalization>true</InvariantGlobalization>
+    <AssemblyName>NCMapper.AotReflectionGuard</AssemblyName>
+    <RootNamespace>NCMapper.AotReflectionGuard</RootNamespace>
+    <!-- 工具工程不参与主库发布与包打包 -->
+    <IsPackable>false</IsPackable>
+      <!-- 本机 CET Shadow Stack 崩溃缓解（dotnet 10 net10.0 工具进程 CET fail-fast，官方退出项；随代码走） -->
+    <CetCompat>false</CetCompat>
+  </PropertyGroup>
+
+  <ItemGroup>
+    <!-- MetadataLoadContext：静态元数据读取，不加载运行时依赖 -->
+    <!-- 版本由 Directory.Packages.props 中央管理 -->
+    <PackageReference Include="System.Reflection.MetadataLoadContext" />
+  </ItemGroup>
+
+</Project>

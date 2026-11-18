@@ -1,0 +1,367 @@
+{
+    "source":  "samples/NCMapper.Samples/06-Infrastructure/PerformanceScenarios.cs",
+    "language":  "en",
+    "generatedFrom":  "fa006eb2bfaaa2662f9744588eea74b728033a1996717430eba05140fbc22fd4",
+    "comments":  [
+                     {
+                         "i":  1,
+                         "zh":  "性能场景集 — Map vs SourceGen、冷启动、Compose、DeepCopy 策略、Pipeline 开销、指标统计。",
+                         "en":  "Performance scenario suite — Map vs Source Generator, cold start, Compose, DeepCopy strategies, pipeline overhead, and metric collection."
+                     },
+                     {
+                         "i":  4,
+                         "zh":  "测量 Mapper.Map 性能（Stopwatch）。",
+                         "en":  "Measures Mapper.Map performance using Stopwatch."
+                     },
+                     {
+                         "i":  6,
+                         "zh":  "\u003cparam name=\"src\"\u003e源实体\u003c/param\u003e",
+                         "en":  "\u003cparam name=\"src\"\u003eSource entity\u003c/param\u003e"
+                     },
+                     {
+                         "i":  7,
+                         "zh":  "\u003cparam name=\"iterations\"\u003e迭代次数\u003c/param\u003e",
+                         "en":  "\u003cparam name=\"iterations\"\u003eNumber of iterations\u003c/param\u003e"
+                     },
+                     {
+                         "i":  8,
+                         "zh":  "\u003creturns\u003e每次操作平均耗时（微秒）\u003c/returns\u003e",
+                         "en":  "\u003creturns\u003eAverage time per operation in microseconds\u003c/returns\u003e"
+                     },
+                     {
+                         "i":  10,
+                         "zh":  "测量源生成器扩展方法性能（零委托直调）。",
+                         "en":  "Measures source generator extension method performance (zero-delegate direct invocation)."
+                     },
+                     {
+                         "i":  12,
+                         "zh":  "\u003cparam name=\"src\"\u003e源实体\u003c/param\u003e",
+                         "en":  "\u003cparam name=\"src\"\u003eSource entity\u003c/param\u003e"
+                     },
+                     {
+                         "i":  13,
+                         "zh":  "\u003cparam name=\"iterations\"\u003e迭代次数\u003c/param\u003e",
+                         "en":  "\u003cparam name=\"iterations\"\u003eNumber of iterations\u003c/param\u003e"
+                     },
+                     {
+                         "i":  14,
+                         "zh":  "\u003creturns\u003e每次操作平均耗时（微秒）\u003c/returns\u003e",
+                         "en":  "\u003creturns\u003eAverage time per operation in microseconds\u003c/returns\u003e"
+                     },
+                     {
+                         "i":  16,
+                         "zh":  "冷启动性能：ClearCache 后首次调用的耗时（含表达式树编译）。",
+                         "en":  "Cold-start performance: time taken for the first call after ClearCache (including expression tree compilation)."
+                     },
+                     {
+                         "i":  18,
+                         "zh":  "\u003cparam name=\"src\"\u003e源实体\u003c/param\u003e",
+                         "en":  "\u003cparam name=\"src\"\u003eSource entity\u003c/param\u003e"
+                     },
+                     {
+                         "i":  19,
+                         "zh":  "\u003creturns\u003e首次调用耗时（微秒）\u003c/returns\u003e",
+                         "en":  "\u003creturns\u003eTime taken for the first call in microseconds\u003c/returns\u003e"
+                     },
+                     {
+                         "i":  21,
+                         "zh":  "Compose 性能：双源合成 OrderDetailDto。",
+                         "en":  "Compose performance: composing OrderDetailDto from two sources."
+                     },
+                     {
+                         "i":  23,
+                         "zh":  "\u003cparam name=\"order\"\u003e订单\u003c/param\u003e",
+                         "en":  "\u003cparam name=\"order\"\u003eOrder\u003c/param\u003e"
+                     },
+                     {
+                         "i":  24,
+                         "zh":  "\u003cparam name=\"customer\"\u003e客户\u003c/param\u003e",
+                         "en":  "\u003cparam name=\"customer\"\u003eCustomer\u003c/param\u003e"
+                     },
+                     {
+                         "i":  25,
+                         "zh":  "\u003cparam name=\"iterations\"\u003e迭代次数\u003c/param\u003e",
+                         "en":  "\u003cparam name=\"iterations\"\u003eNumber of iterations\u003c/param\u003e"
+                     },
+                     {
+                         "i":  26,
+                         "zh":  "\u003creturns\u003e每次操作平均耗时（微秒）\u003c/returns\u003e",
+                         "en":  "\u003creturns\u003eAverage time per operation in microseconds\u003c/returns\u003e"
+                     },
+                     {
+                         "i":  28,
+                         "zh":  "DeepCopy 策略对比：Fast vs ExpressionTree vs JSON。",
+                         "en":  "DeepCopy strategy comparison: Fast vs ExpressionTree vs JSON."
+                     },
+                     {
+                         "i":  30,
+                         "zh":  "\u003cparam name=\"src\"\u003e源对象\u003c/param\u003e",
+                         "en":  "\u003cparam name=\"src\"\u003eSource object\u003c/param\u003e"
+                     },
+                     {
+                         "i":  31,
+                         "zh":  "\u003cparam name=\"iterations\"\u003e迭代次数\u003c/param\u003e",
+                         "en":  "\u003cparam name=\"iterations\"\u003eNumber of iterations\u003c/param\u003e"
+                     },
+                     {
+                         "i":  32,
+                         "zh":  "\u003creturns\u003e三个策略的耗时（微秒/op）\u003c/returns\u003e",
+                         "en":  "\u003creturns\u003eTime per operation in microseconds for each of the three strategies\u003c/returns\u003e"
+                     },
+                     {
+                         "i":  37,
+                         "zh":  "Pipeline 开销对比：有 PostMap vs 无 PostMap。",
+                         "en":  "Pipeline overhead comparison: with PostMap vs without PostMap."
+                     },
+                     {
+                         "i":  39,
+                         "zh":  "\u003cparam name=\"src\"\u003e源实体\u003c/param\u003e",
+                         "en":  "\u003cparam name=\"src\"\u003eSource entity\u003c/param\u003e"
+                     },
+                     {
+                         "i":  40,
+                         "zh":  "\u003cparam name=\"iterations\"\u003e迭代次数\u003c/param\u003e",
+                         "en":  "\u003cparam name=\"iterations\"\u003eNumber of iterations\u003c/param\u003e"
+                     },
+                     {
+                         "i":  41,
+                         "zh":  "\u003creturns\u003e(无管线耗时, 有管线耗时) 微秒/op\u003c/returns\u003e",
+                         "en":  "\u003creturns\u003e(Time without pipeline, time with pipeline) in microseconds per operation\u003c/returns\u003e"
+                     },
+                     {
+                         "i":  42,
+                         "zh":  "无管线",
+                         "en":  "No pipeline"
+                     },
+                     {
+                         "i":  43,
+                         "zh":  "有管线",
+                         "en":  "With pipeline"
+                     },
+                     {
+                         "i":  45,
+                         "zh":  "更新已有对象 vs 新建：Map(src, target) vs Map\u0026lt;T,S\u0026gt;(src)。",
+                         "en":  "Update existing object vs. create new: Map(src, target) vs. Map\u003cT,S\u003e(src)."
+                     },
+                     {
+                         "i":  47,
+                         "zh":  "\u003cparam name=\"src\"\u003e源实体\u003c/param\u003e",
+                         "en":  "\u003cparam name=\"src\"\u003eSource entity\u003c/param\u003e"
+                     },
+                     {
+                         "i":  48,
+                         "zh":  "\u003cparam name=\"target\"\u003e目标对象\u003c/param\u003e",
+                         "en":  "\u003cparam name=\"target\"\u003eTarget object\u003c/param\u003e"
+                     },
+                     {
+                         "i":  49,
+                         "zh":  "\u003cparam name=\"iterations\"\u003e迭代次数\u003c/param\u003e",
+                         "en":  "\u003cparam name=\"iterations\"\u003eNumber of iterations\u003c/param\u003e"
+                     },
+                     {
+                         "i":  50,
+                         "zh":  "\u003creturns\u003e(新建耗时, 更新耗时) 微秒/op\u003c/returns\u003e",
+                         "en":  "\u003creturns\u003e(Time for creation, time for update) in microseconds per operation\u003c/returns\u003e"
+                     },
+                     {
+                         "i":  52,
+                         "zh":  "映射指标统计：TotalMapCalls / CacheHits / CompilationCount。",
+                         "en":  "Mapping metrics statistics: TotalMapCalls / CacheHits / CompilationCount."
+                     },
+                     {
+                         "i":  54,
+                         "zh":  "\u003cparam name=\"src\"\u003e源实体\u003c/param\u003e",
+                         "en":  "\u003cparam name=\"src\"\u003eSource entity\u003c/param\u003e"
+                     },
+                     {
+                         "i":  55,
+                         "zh":  "\u003creturns\u003e指标统计结果\u003c/returns\u003e",
+                         "en":  "\u003creturns\u003eMetrics statistics result\u003c/returns\u003e"
+                     },
+                     {
+                         "i":  57,
+                         "zh":  "MapList 列表映射吞吐量基准。",
+                         "en":  "MapList list mapping throughput benchmark."
+                     },
+                     {
+                         "i":  59,
+                         "zh":  "\u003cparam name=\"srcs\"\u003e待映射的源实体列表\u003c/param\u003e",
+                         "en":  "\u003cparam name=\"srcs\"\u003eSource entity list to be mapped\u003c/param\u003e"
+                     },
+                     {
+                         "i":  60,
+                         "zh":  "\u003cparam name=\"iterations\"\u003e基准迭代次数（默认 100）\u003c/param\u003e",
+                         "en":  "\u003cparam name=\"iterations\"\u003eBenchmark iteration count (default 100)\u003c/param\u003e"
+                     },
+                     {
+                         "i":  61,
+                         "zh":  "\u003creturns\u003e单次 MapList 平均耗时（微秒）\u003c/returns\u003e",
+                         "en":  "\u003creturns\u003eAverage time per MapList call in microseconds\u003c/returns\u003e"
+                     },
+                     {
+                         "i":  63,
+                         "zh":  "MapListInto 批量就地映射吞吐量基准（复用预分配数组，顶层零分配）。",
+                         "en":  "MapListInto batch in-place mapping throughput benchmark (reuses pre-allocated arrays; zero allocations at top level)."
+                     },
+                     {
+                         "i":  64,
+                         "zh":  "\u003cpara\u003e与 MeasureMapListPerformance 同列表同迭代数对比，可观察\"全量分配 vs 零分配\"差距",
+                         "en":  "\u003cpara\u003eCompare with MeasureMapListPerformance using the same list and iteration count to observe the difference between full allocation and zero allocation.\u003c/para\u003e"
+                     },
+                     {
+                         "i":  65,
+                         "zh":  "（见 how-to/mapping/map-list-into.md 性能节）。\u003c/para\u003e",
+                         "en":  "(See performance section in how-to/mapping/map-list-into.md)."
+                     },
+                     {
+                         "i":  67,
+                         "zh":  "\u003cparam name=\"srcs\"\u003e待映射的源实体列表\u003c/param\u003e",
+                         "en":  "\u003cparam name=\"srcs\"\u003eSource entity list to be mapped\u003c/param\u003e"
+                     },
+                     {
+                         "i":  68,
+                         "zh":  "\u003cparam name=\"iterations\"\u003e基准迭代次数（默认 100）\u003c/param\u003e",
+                         "en":  "\u003cparam name=\"iterations\"\u003eBenchmark iteration count (default 100)\u003c/param\u003e"
+                     },
+                     {
+                         "i":  69,
+                         "zh":  "\u003creturns\u003e单次 MapListInto 平均耗时（微秒）\u003c/returns\u003e",
+                         "en":  "\u003creturns\u003eAverage time per MapListInto call in microseconds\u003c/returns\u003e"
+                     },
+                     {
+                         "i":  71,
+                         "zh":  "Path 1: source-generated extension method (hottest, zero delegate)",
+                         "en":  "Complex DTO (using ConvertUsing/flattening) throughput benchmark."
+                     },
+                     {
+                         "i":  73,
+                         "zh":  "Path 3: runtime expression tree for an unannotated pair (cost paid once on first call)",
+                         "en": "Path 3: runtime expression tree for an unannotated pair (cost paid once on first call)"
+                     },
+                     {
+                         "i":  74,
+                         "zh":  "<summary>生成层探测与缓存清理三级：HasGenerated 探测 / ClearGenerated 仅清生成层保留手写声明缓存 / ClearCache 全量级联。</summary>",
+                         "en": "<summary>\u751f\u6210\u5c42\u63a2\u6d4b\u4e0e\u7f13\u5b58\u6e05\u7406\u4e09\u7ea7\uff1aHasGenerated \u63a2\u6d4b / ClearGenerated \u4ec5\u6e05\u751f\u6210\u5c42\u4fdd\u7559\u624b\u5199\u58f0\u660e\u7f13\u5b58 / ClearCache \u5168\u91cf\u7ea7\u8054\u3002</summary>"
+                     },
+                     {
+                         "i":  75,
+                         "zh":  "Probe the generated layer; clear it alone when present (hand-written declaration cache kept)",
+                         "en": "Probe the generated layer; clear it alone when present (hand-written declaration cache kept)"
+                     },
+                     {
+                         "i":  77,
+                         "zh":  "<summary>",
+                         "en": "<summary>"
+                     },
+                     {
+                         "i":  79,
+                         "zh":  "</summary>",
+                         "en": "</summary>"
+                     },
+                     {
+                         "i":  80,
+                         "zh":  "<param name=\"src\">待映射的源实体</param>",
+                         "en": "<param name=\"src\">Source entity to be mapped</param>"
+                     },
+                     {
+                         "i":  82,
+                         "zh":  "<returns>单次复杂映射平均耗时（微秒）</returns>",
+                         "en": "<returns>Average time per complex mapping operation in microseconds</returns>"
+                     },
+                     {
+                         "i":  84,
+                         "zh":  "运行时表达式树回退冷启动（无 [MapFrom] 的 BenchRuntimeDto）。",
+                         "en": "Runtime expression tree fallback cold start (BenchRuntimeDto without [MapFrom])."
+                     },
+                     {
+                         "i":  85,
+                         "zh":  "</summary>",
+                         "en": "</summary>"
+                     },
+                     {
+                         "i":  86,
+                         "zh":  "<param name=\"src\">待映射的源实体</param>",
+                         "en": "<param name=\"src\">The source entity to be mapped.</param>"
+                     },
+                     {
+                         "i":  87,
+                         "zh":  "<returns>单次冷启动映射耗时（微秒）</returns>",
+                         "en": "<returns>The time cost (in microseconds) for a single cold-start mapping.</returns>"
+                     },
+                     {
+                         "i":  89,
+                         "zh":  "源生成器扩展方法更新已有对象吞吐量。",
+                         "en": "Source generator extension method throughput for updating existing objects."
+                     },
+                     {
+                         "i":  91,
+                         "zh":  "<param name=\"src\">待映射的源实体</param>",
+                         "en": "<param name=\"src\">The source entity to be mapped.</param>"
+                     },
+                     {
+                         "i":  92,
+                         "zh":  "<param name=\"target\">已存在的目标对象（原地更新）</param>",
+                         "en": "<param name=\"target\">The pre-existing target object (updated in-place).</param>"
+                     },
+                     {
+                         "i":  93,
+                         "zh":  "<param name=\"iterations\">基准迭代次数（默认 1000）</param>",
+                         "en": "<param name=\"iterations\">The number of benchmark iterations (default: 1000).</param>"
+                     },
+                     {
+                         "i":  94,
+                         "zh":  "<returns>单次生成扩展更新平均耗时（微秒）</returns>",
+                         "en": "<returns>The average time cost (in microseconds) per generated extension update.</returns>"
+                     },
+                     {
+                         "i":  95,
+                         "zh":  "<summary>",
+                         "en": "<summary>"
+                     },
+                     {
+                         "i":  96,
+                         "zh":  "三源 Compose 吞吐量基准。",
+                         "en": "Three-source Compose throughput benchmark."
+                     },
+                     {
+                         "i":  98,
+                         "zh":  "<param name=\"order\">订单源实体</param>",
+                         "en": "<param name=\"order\">The order source entity.</param>"
+                     },
+                     {
+                         "i":  99,
+                         "zh":  "<param name=\"customer\">客户源实体</param>",
+                         "en": "<param name=\"customer\">The customer source entity.</param>"
+                     },
+                     {
+                         "i":  100,
+                         "zh":  "<param name=\"product\">产品源实体</param>",
+                         "en": "<param name=\"product\">The product source entity.</param>"
+                     },
+                     {
+                         "i":  101,
+                         "zh":  "<param name=\"iterations\">基准迭代次数（默认 500）</param>",
+                         "en": "<param name=\"iterations\">The number of benchmark iterations (default: 500).</param>"
+                     },
+                     {
+                         "i":  102,
+                         "zh":  "<returns>单次三源 Compose 平均耗时（微秒）</returns>",
+                         "en": "<returns>The average time cost (in microseconds) per three-source Compose operation.</returns>"
+                     },
+                     {
+                         "i":  103,
+                         "zh":  "===== 场景注册入口=====",
+                         "en": "===== Scenario Registration Entry Point ====="
+                     },
+                     {
+                         "i":  104,
+                         "zh":  "Map vs SourceGen",
+                         "en": "Map vs SourceGen"
+                     },
+                     {
+                         "i":  105,
+                         "zh":  "结构性断言：双引擎产物等值——604-engines 打印点对应的功能行为；耗时只作日志",
+                         "en": "Cold Start"
+                     }
+                 ]
+}

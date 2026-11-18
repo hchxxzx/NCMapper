@@ -1,0 +1,152 @@
+{
+    "source":  "samples/NCMapper.Samples/01-Fluent/ScModels.cs",
+    "language":  "en",
+    "generatedFrom":  "16dceec42a996dcaa116b2637c12c81ac9afa77f470fa14ac2c5182e29bd7d47",
+    "comments":  [
+                     {
+                         "i":  1,
+                         "zh":  "多态源实体（基类）——Name/Weight 为基类映射对字段。",
+                         "en":  "Polymorphic source entity (base class) — Name/Weight are fields mapped from the base class."
+                     },
+                     {
+                         "i":  3,
+                         "zh":  "\u003csummary\u003e名称（基类对映射）\u003c/summary\u003e",
+                         "en":  "\u003csummary\u003eName (base class mapping)\u003c/summary\u003e"
+                     },
+                     {
+                         "i":  4,
+                         "zh":  "\u003csummary\u003e体重（基类对映射）\u003c/summary\u003e",
+                         "en":  "\u003csummary\u003eWeight (base class mapping)\u003c/summary\u003e"
+                     },
+                     {
+                         "i":  6,
+                         "zh":  "已登记子类源（犬）——Breed 为子类专有字段。",
+                         "en":  "Registered subclass source (Dog) — Breed is a subclass-specific field."
+                     },
+                     {
+                         "i":  8,
+                         "zh":  "\u003csummary\u003e品种（子类专有）\u003c/summary\u003e",
+                         "en":  "\u003csummary\u003eBreed (subclass-specific)\u003c/summary\u003e"
+                     },
+                     {
+                         "i":  10,
+                         "zh":  "已登记子类源（猫）——Indoor 为子类专有字段。",
+                         "en":  "Registered subclass source (Cat) — Indoor is a subclass-specific field."
+                     },
+                     {
+                         "i":  12,
+                         "zh":  "\u003csummary\u003e是否室内（子类专有）\u003c/summary\u003e",
+                         "en":  "\u003csummary\u003eIndoor (subclass-specific)\u003c/summary\u003e"
+                     },
+                     {
+                         "i":  14,
+                         "zh":  "未登记子类源（鸟）——演示分派链未命中回落基类兜底体（子类专有字段无来源）。",
+                         "en":  "Unregistered subclass source (Bird) — Demonstrates dispatch chain fallback to the base class when no matching subclass mapping is found (subclass-specific field has no source)."
+                     },
+                     {
+                         "i":  16,
+                         "zh":  "\u003csummary\u003e翼展（未登记，无对应映射）\u003c/summary\u003e",
+                         "en":  "\u003csummary\u003eWingspan (unregistered, no corresponding mapping)\u003c/summary\u003e"
+                     },
+                     {
+                         "i":  18,
+                         "zh":  "Fluent 侧基类 DTO——无 [MapFrom]（Fluent 通道 cfg.For 即锚定基类映射对，两通道声明互斥 NCMAP_F11）。",
+                         "en":  "Fluent-side base-class DTO — No [MapFrom] attribute (the Fluent channel\u0027s cfg.For anchors the base-class mapping pair; the two channels are mutually exclusive per NCMAP_F11)."
+                     },
+                     {
+                         "i":  20,
+                         "zh":  "\u003csummary\u003e名称（基类体映射）\u003c/summary\u003e",
+                         "en":  "\u003csummary\u003eName (base-class body mapping)\u003c/summary\u003e"
+                     },
+                     {
+                         "i":  21,
+                         "zh":  "\u003csummary\u003e体重（基类对映射）\u003c/summary\u003e",
+                         "en":  "\u003csummary\u003eWeight (base class mapping)\u003c/summary\u003e"
+                     },
+                     {
+                         "i":  23,
+                         "zh":  "Fluent 侧子类 DTO（犬）——独立声明子类对（同 FQN 二元组被 MapSubclass 引用，不重发）。",
+                         "en":  "Fluent-side subclass DTO (Dog) — Independently declares the subclass mapping (the same fully-qualified name pair is referenced by MapSubclass and not redeclared)."
+                     },
+                     {
+                         "i":  25,
+                         "zh":  "\u003csummary\u003e品种（子类专有）\u003c/summary\u003e",
+                         "en":  "\u003csummary\u003eBreed (subclass-specific)\u003c/summary\u003e"
+                     },
+                     {
+                         "i":  27,
+                         "zh":  "Fluent 侧子类 DTO（猫）。",
+                         "en":  "Fluent-side subclass DTO (Cat)."
+                     },
+                     {
+                         "i":  29,
+                         "zh":  "\u003csummary\u003e是否室内（子类专有）\u003c/summary\u003e",
+                         "en":  "\u003csummary\u003eIndoor (subclass-specific)\u003c/summary\u003e"
+                     },
+                     {
+                         "i":  31,
+                         "zh":  "特性侧基类 DTO——[MapSubclass] type-level 多实例登记（Inherited=false，双 typeof 实参）；",
+                         "en":  "Attribute-side base-class DTO — [MapSubclass] type-level multi-instance registration (Inherited=false, with two typeof arguments)."
+                     },
+                     {
+                         "i":  32,
+                         "zh":  "特性通道无泛型约束，须同时标注 [MapFrom] 锚定基类映射对（缺锚定报 NCMAP_F49）。",
+                         "en":  "The attribute-based channel has no generic constraints and requires explicit [MapFrom] to anchor the base-class mapping pair (missing anchor triggers NCMAP_F49)."
+                     },
+                     {
+                         "i":  34,
+                         "zh":  "\u003csummary\u003e名称（基类体映射）\u003c/summary\u003e",
+                         "en":  "\u003csummary\u003eName (base-class body mapping)\u003c/summary\u003e"
+                     },
+                     {
+                         "i":  35,
+                         "zh":  "\u003csummary\u003e体重（基类体映射）\u003c/summary\u003e",
+                         "en":  "\u003csummary\u003eWeight (base-class body mapping)\u003c/summary\u003e"
+                     },
+                     {
+                         "i":  37,
+                         "zh":  "特性侧子类 DTO（犬）。",
+                         "en":  "Attribute-side subclass DTO (Dog)."
+                     },
+                     {
+                         "i":  39,
+                         "zh":  "\u003csummary\u003e品种（子类专有）\u003c/summary\u003e",
+                         "en":  "\u003csummary\u003eBreed (subclass-specific)\u003c/summary\u003e"
+                     },
+                     {
+                         "i":  41,
+                         "zh":  "特性侧子类 DTO（猫）。",
+                         "en":  "Attribute-side subclass DTO (Cat)."
+                     },
+                     {
+                         "i":  43,
+                         "zh":  "\u003csummary\u003e是否室内（子类专有）\u003c/summary\u003e",
+                         "en":  "\u003csummary\u003eIndoor (subclass-specific)\u003c/summary\u003e"
+                     },
+                     {
+                         "i":  45,
+                         "zh":  "Fluent 侧多态 Mapper（对应 how-to/fluent/terminals.md「MapSubclass」节）——",
+                         "en":  "Fluent-side polymorphic Mapper (corresponding to the \u0027MapSubclass\u0027 section in how-to/fluent/terminals.md)."
+                     },
+                     {
+                         "i":  46,
+                         "zh":  "基类对级登记两对子类型，isinst 分派链覆盖 Map/_Update/MapList/MapListInto 四族。",
+                         "en":  "The base class registers two pairs of subtypes for the level, and the isinst dispatch chain covers the four families: Map/_Update/MapList/MapListInto."
+                     },
+                     {
+                         "i":  48,
+                         "zh":  "\u003csummary\u003e链式声明入口（方法名任意，签名固定）\u003c/summary\u003e",
+                         "en":  "\u003csummary\u003eChained declaration entry point (method name is arbitrary, but signature is fixed)\u003c/summary\u003e"
+                     },
+                     {
+                         "i":  49,
+                         "zh":  "\u003cparam name=\"cfg\"\u003eFluent 配置根\u003c/param\u003e",
+                         "en":  "\u003cparam name=\"cfg\"\u003eFluent configuration root\u003c/param\u003e"
+                     },
+                     {
+                         "i":  50,
+                         "zh":  "Pair-level terminal: register two subtype pairs (generic constraints CS0311/CS0314 intercepted at the call site -- a wrong inheritance relation fails to compile)",
+                         "en":  "Level terminal: registers two pairs of subtypes (generic constraint CS0311/CS0314 call-site interception—compilation fails if inheritance relationships are incorrect)."
+                     }
+                 ]
+}

@@ -1,0 +1,107 @@
+{
+    "source":  "samples/NCMapper.Samples/01-Fluent/SubclassScenarios.cs",
+    "language":  "en",
+    "generatedFrom":  "65df3aad36ee355a09d1e9975bd6d2e144c28786a3f11168ad0cf2604cf3a540",
+    "comments":  [
+                     {
+                         "i":  1,
+                         "zh":  "场景 107 — 多态子类型映射 MapSubclass（how-to/fluent/terminals.md「MapSubclass」节）：",
+                         "en":  "Scenario 107 — Polymorphic Subtype Mapping MapSubclass (see the \u0027MapSubclass\u0027 section in how-to/fluent/terminals.md)"
+                     },
+                     {
+                         "i":  2,
+                         "zh":  "Fluent 对级登记 + 特性侧 [MapSubclass] 多实例；isinst 分派链（Map/MapList/_Update 双实例）",
+                         "en":  "Fluent-side class-level registration + attribute-side [MapSubclass] multi-instance registration; isinst dispatch chain (dual instances for Map/MapList/_Update)"
+                     },
+                     {
+                         "i":  3,
+                         "zh":  "+ 最派生优先 + 未登记派生回落基类兜底体 + 反向子类对自动产出（登记非单向）。",
+                         "en":  "+ Most-derived-type-first dispatch + unregistered derived types fall back to base-class default implementation + reverse subclass mappings are automatically generated (registration is bidirectional, not unidirectional)."
+                     },
+                     {
+                         "i":  6,
+                         "zh":  "Fluent 侧基类对映射——运行时按源实际类型路由子类分派体。",
+                         "en":  "Fluent-side base-class mapping—runtime dispatch to subclass-specific implementations based on the actual source type."
+                     },
+                     {
+                         "i":  8,
+                         "zh":  "\u003cparam name=\"src\"\u003e动物实体（可能是任一派生类型）\u003c/param\u003e",
+                         "en":  "\u003cparam name=\"src\"\u003eAnimal entity (potentially any derived type)\u003c/param\u003e"
+                     },
+                     {
+                         "i":  9,
+                         "zh":  "\u003creturns\u003e基类静态类型的 DTO（运行时实际为对应子类 DTO）\u003c/returns\u003e",
+                         "en":  "\u003creturns\u003eDTO of static base-class type (at runtime, actually the corresponding subclass DTO)\u003c/returns\u003e"
+                     },
+                     {
+                         "i":  11,
+                         "zh":  "Fluent 侧 _Update 形态——双实例匹配（src 与 dst 同时 isinst 命中才路由子类体）。",
+                         "en":  "Fluent-side _Update form—dual-instance matching (subclasses are dispatched only when both src and dst pass isinst checks)."
+                     },
+                     {
+                         "i":  13,
+                         "zh":  "\u003cparam name=\"src\"\u003e源实体\u003c/param\u003e",
+                         "en":  "\u003cparam name=\"src\"\u003eSource entity\u003c/param\u003e"
+                     },
+                     {
+                         "i":  14,
+                         "zh":  "\u003cparam name=\"existing\"\u003e既有 DTO（运行时类型决定分派）\u003c/param\u003e",
+                         "en":  "\u003cparam name=\"existing\"\u003eExisting DTO (dispatch determined by its runtime type)\u003c/param\u003e"
+                     },
+                     {
+                         "i":  16,
+                         "zh":  "特性侧映射——类级 [MapSubclass] 多实例登记的分派。",
+                         "en":  "Attribute-side mapping—class-level [MapSubclass] multi-instance registration dispatch."
+                     },
+                     {
+                         "i":  18,
+                         "zh":  "\u003cparam name=\"src\"\u003e动物实体\u003c/param\u003e",
+                         "en":  "\u003cparam name=\"src\"\u003eAnimal entity\u003c/param\u003e"
+                     },
+                     {
+                         "i":  19,
+                         "zh":  "\u003creturns\u003e特性侧基类 DTO（运行时对应子类）\u003c/returns\u003e",
+                         "en":  "\u003creturns\u003eAttribute-side base-class DTO (corresponding to the runtime subclass at execution time)\u003c/returns\u003e"
+                     },
+                     {
+                         "i":  21,
+                         "zh":  "场景调度 — 顺序执行全部子场景并输出。",
+                         "en":  "Scenario orchestration—execute all sub-scenarios sequentially and output results."
+                     },
+                     {
+                         "i":  23,
+                         "zh":  "1. Fluent Map dispatch: Dog -> DogDto (subclass body, dedicated fields filled)",
+                         "en":  "1. Fluent Map dispatch: Dog → DogDto (subclass-specific implementation, populating subclass-specific fields)"
+                     },
+                     {
+                         "i":  24,
+                         "zh":  "2. Fluent Map dispatch: Cat -> CatDto",
+                         "en":  "2. Fluent Map dispatch: Cat → CatDto"
+                     },
+                     {
+                         "i":  25,
+                         "zh":  "3. Unregistered derived type falls back to the base catch-all body: Bird goes through the AnimalDto base body (subclass-dedicated fields have no source)",
+                         "en":  "3. Unregistered derived type fallback: Bird uses AnimalDto base-class implementation (subclass-specific fields lack source data)"
+                     },
+                     {
+                         "i":  26,
+                         "zh":  "4. MapList mixed list: per-element dispatch by runtime type + fallback",
+                         "en":  "4. MapList heterogeneous list: per-element dispatch based on runtime type + fallback"
+                     },
+                     {
+                         "i":  27,
+                         "zh":  "5. _Update dual-instance match: dst runtime type DogDto -- route to subclass body; dst runtime type base class -- fall back to base body (F50 dual-instance-fallback)",
+                         "en":  "5. _Update dual-instance matching: dst runtime type DogDto → routes to subclass implementation; dst runtime type base class → falls back to base-class implementation (F50 dual-instance-fallback)"
+                     },
+                     {
+                         "i":  28,
+                         "zh":  "6. Reverse subclass pair (registration is not one-way; the reverse registration arm is produced automatically): DogDto -> DogEntity",
+                         "en":  "6. Reverse subclass mappings (registration is bidirectional, not unidirectional; reverse registration arms are auto-generated): DogDto → DogEntity"
+                     },
+                     {
+                         "i":  29,
+                         "zh":  "7. 特性侧 [MapSubclass]：类级多实例登记，分派语义与 Fluent 等价",
+                         "en":  "7. Attribute-side [MapSubclass]: class-level multi-instance registration; dispatch semantics equivalent to Fluent"
+                     }
+                 ]
+}

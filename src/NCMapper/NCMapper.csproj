@@ -1,0 +1,108 @@
+<Project Sdk="Microsoft.NET.Sdk">
+
+  <PropertyGroup>
+    <TargetFrameworks>net8.0;net9.0;net10.0</TargetFrameworks>
+    <ImplicitUsings>enable</ImplicitUsings>
+    <Nullable>enable</Nullable>
+    <RootNamespace>NCMapper</RootNamespace>
+    <AssemblyName>NCMapper</AssemblyName>
+    <GenerateDocumentationFile>true</GenerateDocumentationFile>
+    <!-- P2.5-03: AOT 兼容性标注 — 启用 trim 分析器，让 AOT 消费者收到编译时警告 -->
+    <IsAotCompatible>true</IsAotCompatible>
+    <!-- 包级 trim 兼容声明 — 补标 + NoWarn 移除后 IL 警告归零，
+         声明语义完整（不带遮蔽标注）；与 IsAotCompatible 并存 -->
+    <IsTrimmable>true</IsTrimmable>
+    <!-- 5 项 IL NoWarn 已移除 ——
+         原 72 处 IL 警告（跨 TFM 计数）按 12 唯一点/5 簇定性处置后归零：
+         C1 CollectionTypeDetector（IsGenericDictionary/IsNonGenericDictionary/IsDictionary）→ [DAM(Interfaces)] 参数标注（IL2070）
+         C2 NavigationResolver（GetCollectionElementType/IsDictionaryType）→ [DAM(Interfaces)]（IL2070）
+         C3 入口链传播（ResolveNavigationProperty.navigationType + DeepCopyTypeClassifier 分类链）→ [DAM(Interfaces)]（IL2067 传播点）
+         C4 DeepCopyProviderBase.HasParameterlessConstructor → [DAM(PublicParameterlessConstructor)]（IL2070）
+         C5 DeepCopyTypeClassifier.TryGetDictionaryKeyValueType → [DAM(Interfaces)]（IL2070）
+         C6 [ConvertUsing]/[ConvertBackUsing] 静态方法解析链（ExpressionBuilder.BuildConverterValue → ResolveStaticMethod）→ 方法级 [RequiresUnreferencedCode]（IL2072/IL2075）
+         IL2026 ExpressionBuilder.BuildEnumToStringSwitch → 补方法级 [RequiresUnreferencedCode]（与 RequiresDynamicCode 并存）
+         IL2060/IL2087 惰性遮蔽（实测 0 处）随 NoWarn 移除 -->
+    <!-- CS0419: XML 文档引用歧义（cref 同名类型）；RS2007: SourceGen 分析器 release tracking 泄漏 -->
+    <NoWarn>$(NoWarn);CS0419;RS2007</NoWarn>
+    <!-- P1-SHOULD-12: 确定性构建 PathMap — 仅 CI 构建时生效，保证源码路径可重现 -->
+    <PathMap Condition="'$(ContinuousIntegrationBuild)' == 'true'">$(MSBuildProjectDirectory)=/NCMapper/src/NCMapper</PathMap>
+  </PropertyGroup>
+
+  <!-- 本地化 IntelliSense：NuGet 包按 culture 打包多语言 XML 文档 -->
+  <!-- 同步机制（D17，2026-09-01 修订）：编译产物 bin/{Config}/{TFM}/NCMapper.xml（含 internal/private，完整）为唯一真相源；
+       locales/zh-Hans/NCMapper.xml（中文，public-only）由 DocTranslate filter 命令显式从编译产物生成，作为对外权威基准；
+       其余语言为人工翻译快照——复制 zh-Hans → 人工翻译 → pack 自动包含，均 public-only（漂移检测见 scripts/check-locales-drift.ps1） -->
+  <!-- 打包机制：原 Content PackagePath 用 "lib\$(TargetFramework)\zh-Hans\" 在顶层
+       ItemGroup 求值时 $(TargetFramework) 为空（多 TFM pack 单次 nuspec 生成），locales 被错误打入 lib//{culture}/（NU5103/NU5128 根源）。
+       改用 TargetsForTfmSpecificContentInPackage 官方机制（TfmSpecificPackageFile 按 TFM 展开），locales 正确归位 lib/{tfm}/{culture}/。 -->
+  <PropertyGroup>
+    <TargetsForTfmSpecificContentInPackage>$(TargetsForTfmSpecificContentInPackage);IncludeLocalesInPackage</TargetsForTfmSpecificContentInPackage>
+  </PropertyGroup>
+  <Target Name="IncludeLocalesInPackage">
+    <ItemGroup>
+      <!-- 通配符 Include 自动只包含存在的语言目录；RecursiveDir = {culture}/ -->
+      <TfmSpecificPackageFile Include="..\..\locales\*\NCMapper.xml">
+        <PackagePath>lib/$(TargetFramework)/%(RecursiveDir)</PackagePath>
+      </TfmSpecificPackageFile>
+    </ItemGroup>
+  </Target>
+
+  <!-- PackageIcon -->
+  <ItemGroup>
+    <Content Include="..\..\assets\icon.png" Pack="true" PackagePath="\" />
+  </ItemGroup>
+
+  <!-- PackageReadmeFile (C-07) -->
+  <ItemGroup>
+    <None Include="..\..\README.md" Pack="true" PackagePath="\" />
+  </ItemGroup>
+
+  <!-- 不再自动复制 XML 到 locales/zh-Hans/（已取消，2026-09-01）。
+       编译产物自然留在 bin/{Config}/{TFM}/NCMapper.xml（含全部 internal/private 注释，是完整真相源）。
+       对外中文文档 locales/zh-Hans/NCMapper.xml 由 DocTranslate 工具 filter 命令显式生成
+       （反射过滤出 public/protected 子集），再以它为基准人工翻译其他语言——所有语言统一 public-only，避免漂移。 -->
+
+  <ItemGroup>
+    <InternalsVisibleTo Include="NCMapper.Tests" />
+    <InternalsVisibleTo Include="NCMapper.IntegrationTests" />
+    <InternalsVisibleTo Include="NCMapper.SelfBench" />
+    <!-- 注：NCMapper.SourceGen.Tests 依赖核心库 internal（DeepCopyTypeClassifier 等）。
+         共享算法文件（NameCandidateResolver）同源编译进两个程序集，测试代码**引用**共享类型名
+         会触发 CS0433（internal 同名类型冲突，T-005 实测）——测试代码须避免直接引用共享类型，
+         经 SourceGen 侧内部类型（GlobalConfigReader 等）间接访问 -->
+    <InternalsVisibleTo Include="NCMapper.SourceGen.Tests" />
+    <InternalsVisibleTo Include="NCMapper.AotTests" />
+    <InternalsVisibleTo Include="NCMapper.Benchmarks" />
+    <InternalsVisibleTo Include="NCMapper.FreeSql" />
+    <InternalsVisibleTo Include="NCMapper.EFCore" />
+    <InternalsVisibleTo Include="NCMapper.Dapper" />
+    <InternalsVisibleTo Include="NCMapper.FuzzTests" />
+  </ItemGroup>
+
+  <ItemGroup>
+    <PackageReference Include="Microsoft.Extensions.DependencyInjection.Abstractions" />
+    <PackageReference Include="Microsoft.Extensions.Configuration.Abstractions" />
+    <PackageReference Include="Microsoft.Extensions.Configuration.Binder" />
+  </ItemGroup>
+
+  <!-- M-13: 自动引入 SourceGen 为 Analyzer，消费者无需手动添加 -->
+  <ItemGroup>
+    <ProjectReference Include="..\NCMapper.SourceGen\NCMapper.SourceGen.csproj"
+                      OutputItemType="Analyzer"
+                      ReferenceOutputAssembly="false"
+                      PrivateAssets="contentfiles;build" />
+  </ItemGroup>
+
+  <!-- R4: 显式打包 SourceGen 为 analyzer 资产，确保 nupkg 含 analyzers/dotnet/cs/ -->
+  <ItemGroup>
+    <None Include="..\NCMapper.SourceGen\bin\$(Configuration)\netstandard2.0\NCMapper.SourceGen.dll"
+          Pack="true" PackagePath="analyzers/dotnet/cs" Visible="false" />
+  </ItemGroup>
+
+  <!-- 全局映射配置 MSBuild 通道（方案 §2.1）：打包 buildTransitive/NCMapper.targets，
+       消费者引用 NuGet 包后 11 个 NCMapperXxx 属性对源生成器可见（CompilerVisibleProperty 白名单） -->
+  <ItemGroup>
+    <None Include="NCMapper.targets" Pack="true" PackagePath="buildTransitive\NCMapper.targets" />
+  </ItemGroup>
+
+</Project>

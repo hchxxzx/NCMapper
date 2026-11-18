@@ -1,0 +1,146 @@
+# 构建输出
+artifacts/
+bin/
+obj/
+
+# IDE
+.vs/
+*.user
+*.suo
+*.DotSettings
+
+# 基准测试产物
+BenchmarkDotNet.Artifacts/
+**/results_*/
+**/*.log
+**/*.out
+
+# 测试结果
+**/TestResults/
+
+# NuGet
+*.nupkg
+
+# 临时文件
+tmp_build/
+test_bm/
+
+# 临时工作副本
+.openclaw-tmp-*
+
+# Python 缓存（脚本工具产物）
+__pycache__/
+*.pyc
+*.pyo
+
+# 密钥文件（不提交到仓库）
+*.snk
+/BenchmarkResults
+
+# 发布配置（含机器本地路径，不提交到仓库）
+**/Properties/PublishProfiles/
+/src/NCMapper.SourceGen/obj2
+
+# AI 编程工具配置（项目级，不入库，通过群晖 NAS 备份跨机器同步）
+.workbuddy/
+.qoder/
+
+# 变异测试输出
+StrykerOutput/
+stryker-temp/
+
+# 备用构建/诊断产物
+_altbuild/
+results_gcdiog/
+
+# 性能基线（拆分后重新生成）
+perf-baselines/
+
+# 临时调试文件
+/CUsershch*
+
+# docs 白名单：仅交付用户的文档目录入库，其余内部文档不公开。
+# 结构基线（2026-10-02 订正）：docs/ 下按语言分目录（zh-CN / en-US），
+# 每语言内部为 Divio 四象限 + 诊断码 + 贡献 + 参考 的子结构；
+# 旧的顶层扁平名（docs/wiki/、docs/getting-started/ 等）已随语言分目录重构废置，勿再添加。
+docs/*
+# 中文（权威源）与英文（并行开放）目录
+!docs/zh-CN/
+!docs/en-US/
+# 其余语言目录（zh-CN 权威源翻译，2026-10 落地）：保留占用位，按需启用。
+# 当前实存仅 de（占位）；es/fr/it/ko/pl/pt-BR/ru/tr/vi 目录尚未落地，规则留着备用。
+!docs/de/
+!docs/es/
+!docs/fr/
+!docs/it/
+!docs/ko/
+!docs/pl/
+!docs/pt-BR/
+!docs/ru/
+!docs/tr/
+!docs/vi/
+# 站点导航与门户首页（2026-10-01 收拢）：toc-<lang>.md 站点导航栏 + index[-<lang>].html 根跳转页
+# （docfx.<lang>.json 留仓库根，~ 基准约束不可下移；详见 docs/i18n/README.md §5）
+!docs/toc-zh.md
+!docs/toc-en.md
+!docs/index.html
+!docs/index-en.html
+# 注释侧车（demo .cs 多语言注释数据，2026-09-30 方案A）：构建期注入各语言离线站的演示代码注释，
+# en 站与离线包构建依赖其存在，必须入库。
+!docs/i18n/
+# DocFX 站点产物（站点构建输出 / API 元数据 / 离线包与版本快照）
+# temp/ = 统一临时区（2026-08-22：site=docfx 输出、offline=离线包构建临时、archive=历史残留归档）
+temp/
+docs/zh-CN/reference/api/
+# 英文 API 参考（metadata 生成物，2026-09-01 起 dll+英文 XML 生成，与中文同属生成物忽略）
+docs/en-US/reference/api/
+# 日文 API 参考（metadata 生成物，2026-10-01 起 dll+日文 XML 生成，同属生成物忽略）
+# DocTranslate 工具备份（翻译前生成的 *.bak-时间戳 备份，不入版本库）
+locales/**/NCMapper.xml.bak-*
+dist/
+output
+/.openclaw/tmp
+# NCMapper IDE 工具状态文件
+.ncmapper.json
+/.openclaw
+/.openclaw-attachments
+/evolution-drafts/approved
+/nupkgs
+# 本地 CI 基准 init 产物（ci-benchmark.sh init 本地留存不入库——TASK-20261011-004 R-5；
+# CI 转正基线由 CI 侧 init 产生后人工提交，防本地读数裹挟入库）
+/benchmarks/ci-baseline/
+/HEARTBEAT.md
+/IDENTITY.md
+/MEMORY.md
+/SOUL.md
+/TOOLS.md
+/USER.md
+/AGENTS.md
+/.openclaw-tmp
+/evolution-drafts/pending
+/.trae/skills
+/.adr-tree-contract-tmp.md
+/.p1-doc-tmp
+.cluster
+/.tmp-taskdoc
+/.trae/staging
+/outputs/pdf_87_88
+/.tmp-backfill-taskbook.ps1
+/outputs
+/.trae/documents
+cleanup_c_drive.ps1
+cleanup_result.txt
+cleanup_result2.txt
+cleanup_winold.ps1
+
+# 审计取证 worktree（2026-10-18 订正）：审计轮次在主仓库内建的一次性检出副本
+# （.git 文件指向 .git/worktrees/<name>，内容即该 commit 的整棵源码树）。
+# 无独有信息，可由对应 commit 随时重建；入库＝把源码树再存一份，必须忽略。
+/.audit-*/
+# 会话日志分析产物（2026-10-18 订正）：DSH 会话 jsonl 导出＋统计脚本，
+# 单轮导出可达数百 MB，且日志正文含真实 API 密钥 / 口令 / Bearer 等凭据
+# （实测 sk- 命中 192 个文件、apiKey 17、password 22、Bearer 4）。严禁入库。
+/analysis/
+# 本机 DSH 安装与运维脚本（2026-10-18 订正）：写死 D:\AIData\DSH Desktop、
+# C:\Users\hch\... 等机器本地路径，与 NCMapper 仓库无关。
+/downloads/

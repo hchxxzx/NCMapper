@@ -1,0 +1,100 @@
+# Dependabot configuration for NCMapper.
+#
+# Two ecosystems are tracked:
+#   1. NuGet — the library uses Central Package Management, so all package
+#      versions live in Directory.Packages.props. Dependabot edits that file.
+#   2. GitHub Actions — workflow action versions.
+#
+# The repository pins packages through lock files and runs restore in locked
+# mode. A dependency bump therefore has to regenerate the lock files as part of
+# the PR; the build will fail loudly if that step is missed, which is intended.
+
+version: 2
+updates:
+  # ---------------------------------------------------------------------------
+  # NuGet packages (Central Package Management: Directory.Packages.props)
+  # ---------------------------------------------------------------------------
+  - package-ecosystem: "nuget"
+    directory: "/"
+    schedule:
+      interval: "weekly"
+      day: "monday"
+      time: "09:00"
+      timezone: "Asia/Shanghai"
+    open-pull-requests-limit: 5
+    reviewers:
+      - "hchxxzx"
+    labels:
+      - "dependencies"
+      - "nuget"
+    commit-message:
+      prefix: "chore(deps)"
+      include: "scope"
+    # Group routine bumps so that a quiet week produces one PR rather than ten.
+    groups:
+      # Microsoft.Extensions.* ship together and are usually safe in lockstep.
+      microsoft-extensions:
+        patterns:
+          - "Microsoft.Extensions.*"
+        update-types:
+          - "minor"
+          - "patch"
+      # Test tooling. xunit.v3 and the MTP extensions move independently of the
+      # library and rarely need attention.
+      test-tooling:
+        patterns:
+          - "xunit*"
+          - "Microsoft.NET.Test.Sdk"
+          - "Microsoft.Testing.*"
+          - "FsCheck*"
+        update-types:
+          - "minor"
+          - "patch"
+      # ORM providers are pinned by range in Directory.Packages.props. Widening
+      # a range is a deliberate decision, so let those arrive individually.
+      analyzers-and-tools:
+        patterns:
+          - "PublicApiGenerator"
+          - "System.Reflection.MetadataLoadContext"
+          - "System.CommandLine"
+        update-types:
+          - "minor"
+          - "patch"
+    ignore:
+      # Benchmark-only comparison libraries. These are never packed or shipped,
+      # so upgrades are driven by curiosity rather than obligation. Handle them
+      # by hand when investigating a performance question.
+      - dependency-name: "AutoMapper"
+      - dependency-name: "Mapster"
+      - dependency-name: "Riok.Mapperly"
+      - dependency-name: "BenchmarkDotNet"
+      # Roslyn: the analyzer/source generator targets the lowest Roslyn version
+      # consumers are expected to have. Raising it raises the minimum SDK
+      # requirement for everybody, so it must be a manual, deliberate change.
+      - dependency-name: "Microsoft.CodeAnalysis.CSharp"
+        update-types:
+          - "version-update:semver-major"
+          - "version-update:semver-minor"
+
+  # ---------------------------------------------------------------------------
+  # GitHub Actions
+  # ---------------------------------------------------------------------------
+  - package-ecosystem: "github-actions"
+    directory: "/"
+    schedule:
+      interval: "monthly"
+      time: "09:00"
+      timezone: "Asia/Shanghai"
+    open-pull-requests-limit: 3
+    reviewers:
+      - "hchxxzx"
+    labels:
+      - "dependencies"
+      - "github-actions"
+    commit-message:
+      prefix: "ci(deps)"
+      include: "scope"
+    groups:
+      actions:
+        patterns:
+          - "*"

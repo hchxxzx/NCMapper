@@ -1,0 +1,18 @@
+<Project Sdk="Microsoft.NET.Sdk">
+  <PropertyGroup>
+    <OutputType>Exe</OutputType>
+    <TargetFramework>net10.0</TargetFramework>
+    <AssemblyName>PublicApiDump</AssemblyName>
+    <RootNamespace>PublicApiDump</RootNamespace>
+    <Nullable>disable</Nullable>
+    <!-- 工具工程独立于主库发布链与包打包（参照 tools/DocSiteServer 与 tools/AotReflectionGuard 先例，
+         不入 NCMapper.slnx / NCMapper.Lib.slnf，仅显式点名构建；IsPackable=false 同时关掉 SourceLink 引用） -->
+    <IsPackable>false</IsPackable>
+  </PropertyGroup>
+
+  <ItemGroup>
+    <!-- 版本由 Directory.Packages.props 中央管理（PublicApiGenerator 11.1.0）；
+         禁止在此写 Version —— CPM 下会报 NU1008 -->
+    <PackageReference Include="PublicApiGenerator" />
+  </ItemGroup>
+</Project>

@@ -1,0 +1,123 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 880 710" width="880" height="710" role="img" aria-label="NCMapper feature overview">
+  <rect width="880" height="710" fill="#ffffff"/>
+  <g font-family="Segoe UI, PingFang SC, Hiragino Sans GB, Microsoft YaHei, Helvetica Neue, Arial, sans-serif">
+
+    <!-- Title -->
+    <text x="32" y="46" font-size="27" font-weight="700" fill="#0f172a">NCMapper Feature Overview</text>
+    <text x="32" y="74" font-size="14.5" fill="#64748b">Declare once · Auto route selection · Reuse across scenarios</text>
+
+    <!-- 1. Declare rules -->
+    <rect x="32" y="96" width="392" height="184" rx="14" fill="#f8fafc" stroke="#e2e8f0" stroke-width="1.5"/>
+    <text x="52" y="132" font-size="18" font-weight="700" fill="#0f172a">1. Declare Rules</text>
+    <text x="232" y="132" font-size="12.5" fill="#64748b">Two styles, equal power</text>
+
+    <rect x="52" y="168" width="352" height="46" rx="9" fill="#ffffff" stroke="#e2e8f0" stroke-width="1.2"/>
+    <rect x="66" y="179" width="3" height="24" rx="1.5" fill="#2563eb"/>
+    <text x="80" y="187" font-size="14.5" font-weight="600" fill="#1e293b">Fluent chained pipeline</text>
+    <text x="80" y="204" font-size="12.5" fill="#64748b">Config class + chained terminals, rules in one place</text>
+
+    <rect x="52" y="222" width="352" height="46" rx="9" fill="#ffffff" stroke="#e2e8f0" stroke-width="1.2"/>
+    <rect x="66" y="233" width="3" height="24" rx="1.5" fill="#2563eb"/>
+    <text x="80" y="241" font-size="14.5" font-weight="600" fill="#1e293b">Attribute-based</text>
+    <text x="80" y="258" font-size="12.5" fill="#64748b">[MapFrom] / [MapProperty] and 15 attributes</text>
+
+    <!-- Connector arrow -->
+    <path d="M428 188 L444 188" stroke="#94a3b8" stroke-width="2" stroke-linecap="round"/>
+    <path d="M443 183 L452 188 L443 193 Z" fill="#94a3b8"/>
+
+    <!-- 2. Auto routing -->
+    <rect x="456" y="96" width="392" height="184" rx="14" fill="#f8fafc" stroke="#e2e8f0" stroke-width="1.5"/>
+    <text x="476" y="132" font-size="18" font-weight="700" fill="#0f172a">2. Auto Routing</text>
+    <text x="658" y="132" font-size="12.5" fill="#64748b">Compile-time first</text>
+
+    <rect x="476" y="168" width="352" height="46" rx="9" fill="#ffffff" stroke="#e2e8f0" stroke-width="1.2"/>
+    <rect x="490" y="179" width="3" height="24" rx="1.5" fill="#0d9488"/>
+    <text x="504" y="187" font-size="14.5" font-weight="600" fill="#1e293b">Source generator (compile time)</text>
+    <text x="504" y="204" font-size="12.5" fill="#64748b">Roslyn incremental · zero-reflection · AOT friendly</text>
+
+    <rect x="476" y="222" width="352" height="46" rx="9" fill="#ffffff" stroke="#e2e8f0" stroke-width="1.2"/>
+    <rect x="490" y="233" width="3" height="24" rx="1.5" fill="#7c3aed"/>
+    <text x="504" y="241" font-size="14.5" font-weight="600" fill="#1e293b">Expression tree (runtime)</text>
+    <text x="504" y="258" font-size="12.5" fill="#64748b">Compiled once and cached · JIT static generic cache</text>
+
+    <!-- 3. Reuse across scenarios -->
+    <text x="32" y="316" font-size="18" font-weight="700" fill="#0f172a">3. Reuse Across Scenarios</text>
+    <text x="280" y="316" font-size="12.5" fill="#64748b">One rule set, directly reused below</text>
+
+    <!-- Card 1 Object mapping -->
+    <rect x="32" y="334" width="261" height="100" rx="11" fill="#ffffff" stroke="#e2e8f0" stroke-width="1.2"/>
+    <circle cx="50" cy="358" r="5" fill="#2563eb"/>
+    <text x="64" y="363" font-size="15.5" font-weight="600" fill="#0f172a">Object mapping</text>
+    <text x="50" y="388" font-size="12.5" fill="#64748b">Entity ↔ DTO, both directions</text>
+    <text x="50" y="406" font-size="12.5" fill="#64748b">Auto-match by name</text>
+    <text x="50" y="424" font-size="12.5" fill="#64748b">Case-insensitive + flattening</text>
+
+    <!-- Card 2 ORM projection -->
+    <rect x="309" y="334" width="261" height="100" rx="11" fill="#ffffff" stroke="#e2e8f0" stroke-width="1.2"/>
+    <circle cx="327" cy="358" r="5" fill="#0d9488"/>
+    <text x="341" y="363" font-size="15.5" font-weight="600" fill="#0f172a">ORM projection</text>
+    <text x="327" y="388" font-size="12.5" fill="#64748b">FreeSql / EFCore / Dapper</text>
+    <text x="327" y="406" font-size="12.5" fill="#64748b">AsDto(): DTO straight from one SQL</text>
+    <text x="327" y="424" font-size="12.5" fill="#64748b">Auto fallback when untranslatable</text>
+
+    <!-- Card 3 Deep copy -->
+    <rect x="586" y="334" width="261" height="100" rx="11" fill="#ffffff" stroke="#e2e8f0" stroke-width="1.2"/>
+    <circle cx="604" cy="358" r="5" fill="#7c3aed"/>
+    <text x="618" y="363" font-size="15.5" font-weight="600" fill="#0f172a">Deep copy</text>
+    <text x="604" y="388" font-size="12.5" fill="#64748b">Three tiers: generator → Fast</text>
+    <text x="604" y="406" font-size="12.5" fill="#64748b">→ expression tree (Fast default)</text>
+    <text x="604" y="424" font-size="12.5" fill="#64748b">Cycle detection · 16 collections</text>
+
+    <!-- Card 4 Multi-source compose -->
+    <rect x="32" y="442" width="261" height="100" rx="11" fill="#ffffff" stroke="#e2e8f0" stroke-width="1.2"/>
+    <circle cx="50" cy="466" r="5" fill="#d97706"/>
+    <text x="64" y="471" font-size="15.5" font-weight="600" fill="#0f172a">Multi-source compose</text>
+    <text x="50" y="496" font-size="12.5" fill="#64748b">Compose() aggregates into one DTO</text>
+    <text x="50" y="514" font-size="12.5" fill="#64748b">ComposeList() batch compose</text>
+    <text x="50" y="532" font-size="12.5" fill="#64748b">Many tables / objects into one</text>
+
+    <!-- Card 5 Data masking -->
+    <rect x="309" y="442" width="261" height="100" rx="11" fill="#ffffff" stroke="#e2e8f0" stroke-width="1.2"/>
+    <circle cx="327" cy="466" r="5" fill="#e11d48"/>
+    <text x="341" y="471" font-size="15.5" font-weight="600" fill="#0f172a">Data masking</text>
+    <text x="327" y="496" font-size="12.5" fill="#64748b">9 built-in + custom IMask</text>
+    <text x="327" y="514" font-size="12.5" fill="#64748b">Phone / ID card / email</text>
+    <text x="327" y="532" font-size="12.5" fill="#64748b">Composes with custom converters</text>
+
+    <!-- Card 6 Governance and diagnostics -->
+    <rect x="586" y="442" width="261" height="100" rx="11" fill="#ffffff" stroke="#e2e8f0" stroke-width="1.2"/>
+    <circle cx="604" cy="466" r="5" fill="#475569"/>
+    <text x="618" y="471" font-size="15.5" font-weight="600" fill="#0f172a">Governance</text>
+    <text x="604" y="496" font-size="12.5" fill="#64748b">Compile-time diagnostic guards</text>
+    <text x="604" y="514" font-size="12.5" fill="#64748b">NCMAP0xx / NCMAP_Fxx</text>
+    <text x="604" y="532" font-size="12.5" fill="#64748b">Validation · Trace · Metrics</text>
+
+    <!-- 4. Integration -->
+    <text x="32" y="574" font-size="18" font-weight="700" fill="#0f172a">4. Integration</text>
+    <text x="181" y="574" font-size="12.5" fill="#64748b">Used together with the scenarios above</text>
+
+    <rect x="32" y="594" width="816" height="76" rx="14" fill="#f8fafc" stroke="#e2e8f0" stroke-width="1.5"/>
+
+    <rect x="54" y="616" width="73" height="32" rx="16" fill="#ffffff" stroke="#dbe3ee" stroke-width="1.2"/>
+    <text x="90" y="637" font-size="12.5" fill="#334155" text-anchor="middle">DI</text>
+
+    <rect x="139" y="616" width="105" height="32" rx="16" fill="#ffffff" stroke="#dbe3ee" stroke-width="1.2"/>
+    <text x="191" y="637" font-size="12.5" fill="#334155" text-anchor="middle">AOT / trimming</text>
+
+    <rect x="256" y="616" width="132" height="32" rx="16" fill="#ffffff" stroke="#dbe3ee" stroke-width="1.2"/>
+    <text x="322" y="637" font-size="12.5" fill="#334155" text-anchor="middle">Pipeline PostMap</text>
+
+    <rect x="400" y="616" width="105" height="32" rx="16" fill="#ffffff" stroke="#dbe3ee" stroke-width="1.2"/>
+    <text x="452" y="637" font-size="12.5" fill="#334155" text-anchor="middle">Validation report</text>
+
+    <rect x="517" y="616" width="93" height="32" rx="16" fill="#ffffff" stroke="#dbe3ee" stroke-width="1.2"/>
+    <text x="563" y="637" font-size="12.5" fill="#334155" text-anchor="middle">Trace</text>
+
+    <rect x="622" y="616" width="80" height="32" rx="16" fill="#ffffff" stroke="#dbe3ee" stroke-width="1.2"/>
+    <text x="662" y="637" font-size="12.5" fill="#334155" text-anchor="middle">Paging</text>
+
+    <rect x="714" y="616" width="105" height="32" rx="16" fill="#ffffff" stroke="#dbe3ee" stroke-width="1.2"/>
+    <text x="766" y="637" font-size="12.5" fill="#334155" text-anchor="middle">Localized errors</text>
+
+  </g>
+</svg>

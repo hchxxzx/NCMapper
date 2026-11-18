@@ -1,0 +1,40 @@
+<Project Sdk="Microsoft.NET.Sdk">
+
+  <PropertyGroup>
+    <TargetFrameworks>net8.0;net9.0;net10.0</TargetFrameworks>
+    <ImplicitUsings>enable</ImplicitUsings>
+    <Nullable>enable</Nullable>
+    <RootNamespace>NCMapper.SourceGen.Tests</RootNamespace>
+    <EmitCompilerGeneratedFiles>true</EmitCompilerGeneratedFiles>
+    <!-- T4: 开启映射关系报告生成 -->
+    <NCMapperGenerateReport>true</NCMapperGenerateReport>
+    <OutputType>Exe</OutputType>
+    <UseMicrosoftTestingPlatformRunner>true</UseMicrosoftTestingPlatformRunner>
+    <TestingPlatformDotnetTestSupport>true</TestingPlatformDotnetTestSupport>
+  </PropertyGroup>
+
+  <!-- A8 方案 A：生成快照基线文件复制到输出目录（GeneratedSnapshotBaselineTests 逐字节对比） -->
+  <ItemGroup>
+    <None Include="Baselines\**\*" CopyToOutputDirectory="PreserveNewest" />
+    <Compile Remove="Baselines\**\*" />
+  </ItemGroup>
+
+  <ItemGroup>
+    <ProjectReference Include="..\..\src\NCMapper\NCMapper.csproj" Aliases="global,runtime" />
+    <!-- SourceGen 加独立 alias（sourcegen）——PathResolverConsistencyTests 需
+         区分 Link 双份同名类型（PathResolutionOptions/PathSegmentFailure 等），runtime=核心库 / sourcegen=源生成器 -->
+    <ProjectReference Include="..\..\src\NCMapper.SourceGen\NCMapper.SourceGen.csproj" OutputItemType="Analyzer" ReferenceOutputAssembly="true" Aliases="global,sourcegen" />
+    <PackageReference Include="xunit.v3" />
+    <PackageReference Include="Microsoft.NET.Test.Sdk" />
+    <PackageReference Include="Microsoft.CodeAnalysis.CSharp" VersionOverride="5.6.0" />
+    <!-- W3D-4 方案 A 路径 3（2026-08-08 裁决修订）：MTP 原生覆盖率扩展，替代方案 B 移除的 coverlet.collector -->
+    <PackageReference Include="Microsoft.Testing.Extensions.CodeCoverage" />
+    <PackageReference Include="xunit.runner.visualstudio">
+      <PrivateAssets>all</PrivateAssets>
+      <IncludeAssets>runtime; build; native; contentfiles; analyzers</IncludeAssets>
+    </PackageReference>
+  </ItemGroup>
+
+  <!-- W3D-4 方案 A 路径 3（2026-08-08 裁决修订）：覆盖率链路恢复，ci-only -->
+
+</Project>

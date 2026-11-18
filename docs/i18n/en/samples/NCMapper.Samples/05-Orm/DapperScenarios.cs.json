@@ -1,0 +1,317 @@
+{
+    "source":  "samples/NCMapper.Samples/05-Orm/DapperScenarios.cs",
+    "language":  "en",
+    "generatedFrom":  "f89a96b5aca501107379b981070f27965a3183c3392c7bf13bcbd9f9b79be7f2",
+    "comments":  [
+                     {
+                         "i":  1,
+                         "zh":  "Dapper 集成场景集 — Query 系列、ToPagedList、ToDictionary、ToChunkDto、ToTreeList、QueryMultiple 等。",
+                         "en":  "Dapper integration scenarios — Query series, ToPagedList, ToDictionary, ToChunkDto, ToTreeList, QueryMultiple, etc."
+                     },
+                     {
+                         "i":  4,
+                         "zh":  "Query + AsDto：SQL 结果映射为 DTO 列表。",
+                         "en":  "Query + AsDto: Maps SQL query results to a list of DTOs."
+                     },
+                     {
+                         "i":  6,
+                         "zh":  "\u003cparam name=\"connection\"\u003e已打开的 SQLite 连接\u003c/param\u003e",
+                         "en":  "\u003cparam name=\"connection\"\u003eAn already-opened SQLite connection\u003c/param\u003e"
+                     },
+                     {
+                         "i":  7,
+                         "zh":  "\u003creturns\u003e映射后的 DTO 列表\u003c/returns\u003e",
+                         "en":  "\u003creturns\u003eA list of mapped DTOs\u003c/returns\u003e"
+                     },
+                     {
+                         "i":  9,
+                         "zh":  "QueryFirst：返回第一条映射后的 DTO。",
+                         "en":  "QueryFirst: Returns the first mapped DTO."
+                     },
+                     {
+                         "i":  11,
+                         "zh":  "\u003cparam name=\"connection\"\u003e已打开的 SQLite 连接\u003c/param\u003e",
+                         "en":  "\u003cparam name=\"connection\"\u003eAn already-opened SQLite connection\u003c/param\u003e"
+                     },
+                     {
+                         "i":  12,
+                         "zh":  "\u003creturns\u003e第一条匹配的 DTO，或 null\u003c/returns\u003e",
+                         "en":  "\u003creturns\u003eThe first matching DTO, or null\u003c/returns\u003e"
+                     },
+                     {
+                         "i":  14,
+                         "zh":  "QueryFirstOrDefault：返回第一条或 null。",
+                         "en":  "QueryFirstOrDefault: Returns the first matching DTO or null."
+                     },
+                     {
+                         "i":  16,
+                         "zh":  "\u003cparam name=\"connection\"\u003e已打开的 SQLite 连接\u003c/param\u003e",
+                         "en":  "\u003cparam name=\"connection\"\u003eAn already-opened SQLite connection\u003c/param\u003e"
+                     },
+                     {
+                         "i":  17,
+                         "zh":  "\u003creturns\u003e第一条匹配的 DTO，或 null\u003c/returns\u003e",
+                         "en":  "\u003creturns\u003eThe first matching DTO, or null\u003c/returns\u003e"
+                     },
+                     {
+                         "i":  19,
+                         "zh":  "QuerySingle：恰好一条记录。",
+                         "en":  "QuerySingle: Expects exactly one record."
+                     },
+                     {
+                         "i":  21,
+                         "zh":  "\u003cparam name=\"connection\"\u003e已打开的 SQLite 连接\u003c/param\u003e",
+                         "en":  "\u003cparam name=\"connection\"\u003eAn already-opened SQLite connection\u003c/param\u003e"
+                     },
+                     {
+                         "i":  22,
+                         "zh":  "\u003creturns\u003e唯一匹配的 DTO\u003c/returns\u003e",
+                         "en":  "\u003creturns\u003eThe uniquely matching DTO\u003c/returns\u003e"
+                     },
+                     {
+                         "i":  24,
+                         "zh":  "QuerySingleOrDefault：恰好一条或 null。",
+                         "en":  "QuerySingleOrDefault: Expects exactly one record or null."
+                     },
+                     {
+                         "i":  26,
+                         "zh":  "\u003cparam name=\"connection\"\u003e已打开的 SQLite 连接\u003c/param\u003e",
+                         "en":  "\u003cparam name=\"connection\"\u003eAn already-opened SQLite connection\u003c/param\u003e"
+                     },
+                     {
+                         "i":  27,
+                         "zh":  "\u003creturns\u003e唯一匹配的 DTO，或 null\u003c/returns\u003e",
+                         "en":  "\u003creturns\u003eThe uniquely matching DTO, or null\u003c/returns\u003e"
+                     },
+                     {
+                         "i":  29,
+                         "zh":  "ToPagedList：SQL 级分页，自动检测方言。",
+                         "en":  "ToPagedList: SQL-level pagination with automatic dialect detection."
+                     },
+                     {
+                         "i":  31,
+                         "zh":  "\u003cparam name=\"connection\"\u003e已打开的 SQLite 连接\u003c/param\u003e",
+                         "en":  "\u003cparam name=\"connection\"\u003eAn already-opened SQLite connection\u003c/param\u003e"
+                     },
+                     {
+                         "i":  32,
+                         "zh":  "\u003creturns\u003e分页结果\u003c/returns\u003e",
+                         "en":  "\u003creturns\u003eThe paged result\u003c/returns\u003e"
+                     },
+                     {
+                         "i":  33,
+                         "zh":  "Advanced terminal group: paging / dictionary / lookup / chunked read / tree query",
+                         "en":  "Advanced terminal suite: pagination, dictionary, grouping, batching, and tree queries."
+                     },
+                     {
+                         "i":  35,
+                         "zh":  "ToDictionary：映射为字典。",
+                         "en":  "ToDictionary: Maps results to a dictionary."
+                     },
+                     {
+                         "i":  37,
+                         "zh":  "\u003cparam name=\"connection\"\u003e已打开的 SQLite 连接\u003c/param\u003e",
+                         "en":  "\u003cparam name=\"connection\"\u003eAn already-opened SQLite connection\u003c/param\u003e"
+                     },
+                     {
+                         "i":  38,
+                         "zh":  "\u003creturns\u003e以实体 Id 为 Key 的字典\u003c/returns\u003e",
+                         "en":  "\u003creturns\u003eA dictionary keyed by entity ID\u003c/returns\u003e"
+                     },
+                     {
+                         "i":  40,
+                         "zh":  "ToLookup：按键分组。",
+                         "en":  "ToLookup: Groups results by key."
+                     },
+                     {
+                         "i":  42,
+                         "zh":  "\u003cparam name=\"connection\"\u003e已打开的 SQLite 连接\u003c/param\u003e",
+                         "en":  "\u003cparam name=\"connection\"\u003eAn already-opened SQLite connection\u003c/param\u003e"
+                     },
+                     {
+                         "i":  43,
+                         "zh":  "\u003creturns\u003e按 Age/10 分组的 Lookup\u003c/returns\u003e",
+                         "en":  "\u003creturns\u003eA Lookup grouped by Age/10\u003c/returns\u003e"
+                     },
+                     {
+                         "i":  45,
+                         "zh":  "ToChunkDto：分批回调读取。",
+                         "en":  "ToChunkDto: Callback-based chunked reading."
+                     },
+                     {
+                         "i":  47,
+                         "zh":  "\u003cparam name=\"connection\"\u003e已打开的 SQLite 连接\u003c/param\u003e",
+                         "en":  "\u003cparam name=\"connection\"\u003eAn already-opened SQLite connection\u003c/param\u003e"
+                     },
+                     {
+                         "i":  48,
+                         "zh":  "\u003creturns\u003e全部批次合并\u003c/returns\u003e",
+                         "en":  "\u003creturns\u003eAll chunks merged\u003c/returns\u003e"
+                     },
+                     {
+                         "i":  50,
+                         "zh":  "ToTreeList：树形结构投影。",
+                         "en":  "ToTreeList: Tree-structured projection."
+                     },
+                     {
+                         "i":  52,
+                         "zh":  "\u003cparam name=\"connection\"\u003e已打开的 SQLite 连接（需含 Categories 表）\u003c/param\u003e",
+                         "en":  "\u003cparam name=\"connection\"\u003eAn already-opened SQLite connection (must contain the Categories table)\u003c/param\u003e"
+                     },
+                     {
+                         "i":  53,
+                         "zh":  "\u003creturns\u003e树形结构 DTO\u003c/returns\u003e",
+                         "en":  "\u003creturns\u003eTree-structured DTO\u003c/returns\u003e"
+                     },
+                     {
+                         "i":  55,
+                         "zh":  "QueryUnbufferedAsync：异步流式枚举。",
+                         "en":  "QueryUnbufferedAsync: Asynchronous streaming enumeration."
+                     },
+                     {
+                         "i":  57,
+                         "zh":  "\u003cparam name=\"connection\"\u003e已打开的 SQLite 连接\u003c/param\u003e",
+                         "en":  "\u003cparam name=\"connection\"\u003eAn already-opened SQLite connection\u003c/param\u003e"
+                     },
+                     {
+                         "i":  58,
+                         "zh":  "\u003creturns\u003e异步流式返回的 DTO 列表\u003c/returns\u003e",
+                         "en":  "\u003creturns\u003eList of DTOs returned asynchronously via streaming\u003c/returns\u003e"
+                     },
+                     {
+                         "i":  60,
+                         "zh":  "QueryMultiple：多结果集查询。",
+                         "en":  "QueryMultiple: Multi-result-set query."
+                     },
+                     {
+                         "i":  62,
+                         "zh":  "\u003cparam name=\"connection\"\u003e已打开的 SQLite 连接\u003c/param\u003e",
+                         "en":  "\u003cparam name=\"connection\"\u003eAn already-opened SQLite connection\u003c/param\u003e"
+                     },
+                     {
+                         "i":  63,
+                         "zh":  "\u003creturns\u003e两个结果集的 DTO 列表\u003c/returns\u003e",
+                         "en":  "\u003creturns\u003eList of DTOs from two result sets\u003c/returns\u003e"
+                     },
+                     {
+                         "i":  65,
+                         "zh":  "QueryMultiple 三结果集：一次 SQL 消费三个结果集（三泛型重载形态）。",
+                         "en":  "QueryAsync: Asynchronous query."
+                     },
+                     {
+                         "i":  67,
+                         "zh":  "</summary>",
+                         "en":  "\u003cparam name=\"connection\"\u003eAn already-opened SQLite connection\u003c/param\u003e"
+                     },
+                     {
+                         "i":  68,
+                         "zh":  "<param name=\"connection\">已打开的 SQLite 连接（需含 Users 与 Categories 表）</param>",
+                         "en":  "\u003creturns\u003eList of mapped DTOs\u003c/returns\u003e"
+                     },
+                     {
+                         "i":  70,
+                         "zh":  "<summary>",
+                         "en":  "ToPagedListAsync: Asynchronous pagination."
+                     },
+                     {
+                         "i":  72,
+                         "zh":  "</summary>",
+                         "en":  "\u003cparam name=\"connection\"\u003eAn already-opened SQLite connection\u003c/param\u003e"
+                     },
+                     {
+                         "i":  73,
+                         "zh":  "<param name=\"connection\">已打开的 SQLite 连接</param>",
+                         "en":  "\u003creturns\u003eAsynchronous pagination result\u003c/returns\u003e"
+                     },
+                     {
+                         "i":  75,
+                         "zh":  "<summary>",
+                         "en":  "QueryFirstAsync: Asynchronous query for the first record."
+                     },
+                     {
+                         "i":  77,
+                         "zh":  "</summary>",
+                         "en":  "\u003cparam name=\"connection\"\u003eAn already-opened SQLite connection\u003c/param\u003e"
+                     },
+                     {
+                         "i":  78,
+                         "zh":  "<param name=\"connection\">已打开的 SQLite 连接</param>",
+                         "en":  "\u003creturns\u003eThe first matching DTO\u003c/returns\u003e"
+                     },
+                     {
+                         "i":  79,
+                         "zh":  "<returns>异步分页结果</returns>",
+                         "en":  "===== Scenario Registration Entry Point ====="
+                     },
+                     {
+                         "i":  82,
+                         "zh":  "</summary>",
+                         "en":  "Tree-structured entity — Dapper ToTreeList demonstration."
+                     },
+                     {
+                         "i":  85,
+                         "zh":  "<summary>",
+                         "en": "<summary>"
+                     },
+                     {
+                         "i":  87,
+                         "zh":  "</summary>",
+                         "en": "</summary>"
+                     },
+                     {
+                         "i":  89,
+                         "zh":  "<returns>第一条匹配的 DTO，无匹配时为 null</returns>",
+                         "en": "<returns>\u7b2c\u4e00\u6761\u5339\u914d\u7684 DTO\uff0c\u65e0\u5339\u914d\u65f6\u4e3a null</returns>"
+                     },
+                     {
+                         "i":  92,
+                         "zh":  "</summary>",
+                         "en": "</summary>"
+                     },
+                     {
+                         "i":  95,
+                         "zh":  "batch accumulate, size rows per batch",
+                         "en": "batch accumulate, size rows per batch"
+                     },
+                     {
+                         "i":  97,
+                         "zh":  "ToPagedListWithDialect：显式注入 ISqlDialect 的 SQL 级分页（方言经 AsDto 入口注入，跳过自动检测）。",
+                         "en": "ToPagedListWithDialect\uff1a\u663e\u5f0f\u6ce8\u5165 ISqlDialect \u7684 SQL \u7ea7\u5206\u9875\uff08\u65b9\u8a00\u7ecf AsDto \u5165\u53e3\u6ce8\u5165\uff0c\u8df3\u8fc7\u81ea\u52a8\u68c0\u6d4b\uff09\u3002"
+                     },
+                     {
+                         "i":  98,
+                         "zh":  "</summary>",
+                         "en": "</summary>"
+                     },
+                     {
+                         "i":  100,
+                         "zh":  "<returns>分页结果</returns>",
+                         "en": "<returns>\u5206\u9875\u7ed3\u679c</returns>"
+                     },
+                     {
+                         "i":  103,
+                         "zh":  "期望值：种子 SQL 契约 WHERE Age > 20 → 3 行，首行 Alice/25（列→属性映射语义）",
+                         "en": "EF Core DbSet requires a primary key (NodeId does not conform to the naming convention); Dapper is path-agnostic."
+                     },
+                     {
+                         "i":  106,
+                         "zh":  "期望值：种子契约 Id=1 唯一行 → Alice，Email 字段照常映射",
+                         "en": "\u671f\u671b\u503c\uff1a\u79cd\u5b50\u5951\u7ea6 Id=1 \u552f\u4e00\u884c \u2192 Alice\uff0cEmail \u5b57\u6bb5\u7167\u5e38\u6620\u5c04"
+                     },
+                     {
+                         "i":  109,
+                         "zh":  "期望值：ToDictionary(keySelector) 语义——种子键 1/2/3，dict[2] 为 Bob",
+                         "en": "\u671f\u671b\u503c\uff1aToDictionary(keySelector) \u8bed\u4e49\u2014\u2014\u79cd\u5b50\u952e 1/2/3\uff0cdict[2] \u4e3a Bob"
+                     },
+                     {
+                         "i":  112,
+                         "zh":  "期望值：树形投影语义——种子 Categories 树 Root→Child1/Child2→Grandchild 层级保持",
+                         "en": "\u671f\u671b\u503c\uff1a\u6811\u5f62\u6295\u5f71\u8bed\u4e49\u2014\u2014\u79cd\u5b50 Categories \u6811 Root\u2192Child1/Child2\u2192Grandchild \u5c42\u7ea7\u4fdd\u6301"
+                     },
+                     {
+                         "i":  115,
+                         "zh":  "TSource=UserEntity、次结果集按 TDto [MapFrom] 推断（UserDto→UserEntity、CategoryDto→CategoryEntity）+",
+                         "en": "TSource=UserEntity\u3001\u6b21\u7ed3\u679c\u96c6\u6309 TDto [MapFrom] \u63a8\u65ad\uff08UserDto\u2192UserEntity\u3001CategoryDto\u2192CategoryEntity\uff09+"
+                     }
+                 ]
+}

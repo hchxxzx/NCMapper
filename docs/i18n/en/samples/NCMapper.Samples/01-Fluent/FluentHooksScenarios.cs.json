@@ -1,0 +1,107 @@
+{
+    "source":  "samples/NCMapper.Samples/01-Fluent/FluentHooksScenarios.cs",
+    "language":  "en",
+    "generatedFrom":  "d7abf2084c309b38643d98c5a4159ff07ad3533f918d29b012ca9079a03dab70",
+    "comments":  [
+                     {
+                         "i":  1,
+                         "zh":  "场景 104 — 生命周期钩子 BeforeMapping/AfterMapping（how-to/fluent/hooks.md「BeforeMapping/AfterMapping」节）：",
+                         "en":  "Scenario 104 — Lifecycle hooks BeforeMapping/AfterMapping (see \u0027BeforeMapping/AfterMapping\u0027 section in how-to/fluent/hooks.md)"
+                     },
+                     {
+                         "i":  2,
+                         "zh":  "双侧（Fluent 链式 + 类级特性）+ 执行相位 Before→赋值→After + 跨对签名过滤（D-d）。",
+                         "en":  "Dual-side (Fluent chaining + class-level attributes) + execution phases (Before → assignment → After) + cross-pair signature filtering (D-d)."
+                     },
+                     {
+                         "i":  5,
+                         "zh":  "Fluent 侧新建映射——双钩子连写（Before 写派生字段 / After 计算派生字段）。",
+                         "en":  "Fluent-side new mapping — consecutive dual hooks (Before writes derived fields / After computes derived fields)."
+                     },
+                     {
+                         "i":  7,
+                         "zh":  "\u003cparam name=\"src\"\u003e源订单实体\u003c/param\u003e",
+                         "en":  "\u003cparam name=\"src\"\u003eSource order entity\u003c/param\u003e"
+                     },
+                     {
+                         "i":  8,
+                         "zh":  "\u003creturns\u003e映射后的 DTO（含钩子派生字段）\u003c/returns\u003e",
+                         "en":  "\u003creturns\u003eMapped DTO (including hook-derived fields)\u003c/returns\u003e"
+                     },
+                     {
+                         "i":  10,
+                         "zh":  "Fluent 侧 _Update 形态——复用既有实例（Before 见到 dst 旧值）。",
+                         "en":  "Fluent-side _Update form — reuses existing instance (Before observes old values in dst)."
+                     },
+                     {
+                         "i":  12,
+                         "zh":  "\u003cparam name=\"src\"\u003e源订单实体\u003c/param\u003e",
+                         "en":  "\u003cparam name=\"src\"\u003eSource order entity\u003c/param\u003e"
+                     },
+                     {
+                         "i":  13,
+                         "zh":  "\u003cparam name=\"existing\"\u003e既有 DTO（含旧值）\u003c/param\u003e",
+                         "en":  "\u003cparam name=\"existing\"\u003eExisting DTO (containing old values)\u003c/param\u003e"
+                     },
+                     {
+                         "i":  15,
+                         "zh":  "特性侧映射——[BeforeMapping]/[AfterMapping] 类级特性（双参宿主形态）。",
+                         "en":  "Attribute-side mapping — class-level [BeforeMapping]/[AfterMapping] attributes (dual-parameter host form)."
+                     },
+                     {
+                         "i":  17,
+                         "zh":  "\u003cparam name=\"src\"\u003e源订单实体\u003c/param\u003e",
+                         "en":  "\u003cparam name=\"src\"\u003eSource order entity\u003c/param\u003e"
+                     },
+                     {
+                         "i":  18,
+                         "zh":  "\u003creturns\u003e映射后的 DTO（含钩子派生字段）\u003c/returns\u003e",
+                         "en":  "\u003creturns\u003eMapped DTO (including hook-derived fields)\u003c/returns\u003e"
+                     },
+                     {
+                         "i":  20,
+                         "zh":  "跨对签名过滤（D-d）——HookNoteSource→AttrHookDto 纯 Fluent 对：",
+                         "en":  "Cross-pair signature filtering (D-d) — HookNoteSource → AttrHookDto pure Fluent pair:"
+                     },
+                     {
+                         "i":  21,
+                         "zh":  "特性侧钩子签名 (HookOrderEntity, AttrHookDto) 与本源不匹配 → 不发射、不发诊断。",
+                         "en":  "Attribute-side hook signature (HookOrderEntity, AttrHookDto) does not match the source — no invocation, no diagnostics emitted."
+                     },
+                     {
+                         "i":  23,
+                         "zh":  "\u003cparam name=\"src\"\u003e跨源实体\u003c/param\u003e",
+                         "en":  "\u003cparam name=\"src\"\u003eCross-source entity\u003c/param\u003e"
+                     },
+                     {
+                         "i":  24,
+                         "zh":  "\u003creturns\u003e映射后的 DTO（钩子派生字段保持默认）\u003c/returns\u003e",
+                         "en":  "\u003creturns\u003eMapped DTO (hook-derived fields retain defaults)\u003c/returns\u003e"
+                     },
+                     {
+                         "i":  26,
+                         "zh":  "场景调度 — 顺序执行全部子场景并输出。",
+                         "en":  "Scenario orchestration — sequentially execute all sub-scenarios and output results."
+                     },
+                     {
+                         "i":  28,
+                         "zh":  "1. Fluent side new instance: Before -> assign -> After phases + derived fields + mapped properties kept as-is",
+                         "en":  "1. Fluent-side new mapping: Before → assignment → After phases + derived fields + original mapping properties preserved"
+                     },
+                     {
+                         "i":  29,
+                         "zh":  "2. Fluent side _Update: Before sees dst old value (update preserves existing values)",
+                         "en":  "2. Fluent-side _Update: Before observes old dst values (preserves existing values during update)"
+                     },
+                     {
+                         "i":  30,
+                         "zh":  "3. Attribute side: class-level [BeforeMapping]/[AfterMapping] (two-parameter host form) -- output isomorphic to the Fluent side",
+                         "en":  "3. Attribute-side: class-level [BeforeMapping]/[AfterMapping] (dual-parameter host form) — produces structurally identical output as Fluent-side"
+                     },
+                     {
+                         "i":  31,
+                         "zh":  "4. Cross-pair signature filtering (D-d): pairs with mismatched signatures emit no hooks and raise no diagnostics",
+                         "en":  "4. Cross-pair signature filtering (D-d): pairs with mismatched signatures are neither invoked nor reported in diagnostics"
+                     }
+                 ]
+}

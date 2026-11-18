@@ -1,0 +1,83 @@
+<Project Sdk="Microsoft.NET.Sdk">
+
+  <PropertyGroup>
+    <TargetFramework>netstandard2.0</TargetFramework>
+    <LangVersion>latest</LangVersion>
+    <Nullable>enable</Nullable>
+    <ImplicitUsings>enable</ImplicitUsings>
+    <RootNamespace>NCMapper.SourceGen</RootNamespace>
+    <AssemblyName>NCMapper.SourceGen</AssemblyName>
+    <IsRoslynComponent>true</IsRoslynComponent>
+    <EnforceExtendedAnalyzerRules>true</EnforceExtendedAnalyzerRules>
+    <DevelopmentDependency>true</DevelopmentDependency>
+    <GenerateDocumentationFile>false</GenerateDocumentationFile>
+    <!-- Release tracking 分析器：NCMapper.SourceGen 是配套源生成器，非独立分析器包，无需逐版本追踪 -->
+    <NoWarn>$(NoWarn);RS2000;RS2001;RS2002;RS2003;RS2004;RS2005;RS2006;RS2007;RS2008</NoWarn>
+    <!-- resx 强类型访问器用手写 Designer 提交入库，关闭 SDK resx 源生成避免重复类 -->
+    <GenerateResxSource>false</GenerateResxSource>
+  </PropertyGroup>
+
+  <ItemGroup>
+    <PackageReference Include="Microsoft.CodeAnalysis.CSharp" PrivateAssets="all" />
+  </ItemGroup>
+
+  <!-- internal 可见性：SourceGen.Tests 需要直接验证 GlobalConfigReader/GlobalConfigSnapshot 等内部读取器 -->
+  <ItemGroup>
+    <InternalsVisibleTo Include="NCMapper.SourceGen.Tests" />
+  </ItemGroup>
+
+  <!-- 共享算法文件（v1.1 E2 物理同源）：与核心库共用同一份源码，避免镜像漂移。
+       该文件位于 src/NCMapper/Shared/，不在本目录默认 glob 内，需显式 Link -->
+  <ItemGroup>
+    <Compile Include="..\NCMapper\Shared\NameCandidateResolver.cs" Link="Shared\NameCandidateResolver.cs" />
+  </ItemGroup>
+
+  <!-- Release tracking analyzer 的 AdditionalFiles 由 Microsoft.CodeAnalysis.Analyzers 包
+       buildTransitive/Microsoft.CodeAnalysis.Analyzers.targets 自动探测 AnalyzerReleases.*.md 加入。
+       原显式 Include 与包自动探测重复（同一文件出现两次）——常规构建 csc 静默去重，
+       但 DocFX metadata 经 Roslyn MSBuildWorkspace 加载时对重复项告警 "Duplicate source file"，
+       破坏零警告验收。移除显式项，保留包自动探测单一来源。 -->
+
+  <!-- DeepCopy 边规则单一事实源（与 NCMapper 共享，遵循 NameCandidateResolver 先例） -->
+  <ItemGroup>
+    <Compile Include="..\NCMapper\Shared\DeepCopyGraphRules.cs" Link="Shared\DeepCopyGraphRules.cs" />
+  </ItemGroup>
+
+  <!-- 互指对判定规则单一事实源（与 NCMapper 共享，遵循 DeepCopyGraphRules 先例） -->
+  <ItemGroup>
+    <Compile Include="..\NCMapper\Shared\MutualMapPairRules.cs" Link="Shared\MutualMapPairRules.cs" />
+  </ItemGroup>
+
+  <!-- AssignmentPlan/AssignmentKind 单一事实源（与 NCMapper 共享，遵循 MutualMapPairRules 先例）。
+       assignmentplan.cs 仅 using System 零依赖，可安全 Link 到 SourceGen（netstandard2.0 + IsRoslynComponent）。
+       assignmentplanner.cs 依赖 TypeConverter/CollectionTypeDetector/PropertyIgnoreChecker/特性类，不 Link——
+       生成侧由 PlanSymbolAdapter 实现符号版形态判定。 -->
+  <ItemGroup>
+    <Compile Include="..\NCMapper\Shared\assignmentplan.cs" Link="Shared\assignmentplan.cs" />
+  </ItemGroup>
+
+  <!-- PathResolver 路径语义归一单一事实源（与 NCMapper 共享，遵循 assignmentplan.cs 先例）。
+       PathResolver.cs 仅 using System/System.Collections.Generic 零依赖（接口/枚举/record/候选生成），
+       可安全 Link 到 SourceGen（netstandard2.0）；record 依赖的 IsExternalInit polyfill 在 Models.Snapshots.cs:10。
+       双 adapter（PathResolver.Type.cs 核心库 / PathResolver.Symbol.cs 本工程）实现同一接口。 -->
+  <ItemGroup>
+    <Compile Include="..\NCMapper\Shared\PathResolver.cs" Link="Shared\PathResolver.cs" />
+  </ItemGroup>
+
+  <!-- 类型兼容判据核心单一事实源（与 NCMapper 共享，遵循 PathResolver.cs 先例）。
+       TypeCompatibilityCore.cs 仅 using System/System.Collections.Generic 零依赖（TypeShape/判据链/
+       ImplicitConversions 单点表），可安全 Link 到 SourceGen（netstandard2.0）；record struct 依赖的
+       IsExternalInit polyfill 在 Models.Snapshots.cs:10。三 adapter（TypeCompatAdapter.cs 核心库 /
+       TypeCompatAdapter.Symbol.cs + TypeCompatAdapter.TypeRef.cs 本工程）实现同一核心。
+       TypeCompatAdapter.cs 依赖 System.Type 反射模型，仅核心库编译，不 Link。 -->
+  <ItemGroup>
+    <Compile Include="..\NCMapper\Shared\TypeCompatibilityCore.cs" Link="Shared\TypeCompatibilityCore.cs" />
+  </ItemGroup>
+
+  <!-- PackageReadmeFile (C-07) + PackageIcon (H-10) -->
+  <ItemGroup>
+    <None Include="..\..\README.md" Pack="true" PackagePath="\" />
+    <None Include="..\..\assets\icon.png" Pack="true" PackagePath="\" />
+  </ItemGroup>
+
+</Project>

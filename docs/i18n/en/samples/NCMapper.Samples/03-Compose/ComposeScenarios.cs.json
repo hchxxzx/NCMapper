@@ -1,0 +1,207 @@
+{
+    "source":  "samples/NCMapper.Samples/03-Compose/ComposeScenarios.cs",
+    "language":  "en",
+    "generatedFrom":  "23a3d70791a8e1835177b42fbe8f2fa2c8c9833a477bf762946fe2ad6719715b",
+    "comments":  [
+                     {
+                         "i":  1,
+                         "zh":  "多源合成场景集 — 从多个源对象合成一个 DTO。",
+                         "en":  "Multi-source composition scenario set — composing a single DTO from multiple source objects."
+                     },
+                     {
+                         "i":  4,
+                         "zh":  "双源合成：OrderEntity + CustomerEntity → OrderDetailDto。",
+                         "en":  "Dual-source composition: OrderEntity + CustomerEntity → OrderDetailDto."
+                     },
+                     {
+                         "i":  6,
+                         "zh":  "\u003cparam name=\"order\"\u003e主源（OrderEntity）\u003c/param\u003e",
+                         "en":  "\u003cparam name=\"order\"\u003ePrimary source (OrderEntity)\u003c/param\u003e"
+                     },
+                     {
+                         "i":  7,
+                         "zh":  "\u003cparam name=\"customer\"\u003e副源（CustomerEntity）\u003c/param\u003e",
+                         "en":  "\u003cparam name=\"customer\"\u003eSecondary source (CustomerEntity)\u003c/param\u003e"
+                     },
+                     {
+                         "i":  8,
+                         "zh":  "\u003creturns\u003e合成后的 OrderDetailDto\u003c/returns\u003e",
+                         "en":  "\u003creturns\u003eThe composed OrderDetailDto\u003c/returns\u003e"
+                     },
+                     {
+                         "i":  10,
+                         "zh":  "三源合成：OrderEntity + CustomerEntity + ProductEntity → ReportDto。",
+                         "en":  "Triple-source composition: OrderEntity + CustomerEntity + ProductEntity → ReportDto."
+                     },
+                     {
+                         "i":  12,
+                         "zh":  "\u003cparam name=\"order\"\u003e主源（OrderEntity）\u003c/param\u003e",
+                         "en":  "\u003cparam name=\"order\"\u003ePrimary source (OrderEntity)\u003c/param\u003e"
+                     },
+                     {
+                         "i":  13,
+                         "zh":  "\u003cparam name=\"customer\"\u003e副源（CustomerEntity）\u003c/param\u003e",
+                         "en":  "\u003cparam name=\"customer\"\u003eSecondary source (CustomerEntity)\u003c/param\u003e"
+                     },
+                     {
+                         "i":  14,
+                         "zh":  "\u003cparam name=\"product\"\u003e第三源（ProductEntity）\u003c/param\u003e",
+                         "en":  "\u003cparam name=\"product\"\u003eThird source (ProductEntity)\u003c/param\u003e"
+                     },
+                     {
+                         "i":  15,
+                         "zh":  "\u003creturns\u003e合成后的 ReportDto\u003c/returns\u003e",
+                         "en":  "\u003creturns\u003eThe composed ReportDto\u003c/returns\u003e"
+                     },
+                     {
+                         "i":  17,
+                         "zh":  "Compose 合成后追加处理。",
+                         "en":  "Post-composition processing using Compose."
+                     },
+                     {
+                         "i":  19,
+                         "zh":  "\u003cparam name=\"order\"\u003e主源\u003c/param\u003e",
+                         "en":  "\u003cparam name=\"order\"\u003ePrimary source\u003c/param\u003e"
+                     },
+                     {
+                         "i":  20,
+                         "zh":  "\u003cparam name=\"customer\"\u003e副源\u003c/param\u003e",
+                         "en":  "\u003cparam name=\"customer\"\u003eSecondary source\u003c/param\u003e"
+                     },
+                     {
+                         "i":  21,
+                         "zh":  "\u003creturns\u003e带自定义标签的合成 DTO\u003c/returns\u003e",
+                         "en":  "\u003creturns\u003eThe composed DTO with custom tags\u003c/returns\u003e"
+                     },
+                     {
+                         "i":  23,
+                         "zh":  "ComposeList：从多组源对象批量合成 DTO 列表。",
+                         "en":  "ComposeList: batch-composing a DTO list from multiple groups of source objects."
+                     },
+                     {
+                         "i":  25,
+                         "zh":  "\u003cparam name=\"orders\"\u003e订单实体数组\u003c/param\u003e",
+                         "en":  "\u003cparam name=\"orders\"\u003eArray of order entities\u003c/param\u003e"
+                     },
+                     {
+                         "i":  26,
+                         "zh":  "\u003cparam name=\"customers\"\u003e客户实体数组（长度相同）\u003c/param\u003e",
+                         "en":  "\u003cparam name=\"customers\"\u003eArray of customer entities (same length as orders)\u003c/param\u003e"
+                     },
+                     {
+                         "i":  27,
+                         "zh":  "\u003creturns\u003e合成后的 OrderDetailDto 列表\u003c/returns\u003e",
+                         "en":  "\u003creturns\u003eList of composed OrderDetailDto instances\u003c/returns\u003e"
+                     },
+                     {
+                         "i":  29,
+                         "zh":  "Compose + 内联 Action 回调（Action 作为第一参数）。",
+                         "en":  "Compose with inline Action callback (Action as the first parameter)."
+                     },
+                     {
+                         "i":  31,
+                         "zh":  "\u003cparam name=\"order\"\u003e主源\u003c/param\u003e",
+                         "en":  "\u003cparam name=\"order\"\u003ePrimary source\u003c/param\u003e"
+                     },
+                     {
+                         "i":  32,
+                         "zh":  "\u003cparam name=\"customer\"\u003e副源\u003c/param\u003e",
+                         "en":  "\u003cparam name=\"customer\"\u003eSecondary source\u003c/param\u003e"
+                     },
+                     {
+                         "i":  33,
+                         "zh":  "\u003creturns\u003e经 Action 修改后的合成 DTO\u003c/returns\u003e",
+                         "en":  "\u003creturns\u003eThe composed DTO modified by the Action\u003c/returns\u003e"
+                     },
+                     {
+                         "i":  35,
+                         "zh":  "ComposeList + 内联 Action 回调。",
+                         "en":  "ComposeList with inline Action callback."
+                     },
+                     {
+                         "i":  37,
+                         "zh":  "\u003cparam name=\"orders\"\u003e订单实体数组\u003c/param\u003e",
+                         "en":  "\u003cparam name=\"orders\"\u003eArray of order entities\u003c/param\u003e"
+                     },
+                     {
+                         "i":  38,
+                         "zh":  "\u003cparam name=\"customers\"\u003e客户实体数组\u003c/param\u003e",
+                         "en":  "\u003cparam name=\"customers\"\u003eArray of customer entities\u003c/param\u003e"
+                     },
+                     {
+                         "i":  39,
+                         "zh":  "\u003creturns\u003e合成后的 DTO 列表\u003c/returns\u003e",
+                         "en":  "\u003creturns\u003eList of composed DTOs\u003c/returns\u003e"
+                     },
+                     {
+                         "i":  41,
+                         "zh":  "声明跨表子源字段的 DTO 的反向直调（DTO → Entity）：所有 [MapFrom] DTO（含此类）统一生成反向扩展。",
+                         "en":  "Reverse direct invocation (DTO → Entity) for DTOs declaring cross-table sub-source fields: reverse extension methods are uniformly generated for all [MapFrom] DTOs (including such DTOs)."
+                     },
+                     {
+                         "i":  42,
+                         "zh":  "\u003cpara\u003e语义边界：反向扩展指向 [MapFrom] 主源实体（MapToOrderEntity），副源字段",
+                         "en":  "\u003cpara\u003eSemantic boundary: the reverse extension targets the [MapFrom] primary source entity (MapToOrderEntity); secondary source fields\u003c/para\u003e"
+                     },
+                     {
+                         "i":  43,
+                         "zh":  "（CustomerName / CustomerLevel / CustomerPhone）不参与反向写回——反向只覆盖主源字段。\u003c/para\u003e",
+                         "en":  "(CustomerName / CustomerLevel / CustomerPhone) are excluded from reverse write-back—only primary source fields are overwritten in reverse mapping.\u003c/para\u003e"
+                     },
+                     {
+                         "i":  45,
+                         "zh":  "\u003cparam name=\"dto\"\u003e声明跨表字段的 DTO\u003c/param\u003e",
+                         "en":  "\u003cparam name=\"dto\"\u003eDTO declaring cross-table fields\u003c/param\u003e"
+                     },
+                     {
+                         "i":  46,
+                         "zh":  "\u003creturns\u003e反向映射的订单实体（主源字段已写回）\u003c/returns\u003e",
+                         "en":  "\u003creturns\u003eOrder entity with reverse-mapped primary source fields written back\u003c/returns\u003e"
+                     },
+                     {
+                         "i":  47,
+                         "zh":  "===== F8 演示=====",
+                         "en":  "===== F8 Demo ====="
+                     },
+                     {
+                         "i":  49,
+                         "zh":  "F8 — Compose 副源字段跨表 [Convert] 消费：副源 VendorCode 经转换器",
+                         "en":  "F8 — Compose cross-table secondary source fields via [Convert] consumption: secondary source VendorCode is processed by a converter"
+                     },
+                     {
+                         "i":  50,
+                         "zh":  "（int → \"V-xxxx\" 标签）在合成面正常执行。",
+                         "en":  "(int → \"V-xxxx\" label) executes correctly on the composition surface."
+                     },
+                     {
+                         "i":  52,
+                         "zh":  "\u003cparam name=\"order\"\u003e主源订单\u003c/param\u003e",
+                         "en":  "\u003cparam name=\"order\"\u003ePrimary source order\u003c/param\u003e"
+                     },
+                     {
+                         "i":  53,
+                         "zh":  "\u003cparam name=\"vendor\"\u003e副源供应商\u003c/param\u003e",
+                         "en":  "\u003cparam name=\"vendor\"\u003eSecondary source vendor\u003c/param\u003e"
+                     },
+                     {
+                         "i":  54,
+                         "zh":  "\u003creturns\u003e副源字段已转换的合成 DTO\u003c/returns\u003e",
+                         "en":  "\u003creturns\u003eComposed DTO with converted secondary source fields\u003c/returns\u003e"
+                     },
+                     {
+                         "i":  55,
+                         "zh":  "<summary>Compose 末尾触发已注册 PostMap：合成完成后 OrderNumber 追加审计标签，片段收尾清理管道。</summary>",
+                         "en": "<summary>Compose \u672b\u5c3e\u89e6\u53d1\u5df2\u6ce8\u518c PostMap\uff1a\u5408\u6210\u5b8c\u6210\u540e OrderNumber \u8ffd\u52a0\u5ba1\u8ba1\u6807\u7b7e\uff0c\u7247\u6bb5\u6536\u5c3e\u6e05\u7406\u7ba1\u9053\u3002</summary>"
+                     },
+                     {
+                         "i":  56,
+                         "zh":  "Register a PostMap scoped to the OrderEntity -> OrderDetailDto pair",
+                         "en": "Register a PostMap scoped to the OrderEntity -> OrderDetailDto pair"
+                     },
+                     {
+                         "i":  57,
+                         "zh":  "Compose fires the registered PostMap at the end of the composition",
+                         "en": "Compose fires the registered PostMap at the end of the composition"
+                     }
+                 ]
+}

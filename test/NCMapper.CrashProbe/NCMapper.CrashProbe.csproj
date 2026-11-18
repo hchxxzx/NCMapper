@@ -1,0 +1,29 @@
+<Project Sdk="Microsoft.NET.Sdk">
+  <!--
+    崩溃类红测专用子进程 runner（独立 Exe 控制台程序）。
+    用途：在独立进程内触发自引用容器深拷贝（class B : List<B> / class JsonNode : Dictionary<string,JsonNode>），
+    CLR 下 StackOverflowException 不可 catch，xUnit 进程内无法捕获 0xC00000FD，故以子进程隔离。
+    协议：stdout 逐行 Key=Value（classify / copyCheck），父进程 RedTestRunner 解析后双校验。
+    注意：本工程刻意不引用 xunit/MTP（纯控制台最小形态，dotnet exec / apphost 均可启动），
+    并显式退出根 CPM/SourceLink/lock 继承约束（经验库 #27）。
+  -->
+  <PropertyGroup>
+    <TargetFramework>net8.0</TargetFramework>
+    <OutputType>Exe</OutputType>
+    <RootNamespace>NCMapper.CrashProbe</RootNamespace>
+    <LangVersion>latest</LangVersion>
+    <ImplicitUsings>enable</ImplicitUsings>
+    <Nullable>enable</Nullable>
+    <!-- RollForward LatestMajor：宿主机仅装高版本 SDK/运行时时 apphost 仍可启动（Linux 验证机
+         仅 Microsoft.NETCore.App 10.0.12，默认 Minor 解析 8.0.0 失败退 150——Red_B01 假红根因） -->
+    <RollForward>LatestMajor</RollForward>
+    <!-- 经验库 #27：显式退出根 Directory.Build.props 的 CPM/lock 继承，防 NU1008/NU1015/NU1004 -->
+    <ManagePackageVersionsCentrally>false</ManagePackageVersionsCentrally>
+    <IsPackable>false</IsPackable>
+    <RestorePackagesWithLockFile>false</RestorePackagesWithLockFile>
+    <RestoreLockedMode>false</RestoreLockedMode>
+  </PropertyGroup>
+  <ItemGroup>
+    <ProjectReference Include="..\..\src\NCMapper\NCMapper.csproj" />
+  </ItemGroup>
+</Project>

@@ -1,0 +1,215 @@
+[assembly: System.Runtime.CompilerServices.InternalsVisibleTo("NCMapper.IntegrationTests")]
+[assembly: System.Runtime.CompilerServices.InternalsVisibleTo("NCMapper.Tests")]
+namespace NCMapper.FreeSql
+{
+    public sealed class FreeSqlComposeDtoSelector3<T1, T2, T3>
+        where T1 :  class
+        where T2 :  class
+        where T3 :  class
+    {
+        [System.Diagnostics.CodeAnalysis.RequiresDynamicCode("First uses BuildProjection with MakeGenericMethod. Not supported in AOT. Projecti" +
+            "on source generator not yet available.")]
+        [System.Diagnostics.CodeAnalysis.RequiresUnreferencedCode("First scans attributes via reflection. Some types may be trimmed.")]
+        public TTarget? First<TTarget>()
+            where TTarget :  class { }
+        [System.Diagnostics.CodeAnalysis.RequiresDynamicCode("FirstAsync uses BuildProjection with MakeGenericMethod. Not supported in AOT. Pro" +
+            "jection source generator not yet available.")]
+        [System.Diagnostics.CodeAnalysis.RequiresUnreferencedCode("FirstAsync scans attributes via reflection. Some types may be trimmed.")]
+        public System.Threading.Tasks.Task<TTarget?> FirstAsync<TTarget>(System.Threading.CancellationToken cancellationToken = default)
+            where TTarget :  class { }
+        [System.Diagnostics.CodeAnalysis.RequiresDynamicCode("ToChunkDto uses BuildProjection with MakeGenericMethod. Not supported in AOT. Pro" +
+            "jection source generator not yet available.")]
+        [System.Diagnostics.CodeAnalysis.RequiresUnreferencedCode("ToChunkDto scans attributes via reflection. Some types may be trimmed.")]
+        public void ToChunkDto<TTarget>(int size, System.Action<System.Collections.Generic.List<TTarget>> done)
+            where TTarget :  class { }
+        [System.Diagnostics.CodeAnalysis.RequiresDynamicCode("ToChunkDtoAsync uses BuildProjection with MakeGenericMethod. Not supported in AOT" +
+            ". Projection source generator not yet available.")]
+        [System.Diagnostics.CodeAnalysis.RequiresUnreferencedCode("ToChunkDtoAsync scans attributes via reflection. Some types may be trimmed.")]
+        public System.Threading.Tasks.Task ToChunkDtoAsync<TTarget>(int size, System.Func<System.Collections.Generic.List<TTarget>, System.Threading.Tasks.Task> done, System.Threading.CancellationToken cancellationToken = default)
+            where TTarget :  class { }
+        [System.Diagnostics.CodeAnalysis.RequiresDynamicCode("ToList uses BuildProjection with MakeGenericMethod. Not supported in AOT. Project" +
+            "ion source generator not yet available.")]
+        [System.Diagnostics.CodeAnalysis.RequiresUnreferencedCode("ToList scans attributes via reflection. Some types may be trimmed.")]
+        public System.Collections.Generic.List<TTarget> ToList<TTarget>()
+            where TTarget :  class { }
+        [System.Diagnostics.CodeAnalysis.RequiresDynamicCode("ToListAsync uses BuildProjection with MakeGenericMethod. Not supported in AOT. Pr" +
+            "ojection source generator not yet available.")]
+        [System.Diagnostics.CodeAnalysis.RequiresUnreferencedCode("ToListAsync scans attributes via reflection. Some types may be trimmed.")]
+        public System.Threading.Tasks.Task<System.Collections.Generic.List<TTarget>> ToListAsync<TTarget>(System.Threading.CancellationToken cancellationToken = default)
+            where TTarget :  class { }
+        [System.Diagnostics.CodeAnalysis.RequiresDynamicCode("ToPagedList uses BuildProjection with MakeGenericMethod. Not supported in AOT. Pr" +
+            "ojection source generator not yet available.")]
+        [System.Diagnostics.CodeAnalysis.RequiresUnreferencedCode("ToPagedList scans attributes via reflection. Some types may be trimmed.")]
+        public NCMapper.PagedList<TTarget> ToPagedList<TTarget>(int page, int pageSize)
+            where TTarget :  class { }
+        [System.Diagnostics.CodeAnalysis.RequiresDynamicCode("ToPagedListAsync uses BuildProjection with MakeGenericMethod. Not supported in AO" +
+            "T. Projection source generator not yet available.")]
+        [System.Diagnostics.CodeAnalysis.RequiresUnreferencedCode("ToPagedListAsync scans attributes via reflection. Some types may be trimmed.")]
+        public System.Threading.Tasks.Task<NCMapper.PagedList<TTarget>> ToPagedListAsync<TTarget>(int page, int pageSize, System.Threading.CancellationToken cancellationToken = default)
+            where TTarget :  class { }
+    }
+    public sealed class FreeSqlComposeDtoSelector<T1, T2>
+        where T1 :  class
+        where T2 :  class
+    {
+        [System.Diagnostics.CodeAnalysis.RequiresDynamicCode("First uses BuildProjection with MakeGenericMethod. Not supported in AOT. Projecti" +
+            "on source generator not yet available.")]
+        [System.Diagnostics.CodeAnalysis.RequiresUnreferencedCode("First scans attributes via reflection. Some types may be trimmed.")]
+        public TTarget? First<TTarget>()
+            where TTarget :  class { }
+        [System.Diagnostics.CodeAnalysis.RequiresDynamicCode("FirstAsync uses BuildProjection with MakeGenericMethod. Not supported in AOT. Pro" +
+            "jection source generator not yet available.")]
+        [System.Diagnostics.CodeAnalysis.RequiresUnreferencedCode("FirstAsync scans attributes via reflection. Some types may be trimmed.")]
+        public System.Threading.Tasks.Task<TTarget?> FirstAsync<TTarget>(System.Threading.CancellationToken cancellationToken = default)
+            where TTarget :  class { }
+        [System.Diagnostics.CodeAnalysis.RequiresDynamicCode("ToChunkDto uses BuildProjection with MakeGenericMethod. Not supported in AOT. Pro" +
+            "jection source generator not yet available.")]
+        [System.Diagnostics.CodeAnalysis.RequiresUnreferencedCode("ToChunkDto scans attributes via reflection. Some types may be trimmed.")]
+        public void ToChunkDto<TTarget>(int size, System.Action<System.Collections.Generic.List<TTarget>> done)
+            where TTarget :  class { }
+        [System.Diagnostics.CodeAnalysis.RequiresDynamicCode("ToChunkDtoAsync uses BuildProjection with MakeGenericMethod. Not supported in AOT" +
+            ". Projection source generator not yet available.")]
+        [System.Diagnostics.CodeAnalysis.RequiresUnreferencedCode("ToChunkDtoAsync scans attributes via reflection. Some types may be trimmed.")]
+        public System.Threading.Tasks.Task ToChunkDtoAsync<TTarget>(int size, System.Func<System.Collections.Generic.List<TTarget>, System.Threading.Tasks.Task> done, System.Threading.CancellationToken cancellationToken = default)
+            where TTarget :  class { }
+        [System.Diagnostics.CodeAnalysis.RequiresDynamicCode("ToList uses BuildProjection with MakeGenericMethod. Not supported in AOT. Project" +
+            "ion source generator not yet available.")]
+        [System.Diagnostics.CodeAnalysis.RequiresUnreferencedCode("ToList scans attributes via reflection. Some types may be trimmed.")]
+        public System.Collections.Generic.List<TTarget> ToList<TTarget>()
+            where TTarget :  class { }
+        [System.Diagnostics.CodeAnalysis.RequiresDynamicCode("ToListAsync uses BuildProjection with MakeGenericMethod. Not supported in AOT. Pr" +
+            "ojection source generator not yet available.")]
+        [System.Diagnostics.CodeAnalysis.RequiresUnreferencedCode("ToListAsync scans attributes via reflection. Some types may be trimmed.")]
+        public System.Threading.Tasks.Task<System.Collections.Generic.List<TTarget>> ToListAsync<TTarget>(System.Threading.CancellationToken cancellationToken = default)
+            where TTarget :  class { }
+        [System.Diagnostics.CodeAnalysis.RequiresDynamicCode("ToPagedList uses BuildProjection with MakeGenericMethod. Not supported in AOT. Pr" +
+            "ojection source generator not yet available.")]
+        [System.Diagnostics.CodeAnalysis.RequiresUnreferencedCode("ToPagedList scans attributes via reflection. Some types may be trimmed.")]
+        public NCMapper.PagedList<TTarget> ToPagedList<TTarget>(int page, int pageSize)
+            where TTarget :  class { }
+        [System.Diagnostics.CodeAnalysis.RequiresDynamicCode("ToPagedListAsync uses BuildProjection with MakeGenericMethod. Not supported in AO" +
+            "T. Projection source generator not yet available.")]
+        [System.Diagnostics.CodeAnalysis.RequiresUnreferencedCode("ToPagedListAsync scans attributes via reflection. Some types may be trimmed.")]
+        public System.Threading.Tasks.Task<NCMapper.PagedList<TTarget>> ToPagedListAsync<TTarget>(int page, int pageSize, System.Threading.CancellationToken cancellationToken = default)
+            where TTarget :  class { }
+    }
+    public sealed class FreeSqlDtoSelector<TSource>
+        where TSource :  class
+    {
+        [System.Diagnostics.CodeAnalysis.RequiresDynamicCode("First uses BuildProjection with MakeGenericMethod. Not supported in AOT. Projecti" +
+            "on source generator not yet available.")]
+        [System.Diagnostics.CodeAnalysis.RequiresUnreferencedCode("First scans attributes via reflection. Some types may be trimmed.")]
+        public TTarget? First<TTarget>()
+            where TTarget :  class { }
+        [System.Diagnostics.CodeAnalysis.RequiresDynamicCode("FirstAsync uses BuildProjection with MakeGenericMethod. Not supported in AOT. Pro" +
+            "jection source generator not yet available.")]
+        [System.Diagnostics.CodeAnalysis.RequiresUnreferencedCode("FirstAsync scans attributes via reflection. Some types may be trimmed.")]
+        public System.Threading.Tasks.Task<TTarget?> FirstAsync<TTarget>(System.Threading.CancellationToken cancellationToken = default)
+            where TTarget :  class { }
+        [System.Diagnostics.CodeAnalysis.RequiresDynamicCode("Single uses BuildProjection with MakeGenericMethod. Not supported in AOT. Project" +
+            "ion source generator not yet available.")]
+        [System.Diagnostics.CodeAnalysis.RequiresUnreferencedCode("Single scans attributes via reflection. Some types may be trimmed.")]
+        public TTarget? Single<TTarget>()
+            where TTarget :  class { }
+        [System.Diagnostics.CodeAnalysis.RequiresDynamicCode("SingleAsync uses BuildProjection with MakeGenericMethod. Not supported in AOT. Pr" +
+            "ojection source generator not yet available.")]
+        [System.Diagnostics.CodeAnalysis.RequiresUnreferencedCode("SingleAsync scans attributes via reflection. Some types may be trimmed.")]
+        public System.Threading.Tasks.Task<TTarget?> SingleAsync<TTarget>(System.Threading.CancellationToken cancellationToken = default)
+            where TTarget :  class { }
+        [System.Diagnostics.CodeAnalysis.RequiresDynamicCode("ToChunkDto uses BuildProjection with MakeGenericMethod. Not supported in AOT. Pro" +
+            "jection source generator not yet available.")]
+        [System.Diagnostics.CodeAnalysis.RequiresUnreferencedCode("ToChunkDto scans attributes via reflection. Some types may be trimmed.")]
+        public void ToChunkDto<TTarget>(int size, System.Action<System.Collections.Generic.List<TTarget>> done)
+            where TTarget :  class { }
+        [System.Diagnostics.CodeAnalysis.RequiresDynamicCode("ToChunkDtoAsync uses BuildProjection with MakeGenericMethod. Not supported in AOT" +
+            ". Projection source generator not yet available.")]
+        [System.Diagnostics.CodeAnalysis.RequiresUnreferencedCode("ToChunkDtoAsync scans attributes via reflection. Some types may be trimmed.")]
+        public System.Threading.Tasks.Task ToChunkDtoAsync<TTarget>(int size, System.Func<System.Collections.Generic.List<TTarget>, System.Threading.Tasks.Task> done, System.Threading.CancellationToken cancellationToken = default)
+            where TTarget :  class { }
+        [System.Diagnostics.CodeAnalysis.RequiresDynamicCode("ToDictionary delegates to Mapper.Map which uses Expression.Compile in the runtime" +
+            " fallback path. Not supported in AOT. Mark the DTO with [MapFrom] to use the AOT" +
+            "-safe source-generated path.")]
+        [System.Diagnostics.CodeAnalysis.RequiresUnreferencedCode("ToDictionary scans attributes via reflection. Some types may be trimmed.")]
+        public System.Collections.Generic.Dictionary<TKey, TTarget> ToDictionary<TKey, TTarget>(System.Func<TSource, TKey> keySelector)
+            where TKey :  notnull
+            where TTarget :  class { }
+        [System.Diagnostics.CodeAnalysis.RequiresDynamicCode("ToDictionaryAsync delegates to FreeSql ToDictionaryAsync and then Mapper.Map whic" +
+            "h uses Expression.Compile in the runtime fallback path. Not supported in AOT. Ma" +
+            "rk the DTO with [MapFrom] to use the AOT-safe source-generated path.")]
+        [System.Diagnostics.CodeAnalysis.RequiresUnreferencedCode("ToDictionaryAsync scans attributes via reflection. Some types may be trimmed.")]
+        public System.Threading.Tasks.Task<System.Collections.Generic.Dictionary<TKey, TTarget>> ToDictionaryAsync<TKey, TTarget>(System.Func<TSource, TKey> keySelector, System.Threading.CancellationToken cancellationToken = default)
+            where TKey :  notnull
+            where TTarget :  class { }
+        [System.Diagnostics.CodeAnalysis.RequiresDynamicCode("ToList uses BuildProjection with MakeGenericMethod. Not supported in AOT. Project" +
+            "ion source generator not yet available.")]
+        [System.Diagnostics.CodeAnalysis.RequiresUnreferencedCode("ToList scans attributes via reflection. Some types may be trimmed.")]
+        public System.Collections.Generic.List<TTarget> ToList<TTarget>()
+            where TTarget :  class { }
+        [System.Diagnostics.CodeAnalysis.RequiresDynamicCode("ToListAsync uses BuildProjection with MakeGenericMethod. Not supported in AOT. Pr" +
+            "ojection source generator not yet available.")]
+        [System.Diagnostics.CodeAnalysis.RequiresUnreferencedCode("ToListAsync scans attributes via reflection. Some types may be trimmed.")]
+        public System.Threading.Tasks.Task<System.Collections.Generic.List<TTarget>> ToListAsync<TTarget>(System.Threading.CancellationToken cancellationToken = default)
+            where TTarget :  class { }
+        [System.Diagnostics.CodeAnalysis.RequiresDynamicCode("ToLookup delegates to Mapper.MapList which uses Expression.Compile in the runtime" +
+            " fallback path. Not supported in AOT. Mark the DTO with [MapFrom] to use the AOT" +
+            "-safe source-generated path.")]
+        [System.Diagnostics.CodeAnalysis.RequiresUnreferencedCode("ToLookup scans attributes via reflection. Some types may be trimmed.")]
+        public System.Linq.ILookup<TKey, TTarget> ToLookup<TKey, TTarget>(System.Func<TSource, TKey> keySelector)
+            where TKey :  notnull
+            where TTarget :  class { }
+        [System.Diagnostics.CodeAnalysis.RequiresDynamicCode("ToPagedList uses BuildProjection with MakeGenericMethod. Not supported in AOT. Pr" +
+            "ojection source generator not yet available.")]
+        [System.Diagnostics.CodeAnalysis.RequiresUnreferencedCode("ToPagedList scans attributes via reflection. Some types may be trimmed.")]
+        public NCMapper.PagedList<TTarget> ToPagedList<TTarget>(int page, int pageSize)
+            where TTarget :  class { }
+        [System.Diagnostics.CodeAnalysis.RequiresDynamicCode("ToPagedListAsync uses BuildProjection with MakeGenericMethod. Not supported in AO" +
+            "T. Projection source generator not yet available.")]
+        [System.Diagnostics.CodeAnalysis.RequiresUnreferencedCode("ToPagedListAsync scans attributes via reflection. Some types may be trimmed.")]
+        public System.Threading.Tasks.Task<NCMapper.PagedList<TTarget>> ToPagedListAsync<TTarget>(int page, int pageSize, System.Threading.CancellationToken cancellationToken = default)
+            where TTarget :  class { }
+        [System.Diagnostics.CodeAnalysis.RequiresDynamicCode("ToTreeList delegates to Mapper.MapList which uses Expression.Compile in the runti" +
+            "me fallback path. Not supported in AOT. Mark the DTO with [MapFrom] to use the A" +
+            "OT-safe source-generated path.")]
+        [System.Diagnostics.CodeAnalysis.RequiresUnreferencedCode("ToTreeList scans attributes via reflection. Some types may be trimmed.")]
+        public System.Collections.Generic.List<TTarget> ToTreeList<TTarget>()
+            where TTarget :  class { }
+        [System.Diagnostics.CodeAnalysis.RequiresDynamicCode("ToTreeListAsync delegates to ToTreeList and then Mapper.MapList which uses Expres" +
+            "sion.Compile in the runtime fallback path. Not supported in AOT. Mark the DTO wi" +
+            "th [MapFrom] to use the AOT-safe source-generated path.")]
+        [System.Diagnostics.CodeAnalysis.RequiresUnreferencedCode("ToTreeListAsync scans attributes via reflection. Some types may be trimmed.")]
+        public System.Threading.Tasks.Task<System.Collections.Generic.List<TTarget>> ToTreeListAsync<TTarget>(System.Threading.CancellationToken cancellationToken = default)
+            where TTarget :  class { }
+    }
+    public static class NCMapperFreeSqlComposeExtensions
+    {
+        [System.Diagnostics.CodeAnalysis.RequiresDynamicCode("AsDto uses BuildProjection with MakeGenericMethod. Not supported in AOT. Projecti" +
+            "on source generator not yet available.")]
+        [System.Diagnostics.CodeAnalysis.RequiresUnreferencedCode("AsDto scans attributes via reflection. Some types may be trimmed.")]
+        public static NCMapper.FreeSql.FreeSqlComposeDtoSelector<T1, T2> AsDto<T1, T2>(this FreeSql.ISelect<T1, T2> select)
+            where T1 :  class
+            where T2 :  class { }
+        [System.Diagnostics.CodeAnalysis.RequiresDynamicCode("AsDto uses BuildProjection with MakeGenericMethod. Not supported in AOT. Projecti" +
+            "on source generator not yet available.")]
+        [System.Diagnostics.CodeAnalysis.RequiresUnreferencedCode("AsDto scans attributes via reflection. Some types may be trimmed.")]
+        public static NCMapper.FreeSql.FreeSqlComposeDtoSelector3<T1, T2, T3> AsDto<T1, T2, T3>(this FreeSql.ISelect<T1, T2, T3> select)
+            where T1 :  class
+            where T2 :  class
+            where T3 :  class { }
+    }
+    public static class NCMapperFreeSqlExtensions
+    {
+        public static bool ThrowOnIncludeApplicationFailure;
+        [System.Diagnostics.CodeAnalysis.RequiresDynamicCode("AsDto uses BuildProjection with MakeGenericMethod. Not supported in AOT. Projecti" +
+            "on source generator not yet available.")]
+        [System.Diagnostics.CodeAnalysis.RequiresUnreferencedCode("AsDto scans attributes via reflection. Some types may be trimmed.")]
+        public static NCMapper.FreeSql.FreeSqlDtoSelector<TSource> AsDto<TSource>(this FreeSql.ISelect<TSource> select)
+            where TSource :  class { }
+    }
+    public static class NCMapperFreeSqlGuardExtensions
+    {
+        [System.Obsolete("AsDto 不支持链式 GroupBy。GroupBy 返回分组聚合结果（ISelectGrouping），无法做实体→DTO 映射。替代写法：先 .AsDto(" +
+            ").ToList() 将数据取到内存，再使用 LINQ 的 .GroupBy() 进行分组；或使用 FreeSql 原生 Select 聚合语法。参见 NCMa" +
+            "pper 技术文档 §11.2 了解 ORM 边界。", true)]
+        public static void AsDto<TKey, TValue>(this FreeSql.ISelectGrouping<TKey, TValue> select) { }
+    }
+}

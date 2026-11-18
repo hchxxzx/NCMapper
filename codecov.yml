@@ -1,0 +1,20 @@
+# T3-9: Codecov 配置 — 覆盖率趋势守护
+# 覆盖率链路：Microsoft.Testing.Extensions.CodeCoverage 18.0.6 MTP 原生扩展，
+# dotnet test -- --coverage --coverage-output-format cobertura 产出 cobertura XML 上传 codecov。
+# （18.0.6 依赖 MTP >= 1.8.4，项目 1.9.1 满足。）
+coverage:
+  status:
+    project:
+      default:
+        # 信息性模式：不阻塞 PR，仅展示覆盖率变化
+        informational: true
+        # 允许小幅下降（新测试文件稀释覆盖率）
+        threshold: 2%
+    patch:
+      default:
+        informational: true
+
+comment:
+  layout: "reach,diff,flags,files"
+  behavior: default
+  require_changes: false

@@ -1,0 +1,48 @@
+<Project Sdk="Microsoft.NET.Sdk">
+  <PropertyGroup>
+    <TargetFrameworks>net8.0;net9.0;net10.0</TargetFrameworks>
+    <ImplicitUsings>enable</ImplicitUsings>
+    <Nullable>enable</Nullable>
+    <RootNamespace>NCMapper.Tests</RootNamespace>
+    <LangVersion>latest</LangVersion>
+    <OutputType>Exe</OutputType>
+    <UseMicrosoftTestingPlatformRunner>true</UseMicrosoftTestingPlatformRunner>
+    <TestingPlatformDotnetTestSupport>true</TestingPlatformDotnetTestSupport>
+  </PropertyGroup>
+  <ItemGroup>
+    <PackageReference Include="xunit.v3" />
+    <PackageReference Include="xunit.runner.visualstudio">
+      <PrivateAssets>all</PrivateAssets>
+      <IncludeAssets>runtime; build; native; contentfiles; analyzers</IncludeAssets>
+    </PackageReference>
+    <PackageReference Include="Microsoft.NET.Test.Sdk" />
+    <!-- W3D-4 方案 A 路径 3（2026-08-08 裁决修订）：Microsoft.Testing.Extensions.CodeCoverage MTP 原生扩展，
+         使用 coverage 扩展参数产出 cobertura 文件。
+         D3 探针 6 "包不存在" 经 NuGet 实证为误判（包存在且活跃，18.0.6 依赖 MTP >= 1.8.4，项目 1.9.1 满足） -->
+    <PackageReference Include="Microsoft.Testing.Extensions.CodeCoverage" />
+    <PackageReference Include="Microsoft.Extensions.DependencyInjection" />
+    <PackageReference Include="Microsoft.Extensions.Configuration" />
+    <PackageReference Include="PublicApiGenerator" />
+    <!-- 加载 SourceGen 程序集所需 Roslyn 运行时依赖 -->
+    <PackageReference Include="Microsoft.CodeAnalysis.CSharp" />
+  </ItemGroup>
+  <ItemGroup>
+    <ProjectReference Include="..\..\src\NCMapper\NCMapper.csproj" />
+    <ProjectReference Include="..\..\src\NCMapper.FreeSql\NCMapper.FreeSql.csproj" />
+    <ProjectReference Include="..\..\src\NCMapper.EFCore\NCMapper.EFCore.csproj" />
+    <ProjectReference Include="..\..\src\NCMapper.Dapper\NCMapper.Dapper.csproj" />
+    <!-- 修复：显式引入 SourceGen 为 Analyzer（与 AotTests 同构）。
+         此前依赖 NCMapper.csproj 的 ProjectReference Analyzer 传递，实测生成器未运行
+         （dll 无 GeneratedMapper、obj/Generated 空、[MapFrom] DTO 全部走运行时回退）——
+         导致 F-01~F-04 生成侧整改无法被对照测试覆盖。
+         注意：不可加 ReferenceOutputAssembly=false —— SourceGenEmissionShapeTests 需
+         引用 NCMapperSourceGenerator 类型驱动 GeneratorDriver。 -->
+    <ProjectReference Include="..\..\src\NCMapper.SourceGen\NCMapper.SourceGen.csproj"
+                      OutputItemType="Analyzer" />
+  </ItemGroup>
+  <PropertyGroup>
+    <EmitCompilerGeneratedFiles>true</EmitCompilerGeneratedFiles>
+    <CompilerGeneratedFilesOutputPath>$(BaseIntermediateOutputPath)Generated</CompilerGeneratedFilesOutputPath>
+  </PropertyGroup>
+  <!-- W3D-4 方案 A 路径 3（2026-08-08 裁决修订）：覆盖率链路恢复，ci-only -->
+</Project>

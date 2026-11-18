@@ -1,0 +1,282 @@
+{
+    "source":  "samples/NCMapper.Samples/05-Orm/FreeSqlScenarios.cs",
+    "language":  "en",
+    "generatedFrom":  "52678f44d457a2fe5867b6b3856df3f06d5c1755b020addb7d6420faed9207cb",
+    "comments":  [
+                     {
+                         "i":  1,
+                         "zh":  "FreeSql 投影场景集 — 单表/多表 Compose/Include/Filter/WithSql/GroupBy/BuildProjection。",
+                         "en":  "FreeSql Projection Scenarios — Single-table/Multi-table Compose/Include/Filter/WithSql/GroupBy/BuildProjection."
+                     },
+                     {
+                         "i":  3,
+                         "zh":  "===== 单表投影 =====",
+                         "en":  "===== Single-table Projection ====="
+                     },
+                     {
+                         "i":  5,
+                         "zh":  "单表 AsDto 投影：UserEntity → UserDto，SQL 侧列裁剪。",
+                         "en":  "Single-table AsDto projection: UserEntity → UserDto, with column pruning on the SQL side."
+                     },
+                     {
+                         "i":  7,
+                         "zh":  "\u003cparam name=\"fsql\"\u003eFreeSql 实例（内存模式，已播种）\u003c/param\u003e",
+                         "en":  "\u003cparam name=\"fsql\"\u003eFreeSql instance (in-memory mode, pre-seeded)\u003c/param\u003e"
+                     },
+                     {
+                         "i":  8,
+                         "zh":  "\u003creturns\u003e投影后的 DTO 列表\u003c/returns\u003e",
+                         "en":  "\u003creturns\u003eList of projected DTOs\u003c/returns\u003e"
+                     },
+                     {
+                         "i":  10,
+                         "zh":  "First + AsDto：单行投影。",
+                         "en":  "First + AsDto: Single-row projection."
+                     },
+                     {
+                         "i":  12,
+                         "zh":  "\u003cparam name=\"fsql\"\u003eFreeSql 实例\u003c/param\u003e",
+                         "en":  "\u003cparam name=\"fsql\"\u003eFreeSql instance\u003c/param\u003e"
+                     },
+                     {
+                         "i":  13,
+                         "zh":  "\u003creturns\u003e第一条匹配的 DTO\u003c/returns\u003e",
+                         "en":  "\u003creturns\u003eThe first matching DTO\u003c/returns\u003e"
+                     },
+                     {
+                         "i":  15,
+                         "zh":  "ToPagedList + AsDto：SQL 级分页。",
+                         "en":  "ToPagedList + AsDto: SQL-level pagination."
+                     },
+                     {
+                         "i":  17,
+                         "zh":  "\u003cparam name=\"fsql\"\u003eFreeSql 实例\u003c/param\u003e",
+                         "en":  "\u003cparam name=\"fsql\"\u003eFreeSql instance\u003c/param\u003e"
+                     },
+                     {
+                         "i":  18,
+                         "zh":  "\u003creturns\u003e分页结果\u003c/returns\u003e",
+                         "en":  "\u003creturns\u003ePaginated result\u003c/returns\u003e"
+                     },
+                     {
+                         "i":  20,
+                         "zh":  "ToChunkDto：分批回调读取。",
+                         "en":  "ToChunkDto: Batched callback-based reading."
+                     },
+                     {
+                         "i":  22,
+                         "zh":  "\u003cparam name=\"fsql\"\u003eFreeSql 实例\u003c/param\u003e",
+                         "en":  "\u003cparam name=\"fsql\"\u003eFreeSql instance\u003c/param\u003e"
+                     },
+                     {
+                         "i":  23,
+                         "zh":  "\u003creturns\u003e全部批次合并\u003c/returns\u003e",
+                         "en":  "\u003creturns\u003eMerged results from all batches\u003c/returns\u003e"
+                     },
+                     {
+                         "i":  24,
+                         "zh":  "===== 多表 Compose 投影 =====",
+                         "en":  "===== Multi-table Compose Projection ====="
+                     },
+                     {
+                         "i":  26,
+                         "zh":  "双表 Join + AsDto Compose：ISelect\u0026lt;T1,T2\u0026gt; + LeftJoin → ComposeDto。",
+                         "en":  "Two-table Join + AsDto Compose: ISelect\u003cT1,T2\u003e + LeftJoin → ComposeDto."
+                     },
+                     {
+                         "i":  28,
+                         "zh":  "\u003cparam name=\"fsql\"\u003eFreeSql 实例\u003c/param\u003e",
+                         "en":  "\u003cparam name=\"fsql\"\u003eFreeSql instance\u003c/param\u003e"
+                     },
+                     {
+                         "i":  29,
+                         "zh":  "\u003creturns\u003e双表组合投影结果\u003c/returns\u003e",
+                         "en":  "\u003creturns\u003eTwo-table composition projection result\u003c/returns\u003e"
+                     },
+                     {
+                         "i":  31,
+                         "zh":  "三表 Join + AsDto Compose：ISelect\u0026lt;T1,T2,T3\u0026gt; + 两次 LeftJoin → ComposeDto。",
+                         "en":  "Three-table Join + AsDto Compose: ISelect\u003cT1,T2,T3\u003e + two LeftJoins → ComposeDto."
+                     },
+                     {
+                         "i":  33,
+                         "zh":  "\u003cparam name=\"fsql\"\u003eFreeSql 实例\u003c/param\u003e",
+                         "en":  "\u003cparam name=\"fsql\"\u003eFreeSql instance\u003c/param\u003e"
+                     },
+                     {
+                         "i":  34,
+                         "zh":  "\u003creturns\u003e三表组合投影结果\u003c/returns\u003e",
+                         "en":  "\u003creturns\u003eThree-table composition projection result\u003c/returns\u003e"
+                     },
+                     {
+                         "i":  35,
+                         "zh":  "===== Include 导航 =====",
+                         "en":  "===== Include Navigation Properties ====="
+                     },
+                     {
+                         "i":  37,
+                         "zh":  "Include 导航属性自动加载：导航路径 Parent.Name 自动 Include。",
+                         "en":  "Automatic loading of navigation properties via Include: navigation path Parent.Name is automatically included."
+                     },
+                     {
+                         "i":  39,
+                         "zh":  "\u003cparam name=\"fsql\"\u003eFreeSql 实例\u003c/param\u003e",
+                         "en":  "\u003cparam name=\"fsql\"\u003eFreeSql instance\u003c/param\u003e"
+                     },
+                     {
+                         "i":  40,
+                         "zh":  "\u003creturns\u003e含父分类名的 DTO 列表\u003c/returns\u003e",
+                         "en":  "\u003creturns\u003eList of DTOs containing parent category names\u003c/returns\u003e"
+                     },
+                     {
+                         "i":  43,
+                         "zh":  "AsDto 时 GlobalFilter 自动传播（IsDeleted = false 等）。",
+                         "en":  "Global filters are automatically propagated during AsDto (e.g., IsDeleted = false)."
+                     },
+                     {
+                         "i":  45,
+                         "zh":  "\u003cparam name=\"fsql\"\u003e带 GlobalFilter 的 FreeSql 实例\u003c/param\u003e",
+                         "en":  "\u003cparam name=\"fsql\"\u003eThe FreeSql instance configured with global filters.\u003c/param\u003e"
+                     },
+                     {
+                         "i":  46,
+                         "zh":  "\u003creturns\u003e过滤后的 DTO 列表\u003c/returns\u003e",
+                         "en":  "\u003creturns\u003eA filtered list of DTOs.\u003c/returns\u003e"
+                     },
+                     {
+                         "i":  49,
+                         "zh":  "WithSql 替换 SQL 片段后 AsDto 投影。",
+                         "en":  "Project using AsDto after replacing SQL fragments via WithSql."
+                     },
+                     {
+                         "i":  51,
+                         "zh":  "\u003cparam name=\"fsql\"\u003eFreeSql 实例\u003c/param\u003e",
+                         "en":  "\u003cparam name=\"fsql\"\u003eThe FreeSql instance.\u003c/param\u003e"
+                     },
+                     {
+                         "i":  52,
+                         "zh":  "\u003creturns\u003eWithSql 后的投影结果\u003c/returns\u003e",
+                         "en":  "\u003creturns\u003eThe projection result after WithSql.\u003c/returns\u003e"
+                     },
+                     {
+                         "i":  53,
+                         "zh":  "<summary>",
+                         "en":  "===== Compile-time safeguard for GroupBy ====="
+                     },
+                     {
+                         "i":  55,
+                         "zh":  "</summary>",
+                         "en": "</summary>"
+                     },
+                     {
+                         "i":  56,
+                         "zh":  "<param name=\"fsql\">FreeSql 实例</param>",
+                         "en": "<param name=\"fsql\">FreeSql \u5b9e\u4f8b</param>"
+                     },
+                     {
+                         "i":  57,
+                         "zh":  "<returns>以实体 Id 为 Key 的字典</returns>",
+                         "en": "<returns>\u4ee5\u5b9e\u4f53 Id \u4e3a Key \u7684\u5b57\u5178</returns>"
+                     },
+                     {
+                         "i":  59,
+                         "zh":  "TwoTableWithSql：多表 WithSql 双数据源替换（sqlT1 + sqlT2 均必填）。",
+                         "en": "TwoTableWithSql\uff1a\u591a\u8868 WithSql \u53cc\u6570\u636e\u6e90\u66ff\u6362\uff08sqlT1 + sqlT2 \u5747\u5fc5\u586b\uff09\u3002"
+                     },
+                     {
+                         "i":  60,
+                         "zh":  "</summary>",
+                         "en": "</summary>"
+                     },
+                     {
+                         "i":  62,
+                         "zh":  "<returns>双表 WithSql 后的 Compose 投影结果</returns>",
+                         "en": "<returns>\u53cc\u8868 WithSql \u540e\u7684 Compose \u6295\u5f71\u7ed3\u679c</returns>"
+                     },
+                     {
+                         "i":  63,
+                         "zh":  "<summary>",
+                         "en": "<summary>"
+                     },
+                     {
+                         "i":  64,
+                         "zh":  "WhereIfFilter：FreeSql 兼容查询模式 — WhereIf 动态条件拼装后 AsDto 投影。",
+                         "en": "WhereIfFilter\uff1aFreeSql \u517c\u5bb9\u67e5\u8be2\u6a21\u5f0f \u2014 WhereIf \u52a8\u6001\u6761\u4ef6\u62fc\u88c5\u540e AsDto \u6295\u5f71\u3002"
+                     },
+                     {
+                         "i":  66,
+                         "zh":  "\u003cparam name=\"fsql\"\u003eFreeSql 实例\u003c/param\u003e",
+                         "en": "<param name=\"fsql\">FreeSql \u5b9e\u4f8b</param>"
+                     },
+                     {
+                         "i":  67,
+                         "zh":  "<param name=\"minAge\">可选年龄下限（null 时不追加条件）</param>",
+                         "en": "<param name=\"minAge\">\u53ef\u9009\u5e74\u9f84\u4e0b\u9650\uff08null \u65f6\u4e0d\u8ffd\u52a0\u6761\u4ef6\uff09</param>"
+                     },
+                     {
+                         "i":  69,
+                         "zh":  "<summary>",
+                         "en": "<summary>"
+                     },
+                     {
+                         "i":  71,
+                         "zh":  "</summary>",
+                         "en": "</summary>"
+                     },
+                     {
+                         "i":  72,
+                         "zh":  "<param name=\"fsql\">FreeSql 实例</param>",
+                         "en": "<param name=\"fsql\">FreeSql \u5b9e\u4f8b</param>"
+                     },
+                     {
+                         "i":  74,
+                         "zh":  "<summary>",
+                         "en": "<summary>"
+                     },
+                     {
+                         "i":  76,
+                         "zh":  "</summary>",
+                         "en": "</summary>"
+                     },
+                     {
+                         "i":  77,
+                         "zh":  "<param name=\"fsql\">FreeSql 实例</param>",
+                         "en": "<param name=\"fsql\">FreeSql \u5b9e\u4f8b</param>"
+                     },
+                     {
+                         "i":  79,
+                         "zh":  "manual include after auto-include excluded",
+                         "en": "manual include after auto-include excluded"
+                     },
+                     {
+                         "i":  82,
+                         "zh":  "【推荐路径】GroupBy 替代方案 A — FreeSql 原生聚合，在 SQL 侧完成 GROUP BY。",
+                         "en": "[Recommended approach] Alternative A for GroupBy \u2014 Native FreeSql aggregation, performing GROUP BY on the SQL side."
+                     },
+                     {
+                         "i":  84,
+                         "zh":  "<para>聚合可用 SQL 表达时（计数/求和/均值等），应优先走本路径，避免明细全量物化</para>",
+                         "en": "<para>When aggregations can be expressed in SQL (e.g., counting, summing, averaging), this path should be prioritized to avoid full materialization of detail records.</para>"
+                     },
+                     {
+                         "i":  86,
+                         "zh":  "<param name=\"fsql\">FreeSql 实例</param>",
+                         "en": "<param name=\"fsql\">The FreeSql instance.</param>"
+                     },
+                     {
+                         "i":  88,
+                         "zh":  "<summary>",
+                         "en": "<summary>"
+                     },
+                     {
+                         "i":  90,
+                         "zh":  "<para>需先把全量（或过滤后）明细物化到内存，失去 SQL 侧 GROUP BY 下推与索引加速，性能损失较大</para>",
+                         "en": "<para>Requires full (or filtered) detail records to be materialized into memory, losing SQL-side GROUP BY pushdown and index acceleration, resulting in significant performance degradation.</para>"
+                     },
+                     {
+                         "i":  92,
+                         "zh":  "</summary>",
+                         "en": "</summary>"
+                     }
+                 ]
+}

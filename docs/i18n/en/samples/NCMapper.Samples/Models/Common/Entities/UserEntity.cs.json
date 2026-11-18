@@ -1,0 +1,67 @@
+{
+    "source":  "samples/NCMapper.Samples/Models/Common/Entities/UserEntity.cs",
+    "language":  "en",
+    "generatedFrom":  "978a9a3f7477c4863cb7c6852974dfbb7e1c957b022d3f15857a9bfa3817e908",
+    "comments":  [
+                     {
+                         "i":  1,
+                         "zh":  "用户实体 — 演示嵌套对象映射和 PascalCase 扁平化。",
+                         "en":  "User entity — demonstrates nested object mapping and PascalCase flattening."
+                     },
+                     {
+                         "i":  4,
+                         "zh":  "用户 ID。",
+                         "en":  "User ID."
+                     },
+                     {
+                         "i":  7,
+                         "zh":  "用户姓名。",
+                         "en":  "User name."
+                     },
+                     {
+                         "i":  10,
+                         "zh":  "用户年龄。",
+                         "en":  "User age."
+                     },
+                     {
+                         "i":  13,
+                         "zh":  "用户邮箱。",
+                         "en":  "User email."
+                     },
+                     {
+                         "i":  16,
+                         "zh":  "用户状态。",
+                         "en":  "User status."
+                     },
+                     {
+                         "i":  19,
+                         "zh":  "注册时间。",
+                         "en":  "Registration time."
+                     },
+                     {
+                         "i":  22,
+                         "zh":  "用户地址（嵌套对象 — 演示嵌套映射和 PascalCase 扁平化）。",
+                         "en":  "User address (nested object — demonstrates nested mapping and PascalCase flattening)."
+                     },
+                     {
+                         "i":  23,
+                         "zh":  "\u003cpara\u003ePascalCase 扁平化：Address.City 自动匹配 CustomerCity 属性（AddressCity 亦可）。\u003c/para\u003e",
+                         "en":  "\u003cpara\u003ePascalCase flattening: Address.City automatically matches the CustomerCity property (AddressCity is also acceptable).\u003c/para\u003e"
+                     },
+                     {
+                         "i":  26,
+                         "zh":  "地址对象 — 作为嵌套对象演示嵌套映射。",
+                         "en":  "Address object — used as a nested object to demonstrate nested mapping."
+                     },
+                     {
+                         "i":  29,
+                         "zh":  "城市。",
+                         "en":  "City."
+                     },
+                     {
+                         "i":  32,
+                         "zh":  "街道。",
+                         "en":  "Street."
+                     }
+                 ]
+}

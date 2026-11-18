@@ -438,17 +438,19 @@ jobs:
         if ($nuspecText -notmatch '<repository[^>]*url=') { throw "nuspec repository 节点缺 url 属性" }
         Write-Host "[PASS] nuspec 元数据齐全（license/readme/icon/repository url）"
 
-        # 3. 空包防护：核心包解包文件数 > 40（3 TFM × (dll+xml+12 locales) + 元数据），
-        #    其余包 > 5（nuspec+README+icon+dll+[Content_Types]，SourceGen 单 TFM 实测 7 文件）
+        # 3. 空包防护：核心包解包文件数 >= 19（3 TFM × (dll+xml+2 语 locales) + 元数据 = 20），
+        #    其余包 >= 5（nuspec+README+icon+dll+[Content_Types]，SourceGen 单 TFM 实测 8 文件）
+        #    注：阈值原为 40，按 12 语 locales 估算；语种收缩为 zh-Hans+en 后核心包实测 20 文件，
+        #    故按 2 语重算。取 19 而非 20，留 1 文件余量以免元数据条目微调即误判。
         foreach ($p in $pkgs) {
           $tmp = Join-Path $env:RUNNER_TEMP ('chk_' + [guid]::NewGuid().ToString('N'))
           Expand-Pkg $p.FullName $tmp
           $count = (Get-ChildItem $tmp -Recurse -File).Count
           $isCore = $p.Name -like 'NCMapper.*.nupkg' -and $p.Name -notlike '*.Dapper*' -and $p.Name -notlike '*.EFCore*' -and $p.Name -notlike '*.FreeSql*' -and $p.Name -notlike '*.SourceGen*'
-          $minCount = if ($isCore) { 40 } else { 5 }
+          $minCount = if ($isCore) { 19 } else { 5 }
           if ($count -lt $minCount) { throw "疑似空包: $($p.Name) 仅 $count 文件（阈值 $minCount）" }
         }
-        Write-Host "[PASS] 全部 nupkg 非空（核心包 >40 文件，其余 >5）"
+        Write-Host "[PASS] 全部 nupkg 非空（核心包 >=19 文件，其余 >=5）"
 
         # 4. 符号包：snupkg 产出齐全（SymbolPackageFormat=snupkg）
         $snupkgs = Get-ChildItem "$packDir/*.snupkg"

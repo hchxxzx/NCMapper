@@ -102,7 +102,7 @@ Switch globally via `DeepCopyProviderBase.Current`. Alternatively, configure via
 
 ```mermaid
 flowchart TD
-    Start[Mapper.DeepCopy<T>(src)] --> HasGen{Type has [MapFrom]<br/>and source-generated delegate?}
+    Start[Mapper.DeepCopy&#60;T&#62;&#40;src&#41;] --> HasGen{Type has [MapFrom]<br/>and source-generated delegate?}
     HasGen -->|Yes| Gen[Source-generator deep copy ~179ns<br/>Compile-time delegate, highest priority]
     HasGen -->|No| Cls{Under Fast strategy:<br/>Three-valued type-graph classification}
     Cls -->|Acyclic| FastAcyclic[Fast zero-detection fast path ~401ns]

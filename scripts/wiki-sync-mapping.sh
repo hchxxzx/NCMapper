@@ -101,6 +101,79 @@ if [ "$DRY" = "1" ]; then
   exit 0
 fi
 
+# 把 DocFX 的代码引用语法展开成 Wiki 能渲染的围栏代码块：
+#
+#   [!code-csharp[标题](~/samples/X/Y.cs#RegionName)]
+#     → ```csharp
+#       <region 内的代码，去掉 #region/#endregion 与公共缩进>
+#       ```
+#
+# DocFX 是微软的文档生成器，该语法它认；GitHub Wiki 不认，会原样显示成一串路径文本。
+# 实测 docs/en-US 全量 485 处、分布 54/84 个文件，属系统性缺陷。
+#
+# 参数：$1=输入文件  $2=输出文件  $3=仓库根（解析 ~/ 前缀用）
+# 找不到 region 或源文件时，降级为一行指向 GitHub 的链接，绝不静默丢内容。
+expand_code_refs() {
+  local in="$1" out="$2" root="$3"
+  : > "$out"
+  while IFS= read -r line || [ -n "$line" ]; do
+    # 匹配整行的单条引用（标题里可能有 \] 转义，用贪婪到最后一个 ]( 的形式）
+    if printf '%s' "$line" | grep -qE '^[[:space:]]*\[!code-[A-Za-z]+\[.*\]\([^)]+\)\][[:space:]]*$'; then
+      local lang path frag
+      lang=$(printf '%s' "$line" | sed -E 's/^[[:space:]]*\[!code-([A-Za-z]+)\[.*/\1/')
+      # 取最后一个 ]( 与结尾 )] 之间的目标，避开标题里的 ] 字符
+      path=$(printf '%s' "$line" | sed -E 's/.*\]\(([^)]+)\)\][[:space:]]*$/\1/')
+      frag=""
+      case "$path" in
+        *#*) frag="${path##*#}"; path="${path%%#*}" ;;
+      esac
+      # ~/ 前缀 → 仓库根
+      case "$path" in
+        '~/'*) path="$root/${path#\~/}" ;;
+        /*)    path="$root$path" ;;
+      esac
+      if [ -f "$path" ] && [ -n "$frag" ]; then
+        # 抽 region：从 "#region <frag>" 到其配对的 "#endregion"
+        sed -n "/#region[[:space:]]\{1,\}${frag}\$/,/#endregion/p" "$path" \
+          | sed '1d;$d' \
+          | awk '
+              # 去掉公共缩进（以非空行的最小缩进为基准）
+              { lines[NR] = $0
+                if ($0 ~ /[^[:space:]]/) {
+                  match($0, /^[[:space:]]*/)
+                  ind = RLENGTH
+                  if (min == "" || ind < min) min = ind
+                } }
+              END {
+                if (min == "") min = 0
+                for (i = 1; i <= NR; i++) {
+                  s = lines[i]
+                  if (length(s) >= min) s = substr(s, min + 1)
+                  print s
+                }
+              }' > "$out.__frag"
+        if [ -s "$out.__frag" ]; then
+          {
+            printf '```%s\n' "$lang"
+            cat "$out.__frag"
+            printf '```\n'
+          } >> "$out"
+        else
+          # region 名对不上（改名/删除）：降级为源码链接，保留可追溯性
+          local repo_rel="${path#"$root"/}"
+          printf '> ⚠ Code snippet `%s` not found in `%s` — see the [source on GitHub](https://github.com/hchxxzx/NCMapper/blob/main/%s).\n' \
+            "$frag" "$repo_rel" "$repo_rel" >> "$out"
+        fi
+        rm -f "$out.__frag"
+      else
+        printf '%s\n' "$line" >> "$out"
+      fi
+    else
+      printf '%s\n' "$line" >> "$out"
+    fi
+  done < "$in"
+}
+
 # 复制单页并剥离 Wiki 不渲染/不该显示的头部块：
 #   ① 机器翻译声明（> [!WARNING] 引用块）——仓库内的翻译溯源提示，Wiki 不需要；
 #   ② 页头元信息块——Wiki 不解析，留着会被当正文渲染成横线与键值行。
@@ -137,7 +210,10 @@ for item in "${PLAN[@]}"; do
   src_rel="${item%%$'\t'*}"
   dst="${item##*$'\t'}"
   mkdir -p "$WIKI/$(dirname "$dst")"
-  emit_page "$ROOT/$src_rel" "$WIKI/$dst.md"
+  emit_page "$ROOT/$src_rel" "$WIKI/$dst.md.__body"
+  # 第一阶段剥头部、第二阶段展开 DocFX 代码引用，两阶段分离便于单独调试
+  expand_code_refs "$WIKI/$dst.md.__body" "$WIKI/$dst.md" "$ROOT"
+  rm -f "$WIKI/$dst.md.__body"
 done
 
 # --- ④ _Sidebar.md / Home.md 导航块（域结构驱动）---

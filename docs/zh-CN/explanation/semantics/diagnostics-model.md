@@ -7,7 +7,7 @@ wiki-id: explanation/semantics/diagnostics-model
 
 # 语义共享层：诊断码体系模型
 
-> 本篇是诊断码体系模型的**单点同源**页。全量诊断码条目表见 [diagnostics/rules.md](../../diagnostics/rules.md)（唯一全表，与 AnalyzerReleases 三方对账）；本篇只讲体系模型。
+> 本篇是诊断码体系模型的**单点同源**页。全量诊断码条目表见 [diagnostics/rules.md](../../diagnostics/rules.md)（诊断码主表：数字族全表 + Fluent 族分页转指，数字族与 AnalyzerReleases 三方对账）；本篇只讲体系模型。
 
 ## 1. 两族命名
 
@@ -31,7 +31,7 @@ wiki-id: explanation/semantics/diagnostics-model
 新诊断码登记须三方同步（G3 门禁机械化校验）：
 
 1. `src/NCMapper.SourceGen/AnalyzerReleases.Shipped.md` / `Unshipped.md`（Roslyn 标准 release tracking，New Rules 节）；
-2. `docs/zh-CN/diagnostics/rules.md`（用户可见唯一全表）；
+2. `docs/zh-CN/diagnostics/rules.md`（用户可见诊断码主表：数字族全表 + Fluent 族分页转指）；
 3. 源码描述符（ID + 严重度以描述符为准绳）。
 
 `scripts/check-diagnostics-sync.sh`（CI G3 步骤）断言 ID 集合相等、严重度一致、无重复登记。文档侧新增码时同步登记，违例即 CI 红。

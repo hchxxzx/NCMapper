@@ -241,7 +241,7 @@ Fluent-side forms and diagnostics (`NCMAP_F51`–`NCMAP_F54`) are documented in 
 
 ## 5. Diagnostic Ownership Quick Reference
 
-This table maps diagnostic codes for topics covered on this page across the two configuration channels. The complete diagnostic catalog is defined exclusively in [diagnostics/rules.md](../../diagnostics/rules.md); this table is not exhaustive.
+This table maps diagnostic codes for topics covered on this page across the two configuration channels. The primary diagnostic code table is in [diagnostics/rules.md](../../diagnostics/rules.md) (full numeric family + Fluent family by page reference); this table is not exhaustive.
 
 | Topic | Attribute-Side Code | Fluent-Side Code |
 |-------|---------------------|------------------|

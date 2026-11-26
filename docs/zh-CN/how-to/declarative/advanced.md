@@ -238,7 +238,7 @@ Fluent 侧两形态与诊断（`NCMAP_F51`-`NCMAP_F54`）见 [fluent/terminals �
 
 ## 5. 诊断归属速记
 
-本页主题在两条通道上的诊断码归属映射。全量诊断码清单由 [diagnostics/rules.md](../../diagnostics/rules.md) 唯一承载，本表不扩为全表。
+本页主题在两条通道上的诊断码归属映射。诊断码主表见 [diagnostics/rules.md](../../diagnostics/rules.md)（数字族全表 + Fluent 族分页转指），本表不扩为全表。
 
 | 主题 | 特性侧码 | Fluent 侧码 |
 | ---- | -------- | ----------- |

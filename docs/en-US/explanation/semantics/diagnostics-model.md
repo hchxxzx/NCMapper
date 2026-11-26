@@ -10,7 +10,7 @@ Last Updated: 2026-09-28
 
 # Semantic Sharing Layer: Diagnostic Code Model
 
-> This page is the **single-source-of-truth** documentation for the diagnostic code model. The complete list of diagnostic codes is available in [diagnostics/rules.md](../../diagnostics/rules.md) (the sole authoritative full table, reconciled across three parties with `AnalyzerReleases`); this page covers only the model itself.
+> This page is the **single-source-of-truth** documentation for the diagnostic code model. The complete list of diagnostic codes is available in [diagnostics/rules.md](../../diagnostics/rules.md) (the primary diagnostic code table: full numeric family + Fluent family by page reference; the numeric family is reconciled across three parties with `AnalyzerReleases`); this page covers only the model itself.
 
 ## 1. Two Naming Families
 
@@ -34,7 +34,7 @@ Last Updated: 2026-09-28
 New diagnostic IDs must be registered synchronously across all three parties (G3 gate enforced via automated checks):
 
 1. `src/NCMapper.SourceGen/AnalyzerReleases.Shipped.md` / `Unshipped.md` (Roslyn-standard release tracking, under the *New Rules* section);  
-2. `docs/zh-CN/diagnostics/rules.md` (the single user-facing authoritative full table);  
+2. `docs/zh-CN/diagnostics/rules.md` (the user-facing primary diagnostic code table: full numeric family + Fluent family by page reference);  
 3. Source-code descriptors (ID + severity — descriptors serve as the canonical source of truth).
 
 The script `scripts/check-diagnostics-sync.sh` (executed as a CI G3 step) asserts that:  

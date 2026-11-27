@@ -16,9 +16,12 @@
 #   BENCH_RUN_TESTS   是否先跑 Phase 1 单元测试 (1|0，默认 1；SKIP_TESTS=1 可强制跳过)
 #   BENCH_TIMEOUT     每框架 benchmark 超时秒数（默认 14400=4h）
 #
-# 大核锁定：基准程序 Program.cs Main 入口已设 ProcessorAffinity=0xFFFF
+# 大核锁定（仅 Windows）：基准程序 Program.cs Main 入口设 ProcessorAffinity=0xFFFF
 #   (P-core, i7-12700K 逻辑核 0-15)，BDN 子进程继承父进程亲和性，
-#   故任何模式/框架均自动锁大核，脚本层无需重复处理。
+#   Windows 下任何模式/框架均自动锁大核，脚本层无需重复处理。
+#   非 Windows（Linux 等）不锁定：0xFFFF 是 Windows P/E core 专用掩码，
+#   在 Linux 上等于"只绑前 16 核"，对核数不同的服务器属错误约束。
+#   Linux 需限核请在外部用 taskset / numactl 指定。
 #
 # 稳定性设计 (源自 run_ncmapper_all.sh 2026-07-26 验证版)：
 #   - Phase 1 用 exit code 判定失败（非 grep "失败:"）
@@ -65,10 +68,31 @@ bench_init() {
   # 阶段外层→框架内层：先跑完当前阶段全部框架，段间冷却一次再进入下一阶段；
   # 空值=单段 BENCH_MODE（原行为，框架外层循环）
   BENCH_STAGES=${BENCH_STAGES:-}
-  LOG_DIR="artifacts/${BENCH_LOG_BASE:-ncmapper_run}/$(date '+%Y%m%d_%H%M%S')"
+  # BENCH_LOG_DIR 支持外部指定运行目录，用于断点续跑（崩溃后由看护脚本复用同一目录，
+  # 使"已有结果的类自动跳过"真正生效）。未指定时按时间戳新建，保持原行为。
+  if [ -n "${BENCH_LOG_DIR:-}" ]; then
+    LOG_DIR="$BENCH_LOG_DIR"
+    echo "  续跑模式：复用运行目录 $LOG_DIR"
+  else
+    LOG_DIR="artifacts/${BENCH_LOG_BASE:-ncmapper_run}/$(date '+%Y%m%d_%H%M%S')"
+  fi
   mkdir -p "$LOG_DIR"
   # 运行状态标记：供守护检查脚本（guard/bench_guard.sh）判定运行中/已完成
   echo "$(date '+%Y-%m-%d %H:%M:%S')" > "$LOG_DIR/RUNNING"
+}
+
+# CPU 绑核状态描述（按平台区分，供 bench_header 横幅展示）
+#   Windows：程序内锁 P-core（mask=0xFFFF, 逻辑核 0-15）
+#   Linux  ：程序不锁核（0xFFFF 为 Windows P/E core 专用掩码），显示可用核数
+_bench_cpu_desc() {
+  case "$(uname -s 2>/dev/null)" in
+    MINGW*|MSYS*|CYGWIN*)
+      echo "P-core 锁定 (mask=0xFFFF, 逻辑核 0-15)" ;;
+    *)
+      local n
+      n="$(nproc 2>/dev/null || echo '?')"
+      echo "未锁核（非 Windows，可用 $n 逻辑核；需限核请用 taskset/numactl）" ;;
+  esac
 }
 
 bench_header() {
@@ -81,7 +105,7 @@ bench_header() {
   fi
   echo " 框架: $BENCH_FRAMEWORKS"
   echo " BDN:  launchCount=5, warmup=3, iter=15"
-  echo " CPU:  P-core 锁定 (mask=0xFFFF, 逻辑核 0-15)"
+  echo " CPU:  $(_bench_cpu_desc)"
   echo " 预热: 每框架跑前启动进程 warmup + Defender 扫描预热"
   echo " 冷却: 段间停止 ${BENCH_COOLDOWN:-}s 防过热（仅多阶段模式）"
   echo " 开始时间: $(date '+%Y-%m-%d %H:%M:%S')"
@@ -140,6 +164,21 @@ bench_phase1() {
   else
     echo "  NCMapper.CrashProbe 构建成功"
   fi
+  # 三个测试项目必须先 restore：_bench_test_one 带 --no-restore，
+  # 而首次运行（尤其新机器/新目录）没有 obj/project.assets.json 时会直接报
+  # NETSDK1004「Assets file not found」→ Phase1 误判失败并 exit 1，整轮跑批中止。
+  # Windows 上因 bin/obj 常在而未暴露，Linux 干净检出必现。
+  echo "  restore 三个测试项目（--no-restore 前置条件）..."
+  for proj in test/NCMapper.Tests/NCMapper.Tests.csproj \
+              test/NCMapper.SourceGen.Tests/NCMapper.SourceGen.Tests.csproj \
+              test/NCMapper.IntegrationTests/NCMapper.IntegrationTests.csproj; do
+    if ! dotnet restore "$proj" >> "$LOG_DIR/restore_tests.log" 2>&1; then
+      echo "  FAILED: restore $proj 失败"
+      tail -10 "$LOG_DIR/restore_tests.log"
+      PHASE1_FAILS=$((PHASE1_FAILS + 1))
+    fi
+  done
+  [ "$PHASE1_FAILS" -eq 0 ] && echo "  测试项目 restore 完成"
   for TFM in $BENCH_FRAMEWORKS; do
     echo ""
     echo "--- TFM: $TFM ---"

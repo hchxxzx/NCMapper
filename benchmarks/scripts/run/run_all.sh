@@ -9,7 +9,8 @@ set -uo pipefail  # 移除 set -e——bench_lib 的 Phase1/Phase2
 #     Stage2 baseline_rivals = 竞品变体 AutoMapper/Manual/Mapperly/Mapster + DeepCopy 竞品 + Update 3 变体（49 类）× net8/9/10
 #   执行顺序：Stage1 三框架全部跑完 → 停止 10 分钟防过热降温 → Stage2 三框架（共冷却一次）
 #   冷却动机：防止 CPU 过热影响计时，保证两段测试热状态一致（非 PGO 隔离目的）
-#   大核锁定由基准程序 Program.cs 统一保证（mask=0xFFFF）
+#   大核锁定仅 Windows 生效（基准程序 Program.cs 内 mask=0xFFFF）；
+#   Linux 等非 Windows 平台不锁核，需限核请用 taskset/numactl
 # 用法: ./run_all.sh [每框架超时秒数, 默认 14400]
 #       SKIP_TESTS=1 ./run_all.sh   # 跳过 Phase 1 单元测试
 # 说明: 段间冷却秒数可改 BENCH_COOLDOWN 环境变量（默认 600=10 分钟，防过热降温）

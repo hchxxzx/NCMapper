@@ -9,6 +9,9 @@ obj/
 *.suo
 *.DotSettings
 
+# AI 协作工具的会话状态（非项目代码）
+.agent-teams/
+
 # 基准测试产物
 BenchmarkDotNet.Artifacts/
 **/results_*/

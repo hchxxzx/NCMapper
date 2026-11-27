@@ -8,6 +8,16 @@ Performance benchmark suite for NCMapper. It contains three projects:
 | `NCMapper.SelfBench` | Lightweight hand-rolled micro-benchmarks (no BenchmarkDotNet dependency), used as an independent cross-check of the main suite |
 | `NCMapper.LoadBench` | Load-oriented scenarios: cold start, concurrency scaling, endurance (memory pressure), and in-place mapping reuse |
 
+## Test reports
+
+Full-batch results (all frameworks × all implementations) are archived in [`reports/`](reports/) — see [`reports/README.md`](reports/README.md) for the index.
+
+| Date | Scope | Report |
+|------|-------|--------|
+| 2026-11-27 | net8/9/10 × (self 42 + rivals 49 classes) = 270 benchmarks | [NCMapper-性能基准测试报告.md](reports/20261127/NCMapper-性能基准测试报告.md) |
+
+> Per-class BenchmarkDotNet reports live in [`baselines/`](baselines/) (long-term regression assets). `reports/` holds whole-run summaries plus raw data — the two serve different purposes.
+
 ## Running
 
 Release configuration is required for meaningful numbers. Run one target framework at a time (`net8.0` / `net9.0` / `net10.0`):

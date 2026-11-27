@@ -33,7 +33,9 @@ $RepoRoot = Resolve-Path "$PSScriptRoot/../../.."
 
 **命名规范**：动词_对象，如 `run_all.sh`、`gen_report.py`、`compare_perf.ps1`。
 
-**CPU 亲和**：大核锁定由基准程序 `Program.cs` 的 `Main` 入口集中保证（`ProcessorAffinity = 0xFFFF`，i7-12700K 逻辑核 0-15 = 8 P-core × 2HT；E-core 为 16-19），BDN 派生的测量子进程继承父进程亲和性。因此任何运行脚本/模式都自动锁定 P-core，脚本层无需重复设置。
+**CPU 亲和**：大核锁定由基准程序 `Program.cs` 的 `Main` 入口集中保证，**仅 Windows 生效**（`ProcessorAffinity = 0xFFFF`，i7-12700K 逻辑核 0-15 = 8 P-core × 2HT；E-core 为 16-19），BDN 派生的测量子进程继承父进程亲和性。
+
+**非 Windows（Linux 等）不锁定亲和性**：`0xFFFF` 是 Windows 混合架构（P/E core）的专用掩码，在 Linux 上会被解释为"仅前 16 个逻辑核"，对核数不同的服务器属错误约束（如 32 核机型只用到 NUMA node0 的半数核，且跨节点访存拖慢测量）。Linux 侧若需限核，请在外部用 `taskset` / `numactl` 显式指定，不要写死在程序里。
 
 ## run/ — 运行脚本（三档）
 
@@ -61,7 +63,43 @@ SKIP_TESTS=1 ./run_ncmapper_net10.sh   # 跳过单测，更快
 | 辅助文件 | 说明 |
 |----------|------|
 | `bench_lib.sh` | 三档共享库（稳定性逻辑单一来源），由入口脚本 `source`，不直接执行 |
+| `bench_watchdog.sh` | 定时启动 + 自愈看护（见下节），由 cron 每 10 分钟调用 `tick` |
 | `run_bench.sh` | ad-hoc 工具：单框架按类逐个跑（带超时/断点续跑/GUID 清理），用于单独调查某个基准类，非回归档位 |
+
+### bench_watchdog.sh — 定时启动与自愈看护
+
+用于"无人值守跑整轮回归"：到点自动启动，之后每 10 分钟体检一次，出问题自动修复后继续。
+
+```bash
+# 安装（cron 每 10 分钟 tick 一次）
+crontab -e
+*/10 * * * * /path/to/bench_watchdog.sh tick >> /path/to/artifacts/watchdog/cron.log 2>&1
+
+# 手动操作
+./bench_watchdog.sh start     # 立即启动（绕过 0 点判断，用于演练）
+./bench_watchdog.sh tick      # 单次体检（cron 用，幂等）
+./bench_watchdog.sh status    # 查看状态/进度/CPU/磁盘
+./bench_watchdog.sh stop      # 停止测试与看护
+./bench_watchdog.sh reset     # 清状态，下个 tick 重新计算启动时刻
+```
+
+**自愈策略分级**：
+
+| 故障 | 处置 |
+|------|------|
+| 进程死了、无 `DONE` 标记 | 断点续跑（复用同一 `LOG_DIR`，已完成类自动跳过） |
+| 日志长时间无增长（默认 45 分钟） | 判定卡死 → 杀掉后续跑 |
+| CPU 空闲率低于阈值（默认 30%） | 启动前暂缓、运行中仅告警（不打断已有进度） |
+| 磁盘剩余不足（默认 5GB） | 停止并置 `failed`，需人工清理 |
+| 重试达上限（默认 20 次） | 置 `failed`，需人工介入 |
+
+**环境变量**：`START_HOUR`（默认 0，启动小时）、`STALL_MINUTES`（卡死阈值）、`MIN_IDLE_PCT`（CPU 空闲下限）、`MIN_FREE_GB`（磁盘下限）、`MAX_ATTEMPTS`（重试上限）、`BENCH_LOG_DIR`（续跑目录，通常由脚本自动设置）。
+
+**关键实现约束**（改动时勿破坏）：
+
+1. **启动子进程必须带 `9>&-`**：`tick` 用 `flock` fd 9 防并发，若子进程继承该 fd，测试跑批全程锁被占用，后续 tick 全部跳过，看护彻底失效（已实测踩到）。
+2. **时间判断用绝对时刻**：`hour >= START_HOUR` 在 `START_HOUR=0` 时白天也成立，会误启动；必须比较算出的"下一个 0 点"时间戳。
+3. **续跑必须传 `BENCH_LOG_DIR`**：`bench_lib.sh` 默认按时间戳新建目录，不传则每次续跑都开新目录，`run_ncmapper_all.sh` 的"已有结果则跳过"永远不会生效。
 
 ## baseline/ — 基线构建
 

@@ -5,7 +5,8 @@ set -uo pipefail  # 移除 set -e——bench_lib 的 Phase1/Phase2
 # 档2：NCMapper 本组件全路径全框架回归测试（大改后）
 #   模式 ncmapper_all = NCMapper / Ext / Runtime / Expression / Generated
 #   框架 net8.0 / net9.0 / net10.0，43 类 × 3（实测 2026-08-20；含 CollectionInto_NCMapper，Big 3 类 2026-08-13 裁决移除后注释未更新）
-#   大核锁定由基准程序 Program.cs 统一保证（mask=0xFFFF）
+#   大核锁定仅 Windows 生效（基准程序 Program.cs 内 mask=0xFFFF）；
+#   Linux 等非 Windows 平台不锁核，需限核请用 taskset/numactl
 # 用法: ./run_ncmapper_all.sh [每框架超时秒数, 默认 14400]
 #       SKIP_TESTS=1 ./run_ncmapper_all.sh   # 跳过 Phase 1 单元测试
 # ================================================================

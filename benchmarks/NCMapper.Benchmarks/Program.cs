@@ -1027,7 +1027,8 @@ public class Quick_Collection_RT { [Benchmark] public List<FlatDtoRuntime> Run()
 // ================================================================
 
 /// <summary>
-/// 基准程序入口 — 仅面向 Windows 基准机运行（P-core 亲和性锁定 0xFFFF，i7-12700K）。
+/// 基准程序入口 — Windows 上锁定 P-core（0xFFFF，i7-12700K 逻辑核 0-15）；
+/// 非 Windows（如 Linux 服务器）不锁定亲和性，交由外部 taskset/numactl 控制。
 /// </summary>
 [SupportedOSPlatform("windows")]
 class Program
@@ -1122,16 +1123,27 @@ class Program
             return;
         }
 
-        // CPU 亲和性锁定: 仅 P-core (i7-12700K: 逻辑核 0-15 = 8P×2HT)
-        // 避免 E-core 迁移导致基准抖动, BDN 子进程继承父进程亲和性
-        try
+        // CPU 亲和性锁定（仅 Windows）: 仅 P-core (i7-12700K: 逻辑核 0-15 = 8P×2HT)
+        // 避免 E-core 迁移导致基准抖动, BDN 子进程继承父进程亲和性。
+        // Linux 上不锁定：0xFFFF 是 Windows 混合架构（P/E core）的专用掩码，
+        // 在 Linux 上会被解释为"仅前 16 个逻辑核"，对核数不同的服务器属错误约束
+        // （如 32 核机型只用到 NUMA node0 的半数核），且会与 NUMA 拓扑冲突导致跨节点访存。
+        // Linux 侧需要限核时应在外部用 taskset/numactl 显式指定，不写死在程序里。
+        if (OperatingSystem.IsWindows())
         {
-            Process.GetCurrentProcess().ProcessorAffinity = new IntPtr(0xFFFF);
-            Console.WriteLine("CPU affinity locked to P-core (0xFFFF, logical 0-15)");
+            try
+            {
+                Process.GetCurrentProcess().ProcessorAffinity = new IntPtr(0xFFFF);
+                Console.WriteLine("CPU affinity locked to P-core (0xFFFF, logical 0-15)");
+            }
+            catch (Exception ex)
+            {
+                Console.WriteLine($"Warning: CPU affinity lock failed: {ex.Message}");
+            }
         }
-        catch (Exception ex)
+        else
         {
-            Console.WriteLine($"Warning: CPU affinity lock failed: {ex.Message}");
+            Console.WriteLine($"CPU affinity lock skipped (non-Windows; {Environment.ProcessorCount} logical cores available)");
         }
 
         // 预热（进程级：JIT + 静态缓存 + CPU 热稳定，约 10 秒，用户裁决 2026-08-13）

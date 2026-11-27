@@ -173,6 +173,8 @@ Because a skip and a match are printed differently but summarised identically, c
 pwsh -NoProfile -File scripts/verify-generated-baseline.ps1   # each project must print IDENTICAL
 ```
 
+**Do not reimplement the comparison with byte-level tools.** The gate decides with a string comparison (`$a -ceq $b`) over `[System.IO.File]::ReadAllText()`, which strips a UTF-8 BOM on read. Reimplementing it as `sha256sum` over raw bytes reports a difference wherever a BOM is present on one side only — a false alarm, because the gate itself considers those files identical. The `Get-Sha256` hash the gate prints is for display only and takes no part in the verdict. Run the real script instead.
+
 ## Coding Conventions
 
 - **XML doc comments on all public members** (classes, methods, properties, enum members, parameters, returns). Chinese is the working language for comments; technical terms stay in English.

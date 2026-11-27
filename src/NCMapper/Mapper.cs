@@ -634,6 +634,10 @@ public partial class Mapper
     /// 同类型引用类型属性为<b>浅拷贝</b>（共享引用）。
     /// 此行为与 AutoMapper/Mapperly/Mapster 等主流映射库一致。
     /// 如需完全独立的深拷贝，请使用 <see cref="DeepCopy{T}(T)"/>。</para>
+    /// <para><b>导航属性契约</b>：内存映射<b>只做字段映射，不负责加载导航</b>——本方法不访问数据库、
+    /// 也不触发延迟加载。若源实体的导航属性未被加载（值为 null，例如查询时未 Include），
+    /// 目标 DTO 的对应嵌套对象即为 null。这是<b>预期行为</b>，不是映射缺陷：导航数据须由调用方
+    /// 在查询层（Include / JOIN / 显式加载）取好再交给映射。</para>
     /// </summary>
     /// <param name="source">源对象</param>
     /// <param name="action">方法，可在此处对对象进行后续操作，默认为空</param>

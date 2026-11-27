@@ -101,7 +101,12 @@ namespace NCMapper.Internal
             if (s_cache.TryGetValue(cacheKey, out var cached) && cached.Version == contentVersion)
                 return (Expression<Func<TSource, TTarget>>)cached.Lambda;
 
-            var lambda = BuildCore<TSource, TTarget>(strategy);
+            // 路线四（TB-20261127-01 卡 C1）作用域边界：单表 Build 是「单源」语义，绝不可继承
+            // 外层 Compose 作用域（否则 Compose 明细/自动匹配路径中夹带的一次单表 Build 会把嵌套
+            // 错误改指到 join 参数上）。Push 空作用域 = 显式屏蔽，退出即还原。
+            Expression<Func<TSource, TTarget>> lambda;
+            using (ComposeNestedSourceScope.PushEmpty())
+                lambda = BuildCore<TSource, TTarget>(strategy);
             s_cache[cacheKey] = new ProjectionCacheEntry { Version = contentVersion, Lambda = lambda };
             return lambda;
         }
@@ -256,36 +261,54 @@ namespace NCMapper.Internal
                             MapTracer.Write($"{strategy.TracePrefix} 跳过目标属性 {targetProp.Name}（原因：Compose 明细空组=忽略信号）");
                             continue;
                         }
-                        // 副源取值（单表 AsDto 形态——主源导航推断，现状 语义）：
-                        // TypeRef 直比；缺失（internal 副源发射形态）→ 按主源导航属性类型归一匹配（Q4 D-11 同口径）
+                        // 副源取值（路线四 TB-20261127-01 卡 C1）：
+                        // ① Compose 通道（ComposeNestedSourceScope 作用域内）→ 副源改指**用户 join 的源参数**
+                        //    （不再按 [Navigate] 自建 JOIN——缺陷③：软删泄漏／非主键串行）；匹配不到 fail-closed。
+                        // ② 非 Compose 通道（单表 AsDto/EFCore/Dapper，作用域外恒返回 null）→ 既有语义逐字不变：
+                        //    TypeRef 直比；缺失（internal 副源发射形态）→ 按主源导航属性类型归一匹配（Q4 D-11 同口径）。
                         Type? subType = cm.SubSourceTypeRef;
                         PropertyInfo? navProp = null;
-                        if (subType != null)
+                        Expression? subSrcExpr = null;
+                        // 作用域内副源表达式为源参数本身；作用域外为导航链（原 src.Nav）
+                        Expression? joinedSubSource = subType != null
+                            ? ComposeNestedSourceScope.RequireJoinedSource(subType, targetProp.Name, strategy.TracePrefix)
+                            : ComposeNestedSourceScope.RequireJoinedSourceByName(cm.SubSourceTypeName, targetProp.Name, strategy.TracePrefix);
+                        if (joinedSubSource != null)
                         {
-                            navProp = NavigationResolver.ResolveNavigationProperty(sourceProps, subType, sourceType.Name);
+                            subSrcExpr = joinedSubSource;
                         }
                         else
                         {
-                            navProp = sourceProps.FirstOrDefault(p =>
-                                NamesMatchRuntimeNormalized(p.PropertyType.FullName, cm.SubSourceTypeName));
-                        }
-                        if (navProp == null)
-                        {
-                            MapTracer.Write($"{strategy.TracePrefix} 跳过目标属性 {targetProp.Name}（原因：副源 {cm.SubSourceTypeName} 在主源 {sourceType.Name} 上未找到导航属性，fail-closed）");
-                            continue;
+                            if (subType != null)
+                            {
+                                navProp = NavigationResolver.ResolveNavigationProperty(sourceProps, subType, sourceType.Name);
+                            }
+                            else
+                            {
+                                navProp = sourceProps.FirstOrDefault(p =>
+                                    NamesMatchRuntimeNormalized(p.PropertyType.FullName, cm.SubSourceTypeName));
+                            }
+                            if (navProp == null)
+                            {
+                                MapTracer.Write($"{strategy.TracePrefix} 跳过目标属性 {targetProp.Name}（原因：副源 {cm.SubSourceTypeName} 在主源 {sourceType.Name} 上未找到导航属性，fail-closed）");
+                                continue;
+                            }
+                            subSrcExpr = Expression.Property(srcParam, navProp);
                         }
 
                         // 路径/索引重建（与 pm 级同一重建单点）
                         var segs = BuildSegmentsWithIndexes(cm.SourcePathNames, cm.SourceIndexes);
-                        var subSrcParam = Expression.Property(srcParam, navProp);
+                        var subSrcParam = subSrcExpr;
+                        // 副源类型：作用域外为导航属性类型；作用域内为 join 参数类型（二者一致，统一取值避免双源）
+                        var subSrcType = subSrcExpr.Type;
                         Expression? cmExpr;
                         if (segs.Length == 1 && !segs[0].Contains('['))
                         {
-                            var subProps = GetPublicInstanceProperties(navProp.PropertyType);
+                            var subProps = GetPublicInstanceProperties(subSrcType);
                             var sp = ProjectionNameResolver.Resolve(subProps, segs[0]);
                             if (sp == null)
                             {
-                                MapTracer.Write($"{strategy.TracePrefix} 跳过目标属性 {targetProp.Name}（原因：副源 {navProp.PropertyType.Name} 中未找到声明字段 {segs[0]}）");
+                                MapTracer.Write($"{strategy.TracePrefix} 跳过目标属性 {targetProp.Name}（原因：副源 {subSrcType.Name} 中未找到声明字段 {segs[0]}）");
                                 continue;
                             }
                             cmExpr = Expression.Property(subSrcParam, sp);
@@ -293,7 +316,7 @@ namespace NCMapper.Internal
                         else
                         {
                             var dotPath = string.Join(".", segs);
-                            cmExpr = TryBuildDotPathExpression(subSrcParam, navProp.PropertyType, dotPath, strategy, targetProp);
+                            cmExpr = TryBuildDotPathExpression(subSrcParam, subSrcType, dotPath, strategy, targetProp);
                             if (cmExpr == null)
                             {
                                 MapTracer.Write($"{strategy.TracePrefix} 跳过目标属性 {targetProp.Name}（原因：Compose 明细路径 {dotPath} 无法构建点路径表达式）");
@@ -530,6 +553,25 @@ namespace NCMapper.Internal
             List<PropertyInfo> sourceProps, ProjectionStrategy strategy,
             IReadOnlyDictionary<string, RuntimePropertyMapping>? fluentPmByName = null)
         {
+            // ★ 路线四（TB-20261127-01 卡 C1）——Compose 嵌套 DTO 的源改指（最先判定，优先于一切声明面）：
+            // Compose 通道内，目标属性是「已注册嵌套 DTO」时，其数据来源必须是**用户 join 的该 DTO 主源参数**
+            // （t2/t3），不能再按导航属性（src.Dept）取值——那会让 ORM 自建第二条 LEFT JOIN，绕过用户 join
+            // 上的软删/非主键条件（缺陷③：软删泄漏／T1 无导航丢数据／非主键 join 串行）。
+            // 匹配不到该源类型的参数 → fail-closed 抛异常（不静默返回 null/空壳）。
+            // 非 Compose 通道（作用域外 IsActive=false）→ 整段跳过，单表/EFCore/Dapper 行为逐字不变。
+            if (ComposeNestedSourceScope.IsActive
+                && Runtime.RuntimeSnapshotStore.IsRegisteredDto(targetProp.PropertyType))
+            {
+                var nestedPrimarySource = Runtime.RuntimeSnapshotStore.GetPrimarySource(targetProp.PropertyType);
+                if (nestedPrimarySource != null)
+                {
+                    var joinedNestedSource = ComposeNestedSourceScope.RequireJoinedSource(
+                        nestedPrimarySource, targetProp.Name, strategy.TracePrefix);
+                    if (joinedNestedSource != null)
+                        return ConvertProjectionType(joinedNestedSource, targetProp.PropertyType, depth: 0, strategy);
+                }
+            }
+
             // G1-② 注册表明细优先（Fluent 声明面）——命中即等价重建 FromField 语义；未命中走特性解析回退
             if (fluentPmByName != null && fluentPmByName.TryGetValue(targetProp.Name, out var fpm)
                 && fpm != null)
@@ -575,13 +617,28 @@ namespace NCMapper.Internal
             }
             else
             {
-                // 源类型不是主映射源 → 按类型匹配推断导航属性
-                var navProp = NavigationResolver.ResolveNavigationProperty(
-                    sourceProps, fieldSourceType, sourceType.Name);
-                if (navProp == null)
+                // 源类型不是主映射源 → 跨表取值（路线四 TB-20261127-01 卡 C1）：
+                // ① Compose 通道（ComposeNestedSourceScope 作用域内）→ 直接取**用户 join 的该源参数**
+                //    （原按 [Navigate] 自建 JOIN 会绕过用户 join 的条件——缺陷③）；匹配不到 fail-closed。
+                // ② 非 Compose 通道（作用域外恒返回 null）→ 既有语义逐字不变（按类型匹配推断导航属性）。
+                var joinedFieldSource = ComposeNestedSourceScope.RequireJoinedSource(
+                    fieldSourceType, targetProp.Name, strategy.TracePrefix);
+                Expression fieldSourceExpr;
+                PropertyInfo? navProp = null;
+                if (joinedFieldSource != null)
                 {
-                    MapTracer.Write($"{strategy.TracePrefix} 跳过目标属性 {targetProp.Name}（原因：源类型 {sourceType.Name} 中未找到类型为 {fieldSourceType.Name} 的导航属性）");
-                    return null;
+                    fieldSourceExpr = joinedFieldSource;
+                }
+                else
+                {
+                    navProp = NavigationResolver.ResolveNavigationProperty(
+                        sourceProps, fieldSourceType, sourceType.Name);
+                    if (navProp == null)
+                    {
+                        MapTracer.Write($"{strategy.TracePrefix} 跳过目标属性 {targetProp.Name}（原因：源类型 {sourceType.Name} 中未找到类型为 {fieldSourceType.Name} 的导航属性）");
+                        return null;
+                    }
+                    fieldSourceExpr = Expression.Property(srcParam, navProp);
                 }
 
                 var navProps = GetPublicInstanceProperties(fieldSourceType);
@@ -599,7 +656,7 @@ namespace NCMapper.Internal
                     return null;
                 }
 
-                valueExpr = Expression.Property(Expression.Property(srcParam, navProp), navField);
+                valueExpr = Expression.Property(fieldSourceExpr, navField);
             }
 
             // 类型兼容性处理
@@ -1000,6 +1057,13 @@ namespace NCMapper.Internal
             if (depth > strategy.WarningDepth)
                 MapTracer.Write($"{strategy.TracePrefix} 嵌套投影 {srcType.Name}→{tgtType.Name} 深度 {depth} 超过建议值 {strategy.WarningDepth}，翻译的 SQL 可能包含过多 LEFT JOIN");
 
+            // 路线四（TB-20261127-01 卡 C1）——嵌套源改指用户 join 的源参数：
+            // 注册表自动匹配出的嵌套条目走 `t1.Nav` 属性访问（不经 ResolveNavigationProperty），
+            // 若不在本入口改指，ORM 仍会自建第二条 LEFT JOIN，绕过用户 join 上的软删/非主键条件（缺陷③）。
+            // 非 Compose 通道（作用域外）原样返回，单表/EFCore/Dapper 行为逐字不变。
+            // 作用域内匹配不到源参数 → fail-closed（不静默返回 null/空壳）。
+            srcExpr = ComposeNestedSourceScope.RedirectNestedSource(srcType, srcExpr);
+
             // 补遗：嵌套主源一致性校验（注册表优先 + 反射回退）
             // — Fluent DTO 注册表命中后 PrimarySource 与 srcType 比对通过，不再被主源校验跳过
             if (!RuntimeSnapshotStore.TryGetMappingMeta(tgtType, out var view550)
@@ -1096,41 +1160,56 @@ namespace NCMapper.Internal
                             MapTracer.Write($"{strategy.TracePrefix} 嵌套投影 {srcType.Name}→{tgtType.Name} 跳过属性 {tgtProp.Name}（原因：Compose 明细空组=忽略信号）");
                             continue;
                         }
+                        // 副源取值（路线四 TB-20261127-01 卡 C1）：Compose 通道内改指**用户 join 的源参数**
+                        // （不再按 [Navigate] 自建 JOIN）；匹配不到 fail-closed。非 Compose 通道既有语义不变。
                         Type? subType = cm.SubSourceTypeRef;
                         PropertyInfo? navProp = null;
-                        if (subType != null)
+                        Expression? joinedSubSource = subType != null
+                            ? ComposeNestedSourceScope.RequireJoinedSource(subType, tgtProp.Name, strategy.TracePrefix)
+                            : ComposeNestedSourceScope.RequireJoinedSourceByName(cm.SubSourceTypeName, tgtProp.Name, strategy.TracePrefix);
+                        Expression subSourceExpr;
+                        if (joinedSubSource != null)
                         {
-                            navProp = NavigationResolver.ResolveNavigationProperty(srcProps, subType, srcType.Name);
+                            subSourceExpr = joinedSubSource;
                         }
                         else
                         {
-                            navProp = srcProps.FirstOrDefault(p =>
-                                NamesMatchRuntimeNormalized(p.PropertyType.FullName, cm.SubSourceTypeName));
-                        }
-                        if (navProp == null)
-                        {
-                            MapTracer.Write($"{strategy.TracePrefix} 嵌套投影 {srcType.Name}→{tgtType.Name} 跳过属性 {tgtProp.Name}（原因：副源 {cm.SubSourceTypeName} 未找到导航属性，fail-closed）");
-                            continue;
+                            if (subType != null)
+                            {
+                                navProp = NavigationResolver.ResolveNavigationProperty(srcProps, subType, srcType.Name);
+                            }
+                            else
+                            {
+                                navProp = srcProps.FirstOrDefault(p =>
+                                    NamesMatchRuntimeNormalized(p.PropertyType.FullName, cm.SubSourceTypeName));
+                            }
+                            if (navProp == null)
+                            {
+                                MapTracer.Write($"{strategy.TracePrefix} 嵌套投影 {srcType.Name}→{tgtType.Name} 跳过属性 {tgtProp.Name}（原因：副源 {cm.SubSourceTypeName} 未找到导航属性，fail-closed）");
+                                continue;
+                            }
+                            subSourceExpr = Expression.Property(srcExpr, navProp);
                         }
 
                         var segs = BuildSegmentsWithIndexes(cm.SourcePathNames, cm.SourceIndexes);
-                        var subSrcExpr = (Expression)Expression.Property(srcExpr, navProp);
+                        // 副源类型：作用域外为导航属性类型；作用域内为 join 参数类型（统一取值，避免双源分叉）
+                        var subSourceType = subSourceExpr.Type;
                         Expression? cmExpr;
                         if (segs.Length == 1 && !segs[0].Contains('['))
                         {
-                            var subProps = GetPublicInstanceProperties(navProp.PropertyType);
+                            var subProps = GetPublicInstanceProperties(subSourceType);
                             var sp = ProjectionNameResolver.Resolve(subProps, segs[0]);
                             if (sp == null)
                             {
-                                MapTracer.Write($"{strategy.TracePrefix} 嵌套投影 {srcType.Name}→{tgtType.Name} 跳过属性 {tgtProp.Name}（原因：副源 {navProp.PropertyType.Name} 中未找到声明字段 {segs[0]}）");
+                                MapTracer.Write($"{strategy.TracePrefix} 嵌套投影 {srcType.Name}→{tgtType.Name} 跳过属性 {tgtProp.Name}（原因：副源 {subSourceType.Name} 中未找到声明字段 {segs[0]}）");
                                 continue;
                             }
-                            cmExpr = Expression.Property(subSrcExpr, sp);
+                            cmExpr = Expression.Property(subSourceExpr, sp);
                         }
                         else
                         {
                             var dotPath = string.Join(".", segs);
-                            cmExpr = TryBuildDotPathExpression(subSrcExpr, navProp.PropertyType, dotPath, strategy, tgtProp);
+                            cmExpr = TryBuildDotPathExpression(subSourceExpr, subSourceType, dotPath, strategy, tgtProp);
                             if (cmExpr == null)
                             {
                                 MapTracer.Write($"{strategy.TracePrefix} 嵌套投影 {srcType.Name}→{tgtType.Name} 跳过属性 {tgtProp.Name}（原因：Compose 明细路径 {dotPath} 无法构建点路径表达式）");
@@ -1283,12 +1362,26 @@ namespace NCMapper.Internal
                 }
                 else
                 {
-                    var navProp = NavigationResolver.ResolveNavigationProperty(
-                        srcProps, fieldSourceType, srcType.Name);
-                    if (navProp == null)
+                    // 跨表取值（路线四 TB-20261127-01 卡 C1）：Compose 通道内直接取**用户 join 的该源参数**
+                    // （原按 [Navigate] 自建 JOIN 会绕过用户 join 条件——缺陷③）；匹配不到 fail-closed。
+                    // 非 Compose 通道（作用域外恒返回 null）→ 既有语义逐字不变。
+                    var joinedFieldSource = ComposeNestedSourceScope.RequireJoinedSource(
+                        fieldSourceType, tgtProp.Name, strategy.TracePrefix);
+                    Expression? navAccessExpr;
+                    if (joinedFieldSource != null)
                     {
-                        MapTracer.Write($"{strategy.TracePrefix} 嵌套投影 {srcType.Name}→{tgtType.Name} 跳过属性 {tgtProp.Name}（原因：源类型中未找到类型为 {fieldSourceType.Name} 的导航属性）");
-                        continue;
+                        navAccessExpr = joinedFieldSource;
+                    }
+                    else
+                    {
+                        var navProp = NavigationResolver.ResolveNavigationProperty(
+                            srcProps, fieldSourceType, srcType.Name);
+                        if (navProp == null)
+                        {
+                            MapTracer.Write($"{strategy.TracePrefix} 嵌套投影 {srcType.Name}→{tgtType.Name} 跳过属性 {tgtProp.Name}（原因：源类型中未找到类型为 {fieldSourceType.Name} 的导航属性）");
+                            continue;
+                        }
+                        navAccessExpr = Expression.Property(srcExpr, navProp);
                     }
 
                     var navFieldProps = GetPublicInstanceProperties(fieldSourceType);
@@ -1305,7 +1398,6 @@ namespace NCMapper.Internal
                         continue;
                     }
 
-                    var navAccessExpr = Expression.Property(srcExpr, navProp);
                     var fieldAccessExpr = Expression.Property(navAccessExpr, navField);
 
                     // 值类型目标属性：导航为 null 时给默认值（避免 NullReference）
@@ -1323,7 +1415,7 @@ namespace NCMapper.Internal
                             continue;
                         }
                         valExpr = Expression.Condition(
-                            Expression.Equal(navAccessExpr, Expression.Constant(null, navProp.PropertyType)),
+                            Expression.Equal(navAccessExpr, Expression.Constant(null, navAccessExpr.Type)),
                             Expression.Default(tgtProp.PropertyType),
                             Expression.Convert(fieldAccessExpr, tgtProp.PropertyType));
                     }
@@ -1331,7 +1423,7 @@ namespace NCMapper.Internal
                         && Nullable.GetUnderlyingType(tgtProp.PropertyType) == null)
                     {
                         valExpr = Expression.Condition(
-                            Expression.Equal(navAccessExpr, Expression.Constant(null, navProp.PropertyType)),
+                            Expression.Equal(navAccessExpr, Expression.Constant(null, navAccessExpr.Type)),
                             Expression.Default(tgtProp.PropertyType),
                             fieldAccessExpr);
                     }
@@ -1471,3 +1563,4 @@ namespace NCMapper.Internal
             => s_mapFromAttrCache.GetOrAdd(type, t => t.GetCustomAttribute<MapFromAttribute>());
     }
 }
+

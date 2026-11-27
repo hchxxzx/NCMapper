@@ -119,6 +119,9 @@ internal static class ComposeProjectionKernel
         var targetProps = ProjectionExpressionFactory.GetPublicInstanceProperties(targetType).Where(p => p.CanWrite).ToList();
         var bindings = new List<MemberBinding>();
 
+        // 路线四（TB-20261127-01 卡 C1）：把用户 join 的源参数集下传给共享内核（唯一改动行，captain 授权）。
+        using var scope = ComposeNestedSourceScope.Push(sourceTypes, parameters);
+
         // 决策点 3/6：bindings 双分支
         // 快照腿（明细命中：ComposeMappings 跨表明细 → Properties 主源明细 → 矩阵 miss，
         // 命中分支**零特性读取**——IsMapIgnoreDefined/ShouldIgnore 特性腿不调，全局忽略腿直调保留）
@@ -298,6 +301,31 @@ internal static class ComposeProjectionKernel
                 }
 
                 // ── ③ 属性级 miss（矩阵——跳过 + Trace，提取期权威，不调特性读取、不按名重试）──
+                // ③-b 嵌套/集合 DTO 例外（TB-20261127-01 卡 C2 —— 递归入口保留）：
+                // 对齐单表链 ProjectionExpressionFactory.cs:380-396 / 1278-1293 的「⑤ 属性级 miss」同口径——
+                // 目标属性 ∈ AllTargetSlots 但 ∉ Properties 时，若其类型是**已注册的嵌套/集合 DTO**，
+                // 其映射语义由子对明细承载，必须递归进入嵌套投影构建，而不是在此直接跳过（跳过即嵌套投影断链，
+                // 缺陷④：同一份元数据在单表能投影嵌套、Compose 却整段跳过）。
+                // 注意：不在 AllTargetSlots 的目标属性**不走**本例外（Ignore(Both) 零痕迹，语义上确为剔除）；
+                // 单表链同款——其 slot 差集判定（:242-246）先于 ⑤ 分支执行。
+                // 递归进入后：引用型嵌套的源经 ComposeNestedSourceScope.RequireJoinedSource 改指**用户 join 的
+                // 该 DTO 主源参数**（路线四 C1 已交付机制，本卡不改其代码），嵌套绑定再经
+                // BuildNestedProjection → RedirectNestedSource 保持同一 join 参数，不再按 [Navigate] 自建 JOIN。
+                if (allSlotNames.Contains(targetProp.Name)
+                    && (RuntimeSnapshotStore.IsRegisteredDto(targetProp.PropertyType)
+                        || ContainsRegisteredDtoElement(targetProp.PropertyType)))
+                {
+                    var nestedRecursiveExpr = BuildNestedRecursiveValueForMiss(
+                        targetProp, primarySourceType, sourcePropsByType[primarySourceType], strategy);
+                    if (nestedRecursiveExpr == null)
+                    {
+                        if (MapTracer.GloballyEnabled) MapTracer.Write($"[NCMapper.FreeSql] ComposeProjection({traceTable}): 跳过属性 {targetProp.Name}（原因：嵌套/集合投影构建失败）");
+                        continue;
+                    }
+                    bindings.Add(Expression.Bind(targetProp, nestedRecursiveExpr));
+                    continue;
+                }
+
                 if (MapTracer.GloballyEnabled)
                 {
                     var reason = allSlotNames.Contains(targetProp.Name)
@@ -382,6 +410,127 @@ internal static class ComposeProjectionKernel
         var body = Expression.MemberInit(Expression.New(defaultCtor), bindings);
         var delegateType = Expression.GetDelegateType(sourceTypes.Append(targetType).ToArray());
         return Expression.Lambda(delegateType, body, parameters);
+    }
+
+    /// <summary>
+    /// 属性级 miss（<c>∈ AllTargetSlots ∧ ∉ Properties</c>）的**嵌套/集合 DTO 递归入口**取值
+    /// —— 对齐单表链 <c>ProjectionExpressionFactory.BuildProjectionValueExpression</c> 的同一取值链
+    /// （TB-20261127-01 卡 C2）。
+    /// <para><b>为什么必须递归</b>：该目标属性的映射语义由**子对明细**（如 <c>Dept → DeptDto</c>）承载，
+    /// 顶层明细里没有它自己的 <c>Properties</c> 条目是正常形态（源侧异名 <c>Department→Dept</c>、
+    /// 自动匹配收敛等）。在此直接跳过即「嵌套投影断链」——同一份元数据单表能投影、Compose 整段跳过（缺陷④）。</para>
+    /// <para><b>源改指（路线四 / C1 已交付机制，本卡不改其代码）</b>：Compose 作用域内（本内核
+    /// <c>:122-123</c> 已 Push）先按嵌套 DTO 的**已注册主源类型**经
+    /// <see cref="ComposeNestedSourceScope.RequireJoinedSource"/> 取**用户 join 的该源参数**（Strict：
+    /// 声明了却没 join 属配置错，fail-closed 抛 <see cref="MapConfigurationException"/>，不静默空值）；
+    /// 取到后交 <see cref="ProjectionExpressionFactory.ConvertProjectionType"/> 递归进入嵌套投影构建，
+    /// 其内部 <c>BuildNestedProjection</c> 再经 <see cref="ComposeNestedSourceScope.RedirectNestedSource"/>
+    /// 保持同一 join 参数——ORM 不再按 <c>[Navigate]</c> 自建第二条 JOIN（缺陷③）。</para>
+    /// <para><b>非引用型（集合元素 DTO）</b>：按声明面/命名约定解析源表达式后同样交
+    /// <see cref="ProjectionExpressionFactory.ConvertProjectionType"/> 分类（集合投影关闭时由策略自行跳过，
+    /// 与单表链同口径）。</para>
+    /// </summary>
+    /// <returns>转换后的绑定表达式；无法构建时为 null（调用方 Trace + 跳过）</returns>
+    [RequiresUnreferencedCode("BuildNestedRecursiveValueForMiss resolves nested sources via reflection (attributes, navigation properties, member scanning). Some members may be trimmed.")]
+    [RequiresDynamicCode("BuildNestedRecursiveValueForMiss builds expressions via MakeGenericMethod/MakeGenericType. Not supported in AOT.")]
+    private static Expression? BuildNestedRecursiveValueForMiss(
+        PropertyInfo targetProp, Type primarySourceType,
+        (ParameterExpression Param, List<PropertyInfo> Props) primaryInfo,
+        ProjectionStrategy strategy)
+    {
+        // ── ① 引用型嵌套 DTO：源改指用户 join 的该 DTO 主源参数（与单表链 BuildProjectionValueExpression
+        //    首段同口径——C1 路线四唯一改动面之外的调用点，本卡只「进入」不改其逻辑）──
+        if (RuntimeSnapshotStore.IsRegisteredDto(targetProp.PropertyType))
+        {
+            var nestedPrimarySource = RuntimeSnapshotStore.GetPrimarySource(targetProp.PropertyType);
+            if (nestedPrimarySource != null)
+            {
+                var joinedNestedSource = ComposeNestedSourceScope.RequireJoinedSource(
+                    nestedPrimarySource, targetProp.Name, strategy.TracePrefix);
+                if (joinedNestedSource != null)
+                    return ProjectionExpressionFactory.ConvertProjectionType(
+                        joinedNestedSource, targetProp.PropertyType, depth: 0, strategy);
+            }
+        }
+
+        // ── ② 声明面/命名约定解析源表达式（对齐 BuildProjectionValueExpression 主流程：
+        //    [MapProperty]/Fluent 明细退化形态 → 按名 → 点路径 → 扁平化；跨表则取 join 参数或导航）──
+        PropertyMatcher.TryGetMapPropertyInfo(targetProp, primarySourceType,
+            out var sourceFieldName, out var fieldSourceType, out _);
+
+        Expression? sourceExpr;
+        if (fieldSourceType == primarySourceType)
+        {
+            var srcProp = ProjectionNameResolver.Resolve(primaryInfo.Props, sourceFieldName);
+            if (srcProp != null)
+            {
+                if (ProjectionExpressionFactory.ShouldIgnoreSource(srcProp, targetProp)) return null;
+                sourceExpr = Expression.Property(primaryInfo.Param, srcProp);
+            }
+            else
+            {
+                sourceExpr = ProjectionExpressionFactory.TryBuildDotPathExpression(
+                    primaryInfo.Param, primarySourceType, sourceFieldName, strategy, targetProp);
+                sourceExpr ??= ProjectionExpressionFactory.TryBuildFlattenedExpression(
+                    primaryInfo.Param, primarySourceType, sourceFieldName, targetProp, strategy);
+            }
+        }
+        else
+        {
+            // 跨表：Compose 作用域内取用户 join 参数；作用域外（恒返回 null）回退导航推断——
+            // 与共享内核同款两级 API 语义（Soft 回退 / Strict 已在 ① 面消费）
+            var joinedFieldSource = ComposeNestedSourceScope.RequireJoinedSource(
+                fieldSourceType, targetProp.Name, strategy.TracePrefix);
+            Expression fieldSourceExpr;
+            if (joinedFieldSource != null)
+            {
+                fieldSourceExpr = joinedFieldSource;
+            }
+            else
+            {
+                var navProp = NavigationResolver.ResolveNavigationProperty(
+                    primaryInfo.Props, fieldSourceType, primarySourceType.Name);
+                if (navProp == null) return null;
+                fieldSourceExpr = Expression.Property(primaryInfo.Param, navProp);
+            }
+
+            var navProps = ProjectionExpressionFactory.GetPublicInstanceProperties(fieldSourceType);
+            var navField = ProjectionNameResolver.Resolve(navProps, sourceFieldName);
+            if (navField == null) return null;
+            if (ProjectionExpressionFactory.ShouldIgnoreSource(navField, targetProp)) return null;
+            sourceExpr = Expression.Property(fieldSourceExpr, navField);
+        }
+
+        if (sourceExpr == null) return null;
+
+        // ── ③ 交共享内核分类：同类型/隐式转换/嵌套 DTO 递归/集合元素（策略关闭时自行跳过）──
+        return ProjectionExpressionFactory.ConvertProjectionType(
+            sourceExpr, targetProp.PropertyType, depth: 0, strategy);
+    }
+
+    /// <summary>
+    /// 判定类型是否为「元素为已注册 DTO 的集合/可枚举形态」（属性级 miss 的集合豁免判定：
+    /// <c>List&lt;NestedDto&gt;</c> / <c>NestedDto[]</c> 等形态 → 递归入口保留）。
+    /// <para>与共享内核 <c>ProjectionExpressionFactory.ContainsRegisteredDtoElement</c> 同口径
+    /// （该处为 private，本包不可直调故镜像；判据：单泛型参数/数组元素为非值类型且非 string
+    /// 且已注册为映射 DTO）。非泛型、非数组、值类型元素、string 元素 → false。</para>
+    /// </summary>
+    private static bool ContainsRegisteredDtoElement(Type type)
+    {
+        Type? elementType = null;
+        if (type.IsGenericType)
+        {
+            var genArgs = type.GetGenericArguments();
+            if (genArgs.Length == 1 && !genArgs[0].IsValueType && genArgs[0] != typeof(string))
+                elementType = genArgs[0];
+        }
+        else if (type.IsArray)
+        {
+            var et = type.GetElementType();
+            if (et != null && !et.IsValueType && et != typeof(string))
+                elementType = et;
+        }
+        return elementType != null && RuntimeSnapshotStore.IsRegisteredDto(elementType);
     }
 
     /// <summary>

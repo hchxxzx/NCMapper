@@ -4,7 +4,7 @@
 ---
 wiki-id: explanation/semantics/mapping-rules
 Library Version: v1.0.0+
-Last Updated: 2026-09-30
+Last Updated: 2026-11-27
 ---
 
 # Semantic Sharing Layer: Mapping Rules
@@ -100,6 +100,25 @@ Pattern B’s closure is guarded by a pinned test case: `NoAutoMatchRuntimeTests
 - Path segment parsing failure: source generator reports `NCMAP001` (including failed segment name); runtime throws `MapConfigurationException`.
 
 **Recursive Nesting Mapping Protection** (self-referential structures of same type, e.g., tree-shaped DTOs): Compile-time inline depth limit `Mapper.MaxInlineDepth` (default 5); exceeding it halts inlining and falls back to delegate call `MapperBase<T>.Map`. Runtime employs dual counters for depth checking; exceeding resets counters and throws `MapException`. Recursive depth limit `Mapper.MaxRecursionDepth` (default 64, max 4096; configuration method documented in [DI Integration](../../how-to/infrastructure/di.md)). Deep recursion beyond limits throws `MapException`; configure based on actual structural depth or adjust mapping design.
+
+### Nested navigation is the caller's responsibility (in-memory mapping does not load it)
+
+"In-memory mapping" means the two entry points that map objects already materialized in memory, without any SQL projection: `Mapper.Map` in the core library and `IDbConnection.AsDto` in the Dapper channel. Both carry the same contract:
+
+> **They only map fields — they do not load nested navigation.** The engine never appends a `JOIN` for a nested DTO property, never triggers lazy loading, and never issues a second query. It only copies the properties of *the object the caller already holds* onto the target DTO.
+
+Consequently, when a source entity's navigation property is not loaded (its value is null), the corresponding nested object on the DTO is **null** — that is expected behavior, not a mapping defect. Fetching nested data is the caller's job, per channel:
+
+| Channel | Who fetches the nested data | DTO shape when it was not fetched |
+|---|---|---|
+| `Mapper.Map` (core library) | The caller loads it at the query layer first (`Include` / `JOIN` / explicit load), then hands the entity to the mapper | Nested object is `null` |
+| `IDbConnection.AsDto` (Dapper) | The caller writes the SQL: related tables must be `JOIN`ed or selected via subquery | Nested fields not selected by the SQL are `null` |
+| `AsDto` (EFCore / FreeSql projection channel) | The engine translates nesting into SQL `JOIN` and fetches it itself (projection channel — a different contract) | — |
+| `AsDto` (EFCore / FreeSql after downgrade to in-memory mapping) | The ORM auto-`Include`s what it can (observable: the dependency list is traced); navigation fields it still cannot reach are `null` | Nested object is `null` |
+
+**Boundary against the ORM projection channel**: the projection channel (`AsDto` on `IQueryable` / `ISelect`) translates nesting into SQL, so its semantics necessarily differ; the "no navigation loading" rule here constrains only the two **in-memory** entry points. See [ORM Projection and Degradation](../orm-degradation.md) for how the two channels relate through degradation.
+
+**Why not "load it automatically for me"**: in-memory mapping has no query context (connection, transaction, tracking state). Issuing a query from inside the mapper would make N+1 patterns and implicit network round-trips uncontrollable, and would turn a pure mapping function into one with side effects. The library therefore states this boundary explicitly instead of doing it silently.
 
 ## 3. Collections and Dictionaries
 

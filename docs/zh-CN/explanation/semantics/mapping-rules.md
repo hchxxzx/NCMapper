@@ -1,7 +1,7 @@
 ---
 wiki-id: explanation/semantics/mapping-rules
 库版本: v1.0.0+
-更新时间: 2026-09-30
+更新时间: 2026-11-27
 ---
 
 # 语义共享层：映射规则
@@ -91,6 +91,25 @@ wiki-id: explanation/semantics/mapping-rules
 **索引路径段**（`A.B[0].C`）：路径中途经过集合时用索引段 `[n]` 取第 n 个元素继续取属性，索引段可位于任意段位。语义为 `ElementAtOrDefault(n)`：集合 null、空集合、越界均返回 `default`，不抛异常。四引擎形态：运行时 `Mapper.Map` 与源生成器一致（`ElementAtOrDefault` + null 守卫短路）；EFCore 投影翻译为 `LIMIT 1 OFFSET n` 子查询（SQL 无 ORDER BY，语义是**无序取一**，空集合返回 NULL）；FreeSql 投影 SQL 侧不可翻译、自动降级为内存映射（值正确，失去 SQL 侧列裁剪）。连续索引 `A[0][1]` 不支持（全引擎登记限制）；反向方向集合索引路径不参与写回（跳过 + Trace）。段解析失败：源生成器报 `NCMAP001`（含失败段名）、运行时抛 `MapConfigurationException`。
 
 **递归嵌套映射防护**（同类型对自引用结构，如树形 DTO）：编译期内联深度上限 `Mapper.MaxInlineDepth`（默认 5），超限停止内联回退 `MapperBase<T>.Map` 委托调用；运行期双计数器深度检查，超限重置归零并抛 `MapException`；递归深度上限 `Mapper.MaxRecursionDepth`（默认 64，上限 4096，配置方式见 [DI 集成](../../how-to/infrastructure/di.md)）。深层递归（超过上限）会抛 `MapException`，请按实际结构深度配置或调整映射结构。
+
+### 嵌套导航由调用方负责（内存映射不加载导航）
+
+内存映射指不经 SQL 投影、直接在内存里跑映射的两条入口：核心库的 `Mapper.Map` 与 Dapper 通道的 `IDbConnection.AsDto`。两者的契约是同一条：
+
+> **只做字段映射，不负责加载导航。** 引擎不会为 DTO 的嵌套对象追加 JOIN、不会触发延迟加载、也不会发起二次查询；它只把「调用方已经拿到的那个对象」上的属性搬到目标 DTO 上。
+
+因此在「源实体的导航属性没被加载（值为 null）」时，DTO 里对应的嵌套对象就是 **null**——这是**预期行为**，不是映射缺陷。取嵌套数据的责任在调用方，按通道分列：
+
+| 通道 | 嵌套数据由谁取 | 未取到时 DTO 表现 |
+|---|---|---|
+| `Mapper.Map`（核心库） | 调用方在查询层先 `Include` / `JOIN` / 显式加载，再把实体交给映射 | 嵌套对象为 `null` |
+| `IDbConnection.AsDto`（Dapper） | 调用方自己写 SQL：需要的关联表在 SQL 里 `JOIN` 或子查询取出 | SQL 未取出的嵌套字段为 `null` |
+| `AsDto`（EFCore / FreeSql 投影通道） | 引擎把嵌套翻译成 SQL `JOIN` 自行取（属投影通道，与本契约不同） | — |
+| `AsDto`（EFCore / FreeSql 降到内存映射时） | ORM 侧自动 `Include`（可观测：Trace 输出依赖清单）；仍取不到的导航字段为 `null` | 嵌套对象为 `null` |
+
+**与 ORM 投影通道的分界**：投影通道（`IQueryable` / `ISelect` 上的 `AsDto`）会把嵌套翻译成 SQL，语义自然不同；本节的「不加载导航」只约束**内存映射**两条入口。两条通道的降级关系见 [ORM 投影与降级](../orm-degradation.md)。
+
+**为什么不做成"自动帮我加载"**：内存映射拿不到查询上下文（连接、事务、跟踪状态），一旦在映射内部发起查询，N+1 与隐式网络往返都会不可控，也会让纯函数式的映射变得有副作用。所以库选择把这条边界显式写出来，而不是偷偷做。
 
 ## 3. 集合与字典
 

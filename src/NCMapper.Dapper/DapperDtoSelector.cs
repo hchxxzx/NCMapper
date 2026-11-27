@@ -13,6 +13,10 @@ namespace NCMapper.Dapper;
 /// Dapper DTO 选择器 — AsDto&lt;TSource&gt; 返回的终端操作入口
 /// <para>所有查询/终端方法统一走 NCMapper 映射管道：Mask/Convert/Pipeline 永远生效</para>
 /// <para>泛型设计：TSource 由调用方通过 AsDto&lt;TSource&gt;() 显式指定，与 EFCore/FreeSql 对齐</para>
+/// <para><b>导航属性契约</b>：本类只执行调用方给定的 SQL 并把结果集的内存映射为 DTO，
+/// 即<b>只做字段映射，不负责加载导航</b>——不会为 DTO 的嵌套对象追加 JOIN 或二次查询。
+/// SQL 未取出的列、未 JOIN 的关联表，其对应的嵌套字段即为 null，这是<b>预期行为</b>，
+/// 不是映射缺陷；需要嵌套数据时请自行在 SQL 里 JOIN / 子查询取出。</para>
 /// <para> 分家：partial 拆分 5 文件（门面/Paging/Tree/MultiResult/Execution），
 /// 本文件为门面主文件（字符串/CommandDefinition 查询入口 + 基础设施 + 全部 static 字段留守）</para>
 /// <para> 上移：BuildTree 已迁核心库 NCMapper.Internal.TreeBuilder

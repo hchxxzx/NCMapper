@@ -11,11 +11,112 @@ using System.Threading;
 using FreeSql;
 using NCMapper;
 using NCMapper.Attributes;
+using NCMapper.FreeSql.Internal;
 using NCMapper.Internal;
 
 namespace NCMapper.FreeSql;
 
 // 自 NCMapperFreeSqlExtensions.cs 按关切拆分（纯移动，类型与成员逐字不动）。
+
+/// <summary>
+/// Compose 通道 SQL 投影分支兜底执行器（TB-20261127-01 卡 C3）
+/// <para><b>为什么在 Compose 文件内而非复用 <see cref="FreeSqlSqlProjectionGuard"/></b>：本卡
+/// inScope 为文件级（不含 <c>Internal/FreeSqlSqlProjectionGuard.cs</c>），故不改该类型；且该类型的
+/// 同步 <c>Run</c> 有一处形态缺口——Compose 的 8 个异步终端实测证明 FreeSql 翻译期异常
+/// （<c>null.Id cannot be null</c>）**不在调用时同步抛出，而是在 <c>await</c> 时抛出**
+/// （探针实跑：直接 <c>Run(label, () =&gt; select.ToListAsync(...), degrade)</c> 捕不到，异常外冒），
+/// 因此异步终端必须用本文的 <c>RunAsync</c>（catch 在 <c>await</c> 之外、方法内）。</para>
+/// <para>catch 范围 = 整个 SQL 投影分支（含 Build + 剥除 + FreeSql 翻译执行）；catch 行为 =
+/// Trace 完整原始异常（类型 + 消息，诊断不丢失）→ 走降级委托；降级再炸则异常自然上抛（不静默吞真故障）。</para>
+/// </summary>
+internal static class FreeSqlComposeProjectionGuard
+{
+    /// <summary>
+    /// 同步终端：执行 SQL 投影分支，异常时 Trace（含原始异常）并转降级
+    /// </summary>
+    /// <param name="label">Trace 标签（含通道与终端名，如 "[FreeSql Compose] ToList"）</param>
+    /// <param name="project">SQL 投影委托（BuildCompose → 剥除 → FreeSql 翻译执行）</param>
+    /// <param name="degrade">降级委托（自动 Include + 查实体 + 内存 Compose 映射）</param>
+    internal static TResult Run<TResult>(string label, Func<TResult> project, Func<TResult> degrade)
+    {
+        try
+        {
+            return project();
+        }
+        catch (Exception ex)
+        {
+            TraceDegrade(label, ex);
+            return degrade();
+        }
+    }
+
+    /// <summary>
+    /// 同步终端（void 形态，ToChunkDto 用）：语义同 <see cref="Run{TResult}"/>
+    /// </summary>
+    /// <param name="label">Trace 标签</param>
+    /// <param name="project">SQL 投影委托（逐页投影回调）</param>
+    /// <param name="degrade">降级委托（逐页取元组 → 过滤 → Compose 回调）</param>
+    internal static void Run(string label, Action project, Action degrade)
+    {
+        try
+        {
+            project();
+        }
+        catch (Exception ex)
+        {
+            TraceDegrade(label, ex);
+            degrade();
+        }
+    }
+
+    /// <summary>
+    /// 异步终端（有返回值）：<b>catch 必须包住 await</b>——FreeSql 翻译期异常在 await 时抛出，
+    /// 只把 Task 交给同步 try/catch 捕不到（实测形态见类型注释）。
+    /// </summary>
+    /// <param name="label">Trace 标签</param>
+    /// <param name="project">SQL 投影委托</param>
+    /// <param name="degrade">降级委托</param>
+    internal static async Task<TResult> RunAsync<TResult>(
+        string label, Func<Task<TResult>> project, Func<Task<TResult>> degrade)
+    {
+        try
+        {
+            return await project();
+        }
+        catch (Exception ex)
+        {
+            TraceDegrade(label, ex);
+            return await degrade();
+        }
+    }
+
+    /// <summary>
+    /// 异步终端（void 形态，ToChunkDtoAsync 用）：语义同 <see cref="RunAsync{TResult}"/>
+    /// </summary>
+    /// <param name="label">Trace 标签</param>
+    /// <param name="project">SQL 投影委托（逐页投影回调）</param>
+    /// <param name="degrade">降级委托（逐页取元组 → 过滤 → Compose 回调）</param>
+    internal static async Task RunAsync(string label, Func<Task> project, Func<Task> degrade)
+    {
+        try
+        {
+            await project();
+        }
+        catch (Exception ex)
+        {
+            TraceDegrade(label, ex);
+            await degrade();
+        }
+    }
+
+    /// <summary>
+    /// 降级 Trace——原始异常类型与消息完整保留（供用户定位根因，不吞诊断信息）
+    /// </summary>
+    private static void TraceDegrade(string label, Exception ex)
+        => MapTracer.Write(
+            $"{label} SQL 投影失败（含嵌套投影 IIF 剥除改写），降级内存映射。" +
+            $"原始异常: {ex.GetType().FullName}: {ex.Message}");
+}
 
 /// <summary>
 /// NCMapper FreeSql 多表查询扩展 — 双表/三表 JOIN 后映射为 DTO
@@ -71,25 +172,44 @@ public sealed class FreeSqlComposeDtoSelector<T1, T2>
 
     /// <summary>
     /// 查询并映射为 DTO 列表
-    /// <para>正常路径：多参数表达式投影；降级路径：查实体对 → Compose</para>
+    /// <para>正常路径：多参数表达式投影（含 IIF null 保护剥除 + 翻译失败兜底）；降级路径：查实体对 → Compose</para>
     /// </summary>
     /// <returns>DTO 列表</returns>
     [RequiresDynamicCode("ToList uses BuildProjection with MakeGenericMethod. Not supported in AOT. Projection source generator not yet available.")]
     [RequiresUnreferencedCode("ToList scans attributes via reflection. Some types may be trimmed.")]
     public List<TTarget> ToList<TTarget>() where TTarget : class
-        // 降级判定 + 自动 Include + 路径分发编排收敛 ComposeTerminal 单点（体内逻辑逐字保留）
-        => FreeSqlComposeSupport.ComposeTerminal<List<TTarget>>(
+    {
+        // 降级核心（不含自动 Include——Include 由外层编排统一前置，语义与拆分前逐字一致）
+        List<TTarget> DegradeCore()
+        {
+            var tuples = _select.ToList((a, b) => new Tuple<T1, T2>(a, b));
+            return FreeSqlComposeSupport.FilterAndMap2<T1, T2, TTarget>(tuples, "[FreeSql Compose] 降级路径过滤了 {0} 条含 null 实体的行（如 Right/Full Join 产生），被过滤的行将不会出现在结果中");
+        }
+
+        // 降级判定 + 自动 Include + 路径分发编排收敛 ComposeTerminal 单点；
+        // 投影路径再经 guard 兜底（翻译期失败 → Trace 原始异常 → 降级）
+        return FreeSqlComposeSupport.ComposeTerminal<List<TTarget>>(
             typeof(T1), new[] { typeof(T2) }, typeof(TTarget), "", "", "<T1,T2>",
-            degrade: () =>
-            {
-                var tuples = _select.ToList((a, b) => new Tuple<T1, T2>(a, b));
-                return FreeSqlComposeSupport.FilterAndMap2<T1, T2, TTarget>(tuples, "[FreeSql Compose] 降级路径过滤了 {0} 条含 null 实体的行（如 Right/Full Join 产生），被过滤的行将不会出现在结果中");
-            },
-            project: () =>
-            {
-                var expr = FreeSqlProjectionBuilder.BuildCompose<T1, T2, TTarget>();
-                return _select.ToList(expr);
-            });
+            degrade: DegradeCore,
+            project: () => ProjectCore());
+
+        // 构建期（配置校验）在 guard 之外 —— 主源不匹配/无参构造缺失等**配置错误必须原样冒出**，
+        // 不得被兜底吞成降级（内核 :85「异常语义逐字保留」契约，C21/C22 用例锁定）。
+        // 执行期（FreeSql 翻译）在 guard 之内 —— 翻译失败 → Trace 原始异常 + 降级。
+        List<TTarget> ProjectCore()
+        {
+            var expr = FreeSqlNullGuardStripVisitor.Strip(
+                FreeSqlProjectionBuilder.BuildCompose<T1, T2, TTarget>());
+            return FreeSqlComposeProjectionGuard.Run(
+                "[FreeSql Compose] ToList",
+                () => _select.ToList(expr),
+                () =>
+                {
+                    FreeSqlComposeSupport.ApplyFreeSqlComposeIncludes(typeof(T1), new[] { typeof(T2) }, typeof(TTarget), "", "<T1,T2>");
+                    return DegradeCore();
+                });
+        }
+    }
 
     /// <summary>
     /// 异步查询并映射为 DTO 列表
@@ -100,19 +220,34 @@ public sealed class FreeSqlComposeDtoSelector<T1, T2>
     [RequiresUnreferencedCode("ToListAsync scans attributes via reflection. Some types may be trimmed.")]
     public async Task<List<TTarget>> ToListAsync<TTarget>(CancellationToken cancellationToken = default)
         where TTarget : class
-        // 编排收敛 ComposeTerminalAsync 单点（体内逻辑逐字保留）
-        => await FreeSqlComposeSupport.ComposeTerminalAsync<List<TTarget>>(
+    {
+        async Task<List<TTarget>> DegradeCore()
+        {
+            var tuples = await _select.ToListAsync((a, b) => new Tuple<T1, T2>(a, b), cancellationToken);
+            return FreeSqlComposeSupport.FilterAndMap2<T1, T2, TTarget>(tuples, "[FreeSql Compose] 降级路径过滤了 {0} 条含 null 实体的行（如 Right/Full Join 产生），被过滤的行将不会出现在结果中");
+        }
+
+        // 编排收敛 ComposeTerminalAsync 单点；投影路径经 guard（catch 在 await 外，见 guard 类型注释）
+        return await FreeSqlComposeSupport.ComposeTerminalAsync<List<TTarget>>(
             typeof(T1), new[] { typeof(T2) }, typeof(TTarget), "", "", "<T1,T2>",
-            degrade: async () =>
-            {
-                var tuples = await _select.ToListAsync((a, b) => new Tuple<T1, T2>(a, b), cancellationToken);
-                return FreeSqlComposeSupport.FilterAndMap2<T1, T2, TTarget>(tuples, "[FreeSql Compose] 降级路径过滤了 {0} 条含 null 实体的行（如 Right/Full Join 产生），被过滤的行将不会出现在结果中");
-            },
-            project: async () =>
-            {
-                var expr = FreeSqlProjectionBuilder.BuildCompose<T1, T2, TTarget>();
-                return await _select.ToListAsync(expr, cancellationToken);
-            });
+            degrade: DegradeCore,
+            project: () => ProjectCoreAsync());
+
+        // 构建期在 guard 之外（配置错误原样冒），执行期在 guard 之内（翻译失败 → 降级）
+        async Task<List<TTarget>> ProjectCoreAsync()
+        {
+            var expr = FreeSqlNullGuardStripVisitor.Strip(
+                FreeSqlProjectionBuilder.BuildCompose<T1, T2, TTarget>());
+            return await FreeSqlComposeProjectionGuard.RunAsync(
+                "[FreeSql Compose] ToListAsync",
+                async () => await _select.ToListAsync(expr, cancellationToken),
+                async () =>
+                {
+                    FreeSqlComposeSupport.ApplyFreeSqlComposeIncludes(typeof(T1), new[] { typeof(T2) }, typeof(TTarget), "", "<T1,T2>");
+                    return await DegradeCore();
+                });
+        }
+    }
 
     /// <summary>
     /// 查询第一条记录并映射为 DTO
@@ -121,26 +256,40 @@ public sealed class FreeSqlComposeDtoSelector<T1, T2>
     [RequiresDynamicCode("First uses BuildProjection with MakeGenericMethod. Not supported in AOT. Projection source generator not yet available.")]
     [RequiresUnreferencedCode("First scans attributes via reflection. Some types may be trimmed.")]
     public TTarget? First<TTarget>() where TTarget : class
-        // 编排收敛 ComposeTerminal 单点（体内逻辑逐字保留）
-        => FreeSqlComposeSupport.ComposeTerminal<TTarget?>(
+    {
+        TTarget? DegradeCore()
+        {
+            var tuple = _select.First((a, b) => new Tuple<T1, T2>(a, b));
+            if (tuple is null) return null;
+            if (tuple.Item1 is null || tuple.Item2 is null)
+            {
+                if (MapTracer.GloballyEnabled) MapTracer.Write(
+                    $"[FreeSql Compose] 降级路径 First 遇到含 null 实体的行（如 Right/Full Join 产生），返回 null");
+                return null;
+            }
+            return Mapper.Compose<TTarget>(tuple.Item1, tuple.Item2);
+        }
+
+        // 编排收敛 ComposeTerminal 单点；投影路径经 guard 兜底
+        return FreeSqlComposeSupport.ComposeTerminal<TTarget?>(
             typeof(T1), new[] { typeof(T2) }, typeof(TTarget), "", "", "<T1,T2>",
-            degrade: () =>
-            {
-                var tuple = _select.First((a, b) => new Tuple<T1, T2>(a, b));
-                if (tuple is null) return null;
-                if (tuple.Item1 is null || tuple.Item2 is null)
+            degrade: DegradeCore,
+            project: () => ProjectCore());
+
+        TTarget? ProjectCore()
+        {
+            var expr = FreeSqlNullGuardStripVisitor.Strip(
+                FreeSqlProjectionBuilder.BuildCompose<T1, T2, TTarget>());
+            return FreeSqlComposeProjectionGuard.Run(
+                "[FreeSql Compose] First",
+                () => _select.First(expr),
+                () =>
                 {
-                    if (MapTracer.GloballyEnabled) MapTracer.Write(
-                        $"[FreeSql Compose] 降级路径 First 遇到含 null 实体的行（如 Right/Full Join 产生），返回 null");
-                    return null;
-                }
-                return Mapper.Compose<TTarget>(tuple.Item1, tuple.Item2);
-            },
-            project: () =>
-            {
-                var expr = FreeSqlProjectionBuilder.BuildCompose<T1, T2, TTarget>();
-                return _select.First(expr);
-            });
+                    FreeSqlComposeSupport.ApplyFreeSqlComposeIncludes(typeof(T1), new[] { typeof(T2) }, typeof(TTarget), "", "<T1,T2>");
+                    return DegradeCore();
+                });
+        }
+    }
 
     /// <summary>
     /// 异步查询第一条记录并映射为 DTO
@@ -151,26 +300,40 @@ public sealed class FreeSqlComposeDtoSelector<T1, T2>
     [RequiresUnreferencedCode("FirstAsync scans attributes via reflection. Some types may be trimmed.")]
     public async Task<TTarget?> FirstAsync<TTarget>(CancellationToken cancellationToken = default)
         where TTarget : class
-        // 编排收敛 ComposeTerminalAsync 单点（体内逻辑逐字保留）
-        => await FreeSqlComposeSupport.ComposeTerminalAsync<TTarget?>(
+    {
+        async Task<TTarget?> DegradeCore()
+        {
+            var tuple = await _select.FirstAsync((a, b) => new Tuple<T1, T2>(a, b), cancellationToken);
+            if (tuple is null) return null;
+            if (tuple.Item1 is null || tuple.Item2 is null)
+            {
+                if (MapTracer.GloballyEnabled) MapTracer.Write(
+                    $"[FreeSql Compose] 降级路径 First 遇到含 null 实体的行（如 Right/Full Join 产生），返回 null");
+                return null;
+            }
+            return Mapper.Compose<TTarget>(tuple.Item1, tuple.Item2);
+        }
+
+        // 编排收敛 ComposeTerminalAsync 单点；投影路径经 guard 兜底
+        return await FreeSqlComposeSupport.ComposeTerminalAsync<TTarget?>(
             typeof(T1), new[] { typeof(T2) }, typeof(TTarget), "", "", "<T1,T2>",
-            degrade: async () =>
-            {
-                var tuple = await _select.FirstAsync((a, b) => new Tuple<T1, T2>(a, b), cancellationToken);
-                if (tuple is null) return null;
-                if (tuple.Item1 is null || tuple.Item2 is null)
+            degrade: DegradeCore,
+            project: () => ProjectCoreAsync());
+
+        async Task<TTarget?> ProjectCoreAsync()
+        {
+            var expr = FreeSqlNullGuardStripVisitor.Strip(
+                FreeSqlProjectionBuilder.BuildCompose<T1, T2, TTarget>());
+            return await FreeSqlComposeProjectionGuard.RunAsync<TTarget?>(
+                "[FreeSql Compose] FirstAsync",
+                async () => (TTarget?)await _select.FirstAsync(expr, cancellationToken),
+                async () =>
                 {
-                    if (MapTracer.GloballyEnabled) MapTracer.Write(
-                        $"[FreeSql Compose] 降级路径 First 遇到含 null 实体的行（如 Right/Full Join 产生），返回 null");
-                    return null;
-                }
-                return Mapper.Compose<TTarget>(tuple.Item1, tuple.Item2);
-            },
-            project: async () =>
-            {
-                var expr = FreeSqlProjectionBuilder.BuildCompose<T1, T2, TTarget>();
-                return await _select.FirstAsync(expr, cancellationToken);
-            });
+                    FreeSqlComposeSupport.ApplyFreeSqlComposeIncludes(typeof(T1), new[] { typeof(T2) }, typeof(TTarget), "", "<T1,T2>");
+                    return await DegradeCore();
+                });
+        }
+    }
 
     /// <summary>
     /// 分页查询并映射为 DTO 列表（Count + 分页均在 SQL 侧）
@@ -192,19 +355,31 @@ public sealed class FreeSqlComposeDtoSelector<T1, T2>
 
         var totalCount = _select.Count();
 
-        // 编排收敛 ComposeTerminal 单点（体内逻辑逐字保留）
+        List<TTarget> DegradeCore()
+        {
+            var tuples = _select.Page(page, pageSize).ToList((a, b) => new Tuple<T1, T2>(a, b));
+            return FreeSqlComposeSupport.FilterAndMap2<T1, T2, TTarget>(tuples, "[FreeSql Compose] 降级路径过滤了 {0} 条含 null 实体的行（如 Right/Full Join 产生）");
+        }
+
+        // 编排收敛 ComposeTerminal 单点；投影路径经 guard 兜底
         var items = FreeSqlComposeSupport.ComposeTerminal<List<TTarget>>(
             typeof(T1), new[] { typeof(T2) }, typeof(TTarget), "", "", "<T1,T2>",
-            degrade: () =>
-            {
-                var tuples = _select.Page(page, pageSize).ToList((a, b) => new Tuple<T1, T2>(a, b));
-                return FreeSqlComposeSupport.FilterAndMap2<T1, T2, TTarget>(tuples, "[FreeSql Compose] 降级路径过滤了 {0} 条含 null 实体的行（如 Right/Full Join 产生）");
-            },
-            project: () =>
-            {
-                var expr = FreeSqlProjectionBuilder.BuildCompose<T1, T2, TTarget>();
-                return _select.Page(page, pageSize).ToList(expr);
-            });
+            degrade: DegradeCore,
+            project: () => ProjectCore());
+
+        List<TTarget> ProjectCore()
+        {
+            var expr = FreeSqlNullGuardStripVisitor.Strip(
+                FreeSqlProjectionBuilder.BuildCompose<T1, T2, TTarget>());
+            return FreeSqlComposeProjectionGuard.Run(
+                "[FreeSql Compose] ToPagedList",
+                () => _select.Page(page, pageSize).ToList(expr),
+                () =>
+                {
+                    FreeSqlComposeSupport.ApplyFreeSqlComposeIncludes(typeof(T1), new[] { typeof(T2) }, typeof(TTarget), "", "<T1,T2>");
+                    return DegradeCore();
+                });
+        }
 
         return new PagedList<TTarget> { Items = items, TotalCount = totalCount, Page = page, PageSize = pageSize };
     }
@@ -231,19 +406,31 @@ public sealed class FreeSqlComposeDtoSelector<T1, T2>
 
         var totalCount = await _select.CountAsync(cancellationToken);
 
-        // 编排收敛 ComposeTerminalAsync 单点（体内逻辑逐字保留）
+        async Task<List<TTarget>> DegradeCore()
+        {
+            var tuples = await _select.Page(page, pageSize).ToListAsync((a, b) => new Tuple<T1, T2>(a, b), cancellationToken);
+            return FreeSqlComposeSupport.FilterAndMap2<T1, T2, TTarget>(tuples, "[FreeSql Compose] 降级路径过滤了 {0} 条含 null 实体的行（如 Right/Full Join 产生）");
+        }
+
+        // 编排收敛 ComposeTerminalAsync 单点；投影路径经 guard 兜底
         var items = await FreeSqlComposeSupport.ComposeTerminalAsync<List<TTarget>>(
             typeof(T1), new[] { typeof(T2) }, typeof(TTarget), "", "", "<T1,T2>",
-            degrade: async () =>
-            {
-                var tuples = await _select.Page(page, pageSize).ToListAsync((a, b) => new Tuple<T1, T2>(a, b), cancellationToken);
-                return FreeSqlComposeSupport.FilterAndMap2<T1, T2, TTarget>(tuples, "[FreeSql Compose] 降级路径过滤了 {0} 条含 null 实体的行（如 Right/Full Join 产生）");
-            },
-            project: async () =>
-            {
-                var expr = FreeSqlProjectionBuilder.BuildCompose<T1, T2, TTarget>();
-                return await _select.Page(page, pageSize).ToListAsync(expr, cancellationToken);
-            });
+            degrade: DegradeCore,
+            project: () => ProjectCoreAsync());
+
+        async Task<List<TTarget>> ProjectCoreAsync()
+        {
+            var expr = FreeSqlNullGuardStripVisitor.Strip(
+                FreeSqlProjectionBuilder.BuildCompose<T1, T2, TTarget>());
+            return await FreeSqlComposeProjectionGuard.RunAsync(
+                "[FreeSql Compose] ToPagedListAsync",
+                async () => await _select.Page(page, pageSize).ToListAsync(expr, cancellationToken),
+                async () =>
+                {
+                    FreeSqlComposeSupport.ApplyFreeSqlComposeIncludes(typeof(T1), new[] { typeof(T2) }, typeof(TTarget), "", "<T1,T2>");
+                    return await DegradeCore();
+                });
+        }
 
         return new PagedList<TTarget> { Items = items, TotalCount = totalCount, Page = page, PageSize = pageSize };
     }
@@ -270,6 +457,15 @@ public sealed class FreeSqlComposeDtoSelector<T1, T2>
         // 分页循环收敛 ComposeChunkDegradeCore/ComposeChunkProjectCore 单点（H-01 终止语义随内核单点）
         if (FreeSqlComposeSupport.NeedsDegradationWithTrace(typeof(T1), new[] { typeof(T2) }, typeof(TTarget), "", "ToChunkDto "))
         {
+            DegradeChunk();
+            return;
+        }
+
+        // 构建期在 guard 之外（配置错误原样冒），执行期在 guard 之内（翻译失败 → 转降级逐页循环）
+        ProjectChunk();
+
+        void DegradeChunk()
+        {
             FreeSqlComposeSupport.ApplyFreeSqlComposeIncludes(typeof(T1), new[] { typeof(T2) }, typeof(TTarget), "", "<T1,T2>");
 
             FreeSqlComposeSupport.ComposeChunkDegradeCore<Tuple<T1, T2>, TTarget>(
@@ -277,12 +473,18 @@ public sealed class FreeSqlComposeDtoSelector<T1, T2>
                 (tuples, fmt) => FreeSqlComposeSupport.FilterValid2(tuples, fmt),
                 validTuples => validTuples.Select(t => Mapper.Compose<TTarget>(t.Item1, t.Item2)!).ToList(),
                 "[FreeSql Compose]", size, done);
-            return;
         }
 
-        var expr = FreeSqlProjectionBuilder.BuildCompose<T1, T2, TTarget>();
-        FreeSqlComposeSupport.ComposeChunkProjectCore<TTarget>(
-            p => _select.Page(p, size).ToList(expr), size, done);
+        void ProjectChunk()
+        {
+            var expr = FreeSqlNullGuardStripVisitor.Strip(
+                FreeSqlProjectionBuilder.BuildCompose<T1, T2, TTarget>());
+            FreeSqlComposeProjectionGuard.Run(
+                "[FreeSql Compose] ToChunkDto",
+                () => FreeSqlComposeSupport.ComposeChunkProjectCore<TTarget>(
+                    p => _select.Page(p, size).ToList(expr), size, done),
+                DegradeChunk);
+        }
     }
 
     /// <summary>
@@ -311,6 +513,16 @@ public sealed class FreeSqlComposeDtoSelector<T1, T2>
         // ComposeChunkDegradeCoreAsync/ComposeChunkProjectCoreAsync 单点（H-01 终止语义随内核单点）
         if (FreeSqlComposeSupport.NeedsDegradationWithTrace(typeof(T1), new[] { typeof(T2) }, typeof(TTarget), "", "ToChunkDtoAsync "))
         {
+            await DegradeChunkAsync();
+            return;
+        }
+
+        // 构建期在 guard 之外（配置错误原样冒）；执行期在 guard 之内
+        // （catch 在 await 外——翻译期异常在 await 时抛出）
+        await ProjectChunkAsync();
+
+        async Task DegradeChunkAsync()
+        {
             FreeSqlComposeSupport.ApplyFreeSqlComposeIncludes(typeof(T1), new[] { typeof(T2) }, typeof(TTarget), "", "<T1,T2>");
 
             await FreeSqlComposeSupport.ComposeChunkDegradeCoreAsync<Tuple<T1, T2>, TTarget>(
@@ -318,12 +530,18 @@ public sealed class FreeSqlComposeDtoSelector<T1, T2>
                 (tuples, fmt) => FreeSqlComposeSupport.FilterValid2(tuples, fmt),
                 validTuples => validTuples.Select(t => Mapper.Compose<TTarget>(t.Item1, t.Item2)!).ToList(),
                 "[FreeSql Compose]", size, done, cancellationToken);
-            return;
         }
 
-        var expr = FreeSqlProjectionBuilder.BuildCompose<T1, T2, TTarget>();
-        await FreeSqlComposeSupport.ComposeChunkProjectCoreAsync<TTarget>(
-            p => _select.Page(p, size).ToListAsync(expr, cancellationToken), size, done, cancellationToken);
+        async Task ProjectChunkAsync()
+        {
+            var expr = FreeSqlNullGuardStripVisitor.Strip(
+                FreeSqlProjectionBuilder.BuildCompose<T1, T2, TTarget>());
+            await FreeSqlComposeProjectionGuard.RunAsync(
+                "[FreeSql Compose] ToChunkDtoAsync",
+                async () => await FreeSqlComposeSupport.ComposeChunkProjectCoreAsync<TTarget>(
+                    p => _select.Page(p, size).ToListAsync(expr, cancellationToken), size, done, cancellationToken),
+                DegradeChunkAsync);
+        }
     }
 }
 
@@ -357,19 +575,36 @@ public sealed class FreeSqlComposeDtoSelector3<T1, T2, T3>
     [RequiresDynamicCode("ToList uses BuildProjection with MakeGenericMethod. Not supported in AOT. Projection source generator not yet available.")]
     [RequiresUnreferencedCode("ToList scans attributes via reflection. Some types may be trimmed.")]
     public List<TTarget> ToList<TTarget>() where TTarget : class
-        // 降级判定 + 自动 Include + 路径分发编排收敛 ComposeTerminal 单点（体内逻辑逐字保留）
-        => FreeSqlComposeSupport.ComposeTerminal<List<TTarget>>(
+    {
+        List<TTarget> DegradeCore()
+        {
+            var tuples = _select.ToList((a, b, c) => new Tuple<T1, T2, T3>(a, b, c));
+            return FreeSqlComposeSupport.FilterAndMap3<T1, T2, T3, TTarget>(tuples, "[FreeSql Compose3] 降级路径过滤了 {0} 条含 null 实体的行（如 Right/Full Join 产生），被过滤的行将不会出现在结果中");
+        }
+
+        // 降级判定 + 自动 Include + 路径分发编排收敛 ComposeTerminal 单点；
+        // 投影路径再经 guard 兜底（翻译期失败 → Trace 原始异常 → 降级）
+        return FreeSqlComposeSupport.ComposeTerminal<List<TTarget>>(
             typeof(T1), new[] { typeof(T2), typeof(T3) }, typeof(TTarget), "3", "", "<T1,T2,T3>",
-            degrade: () =>
-            {
-                var tuples = _select.ToList((a, b, c) => new Tuple<T1, T2, T3>(a, b, c));
-                return FreeSqlComposeSupport.FilterAndMap3<T1, T2, T3, TTarget>(tuples, "[FreeSql Compose3] 降级路径过滤了 {0} 条含 null 实体的行（如 Right/Full Join 产生），被过滤的行将不会出现在结果中");
-            },
-            project: () =>
-            {
-                var expr = FreeSqlProjectionBuilder.BuildCompose3<T1, T2, T3, TTarget>();
-                return _select.ToList(expr);
-            });
+            degrade: DegradeCore,
+            project: () => ProjectCore());
+
+        // 构建期（配置校验）在 guard 之外 —— 配置错误必须原样冒（内核 :85「异常语义逐字保留」，C21/C22 锁定）；
+        // 执行期（FreeSql 翻译）在 guard 之内 —— 翻译失败 → Trace 原始异常 + 降级。
+        List<TTarget> ProjectCore()
+        {
+            var expr = FreeSqlNullGuardStripVisitor.Strip(
+                FreeSqlProjectionBuilder.BuildCompose3<T1, T2, T3, TTarget>());
+            return FreeSqlComposeProjectionGuard.Run(
+                "[FreeSql Compose3] ToList",
+                () => _select.ToList(expr),
+                () =>
+                {
+                    FreeSqlComposeSupport.ApplyFreeSqlComposeIncludes(typeof(T1), new[] { typeof(T2), typeof(T3) }, typeof(TTarget), "3", "<T1,T2,T3>");
+                    return DegradeCore();
+                });
+        }
+    }
 
     /// <summary>
     /// 异步查询并映射为 DTO 列表
@@ -380,19 +615,33 @@ public sealed class FreeSqlComposeDtoSelector3<T1, T2, T3>
     [RequiresUnreferencedCode("ToListAsync scans attributes via reflection. Some types may be trimmed.")]
     public async Task<List<TTarget>> ToListAsync<TTarget>(CancellationToken cancellationToken = default)
         where TTarget : class
-        // 编排收敛 ComposeTerminalAsync 单点（体内逻辑逐字保留）
-        => await FreeSqlComposeSupport.ComposeTerminalAsync<List<TTarget>>(
+    {
+        async Task<List<TTarget>> DegradeCore()
+        {
+            var tuples = await _select.ToListAsync((a, b, c) => new Tuple<T1, T2, T3>(a, b, c), cancellationToken);
+            return FreeSqlComposeSupport.FilterAndMap3<T1, T2, T3, TTarget>(tuples, "[FreeSql Compose3] 降级路径过滤了 {0} 条含 null 实体的行（如 Right/Full Join 产生），被过滤的行将不会出现在结果中");
+        }
+
+        // 编排收敛 ComposeTerminalAsync 单点；投影路径经 guard（catch 在 await 外）
+        return await FreeSqlComposeSupport.ComposeTerminalAsync<List<TTarget>>(
             typeof(T1), new[] { typeof(T2), typeof(T3) }, typeof(TTarget), "3", "", "<T1,T2,T3>",
-            degrade: async () =>
-            {
-                var tuples = await _select.ToListAsync((a, b, c) => new Tuple<T1, T2, T3>(a, b, c), cancellationToken);
-                return FreeSqlComposeSupport.FilterAndMap3<T1, T2, T3, TTarget>(tuples, "[FreeSql Compose3] 降级路径过滤了 {0} 条含 null 实体的行（如 Right/Full Join 产生），被过滤的行将不会出现在结果中");
-            },
-            project: async () =>
-            {
-                var expr = FreeSqlProjectionBuilder.BuildCompose3<T1, T2, T3, TTarget>();
-                return await _select.ToListAsync(expr, cancellationToken);
-            });
+            degrade: DegradeCore,
+            project: () => ProjectCoreAsync());
+
+        async Task<List<TTarget>> ProjectCoreAsync()
+        {
+            var expr = FreeSqlNullGuardStripVisitor.Strip(
+                FreeSqlProjectionBuilder.BuildCompose3<T1, T2, T3, TTarget>());
+            return await FreeSqlComposeProjectionGuard.RunAsync(
+                "[FreeSql Compose3] ToListAsync",
+                async () => await _select.ToListAsync(expr, cancellationToken),
+                async () =>
+                {
+                    FreeSqlComposeSupport.ApplyFreeSqlComposeIncludes(typeof(T1), new[] { typeof(T2), typeof(T3) }, typeof(TTarget), "3", "<T1,T2,T3>");
+                    return await DegradeCore();
+                });
+        }
+    }
 
     /// <summary>
     /// 查询第一条记录并映射为 DTO
@@ -401,26 +650,40 @@ public sealed class FreeSqlComposeDtoSelector3<T1, T2, T3>
     [RequiresDynamicCode("First uses BuildProjection with MakeGenericMethod. Not supported in AOT. Projection source generator not yet available.")]
     [RequiresUnreferencedCode("First scans attributes via reflection. Some types may be trimmed.")]
     public TTarget? First<TTarget>() where TTarget : class
-        // 编排收敛 ComposeTerminal 单点（体内逻辑逐字保留）
-        => FreeSqlComposeSupport.ComposeTerminal<TTarget?>(
+    {
+        TTarget? DegradeCore()
+        {
+            var tuple = _select.First((a, b, c) => new Tuple<T1, T2, T3>(a, b, c));
+            if (tuple is null) return null;
+            if (tuple.Item1 is null || tuple.Item2 is null || tuple.Item3 is null)
+            {
+                if (MapTracer.GloballyEnabled) MapTracer.Write(
+                    $"[FreeSql Compose3] 降级路径 First 遇到含 null 实体的行（如 Right/Full Join 产生），返回 null");
+                return null;
+            }
+            return Mapper.Compose<TTarget>(tuple.Item1, tuple.Item2, tuple.Item3);
+        }
+
+        // 编排收敛 ComposeTerminal 单点；投影路径经 guard 兜底
+        return FreeSqlComposeSupport.ComposeTerminal<TTarget?>(
             typeof(T1), new[] { typeof(T2), typeof(T3) }, typeof(TTarget), "3", "", "<T1,T2,T3>",
-            degrade: () =>
-            {
-                var tuple = _select.First((a, b, c) => new Tuple<T1, T2, T3>(a, b, c));
-                if (tuple is null) return null;
-                if (tuple.Item1 is null || tuple.Item2 is null || tuple.Item3 is null)
+            degrade: DegradeCore,
+            project: () => ProjectCore());
+
+        TTarget? ProjectCore()
+        {
+            var expr = FreeSqlNullGuardStripVisitor.Strip(
+                FreeSqlProjectionBuilder.BuildCompose3<T1, T2, T3, TTarget>());
+            return FreeSqlComposeProjectionGuard.Run(
+                "[FreeSql Compose3] First",
+                () => _select.First(expr),
+                () =>
                 {
-                    if (MapTracer.GloballyEnabled) MapTracer.Write(
-                        $"[FreeSql Compose3] 降级路径 First 遇到含 null 实体的行（如 Right/Full Join 产生），返回 null");
-                    return null;
-                }
-                return Mapper.Compose<TTarget>(tuple.Item1, tuple.Item2, tuple.Item3);
-            },
-            project: () =>
-            {
-                var expr = FreeSqlProjectionBuilder.BuildCompose3<T1, T2, T3, TTarget>();
-                return _select.First(expr);
-            });
+                    FreeSqlComposeSupport.ApplyFreeSqlComposeIncludes(typeof(T1), new[] { typeof(T2), typeof(T3) }, typeof(TTarget), "3", "<T1,T2,T3>");
+                    return DegradeCore();
+                });
+        }
+    }
 
     /// <summary>
     /// 异步查询第一条记录并映射为 DTO
@@ -431,26 +694,40 @@ public sealed class FreeSqlComposeDtoSelector3<T1, T2, T3>
     [RequiresUnreferencedCode("FirstAsync scans attributes via reflection. Some types may be trimmed.")]
     public async Task<TTarget?> FirstAsync<TTarget>(CancellationToken cancellationToken = default)
         where TTarget : class
-        // 编排收敛 ComposeTerminalAsync 单点（体内逻辑逐字保留）
-        => await FreeSqlComposeSupport.ComposeTerminalAsync<TTarget?>(
+    {
+        async Task<TTarget?> DegradeCore()
+        {
+            var tuple = await _select.FirstAsync((a, b, c) => new Tuple<T1, T2, T3>(a, b, c), cancellationToken);
+            if (tuple is null) return null;
+            if (tuple.Item1 is null || tuple.Item2 is null || tuple.Item3 is null)
+            {
+                if (MapTracer.GloballyEnabled) MapTracer.Write(
+                    $"[FreeSql Compose3] 降级路径 First 遇到含 null 实体的行（如 Right/Full Join 产生），返回 null");
+                return null;
+            }
+            return Mapper.Compose<TTarget>(tuple.Item1, tuple.Item2, tuple.Item3);
+        }
+
+        // 编排收敛 ComposeTerminalAsync 单点；投影路径经 guard 兜底
+        return await FreeSqlComposeSupport.ComposeTerminalAsync<TTarget?>(
             typeof(T1), new[] { typeof(T2), typeof(T3) }, typeof(TTarget), "3", "", "<T1,T2,T3>",
-            degrade: async () =>
-            {
-                var tuple = await _select.FirstAsync((a, b, c) => new Tuple<T1, T2, T3>(a, b, c), cancellationToken);
-                if (tuple is null) return null;
-                if (tuple.Item1 is null || tuple.Item2 is null || tuple.Item3 is null)
+            degrade: DegradeCore,
+            project: () => ProjectCoreAsync());
+
+        async Task<TTarget?> ProjectCoreAsync()
+        {
+            var expr = FreeSqlNullGuardStripVisitor.Strip(
+                FreeSqlProjectionBuilder.BuildCompose3<T1, T2, T3, TTarget>());
+            return await FreeSqlComposeProjectionGuard.RunAsync<TTarget?>(
+                "[FreeSql Compose3] FirstAsync",
+                async () => (TTarget?)await _select.FirstAsync(expr, cancellationToken),
+                async () =>
                 {
-                    if (MapTracer.GloballyEnabled) MapTracer.Write(
-                        $"[FreeSql Compose3] 降级路径 First 遇到含 null 实体的行（如 Right/Full Join 产生），返回 null");
-                    return null;
-                }
-                return Mapper.Compose<TTarget>(tuple.Item1, tuple.Item2, tuple.Item3);
-            },
-            project: async () =>
-            {
-                var expr = FreeSqlProjectionBuilder.BuildCompose3<T1, T2, T3, TTarget>();
-                return await _select.FirstAsync(expr, cancellationToken);
-            });
+                    FreeSqlComposeSupport.ApplyFreeSqlComposeIncludes(typeof(T1), new[] { typeof(T2), typeof(T3) }, typeof(TTarget), "3", "<T1,T2,T3>");
+                    return await DegradeCore();
+                });
+        }
+    }
 
     /// <summary>
     /// 分页查询并映射为 DTO 列表（Count + 分页均在 SQL 侧）
@@ -472,19 +749,31 @@ public sealed class FreeSqlComposeDtoSelector3<T1, T2, T3>
 
         var totalCount = _select.Count();
 
-        // 编排收敛 ComposeTerminal 单点（体内逻辑逐字保留）
+        List<TTarget> DegradeCore()
+        {
+            var tuples = _select.Page(page, pageSize).ToList((a, b, c) => new Tuple<T1, T2, T3>(a, b, c));
+            return FreeSqlComposeSupport.FilterAndMap3<T1, T2, T3, TTarget>(tuples, "[FreeSql Compose3] 降级路径过滤了 {0} 条含 null 实体的行（如 Right/Full Join 产生）");
+        }
+
+        // 编排收敛 ComposeTerminal 单点；投影路径经 guard 兜底
         var items = FreeSqlComposeSupport.ComposeTerminal<List<TTarget>>(
             typeof(T1), new[] { typeof(T2), typeof(T3) }, typeof(TTarget), "3", "", "<T1,T2,T3>",
-            degrade: () =>
-            {
-                var tuples = _select.Page(page, pageSize).ToList((a, b, c) => new Tuple<T1, T2, T3>(a, b, c));
-                return FreeSqlComposeSupport.FilterAndMap3<T1, T2, T3, TTarget>(tuples, "[FreeSql Compose3] 降级路径过滤了 {0} 条含 null 实体的行（如 Right/Full Join 产生）");
-            },
-            project: () =>
-            {
-                var expr = FreeSqlProjectionBuilder.BuildCompose3<T1, T2, T3, TTarget>();
-                return _select.Page(page, pageSize).ToList(expr);
-            });
+            degrade: DegradeCore,
+            project: () => ProjectCore());
+
+        List<TTarget> ProjectCore()
+        {
+            var expr = FreeSqlNullGuardStripVisitor.Strip(
+                FreeSqlProjectionBuilder.BuildCompose3<T1, T2, T3, TTarget>());
+            return FreeSqlComposeProjectionGuard.Run(
+                "[FreeSql Compose3] ToPagedList",
+                () => _select.Page(page, pageSize).ToList(expr),
+                () =>
+                {
+                    FreeSqlComposeSupport.ApplyFreeSqlComposeIncludes(typeof(T1), new[] { typeof(T2), typeof(T3) }, typeof(TTarget), "3", "<T1,T2,T3>");
+                    return DegradeCore();
+                });
+        }
 
         return new PagedList<TTarget> { Items = items, TotalCount = totalCount, Page = page, PageSize = pageSize };
     }
@@ -511,19 +800,31 @@ public sealed class FreeSqlComposeDtoSelector3<T1, T2, T3>
 
         var totalCount = await _select.CountAsync(cancellationToken);
 
-        // 编排收敛 ComposeTerminalAsync 单点（体内逻辑逐字保留）
+        async Task<List<TTarget>> DegradeCore()
+        {
+            var tuples = await _select.Page(page, pageSize).ToListAsync((a, b, c) => new Tuple<T1, T2, T3>(a, b, c), cancellationToken);
+            return FreeSqlComposeSupport.FilterAndMap3<T1, T2, T3, TTarget>(tuples, "[FreeSql Compose3] 降级路径过滤了 {0} 条含 null 实体的行（如 Right/Full Join 产生）");
+        }
+
+        // 编排收敛 ComposeTerminalAsync 单点；投影路径经 guard 兜底
         var items = await FreeSqlComposeSupport.ComposeTerminalAsync<List<TTarget>>(
             typeof(T1), new[] { typeof(T2), typeof(T3) }, typeof(TTarget), "3", "", "<T1,T2,T3>",
-            degrade: async () =>
-            {
-                var tuples = await _select.Page(page, pageSize).ToListAsync((a, b, c) => new Tuple<T1, T2, T3>(a, b, c), cancellationToken);
-                return FreeSqlComposeSupport.FilterAndMap3<T1, T2, T3, TTarget>(tuples, "[FreeSql Compose3] 降级路径过滤了 {0} 条含 null 实体的行（如 Right/Full Join 产生）");
-            },
-            project: async () =>
-            {
-                var expr = FreeSqlProjectionBuilder.BuildCompose3<T1, T2, T3, TTarget>();
-                return await _select.Page(page, pageSize).ToListAsync(expr, cancellationToken);
-            });
+            degrade: DegradeCore,
+            project: () => ProjectCoreAsync());
+
+        async Task<List<TTarget>> ProjectCoreAsync()
+        {
+            var expr = FreeSqlNullGuardStripVisitor.Strip(
+                FreeSqlProjectionBuilder.BuildCompose3<T1, T2, T3, TTarget>());
+            return await FreeSqlComposeProjectionGuard.RunAsync(
+                "[FreeSql Compose3] ToPagedListAsync",
+                async () => await _select.Page(page, pageSize).ToListAsync(expr, cancellationToken),
+                async () =>
+                {
+                    FreeSqlComposeSupport.ApplyFreeSqlComposeIncludes(typeof(T1), new[] { typeof(T2), typeof(T3) }, typeof(TTarget), "3", "<T1,T2,T3>");
+                    return await DegradeCore();
+                });
+        }
 
         return new PagedList<TTarget> { Items = items, TotalCount = totalCount, Page = page, PageSize = pageSize };
     }
@@ -550,6 +851,15 @@ public sealed class FreeSqlComposeDtoSelector3<T1, T2, T3>
         // 分页循环收敛 ComposeChunkDegradeCore/ComposeChunkProjectCore 单点（H-01 终止语义随内核单点）
         if (FreeSqlComposeSupport.NeedsDegradationWithTrace(typeof(T1), new[] { typeof(T2), typeof(T3) }, typeof(TTarget), "3", "ToChunkDto "))
         {
+            DegradeChunk();
+            return;
+        }
+
+        // 构建期在 guard 之外（配置错误原样冒），执行期在 guard 之内（翻译失败 → 转降级逐页循环）
+        ProjectChunk();
+
+        void DegradeChunk()
+        {
             FreeSqlComposeSupport.ApplyFreeSqlComposeIncludes(typeof(T1), new[] { typeof(T2), typeof(T3) }, typeof(TTarget), "3", "<T1,T2,T3>");
 
             FreeSqlComposeSupport.ComposeChunkDegradeCore<Tuple<T1, T2, T3>, TTarget>(
@@ -557,12 +867,18 @@ public sealed class FreeSqlComposeDtoSelector3<T1, T2, T3>
                 (tuples, fmt) => FreeSqlComposeSupport.FilterValid3(tuples, fmt),
                 validTuples => validTuples.Select(t => Mapper.Compose<TTarget>(t.Item1, t.Item2, t.Item3)!).ToList(),
                 "[FreeSql Compose3]", size, done);
-            return;
         }
 
-        var expr = FreeSqlProjectionBuilder.BuildCompose3<T1, T2, T3, TTarget>();
-        FreeSqlComposeSupport.ComposeChunkProjectCore<TTarget>(
-            p => _select.Page(p, size).ToList(expr), size, done);
+        void ProjectChunk()
+        {
+            var expr = FreeSqlNullGuardStripVisitor.Strip(
+                FreeSqlProjectionBuilder.BuildCompose3<T1, T2, T3, TTarget>());
+            FreeSqlComposeProjectionGuard.Run(
+                "[FreeSql Compose3] ToChunkDto",
+                () => FreeSqlComposeSupport.ComposeChunkProjectCore<TTarget>(
+                    p => _select.Page(p, size).ToList(expr), size, done),
+                DegradeChunk);
+        }
     }
 
     /// <summary>
@@ -591,6 +907,16 @@ public sealed class FreeSqlComposeDtoSelector3<T1, T2, T3>
         // ComposeChunkDegradeCoreAsync/ComposeChunkProjectCoreAsync 单点（H-01 终止语义随内核单点）
         if (FreeSqlComposeSupport.NeedsDegradationWithTrace(typeof(T1), new[] { typeof(T2), typeof(T3) }, typeof(TTarget), "3", "ToChunkDtoAsync "))
         {
+            await DegradeChunkAsync();
+            return;
+        }
+
+        // 构建期在 guard 之外（配置错误原样冒）；执行期在 guard 之内
+        // （catch 在 await 外——翻译期异常在 await 时抛出）
+        await ProjectChunkAsync();
+
+        async Task DegradeChunkAsync()
+        {
             FreeSqlComposeSupport.ApplyFreeSqlComposeIncludes(typeof(T1), new[] { typeof(T2), typeof(T3) }, typeof(TTarget), "3", "<T1,T2,T3>");
 
             await FreeSqlComposeSupport.ComposeChunkDegradeCoreAsync<Tuple<T1, T2, T3>, TTarget>(
@@ -598,11 +924,17 @@ public sealed class FreeSqlComposeDtoSelector3<T1, T2, T3>
                 (tuples, fmt) => FreeSqlComposeSupport.FilterValid3(tuples, fmt),
                 validTuples => validTuples.Select(t => Mapper.Compose<TTarget>(t.Item1, t.Item2, t.Item3)!).ToList(),
                 "[FreeSql Compose3]", size, done, cancellationToken);
-            return;
         }
 
-        var expr = FreeSqlProjectionBuilder.BuildCompose3<T1, T2, T3, TTarget>();
-        await FreeSqlComposeSupport.ComposeChunkProjectCoreAsync<TTarget>(
-            p => _select.Page(p, size).ToListAsync(expr, cancellationToken), size, done, cancellationToken);
+        async Task ProjectChunkAsync()
+        {
+            var expr = FreeSqlNullGuardStripVisitor.Strip(
+                FreeSqlProjectionBuilder.BuildCompose3<T1, T2, T3, TTarget>());
+            await FreeSqlComposeProjectionGuard.RunAsync(
+                "[FreeSql Compose3] ToChunkDtoAsync",
+                async () => await FreeSqlComposeSupport.ComposeChunkProjectCoreAsync<TTarget>(
+                    p => _select.Page(p, size).ToListAsync(expr, cancellationToken), size, done, cancellationToken),
+                DegradeChunkAsync);
+        }
     }
 }

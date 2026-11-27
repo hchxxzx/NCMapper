@@ -31,7 +31,7 @@ internal sealed class FreeSqlNullGuardStripVisitor : ExpressionVisitor
     }
 
     /// <summary>
-    /// 剥除投影 lambda 中的 IIF null 保护形态
+    /// 剥除投影 lambda 中的 IIF null 保护形态（**单参数**形态——单表 AsDto 通道）
     /// <para>无匹配节点时原样返回传入 lambda（引用等价，零开销）；有匹配时重建 lambda。</para>
     /// </summary>
     internal static Expression<Func<TSource, TTarget>> Strip<TSource, TTarget>(
@@ -39,11 +39,61 @@ internal sealed class FreeSqlNullGuardStripVisitor : ExpressionVisitor
         where TSource : class
         where TTarget : class
     {
+        var stripped = StripLambda(lambda);
+        return ReferenceEquals(stripped, lambda)
+            ? lambda
+            : (Expression<Func<TSource, TTarget>>)stripped;
+    }
+
+    /// <summary>
+    /// 剥除投影 lambda 中的 IIF null 保护形态（**双参数**形态——双表 Compose 通道，卡 C3）
+    /// <para>判据与单参重载逐字同源（同一 <see cref="StripLambda"/> 单点）：元数与判据无关，
+    /// 差异只在委托类型重建——Compose 产物是 <c>Func&lt;T1,T2,TTarget&gt;</c>，
+    /// 单参强类型签名无法承载故另设重载。</para>
+    /// </summary>
+    internal static Expression<Func<T1, T2, TTarget>> Strip<T1, T2, TTarget>(
+        Expression<Func<T1, T2, TTarget>> lambda)
+        where T1 : class
+        where T2 : class
+        where TTarget : class
+    {
+        var stripped = StripLambda(lambda);
+        return ReferenceEquals(stripped, lambda)
+            ? lambda
+            : (Expression<Func<T1, T2, TTarget>>)stripped;
+    }
+
+    /// <summary>
+    /// 剥除投影 lambda 中的 IIF null 保护形态（**三参数**形态——三表 Compose 通道，卡 C3）
+    /// <para>判据同双参重载；三表 Compose 产物为 <c>Func&lt;T1,T2,T3,TTarget&gt;</c>。</para>
+    /// </summary>
+    internal static Expression<Func<T1, T2, T3, TTarget>> Strip<T1, T2, T3, TTarget>(
+        Expression<Func<T1, T2, T3, TTarget>> lambda)
+        where T1 : class
+        where T2 : class
+        where T3 : class
+        where TTarget : class
+    {
+        var stripped = StripLambda(lambda);
+        return ReferenceEquals(stripped, lambda)
+            ? lambda
+            : (Expression<Func<T1, T2, T3, TTarget>>)stripped;
+    }
+
+    /// <summary>
+    /// 元数无关剥除内核 —— 三个强类型重载的判据与遍历单点（消除按元数复制判据的漂移风险）。
+    /// <para>只遍历 <see cref="LambdaExpression.Body"/>（参数表原样透传），故剥除判据与元数无关；
+    /// 无匹配节点时**返回传入引用本身**（调用方据此零重建，与单参重载既有语义逐字一致）。</para>
+    /// </summary>
+    /// <param name="lambda">投影 lambda（任意元数）</param>
+    /// <returns>剥除后的 lambda；无需剥除时为传入引用</returns>
+    internal static LambdaExpression StripLambda(LambdaExpression lambda)
+    {
         var visitor = new FreeSqlNullGuardStripVisitor();
         var newBody = visitor.Visit(lambda.Body);
         if (visitor.StrippedCount == 0)
             return lambda;
-        return Expression.Lambda<Func<TSource, TTarget>>(newBody!, lambda.Parameters);
+        return Expression.Lambda(lambda.Type, newBody!, lambda.Parameters);
     }
 
     /// <inheritdoc />

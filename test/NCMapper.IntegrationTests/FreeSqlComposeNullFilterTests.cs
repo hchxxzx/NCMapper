@@ -6,12 +6,13 @@ using NCMapper.FreeSql;
 namespace NCMapper.IntegrationTests
 {
     /// <summary>
-    /// Compose 降级路径 null 过滤回归测试
-    /// <para>覆盖（路径矩阵全 6 类）：双表/三表 Compose 降级（ConvertUsing 触发）时，Left/Right/Full Join 产生的 null 实体行被过滤，
-    /// 且 MapTracer 告知"降级路径过滤了 N 条含 null 实体的行"或 First 分支"遇到含 null 实体的行"。
-    /// 各入口（ToList / ToListAsync / First / FirstAsync）的过滤逻辑独立存在，本类逐一覆盖。</para>
+    /// Compose 降级路径行保全回归测试
+    /// <para>覆盖（路径矩阵全 6 类）：双表/三表 Compose 降级（ConvertUsing 触发）时，Left/Right/Full Join 产生的
+    /// null 附加源行被<b>保留</b>（不再丢弃），并同样覆盖 First/FirstAsync 的既有「返回 null」分支。</para>
+    /// <para>各入口（ToList / ToListAsync / First / FirstAsync）的行保全逻辑同源（FilterAndMap2/3、FilterValid2/3），本类逐一覆盖。</para>
     /// <para>数据：FreeSqlNullFilterFixture（独立 SQLite）植入 6 Topic，其中 Id=6 orphan（CategoryId=999 无匹配 Category）
-    /// 在双表 LeftJoin 产生 null T2 行；Id=5 IsDeleted=true。Active 5 条中仅 orphan 产生 null T2。</para>
+    /// 在双表 LeftJoin 产生 null T2 行；Id=5 IsDeleted=true。Active 5 条中仅 orphan 产生 null T2，
+    /// 故「Active 行数 = 5」同时是「JOIN 行数」「降级返回行数」「TotalCount」三者的共同真值。</para>
     /// </summary>
     [Collection("MapTracerGlobalState")]
     public class FreeSqlComposeNullFilterTests : IClassFixture<FreeSqlNullFilterFixture>
@@ -25,8 +26,8 @@ namespace NCMapper.IntegrationTests
         public FreeSqlComposeNullFilterTests(FreeSqlNullFilterFixture fixture) => _fsql = fixture.Fsql;
 
         /// <summary>
-        /// 双表 Compose 降级 — null 过滤移除 orphan（产生 null T2 的行）。
-        /// 验证：DB 共 6 Topic / Active 5；降级后结果 4（orphan 被过滤）；Trace 告知"过滤了 1 条含 null 实体的行"。
+        /// 双表 Compose 降级 — null 附加源行<b>保留</b>（orphan 不再被丢弃）。
+        /// 验证：DB 共 6 Topic / Active 5；降级后结果 5（orphan 保留）；Trace 告知"保留 1 条附加源为 null 的行"。
         /// </summary>
         [Fact]
         public void NT002_双表降级_null过滤移除orphan且Trace告知()
@@ -47,14 +48,14 @@ namespace NCMapper.IntegrationTests
                     .AsDto()
                     .ToList<FsTopicFullConvDto>();
 
-                // Active 5 条中仅 orphan(Id=6) 产生 null T2 → 过滤后剩 4 条
-                Assert.Equal(4, dtos.Count);
-                Assert.DoesNotContain(dtos, d => d.Id == 6);
+                // Active 5 条中仅 orphan(Id=6) 产生 null T2 → 保留后仍为 5 条（与 JOIN 行数相等）
+                Assert.Equal(5, dtos.Count);
+                Assert.Contains(dtos, d => d.Id == 6);
                 // 结果均含有效 T1 主键，无 null 实体
                 Assert.All(dtos, d => Assert.True(d.Id > 0));
-                // 过滤行为 + Trace 告知
+                // 行保全行为 + Trace 告知
                 var output = sw.ToString();
-                Assert.Contains("降级路径过滤了 1 条含 null 实体的行", output);
+                Assert.Contains("降级路径保留 1 条附加源为 null 的行", output);
             }
             finally
             {
@@ -64,8 +65,8 @@ namespace NCMapper.IntegrationTests
         }
 
         /// <summary>
-        /// 三表 Compose 降级 — null 过滤移除 orphan（产生 null T2 的行，T3 过滤同为 true 不影响结论）。
-        /// 验证：降级后结果 4（orphan 被过滤）；Trace 告知"过滤了 1 条含 null 实体的行"。
+        /// 三表 Compose 降级 — null 附加源行<b>保留</b>（orphan 的 null T2 不再被丢弃；T3 判据同为保留语义）。
+        /// 验证：降级后结果 5（orphan 保留）；Trace 告知"保留 1 条附加源为 null 的行"。
         /// </summary>
         [Fact]
         public void NT002_三表降级_null过滤移除orphan且Trace告知()
@@ -83,12 +84,12 @@ namespace NCMapper.IntegrationTests
                     .AsDto()
                     .ToList<FsTopicFullConvDto>();
 
-                Assert.Equal(4, dtos.Count);
-                Assert.DoesNotContain(dtos, d => d.Id == 6);
+                Assert.Equal(5, dtos.Count);
+                Assert.Contains(dtos, d => d.Id == 6);
                 Assert.All(dtos, d => Assert.True(d.Id > 0));
 
                 var output = sw.ToString();
-                Assert.Contains("降级路径过滤了 1 条含 null 实体的行", output);
+                Assert.Contains("降级路径保留 1 条附加源为 null 的行", output);
             }
             finally
             {
@@ -160,8 +161,8 @@ namespace NCMapper.IntegrationTests
         }
 
         /// <summary>
-        /// 双表 Compose 降级 — ToListAsync 异步路径 null 过滤与 Trace 告知。
-        /// 覆盖路径矩阵"双表 ToListAsync"分支（NCMapperFreeSqlExtensions.cs:387-406）。
+        /// 双表 Compose 降级 — ToListAsync 异步路径行保全与 Trace 告知（与同步路径同源判据）。
+        /// 覆盖路径矩阵"双表 ToListAsync"分支。
         /// </summary>
         [Fact]
         public async Task NT002_双表降级_ToListAsync_null过滤()
@@ -178,11 +179,11 @@ namespace NCMapper.IntegrationTests
                     .AsDto()
                     .ToListAsync<FsTopicFullConvDto>(cancellationToken: TestContext.Current.CancellationToken);
 
-                Assert.Equal(4, dtos.Count);
-                Assert.DoesNotContain(dtos, d => d.Id == 6);
+                Assert.Equal(5, dtos.Count);
+                Assert.Contains(dtos, d => d.Id == 6);
                 Assert.All(dtos, d => Assert.True(d.Id > 0));
                 var output = sw.ToString();
-                Assert.Contains("降级路径过滤了 1 条含 null 实体的行", output);
+                Assert.Contains("降级路径保留 1 条附加源为 null 的行", output);
             }
             finally
             {
@@ -192,8 +193,8 @@ namespace NCMapper.IntegrationTests
         }
 
         /// <summary>
-        /// 三表 Compose 降级 — ToListAsync 异步路径 null 过滤与 Trace 告知。
-        /// 覆盖路径矩阵"三表 ToListAsync"分支（NCMapperFreeSqlExtensions.cs:671-690）。
+        /// 三表 Compose 降级 — ToListAsync 异步路径行保全与 Trace 告知。
+        /// 覆盖路径矩阵"三表 ToListAsync"分支。
         /// </summary>
         [Fact]
         public async Task NT002_三表降级_ToListAsync_null过滤()
@@ -211,11 +212,11 @@ namespace NCMapper.IntegrationTests
                     .AsDto()
                     .ToListAsync<FsTopicFullConvDto>(cancellationToken: TestContext.Current.CancellationToken);
 
-                Assert.Equal(4, dtos.Count);
-                Assert.DoesNotContain(dtos, d => d.Id == 6);
+                Assert.Equal(5, dtos.Count);
+                Assert.Contains(dtos, d => d.Id == 6);
                 Assert.All(dtos, d => Assert.True(d.Id > 0));
                 var output = sw.ToString();
-                Assert.Contains("降级路径过滤了 1 条含 null 实体的行", output);
+                Assert.Contains("降级路径保留 1 条附加源为 null 的行", output);
             }
             finally
             {
@@ -227,7 +228,7 @@ namespace NCMapper.IntegrationTests
         /// 回归降级路径 ToChunkDto 终止条件改用过滤前 tuples.Count
         /// null 实体行位于中间页时，原实现（validTuples.Count < size 提前 break）静默丢失后续页数据。
         /// 数据：6 Topic（5 有效，Id=6 orphan 产生 null T2）；OrderByDescending 使 orphan 位于第 1 页；
-        /// size=2 → 页1=(6,null)+(4) 过滤后 1 条 → 原实现 break 仅收 1 条；修复后完整 4 条（4,3,2,1）。
+        /// size=2 → 页1=(6,null)+(4) → 第 2 行起完整取回；行保全后应为完整 5 条（6,4,3,2,1）。
         /// </summary>
         [Fact]
         public void H01_降级ToChunkDto_中间页null行_不丢后续页()
@@ -241,12 +242,12 @@ namespace NCMapper.IntegrationTests
                 .AsDto()
                 .ToChunkDto<FsTopicFullConvDto>(2, chunk => chunkResults.AddRange(chunk));
 
-            Assert.Equal(4, chunkResults.Count); // 修复前仅 1 条（Id=4）
-            Assert.Equal(new[] { 4, 3, 2, 1 }, chunkResults.Select(d => d.Id).ToArray());
+            Assert.Equal(5, chunkResults.Count);
+            Assert.Equal(new[] { 6, 4, 3, 2, 1 }, chunkResults.Select(d => d.Id).ToArray());
         }
 
         /// <summary>
-        /// 回归（三表版）：同双表场景，FilterValid3 过滤 null 行后
+        /// 回归（三表版）：同双表场景，FilterValid3 保全 null 附加源行后
         /// 中间页提前触底的丢页缺陷；OrderByDescending 使 orphan 位于第 1 页。
         /// </summary>
         [Fact]
@@ -262,8 +263,8 @@ namespace NCMapper.IntegrationTests
                 .AsDto()
                 .ToChunkDto<FsTopicFullConvDto>(2, chunk => chunkResults.AddRange(chunk));
 
-            Assert.Equal(4, chunkResults.Count);
-            Assert.Equal(new[] { 4, 3, 2, 1 }, chunkResults.Select(d => d.Id).ToArray());
+            Assert.Equal(5, chunkResults.Count);
+            Assert.Equal(new[] { 6, 4, 3, 2, 1 }, chunkResults.Select(d => d.Id).ToArray());
         }
     }
 }

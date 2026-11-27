@@ -19,7 +19,7 @@ namespace NCMapper.FreeSql;
 // 自 NCMapperFreeSqlExtensions.cs 按关切拆分（纯移动，类型与成员逐字不动）。
 
 /// <summary>
-/// Compose 选择器共享执行器 — 2/3 表选择器的降级判定 / null 过滤 + 映射 / 自动 Include 收敛为单点。
+/// Compose 选择器共享执行器 — 2/3 表选择器的降级判定 / 行保全 + 映射 / 自动 Include 收敛为单点。
 /// <para>Trace 文案与逐处手写保持一致（前缀/动作参数化）；映射经 Mapper.Compose 单点。</para>
 /// </summary>
 internal static class FreeSqlComposeSupport
@@ -44,55 +44,109 @@ internal static class FreeSqlComposeSupport
     }
 
     /// <summary>
-    /// null 行过滤 + Compose 映射（双表版）— null 过滤 Trace 文案由调用方提供模板（{0} 为过滤行数）
+    /// 行保全 + Compose 映射（双表版）— 附加源为 null 的行<b>保留</b>，仅主源为 null 的行剔除。
+    /// <para>调用方传入的 Trace 模板（{0} 为剔除行数）只用于主源为 null 的剔除；附加源为 null 的
+    /// 保留行另有独立 Trace（见 <see cref="TraceKeptNullSourceRows"/>）。</para>
     /// </summary>
     [RequiresDynamicCode("Compose mapping uses MakeGenericType/MakeGenericMethod via Mapper.Compose. Not supported in AOT. Register a source-generated compose delegate to make this AOT-safe.")]
     [RequiresUnreferencedCode("Compose mapping scans type members and attributes via reflection in Mapper.Compose. Some members may be trimmed. Register a source-generated compose delegate to make this AOT-safe.")]
     internal static List<TTarget> FilterAndMap2<T1, T2, TTarget>(List<Tuple<T1, T2>> tuples, string nullFilterTraceFormat)
         where T1 : class where T2 : class where TTarget : class
     {
-        var validTuples = tuples.Where(t => t.Item1 != null && t.Item2 != null).ToList();
-        if (validTuples.Count < tuples.Count)
-            if (MapTracer.GloballyEnabled) MapTracer.Write(string.Format(nullFilterTraceFormat, tuples.Count - validTuples.Count));
-        return validTuples.Select(t => Mapper.Compose<TTarget>(t.Item1, t.Item2)!).ToList();
+        var keptTuples = KeepRowsNotDroppable(tuples, t => t.Item1 != null, nullFilterTraceFormat);
+        var nullSourceRows = keptTuples.Count(t => t.Item2 == null);
+        if (nullSourceRows > 0) TraceKeptNullSourceRows(nullSourceRows, nullFilterTraceFormat);
+        return keptTuples.Select(t => Mapper.Compose<TTarget>(t.Item1, t.Item2)!).ToList();
     }
 
     /// <summary>
-    /// null 行过滤 + Compose 映射（三表版）— null 过滤 Trace 文案由调用方提供模板（{0} 为过滤行数）
+    /// 行保全 + Compose 映射（三表版）— 附加源为 null 的行<b>保留</b>，仅主源为 null 的行剔除。
     /// </summary>
     [RequiresDynamicCode("Compose mapping uses MakeGenericType/MakeGenericMethod via Mapper.Compose. Not supported in AOT. Register a source-generated compose delegate to make this AOT-safe.")]
     [RequiresUnreferencedCode("Compose mapping scans type members and attributes via reflection in Mapper.Compose. Some members may be trimmed. Register a source-generated compose delegate to make this AOT-safe.")]
     internal static List<TTarget> FilterAndMap3<T1, T2, T3, TTarget>(List<Tuple<T1, T2, T3>> tuples, string nullFilterTraceFormat)
         where T1 : class where T2 : class where T3 : class where TTarget : class
     {
-        var validTuples = tuples.Where(t => t.Item1 != null && t.Item2 != null && t.Item3 != null).ToList();
-        if (validTuples.Count < tuples.Count)
-            if (MapTracer.GloballyEnabled) MapTracer.Write(string.Format(nullFilterTraceFormat, tuples.Count - validTuples.Count));
-        return validTuples.Select(t => Mapper.Compose<TTarget>(t.Item1, t.Item2, t.Item3)!).ToList();
+        var keptTuples = KeepRowsNotDroppable(tuples, t => t.Item1 != null, nullFilterTraceFormat);
+        var nullSourceRows = keptTuples.Count(t => t.Item2 == null || t.Item3 == null);
+        if (nullSourceRows > 0) TraceKeptNullSourceRows(nullSourceRows, nullFilterTraceFormat);
+        return keptTuples.Select(t => Mapper.Compose<TTarget>(t.Item1, t.Item2, t.Item3)!).ToList();
     }
 
     /// <summary>
-    /// null 行过滤（仅过滤，不映射；分页/分批场景用）— 过滤 Trace 文案由调用方提供模板
+    /// 行保全（仅保全，不映射；分页/分批场景用）— 附加源为 null 的行<b>保留</b>，仅主源为 null 的行剔除。
     /// </summary>
     internal static List<Tuple<T1, T2>> FilterValid2<T1, T2>(List<Tuple<T1, T2>> tuples, string nullFilterTraceFormat)
         where T1 : class where T2 : class
     {
-        var validTuples = tuples.Where(t => t.Item1 != null && t.Item2 != null).ToList();
-        if (validTuples.Count < tuples.Count)
-            if (MapTracer.GloballyEnabled) MapTracer.Write(string.Format(nullFilterTraceFormat, tuples.Count - validTuples.Count));
-        return validTuples;
+        var keptTuples = KeepRowsNotDroppable(tuples, t => t.Item1 != null, nullFilterTraceFormat);
+        var nullSourceRows = keptTuples.Count(t => t.Item2 == null);
+        if (nullSourceRows > 0) TraceKeptNullSourceRows(nullSourceRows, nullFilterTraceFormat);
+        return keptTuples;
     }
 
     /// <summary>
-    /// null 行过滤（三表版）— 过滤 Trace 文案由调用方提供模板
+    /// 行保全（三表版）— 附加源为 null 的行<b>保留</b>，仅主源为 null 的行剔除。
     /// </summary>
     internal static List<Tuple<T1, T2, T3>> FilterValid3<T1, T2, T3>(List<Tuple<T1, T2, T3>> tuples, string nullFilterTraceFormat)
         where T1 : class where T2 : class where T3 : class
     {
-        var validTuples = tuples.Where(t => t.Item1 != null && t.Item2 != null && t.Item3 != null).ToList();
-        if (validTuples.Count < tuples.Count)
-            if (MapTracer.GloballyEnabled) MapTracer.Write(string.Format(nullFilterTraceFormat, tuples.Count - validTuples.Count));
-        return validTuples;
+        var keptTuples = KeepRowsNotDroppable(tuples, t => t.Item1 != null, nullFilterTraceFormat);
+        var nullSourceRows = keptTuples.Count(t => t.Item2 == null || t.Item3 == null);
+        if (nullSourceRows > 0) TraceKeptNullSourceRows(nullSourceRows, nullFilterTraceFormat);
+        return keptTuples;
+    }
+
+    /// <summary>
+    /// 行保全内核 —— 剔除「无法产出 DTO」的行（主源为 null），其余原样返回。
+    /// <para><b>为何只剔除主源为 null 的行</b>：Compose 需要主源对象来创建并初始化 DTO
+    /// （<c>Mapper.Compose</c> 主源缺失时抛 <c>MapConfigurationException</c>），主源为 null 的行
+    /// 客观上无法产出任何 DTO，剔除是唯一可行处置。附加源（T2/T3）为 null 的行则完全不同——
+    /// Compose 对 null 源按「跳过该源」处理，目标 DTO 照常创建，仅源自该附加源的字段落默认值，
+    /// 因此这类行<b>必须保留</b>（此前被一并过滤，导致 LEFT JOIN 场景行数比投影路径少）。</para>
+    /// <para><b>空壳语义</b>：保留下来的行，其附加源字段取默认值（引用类型嵌套对象为空壳实例而非 null），
+    /// 与单表通道对无匹配行的既有表现一致，属 LEFT JOIN 的固有语义，非降级路径引入。</para>
+    /// </summary>
+    /// <typeparam name="TRow">行（Tuple）类型</typeparam>
+    /// <param name="tuples">原始行集合（JOIN 结果，含 null 实体行）</param>
+    /// <param name="hasPrimary">主源是否存在的判定（唯一剔除判据）</param>
+    /// <param name="nullFilterTraceFormat">调用方 Trace 模板（{0} 为剔除行数）</param>
+    /// <returns>剔除主源为 null 后的行集合（顺序与输入一致）</returns>
+    private static List<TRow> KeepRowsNotDroppable<TRow>(
+        List<TRow> tuples, Func<TRow, bool> hasPrimary, string nullFilterTraceFormat)
+        where TRow : class
+    {
+        var keptTuples = tuples.Where(hasPrimary).ToList();
+        var droppedRows = tuples.Count - keptTuples.Count;
+        if (droppedRows > 0)
+            if (MapTracer.GloballyEnabled) MapTracer.Write(string.Format(nullFilterTraceFormat, droppedRows));
+        return keptTuples;
+    }
+
+    /// <summary>
+    /// 保留行 Trace —— 附加源为 null 但<b>已保留</b>的行数（与被剔除行区分，便于观测行数守恒）。
+    /// <para>前缀从调用方 Trace 模板中提取（<c>[FreeSql Compose]</c> / <c>[FreeSql Compose3]</c>），
+    /// 避免 2 表与 3 表前缀在本文件内硬编码漂移。</para>
+    /// </summary>
+    /// <param name="keptNullSourceRows">附加源为 null 的保留行数</param>
+    /// <param name="nullFilterTraceFormat">调用方 Trace 模板（仅用于取前缀）</param>
+    private static void TraceKeptNullSourceRows(int keptNullSourceRows, string nullFilterTraceFormat)
+    {
+        if (!MapTracer.GloballyEnabled) return;
+        MapTracer.Write(
+            $"{TracePrefixOf(nullFilterTraceFormat)} 降级路径保留 {keptNullSourceRows} 条附加源为 null 的行"
+            + "（如 Left Join 无匹配），这些行的附加源字段取默认值");
+    }
+
+    /// <summary>
+    /// 取调用方 Trace 模板的前缀段（形如 <c>[FreeSql Compose]</c>）；无括号时回退双表前缀。
+    /// </summary>
+    /// <param name="traceFormat">调用方 Trace 模板</param>
+    /// <returns>前缀段（含右方括号）</returns>
+    private static string TracePrefixOf(string traceFormat)
+    {
+        var close = traceFormat.IndexOf(']');
+        return close > 0 ? traceFormat.Substring(0, close + 1) : "[FreeSql Compose]";
     }
 
     // ================================================================
@@ -168,7 +222,7 @@ internal static class FreeSqlComposeSupport
         while (true)
         {
             var tuples = fetchPage(page);
-            var validTuples = filterValid(tuples, chunkTracePrefix + " ToChunkDto 第 " + page + " 页过滤了 {0} 条含 null 实体的行");
+            var validTuples = filterValid(tuples, chunkTracePrefix + " ToChunkDto 第 " + page + " 页剔除 {0} 条主源为 null 的行");
 
             // 终止条件改用过滤前 tuples.Count（见方法注释）
             if (tuples.Count == 0) break;
@@ -230,7 +284,7 @@ internal static class FreeSqlComposeSupport
         {
             cancellationToken.ThrowIfCancellationRequested();
             var tuples = await fetchPage(page);
-            var validTuples = filterValid(tuples, chunkTracePrefix + " ToChunkDtoAsync 第 " + page + " 页过滤了 {0} 条含 null 实体的行");
+            var validTuples = filterValid(tuples, chunkTracePrefix + " ToChunkDtoAsync 第 " + page + " 页剔除 {0} 条主源为 null 的行");
 
             // 终止条件改用过滤前 tuples.Count（与同步内核一致）
             if (tuples.Count == 0) break;

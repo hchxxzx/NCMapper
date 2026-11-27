@@ -178,14 +178,13 @@ namespace NCMapper.IntegrationTests
         // ================================================================
 
         /// <summary>
-        /// 双表 Compose：纯同源嵌套引用 DTO 应正常实译实跑（【现状红】，已确证炸点）。
-        /// <para>实跑异常：<c>System.Exception: FreeSql: null.Id cannot be null</c>，
-        /// 抛出点为 FreeSql 翻译期（ExpressionLambdaToSql → ReadAnonymousField），非构建期。</para>
-        /// <para>Compose 通道无 guard 兜底（单表 8 处终端有，Compose 零处），异常原样冒到调用方。</para>
-        /// <para>Skip 理由：本用例断言的是「正确行为」，当前必红，故挂起而非留红。
-        /// 修复落地后删去 Skip 即转绿，无需改断言（实测：去 Skip 后 3 绿 2 红，红即本条与三表条）。</para>
+        /// 双表 Compose：纯同源嵌套引用 DTO 正常实译实跑（TB-20261127-01 修复后转绿）。
+        /// <para>原 POC A5：<c>System.Exception: FreeSql: null.Id cannot be null</c>（Compose 通道未接
+        /// IIF 剥除且无兜底）→ 修复后：剥除器 2 参重载接入 + guard 兜底，正常返回 4 行。</para>
+        /// <para>断言不只「不抛异常」——同时断言嵌套 DTO 的业务值（Category.Id / Category.Name），
+        /// 依任务书 §11.2：只断言不抛会让「剥除没接、仅靠 guard 兜底」的退化实现过关。</para>
         /// </summary>
-        [Fact(Skip = "【现状红】已确证炸点：Compose 通道未接 IIF 剥除，FreeSql 翻译期抛 null.Id cannot be null 且无兜底。修复后去掉 Skip 即转绿。")]
+        [Fact]
         public void Compose_双表_同源嵌套_实译实跑()
         {
             var dtos = _fsql.Select<FsTopic, FsCategory>()
@@ -203,11 +202,10 @@ namespace NCMapper.IntegrationTests
         }
 
         /// <summary>
-        /// 三表 Compose：同形态应正常实译实跑（【现状红】，与双表同根因）。
-        /// <para>实跑异常：<c>System.Exception: FreeSql: null.Id cannot be null</c>。</para>
-        /// <para>Skip 理由同上；修复落地后删去 Skip 即转绿。</para>
+        /// 三表 Compose：同形态正常实译实跑（TB-20261127-01 修复后转绿，与双表同根因）。
+        /// <para>原 POC A6：<c>System.Exception: FreeSql: null.Id cannot be null</c> → 修复后正常返回 4 行。</para>
         /// </summary>
-        [Fact(Skip = "【现状红】已确证炸点（三表变体，与双表同根因）。修复后去掉 Skip 即转绿。")]
+        [Fact]
         public void Compose_三表_同源嵌套_实译实跑()
         {
             var dtos = _fsql.Select<FsTopic, FsCategory, FsCategoryType>()

@@ -237,20 +237,30 @@ namespace NCMapper.Internal
         /// 嵌套投影入口的源改指 —— 作用域内把「按导航链取到的源表达式」换成用户 join 的源参数。
         /// <para>必要性：注册表自动匹配出的嵌套条目走 <c>t1.Nav</c> 属性访问，不经
         /// <c>ResolveNavigationProperty</c>；若不在嵌套投影入口改指，ORM 仍会自建第二条 JOIN。</para>
-        /// <para><b>fail-closed（REQ-20261127-04）</b>：作用域内、源表达式是导航链（非本作用域参数）、
-        /// 且源类型不在用户 join 参数集中 → 必须抛 <see cref="MapConfigurationException"/>。
-        /// 此前该情形静默保留导航链，会交给 provider 自建 JOIN；多层嵌套时 FreeSql 翻译器
-        /// 在 <c>t2.Company</c> 这类导航链上无限递归直至 <c>StackOverflowException</c>
+        /// <para><b>fail-closed 的触发条件（复审后收窄）</b>：仅当源类型不在用户 join 参数集、
+        /// <b>且</b><paramref name="nestingDepth"/> &gt; 1（该次投影已不是顶层一跳，而是二跳及更深）
+        /// 时抛 <see cref="MapConfigurationException"/>。</para>
+        /// <para>收窄理由（均有实测支撑）：FreeSql 对**单跳**导航自建 JOIN 完全支持——单跳嵌套、
+        /// 源未 join 的查询在收窄前能正常返回业务值；而**多跳**（嵌套里再嵌套）时 provider 会在
+        /// <c>t2.Company</c> 这类导航链上无限递归直至 <c>StackOverflowException</c>
         /// （进程级崩溃、catch 不住，实测 Repeated 27 times: ExpressionLambdaToSql ↔ ExpressionBinary）。
-        /// 抛可诊断异常优于进程崩溃：告知用户把该源类型加入 Select 泛型参数并显式 join。</para>
+        /// 故只在真正会崩的形态下 fail-closed，单跳保持旧 Soft 回退，不改动既有可用形态。</para>
+        /// <para>★ 阈值取 1 的实测依据：顶层属性以 <c>ConvertProjectionType(depth:0)</c> 进入，
+        /// 单跳 <c>BuildNestedProjection(depth:1)</c>；双层的最内层为 <c>depth:3</c>。
+        /// 因此 <c>&gt; 1</c> 恰好区分「单跳（可自建 JOIN）」与「多跳（会栈溢出）」。</para>
         /// </summary>
         /// <param name="nestedSourceType">嵌套 DTO 的源类型（= 嵌套投影的 <c>srcType</c>）</param>
         /// <param name="sourceExpr">原源表达式（导航链或参数）</param>
         /// <param name="targetName">目标属性/目标 DTO 名（异常消息用）</param>
         /// <param name="tracePrefix">Trace 前缀</param>
-        /// <returns>作用域内的用户 join 源参数；作用域外原样返回</returns>
+        /// <param name="nestingDepth">
+        /// 当前嵌套投影深度（顶层属性单跳为 1，其内层递增）。仅 &gt; 1 时对「源不在参数集」
+        /// fail-closed；单跳（1）保持旧 Soft 回退，不改变既有可用形态。
+        /// </param>
+        /// <returns>作用域内的用户 join 源参数；未命中且单跳或作用域外时原样返回</returns>
         internal static Expression RedirectNestedSource(
-            Type nestedSourceType, Expression sourceExpr, string? targetName = null, string tracePrefix = "")
+            Type nestedSourceType, Expression sourceExpr, string? targetName = null,
+            string tracePrefix = "", int nestingDepth = 1)
         {
             var scope = s_current.Value;
             if (scope is not { IsUsable: true }) return sourceExpr;
@@ -262,8 +272,10 @@ namespace NCMapper.Internal
             if (scope.TryFindByType(nestedSourceType, out var parameter))
                 return parameter!;
 
-            // 悬浮导航链（非 join 参数）且源类型不在参数集 → 交给 provider 会自建 JOIN，
-            // 多层嵌套下触发翻译器无限递归。fail-closed 拦下（REQ-20261127-04）。
+            // 单跳嵌套：FreeSql 支持自建 JOIN（实测可返回业务值），保持旧 Soft 回退
+            if (nestingDepth <= 1) return sourceExpr;
+
+            // 多跳嵌套 + 源不在参数集：交给 provider 会无限递归直到栈溢出 → fail-closed
             throw scope.FailClosedMissing(nestedSourceType.Name, targetName, tracePrefix);
         }
 
@@ -316,4 +328,5 @@ namespace NCMapper.Internal
         }
     }
 }
+
 

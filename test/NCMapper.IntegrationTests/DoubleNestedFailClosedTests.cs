@@ -111,5 +111,46 @@ namespace NCMapper.IntegrationTests
             Assert.Equal("IT", rows[0].Dept?.Name);
             Assert.Equal("ACME", rows[0].Dept?.Company?.Name);
         }
+
+        /// <summary>
+        /// ★ 防「修复过度」的关键用例（复审 finding #1）：两表 + **单层**嵌套。
+        /// <para>单层嵌套时源在 join 参数集中可直接命中；即便未命中，FreeSql 对单层导航
+        /// 自建 JOIN 也能正常工作（实测返回业务值 IT）。fail-closed 只应对**多层**嵌套生效，
+        /// 不得把单层可用形态一并拦掉——否则用户既拿不到投影、也拿不到降级，只剩异常。</para>
+        /// </summary>
+        [Fact]
+        public void TwoTable_SingleNested_MustKeepWorking()
+        {
+            _fsql.Insert(new PocSite { Id = 2, Name = "S2", DeptId = null }).ExecuteAffrows();
+
+            var rows = _fsql.Select<PocSite, PocDept>()
+                .LeftJoin((a, b) => a.DeptId == b.Id)
+                .OrderBy((a, b) => a.Id)
+                .AsDto()
+                .ToList<PocSiteNestedDto>();
+
+            Assert.Equal(2, rows.Count);
+            Assert.Equal("IT", rows[0].Dept?.Name);
+        }
+
+        /// <summary>
+        /// ★ 防「整条查询失败」的关键用例（复审 finding #2）：
+        /// 主源与泛型参数不匹配（声明错误）时，抛出的是既有的
+        /// <see cref="InvalidOperationException"/>（内核对主源一致性的权威报错），
+        /// **不是**本修复引入的 <see cref="MapConfigurationException"/>。
+        /// <para>验证顺序约束：主源一致性校验必须先于 fail-closed 执行。
+        /// 若顺序颠倒，异常类型会变成 MapConfigurationException（「源不在参数集」），
+        /// 掩盖掉真正的原因（主源配错）。</para>
+        /// </summary>
+        [Fact]
+        public void MismatchedPrimarySource_ReportsKernelErrorNotEmptySourceSetError()
+        {
+            var ex = Assert.Throws<InvalidOperationException>(
+                () => FreeSqlProjectionBuilder.BuildCompose<PocCompany, PocDept, PocSiteNestedDto>());
+
+            // 断言异常来自「主源不匹配」这条权威校验，而非嵌套源参数集缺失
+            Assert.Contains("主映射源类型", ex.Message);
+            Assert.DoesNotContain("不在本次查询的用户 join 源参数集", ex.Message);
+        }
     }
 }

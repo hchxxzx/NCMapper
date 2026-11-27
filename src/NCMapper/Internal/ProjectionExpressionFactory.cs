@@ -1057,22 +1057,29 @@ namespace NCMapper.Internal
             if (depth > strategy.WarningDepth)
                 MapTracer.Write($"{strategy.TracePrefix} 嵌套投影 {srcType.Name}→{tgtType.Name} 深度 {depth} 超过建议值 {strategy.WarningDepth}，翻译的 SQL 可能包含过多 LEFT JOIN");
 
-            // 路线四（TB-20261127-01 卡 C1）——嵌套源改指用户 join 的源参数：
-            // 注册表自动匹配出的嵌套条目走 `t1.Nav` 属性访问（不经 ResolveNavigationProperty），
-            // 若不在本入口改指，ORM 仍会自建第二条 LEFT JOIN，绕过用户 join 上的软删/非主键条件（缺陷③）。
-            // 非 Compose 通道（作用域外）原样返回，单表/EFCore/Dapper 行为逐字不变。
-            // 作用域内匹配不到源参数 → fail-closed（不静默返回 null/空壳）。
-            srcExpr = ComposeNestedSourceScope.RedirectNestedSource(
-                srcType, srcExpr, tgtType.Name, strategy.TracePrefix);
-
             // 补遗：嵌套主源一致性校验（注册表优先 + 反射回退）
             // — Fluent DTO 注册表命中后 PrimarySource 与 srcType 比对通过，不再被主源校验跳过
+            // ★ 顺序约束（复审 finding #2）：本校验必须先于下方 fail-closed 执行。
+            // 语义上「主源配错」是声明错误，其正确处置是**跳过该属性、构建继续**（本函数返回 null
+            // 由调用方 Trace + 跳过）；若先跑 fail-closed，这里会变成永远走不到的死代码，
+            // 使「少一个字段」升级成「整条查询失败」。
             if (!RuntimeSnapshotStore.TryGetMappingMeta(tgtType, out var view550)
                 || view550.PrimarySource != srcType)
             {
                 MapTracer.Write($"{strategy.TracePrefix} 跳过嵌套投影 {srcType.Name}→{tgtType.Name}（原因：目标类型未标注 [MapFrom] 或主源与源类型不匹配）");
                 return null;
             }
+
+            // 路线四（TB-20261127-01 卡 C1）——嵌套源改指用户 join 的源参数：
+            // 注册表自动匹配出的嵌套条目走 `t1.Nav` 属性访问（不经 ResolveNavigationProperty），
+            // 若不在本入口改指，ORM 仍会自建第二条 LEFT JOIN，绕过用户 join 上的软删/非主键条件（缺陷③）。
+            // 非 Compose 通道（作用域外）原样返回，单表/EFCore/Dapper 行为逐字不变。
+            // 作用域内匹配不到源参数 → 仅「多跳嵌套」时 fail-closed：
+            // 单跳导航 provider 能自建 JOIN（实测可返回业务值），保持旧 Soft 回退不误伤；
+            // 多跳（嵌套里再嵌套）才会在 FreeSql 翻译器上无限递归至栈溢出。
+            // 阈值依据：顶层属性以 depth:0 进入，单跳为 depth:1；双层最内层为 depth:3。
+            srcExpr = ComposeNestedSourceScope.RedirectNestedSource(
+                srcType, srcExpr, tgtType.Name, strategy.TracePrefix, nestingDepth: depth);
 
             var nestedBindings = BuildNestedProjectionBindings(srcType, tgtType, srcExpr, depth, strategy);
             if (nestedBindings == null)
@@ -1564,4 +1571,6 @@ namespace NCMapper.Internal
             => s_mapFromAttrCache.GetOrAdd(type, t => t.GetCustomAttribute<MapFromAttribute>());
     }
 }
+
+
 

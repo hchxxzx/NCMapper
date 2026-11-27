@@ -124,6 +124,55 @@ If both pass, open the PR — CI will report anything else. You do **not** need 
 
 See `scripts/README.md` for the full list of checks and what each one guards.
 
+### Reproducing CI on Linux
+
+`scripts/verify-linux.sh` is the Linux counterpart of `local-ci-check.ps1`: it runs the CI stages that are executable outside Windows (AOT is Windows/MSVC-only and is covered separately by `NCMapper.AotTests`). Use it to reproduce a red CI job without pushing.
+
+```bash
+bash scripts/verify-linux.sh              # all stages
+SKIP_TESTS=1 bash scripts/verify-linux.sh  # skip the test stage
+```
+
+The stages are `restore` → `build` (Lib filter, `--warnaserror`) → `build samples` → `test` → `generated-baseline` → `check-diagnostics-sync` → `check-api-demo-coverage` → `check-fluent-negative-cases` → `check-fluent-legacy-scan`.
+
+**Prerequisites.** Beyond `dotnet` and `git`, the script needs:
+
+| Requirement | Why |
+|---|---|
+| .NET SDK matching `global.json` (10.0.403) | `rollForward` is `disable` — a different SDK fails resolution outright |
+| .NET **runtimes** 8.0.x, 9.0.x and 10.0.x | The test stage runs every test project on all three TFMs; an SDK-only install ships the 10.x runtime alone and the net8/net9 runs abort with "You must install or update .NET" |
+| PowerShell 7 (`pwsh`) | The `generated-baseline` stage shells out to `verify-generated-baseline.ps1`. **Without `pwsh` that stage is skipped and the run still reports PASS** — see the note below |
+| `python3`, `rsync` | `check-doc-anchors.py` / `check-fluent-legacy-scan.py`, and the ext4 shadow tree |
+| A `.git` directory in the working tree | The build stage uses `--warnaserror`; SourceLink emits "repository not found" warnings in a non-git tree, and those warnings become errors |
+
+**Offline or DNS-restricted hosts.** Restore needs the exact versions pinned in `packages.lock.json` (locked mode rejects anything else), and the repository's `NuGet.config` begins with `<clear />`, so a user-level source is discarded. To restore without network access, put the pinned `.nupkg` files in a directory and point a repository-level `NuGet.config` at it:
+
+```xml
+<?xml version="1.0" encoding="utf-8"?>
+<configuration>
+  <packageSources>
+    <clear />
+    <add key="offline" value="/absolute/path/to/nupkg-directory" />
+  </packageSources>
+  <packageSourceMapping>
+    <packageSource key="offline"><package pattern="*" /></packageSource>
+  </packageSourceMapping>
+</configuration>
+```
+
+The set to seed is every package referenced by the `packages.lock.json` files, **plus** the framework packs that the SDK resolves implicitly and therefore never lists: `Microsoft.NETCore.App.Ref`, `Microsoft.AspNetCore.App.Ref`, `Microsoft.NET.ILLink.Tasks` and `Microsoft.NETCore.App.Host.linux-x64`, each at the version matching the TFM (`8.0.33` / `9.0.22` / `10.0.14` for the current lock files). The host pack is the one most easily missed — it is not in any lock file, and its absence fails only the test and benchmark projects.
+
+**Two ways the byte-identity gate can report a false PASS.** Both are worth knowing before you trust a green run:
+
+- `verify-generated-baseline.ps1` treats a **failed build** as a skipped comparison and still exits 0, so a red build surfaces as `[baseline-check] PASS`. Read the per-project lines, not just the summary.
+- `verify-linux.sh` skips its `generated-baseline` stage entirely when `pwsh` is missing, and the overall run still reports PASS.
+
+Because a skip and a match are printed differently but summarised identically, confirm what actually ran:
+
+```bash
+pwsh -NoProfile -File scripts/verify-generated-baseline.ps1   # each project must print IDENTICAL
+```
+
 ## Coding Conventions
 
 - **XML doc comments on all public members** (classes, methods, properties, enum members, parameters, returns). Chinese is the working language for comments; technical terms stay in English.

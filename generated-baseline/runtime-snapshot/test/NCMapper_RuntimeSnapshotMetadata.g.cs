@@ -3131,8 +3131,1011 @@ namespace NCMapper.Runtime
             };
             global::NCMapper.Runtime.RuntimeSnapshotPair<NCMapper.Tests.CollectionIndexValidatorTests.VBlog, NCMapper.Tests.CollectionIndexValidatorTests.VBlogDtoMismatch>.Metadata = __meta31;
             global::NCMapper.Runtime.RuntimeSnapshotStore.Register(__meta31);
-            // pair 32: NCMapper.Tests.Models.A13Entity -> NCMapper.Tests.Models.A13Dto (Fluent channel)
+            // pair 32: NCMapper.Tests.FluentSourceGenNestedPropertyTests.AttrSite -> NCMapper.Tests.FluentSourceGenNestedPropertyTests.AttrSiteDto (MapFrom channel)
+            var __mfAttr32 = new global::NCMapper.Attributes.MapFromAttribute(typeof(NCMapper.Tests.FluentSourceGenNestedPropertyTests.AttrSite));
             var __meta32 = new global::NCMapper.Runtime.RuntimeMapperMetadata
+            {
+                SourceType = typeof(NCMapper.Tests.FluentSourceGenNestedPropertyTests.AttrSite),
+                TargetType = typeof(NCMapper.Tests.FluentSourceGenNestedPropertyTests.AttrSiteDto),
+                SourceTypeFqn = "NCMapper.Tests.FluentSourceGenNestedPropertyTests.AttrSite",
+                TargetTypeFqn = "NCMapper.Tests.FluentSourceGenNestedPropertyTests.AttrSiteDto",
+                Channel = global::NCMapper.Runtime.RuntimeMappingChannel.MapFrom,
+                NoAutoInclude = false,
+                IsFluentForward = false,
+                AfterMappingMethodRef = null,
+                Properties = new global::NCMapper.Runtime.RuntimePropertyMapping[]
+                {
+                    new global::NCMapper.Runtime.RuntimePropertyMapping
+                    {
+                        Target =
+                            new global::NCMapper.Runtime.RuntimeTargetPropertySlot
+                            {
+                                Name = "Id",
+                                TypeName = "int",
+                                TypeRef = typeof(int),
+                                HasMapFromAttribute = true,
+                                MapFromAttribute = __mfAttr32,
+                                HasMapIgnore = false,
+                                MapIgnoreDirection = 0,
+                                HasOverrideIgnore = false,
+                                HasMapProperty = false,
+                                FromField = null,
+                                FromSourceTypeName = null,
+                                HasMask = false,
+                                MaskTypeName = null,
+                                HasConverter = false,
+                                ConverterDeclaringType = null,
+                                ConverterMethodName = null,
+                                HasConvertBack = false,
+                                ConverterBackDeclaringType = null,
+                                ConverterBackMethodName = null,
+                                IsFromJson = false,
+                            },
+                        SourceName = "Id",
+                        SourcePathNames = new string[] { "Id" },
+                        SourcePropertyTypeName = "int",
+                        SourcePropertyTypeRef = typeof(int),
+                        HasIndex = false,
+                        IsFlattened = false,
+                        IsReverseWriteBack = false,
+                        HasConverter = false,
+                        ConverterDeclaringType = null,
+                        ConverterMethodName = null,
+                        HasMask = false,
+                        MaskTypeName = null,
+                        IsFromJson = false,
+                    },
+                    new global::NCMapper.Runtime.RuntimePropertyMapping
+                    {
+                        Target =
+                            new global::NCMapper.Runtime.RuntimeTargetPropertySlot
+                            {
+                                Name = "Dept",
+                                TypeName = "NCMapper.Tests.FluentSourceGenNestedPropertyTests.AttrDeptDto",
+                                TypeRef = typeof(NCMapper.Tests.FluentSourceGenNestedPropertyTests.AttrDeptDto),
+                                HasMapFromAttribute = true,
+                                MapFromAttribute = __mfAttr32,
+                                HasMapIgnore = false,
+                                MapIgnoreDirection = 0,
+                                HasOverrideIgnore = false,
+                                HasMapProperty = false,
+                                FromField = null,
+                                FromSourceTypeName = null,
+                                HasMask = false,
+                                MaskTypeName = null,
+                                HasConverter = false,
+                                ConverterDeclaringType = null,
+                                ConverterMethodName = null,
+                                HasConvertBack = false,
+                                ConverterBackDeclaringType = null,
+                                ConverterBackMethodName = null,
+                                IsFromJson = false,
+                            },
+                        SourceName = "Dept",
+                        SourcePathNames = new string[] { "Dept" },
+                        SourcePropertyTypeName = "NCMapper.Tests.FluentSourceGenNestedPropertyTests.AttrDept",
+                        SourcePropertyTypeRef = typeof(NCMapper.Tests.FluentSourceGenNestedPropertyTests.AttrDept),
+                        HasIndex = false,
+                        IsFlattened = false,
+                        IsReverseWriteBack = false,
+                        HasConverter = false,
+                        ConverterDeclaringType = null,
+                        ConverterMethodName = null,
+                        HasMask = false,
+                        MaskTypeName = null,
+                        IsFromJson = false,
+                    },
+                },
+                AllTargetSlots = new global::NCMapper.Runtime.RuntimeTargetPropertySlot[]
+                {
+                    new global::NCMapper.Runtime.RuntimeTargetPropertySlot
+                    {
+                        Name = "Id",
+                        TypeName = "int",
+                        TypeRef = typeof(int),
+                        HasMapFromAttribute = true,
+                        MapFromAttribute = __mfAttr32,
+                        HasMapIgnore = false,
+                        MapIgnoreDirection = 0,
+                        HasOverrideIgnore = false,
+                        HasMapProperty = false,
+                        FromField = null,
+                        FromSourceTypeName = null,
+                        HasMask = false,
+                        MaskTypeName = null,
+                        HasConverter = false,
+                        ConverterDeclaringType = null,
+                        ConverterMethodName = null,
+                        HasConvertBack = false,
+                        ConverterBackDeclaringType = null,
+                        ConverterBackMethodName = null,
+                        IsFromJson = false,
+                    },
+                    new global::NCMapper.Runtime.RuntimeTargetPropertySlot
+                    {
+                        Name = "Dept",
+                        TypeName = "NCMapper.Tests.FluentSourceGenNestedPropertyTests.AttrDeptDto",
+                        TypeRef = typeof(NCMapper.Tests.FluentSourceGenNestedPropertyTests.AttrDeptDto),
+                        HasMapFromAttribute = true,
+                        MapFromAttribute = __mfAttr32,
+                        HasMapIgnore = false,
+                        MapIgnoreDirection = 0,
+                        HasOverrideIgnore = false,
+                        HasMapProperty = false,
+                        FromField = null,
+                        FromSourceTypeName = null,
+                        HasMask = false,
+                        MaskTypeName = null,
+                        HasConverter = false,
+                        ConverterDeclaringType = null,
+                        ConverterMethodName = null,
+                        HasConvertBack = false,
+                        ConverterBackDeclaringType = null,
+                        ConverterBackMethodName = null,
+                        IsFromJson = false,
+                    },
+                },
+            };
+            global::NCMapper.Runtime.RuntimeSnapshotPair<NCMapper.Tests.FluentSourceGenNestedPropertyTests.AttrSite, NCMapper.Tests.FluentSourceGenNestedPropertyTests.AttrSiteDto>.Metadata = __meta32;
+            global::NCMapper.Runtime.RuntimeSnapshotStore.Register(__meta32);
+            // pair 33: NCMapper.Tests.FluentSourceGenNestedPropertyTests.Dept -> NCMapper.Tests.FluentSourceGenNestedPropertyTests.DeptDto (Fluent channel)
+            var __meta33 = new global::NCMapper.Runtime.RuntimeMapperMetadata
+            {
+                SourceType = typeof(NCMapper.Tests.FluentSourceGenNestedPropertyTests.Dept),
+                TargetType = typeof(NCMapper.Tests.FluentSourceGenNestedPropertyTests.DeptDto),
+                SourceTypeFqn = "NCMapper.Tests.FluentSourceGenNestedPropertyTests.Dept",
+                TargetTypeFqn = "NCMapper.Tests.FluentSourceGenNestedPropertyTests.DeptDto",
+                Channel = global::NCMapper.Runtime.RuntimeMappingChannel.Fluent,
+                NoAutoInclude = false,
+                IsFluentForward = true,
+                AfterMappingMethodRef = null,
+                Properties = new global::NCMapper.Runtime.RuntimePropertyMapping[]
+                {
+                    new global::NCMapper.Runtime.RuntimePropertyMapping
+                    {
+                        Target =
+                            new global::NCMapper.Runtime.RuntimeTargetPropertySlot
+                            {
+                                Name = "Id",
+                                TypeName = "int",
+                                TypeRef = typeof(int),
+                                HasMapFromAttribute = false,
+                                MapFromAttribute = null,
+                                HasMapIgnore = false,
+                                MapIgnoreDirection = 0,
+                                HasOverrideIgnore = false,
+                                HasMapProperty = false,
+                                FromField = null,
+                                FromSourceTypeName = null,
+                                HasMask = false,
+                                MaskTypeName = null,
+                                HasConverter = false,
+                                ConverterDeclaringType = null,
+                                ConverterMethodName = null,
+                                HasConvertBack = false,
+                                ConverterBackDeclaringType = null,
+                                ConverterBackMethodName = null,
+                                IsFromJson = false,
+                            },
+                        SourceName = "Id",
+                        SourcePathNames = new string[] { "Id" },
+                        SourcePropertyTypeName = "int",
+                        SourcePropertyTypeRef = typeof(int),
+                        HasIndex = false,
+                        IsFlattened = false,
+                        IsReverseWriteBack = false,
+                        HasConverter = false,
+                        ConverterDeclaringType = null,
+                        ConverterMethodName = null,
+                        HasMask = false,
+                        MaskTypeName = null,
+                        IsFromJson = false,
+                    },
+                    new global::NCMapper.Runtime.RuntimePropertyMapping
+                    {
+                        Target =
+                            new global::NCMapper.Runtime.RuntimeTargetPropertySlot
+                            {
+                                Name = "Label",
+                                TypeName = "string",
+                                TypeRef = typeof(string),
+                                HasMapFromAttribute = false,
+                                MapFromAttribute = null,
+                                HasMapIgnore = false,
+                                MapIgnoreDirection = 0,
+                                HasOverrideIgnore = false,
+                                HasMapProperty = false,
+                                FromField = null,
+                                FromSourceTypeName = null,
+                                HasMask = false,
+                                MaskTypeName = null,
+                                HasConverter = false,
+                                ConverterDeclaringType = null,
+                                ConverterMethodName = null,
+                                HasConvertBack = false,
+                                ConverterBackDeclaringType = null,
+                                ConverterBackMethodName = null,
+                                IsFromJson = false,
+                            },
+                        SourceName = "Label",
+                        SourcePathNames = new string[] { "Label" },
+                        SourcePropertyTypeName = "string",
+                        SourcePropertyTypeRef = typeof(string),
+                        HasIndex = false,
+                        IsFlattened = false,
+                        IsReverseWriteBack = false,
+                        HasConverter = false,
+                        ConverterDeclaringType = null,
+                        ConverterMethodName = null,
+                        HasMask = false,
+                        MaskTypeName = null,
+                        IsFromJson = false,
+                    },
+                },
+                AllTargetSlots = new global::NCMapper.Runtime.RuntimeTargetPropertySlot[]
+                {
+                    new global::NCMapper.Runtime.RuntimeTargetPropertySlot
+                    {
+                        Name = "Id",
+                        TypeName = "int",
+                        TypeRef = typeof(int),
+                        HasMapFromAttribute = false,
+                        MapFromAttribute = null,
+                        HasMapIgnore = false,
+                        MapIgnoreDirection = 0,
+                        HasOverrideIgnore = false,
+                        HasMapProperty = false,
+                        FromField = null,
+                        FromSourceTypeName = null,
+                        HasMask = false,
+                        MaskTypeName = null,
+                        HasConverter = false,
+                        ConverterDeclaringType = null,
+                        ConverterMethodName = null,
+                        HasConvertBack = false,
+                        ConverterBackDeclaringType = null,
+                        ConverterBackMethodName = null,
+                        IsFromJson = false,
+                    },
+                    new global::NCMapper.Runtime.RuntimeTargetPropertySlot
+                    {
+                        Name = "Label",
+                        TypeName = "string",
+                        TypeRef = typeof(string),
+                        HasMapFromAttribute = false,
+                        MapFromAttribute = null,
+                        HasMapIgnore = false,
+                        MapIgnoreDirection = 0,
+                        HasOverrideIgnore = false,
+                        HasMapProperty = false,
+                        FromField = null,
+                        FromSourceTypeName = null,
+                        HasMask = false,
+                        MaskTypeName = null,
+                        HasConverter = false,
+                        ConverterDeclaringType = null,
+                        ConverterMethodName = null,
+                        HasConvertBack = false,
+                        ConverterBackDeclaringType = null,
+                        ConverterBackMethodName = null,
+                        IsFromJson = false,
+                    },
+                },
+            };
+            global::NCMapper.Runtime.RuntimeSnapshotPair<NCMapper.Tests.FluentSourceGenNestedPropertyTests.Dept, NCMapper.Tests.FluentSourceGenNestedPropertyTests.DeptDto>.Metadata = __meta33;
+            global::NCMapper.Runtime.RuntimeSnapshotStore.Register(__meta33);
+            // pair 34: NCMapper.Tests.FluentSourceGenNestedPropertyTests.Site -> NCMapper.Tests.FluentSourceGenNestedPropertyTests.SiteNestedDto (Fluent channel)
+            var __meta34 = new global::NCMapper.Runtime.RuntimeMapperMetadata
+            {
+                SourceType = typeof(NCMapper.Tests.FluentSourceGenNestedPropertyTests.Site),
+                TargetType = typeof(NCMapper.Tests.FluentSourceGenNestedPropertyTests.SiteNestedDto),
+                SourceTypeFqn = "NCMapper.Tests.FluentSourceGenNestedPropertyTests.Site",
+                TargetTypeFqn = "NCMapper.Tests.FluentSourceGenNestedPropertyTests.SiteNestedDto",
+                Channel = global::NCMapper.Runtime.RuntimeMappingChannel.Fluent,
+                NoAutoInclude = false,
+                IsFluentForward = true,
+                AfterMappingMethodRef = null,
+                Properties = new global::NCMapper.Runtime.RuntimePropertyMapping[]
+                {
+                    new global::NCMapper.Runtime.RuntimePropertyMapping
+                    {
+                        Target =
+                            new global::NCMapper.Runtime.RuntimeTargetPropertySlot
+                            {
+                                Name = "Id",
+                                TypeName = "int",
+                                TypeRef = typeof(int),
+                                HasMapFromAttribute = false,
+                                MapFromAttribute = null,
+                                HasMapIgnore = false,
+                                MapIgnoreDirection = 0,
+                                HasOverrideIgnore = false,
+                                HasMapProperty = false,
+                                FromField = null,
+                                FromSourceTypeName = null,
+                                HasMask = false,
+                                MaskTypeName = null,
+                                HasConverter = false,
+                                ConverterDeclaringType = null,
+                                ConverterMethodName = null,
+                                HasConvertBack = false,
+                                ConverterBackDeclaringType = null,
+                                ConverterBackMethodName = null,
+                                IsFromJson = false,
+                            },
+                        SourceName = "Id",
+                        SourcePathNames = new string[] { "Id" },
+                        SourcePropertyTypeName = "int",
+                        SourcePropertyTypeRef = typeof(int),
+                        HasIndex = false,
+                        IsFlattened = false,
+                        IsReverseWriteBack = false,
+                        HasConverter = false,
+                        ConverterDeclaringType = null,
+                        ConverterMethodName = null,
+                        HasMask = false,
+                        MaskTypeName = null,
+                        IsFromJson = false,
+                    },
+                    new global::NCMapper.Runtime.RuntimePropertyMapping
+                    {
+                        Target =
+                            new global::NCMapper.Runtime.RuntimeTargetPropertySlot
+                            {
+                                Name = "Name",
+                                TypeName = "string",
+                                TypeRef = typeof(string),
+                                HasMapFromAttribute = false,
+                                MapFromAttribute = null,
+                                HasMapIgnore = false,
+                                MapIgnoreDirection = 0,
+                                HasOverrideIgnore = false,
+                                HasMapProperty = false,
+                                FromField = null,
+                                FromSourceTypeName = null,
+                                HasMask = false,
+                                MaskTypeName = null,
+                                HasConverter = false,
+                                ConverterDeclaringType = null,
+                                ConverterMethodName = null,
+                                HasConvertBack = false,
+                                ConverterBackDeclaringType = null,
+                                ConverterBackMethodName = null,
+                                IsFromJson = false,
+                            },
+                        SourceName = "Name",
+                        SourcePathNames = new string[] { "Name" },
+                        SourcePropertyTypeName = "string",
+                        SourcePropertyTypeRef = typeof(string),
+                        HasIndex = false,
+                        IsFlattened = false,
+                        IsReverseWriteBack = false,
+                        HasConverter = false,
+                        ConverterDeclaringType = null,
+                        ConverterMethodName = null,
+                        HasMask = false,
+                        MaskTypeName = null,
+                        IsFromJson = false,
+                    },
+                    new global::NCMapper.Runtime.RuntimePropertyMapping
+                    {
+                        Target =
+                            new global::NCMapper.Runtime.RuntimeTargetPropertySlot
+                            {
+                                Name = "Dept",
+                                TypeName = "NCMapper.Tests.FluentSourceGenNestedPropertyTests.DeptDto",
+                                TypeRef = typeof(NCMapper.Tests.FluentSourceGenNestedPropertyTests.DeptDto),
+                                HasMapFromAttribute = false,
+                                MapFromAttribute = null,
+                                HasMapIgnore = false,
+                                MapIgnoreDirection = 0,
+                                HasOverrideIgnore = false,
+                                HasMapProperty = false,
+                                FromField = null,
+                                FromSourceTypeName = null,
+                                HasMask = false,
+                                MaskTypeName = null,
+                                HasConverter = false,
+                                ConverterDeclaringType = null,
+                                ConverterMethodName = null,
+                                HasConvertBack = false,
+                                ConverterBackDeclaringType = null,
+                                ConverterBackMethodName = null,
+                                IsFromJson = false,
+                            },
+                        SourceName = "Dept",
+                        SourcePathNames = new string[] { "Dept" },
+                        SourcePropertyTypeName = "NCMapper.Tests.FluentSourceGenNestedPropertyTests.Dept",
+                        SourcePropertyTypeRef = typeof(NCMapper.Tests.FluentSourceGenNestedPropertyTests.Dept),
+                        HasIndex = false,
+                        IsFlattened = false,
+                        IsReverseWriteBack = false,
+                        HasConverter = false,
+                        ConverterDeclaringType = null,
+                        ConverterMethodName = null,
+                        HasMask = false,
+                        MaskTypeName = null,
+                        IsFromJson = false,
+                    },
+                },
+                AllTargetSlots = new global::NCMapper.Runtime.RuntimeTargetPropertySlot[]
+                {
+                    new global::NCMapper.Runtime.RuntimeTargetPropertySlot
+                    {
+                        Name = "Id",
+                        TypeName = "int",
+                        TypeRef = typeof(int),
+                        HasMapFromAttribute = false,
+                        MapFromAttribute = null,
+                        HasMapIgnore = false,
+                        MapIgnoreDirection = 0,
+                        HasOverrideIgnore = false,
+                        HasMapProperty = false,
+                        FromField = null,
+                        FromSourceTypeName = null,
+                        HasMask = false,
+                        MaskTypeName = null,
+                        HasConverter = false,
+                        ConverterDeclaringType = null,
+                        ConverterMethodName = null,
+                        HasConvertBack = false,
+                        ConverterBackDeclaringType = null,
+                        ConverterBackMethodName = null,
+                        IsFromJson = false,
+                    },
+                    new global::NCMapper.Runtime.RuntimeTargetPropertySlot
+                    {
+                        Name = "Name",
+                        TypeName = "string",
+                        TypeRef = typeof(string),
+                        HasMapFromAttribute = false,
+                        MapFromAttribute = null,
+                        HasMapIgnore = false,
+                        MapIgnoreDirection = 0,
+                        HasOverrideIgnore = false,
+                        HasMapProperty = false,
+                        FromField = null,
+                        FromSourceTypeName = null,
+                        HasMask = false,
+                        MaskTypeName = null,
+                        HasConverter = false,
+                        ConverterDeclaringType = null,
+                        ConverterMethodName = null,
+                        HasConvertBack = false,
+                        ConverterBackDeclaringType = null,
+                        ConverterBackMethodName = null,
+                        IsFromJson = false,
+                    },
+                    new global::NCMapper.Runtime.RuntimeTargetPropertySlot
+                    {
+                        Name = "Dept",
+                        TypeName = "NCMapper.Tests.FluentSourceGenNestedPropertyTests.DeptDto",
+                        TypeRef = typeof(NCMapper.Tests.FluentSourceGenNestedPropertyTests.DeptDto),
+                        HasMapFromAttribute = false,
+                        MapFromAttribute = null,
+                        HasMapIgnore = false,
+                        MapIgnoreDirection = 0,
+                        HasOverrideIgnore = false,
+                        HasMapProperty = false,
+                        FromField = null,
+                        FromSourceTypeName = null,
+                        HasMask = false,
+                        MaskTypeName = null,
+                        HasConverter = false,
+                        ConverterDeclaringType = null,
+                        ConverterMethodName = null,
+                        HasConvertBack = false,
+                        ConverterBackDeclaringType = null,
+                        ConverterBackMethodName = null,
+                        IsFromJson = false,
+                    },
+                },
+            };
+            global::NCMapper.Runtime.RuntimeSnapshotPair<NCMapper.Tests.FluentSourceGenNestedPropertyTests.Site, NCMapper.Tests.FluentSourceGenNestedPropertyTests.SiteNestedDto>.Metadata = __meta34;
+            global::NCMapper.Runtime.RuntimeSnapshotStore.Register(__meta34);
+            // pair 35: NCMapper.Tests.FluentSourceGenNestedPropertyTests.UCfgForSource -> NCMapper.Tests.FluentSourceGenNestedPropertyTests.UCfgForDto (Fluent channel)
+            var __meta35 = new global::NCMapper.Runtime.RuntimeMapperMetadata
+            {
+                SourceType = typeof(NCMapper.Tests.FluentSourceGenNestedPropertyTests.UCfgForSource),
+                TargetType = typeof(NCMapper.Tests.FluentSourceGenNestedPropertyTests.UCfgForDto),
+                SourceTypeFqn = "NCMapper.Tests.FluentSourceGenNestedPropertyTests.UCfgForSource",
+                TargetTypeFqn = "NCMapper.Tests.FluentSourceGenNestedPropertyTests.UCfgForDto",
+                Channel = global::NCMapper.Runtime.RuntimeMappingChannel.Fluent,
+                NoAutoInclude = false,
+                IsFluentForward = true,
+                AfterMappingMethodRef = null,
+                Properties = new global::NCMapper.Runtime.RuntimePropertyMapping[]
+                {
+                    new global::NCMapper.Runtime.RuntimePropertyMapping
+                    {
+                        Target =
+                            new global::NCMapper.Runtime.RuntimeTargetPropertySlot
+                            {
+                                Name = "Id",
+                                TypeName = "int",
+                                TypeRef = typeof(int),
+                                HasMapFromAttribute = false,
+                                MapFromAttribute = null,
+                                HasMapIgnore = false,
+                                MapIgnoreDirection = 0,
+                                HasOverrideIgnore = false,
+                                HasMapProperty = false,
+                                FromField = null,
+                                FromSourceTypeName = null,
+                                HasMask = false,
+                                MaskTypeName = null,
+                                HasConverter = false,
+                                ConverterDeclaringType = null,
+                                ConverterMethodName = null,
+                                HasConvertBack = false,
+                                ConverterBackDeclaringType = null,
+                                ConverterBackMethodName = null,
+                                IsFromJson = false,
+                            },
+                        SourceName = "Id",
+                        SourcePathNames = new string[] { "Id" },
+                        SourcePropertyTypeName = "int",
+                        SourcePropertyTypeRef = typeof(int),
+                        HasIndex = false,
+                        IsFlattened = false,
+                        IsReverseWriteBack = false,
+                        HasConverter = false,
+                        ConverterDeclaringType = null,
+                        ConverterMethodName = null,
+                        HasMask = false,
+                        MaskTypeName = null,
+                        IsFromJson = false,
+                    },
+                    new global::NCMapper.Runtime.RuntimePropertyMapping
+                    {
+                        Target =
+                            new global::NCMapper.Runtime.RuntimeTargetPropertySlot
+                            {
+                                Name = "Title",
+                                TypeName = "string",
+                                TypeRef = typeof(string),
+                                HasMapFromAttribute = false,
+                                MapFromAttribute = null,
+                                HasMapIgnore = false,
+                                MapIgnoreDirection = 0,
+                                HasOverrideIgnore = false,
+                                HasMapProperty = false,
+                                FromField = null,
+                                FromSourceTypeName = null,
+                                HasMask = false,
+                                MaskTypeName = null,
+                                HasConverter = false,
+                                ConverterDeclaringType = null,
+                                ConverterMethodName = null,
+                                HasConvertBack = false,
+                                ConverterBackDeclaringType = null,
+                                ConverterBackMethodName = null,
+                                IsFromJson = false,
+                            },
+                        SourceName = "Title",
+                        SourcePathNames = new string[] { "Title" },
+                        SourcePropertyTypeName = "string",
+                        SourcePropertyTypeRef = typeof(string),
+                        HasIndex = false,
+                        IsFlattened = false,
+                        IsReverseWriteBack = false,
+                        HasConverter = false,
+                        ConverterDeclaringType = null,
+                        ConverterMethodName = null,
+                        HasMask = false,
+                        MaskTypeName = null,
+                        IsFromJson = false,
+                    },
+                },
+                AllTargetSlots = new global::NCMapper.Runtime.RuntimeTargetPropertySlot[]
+                {
+                    new global::NCMapper.Runtime.RuntimeTargetPropertySlot
+                    {
+                        Name = "Id",
+                        TypeName = "int",
+                        TypeRef = typeof(int),
+                        HasMapFromAttribute = false,
+                        MapFromAttribute = null,
+                        HasMapIgnore = false,
+                        MapIgnoreDirection = 0,
+                        HasOverrideIgnore = false,
+                        HasMapProperty = false,
+                        FromField = null,
+                        FromSourceTypeName = null,
+                        HasMask = false,
+                        MaskTypeName = null,
+                        HasConverter = false,
+                        ConverterDeclaringType = null,
+                        ConverterMethodName = null,
+                        HasConvertBack = false,
+                        ConverterBackDeclaringType = null,
+                        ConverterBackMethodName = null,
+                        IsFromJson = false,
+                    },
+                    new global::NCMapper.Runtime.RuntimeTargetPropertySlot
+                    {
+                        Name = "Title",
+                        TypeName = "string",
+                        TypeRef = typeof(string),
+                        HasMapFromAttribute = false,
+                        MapFromAttribute = null,
+                        HasMapIgnore = false,
+                        MapIgnoreDirection = 0,
+                        HasOverrideIgnore = false,
+                        HasMapProperty = false,
+                        FromField = null,
+                        FromSourceTypeName = null,
+                        HasMask = false,
+                        MaskTypeName = null,
+                        HasConverter = false,
+                        ConverterDeclaringType = null,
+                        ConverterMethodName = null,
+                        HasConvertBack = false,
+                        ConverterBackDeclaringType = null,
+                        ConverterBackMethodName = null,
+                        IsFromJson = false,
+                    },
+                },
+            };
+            global::NCMapper.Runtime.RuntimeSnapshotPair<NCMapper.Tests.FluentSourceGenNestedPropertyTests.UCfgForSource, NCMapper.Tests.FluentSourceGenNestedPropertyTests.UCfgForDto>.Metadata = __meta35;
+            global::NCMapper.Runtime.RuntimeSnapshotStore.Register(__meta35);
+            // pair 36: NCMapper.Tests.FreeSqlComposePocRegressionUTests.UDept -> NCMapper.Tests.FreeSqlComposePocRegressionUTests.UDeptDto (Fluent channel)
+            var __meta36 = new global::NCMapper.Runtime.RuntimeMapperMetadata
+            {
+                SourceType = typeof(NCMapper.Tests.FreeSqlComposePocRegressionUTests.UDept),
+                TargetType = typeof(NCMapper.Tests.FreeSqlComposePocRegressionUTests.UDeptDto),
+                SourceTypeFqn = "NCMapper.Tests.FreeSqlComposePocRegressionUTests.UDept",
+                TargetTypeFqn = "NCMapper.Tests.FreeSqlComposePocRegressionUTests.UDeptDto",
+                Channel = global::NCMapper.Runtime.RuntimeMappingChannel.Fluent,
+                NoAutoInclude = false,
+                IsFluentForward = true,
+                AfterMappingMethodRef = null,
+                Properties = new global::NCMapper.Runtime.RuntimePropertyMapping[]
+                {
+                    new global::NCMapper.Runtime.RuntimePropertyMapping
+                    {
+                        Target =
+                            new global::NCMapper.Runtime.RuntimeTargetPropertySlot
+                            {
+                                Name = "Id",
+                                TypeName = "int",
+                                TypeRef = typeof(int),
+                                HasMapFromAttribute = false,
+                                MapFromAttribute = null,
+                                HasMapIgnore = false,
+                                MapIgnoreDirection = 0,
+                                HasOverrideIgnore = false,
+                                HasMapProperty = false,
+                                FromField = null,
+                                FromSourceTypeName = null,
+                                HasMask = false,
+                                MaskTypeName = null,
+                                HasConverter = false,
+                                ConverterDeclaringType = null,
+                                ConverterMethodName = null,
+                                HasConvertBack = false,
+                                ConverterBackDeclaringType = null,
+                                ConverterBackMethodName = null,
+                                IsFromJson = false,
+                            },
+                        SourceName = "Id",
+                        SourcePathNames = new string[] { "Id" },
+                        SourcePropertyTypeName = "int",
+                        SourcePropertyTypeRef = typeof(int),
+                        HasIndex = false,
+                        IsFlattened = false,
+                        IsReverseWriteBack = false,
+                        HasConverter = false,
+                        ConverterDeclaringType = null,
+                        ConverterMethodName = null,
+                        HasMask = false,
+                        MaskTypeName = null,
+                        IsFromJson = false,
+                    },
+                    new global::NCMapper.Runtime.RuntimePropertyMapping
+                    {
+                        Target =
+                            new global::NCMapper.Runtime.RuntimeTargetPropertySlot
+                            {
+                                Name = "Label",
+                                TypeName = "string",
+                                TypeRef = typeof(string),
+                                HasMapFromAttribute = false,
+                                MapFromAttribute = null,
+                                HasMapIgnore = false,
+                                MapIgnoreDirection = 0,
+                                HasOverrideIgnore = false,
+                                HasMapProperty = false,
+                                FromField = null,
+                                FromSourceTypeName = null,
+                                HasMask = false,
+                                MaskTypeName = null,
+                                HasConverter = false,
+                                ConverterDeclaringType = null,
+                                ConverterMethodName = null,
+                                HasConvertBack = false,
+                                ConverterBackDeclaringType = null,
+                                ConverterBackMethodName = null,
+                                IsFromJson = false,
+                            },
+                        SourceName = "Label",
+                        SourcePathNames = new string[] { "Label" },
+                        SourcePropertyTypeName = "string",
+                        SourcePropertyTypeRef = typeof(string),
+                        HasIndex = false,
+                        IsFlattened = false,
+                        IsReverseWriteBack = false,
+                        HasConverter = false,
+                        ConverterDeclaringType = null,
+                        ConverterMethodName = null,
+                        HasMask = false,
+                        MaskTypeName = null,
+                        IsFromJson = false,
+                    },
+                },
+                AllTargetSlots = new global::NCMapper.Runtime.RuntimeTargetPropertySlot[]
+                {
+                    new global::NCMapper.Runtime.RuntimeTargetPropertySlot
+                    {
+                        Name = "Id",
+                        TypeName = "int",
+                        TypeRef = typeof(int),
+                        HasMapFromAttribute = false,
+                        MapFromAttribute = null,
+                        HasMapIgnore = false,
+                        MapIgnoreDirection = 0,
+                        HasOverrideIgnore = false,
+                        HasMapProperty = false,
+                        FromField = null,
+                        FromSourceTypeName = null,
+                        HasMask = false,
+                        MaskTypeName = null,
+                        HasConverter = false,
+                        ConverterDeclaringType = null,
+                        ConverterMethodName = null,
+                        HasConvertBack = false,
+                        ConverterBackDeclaringType = null,
+                        ConverterBackMethodName = null,
+                        IsFromJson = false,
+                    },
+                    new global::NCMapper.Runtime.RuntimeTargetPropertySlot
+                    {
+                        Name = "Label",
+                        TypeName = "string",
+                        TypeRef = typeof(string),
+                        HasMapFromAttribute = false,
+                        MapFromAttribute = null,
+                        HasMapIgnore = false,
+                        MapIgnoreDirection = 0,
+                        HasOverrideIgnore = false,
+                        HasMapProperty = false,
+                        FromField = null,
+                        FromSourceTypeName = null,
+                        HasMask = false,
+                        MaskTypeName = null,
+                        HasConverter = false,
+                        ConverterDeclaringType = null,
+                        ConverterMethodName = null,
+                        HasConvertBack = false,
+                        ConverterBackDeclaringType = null,
+                        ConverterBackMethodName = null,
+                        IsFromJson = false,
+                    },
+                },
+            };
+            global::NCMapper.Runtime.RuntimeSnapshotPair<NCMapper.Tests.FreeSqlComposePocRegressionUTests.UDept, NCMapper.Tests.FreeSqlComposePocRegressionUTests.UDeptDto>.Metadata = __meta36;
+            global::NCMapper.Runtime.RuntimeSnapshotStore.Register(__meta36);
+            // pair 37: NCMapper.Tests.FreeSqlComposePocRegressionUTests.USite -> NCMapper.Tests.FreeSqlComposePocRegressionUTests.USiteNestedDto (Fluent channel)
+            var __meta37 = new global::NCMapper.Runtime.RuntimeMapperMetadata
+            {
+                SourceType = typeof(NCMapper.Tests.FreeSqlComposePocRegressionUTests.USite),
+                TargetType = typeof(NCMapper.Tests.FreeSqlComposePocRegressionUTests.USiteNestedDto),
+                SourceTypeFqn = "NCMapper.Tests.FreeSqlComposePocRegressionUTests.USite",
+                TargetTypeFqn = "NCMapper.Tests.FreeSqlComposePocRegressionUTests.USiteNestedDto",
+                Channel = global::NCMapper.Runtime.RuntimeMappingChannel.Fluent,
+                NoAutoInclude = false,
+                IsFluentForward = true,
+                AfterMappingMethodRef = null,
+                Properties = new global::NCMapper.Runtime.RuntimePropertyMapping[]
+                {
+                    new global::NCMapper.Runtime.RuntimePropertyMapping
+                    {
+                        Target =
+                            new global::NCMapper.Runtime.RuntimeTargetPropertySlot
+                            {
+                                Name = "Id",
+                                TypeName = "int",
+                                TypeRef = typeof(int),
+                                HasMapFromAttribute = false,
+                                MapFromAttribute = null,
+                                HasMapIgnore = false,
+                                MapIgnoreDirection = 0,
+                                HasOverrideIgnore = false,
+                                HasMapProperty = false,
+                                FromField = null,
+                                FromSourceTypeName = null,
+                                HasMask = false,
+                                MaskTypeName = null,
+                                HasConverter = false,
+                                ConverterDeclaringType = null,
+                                ConverterMethodName = null,
+                                HasConvertBack = false,
+                                ConverterBackDeclaringType = null,
+                                ConverterBackMethodName = null,
+                                IsFromJson = false,
+                            },
+                        SourceName = "Id",
+                        SourcePathNames = new string[] { "Id" },
+                        SourcePropertyTypeName = "int",
+                        SourcePropertyTypeRef = typeof(int),
+                        HasIndex = false,
+                        IsFlattened = false,
+                        IsReverseWriteBack = false,
+                        HasConverter = false,
+                        ConverterDeclaringType = null,
+                        ConverterMethodName = null,
+                        HasMask = false,
+                        MaskTypeName = null,
+                        IsFromJson = false,
+                    },
+                    new global::NCMapper.Runtime.RuntimePropertyMapping
+                    {
+                        Target =
+                            new global::NCMapper.Runtime.RuntimeTargetPropertySlot
+                            {
+                                Name = "Name",
+                                TypeName = "string",
+                                TypeRef = typeof(string),
+                                HasMapFromAttribute = false,
+                                MapFromAttribute = null,
+                                HasMapIgnore = false,
+                                MapIgnoreDirection = 0,
+                                HasOverrideIgnore = false,
+                                HasMapProperty = false,
+                                FromField = null,
+                                FromSourceTypeName = null,
+                                HasMask = false,
+                                MaskTypeName = null,
+                                HasConverter = false,
+                                ConverterDeclaringType = null,
+                                ConverterMethodName = null,
+                                HasConvertBack = false,
+                                ConverterBackDeclaringType = null,
+                                ConverterBackMethodName = null,
+                                IsFromJson = false,
+                            },
+                        SourceName = "Name",
+                        SourcePathNames = new string[] { "Name" },
+                        SourcePropertyTypeName = "string",
+                        SourcePropertyTypeRef = typeof(string),
+                        HasIndex = false,
+                        IsFlattened = false,
+                        IsReverseWriteBack = false,
+                        HasConverter = false,
+                        ConverterDeclaringType = null,
+                        ConverterMethodName = null,
+                        HasMask = false,
+                        MaskTypeName = null,
+                        IsFromJson = false,
+                    },
+                    new global::NCMapper.Runtime.RuntimePropertyMapping
+                    {
+                        Target =
+                            new global::NCMapper.Runtime.RuntimeTargetPropertySlot
+                            {
+                                Name = "Dept",
+                                TypeName = "NCMapper.Tests.FreeSqlComposePocRegressionUTests.UDeptDto",
+                                TypeRef = typeof(NCMapper.Tests.FreeSqlComposePocRegressionUTests.UDeptDto),
+                                HasMapFromAttribute = false,
+                                MapFromAttribute = null,
+                                HasMapIgnore = false,
+                                MapIgnoreDirection = 0,
+                                HasOverrideIgnore = false,
+                                HasMapProperty = false,
+                                FromField = null,
+                                FromSourceTypeName = null,
+                                HasMask = false,
+                                MaskTypeName = null,
+                                HasConverter = false,
+                                ConverterDeclaringType = null,
+                                ConverterMethodName = null,
+                                HasConvertBack = false,
+                                ConverterBackDeclaringType = null,
+                                ConverterBackMethodName = null,
+                                IsFromJson = false,
+                            },
+                        SourceName = "Dept",
+                        SourcePathNames = new string[] { "Dept" },
+                        SourcePropertyTypeName = "NCMapper.Tests.FreeSqlComposePocRegressionUTests.UDept",
+                        SourcePropertyTypeRef = typeof(NCMapper.Tests.FreeSqlComposePocRegressionUTests.UDept),
+                        HasIndex = false,
+                        IsFlattened = false,
+                        IsReverseWriteBack = false,
+                        HasConverter = false,
+                        ConverterDeclaringType = null,
+                        ConverterMethodName = null,
+                        HasMask = false,
+                        MaskTypeName = null,
+                        IsFromJson = false,
+                    },
+                },
+                AllTargetSlots = new global::NCMapper.Runtime.RuntimeTargetPropertySlot[]
+                {
+                    new global::NCMapper.Runtime.RuntimeTargetPropertySlot
+                    {
+                        Name = "Id",
+                        TypeName = "int",
+                        TypeRef = typeof(int),
+                        HasMapFromAttribute = false,
+                        MapFromAttribute = null,
+                        HasMapIgnore = false,
+                        MapIgnoreDirection = 0,
+                        HasOverrideIgnore = false,
+                        HasMapProperty = false,
+                        FromField = null,
+                        FromSourceTypeName = null,
+                        HasMask = false,
+                        MaskTypeName = null,
+                        HasConverter = false,
+                        ConverterDeclaringType = null,
+                        ConverterMethodName = null,
+                        HasConvertBack = false,
+                        ConverterBackDeclaringType = null,
+                        ConverterBackMethodName = null,
+                        IsFromJson = false,
+                    },
+                    new global::NCMapper.Runtime.RuntimeTargetPropertySlot
+                    {
+                        Name = "Name",
+                        TypeName = "string",
+                        TypeRef = typeof(string),
+                        HasMapFromAttribute = false,
+                        MapFromAttribute = null,
+                        HasMapIgnore = false,
+                        MapIgnoreDirection = 0,
+                        HasOverrideIgnore = false,
+                        HasMapProperty = false,
+                        FromField = null,
+                        FromSourceTypeName = null,
+                        HasMask = false,
+                        MaskTypeName = null,
+                        HasConverter = false,
+                        ConverterDeclaringType = null,
+                        ConverterMethodName = null,
+                        HasConvertBack = false,
+                        ConverterBackDeclaringType = null,
+                        ConverterBackMethodName = null,
+                        IsFromJson = false,
+                    },
+                    new global::NCMapper.Runtime.RuntimeTargetPropertySlot
+                    {
+                        Name = "Dept",
+                        TypeName = "NCMapper.Tests.FreeSqlComposePocRegressionUTests.UDeptDto",
+                        TypeRef = typeof(NCMapper.Tests.FreeSqlComposePocRegressionUTests.UDeptDto),
+                        HasMapFromAttribute = false,
+                        MapFromAttribute = null,
+                        HasMapIgnore = false,
+                        MapIgnoreDirection = 0,
+                        HasOverrideIgnore = false,
+                        HasMapProperty = false,
+                        FromField = null,
+                        FromSourceTypeName = null,
+                        HasMask = false,
+                        MaskTypeName = null,
+                        HasConverter = false,
+                        ConverterDeclaringType = null,
+                        ConverterMethodName = null,
+                        HasConvertBack = false,
+                        ConverterBackDeclaringType = null,
+                        ConverterBackMethodName = null,
+                        IsFromJson = false,
+                    },
+                },
+            };
+            global::NCMapper.Runtime.RuntimeSnapshotPair<NCMapper.Tests.FreeSqlComposePocRegressionUTests.USite, NCMapper.Tests.FreeSqlComposePocRegressionUTests.USiteNestedDto>.Metadata = __meta37;
+            global::NCMapper.Runtime.RuntimeSnapshotStore.Register(__meta37);
+            // pair 38: NCMapper.Tests.Models.A13Entity -> NCMapper.Tests.Models.A13Dto (Fluent channel)
+            var __meta38 = new global::NCMapper.Runtime.RuntimeMapperMetadata
             {
                 SourceType = typeof(NCMapper.Tests.Models.A13Entity),
                 TargetType = typeof(NCMapper.Tests.Models.A13Dto),
@@ -3404,11 +4407,11 @@ namespace NCMapper.Runtime
                     },
                 },
             };
-            global::NCMapper.Runtime.RuntimeSnapshotPair<NCMapper.Tests.Models.A13Entity, NCMapper.Tests.Models.A13Dto>.Metadata = __meta32;
-            global::NCMapper.Runtime.RuntimeSnapshotStore.Register(__meta32);
-            // pair 33: NCMapper.Tests.Models.Address -> NCMapper.Tests.Models.AddressDto (MapFrom channel)
-            var __mfAttr33 = new global::NCMapper.Attributes.MapFromAttribute(typeof(NCMapper.Tests.Models.Address));
-            var __meta33 = new global::NCMapper.Runtime.RuntimeMapperMetadata
+            global::NCMapper.Runtime.RuntimeSnapshotPair<NCMapper.Tests.Models.A13Entity, NCMapper.Tests.Models.A13Dto>.Metadata = __meta38;
+            global::NCMapper.Runtime.RuntimeSnapshotStore.Register(__meta38);
+            // pair 39: NCMapper.Tests.Models.Address -> NCMapper.Tests.Models.AddressDto (MapFrom channel)
+            var __mfAttr39 = new global::NCMapper.Attributes.MapFromAttribute(typeof(NCMapper.Tests.Models.Address));
+            var __meta39 = new global::NCMapper.Runtime.RuntimeMapperMetadata
             {
                 SourceType = typeof(NCMapper.Tests.Models.Address),
                 TargetType = typeof(NCMapper.Tests.Models.AddressDto),
@@ -3429,7 +4432,7 @@ namespace NCMapper.Runtime
                                 TypeName = "string",
                                 TypeRef = typeof(string),
                                 HasMapFromAttribute = true,
-                                MapFromAttribute = __mfAttr33,
+                                MapFromAttribute = __mfAttr39,
                                 HasMapIgnore = false,
                                 MapIgnoreDirection = 0,
                                 HasOverrideIgnore = false,
@@ -3469,7 +4472,7 @@ namespace NCMapper.Runtime
                                 TypeName = "string",
                                 TypeRef = typeof(string),
                                 HasMapFromAttribute = true,
-                                MapFromAttribute = __mfAttr33,
+                                MapFromAttribute = __mfAttr39,
                                 HasMapIgnore = false,
                                 MapIgnoreDirection = 0,
                                 HasOverrideIgnore = false,
@@ -3509,7 +4512,7 @@ namespace NCMapper.Runtime
                                 TypeName = "int",
                                 TypeRef = typeof(int),
                                 HasMapFromAttribute = true,
-                                MapFromAttribute = __mfAttr33,
+                                MapFromAttribute = __mfAttr39,
                                 HasMapIgnore = false,
                                 MapIgnoreDirection = 0,
                                 HasOverrideIgnore = false,
@@ -3549,7 +4552,7 @@ namespace NCMapper.Runtime
                         TypeName = "string",
                         TypeRef = typeof(string),
                         HasMapFromAttribute = true,
-                        MapFromAttribute = __mfAttr33,
+                        MapFromAttribute = __mfAttr39,
                         HasMapIgnore = false,
                         MapIgnoreDirection = 0,
                         HasOverrideIgnore = false,
@@ -3572,7 +4575,7 @@ namespace NCMapper.Runtime
                         TypeName = "string",
                         TypeRef = typeof(string),
                         HasMapFromAttribute = true,
-                        MapFromAttribute = __mfAttr33,
+                        MapFromAttribute = __mfAttr39,
                         HasMapIgnore = false,
                         MapIgnoreDirection = 0,
                         HasOverrideIgnore = false,
@@ -3595,7 +4598,7 @@ namespace NCMapper.Runtime
                         TypeName = "int",
                         TypeRef = typeof(int),
                         HasMapFromAttribute = true,
-                        MapFromAttribute = __mfAttr33,
+                        MapFromAttribute = __mfAttr39,
                         HasMapIgnore = false,
                         MapIgnoreDirection = 0,
                         HasOverrideIgnore = false,
@@ -3614,11 +4617,11 @@ namespace NCMapper.Runtime
                     },
                 },
             };
-            global::NCMapper.Runtime.RuntimeSnapshotPair<NCMapper.Tests.Models.Address, NCMapper.Tests.Models.AddressDto>.Metadata = __meta33;
-            global::NCMapper.Runtime.RuntimeSnapshotStore.Register(__meta33);
-            // pair 34: NCMapper.Tests.Models.AddressInfo -> NCMapper.Tests.Models.OrderAddressDto (MapFrom channel)
-            var __mfAttr34 = new global::NCMapper.Attributes.MapFromAttribute(typeof(NCMapper.Tests.Models.AddressInfo));
-            var __meta34 = new global::NCMapper.Runtime.RuntimeMapperMetadata
+            global::NCMapper.Runtime.RuntimeSnapshotPair<NCMapper.Tests.Models.Address, NCMapper.Tests.Models.AddressDto>.Metadata = __meta39;
+            global::NCMapper.Runtime.RuntimeSnapshotStore.Register(__meta39);
+            // pair 40: NCMapper.Tests.Models.AddressInfo -> NCMapper.Tests.Models.OrderAddressDto (MapFrom channel)
+            var __mfAttr40 = new global::NCMapper.Attributes.MapFromAttribute(typeof(NCMapper.Tests.Models.AddressInfo));
+            var __meta40 = new global::NCMapper.Runtime.RuntimeMapperMetadata
             {
                 SourceType = typeof(NCMapper.Tests.Models.AddressInfo),
                 TargetType = typeof(NCMapper.Tests.Models.OrderAddressDto),
@@ -3639,7 +4642,7 @@ namespace NCMapper.Runtime
                                 TypeName = "string",
                                 TypeRef = typeof(string),
                                 HasMapFromAttribute = true,
-                                MapFromAttribute = __mfAttr34,
+                                MapFromAttribute = __mfAttr40,
                                 HasMapIgnore = false,
                                 MapIgnoreDirection = 0,
                                 HasOverrideIgnore = false,
@@ -3679,7 +4682,7 @@ namespace NCMapper.Runtime
                                 TypeName = "string",
                                 TypeRef = typeof(string),
                                 HasMapFromAttribute = true,
-                                MapFromAttribute = __mfAttr34,
+                                MapFromAttribute = __mfAttr40,
                                 HasMapIgnore = false,
                                 MapIgnoreDirection = 0,
                                 HasOverrideIgnore = false,
@@ -3719,7 +4722,7 @@ namespace NCMapper.Runtime
                         TypeName = "string",
                         TypeRef = typeof(string),
                         HasMapFromAttribute = true,
-                        MapFromAttribute = __mfAttr34,
+                        MapFromAttribute = __mfAttr40,
                         HasMapIgnore = false,
                         MapIgnoreDirection = 0,
                         HasOverrideIgnore = false,
@@ -3742,7 +4745,7 @@ namespace NCMapper.Runtime
                         TypeName = "string",
                         TypeRef = typeof(string),
                         HasMapFromAttribute = true,
-                        MapFromAttribute = __mfAttr34,
+                        MapFromAttribute = __mfAttr40,
                         HasMapIgnore = false,
                         MapIgnoreDirection = 0,
                         HasOverrideIgnore = false,
@@ -3761,11 +4764,11 @@ namespace NCMapper.Runtime
                     },
                 },
             };
-            global::NCMapper.Runtime.RuntimeSnapshotPair<NCMapper.Tests.Models.AddressInfo, NCMapper.Tests.Models.OrderAddressDto>.Metadata = __meta34;
-            global::NCMapper.Runtime.RuntimeSnapshotStore.Register(__meta34);
-            // pair 35: NCMapper.Tests.Models.ArticleCollection -> NCMapper.Tests.Models.ArticleCollectionDto (MapFrom channel)
-            var __mfAttr35 = new global::NCMapper.Attributes.MapFromAttribute(typeof(NCMapper.Tests.Models.ArticleCollection));
-            var __meta35 = new global::NCMapper.Runtime.RuntimeMapperMetadata
+            global::NCMapper.Runtime.RuntimeSnapshotPair<NCMapper.Tests.Models.AddressInfo, NCMapper.Tests.Models.OrderAddressDto>.Metadata = __meta40;
+            global::NCMapper.Runtime.RuntimeSnapshotStore.Register(__meta40);
+            // pair 41: NCMapper.Tests.Models.ArticleCollection -> NCMapper.Tests.Models.ArticleCollectionDto (MapFrom channel)
+            var __mfAttr41 = new global::NCMapper.Attributes.MapFromAttribute(typeof(NCMapper.Tests.Models.ArticleCollection));
+            var __meta41 = new global::NCMapper.Runtime.RuntimeMapperMetadata
             {
                 SourceType = typeof(NCMapper.Tests.Models.ArticleCollection),
                 TargetType = typeof(NCMapper.Tests.Models.ArticleCollectionDto),
@@ -3786,7 +4789,7 @@ namespace NCMapper.Runtime
                                 TypeName = "string",
                                 TypeRef = typeof(string),
                                 HasMapFromAttribute = true,
-                                MapFromAttribute = __mfAttr35,
+                                MapFromAttribute = __mfAttr41,
                                 HasMapIgnore = false,
                                 MapIgnoreDirection = 0,
                                 HasOverrideIgnore = false,
@@ -3826,7 +4829,7 @@ namespace NCMapper.Runtime
                                 TypeName = "System.Collections.Generic.Dictionary<string, NCMapper.Tests.Models.PostDto>?",
                                 TypeRef = typeof(System.Collections.Generic.Dictionary<string, NCMapper.Tests.Models.PostDto>),
                                 HasMapFromAttribute = true,
-                                MapFromAttribute = __mfAttr35,
+                                MapFromAttribute = __mfAttr41,
                                 HasMapIgnore = false,
                                 MapIgnoreDirection = 0,
                                 HasOverrideIgnore = false,
@@ -3866,7 +4869,7 @@ namespace NCMapper.Runtime
                         TypeName = "string",
                         TypeRef = typeof(string),
                         HasMapFromAttribute = true,
-                        MapFromAttribute = __mfAttr35,
+                        MapFromAttribute = __mfAttr41,
                         HasMapIgnore = false,
                         MapIgnoreDirection = 0,
                         HasOverrideIgnore = false,
@@ -3889,7 +4892,7 @@ namespace NCMapper.Runtime
                         TypeName = "System.Collections.Generic.Dictionary<string, NCMapper.Tests.Models.PostDto>?",
                         TypeRef = typeof(System.Collections.Generic.Dictionary<string, NCMapper.Tests.Models.PostDto>),
                         HasMapFromAttribute = true,
-                        MapFromAttribute = __mfAttr35,
+                        MapFromAttribute = __mfAttr41,
                         HasMapIgnore = false,
                         MapIgnoreDirection = 0,
                         HasOverrideIgnore = false,
@@ -3908,11 +4911,11 @@ namespace NCMapper.Runtime
                     },
                 },
             };
-            global::NCMapper.Runtime.RuntimeSnapshotPair<NCMapper.Tests.Models.ArticleCollection, NCMapper.Tests.Models.ArticleCollectionDto>.Metadata = __meta35;
-            global::NCMapper.Runtime.RuntimeSnapshotStore.Register(__meta35);
-            // pair 36: NCMapper.Tests.Models.B03GenRecordSource -> NCMapper.Tests.Models.B03GenRecord (MapFrom channel)
-            var __mfAttr36 = new global::NCMapper.Attributes.MapFromAttribute(typeof(NCMapper.Tests.Models.B03GenRecordSource));
-            var __meta36 = new global::NCMapper.Runtime.RuntimeMapperMetadata
+            global::NCMapper.Runtime.RuntimeSnapshotPair<NCMapper.Tests.Models.ArticleCollection, NCMapper.Tests.Models.ArticleCollectionDto>.Metadata = __meta41;
+            global::NCMapper.Runtime.RuntimeSnapshotStore.Register(__meta41);
+            // pair 42: NCMapper.Tests.Models.B03GenRecordSource -> NCMapper.Tests.Models.B03GenRecord (MapFrom channel)
+            var __mfAttr42 = new global::NCMapper.Attributes.MapFromAttribute(typeof(NCMapper.Tests.Models.B03GenRecordSource));
+            var __meta42 = new global::NCMapper.Runtime.RuntimeMapperMetadata
             {
                 SourceType = typeof(NCMapper.Tests.Models.B03GenRecordSource),
                 TargetType = typeof(NCMapper.Tests.Models.B03GenRecord),
@@ -3933,7 +4936,7 @@ namespace NCMapper.Runtime
                                 TypeName = "string",
                                 TypeRef = typeof(string),
                                 HasMapFromAttribute = true,
-                                MapFromAttribute = __mfAttr36,
+                                MapFromAttribute = __mfAttr42,
                                 HasMapIgnore = false,
                                 MapIgnoreDirection = 0,
                                 HasOverrideIgnore = false,
@@ -3973,7 +4976,7 @@ namespace NCMapper.Runtime
                         TypeName = "string",
                         TypeRef = typeof(string),
                         HasMapFromAttribute = true,
-                        MapFromAttribute = __mfAttr36,
+                        MapFromAttribute = __mfAttr42,
                         HasMapIgnore = false,
                         MapIgnoreDirection = 0,
                         HasOverrideIgnore = false,
@@ -3996,7 +4999,7 @@ namespace NCMapper.Runtime
                         TypeName = "string?",
                         TypeRef = typeof(string),
                         HasMapFromAttribute = true,
-                        MapFromAttribute = __mfAttr36,
+                        MapFromAttribute = __mfAttr42,
                         HasMapIgnore = false,
                         MapIgnoreDirection = 0,
                         HasOverrideIgnore = false,
@@ -4015,11 +5018,11 @@ namespace NCMapper.Runtime
                     },
                 },
             };
-            global::NCMapper.Runtime.RuntimeSnapshotPair<NCMapper.Tests.Models.B03GenRecordSource, NCMapper.Tests.Models.B03GenRecord>.Metadata = __meta36;
-            global::NCMapper.Runtime.RuntimeSnapshotStore.Register(__meta36);
-            // pair 37: NCMapper.Tests.Models.Blog -> NCMapper.Tests.Models.BlogDto (MapFrom channel)
-            var __mfAttr37 = new global::NCMapper.Attributes.MapFromAttribute(typeof(NCMapper.Tests.Models.Blog));
-            var __meta37 = new global::NCMapper.Runtime.RuntimeMapperMetadata
+            global::NCMapper.Runtime.RuntimeSnapshotPair<NCMapper.Tests.Models.B03GenRecordSource, NCMapper.Tests.Models.B03GenRecord>.Metadata = __meta42;
+            global::NCMapper.Runtime.RuntimeSnapshotStore.Register(__meta42);
+            // pair 43: NCMapper.Tests.Models.Blog -> NCMapper.Tests.Models.BlogDto (MapFrom channel)
+            var __mfAttr43 = new global::NCMapper.Attributes.MapFromAttribute(typeof(NCMapper.Tests.Models.Blog));
+            var __meta43 = new global::NCMapper.Runtime.RuntimeMapperMetadata
             {
                 SourceType = typeof(NCMapper.Tests.Models.Blog),
                 TargetType = typeof(NCMapper.Tests.Models.BlogDto),
@@ -4040,7 +5043,7 @@ namespace NCMapper.Runtime
                                 TypeName = "string",
                                 TypeRef = typeof(string),
                                 HasMapFromAttribute = true,
-                                MapFromAttribute = __mfAttr37,
+                                MapFromAttribute = __mfAttr43,
                                 HasMapIgnore = false,
                                 MapIgnoreDirection = 0,
                                 HasOverrideIgnore = false,
@@ -4080,7 +5083,7 @@ namespace NCMapper.Runtime
                                 TypeName = "System.Collections.Generic.List<NCMapper.Tests.Models.PostDto>?",
                                 TypeRef = typeof(System.Collections.Generic.List<NCMapper.Tests.Models.PostDto>),
                                 HasMapFromAttribute = true,
-                                MapFromAttribute = __mfAttr37,
+                                MapFromAttribute = __mfAttr43,
                                 HasMapIgnore = false,
                                 MapIgnoreDirection = 0,
                                 HasOverrideIgnore = false,
@@ -4120,7 +5123,7 @@ namespace NCMapper.Runtime
                                 TypeName = "System.Collections.Generic.Dictionary<string, int>?",
                                 TypeRef = typeof(System.Collections.Generic.Dictionary<string, int>),
                                 HasMapFromAttribute = true,
-                                MapFromAttribute = __mfAttr37,
+                                MapFromAttribute = __mfAttr43,
                                 HasMapIgnore = false,
                                 MapIgnoreDirection = 0,
                                 HasOverrideIgnore = false,
@@ -4160,7 +5163,7 @@ namespace NCMapper.Runtime
                         TypeName = "string",
                         TypeRef = typeof(string),
                         HasMapFromAttribute = true,
-                        MapFromAttribute = __mfAttr37,
+                        MapFromAttribute = __mfAttr43,
                         HasMapIgnore = false,
                         MapIgnoreDirection = 0,
                         HasOverrideIgnore = false,
@@ -4183,7 +5186,7 @@ namespace NCMapper.Runtime
                         TypeName = "System.Collections.Generic.List<NCMapper.Tests.Models.PostDto>?",
                         TypeRef = typeof(System.Collections.Generic.List<NCMapper.Tests.Models.PostDto>),
                         HasMapFromAttribute = true,
-                        MapFromAttribute = __mfAttr37,
+                        MapFromAttribute = __mfAttr43,
                         HasMapIgnore = false,
                         MapIgnoreDirection = 0,
                         HasOverrideIgnore = false,
@@ -4206,7 +5209,7 @@ namespace NCMapper.Runtime
                         TypeName = "System.Collections.Generic.Dictionary<string, int>?",
                         TypeRef = typeof(System.Collections.Generic.Dictionary<string, int>),
                         HasMapFromAttribute = true,
-                        MapFromAttribute = __mfAttr37,
+                        MapFromAttribute = __mfAttr43,
                         HasMapIgnore = false,
                         MapIgnoreDirection = 0,
                         HasOverrideIgnore = false,
@@ -4225,10 +5228,10 @@ namespace NCMapper.Runtime
                     },
                 },
             };
-            global::NCMapper.Runtime.RuntimeSnapshotPair<NCMapper.Tests.Models.Blog, NCMapper.Tests.Models.BlogDto>.Metadata = __meta37;
-            global::NCMapper.Runtime.RuntimeSnapshotStore.Register(__meta37);
-            // pair 38: NCMapper.Tests.Models.Bm2Entity -> NCMapper.Tests.Models.Bm2Dto (Fluent channel)
-            var __meta38 = new global::NCMapper.Runtime.RuntimeMapperMetadata
+            global::NCMapper.Runtime.RuntimeSnapshotPair<NCMapper.Tests.Models.Blog, NCMapper.Tests.Models.BlogDto>.Metadata = __meta43;
+            global::NCMapper.Runtime.RuntimeSnapshotStore.Register(__meta43);
+            // pair 44: NCMapper.Tests.Models.Bm2Entity -> NCMapper.Tests.Models.Bm2Dto (Fluent channel)
+            var __meta44 = new global::NCMapper.Runtime.RuntimeMapperMetadata
             {
                 SourceType = typeof(NCMapper.Tests.Models.Bm2Entity),
                 TargetType = typeof(NCMapper.Tests.Models.Bm2Dto),
@@ -4349,10 +5352,10 @@ namespace NCMapper.Runtime
                     },
                 },
             };
-            global::NCMapper.Runtime.RuntimeSnapshotPair<NCMapper.Tests.Models.Bm2Entity, NCMapper.Tests.Models.Bm2Dto>.Metadata = __meta38;
-            global::NCMapper.Runtime.RuntimeSnapshotStore.Register(__meta38);
-            // pair 39: NCMapper.Tests.Models.BmEntity -> NCMapper.Tests.Models.BmDto (Fluent channel)
-            var __meta39 = new global::NCMapper.Runtime.RuntimeMapperMetadata
+            global::NCMapper.Runtime.RuntimeSnapshotPair<NCMapper.Tests.Models.Bm2Entity, NCMapper.Tests.Models.Bm2Dto>.Metadata = __meta44;
+            global::NCMapper.Runtime.RuntimeSnapshotStore.Register(__meta44);
+            // pair 45: NCMapper.Tests.Models.BmEntity -> NCMapper.Tests.Models.BmDto (Fluent channel)
+            var __meta45 = new global::NCMapper.Runtime.RuntimeMapperMetadata
             {
                 SourceType = typeof(NCMapper.Tests.Models.BmEntity),
                 TargetType = typeof(NCMapper.Tests.Models.BmDto),
@@ -4547,11 +5550,11 @@ namespace NCMapper.Runtime
                     },
                 },
             };
-            global::NCMapper.Runtime.RuntimeSnapshotPair<NCMapper.Tests.Models.BmEntity, NCMapper.Tests.Models.BmDto>.Metadata = __meta39;
-            global::NCMapper.Runtime.RuntimeSnapshotStore.Register(__meta39);
-            // pair 40: NCMapper.Tests.Models.ByteEnumEntity -> NCMapper.Tests.Models.ByteEnumToIntDto (MapFrom channel)
-            var __mfAttr40 = new global::NCMapper.Attributes.MapFromAttribute(typeof(NCMapper.Tests.Models.ByteEnumEntity));
-            var __meta40 = new global::NCMapper.Runtime.RuntimeMapperMetadata
+            global::NCMapper.Runtime.RuntimeSnapshotPair<NCMapper.Tests.Models.BmEntity, NCMapper.Tests.Models.BmDto>.Metadata = __meta45;
+            global::NCMapper.Runtime.RuntimeSnapshotStore.Register(__meta45);
+            // pair 46: NCMapper.Tests.Models.ByteEnumEntity -> NCMapper.Tests.Models.ByteEnumToIntDto (MapFrom channel)
+            var __mfAttr46 = new global::NCMapper.Attributes.MapFromAttribute(typeof(NCMapper.Tests.Models.ByteEnumEntity));
+            var __meta46 = new global::NCMapper.Runtime.RuntimeMapperMetadata
             {
                 SourceType = typeof(NCMapper.Tests.Models.ByteEnumEntity),
                 TargetType = typeof(NCMapper.Tests.Models.ByteEnumToIntDto),
@@ -4572,7 +5575,7 @@ namespace NCMapper.Runtime
                                 TypeName = "int",
                                 TypeRef = typeof(int),
                                 HasMapFromAttribute = true,
-                                MapFromAttribute = __mfAttr40,
+                                MapFromAttribute = __mfAttr46,
                                 HasMapIgnore = false,
                                 MapIgnoreDirection = 0,
                                 HasOverrideIgnore = false,
@@ -4612,7 +5615,7 @@ namespace NCMapper.Runtime
                         TypeName = "int",
                         TypeRef = typeof(int),
                         HasMapFromAttribute = true,
-                        MapFromAttribute = __mfAttr40,
+                        MapFromAttribute = __mfAttr46,
                         HasMapIgnore = false,
                         MapIgnoreDirection = 0,
                         HasOverrideIgnore = false,
@@ -4631,11 +5634,11 @@ namespace NCMapper.Runtime
                     },
                 },
             };
-            global::NCMapper.Runtime.RuntimeSnapshotPair<NCMapper.Tests.Models.ByteEnumEntity, NCMapper.Tests.Models.ByteEnumToIntDto>.Metadata = __meta40;
-            global::NCMapper.Runtime.RuntimeSnapshotStore.Register(__meta40);
-            // pair 41: NCMapper.Tests.Models.ByteEnumEntity -> NCMapper.Tests.Models.ByteEnumToStringDto (MapFrom channel)
-            var __mfAttr41 = new global::NCMapper.Attributes.MapFromAttribute(typeof(NCMapper.Tests.Models.ByteEnumEntity));
-            var __meta41 = new global::NCMapper.Runtime.RuntimeMapperMetadata
+            global::NCMapper.Runtime.RuntimeSnapshotPair<NCMapper.Tests.Models.ByteEnumEntity, NCMapper.Tests.Models.ByteEnumToIntDto>.Metadata = __meta46;
+            global::NCMapper.Runtime.RuntimeSnapshotStore.Register(__meta46);
+            // pair 47: NCMapper.Tests.Models.ByteEnumEntity -> NCMapper.Tests.Models.ByteEnumToStringDto (MapFrom channel)
+            var __mfAttr47 = new global::NCMapper.Attributes.MapFromAttribute(typeof(NCMapper.Tests.Models.ByteEnumEntity));
+            var __meta47 = new global::NCMapper.Runtime.RuntimeMapperMetadata
             {
                 SourceType = typeof(NCMapper.Tests.Models.ByteEnumEntity),
                 TargetType = typeof(NCMapper.Tests.Models.ByteEnumToStringDto),
@@ -4656,7 +5659,7 @@ namespace NCMapper.Runtime
                                 TypeName = "string",
                                 TypeRef = typeof(string),
                                 HasMapFromAttribute = true,
-                                MapFromAttribute = __mfAttr41,
+                                MapFromAttribute = __mfAttr47,
                                 HasMapIgnore = false,
                                 MapIgnoreDirection = 0,
                                 HasOverrideIgnore = false,
@@ -4696,7 +5699,7 @@ namespace NCMapper.Runtime
                         TypeName = "string",
                         TypeRef = typeof(string),
                         HasMapFromAttribute = true,
-                        MapFromAttribute = __mfAttr41,
+                        MapFromAttribute = __mfAttr47,
                         HasMapIgnore = false,
                         MapIgnoreDirection = 0,
                         HasOverrideIgnore = false,
@@ -4715,11 +5718,11 @@ namespace NCMapper.Runtime
                     },
                 },
             };
-            global::NCMapper.Runtime.RuntimeSnapshotPair<NCMapper.Tests.Models.ByteEnumEntity, NCMapper.Tests.Models.ByteEnumToStringDto>.Metadata = __meta41;
-            global::NCMapper.Runtime.RuntimeSnapshotStore.Register(__meta41);
-            // pair 42: NCMapper.Tests.Models.Category -> NCMapper.Tests.Models.CategoryDto (MapFrom channel)
-            var __mfAttr42 = new global::NCMapper.Attributes.MapFromAttribute(typeof(NCMapper.Tests.Models.Category));
-            var __meta42 = new global::NCMapper.Runtime.RuntimeMapperMetadata
+            global::NCMapper.Runtime.RuntimeSnapshotPair<NCMapper.Tests.Models.ByteEnumEntity, NCMapper.Tests.Models.ByteEnumToStringDto>.Metadata = __meta47;
+            global::NCMapper.Runtime.RuntimeSnapshotStore.Register(__meta47);
+            // pair 48: NCMapper.Tests.Models.Category -> NCMapper.Tests.Models.CategoryDto (MapFrom channel)
+            var __mfAttr48 = new global::NCMapper.Attributes.MapFromAttribute(typeof(NCMapper.Tests.Models.Category));
+            var __meta48 = new global::NCMapper.Runtime.RuntimeMapperMetadata
             {
                 SourceType = typeof(NCMapper.Tests.Models.Category),
                 TargetType = typeof(NCMapper.Tests.Models.CategoryDto),
@@ -4740,7 +5743,7 @@ namespace NCMapper.Runtime
                                 TypeName = "string",
                                 TypeRef = typeof(string),
                                 HasMapFromAttribute = true,
-                                MapFromAttribute = __mfAttr42,
+                                MapFromAttribute = __mfAttr48,
                                 HasMapIgnore = false,
                                 MapIgnoreDirection = 0,
                                 HasOverrideIgnore = false,
@@ -4780,7 +5783,7 @@ namespace NCMapper.Runtime
                                 TypeName = "int",
                                 TypeRef = typeof(int),
                                 HasMapFromAttribute = true,
-                                MapFromAttribute = __mfAttr42,
+                                MapFromAttribute = __mfAttr48,
                                 HasMapIgnore = false,
                                 MapIgnoreDirection = 0,
                                 HasOverrideIgnore = false,
@@ -4820,7 +5823,7 @@ namespace NCMapper.Runtime
                                 TypeName = "System.Collections.Generic.List<NCMapper.Tests.Models.CategoryDto>?",
                                 TypeRef = typeof(System.Collections.Generic.List<NCMapper.Tests.Models.CategoryDto>),
                                 HasMapFromAttribute = true,
-                                MapFromAttribute = __mfAttr42,
+                                MapFromAttribute = __mfAttr48,
                                 HasMapIgnore = false,
                                 MapIgnoreDirection = 0,
                                 HasOverrideIgnore = false,
@@ -4860,7 +5863,7 @@ namespace NCMapper.Runtime
                         TypeName = "string",
                         TypeRef = typeof(string),
                         HasMapFromAttribute = true,
-                        MapFromAttribute = __mfAttr42,
+                        MapFromAttribute = __mfAttr48,
                         HasMapIgnore = false,
                         MapIgnoreDirection = 0,
                         HasOverrideIgnore = false,
@@ -4883,7 +5886,7 @@ namespace NCMapper.Runtime
                         TypeName = "int",
                         TypeRef = typeof(int),
                         HasMapFromAttribute = true,
-                        MapFromAttribute = __mfAttr42,
+                        MapFromAttribute = __mfAttr48,
                         HasMapIgnore = false,
                         MapIgnoreDirection = 0,
                         HasOverrideIgnore = false,
@@ -4906,7 +5909,7 @@ namespace NCMapper.Runtime
                         TypeName = "System.Collections.Generic.List<NCMapper.Tests.Models.CategoryDto>?",
                         TypeRef = typeof(System.Collections.Generic.List<NCMapper.Tests.Models.CategoryDto>),
                         HasMapFromAttribute = true,
-                        MapFromAttribute = __mfAttr42,
+                        MapFromAttribute = __mfAttr48,
                         HasMapIgnore = false,
                         MapIgnoreDirection = 0,
                         HasOverrideIgnore = false,
@@ -4925,11 +5928,11 @@ namespace NCMapper.Runtime
                     },
                 },
             };
-            global::NCMapper.Runtime.RuntimeSnapshotPair<NCMapper.Tests.Models.Category, NCMapper.Tests.Models.CategoryDto>.Metadata = __meta42;
-            global::NCMapper.Runtime.RuntimeSnapshotStore.Register(__meta42);
-            // pair 43: NCMapper.Tests.Models.Company -> NCMapper.Tests.Models.CompanyDto (MapFrom channel)
-            var __mfAttr43 = new global::NCMapper.Attributes.MapFromAttribute(typeof(NCMapper.Tests.Models.Company));
-            var __meta43 = new global::NCMapper.Runtime.RuntimeMapperMetadata
+            global::NCMapper.Runtime.RuntimeSnapshotPair<NCMapper.Tests.Models.Category, NCMapper.Tests.Models.CategoryDto>.Metadata = __meta48;
+            global::NCMapper.Runtime.RuntimeSnapshotStore.Register(__meta48);
+            // pair 49: NCMapper.Tests.Models.Company -> NCMapper.Tests.Models.CompanyDto (MapFrom channel)
+            var __mfAttr49 = new global::NCMapper.Attributes.MapFromAttribute(typeof(NCMapper.Tests.Models.Company));
+            var __meta49 = new global::NCMapper.Runtime.RuntimeMapperMetadata
             {
                 SourceType = typeof(NCMapper.Tests.Models.Company),
                 TargetType = typeof(NCMapper.Tests.Models.CompanyDto),
@@ -4950,7 +5953,7 @@ namespace NCMapper.Runtime
                                 TypeName = "string",
                                 TypeRef = typeof(string),
                                 HasMapFromAttribute = true,
-                                MapFromAttribute = __mfAttr43,
+                                MapFromAttribute = __mfAttr49,
                                 HasMapIgnore = false,
                                 MapIgnoreDirection = 0,
                                 HasOverrideIgnore = false,
@@ -4990,7 +5993,7 @@ namespace NCMapper.Runtime
                                 TypeName = "System.Collections.Generic.List<NCMapper.Tests.Models.DepartmentDto>?",
                                 TypeRef = typeof(System.Collections.Generic.List<NCMapper.Tests.Models.DepartmentDto>),
                                 HasMapFromAttribute = true,
-                                MapFromAttribute = __mfAttr43,
+                                MapFromAttribute = __mfAttr49,
                                 HasMapIgnore = false,
                                 MapIgnoreDirection = 0,
                                 HasOverrideIgnore = false,
@@ -5030,7 +6033,7 @@ namespace NCMapper.Runtime
                         TypeName = "string",
                         TypeRef = typeof(string),
                         HasMapFromAttribute = true,
-                        MapFromAttribute = __mfAttr43,
+                        MapFromAttribute = __mfAttr49,
                         HasMapIgnore = false,
                         MapIgnoreDirection = 0,
                         HasOverrideIgnore = false,
@@ -5053,7 +6056,7 @@ namespace NCMapper.Runtime
                         TypeName = "System.Collections.Generic.List<NCMapper.Tests.Models.DepartmentDto>?",
                         TypeRef = typeof(System.Collections.Generic.List<NCMapper.Tests.Models.DepartmentDto>),
                         HasMapFromAttribute = true,
-                        MapFromAttribute = __mfAttr43,
+                        MapFromAttribute = __mfAttr49,
                         HasMapIgnore = false,
                         MapIgnoreDirection = 0,
                         HasOverrideIgnore = false,
@@ -5072,11 +6075,11 @@ namespace NCMapper.Runtime
                     },
                 },
             };
-            global::NCMapper.Runtime.RuntimeSnapshotPair<NCMapper.Tests.Models.Company, NCMapper.Tests.Models.CompanyDto>.Metadata = __meta43;
-            global::NCMapper.Runtime.RuntimeSnapshotStore.Register(__meta43);
-            // pair 44: NCMapper.Tests.Models.ComposeNestedMainSource -> NCMapper.Tests.Models.ComposeNestedDto (MapFrom channel)
-            var __mfAttr44 = new global::NCMapper.Attributes.MapFromAttribute(typeof(NCMapper.Tests.Models.ComposeNestedMainSource));
-            var __meta44 = new global::NCMapper.Runtime.RuntimeMapperMetadata
+            global::NCMapper.Runtime.RuntimeSnapshotPair<NCMapper.Tests.Models.Company, NCMapper.Tests.Models.CompanyDto>.Metadata = __meta49;
+            global::NCMapper.Runtime.RuntimeSnapshotStore.Register(__meta49);
+            // pair 50: NCMapper.Tests.Models.ComposeNestedMainSource -> NCMapper.Tests.Models.ComposeNestedDto (MapFrom channel)
+            var __mfAttr50 = new global::NCMapper.Attributes.MapFromAttribute(typeof(NCMapper.Tests.Models.ComposeNestedMainSource));
+            var __meta50 = new global::NCMapper.Runtime.RuntimeMapperMetadata
             {
                 SourceType = typeof(NCMapper.Tests.Models.ComposeNestedMainSource),
                 TargetType = typeof(NCMapper.Tests.Models.ComposeNestedDto),
@@ -5097,7 +6100,7 @@ namespace NCMapper.Runtime
                                 TypeName = "int",
                                 TypeRef = typeof(int),
                                 HasMapFromAttribute = true,
-                                MapFromAttribute = __mfAttr44,
+                                MapFromAttribute = __mfAttr50,
                                 HasMapIgnore = false,
                                 MapIgnoreDirection = 0,
                                 HasOverrideIgnore = false,
@@ -5154,7 +6157,7 @@ namespace NCMapper.Runtime
                         TypeName = "int",
                         TypeRef = typeof(int),
                         HasMapFromAttribute = true,
-                        MapFromAttribute = __mfAttr44,
+                        MapFromAttribute = __mfAttr50,
                         HasMapIgnore = false,
                         MapIgnoreDirection = 0,
                         HasOverrideIgnore = false,
@@ -5177,7 +6180,7 @@ namespace NCMapper.Runtime
                         TypeName = "int",
                         TypeRef = typeof(int),
                         HasMapFromAttribute = true,
-                        MapFromAttribute = __mfAttr44,
+                        MapFromAttribute = __mfAttr50,
                         HasMapIgnore = false,
                         MapIgnoreDirection = 0,
                         HasOverrideIgnore = false,
@@ -5200,7 +6203,7 @@ namespace NCMapper.Runtime
                         TypeName = "string?",
                         TypeRef = typeof(string),
                         HasMapFromAttribute = true,
-                        MapFromAttribute = __mfAttr44,
+                        MapFromAttribute = __mfAttr50,
                         HasMapIgnore = false,
                         MapIgnoreDirection = 0,
                         HasOverrideIgnore = false,
@@ -5219,11 +6222,11 @@ namespace NCMapper.Runtime
                     },
                 },
             };
-            global::NCMapper.Runtime.RuntimeSnapshotPair<NCMapper.Tests.Models.ComposeNestedMainSource, NCMapper.Tests.Models.ComposeNestedDto>.Metadata = __meta44;
-            global::NCMapper.Runtime.RuntimeSnapshotStore.Register(__meta44);
-            // pair 45: NCMapper.Tests.Models.ContainerNullSource -> NCMapper.Tests.Models.ContainerNullGenDto (MapFrom channel)
-            var __mfAttr45 = new global::NCMapper.Attributes.MapFromAttribute(typeof(NCMapper.Tests.Models.ContainerNullSource));
-            var __meta45 = new global::NCMapper.Runtime.RuntimeMapperMetadata
+            global::NCMapper.Runtime.RuntimeSnapshotPair<NCMapper.Tests.Models.ComposeNestedMainSource, NCMapper.Tests.Models.ComposeNestedDto>.Metadata = __meta50;
+            global::NCMapper.Runtime.RuntimeSnapshotStore.Register(__meta50);
+            // pair 51: NCMapper.Tests.Models.ContainerNullSource -> NCMapper.Tests.Models.ContainerNullGenDto (MapFrom channel)
+            var __mfAttr51 = new global::NCMapper.Attributes.MapFromAttribute(typeof(NCMapper.Tests.Models.ContainerNullSource));
+            var __meta51 = new global::NCMapper.Runtime.RuntimeMapperMetadata
             {
                 SourceType = typeof(NCMapper.Tests.Models.ContainerNullSource),
                 TargetType = typeof(NCMapper.Tests.Models.ContainerNullGenDto),
@@ -5244,7 +6247,7 @@ namespace NCMapper.Runtime
                                 TypeName = "System.Collections.Generic.List<NCMapper.Tests.Models.ElemB>?",
                                 TypeRef = typeof(System.Collections.Generic.List<NCMapper.Tests.Models.ElemB>),
                                 HasMapFromAttribute = true,
-                                MapFromAttribute = __mfAttr45,
+                                MapFromAttribute = __mfAttr51,
                                 HasMapIgnore = false,
                                 MapIgnoreDirection = 0,
                                 HasOverrideIgnore = false,
@@ -5284,7 +6287,7 @@ namespace NCMapper.Runtime
                                 TypeName = "System.Collections.Generic.IEnumerable<NCMapper.Tests.Models.ElemB>?",
                                 TypeRef = typeof(System.Collections.Generic.IEnumerable<NCMapper.Tests.Models.ElemB>),
                                 HasMapFromAttribute = true,
-                                MapFromAttribute = __mfAttr45,
+                                MapFromAttribute = __mfAttr51,
                                 HasMapIgnore = false,
                                 MapIgnoreDirection = 0,
                                 HasOverrideIgnore = false,
@@ -5324,7 +6327,7 @@ namespace NCMapper.Runtime
                                 TypeName = "NCMapper.Tests.Models.ElemB[]?",
                                 TypeRef = typeof(NCMapper.Tests.Models.ElemB[]),
                                 HasMapFromAttribute = true,
-                                MapFromAttribute = __mfAttr45,
+                                MapFromAttribute = __mfAttr51,
                                 HasMapIgnore = false,
                                 MapIgnoreDirection = 0,
                                 HasOverrideIgnore = false,
@@ -5364,7 +6367,7 @@ namespace NCMapper.Runtime
                                 TypeName = "System.Collections.Generic.HashSet<NCMapper.Tests.Models.ElemB>?",
                                 TypeRef = typeof(System.Collections.Generic.HashSet<NCMapper.Tests.Models.ElemB>),
                                 HasMapFromAttribute = true,
-                                MapFromAttribute = __mfAttr45,
+                                MapFromAttribute = __mfAttr51,
                                 HasMapIgnore = false,
                                 MapIgnoreDirection = 0,
                                 HasOverrideIgnore = false,
@@ -5404,7 +6407,7 @@ namespace NCMapper.Runtime
                                 TypeName = "System.Collections.Generic.Queue<NCMapper.Tests.Models.ElemB>?",
                                 TypeRef = typeof(System.Collections.Generic.Queue<NCMapper.Tests.Models.ElemB>),
                                 HasMapFromAttribute = true,
-                                MapFromAttribute = __mfAttr45,
+                                MapFromAttribute = __mfAttr51,
                                 HasMapIgnore = false,
                                 MapIgnoreDirection = 0,
                                 HasOverrideIgnore = false,
@@ -5444,7 +6447,7 @@ namespace NCMapper.Runtime
                                 TypeName = "System.Collections.Generic.Dictionary<string, NCMapper.Tests.Models.ElemB>?",
                                 TypeRef = typeof(System.Collections.Generic.Dictionary<string, NCMapper.Tests.Models.ElemB>),
                                 HasMapFromAttribute = true,
-                                MapFromAttribute = __mfAttr45,
+                                MapFromAttribute = __mfAttr51,
                                 HasMapIgnore = false,
                                 MapIgnoreDirection = 0,
                                 HasOverrideIgnore = false,
@@ -5484,7 +6487,7 @@ namespace NCMapper.Runtime
                         TypeName = "System.Collections.Generic.List<NCMapper.Tests.Models.ElemB>?",
                         TypeRef = typeof(System.Collections.Generic.List<NCMapper.Tests.Models.ElemB>),
                         HasMapFromAttribute = true,
-                        MapFromAttribute = __mfAttr45,
+                        MapFromAttribute = __mfAttr51,
                         HasMapIgnore = false,
                         MapIgnoreDirection = 0,
                         HasOverrideIgnore = false,
@@ -5507,7 +6510,7 @@ namespace NCMapper.Runtime
                         TypeName = "System.Collections.Generic.IEnumerable<NCMapper.Tests.Models.ElemB>?",
                         TypeRef = typeof(System.Collections.Generic.IEnumerable<NCMapper.Tests.Models.ElemB>),
                         HasMapFromAttribute = true,
-                        MapFromAttribute = __mfAttr45,
+                        MapFromAttribute = __mfAttr51,
                         HasMapIgnore = false,
                         MapIgnoreDirection = 0,
                         HasOverrideIgnore = false,
@@ -5530,7 +6533,7 @@ namespace NCMapper.Runtime
                         TypeName = "NCMapper.Tests.Models.ElemB[]?",
                         TypeRef = typeof(NCMapper.Tests.Models.ElemB[]),
                         HasMapFromAttribute = true,
-                        MapFromAttribute = __mfAttr45,
+                        MapFromAttribute = __mfAttr51,
                         HasMapIgnore = false,
                         MapIgnoreDirection = 0,
                         HasOverrideIgnore = false,
@@ -5553,7 +6556,7 @@ namespace NCMapper.Runtime
                         TypeName = "System.Collections.Generic.HashSet<NCMapper.Tests.Models.ElemB>?",
                         TypeRef = typeof(System.Collections.Generic.HashSet<NCMapper.Tests.Models.ElemB>),
                         HasMapFromAttribute = true,
-                        MapFromAttribute = __mfAttr45,
+                        MapFromAttribute = __mfAttr51,
                         HasMapIgnore = false,
                         MapIgnoreDirection = 0,
                         HasOverrideIgnore = false,
@@ -5576,7 +6579,7 @@ namespace NCMapper.Runtime
                         TypeName = "System.Collections.Generic.Queue<NCMapper.Tests.Models.ElemB>?",
                         TypeRef = typeof(System.Collections.Generic.Queue<NCMapper.Tests.Models.ElemB>),
                         HasMapFromAttribute = true,
-                        MapFromAttribute = __mfAttr45,
+                        MapFromAttribute = __mfAttr51,
                         HasMapIgnore = false,
                         MapIgnoreDirection = 0,
                         HasOverrideIgnore = false,
@@ -5599,7 +6602,7 @@ namespace NCMapper.Runtime
                         TypeName = "System.Collections.Generic.Dictionary<string, NCMapper.Tests.Models.ElemB>?",
                         TypeRef = typeof(System.Collections.Generic.Dictionary<string, NCMapper.Tests.Models.ElemB>),
                         HasMapFromAttribute = true,
-                        MapFromAttribute = __mfAttr45,
+                        MapFromAttribute = __mfAttr51,
                         HasMapIgnore = false,
                         MapIgnoreDirection = 0,
                         HasOverrideIgnore = false,
@@ -5618,11 +6621,11 @@ namespace NCMapper.Runtime
                     },
                 },
             };
-            global::NCMapper.Runtime.RuntimeSnapshotPair<NCMapper.Tests.Models.ContainerNullSource, NCMapper.Tests.Models.ContainerNullGenDto>.Metadata = __meta45;
-            global::NCMapper.Runtime.RuntimeSnapshotStore.Register(__meta45);
-            // pair 46: NCMapper.Tests.Models.ConverterSourceEntity -> NCMapper.Tests.Models.ConverterDto (MapFrom channel)
-            var __mfAttr46 = new global::NCMapper.Attributes.MapFromAttribute(typeof(NCMapper.Tests.Models.ConverterSourceEntity));
-            var __meta46 = new global::NCMapper.Runtime.RuntimeMapperMetadata
+            global::NCMapper.Runtime.RuntimeSnapshotPair<NCMapper.Tests.Models.ContainerNullSource, NCMapper.Tests.Models.ContainerNullGenDto>.Metadata = __meta51;
+            global::NCMapper.Runtime.RuntimeSnapshotStore.Register(__meta51);
+            // pair 52: NCMapper.Tests.Models.ConverterSourceEntity -> NCMapper.Tests.Models.ConverterDto (MapFrom channel)
+            var __mfAttr52 = new global::NCMapper.Attributes.MapFromAttribute(typeof(NCMapper.Tests.Models.ConverterSourceEntity));
+            var __meta52 = new global::NCMapper.Runtime.RuntimeMapperMetadata
             {
                 SourceType = typeof(NCMapper.Tests.Models.ConverterSourceEntity),
                 TargetType = typeof(NCMapper.Tests.Models.ConverterDto),
@@ -5643,7 +6646,7 @@ namespace NCMapper.Runtime
                                 TypeName = "int",
                                 TypeRef = typeof(int),
                                 HasMapFromAttribute = true,
-                                MapFromAttribute = __mfAttr46,
+                                MapFromAttribute = __mfAttr52,
                                 HasMapIgnore = false,
                                 MapIgnoreDirection = 0,
                                 HasOverrideIgnore = false,
@@ -5683,7 +6686,7 @@ namespace NCMapper.Runtime
                                 TypeName = "string",
                                 TypeRef = typeof(string),
                                 HasMapFromAttribute = true,
-                                MapFromAttribute = __mfAttr46,
+                                MapFromAttribute = __mfAttr52,
                                 HasMapIgnore = false,
                                 MapIgnoreDirection = 0,
                                 HasOverrideIgnore = false,
@@ -5723,7 +6726,7 @@ namespace NCMapper.Runtime
                                 TypeName = "System.DateTime",
                                 TypeRef = typeof(System.DateTime),
                                 HasMapFromAttribute = true,
-                                MapFromAttribute = __mfAttr46,
+                                MapFromAttribute = __mfAttr52,
                                 HasMapIgnore = false,
                                 MapIgnoreDirection = 0,
                                 HasOverrideIgnore = false,
@@ -5763,7 +6766,7 @@ namespace NCMapper.Runtime
                                 TypeName = "string",
                                 TypeRef = typeof(string),
                                 HasMapFromAttribute = true,
-                                MapFromAttribute = __mfAttr46,
+                                MapFromAttribute = __mfAttr52,
                                 HasMapIgnore = false,
                                 MapIgnoreDirection = 0,
                                 HasOverrideIgnore = false,
@@ -5803,7 +6806,7 @@ namespace NCMapper.Runtime
                         TypeName = "int",
                         TypeRef = typeof(int),
                         HasMapFromAttribute = true,
-                        MapFromAttribute = __mfAttr46,
+                        MapFromAttribute = __mfAttr52,
                         HasMapIgnore = false,
                         MapIgnoreDirection = 0,
                         HasOverrideIgnore = false,
@@ -5826,7 +6829,7 @@ namespace NCMapper.Runtime
                         TypeName = "string",
                         TypeRef = typeof(string),
                         HasMapFromAttribute = true,
-                        MapFromAttribute = __mfAttr46,
+                        MapFromAttribute = __mfAttr52,
                         HasMapIgnore = false,
                         MapIgnoreDirection = 0,
                         HasOverrideIgnore = false,
@@ -5849,7 +6852,7 @@ namespace NCMapper.Runtime
                         TypeName = "System.DateTime",
                         TypeRef = typeof(System.DateTime),
                         HasMapFromAttribute = true,
-                        MapFromAttribute = __mfAttr46,
+                        MapFromAttribute = __mfAttr52,
                         HasMapIgnore = false,
                         MapIgnoreDirection = 0,
                         HasOverrideIgnore = false,
@@ -5872,7 +6875,7 @@ namespace NCMapper.Runtime
                         TypeName = "string",
                         TypeRef = typeof(string),
                         HasMapFromAttribute = true,
-                        MapFromAttribute = __mfAttr46,
+                        MapFromAttribute = __mfAttr52,
                         HasMapIgnore = false,
                         MapIgnoreDirection = 0,
                         HasOverrideIgnore = false,
@@ -5891,11 +6894,11 @@ namespace NCMapper.Runtime
                     },
                 },
             };
-            global::NCMapper.Runtime.RuntimeSnapshotPair<NCMapper.Tests.Models.ConverterSourceEntity, NCMapper.Tests.Models.ConverterDto>.Metadata = __meta46;
-            global::NCMapper.Runtime.RuntimeSnapshotStore.Register(__meta46);
-            // pair 47: NCMapper.Tests.Models.ConverterSourceEntity -> NCMapper.Tests.Tests.ExpressionBuilderMutantTests.ConverterValidationDto (MapFrom channel)
-            var __mfAttr47 = new global::NCMapper.Attributes.MapFromAttribute(typeof(NCMapper.Tests.Models.ConverterSourceEntity));
-            var __meta47 = new global::NCMapper.Runtime.RuntimeMapperMetadata
+            global::NCMapper.Runtime.RuntimeSnapshotPair<NCMapper.Tests.Models.ConverterSourceEntity, NCMapper.Tests.Models.ConverterDto>.Metadata = __meta52;
+            global::NCMapper.Runtime.RuntimeSnapshotStore.Register(__meta52);
+            // pair 53: NCMapper.Tests.Models.ConverterSourceEntity -> NCMapper.Tests.Tests.ExpressionBuilderMutantTests.ConverterValidationDto (MapFrom channel)
+            var __mfAttr53 = new global::NCMapper.Attributes.MapFromAttribute(typeof(NCMapper.Tests.Models.ConverterSourceEntity));
+            var __meta53 = new global::NCMapper.Runtime.RuntimeMapperMetadata
             {
                 SourceType = typeof(NCMapper.Tests.Models.ConverterSourceEntity),
                 TargetType = typeof(NCMapper.Tests.Tests.ExpressionBuilderMutantTests.ConverterValidationDto),
@@ -5916,7 +6919,7 @@ namespace NCMapper.Runtime
                                 TypeName = "int",
                                 TypeRef = typeof(int),
                                 HasMapFromAttribute = true,
-                                MapFromAttribute = __mfAttr47,
+                                MapFromAttribute = __mfAttr53,
                                 HasMapIgnore = false,
                                 MapIgnoreDirection = 0,
                                 HasOverrideIgnore = false,
@@ -5956,7 +6959,7 @@ namespace NCMapper.Runtime
                                 TypeName = "string",
                                 TypeRef = typeof(string),
                                 HasMapFromAttribute = true,
-                                MapFromAttribute = __mfAttr47,
+                                MapFromAttribute = __mfAttr53,
                                 HasMapIgnore = false,
                                 MapIgnoreDirection = 0,
                                 HasOverrideIgnore = false,
@@ -5996,7 +6999,7 @@ namespace NCMapper.Runtime
                         TypeName = "int",
                         TypeRef = typeof(int),
                         HasMapFromAttribute = true,
-                        MapFromAttribute = __mfAttr47,
+                        MapFromAttribute = __mfAttr53,
                         HasMapIgnore = false,
                         MapIgnoreDirection = 0,
                         HasOverrideIgnore = false,
@@ -6019,7 +7022,7 @@ namespace NCMapper.Runtime
                         TypeName = "string",
                         TypeRef = typeof(string),
                         HasMapFromAttribute = true,
-                        MapFromAttribute = __mfAttr47,
+                        MapFromAttribute = __mfAttr53,
                         HasMapIgnore = false,
                         MapIgnoreDirection = 0,
                         HasOverrideIgnore = false,
@@ -6038,11 +7041,11 @@ namespace NCMapper.Runtime
                     },
                 },
             };
-            global::NCMapper.Runtime.RuntimeSnapshotPair<NCMapper.Tests.Models.ConverterSourceEntity, NCMapper.Tests.Tests.ExpressionBuilderMutantTests.ConverterValidationDto>.Metadata = __meta47;
-            global::NCMapper.Runtime.RuntimeSnapshotStore.Register(__meta47);
-            // pair 48: NCMapper.Tests.Models.ConverterSourceEntity -> NCMapper.Tests.Tests.NullReturnDto (MapFrom channel)
-            var __mfAttr48 = new global::NCMapper.Attributes.MapFromAttribute(typeof(NCMapper.Tests.Models.ConverterSourceEntity));
-            var __meta48 = new global::NCMapper.Runtime.RuntimeMapperMetadata
+            global::NCMapper.Runtime.RuntimeSnapshotPair<NCMapper.Tests.Models.ConverterSourceEntity, NCMapper.Tests.Tests.ExpressionBuilderMutantTests.ConverterValidationDto>.Metadata = __meta53;
+            global::NCMapper.Runtime.RuntimeSnapshotStore.Register(__meta53);
+            // pair 54: NCMapper.Tests.Models.ConverterSourceEntity -> NCMapper.Tests.Tests.NullReturnDto (MapFrom channel)
+            var __mfAttr54 = new global::NCMapper.Attributes.MapFromAttribute(typeof(NCMapper.Tests.Models.ConverterSourceEntity));
+            var __meta54 = new global::NCMapper.Runtime.RuntimeMapperMetadata
             {
                 SourceType = typeof(NCMapper.Tests.Models.ConverterSourceEntity),
                 TargetType = typeof(NCMapper.Tests.Tests.NullReturnDto),
@@ -6063,7 +7066,7 @@ namespace NCMapper.Runtime
                                 TypeName = "int",
                                 TypeRef = typeof(int),
                                 HasMapFromAttribute = true,
-                                MapFromAttribute = __mfAttr48,
+                                MapFromAttribute = __mfAttr54,
                                 HasMapIgnore = false,
                                 MapIgnoreDirection = 0,
                                 HasOverrideIgnore = false,
@@ -6103,7 +7106,7 @@ namespace NCMapper.Runtime
                                 TypeName = "string?",
                                 TypeRef = typeof(string),
                                 HasMapFromAttribute = true,
-                                MapFromAttribute = __mfAttr48,
+                                MapFromAttribute = __mfAttr54,
                                 HasMapIgnore = false,
                                 MapIgnoreDirection = 0,
                                 HasOverrideIgnore = false,
@@ -6143,7 +7146,7 @@ namespace NCMapper.Runtime
                         TypeName = "int",
                         TypeRef = typeof(int),
                         HasMapFromAttribute = true,
-                        MapFromAttribute = __mfAttr48,
+                        MapFromAttribute = __mfAttr54,
                         HasMapIgnore = false,
                         MapIgnoreDirection = 0,
                         HasOverrideIgnore = false,
@@ -6166,7 +7169,7 @@ namespace NCMapper.Runtime
                         TypeName = "string?",
                         TypeRef = typeof(string),
                         HasMapFromAttribute = true,
-                        MapFromAttribute = __mfAttr48,
+                        MapFromAttribute = __mfAttr54,
                         HasMapIgnore = false,
                         MapIgnoreDirection = 0,
                         HasOverrideIgnore = false,
@@ -6185,11 +7188,11 @@ namespace NCMapper.Runtime
                     },
                 },
             };
-            global::NCMapper.Runtime.RuntimeSnapshotPair<NCMapper.Tests.Models.ConverterSourceEntity, NCMapper.Tests.Tests.NullReturnDto>.Metadata = __meta48;
-            global::NCMapper.Runtime.RuntimeSnapshotStore.Register(__meta48);
-            // pair 49: NCMapper.Tests.Models.CustomerEntity -> NCMapper.Tests.Models.CustomerDto (MapFrom channel)
-            var __mfAttr49 = new global::NCMapper.Attributes.MapFromAttribute(typeof(NCMapper.Tests.Models.CustomerEntity));
-            var __meta49 = new global::NCMapper.Runtime.RuntimeMapperMetadata
+            global::NCMapper.Runtime.RuntimeSnapshotPair<NCMapper.Tests.Models.ConverterSourceEntity, NCMapper.Tests.Tests.NullReturnDto>.Metadata = __meta54;
+            global::NCMapper.Runtime.RuntimeSnapshotStore.Register(__meta54);
+            // pair 55: NCMapper.Tests.Models.CustomerEntity -> NCMapper.Tests.Models.CustomerDto (MapFrom channel)
+            var __mfAttr55 = new global::NCMapper.Attributes.MapFromAttribute(typeof(NCMapper.Tests.Models.CustomerEntity));
+            var __meta55 = new global::NCMapper.Runtime.RuntimeMapperMetadata
             {
                 SourceType = typeof(NCMapper.Tests.Models.CustomerEntity),
                 TargetType = typeof(NCMapper.Tests.Models.CustomerDto),
@@ -6210,7 +7213,7 @@ namespace NCMapper.Runtime
                                 TypeName = "int",
                                 TypeRef = typeof(int),
                                 HasMapFromAttribute = true,
-                                MapFromAttribute = __mfAttr49,
+                                MapFromAttribute = __mfAttr55,
                                 HasMapIgnore = false,
                                 MapIgnoreDirection = 0,
                                 HasOverrideIgnore = false,
@@ -6250,7 +7253,7 @@ namespace NCMapper.Runtime
                                 TypeName = "string",
                                 TypeRef = typeof(string),
                                 HasMapFromAttribute = true,
-                                MapFromAttribute = __mfAttr49,
+                                MapFromAttribute = __mfAttr55,
                                 HasMapIgnore = false,
                                 MapIgnoreDirection = 0,
                                 HasOverrideIgnore = false,
@@ -6290,7 +7293,7 @@ namespace NCMapper.Runtime
                                 TypeName = "NCMapper.Tests.Models.AddressDto?",
                                 TypeRef = typeof(NCMapper.Tests.Models.AddressDto),
                                 HasMapFromAttribute = true,
-                                MapFromAttribute = __mfAttr49,
+                                MapFromAttribute = __mfAttr55,
                                 HasMapIgnore = false,
                                 MapIgnoreDirection = 0,
                                 HasOverrideIgnore = false,
@@ -6330,7 +7333,7 @@ namespace NCMapper.Runtime
                         TypeName = "int",
                         TypeRef = typeof(int),
                         HasMapFromAttribute = true,
-                        MapFromAttribute = __mfAttr49,
+                        MapFromAttribute = __mfAttr55,
                         HasMapIgnore = false,
                         MapIgnoreDirection = 0,
                         HasOverrideIgnore = false,
@@ -6353,7 +7356,7 @@ namespace NCMapper.Runtime
                         TypeName = "string",
                         TypeRef = typeof(string),
                         HasMapFromAttribute = true,
-                        MapFromAttribute = __mfAttr49,
+                        MapFromAttribute = __mfAttr55,
                         HasMapIgnore = false,
                         MapIgnoreDirection = 0,
                         HasOverrideIgnore = false,
@@ -6376,7 +7379,7 @@ namespace NCMapper.Runtime
                         TypeName = "NCMapper.Tests.Models.AddressDto?",
                         TypeRef = typeof(NCMapper.Tests.Models.AddressDto),
                         HasMapFromAttribute = true,
-                        MapFromAttribute = __mfAttr49,
+                        MapFromAttribute = __mfAttr55,
                         HasMapIgnore = false,
                         MapIgnoreDirection = 0,
                         HasOverrideIgnore = false,
@@ -6395,11 +7398,11 @@ namespace NCMapper.Runtime
                     },
                 },
             };
-            global::NCMapper.Runtime.RuntimeSnapshotPair<NCMapper.Tests.Models.CustomerEntity, NCMapper.Tests.Models.CustomerDto>.Metadata = __meta49;
-            global::NCMapper.Runtime.RuntimeSnapshotStore.Register(__meta49);
-            // pair 50: NCMapper.Tests.Models.CustomerEntity -> NCMapper.Tests.Models.MixedSourceDto (MapFrom channel)
-            var __mfAttr50 = new global::NCMapper.Attributes.MapFromAttribute(typeof(NCMapper.Tests.Models.CustomerEntity));
-            var __meta50 = new global::NCMapper.Runtime.RuntimeMapperMetadata
+            global::NCMapper.Runtime.RuntimeSnapshotPair<NCMapper.Tests.Models.CustomerEntity, NCMapper.Tests.Models.CustomerDto>.Metadata = __meta55;
+            global::NCMapper.Runtime.RuntimeSnapshotStore.Register(__meta55);
+            // pair 56: NCMapper.Tests.Models.CustomerEntity -> NCMapper.Tests.Models.MixedSourceDto (MapFrom channel)
+            var __mfAttr56 = new global::NCMapper.Attributes.MapFromAttribute(typeof(NCMapper.Tests.Models.CustomerEntity));
+            var __meta56 = new global::NCMapper.Runtime.RuntimeMapperMetadata
             {
                 SourceType = typeof(NCMapper.Tests.Models.CustomerEntity),
                 TargetType = typeof(NCMapper.Tests.Models.MixedSourceDto),
@@ -6420,7 +7423,7 @@ namespace NCMapper.Runtime
                                 TypeName = "int",
                                 TypeRef = typeof(int),
                                 HasMapFromAttribute = true,
-                                MapFromAttribute = __mfAttr50,
+                                MapFromAttribute = __mfAttr56,
                                 HasMapIgnore = false,
                                 MapIgnoreDirection = 0,
                                 HasOverrideIgnore = false,
@@ -6460,7 +7463,7 @@ namespace NCMapper.Runtime
                                 TypeName = "string",
                                 TypeRef = typeof(string),
                                 HasMapFromAttribute = true,
-                                MapFromAttribute = __mfAttr50,
+                                MapFromAttribute = __mfAttr56,
                                 HasMapIgnore = false,
                                 MapIgnoreDirection = 0,
                                 HasOverrideIgnore = false,
@@ -6531,7 +7534,7 @@ namespace NCMapper.Runtime
                         TypeName = "int",
                         TypeRef = typeof(int),
                         HasMapFromAttribute = true,
-                        MapFromAttribute = __mfAttr50,
+                        MapFromAttribute = __mfAttr56,
                         HasMapIgnore = false,
                         MapIgnoreDirection = 0,
                         HasOverrideIgnore = false,
@@ -6554,7 +7557,7 @@ namespace NCMapper.Runtime
                         TypeName = "string",
                         TypeRef = typeof(string),
                         HasMapFromAttribute = true,
-                        MapFromAttribute = __mfAttr50,
+                        MapFromAttribute = __mfAttr56,
                         HasMapIgnore = false,
                         MapIgnoreDirection = 0,
                         HasOverrideIgnore = false,
@@ -6577,7 +7580,7 @@ namespace NCMapper.Runtime
                         TypeName = "int",
                         TypeRef = typeof(int),
                         HasMapFromAttribute = true,
-                        MapFromAttribute = __mfAttr50,
+                        MapFromAttribute = __mfAttr56,
                         HasMapIgnore = false,
                         MapIgnoreDirection = 0,
                         HasOverrideIgnore = false,
@@ -6600,7 +7603,7 @@ namespace NCMapper.Runtime
                         TypeName = "string",
                         TypeRef = typeof(string),
                         HasMapFromAttribute = true,
-                        MapFromAttribute = __mfAttr50,
+                        MapFromAttribute = __mfAttr56,
                         HasMapIgnore = false,
                         MapIgnoreDirection = 0,
                         HasOverrideIgnore = false,
@@ -6619,11 +7622,11 @@ namespace NCMapper.Runtime
                     },
                 },
             };
-            global::NCMapper.Runtime.RuntimeSnapshotPair<NCMapper.Tests.Models.CustomerEntity, NCMapper.Tests.Models.MixedSourceDto>.Metadata = __meta50;
-            global::NCMapper.Runtime.RuntimeSnapshotStore.Register(__meta50);
-            // pair 51: NCMapper.Tests.Models.Department -> NCMapper.Tests.Models.DepartmentDto (MapFrom channel)
-            var __mfAttr51 = new global::NCMapper.Attributes.MapFromAttribute(typeof(NCMapper.Tests.Models.Department));
-            var __meta51 = new global::NCMapper.Runtime.RuntimeMapperMetadata
+            global::NCMapper.Runtime.RuntimeSnapshotPair<NCMapper.Tests.Models.CustomerEntity, NCMapper.Tests.Models.MixedSourceDto>.Metadata = __meta56;
+            global::NCMapper.Runtime.RuntimeSnapshotStore.Register(__meta56);
+            // pair 57: NCMapper.Tests.Models.Department -> NCMapper.Tests.Models.DepartmentDto (MapFrom channel)
+            var __mfAttr57 = new global::NCMapper.Attributes.MapFromAttribute(typeof(NCMapper.Tests.Models.Department));
+            var __meta57 = new global::NCMapper.Runtime.RuntimeMapperMetadata
             {
                 SourceType = typeof(NCMapper.Tests.Models.Department),
                 TargetType = typeof(NCMapper.Tests.Models.DepartmentDto),
@@ -6644,7 +7647,7 @@ namespace NCMapper.Runtime
                                 TypeName = "string",
                                 TypeRef = typeof(string),
                                 HasMapFromAttribute = true,
-                                MapFromAttribute = __mfAttr51,
+                                MapFromAttribute = __mfAttr57,
                                 HasMapIgnore = false,
                                 MapIgnoreDirection = 0,
                                 HasOverrideIgnore = false,
@@ -6684,7 +7687,7 @@ namespace NCMapper.Runtime
                                 TypeName = "System.Collections.Generic.List<NCMapper.Tests.Models.TeamDto>?",
                                 TypeRef = typeof(System.Collections.Generic.List<NCMapper.Tests.Models.TeamDto>),
                                 HasMapFromAttribute = true,
-                                MapFromAttribute = __mfAttr51,
+                                MapFromAttribute = __mfAttr57,
                                 HasMapIgnore = false,
                                 MapIgnoreDirection = 0,
                                 HasOverrideIgnore = false,
@@ -6724,7 +7727,7 @@ namespace NCMapper.Runtime
                         TypeName = "string",
                         TypeRef = typeof(string),
                         HasMapFromAttribute = true,
-                        MapFromAttribute = __mfAttr51,
+                        MapFromAttribute = __mfAttr57,
                         HasMapIgnore = false,
                         MapIgnoreDirection = 0,
                         HasOverrideIgnore = false,
@@ -6747,7 +7750,7 @@ namespace NCMapper.Runtime
                         TypeName = "System.Collections.Generic.List<NCMapper.Tests.Models.TeamDto>?",
                         TypeRef = typeof(System.Collections.Generic.List<NCMapper.Tests.Models.TeamDto>),
                         HasMapFromAttribute = true,
-                        MapFromAttribute = __mfAttr51,
+                        MapFromAttribute = __mfAttr57,
                         HasMapIgnore = false,
                         MapIgnoreDirection = 0,
                         HasOverrideIgnore = false,
@@ -6766,11 +7769,11 @@ namespace NCMapper.Runtime
                     },
                 },
             };
-            global::NCMapper.Runtime.RuntimeSnapshotPair<NCMapper.Tests.Models.Department, NCMapper.Tests.Models.DepartmentDto>.Metadata = __meta51;
-            global::NCMapper.Runtime.RuntimeSnapshotStore.Register(__meta51);
-            // pair 52: NCMapper.Tests.Models.DerivedEntity -> NCMapper.Tests.Models.DerivedDto (MapFrom channel)
-            var __mfAttr52 = new global::NCMapper.Attributes.MapFromAttribute(typeof(NCMapper.Tests.Models.DerivedEntity));
-            var __meta52 = new global::NCMapper.Runtime.RuntimeMapperMetadata
+            global::NCMapper.Runtime.RuntimeSnapshotPair<NCMapper.Tests.Models.Department, NCMapper.Tests.Models.DepartmentDto>.Metadata = __meta57;
+            global::NCMapper.Runtime.RuntimeSnapshotStore.Register(__meta57);
+            // pair 58: NCMapper.Tests.Models.DerivedEntity -> NCMapper.Tests.Models.DerivedDto (MapFrom channel)
+            var __mfAttr58 = new global::NCMapper.Attributes.MapFromAttribute(typeof(NCMapper.Tests.Models.DerivedEntity));
+            var __meta58 = new global::NCMapper.Runtime.RuntimeMapperMetadata
             {
                 SourceType = typeof(NCMapper.Tests.Models.DerivedEntity),
                 TargetType = typeof(NCMapper.Tests.Models.DerivedDto),
@@ -6791,7 +7794,7 @@ namespace NCMapper.Runtime
                                 TypeName = "int",
                                 TypeRef = typeof(int),
                                 HasMapFromAttribute = true,
-                                MapFromAttribute = __mfAttr52,
+                                MapFromAttribute = __mfAttr58,
                                 HasMapIgnore = false,
                                 MapIgnoreDirection = 0,
                                 HasOverrideIgnore = false,
@@ -6831,7 +7834,7 @@ namespace NCMapper.Runtime
                                 TypeName = "string",
                                 TypeRef = typeof(string),
                                 HasMapFromAttribute = true,
-                                MapFromAttribute = __mfAttr52,
+                                MapFromAttribute = __mfAttr58,
                                 HasMapIgnore = false,
                                 MapIgnoreDirection = 0,
                                 HasOverrideIgnore = false,
@@ -6871,7 +7874,7 @@ namespace NCMapper.Runtime
                                 TypeName = "string",
                                 TypeRef = typeof(string),
                                 HasMapFromAttribute = true,
-                                MapFromAttribute = __mfAttr52,
+                                MapFromAttribute = __mfAttr58,
                                 HasMapIgnore = false,
                                 MapIgnoreDirection = 0,
                                 HasOverrideIgnore = false,
@@ -6911,7 +7914,7 @@ namespace NCMapper.Runtime
                         TypeName = "int",
                         TypeRef = typeof(int),
                         HasMapFromAttribute = true,
-                        MapFromAttribute = __mfAttr52,
+                        MapFromAttribute = __mfAttr58,
                         HasMapIgnore = false,
                         MapIgnoreDirection = 0,
                         HasOverrideIgnore = false,
@@ -6934,7 +7937,7 @@ namespace NCMapper.Runtime
                         TypeName = "string",
                         TypeRef = typeof(string),
                         HasMapFromAttribute = true,
-                        MapFromAttribute = __mfAttr52,
+                        MapFromAttribute = __mfAttr58,
                         HasMapIgnore = false,
                         MapIgnoreDirection = 0,
                         HasOverrideIgnore = false,
@@ -6957,7 +7960,7 @@ namespace NCMapper.Runtime
                         TypeName = "string",
                         TypeRef = typeof(string),
                         HasMapFromAttribute = true,
-                        MapFromAttribute = __mfAttr52,
+                        MapFromAttribute = __mfAttr58,
                         HasMapIgnore = false,
                         MapIgnoreDirection = 0,
                         HasOverrideIgnore = false,
@@ -6976,11 +7979,11 @@ namespace NCMapper.Runtime
                     },
                 },
             };
-            global::NCMapper.Runtime.RuntimeSnapshotPair<NCMapper.Tests.Models.DerivedEntity, NCMapper.Tests.Models.DerivedDto>.Metadata = __meta52;
-            global::NCMapper.Runtime.RuntimeSnapshotStore.Register(__meta52);
-            // pair 53: NCMapper.Tests.Models.DictSourceA -> NCMapper.Tests.Models.DictTargetDto (MapFrom channel)
-            var __mfAttr53 = new global::NCMapper.Attributes.MapFromAttribute(typeof(NCMapper.Tests.Models.DictSourceA));
-            var __meta53 = new global::NCMapper.Runtime.RuntimeMapperMetadata
+            global::NCMapper.Runtime.RuntimeSnapshotPair<NCMapper.Tests.Models.DerivedEntity, NCMapper.Tests.Models.DerivedDto>.Metadata = __meta58;
+            global::NCMapper.Runtime.RuntimeSnapshotStore.Register(__meta58);
+            // pair 59: NCMapper.Tests.Models.DictSourceA -> NCMapper.Tests.Models.DictTargetDto (MapFrom channel)
+            var __mfAttr59 = new global::NCMapper.Attributes.MapFromAttribute(typeof(NCMapper.Tests.Models.DictSourceA));
+            var __meta59 = new global::NCMapper.Runtime.RuntimeMapperMetadata
             {
                 SourceType = typeof(NCMapper.Tests.Models.DictSourceA),
                 TargetType = typeof(NCMapper.Tests.Models.DictTargetDto),
@@ -7001,7 +8004,7 @@ namespace NCMapper.Runtime
                                 TypeName = "string",
                                 TypeRef = typeof(string),
                                 HasMapFromAttribute = true,
-                                MapFromAttribute = __mfAttr53,
+                                MapFromAttribute = __mfAttr59,
                                 HasMapIgnore = false,
                                 MapIgnoreDirection = 0,
                                 HasOverrideIgnore = false,
@@ -7041,7 +8044,7 @@ namespace NCMapper.Runtime
                                 TypeName = "int",
                                 TypeRef = typeof(int),
                                 HasMapFromAttribute = true,
-                                MapFromAttribute = __mfAttr53,
+                                MapFromAttribute = __mfAttr59,
                                 HasMapIgnore = false,
                                 MapIgnoreDirection = 0,
                                 HasOverrideIgnore = false,
@@ -7112,7 +8115,7 @@ namespace NCMapper.Runtime
                         TypeName = "string",
                         TypeRef = typeof(string),
                         HasMapFromAttribute = true,
-                        MapFromAttribute = __mfAttr53,
+                        MapFromAttribute = __mfAttr59,
                         HasMapIgnore = false,
                         MapIgnoreDirection = 0,
                         HasOverrideIgnore = false,
@@ -7135,7 +8138,7 @@ namespace NCMapper.Runtime
                         TypeName = "int",
                         TypeRef = typeof(int),
                         HasMapFromAttribute = true,
-                        MapFromAttribute = __mfAttr53,
+                        MapFromAttribute = __mfAttr59,
                         HasMapIgnore = false,
                         MapIgnoreDirection = 0,
                         HasOverrideIgnore = false,
@@ -7158,7 +8161,7 @@ namespace NCMapper.Runtime
                         TypeName = "string",
                         TypeRef = typeof(string),
                         HasMapFromAttribute = true,
-                        MapFromAttribute = __mfAttr53,
+                        MapFromAttribute = __mfAttr59,
                         HasMapIgnore = false,
                         MapIgnoreDirection = 0,
                         HasOverrideIgnore = false,
@@ -7181,7 +8184,7 @@ namespace NCMapper.Runtime
                         TypeName = "int",
                         TypeRef = typeof(int),
                         HasMapFromAttribute = true,
-                        MapFromAttribute = __mfAttr53,
+                        MapFromAttribute = __mfAttr59,
                         HasMapIgnore = false,
                         MapIgnoreDirection = 0,
                         HasOverrideIgnore = false,
@@ -7200,11 +8203,11 @@ namespace NCMapper.Runtime
                     },
                 },
             };
-            global::NCMapper.Runtime.RuntimeSnapshotPair<NCMapper.Tests.Models.DictSourceA, NCMapper.Tests.Models.DictTargetDto>.Metadata = __meta53;
-            global::NCMapper.Runtime.RuntimeSnapshotStore.Register(__meta53);
-            // pair 54: NCMapper.Tests.Models.ElemA -> NCMapper.Tests.Models.ElemB (MapFrom channel)
-            var __mfAttr54 = new global::NCMapper.Attributes.MapFromAttribute(typeof(NCMapper.Tests.Models.ElemA));
-            var __meta54 = new global::NCMapper.Runtime.RuntimeMapperMetadata
+            global::NCMapper.Runtime.RuntimeSnapshotPair<NCMapper.Tests.Models.DictSourceA, NCMapper.Tests.Models.DictTargetDto>.Metadata = __meta59;
+            global::NCMapper.Runtime.RuntimeSnapshotStore.Register(__meta59);
+            // pair 60: NCMapper.Tests.Models.ElemA -> NCMapper.Tests.Models.ElemB (MapFrom channel)
+            var __mfAttr60 = new global::NCMapper.Attributes.MapFromAttribute(typeof(NCMapper.Tests.Models.ElemA));
+            var __meta60 = new global::NCMapper.Runtime.RuntimeMapperMetadata
             {
                 SourceType = typeof(NCMapper.Tests.Models.ElemA),
                 TargetType = typeof(NCMapper.Tests.Models.ElemB),
@@ -7225,7 +8228,7 @@ namespace NCMapper.Runtime
                                 TypeName = "int",
                                 TypeRef = typeof(int),
                                 HasMapFromAttribute = true,
-                                MapFromAttribute = __mfAttr54,
+                                MapFromAttribute = __mfAttr60,
                                 HasMapIgnore = false,
                                 MapIgnoreDirection = 0,
                                 HasOverrideIgnore = false,
@@ -7265,7 +8268,7 @@ namespace NCMapper.Runtime
                         TypeName = "int",
                         TypeRef = typeof(int),
                         HasMapFromAttribute = true,
-                        MapFromAttribute = __mfAttr54,
+                        MapFromAttribute = __mfAttr60,
                         HasMapIgnore = false,
                         MapIgnoreDirection = 0,
                         HasOverrideIgnore = false,
@@ -7284,11 +8287,11 @@ namespace NCMapper.Runtime
                     },
                 },
             };
-            global::NCMapper.Runtime.RuntimeSnapshotPair<NCMapper.Tests.Models.ElemA, NCMapper.Tests.Models.ElemB>.Metadata = __meta54;
-            global::NCMapper.Runtime.RuntimeSnapshotStore.Register(__meta54);
-            // pair 55: NCMapper.Tests.Models.EnumSourceEntity -> NCMapper.Tests.Models.EnumFromValueDto (MapFrom channel)
-            var __mfAttr55 = new global::NCMapper.Attributes.MapFromAttribute(typeof(NCMapper.Tests.Models.EnumSourceEntity));
-            var __meta55 = new global::NCMapper.Runtime.RuntimeMapperMetadata
+            global::NCMapper.Runtime.RuntimeSnapshotPair<NCMapper.Tests.Models.ElemA, NCMapper.Tests.Models.ElemB>.Metadata = __meta60;
+            global::NCMapper.Runtime.RuntimeSnapshotStore.Register(__meta60);
+            // pair 61: NCMapper.Tests.Models.EnumSourceEntity -> NCMapper.Tests.Models.EnumFromValueDto (MapFrom channel)
+            var __mfAttr61 = new global::NCMapper.Attributes.MapFromAttribute(typeof(NCMapper.Tests.Models.EnumSourceEntity));
+            var __meta61 = new global::NCMapper.Runtime.RuntimeMapperMetadata
             {
                 SourceType = typeof(NCMapper.Tests.Models.EnumSourceEntity),
                 TargetType = typeof(NCMapper.Tests.Models.EnumFromValueDto),
@@ -7309,7 +8312,7 @@ namespace NCMapper.Runtime
                                 TypeName = "NCMapper.Tests.Models.Priority",
                                 TypeRef = typeof(NCMapper.Tests.Models.Priority),
                                 HasMapFromAttribute = true,
-                                MapFromAttribute = __mfAttr55,
+                                MapFromAttribute = __mfAttr61,
                                 HasMapIgnore = false,
                                 MapIgnoreDirection = 0,
                                 HasOverrideIgnore = false,
@@ -7349,7 +8352,7 @@ namespace NCMapper.Runtime
                                 TypeName = "NCMapper.Tests.Models.Priority",
                                 TypeRef = typeof(NCMapper.Tests.Models.Priority),
                                 HasMapFromAttribute = true,
-                                MapFromAttribute = __mfAttr55,
+                                MapFromAttribute = __mfAttr61,
                                 HasMapIgnore = false,
                                 MapIgnoreDirection = 0,
                                 HasOverrideIgnore = false,
@@ -7389,7 +8392,7 @@ namespace NCMapper.Runtime
                         TypeName = "NCMapper.Tests.Models.Priority",
                         TypeRef = typeof(NCMapper.Tests.Models.Priority),
                         HasMapFromAttribute = true,
-                        MapFromAttribute = __mfAttr55,
+                        MapFromAttribute = __mfAttr61,
                         HasMapIgnore = false,
                         MapIgnoreDirection = 0,
                         HasOverrideIgnore = false,
@@ -7412,7 +8415,7 @@ namespace NCMapper.Runtime
                         TypeName = "NCMapper.Tests.Models.Priority",
                         TypeRef = typeof(NCMapper.Tests.Models.Priority),
                         HasMapFromAttribute = true,
-                        MapFromAttribute = __mfAttr55,
+                        MapFromAttribute = __mfAttr61,
                         HasMapIgnore = false,
                         MapIgnoreDirection = 0,
                         HasOverrideIgnore = false,
@@ -7431,11 +8434,11 @@ namespace NCMapper.Runtime
                     },
                 },
             };
-            global::NCMapper.Runtime.RuntimeSnapshotPair<NCMapper.Tests.Models.EnumSourceEntity, NCMapper.Tests.Models.EnumFromValueDto>.Metadata = __meta55;
-            global::NCMapper.Runtime.RuntimeSnapshotStore.Register(__meta55);
-            // pair 56: NCMapper.Tests.Models.F04Source -> NCMapper.Tests.Models.F04Dto (MapFrom channel)
-            var __mfAttr56 = new global::NCMapper.Attributes.MapFromAttribute(typeof(NCMapper.Tests.Models.F04Source));
-            var __meta56 = new global::NCMapper.Runtime.RuntimeMapperMetadata
+            global::NCMapper.Runtime.RuntimeSnapshotPair<NCMapper.Tests.Models.EnumSourceEntity, NCMapper.Tests.Models.EnumFromValueDto>.Metadata = __meta61;
+            global::NCMapper.Runtime.RuntimeSnapshotStore.Register(__meta61);
+            // pair 62: NCMapper.Tests.Models.F04Source -> NCMapper.Tests.Models.F04Dto (MapFrom channel)
+            var __mfAttr62 = new global::NCMapper.Attributes.MapFromAttribute(typeof(NCMapper.Tests.Models.F04Source));
+            var __meta62 = new global::NCMapper.Runtime.RuntimeMapperMetadata
             {
                 SourceType = typeof(NCMapper.Tests.Models.F04Source),
                 TargetType = typeof(NCMapper.Tests.Models.F04Dto),
@@ -7456,7 +8459,7 @@ namespace NCMapper.Runtime
                                 TypeName = "System.Collections.Generic.List<long>?",
                                 TypeRef = typeof(System.Collections.Generic.List<long>),
                                 HasMapFromAttribute = true,
-                                MapFromAttribute = __mfAttr56,
+                                MapFromAttribute = __mfAttr62,
                                 HasMapIgnore = false,
                                 MapIgnoreDirection = 0,
                                 HasOverrideIgnore = false,
@@ -7496,7 +8499,7 @@ namespace NCMapper.Runtime
                         TypeName = "System.Collections.Generic.List<long>?",
                         TypeRef = typeof(System.Collections.Generic.List<long>),
                         HasMapFromAttribute = true,
-                        MapFromAttribute = __mfAttr56,
+                        MapFromAttribute = __mfAttr62,
                         HasMapIgnore = false,
                         MapIgnoreDirection = 0,
                         HasOverrideIgnore = false,
@@ -7515,11 +8518,11 @@ namespace NCMapper.Runtime
                     },
                 },
             };
-            global::NCMapper.Runtime.RuntimeSnapshotPair<NCMapper.Tests.Models.F04Source, NCMapper.Tests.Models.F04Dto>.Metadata = __meta56;
-            global::NCMapper.Runtime.RuntimeSnapshotStore.Register(__meta56);
-            // pair 57: NCMapper.Tests.Models.FlagsEnumEntity -> NCMapper.Tests.Models.FlagsEnumToIntDto (MapFrom channel)
-            var __mfAttr57 = new global::NCMapper.Attributes.MapFromAttribute(typeof(NCMapper.Tests.Models.FlagsEnumEntity));
-            var __meta57 = new global::NCMapper.Runtime.RuntimeMapperMetadata
+            global::NCMapper.Runtime.RuntimeSnapshotPair<NCMapper.Tests.Models.F04Source, NCMapper.Tests.Models.F04Dto>.Metadata = __meta62;
+            global::NCMapper.Runtime.RuntimeSnapshotStore.Register(__meta62);
+            // pair 63: NCMapper.Tests.Models.FlagsEnumEntity -> NCMapper.Tests.Models.FlagsEnumToIntDto (MapFrom channel)
+            var __mfAttr63 = new global::NCMapper.Attributes.MapFromAttribute(typeof(NCMapper.Tests.Models.FlagsEnumEntity));
+            var __meta63 = new global::NCMapper.Runtime.RuntimeMapperMetadata
             {
                 SourceType = typeof(NCMapper.Tests.Models.FlagsEnumEntity),
                 TargetType = typeof(NCMapper.Tests.Models.FlagsEnumToIntDto),
@@ -7540,7 +8543,7 @@ namespace NCMapper.Runtime
                                 TypeName = "int",
                                 TypeRef = typeof(int),
                                 HasMapFromAttribute = true,
-                                MapFromAttribute = __mfAttr57,
+                                MapFromAttribute = __mfAttr63,
                                 HasMapIgnore = false,
                                 MapIgnoreDirection = 0,
                                 HasOverrideIgnore = false,
@@ -7580,7 +8583,7 @@ namespace NCMapper.Runtime
                         TypeName = "int",
                         TypeRef = typeof(int),
                         HasMapFromAttribute = true,
-                        MapFromAttribute = __mfAttr57,
+                        MapFromAttribute = __mfAttr63,
                         HasMapIgnore = false,
                         MapIgnoreDirection = 0,
                         HasOverrideIgnore = false,
@@ -7599,11 +8602,11 @@ namespace NCMapper.Runtime
                     },
                 },
             };
-            global::NCMapper.Runtime.RuntimeSnapshotPair<NCMapper.Tests.Models.FlagsEnumEntity, NCMapper.Tests.Models.FlagsEnumToIntDto>.Metadata = __meta57;
-            global::NCMapper.Runtime.RuntimeSnapshotStore.Register(__meta57);
-            // pair 58: NCMapper.Tests.Models.FlagsEnumEntity -> NCMapper.Tests.Models.FlagsEnumToStringDto (MapFrom channel)
-            var __mfAttr58 = new global::NCMapper.Attributes.MapFromAttribute(typeof(NCMapper.Tests.Models.FlagsEnumEntity));
-            var __meta58 = new global::NCMapper.Runtime.RuntimeMapperMetadata
+            global::NCMapper.Runtime.RuntimeSnapshotPair<NCMapper.Tests.Models.FlagsEnumEntity, NCMapper.Tests.Models.FlagsEnumToIntDto>.Metadata = __meta63;
+            global::NCMapper.Runtime.RuntimeSnapshotStore.Register(__meta63);
+            // pair 64: NCMapper.Tests.Models.FlagsEnumEntity -> NCMapper.Tests.Models.FlagsEnumToStringDto (MapFrom channel)
+            var __mfAttr64 = new global::NCMapper.Attributes.MapFromAttribute(typeof(NCMapper.Tests.Models.FlagsEnumEntity));
+            var __meta64 = new global::NCMapper.Runtime.RuntimeMapperMetadata
             {
                 SourceType = typeof(NCMapper.Tests.Models.FlagsEnumEntity),
                 TargetType = typeof(NCMapper.Tests.Models.FlagsEnumToStringDto),
@@ -7624,7 +8627,7 @@ namespace NCMapper.Runtime
                                 TypeName = "string",
                                 TypeRef = typeof(string),
                                 HasMapFromAttribute = true,
-                                MapFromAttribute = __mfAttr58,
+                                MapFromAttribute = __mfAttr64,
                                 HasMapIgnore = false,
                                 MapIgnoreDirection = 0,
                                 HasOverrideIgnore = false,
@@ -7664,7 +8667,7 @@ namespace NCMapper.Runtime
                         TypeName = "string",
                         TypeRef = typeof(string),
                         HasMapFromAttribute = true,
-                        MapFromAttribute = __mfAttr58,
+                        MapFromAttribute = __mfAttr64,
                         HasMapIgnore = false,
                         MapIgnoreDirection = 0,
                         HasOverrideIgnore = false,
@@ -7683,11 +8686,11 @@ namespace NCMapper.Runtime
                     },
                 },
             };
-            global::NCMapper.Runtime.RuntimeSnapshotPair<NCMapper.Tests.Models.FlagsEnumEntity, NCMapper.Tests.Models.FlagsEnumToStringDto>.Metadata = __meta58;
-            global::NCMapper.Runtime.RuntimeSnapshotStore.Register(__meta58);
-            // pair 59: NCMapper.Tests.Models.FullTypeEntity -> NCMapper.Tests.Models.CaseMismatchDto (MapFrom channel)
-            var __mfAttr59 = new global::NCMapper.Attributes.MapFromAttribute(typeof(NCMapper.Tests.Models.FullTypeEntity));
-            var __meta59 = new global::NCMapper.Runtime.RuntimeMapperMetadata
+            global::NCMapper.Runtime.RuntimeSnapshotPair<NCMapper.Tests.Models.FlagsEnumEntity, NCMapper.Tests.Models.FlagsEnumToStringDto>.Metadata = __meta64;
+            global::NCMapper.Runtime.RuntimeSnapshotStore.Register(__meta64);
+            // pair 65: NCMapper.Tests.Models.FullTypeEntity -> NCMapper.Tests.Models.CaseMismatchDto (MapFrom channel)
+            var __mfAttr65 = new global::NCMapper.Attributes.MapFromAttribute(typeof(NCMapper.Tests.Models.FullTypeEntity));
+            var __meta65 = new global::NCMapper.Runtime.RuntimeMapperMetadata
             {
                 SourceType = typeof(NCMapper.Tests.Models.FullTypeEntity),
                 TargetType = typeof(NCMapper.Tests.Models.CaseMismatchDto),
@@ -7708,7 +8711,7 @@ namespace NCMapper.Runtime
                                 TypeName = "int",
                                 TypeRef = typeof(int),
                                 HasMapFromAttribute = true,
-                                MapFromAttribute = __mfAttr59,
+                                MapFromAttribute = __mfAttr65,
                                 HasMapIgnore = false,
                                 MapIgnoreDirection = 0,
                                 HasOverrideIgnore = false,
@@ -7748,7 +8751,7 @@ namespace NCMapper.Runtime
                                 TypeName = "string",
                                 TypeRef = typeof(string),
                                 HasMapFromAttribute = true,
-                                MapFromAttribute = __mfAttr59,
+                                MapFromAttribute = __mfAttr65,
                                 HasMapIgnore = false,
                                 MapIgnoreDirection = 0,
                                 HasOverrideIgnore = false,
@@ -7788,7 +8791,7 @@ namespace NCMapper.Runtime
                         TypeName = "int",
                         TypeRef = typeof(int),
                         HasMapFromAttribute = true,
-                        MapFromAttribute = __mfAttr59,
+                        MapFromAttribute = __mfAttr65,
                         HasMapIgnore = false,
                         MapIgnoreDirection = 0,
                         HasOverrideIgnore = false,
@@ -7811,7 +8814,7 @@ namespace NCMapper.Runtime
                         TypeName = "string",
                         TypeRef = typeof(string),
                         HasMapFromAttribute = true,
-                        MapFromAttribute = __mfAttr59,
+                        MapFromAttribute = __mfAttr65,
                         HasMapIgnore = false,
                         MapIgnoreDirection = 0,
                         HasOverrideIgnore = false,
@@ -7830,11 +8833,11 @@ namespace NCMapper.Runtime
                     },
                 },
             };
-            global::NCMapper.Runtime.RuntimeSnapshotPair<NCMapper.Tests.Models.FullTypeEntity, NCMapper.Tests.Models.CaseMismatchDto>.Metadata = __meta59;
-            global::NCMapper.Runtime.RuntimeSnapshotStore.Register(__meta59);
-            // pair 60: NCMapper.Tests.Models.FullTypeEntity -> NCMapper.Tests.Models.EnumToIntDto (MapFrom channel)
-            var __mfAttr60 = new global::NCMapper.Attributes.MapFromAttribute(typeof(NCMapper.Tests.Models.FullTypeEntity));
-            var __meta60 = new global::NCMapper.Runtime.RuntimeMapperMetadata
+            global::NCMapper.Runtime.RuntimeSnapshotPair<NCMapper.Tests.Models.FullTypeEntity, NCMapper.Tests.Models.CaseMismatchDto>.Metadata = __meta65;
+            global::NCMapper.Runtime.RuntimeSnapshotStore.Register(__meta65);
+            // pair 66: NCMapper.Tests.Models.FullTypeEntity -> NCMapper.Tests.Models.EnumToIntDto (MapFrom channel)
+            var __mfAttr66 = new global::NCMapper.Attributes.MapFromAttribute(typeof(NCMapper.Tests.Models.FullTypeEntity));
+            var __meta66 = new global::NCMapper.Runtime.RuntimeMapperMetadata
             {
                 SourceType = typeof(NCMapper.Tests.Models.FullTypeEntity),
                 TargetType = typeof(NCMapper.Tests.Models.EnumToIntDto),
@@ -7855,7 +8858,7 @@ namespace NCMapper.Runtime
                                 TypeName = "int",
                                 TypeRef = typeof(int),
                                 HasMapFromAttribute = true,
-                                MapFromAttribute = __mfAttr60,
+                                MapFromAttribute = __mfAttr66,
                                 HasMapIgnore = false,
                                 MapIgnoreDirection = 0,
                                 HasOverrideIgnore = false,
@@ -7895,7 +8898,7 @@ namespace NCMapper.Runtime
                         TypeName = "int",
                         TypeRef = typeof(int),
                         HasMapFromAttribute = true,
-                        MapFromAttribute = __mfAttr60,
+                        MapFromAttribute = __mfAttr66,
                         HasMapIgnore = false,
                         MapIgnoreDirection = 0,
                         HasOverrideIgnore = false,
@@ -7914,11 +8917,11 @@ namespace NCMapper.Runtime
                     },
                 },
             };
-            global::NCMapper.Runtime.RuntimeSnapshotPair<NCMapper.Tests.Models.FullTypeEntity, NCMapper.Tests.Models.EnumToIntDto>.Metadata = __meta60;
-            global::NCMapper.Runtime.RuntimeSnapshotStore.Register(__meta60);
-            // pair 61: NCMapper.Tests.Models.FullTypeEntity -> NCMapper.Tests.Models.EnumToStringDto (MapFrom channel)
-            var __mfAttr61 = new global::NCMapper.Attributes.MapFromAttribute(typeof(NCMapper.Tests.Models.FullTypeEntity));
-            var __meta61 = new global::NCMapper.Runtime.RuntimeMapperMetadata
+            global::NCMapper.Runtime.RuntimeSnapshotPair<NCMapper.Tests.Models.FullTypeEntity, NCMapper.Tests.Models.EnumToIntDto>.Metadata = __meta66;
+            global::NCMapper.Runtime.RuntimeSnapshotStore.Register(__meta66);
+            // pair 67: NCMapper.Tests.Models.FullTypeEntity -> NCMapper.Tests.Models.EnumToStringDto (MapFrom channel)
+            var __mfAttr67 = new global::NCMapper.Attributes.MapFromAttribute(typeof(NCMapper.Tests.Models.FullTypeEntity));
+            var __meta67 = new global::NCMapper.Runtime.RuntimeMapperMetadata
             {
                 SourceType = typeof(NCMapper.Tests.Models.FullTypeEntity),
                 TargetType = typeof(NCMapper.Tests.Models.EnumToStringDto),
@@ -7939,7 +8942,7 @@ namespace NCMapper.Runtime
                                 TypeName = "string",
                                 TypeRef = typeof(string),
                                 HasMapFromAttribute = true,
-                                MapFromAttribute = __mfAttr61,
+                                MapFromAttribute = __mfAttr67,
                                 HasMapIgnore = false,
                                 MapIgnoreDirection = 0,
                                 HasOverrideIgnore = false,
@@ -7979,7 +8982,7 @@ namespace NCMapper.Runtime
                         TypeName = "string",
                         TypeRef = typeof(string),
                         HasMapFromAttribute = true,
-                        MapFromAttribute = __mfAttr61,
+                        MapFromAttribute = __mfAttr67,
                         HasMapIgnore = false,
                         MapIgnoreDirection = 0,
                         HasOverrideIgnore = false,
@@ -7998,11 +9001,11 @@ namespace NCMapper.Runtime
                     },
                 },
             };
-            global::NCMapper.Runtime.RuntimeSnapshotPair<NCMapper.Tests.Models.FullTypeEntity, NCMapper.Tests.Models.EnumToStringDto>.Metadata = __meta61;
-            global::NCMapper.Runtime.RuntimeSnapshotStore.Register(__meta61);
-            // pair 62: NCMapper.Tests.Models.FullTypeEntity -> NCMapper.Tests.Models.FieldMappingDto (MapFrom channel)
-            var __mfAttr62 = new global::NCMapper.Attributes.MapFromAttribute(typeof(NCMapper.Tests.Models.FullTypeEntity));
-            var __meta62 = new global::NCMapper.Runtime.RuntimeMapperMetadata
+            global::NCMapper.Runtime.RuntimeSnapshotPair<NCMapper.Tests.Models.FullTypeEntity, NCMapper.Tests.Models.EnumToStringDto>.Metadata = __meta67;
+            global::NCMapper.Runtime.RuntimeSnapshotStore.Register(__meta67);
+            // pair 68: NCMapper.Tests.Models.FullTypeEntity -> NCMapper.Tests.Models.FieldMappingDto (MapFrom channel)
+            var __mfAttr68 = new global::NCMapper.Attributes.MapFromAttribute(typeof(NCMapper.Tests.Models.FullTypeEntity));
+            var __meta68 = new global::NCMapper.Runtime.RuntimeMapperMetadata
             {
                 SourceType = typeof(NCMapper.Tests.Models.FullTypeEntity),
                 TargetType = typeof(NCMapper.Tests.Models.FieldMappingDto),
@@ -8023,7 +9026,7 @@ namespace NCMapper.Runtime
                                 TypeName = "string",
                                 TypeRef = typeof(string),
                                 HasMapFromAttribute = true,
-                                MapFromAttribute = __mfAttr62,
+                                MapFromAttribute = __mfAttr68,
                                 HasMapIgnore = false,
                                 MapIgnoreDirection = 0,
                                 HasOverrideIgnore = false,
@@ -8063,7 +9066,7 @@ namespace NCMapper.Runtime
                                 TypeName = "int",
                                 TypeRef = typeof(int),
                                 HasMapFromAttribute = true,
-                                MapFromAttribute = __mfAttr62,
+                                MapFromAttribute = __mfAttr68,
                                 HasMapIgnore = false,
                                 MapIgnoreDirection = 0,
                                 HasOverrideIgnore = false,
@@ -8103,7 +9106,7 @@ namespace NCMapper.Runtime
                                 TypeName = "long",
                                 TypeRef = typeof(long),
                                 HasMapFromAttribute = true,
-                                MapFromAttribute = __mfAttr62,
+                                MapFromAttribute = __mfAttr68,
                                 HasMapIgnore = false,
                                 MapIgnoreDirection = 0,
                                 HasOverrideIgnore = false,
@@ -8143,7 +9146,7 @@ namespace NCMapper.Runtime
                         TypeName = "string",
                         TypeRef = typeof(string),
                         HasMapFromAttribute = true,
-                        MapFromAttribute = __mfAttr62,
+                        MapFromAttribute = __mfAttr68,
                         HasMapIgnore = false,
                         MapIgnoreDirection = 0,
                         HasOverrideIgnore = false,
@@ -8166,7 +9169,7 @@ namespace NCMapper.Runtime
                         TypeName = "int",
                         TypeRef = typeof(int),
                         HasMapFromAttribute = true,
-                        MapFromAttribute = __mfAttr62,
+                        MapFromAttribute = __mfAttr68,
                         HasMapIgnore = false,
                         MapIgnoreDirection = 0,
                         HasOverrideIgnore = false,
@@ -8189,7 +9192,7 @@ namespace NCMapper.Runtime
                         TypeName = "long",
                         TypeRef = typeof(long),
                         HasMapFromAttribute = true,
-                        MapFromAttribute = __mfAttr62,
+                        MapFromAttribute = __mfAttr68,
                         HasMapIgnore = false,
                         MapIgnoreDirection = 0,
                         HasOverrideIgnore = false,
@@ -8208,11 +9211,11 @@ namespace NCMapper.Runtime
                     },
                 },
             };
-            global::NCMapper.Runtime.RuntimeSnapshotPair<NCMapper.Tests.Models.FullTypeEntity, NCMapper.Tests.Models.FieldMappingDto>.Metadata = __meta62;
-            global::NCMapper.Runtime.RuntimeSnapshotStore.Register(__meta62);
-            // pair 63: NCMapper.Tests.Models.FullTypeEntity -> NCMapper.Tests.Models.MapIgnoreDto (MapFrom channel)
-            var __mfAttr63 = new global::NCMapper.Attributes.MapFromAttribute(typeof(NCMapper.Tests.Models.FullTypeEntity));
-            var __meta63 = new global::NCMapper.Runtime.RuntimeMapperMetadata
+            global::NCMapper.Runtime.RuntimeSnapshotPair<NCMapper.Tests.Models.FullTypeEntity, NCMapper.Tests.Models.FieldMappingDto>.Metadata = __meta68;
+            global::NCMapper.Runtime.RuntimeSnapshotStore.Register(__meta68);
+            // pair 69: NCMapper.Tests.Models.FullTypeEntity -> NCMapper.Tests.Models.MapIgnoreDto (MapFrom channel)
+            var __mfAttr69 = new global::NCMapper.Attributes.MapFromAttribute(typeof(NCMapper.Tests.Models.FullTypeEntity));
+            var __meta69 = new global::NCMapper.Runtime.RuntimeMapperMetadata
             {
                 SourceType = typeof(NCMapper.Tests.Models.FullTypeEntity),
                 TargetType = typeof(NCMapper.Tests.Models.MapIgnoreDto),
@@ -8233,7 +9236,7 @@ namespace NCMapper.Runtime
                                 TypeName = "int",
                                 TypeRef = typeof(int),
                                 HasMapFromAttribute = true,
-                                MapFromAttribute = __mfAttr63,
+                                MapFromAttribute = __mfAttr69,
                                 HasMapIgnore = false,
                                 MapIgnoreDirection = 0,
                                 HasOverrideIgnore = false,
@@ -8273,7 +9276,7 @@ namespace NCMapper.Runtime
                                 TypeName = "string",
                                 TypeRef = typeof(string),
                                 HasMapFromAttribute = true,
-                                MapFromAttribute = __mfAttr63,
+                                MapFromAttribute = __mfAttr69,
                                 HasMapIgnore = false,
                                 MapIgnoreDirection = 0,
                                 HasOverrideIgnore = false,
@@ -8313,7 +9316,7 @@ namespace NCMapper.Runtime
                         TypeName = "int",
                         TypeRef = typeof(int),
                         HasMapFromAttribute = true,
-                        MapFromAttribute = __mfAttr63,
+                        MapFromAttribute = __mfAttr69,
                         HasMapIgnore = false,
                         MapIgnoreDirection = 0,
                         HasOverrideIgnore = false,
@@ -8336,7 +9339,7 @@ namespace NCMapper.Runtime
                         TypeName = "string",
                         TypeRef = typeof(string),
                         HasMapFromAttribute = true,
-                        MapFromAttribute = __mfAttr63,
+                        MapFromAttribute = __mfAttr69,
                         HasMapIgnore = false,
                         MapIgnoreDirection = 0,
                         HasOverrideIgnore = false,
@@ -8355,11 +9358,11 @@ namespace NCMapper.Runtime
                     },
                 },
             };
-            global::NCMapper.Runtime.RuntimeSnapshotPair<NCMapper.Tests.Models.FullTypeEntity, NCMapper.Tests.Models.MapIgnoreDto>.Metadata = __meta63;
-            global::NCMapper.Runtime.RuntimeSnapshotStore.Register(__meta63);
-            // pair 64: NCMapper.Tests.Models.FullTypeEntity -> NCMapper.Tests.Models.NullableDto (MapFrom channel)
-            var __mfAttr64 = new global::NCMapper.Attributes.MapFromAttribute(typeof(NCMapper.Tests.Models.FullTypeEntity));
-            var __meta64 = new global::NCMapper.Runtime.RuntimeMapperMetadata
+            global::NCMapper.Runtime.RuntimeSnapshotPair<NCMapper.Tests.Models.FullTypeEntity, NCMapper.Tests.Models.MapIgnoreDto>.Metadata = __meta69;
+            global::NCMapper.Runtime.RuntimeSnapshotStore.Register(__meta69);
+            // pair 70: NCMapper.Tests.Models.FullTypeEntity -> NCMapper.Tests.Models.NullableDto (MapFrom channel)
+            var __mfAttr70 = new global::NCMapper.Attributes.MapFromAttribute(typeof(NCMapper.Tests.Models.FullTypeEntity));
+            var __meta70 = new global::NCMapper.Runtime.RuntimeMapperMetadata
             {
                 SourceType = typeof(NCMapper.Tests.Models.FullTypeEntity),
                 TargetType = typeof(NCMapper.Tests.Models.NullableDto),
@@ -8380,7 +9383,7 @@ namespace NCMapper.Runtime
                                 TypeName = "long",
                                 TypeRef = typeof(long),
                                 HasMapFromAttribute = true,
-                                MapFromAttribute = __mfAttr64,
+                                MapFromAttribute = __mfAttr70,
                                 HasMapIgnore = false,
                                 MapIgnoreDirection = 0,
                                 HasOverrideIgnore = false,
@@ -8420,7 +9423,7 @@ namespace NCMapper.Runtime
                                 TypeName = "long",
                                 TypeRef = typeof(long),
                                 HasMapFromAttribute = true,
-                                MapFromAttribute = __mfAttr64,
+                                MapFromAttribute = __mfAttr70,
                                 HasMapIgnore = false,
                                 MapIgnoreDirection = 0,
                                 HasOverrideIgnore = false,
@@ -8460,7 +9463,7 @@ namespace NCMapper.Runtime
                         TypeName = "long",
                         TypeRef = typeof(long),
                         HasMapFromAttribute = true,
-                        MapFromAttribute = __mfAttr64,
+                        MapFromAttribute = __mfAttr70,
                         HasMapIgnore = false,
                         MapIgnoreDirection = 0,
                         HasOverrideIgnore = false,
@@ -8483,7 +9486,7 @@ namespace NCMapper.Runtime
                         TypeName = "long",
                         TypeRef = typeof(long),
                         HasMapFromAttribute = true,
-                        MapFromAttribute = __mfAttr64,
+                        MapFromAttribute = __mfAttr70,
                         HasMapIgnore = false,
                         MapIgnoreDirection = 0,
                         HasOverrideIgnore = false,
@@ -8502,11 +9505,11 @@ namespace NCMapper.Runtime
                     },
                 },
             };
-            global::NCMapper.Runtime.RuntimeSnapshotPair<NCMapper.Tests.Models.FullTypeEntity, NCMapper.Tests.Models.NullableDto>.Metadata = __meta64;
-            global::NCMapper.Runtime.RuntimeSnapshotStore.Register(__meta64);
-            // pair 65: NCMapper.Tests.Models.FullTypeEntity -> NCMapper.Tests.Models.ReadonlyTargetDto (MapFrom channel)
-            var __mfAttr65 = new global::NCMapper.Attributes.MapFromAttribute(typeof(NCMapper.Tests.Models.FullTypeEntity));
-            var __meta65 = new global::NCMapper.Runtime.RuntimeMapperMetadata
+            global::NCMapper.Runtime.RuntimeSnapshotPair<NCMapper.Tests.Models.FullTypeEntity, NCMapper.Tests.Models.NullableDto>.Metadata = __meta70;
+            global::NCMapper.Runtime.RuntimeSnapshotStore.Register(__meta70);
+            // pair 71: NCMapper.Tests.Models.FullTypeEntity -> NCMapper.Tests.Models.ReadonlyTargetDto (MapFrom channel)
+            var __mfAttr71 = new global::NCMapper.Attributes.MapFromAttribute(typeof(NCMapper.Tests.Models.FullTypeEntity));
+            var __meta71 = new global::NCMapper.Runtime.RuntimeMapperMetadata
             {
                 SourceType = typeof(NCMapper.Tests.Models.FullTypeEntity),
                 TargetType = typeof(NCMapper.Tests.Models.ReadonlyTargetDto),
@@ -8527,7 +9530,7 @@ namespace NCMapper.Runtime
                                 TypeName = "int",
                                 TypeRef = typeof(int),
                                 HasMapFromAttribute = true,
-                                MapFromAttribute = __mfAttr65,
+                                MapFromAttribute = __mfAttr71,
                                 HasMapIgnore = false,
                                 MapIgnoreDirection = 0,
                                 HasOverrideIgnore = false,
@@ -8567,7 +9570,7 @@ namespace NCMapper.Runtime
                         TypeName = "int",
                         TypeRef = typeof(int),
                         HasMapFromAttribute = true,
-                        MapFromAttribute = __mfAttr65,
+                        MapFromAttribute = __mfAttr71,
                         HasMapIgnore = false,
                         MapIgnoreDirection = 0,
                         HasOverrideIgnore = false,
@@ -8586,11 +9589,11 @@ namespace NCMapper.Runtime
                     },
                 },
             };
-            global::NCMapper.Runtime.RuntimeSnapshotPair<NCMapper.Tests.Models.FullTypeEntity, NCMapper.Tests.Models.ReadonlyTargetDto>.Metadata = __meta65;
-            global::NCMapper.Runtime.RuntimeSnapshotStore.Register(__meta65);
-            // pair 66: NCMapper.Tests.Models.FullTypeEntity -> NCMapper.Tests.Models.SameTypeDto (MapFrom channel)
-            var __mfAttr66 = new global::NCMapper.Attributes.MapFromAttribute(typeof(NCMapper.Tests.Models.FullTypeEntity));
-            var __meta66 = new global::NCMapper.Runtime.RuntimeMapperMetadata
+            global::NCMapper.Runtime.RuntimeSnapshotPair<NCMapper.Tests.Models.FullTypeEntity, NCMapper.Tests.Models.ReadonlyTargetDto>.Metadata = __meta71;
+            global::NCMapper.Runtime.RuntimeSnapshotStore.Register(__meta71);
+            // pair 72: NCMapper.Tests.Models.FullTypeEntity -> NCMapper.Tests.Models.SameTypeDto (MapFrom channel)
+            var __mfAttr72 = new global::NCMapper.Attributes.MapFromAttribute(typeof(NCMapper.Tests.Models.FullTypeEntity));
+            var __meta72 = new global::NCMapper.Runtime.RuntimeMapperMetadata
             {
                 SourceType = typeof(NCMapper.Tests.Models.FullTypeEntity),
                 TargetType = typeof(NCMapper.Tests.Models.SameTypeDto),
@@ -8611,7 +9614,7 @@ namespace NCMapper.Runtime
                                 TypeName = "int",
                                 TypeRef = typeof(int),
                                 HasMapFromAttribute = true,
-                                MapFromAttribute = __mfAttr66,
+                                MapFromAttribute = __mfAttr72,
                                 HasMapIgnore = false,
                                 MapIgnoreDirection = 0,
                                 HasOverrideIgnore = false,
@@ -8651,7 +9654,7 @@ namespace NCMapper.Runtime
                                 TypeName = "long",
                                 TypeRef = typeof(long),
                                 HasMapFromAttribute = true,
-                                MapFromAttribute = __mfAttr66,
+                                MapFromAttribute = __mfAttr72,
                                 HasMapIgnore = false,
                                 MapIgnoreDirection = 0,
                                 HasOverrideIgnore = false,
@@ -8691,7 +9694,7 @@ namespace NCMapper.Runtime
                                 TypeName = "decimal",
                                 TypeRef = typeof(decimal),
                                 HasMapFromAttribute = true,
-                                MapFromAttribute = __mfAttr66,
+                                MapFromAttribute = __mfAttr72,
                                 HasMapIgnore = false,
                                 MapIgnoreDirection = 0,
                                 HasOverrideIgnore = false,
@@ -8731,7 +9734,7 @@ namespace NCMapper.Runtime
                                 TypeName = "float",
                                 TypeRef = typeof(float),
                                 HasMapFromAttribute = true,
-                                MapFromAttribute = __mfAttr66,
+                                MapFromAttribute = __mfAttr72,
                                 HasMapIgnore = false,
                                 MapIgnoreDirection = 0,
                                 HasOverrideIgnore = false,
@@ -8771,7 +9774,7 @@ namespace NCMapper.Runtime
                                 TypeName = "double",
                                 TypeRef = typeof(double),
                                 HasMapFromAttribute = true,
-                                MapFromAttribute = __mfAttr66,
+                                MapFromAttribute = __mfAttr72,
                                 HasMapIgnore = false,
                                 MapIgnoreDirection = 0,
                                 HasOverrideIgnore = false,
@@ -8811,7 +9814,7 @@ namespace NCMapper.Runtime
                                 TypeName = "string",
                                 TypeRef = typeof(string),
                                 HasMapFromAttribute = true,
-                                MapFromAttribute = __mfAttr66,
+                                MapFromAttribute = __mfAttr72,
                                 HasMapIgnore = false,
                                 MapIgnoreDirection = 0,
                                 HasOverrideIgnore = false,
@@ -8851,7 +9854,7 @@ namespace NCMapper.Runtime
                                 TypeName = "bool",
                                 TypeRef = typeof(bool),
                                 HasMapFromAttribute = true,
-                                MapFromAttribute = __mfAttr66,
+                                MapFromAttribute = __mfAttr72,
                                 HasMapIgnore = false,
                                 MapIgnoreDirection = 0,
                                 HasOverrideIgnore = false,
@@ -8891,7 +9894,7 @@ namespace NCMapper.Runtime
                                 TypeName = "System.DateTime",
                                 TypeRef = typeof(System.DateTime),
                                 HasMapFromAttribute = true,
-                                MapFromAttribute = __mfAttr66,
+                                MapFromAttribute = __mfAttr72,
                                 HasMapIgnore = false,
                                 MapIgnoreDirection = 0,
                                 HasOverrideIgnore = false,
@@ -8931,7 +9934,7 @@ namespace NCMapper.Runtime
                                 TypeName = "System.Guid",
                                 TypeRef = typeof(System.Guid),
                                 HasMapFromAttribute = true,
-                                MapFromAttribute = __mfAttr66,
+                                MapFromAttribute = __mfAttr72,
                                 HasMapIgnore = false,
                                 MapIgnoreDirection = 0,
                                 HasOverrideIgnore = false,
@@ -8971,7 +9974,7 @@ namespace NCMapper.Runtime
                         TypeName = "int",
                         TypeRef = typeof(int),
                         HasMapFromAttribute = true,
-                        MapFromAttribute = __mfAttr66,
+                        MapFromAttribute = __mfAttr72,
                         HasMapIgnore = false,
                         MapIgnoreDirection = 0,
                         HasOverrideIgnore = false,
@@ -8994,7 +9997,7 @@ namespace NCMapper.Runtime
                         TypeName = "long",
                         TypeRef = typeof(long),
                         HasMapFromAttribute = true,
-                        MapFromAttribute = __mfAttr66,
+                        MapFromAttribute = __mfAttr72,
                         HasMapIgnore = false,
                         MapIgnoreDirection = 0,
                         HasOverrideIgnore = false,
@@ -9017,7 +10020,7 @@ namespace NCMapper.Runtime
                         TypeName = "decimal",
                         TypeRef = typeof(decimal),
                         HasMapFromAttribute = true,
-                        MapFromAttribute = __mfAttr66,
+                        MapFromAttribute = __mfAttr72,
                         HasMapIgnore = false,
                         MapIgnoreDirection = 0,
                         HasOverrideIgnore = false,
@@ -9040,7 +10043,7 @@ namespace NCMapper.Runtime
                         TypeName = "float",
                         TypeRef = typeof(float),
                         HasMapFromAttribute = true,
-                        MapFromAttribute = __mfAttr66,
+                        MapFromAttribute = __mfAttr72,
                         HasMapIgnore = false,
                         MapIgnoreDirection = 0,
                         HasOverrideIgnore = false,
@@ -9063,7 +10066,7 @@ namespace NCMapper.Runtime
                         TypeName = "double",
                         TypeRef = typeof(double),
                         HasMapFromAttribute = true,
-                        MapFromAttribute = __mfAttr66,
+                        MapFromAttribute = __mfAttr72,
                         HasMapIgnore = false,
                         MapIgnoreDirection = 0,
                         HasOverrideIgnore = false,
@@ -9086,7 +10089,7 @@ namespace NCMapper.Runtime
                         TypeName = "string",
                         TypeRef = typeof(string),
                         HasMapFromAttribute = true,
-                        MapFromAttribute = __mfAttr66,
+                        MapFromAttribute = __mfAttr72,
                         HasMapIgnore = false,
                         MapIgnoreDirection = 0,
                         HasOverrideIgnore = false,
@@ -9109,7 +10112,7 @@ namespace NCMapper.Runtime
                         TypeName = "bool",
                         TypeRef = typeof(bool),
                         HasMapFromAttribute = true,
-                        MapFromAttribute = __mfAttr66,
+                        MapFromAttribute = __mfAttr72,
                         HasMapIgnore = false,
                         MapIgnoreDirection = 0,
                         HasOverrideIgnore = false,
@@ -9132,7 +10135,7 @@ namespace NCMapper.Runtime
                         TypeName = "System.DateTime",
                         TypeRef = typeof(System.DateTime),
                         HasMapFromAttribute = true,
-                        MapFromAttribute = __mfAttr66,
+                        MapFromAttribute = __mfAttr72,
                         HasMapIgnore = false,
                         MapIgnoreDirection = 0,
                         HasOverrideIgnore = false,
@@ -9155,7 +10158,7 @@ namespace NCMapper.Runtime
                         TypeName = "System.Guid",
                         TypeRef = typeof(System.Guid),
                         HasMapFromAttribute = true,
-                        MapFromAttribute = __mfAttr66,
+                        MapFromAttribute = __mfAttr72,
                         HasMapIgnore = false,
                         MapIgnoreDirection = 0,
                         HasOverrideIgnore = false,
@@ -9174,11 +10177,11 @@ namespace NCMapper.Runtime
                     },
                 },
             };
-            global::NCMapper.Runtime.RuntimeSnapshotPair<NCMapper.Tests.Models.FullTypeEntity, NCMapper.Tests.Models.SameTypeDto>.Metadata = __meta66;
-            global::NCMapper.Runtime.RuntimeSnapshotStore.Register(__meta66);
-            // pair 67: NCMapper.Tests.Models.FullTypeEntity -> NCMapper.Tests.Models.StringToNumericDto (MapFrom channel)
-            var __mfAttr67 = new global::NCMapper.Attributes.MapFromAttribute(typeof(NCMapper.Tests.Models.FullTypeEntity));
-            var __meta67 = new global::NCMapper.Runtime.RuntimeMapperMetadata
+            global::NCMapper.Runtime.RuntimeSnapshotPair<NCMapper.Tests.Models.FullTypeEntity, NCMapper.Tests.Models.SameTypeDto>.Metadata = __meta72;
+            global::NCMapper.Runtime.RuntimeSnapshotStore.Register(__meta72);
+            // pair 73: NCMapper.Tests.Models.FullTypeEntity -> NCMapper.Tests.Models.StringToNumericDto (MapFrom channel)
+            var __mfAttr73 = new global::NCMapper.Attributes.MapFromAttribute(typeof(NCMapper.Tests.Models.FullTypeEntity));
+            var __meta73 = new global::NCMapper.Runtime.RuntimeMapperMetadata
             {
                 SourceType = typeof(NCMapper.Tests.Models.FullTypeEntity),
                 TargetType = typeof(NCMapper.Tests.Models.StringToNumericDto),
@@ -9199,7 +10202,7 @@ namespace NCMapper.Runtime
                                 TypeName = "int",
                                 TypeRef = typeof(int),
                                 HasMapFromAttribute = true,
-                                MapFromAttribute = __mfAttr67,
+                                MapFromAttribute = __mfAttr73,
                                 HasMapIgnore = false,
                                 MapIgnoreDirection = 0,
                                 HasOverrideIgnore = false,
@@ -9239,7 +10242,7 @@ namespace NCMapper.Runtime
                                 TypeName = "long",
                                 TypeRef = typeof(long),
                                 HasMapFromAttribute = true,
-                                MapFromAttribute = __mfAttr67,
+                                MapFromAttribute = __mfAttr73,
                                 HasMapIgnore = false,
                                 MapIgnoreDirection = 0,
                                 HasOverrideIgnore = false,
@@ -9279,7 +10282,7 @@ namespace NCMapper.Runtime
                                 TypeName = "decimal",
                                 TypeRef = typeof(decimal),
                                 HasMapFromAttribute = true,
-                                MapFromAttribute = __mfAttr67,
+                                MapFromAttribute = __mfAttr73,
                                 HasMapIgnore = false,
                                 MapIgnoreDirection = 0,
                                 HasOverrideIgnore = false,
@@ -9319,7 +10322,7 @@ namespace NCMapper.Runtime
                                 TypeName = "System.DateTime",
                                 TypeRef = typeof(System.DateTime),
                                 HasMapFromAttribute = true,
-                                MapFromAttribute = __mfAttr67,
+                                MapFromAttribute = __mfAttr73,
                                 HasMapIgnore = false,
                                 MapIgnoreDirection = 0,
                                 HasOverrideIgnore = false,
@@ -9359,7 +10362,7 @@ namespace NCMapper.Runtime
                         TypeName = "int",
                         TypeRef = typeof(int),
                         HasMapFromAttribute = true,
-                        MapFromAttribute = __mfAttr67,
+                        MapFromAttribute = __mfAttr73,
                         HasMapIgnore = false,
                         MapIgnoreDirection = 0,
                         HasOverrideIgnore = false,
@@ -9382,7 +10385,7 @@ namespace NCMapper.Runtime
                         TypeName = "long",
                         TypeRef = typeof(long),
                         HasMapFromAttribute = true,
-                        MapFromAttribute = __mfAttr67,
+                        MapFromAttribute = __mfAttr73,
                         HasMapIgnore = false,
                         MapIgnoreDirection = 0,
                         HasOverrideIgnore = false,
@@ -9405,7 +10408,7 @@ namespace NCMapper.Runtime
                         TypeName = "decimal",
                         TypeRef = typeof(decimal),
                         HasMapFromAttribute = true,
-                        MapFromAttribute = __mfAttr67,
+                        MapFromAttribute = __mfAttr73,
                         HasMapIgnore = false,
                         MapIgnoreDirection = 0,
                         HasOverrideIgnore = false,
@@ -9428,7 +10431,7 @@ namespace NCMapper.Runtime
                         TypeName = "System.DateTime",
                         TypeRef = typeof(System.DateTime),
                         HasMapFromAttribute = true,
-                        MapFromAttribute = __mfAttr67,
+                        MapFromAttribute = __mfAttr73,
                         HasMapIgnore = false,
                         MapIgnoreDirection = 0,
                         HasOverrideIgnore = false,
@@ -9447,11 +10450,11 @@ namespace NCMapper.Runtime
                     },
                 },
             };
-            global::NCMapper.Runtime.RuntimeSnapshotPair<NCMapper.Tests.Models.FullTypeEntity, NCMapper.Tests.Models.StringToNumericDto>.Metadata = __meta67;
-            global::NCMapper.Runtime.RuntimeSnapshotStore.Register(__meta67);
-            // pair 68: NCMapper.Tests.Models.FullTypeEntity -> NCMapper.Tests.Models.StringToNumericOnlyDto (MapFrom channel)
-            var __mfAttr68 = new global::NCMapper.Attributes.MapFromAttribute(typeof(NCMapper.Tests.Models.FullTypeEntity));
-            var __meta68 = new global::NCMapper.Runtime.RuntimeMapperMetadata
+            global::NCMapper.Runtime.RuntimeSnapshotPair<NCMapper.Tests.Models.FullTypeEntity, NCMapper.Tests.Models.StringToNumericDto>.Metadata = __meta73;
+            global::NCMapper.Runtime.RuntimeSnapshotStore.Register(__meta73);
+            // pair 74: NCMapper.Tests.Models.FullTypeEntity -> NCMapper.Tests.Models.StringToNumericOnlyDto (MapFrom channel)
+            var __mfAttr74 = new global::NCMapper.Attributes.MapFromAttribute(typeof(NCMapper.Tests.Models.FullTypeEntity));
+            var __meta74 = new global::NCMapper.Runtime.RuntimeMapperMetadata
             {
                 SourceType = typeof(NCMapper.Tests.Models.FullTypeEntity),
                 TargetType = typeof(NCMapper.Tests.Models.StringToNumericOnlyDto),
@@ -9472,7 +10475,7 @@ namespace NCMapper.Runtime
                                 TypeName = "int",
                                 TypeRef = typeof(int),
                                 HasMapFromAttribute = true,
-                                MapFromAttribute = __mfAttr68,
+                                MapFromAttribute = __mfAttr74,
                                 HasMapIgnore = false,
                                 MapIgnoreDirection = 0,
                                 HasOverrideIgnore = false,
@@ -9512,7 +10515,7 @@ namespace NCMapper.Runtime
                                 TypeName = "long",
                                 TypeRef = typeof(long),
                                 HasMapFromAttribute = true,
-                                MapFromAttribute = __mfAttr68,
+                                MapFromAttribute = __mfAttr74,
                                 HasMapIgnore = false,
                                 MapIgnoreDirection = 0,
                                 HasOverrideIgnore = false,
@@ -9552,7 +10555,7 @@ namespace NCMapper.Runtime
                                 TypeName = "decimal",
                                 TypeRef = typeof(decimal),
                                 HasMapFromAttribute = true,
-                                MapFromAttribute = __mfAttr68,
+                                MapFromAttribute = __mfAttr74,
                                 HasMapIgnore = false,
                                 MapIgnoreDirection = 0,
                                 HasOverrideIgnore = false,
@@ -9592,7 +10595,7 @@ namespace NCMapper.Runtime
                         TypeName = "int",
                         TypeRef = typeof(int),
                         HasMapFromAttribute = true,
-                        MapFromAttribute = __mfAttr68,
+                        MapFromAttribute = __mfAttr74,
                         HasMapIgnore = false,
                         MapIgnoreDirection = 0,
                         HasOverrideIgnore = false,
@@ -9615,7 +10618,7 @@ namespace NCMapper.Runtime
                         TypeName = "long",
                         TypeRef = typeof(long),
                         HasMapFromAttribute = true,
-                        MapFromAttribute = __mfAttr68,
+                        MapFromAttribute = __mfAttr74,
                         HasMapIgnore = false,
                         MapIgnoreDirection = 0,
                         HasOverrideIgnore = false,
@@ -9638,7 +10641,7 @@ namespace NCMapper.Runtime
                         TypeName = "decimal",
                         TypeRef = typeof(decimal),
                         HasMapFromAttribute = true,
-                        MapFromAttribute = __mfAttr68,
+                        MapFromAttribute = __mfAttr74,
                         HasMapIgnore = false,
                         MapIgnoreDirection = 0,
                         HasOverrideIgnore = false,
@@ -9657,11 +10660,11 @@ namespace NCMapper.Runtime
                     },
                 },
             };
-            global::NCMapper.Runtime.RuntimeSnapshotPair<NCMapper.Tests.Models.FullTypeEntity, NCMapper.Tests.Models.StringToNumericOnlyDto>.Metadata = __meta68;
-            global::NCMapper.Runtime.RuntimeSnapshotStore.Register(__meta68);
-            // pair 69: NCMapper.Tests.Models.FullTypeEntity -> NCMapper.Tests.Models.StringToValueDto (MapFrom channel)
-            var __mfAttr69 = new global::NCMapper.Attributes.MapFromAttribute(typeof(NCMapper.Tests.Models.FullTypeEntity));
-            var __meta69 = new global::NCMapper.Runtime.RuntimeMapperMetadata
+            global::NCMapper.Runtime.RuntimeSnapshotPair<NCMapper.Tests.Models.FullTypeEntity, NCMapper.Tests.Models.StringToNumericOnlyDto>.Metadata = __meta74;
+            global::NCMapper.Runtime.RuntimeSnapshotStore.Register(__meta74);
+            // pair 75: NCMapper.Tests.Models.FullTypeEntity -> NCMapper.Tests.Models.StringToValueDto (MapFrom channel)
+            var __mfAttr75 = new global::NCMapper.Attributes.MapFromAttribute(typeof(NCMapper.Tests.Models.FullTypeEntity));
+            var __meta75 = new global::NCMapper.Runtime.RuntimeMapperMetadata
             {
                 SourceType = typeof(NCMapper.Tests.Models.FullTypeEntity),
                 TargetType = typeof(NCMapper.Tests.Models.StringToValueDto),
@@ -9682,7 +10685,7 @@ namespace NCMapper.Runtime
                                 TypeName = "int",
                                 TypeRef = typeof(int),
                                 HasMapFromAttribute = true,
-                                MapFromAttribute = __mfAttr69,
+                                MapFromAttribute = __mfAttr75,
                                 HasMapIgnore = false,
                                 MapIgnoreDirection = 0,
                                 HasOverrideIgnore = false,
@@ -9722,7 +10725,7 @@ namespace NCMapper.Runtime
                                 TypeName = "long",
                                 TypeRef = typeof(long),
                                 HasMapFromAttribute = true,
-                                MapFromAttribute = __mfAttr69,
+                                MapFromAttribute = __mfAttr75,
                                 HasMapIgnore = false,
                                 MapIgnoreDirection = 0,
                                 HasOverrideIgnore = false,
@@ -9762,7 +10765,7 @@ namespace NCMapper.Runtime
                         TypeName = "int",
                         TypeRef = typeof(int),
                         HasMapFromAttribute = true,
-                        MapFromAttribute = __mfAttr69,
+                        MapFromAttribute = __mfAttr75,
                         HasMapIgnore = false,
                         MapIgnoreDirection = 0,
                         HasOverrideIgnore = false,
@@ -9785,7 +10788,7 @@ namespace NCMapper.Runtime
                         TypeName = "long",
                         TypeRef = typeof(long),
                         HasMapFromAttribute = true,
-                        MapFromAttribute = __mfAttr69,
+                        MapFromAttribute = __mfAttr75,
                         HasMapIgnore = false,
                         MapIgnoreDirection = 0,
                         HasOverrideIgnore = false,
@@ -9804,11 +10807,11 @@ namespace NCMapper.Runtime
                     },
                 },
             };
-            global::NCMapper.Runtime.RuntimeSnapshotPair<NCMapper.Tests.Models.FullTypeEntity, NCMapper.Tests.Models.StringToValueDto>.Metadata = __meta69;
-            global::NCMapper.Runtime.RuntimeSnapshotStore.Register(__meta69);
-            // pair 70: NCMapper.Tests.Models.FullTypeEntity -> NCMapper.Tests.Models.ValueToStringDto (MapFrom channel)
-            var __mfAttr70 = new global::NCMapper.Attributes.MapFromAttribute(typeof(NCMapper.Tests.Models.FullTypeEntity));
-            var __meta70 = new global::NCMapper.Runtime.RuntimeMapperMetadata
+            global::NCMapper.Runtime.RuntimeSnapshotPair<NCMapper.Tests.Models.FullTypeEntity, NCMapper.Tests.Models.StringToValueDto>.Metadata = __meta75;
+            global::NCMapper.Runtime.RuntimeSnapshotStore.Register(__meta75);
+            // pair 76: NCMapper.Tests.Models.FullTypeEntity -> NCMapper.Tests.Models.ValueToStringDto (MapFrom channel)
+            var __mfAttr76 = new global::NCMapper.Attributes.MapFromAttribute(typeof(NCMapper.Tests.Models.FullTypeEntity));
+            var __meta76 = new global::NCMapper.Runtime.RuntimeMapperMetadata
             {
                 SourceType = typeof(NCMapper.Tests.Models.FullTypeEntity),
                 TargetType = typeof(NCMapper.Tests.Models.ValueToStringDto),
@@ -9829,7 +10832,7 @@ namespace NCMapper.Runtime
                                 TypeName = "string",
                                 TypeRef = typeof(string),
                                 HasMapFromAttribute = true,
-                                MapFromAttribute = __mfAttr70,
+                                MapFromAttribute = __mfAttr76,
                                 HasMapIgnore = false,
                                 MapIgnoreDirection = 0,
                                 HasOverrideIgnore = false,
@@ -9869,7 +10872,7 @@ namespace NCMapper.Runtime
                                 TypeName = "string",
                                 TypeRef = typeof(string),
                                 HasMapFromAttribute = true,
-                                MapFromAttribute = __mfAttr70,
+                                MapFromAttribute = __mfAttr76,
                                 HasMapIgnore = false,
                                 MapIgnoreDirection = 0,
                                 HasOverrideIgnore = false,
@@ -9909,7 +10912,7 @@ namespace NCMapper.Runtime
                                 TypeName = "string",
                                 TypeRef = typeof(string),
                                 HasMapFromAttribute = true,
-                                MapFromAttribute = __mfAttr70,
+                                MapFromAttribute = __mfAttr76,
                                 HasMapIgnore = false,
                                 MapIgnoreDirection = 0,
                                 HasOverrideIgnore = false,
@@ -9949,7 +10952,7 @@ namespace NCMapper.Runtime
                                 TypeName = "string",
                                 TypeRef = typeof(string),
                                 HasMapFromAttribute = true,
-                                MapFromAttribute = __mfAttr70,
+                                MapFromAttribute = __mfAttr76,
                                 HasMapIgnore = false,
                                 MapIgnoreDirection = 0,
                                 HasOverrideIgnore = false,
@@ -9989,7 +10992,7 @@ namespace NCMapper.Runtime
                                 TypeName = "string",
                                 TypeRef = typeof(string),
                                 HasMapFromAttribute = true,
-                                MapFromAttribute = __mfAttr70,
+                                MapFromAttribute = __mfAttr76,
                                 HasMapIgnore = false,
                                 MapIgnoreDirection = 0,
                                 HasOverrideIgnore = false,
@@ -10029,7 +11032,7 @@ namespace NCMapper.Runtime
                                 TypeName = "string",
                                 TypeRef = typeof(string),
                                 HasMapFromAttribute = true,
-                                MapFromAttribute = __mfAttr70,
+                                MapFromAttribute = __mfAttr76,
                                 HasMapIgnore = false,
                                 MapIgnoreDirection = 0,
                                 HasOverrideIgnore = false,
@@ -10069,7 +11072,7 @@ namespace NCMapper.Runtime
                                 TypeName = "string",
                                 TypeRef = typeof(string),
                                 HasMapFromAttribute = true,
-                                MapFromAttribute = __mfAttr70,
+                                MapFromAttribute = __mfAttr76,
                                 HasMapIgnore = false,
                                 MapIgnoreDirection = 0,
                                 HasOverrideIgnore = false,
@@ -10109,7 +11112,7 @@ namespace NCMapper.Runtime
                                 TypeName = "string",
                                 TypeRef = typeof(string),
                                 HasMapFromAttribute = true,
-                                MapFromAttribute = __mfAttr70,
+                                MapFromAttribute = __mfAttr76,
                                 HasMapIgnore = false,
                                 MapIgnoreDirection = 0,
                                 HasOverrideIgnore = false,
@@ -10149,7 +11152,7 @@ namespace NCMapper.Runtime
                         TypeName = "string",
                         TypeRef = typeof(string),
                         HasMapFromAttribute = true,
-                        MapFromAttribute = __mfAttr70,
+                        MapFromAttribute = __mfAttr76,
                         HasMapIgnore = false,
                         MapIgnoreDirection = 0,
                         HasOverrideIgnore = false,
@@ -10172,7 +11175,7 @@ namespace NCMapper.Runtime
                         TypeName = "string",
                         TypeRef = typeof(string),
                         HasMapFromAttribute = true,
-                        MapFromAttribute = __mfAttr70,
+                        MapFromAttribute = __mfAttr76,
                         HasMapIgnore = false,
                         MapIgnoreDirection = 0,
                         HasOverrideIgnore = false,
@@ -10195,7 +11198,7 @@ namespace NCMapper.Runtime
                         TypeName = "string",
                         TypeRef = typeof(string),
                         HasMapFromAttribute = true,
-                        MapFromAttribute = __mfAttr70,
+                        MapFromAttribute = __mfAttr76,
                         HasMapIgnore = false,
                         MapIgnoreDirection = 0,
                         HasOverrideIgnore = false,
@@ -10218,7 +11221,7 @@ namespace NCMapper.Runtime
                         TypeName = "string",
                         TypeRef = typeof(string),
                         HasMapFromAttribute = true,
-                        MapFromAttribute = __mfAttr70,
+                        MapFromAttribute = __mfAttr76,
                         HasMapIgnore = false,
                         MapIgnoreDirection = 0,
                         HasOverrideIgnore = false,
@@ -10241,7 +11244,7 @@ namespace NCMapper.Runtime
                         TypeName = "string",
                         TypeRef = typeof(string),
                         HasMapFromAttribute = true,
-                        MapFromAttribute = __mfAttr70,
+                        MapFromAttribute = __mfAttr76,
                         HasMapIgnore = false,
                         MapIgnoreDirection = 0,
                         HasOverrideIgnore = false,
@@ -10264,7 +11267,7 @@ namespace NCMapper.Runtime
                         TypeName = "string",
                         TypeRef = typeof(string),
                         HasMapFromAttribute = true,
-                        MapFromAttribute = __mfAttr70,
+                        MapFromAttribute = __mfAttr76,
                         HasMapIgnore = false,
                         MapIgnoreDirection = 0,
                         HasOverrideIgnore = false,
@@ -10287,7 +11290,7 @@ namespace NCMapper.Runtime
                         TypeName = "string",
                         TypeRef = typeof(string),
                         HasMapFromAttribute = true,
-                        MapFromAttribute = __mfAttr70,
+                        MapFromAttribute = __mfAttr76,
                         HasMapIgnore = false,
                         MapIgnoreDirection = 0,
                         HasOverrideIgnore = false,
@@ -10310,7 +11313,7 @@ namespace NCMapper.Runtime
                         TypeName = "string",
                         TypeRef = typeof(string),
                         HasMapFromAttribute = true,
-                        MapFromAttribute = __mfAttr70,
+                        MapFromAttribute = __mfAttr76,
                         HasMapIgnore = false,
                         MapIgnoreDirection = 0,
                         HasOverrideIgnore = false,
@@ -10329,11 +11332,11 @@ namespace NCMapper.Runtime
                     },
                 },
             };
-            global::NCMapper.Runtime.RuntimeSnapshotPair<NCMapper.Tests.Models.FullTypeEntity, NCMapper.Tests.Models.ValueToStringDto>.Metadata = __meta70;
-            global::NCMapper.Runtime.RuntimeSnapshotStore.Register(__meta70);
-            // pair 71: NCMapper.Tests.Models.FullTypeEntity -> NCMapper.Tests.Tests.EnumMappingTests.EnumToIntDto (MapFrom channel)
-            var __mfAttr71 = new global::NCMapper.Attributes.MapFromAttribute(typeof(NCMapper.Tests.Models.FullTypeEntity));
-            var __meta71 = new global::NCMapper.Runtime.RuntimeMapperMetadata
+            global::NCMapper.Runtime.RuntimeSnapshotPair<NCMapper.Tests.Models.FullTypeEntity, NCMapper.Tests.Models.ValueToStringDto>.Metadata = __meta76;
+            global::NCMapper.Runtime.RuntimeSnapshotStore.Register(__meta76);
+            // pair 77: NCMapper.Tests.Models.FullTypeEntity -> NCMapper.Tests.Tests.EnumMappingTests.EnumToIntDto (MapFrom channel)
+            var __mfAttr77 = new global::NCMapper.Attributes.MapFromAttribute(typeof(NCMapper.Tests.Models.FullTypeEntity));
+            var __meta77 = new global::NCMapper.Runtime.RuntimeMapperMetadata
             {
                 SourceType = typeof(NCMapper.Tests.Models.FullTypeEntity),
                 TargetType = typeof(NCMapper.Tests.Tests.EnumMappingTests.EnumToIntDto),
@@ -10354,7 +11357,7 @@ namespace NCMapper.Runtime
                                 TypeName = "int",
                                 TypeRef = typeof(int),
                                 HasMapFromAttribute = true,
-                                MapFromAttribute = __mfAttr71,
+                                MapFromAttribute = __mfAttr77,
                                 HasMapIgnore = false,
                                 MapIgnoreDirection = 0,
                                 HasOverrideIgnore = false,
@@ -10394,7 +11397,7 @@ namespace NCMapper.Runtime
                         TypeName = "int",
                         TypeRef = typeof(int),
                         HasMapFromAttribute = true,
-                        MapFromAttribute = __mfAttr71,
+                        MapFromAttribute = __mfAttr77,
                         HasMapIgnore = false,
                         MapIgnoreDirection = 0,
                         HasOverrideIgnore = false,
@@ -10413,11 +11416,11 @@ namespace NCMapper.Runtime
                     },
                 },
             };
-            global::NCMapper.Runtime.RuntimeSnapshotPair<NCMapper.Tests.Models.FullTypeEntity, NCMapper.Tests.Tests.EnumMappingTests.EnumToIntDto>.Metadata = __meta71;
-            global::NCMapper.Runtime.RuntimeSnapshotStore.Register(__meta71);
-            // pair 72: NCMapper.Tests.Models.ICollectionSource -> NCMapper.Tests.Models.CollectionFromInterfaceDto (MapFrom channel)
-            var __mfAttr72 = new global::NCMapper.Attributes.MapFromAttribute(typeof(NCMapper.Tests.Models.ICollectionSource));
-            var __meta72 = new global::NCMapper.Runtime.RuntimeMapperMetadata
+            global::NCMapper.Runtime.RuntimeSnapshotPair<NCMapper.Tests.Models.FullTypeEntity, NCMapper.Tests.Tests.EnumMappingTests.EnumToIntDto>.Metadata = __meta77;
+            global::NCMapper.Runtime.RuntimeSnapshotStore.Register(__meta77);
+            // pair 78: NCMapper.Tests.Models.ICollectionSource -> NCMapper.Tests.Models.CollectionFromInterfaceDto (MapFrom channel)
+            var __mfAttr78 = new global::NCMapper.Attributes.MapFromAttribute(typeof(NCMapper.Tests.Models.ICollectionSource));
+            var __meta78 = new global::NCMapper.Runtime.RuntimeMapperMetadata
             {
                 SourceType = typeof(NCMapper.Tests.Models.ICollectionSource),
                 TargetType = typeof(NCMapper.Tests.Models.CollectionFromInterfaceDto),
@@ -10438,7 +11441,7 @@ namespace NCMapper.Runtime
                                 TypeName = "int",
                                 TypeRef = typeof(int),
                                 HasMapFromAttribute = true,
-                                MapFromAttribute = __mfAttr72,
+                                MapFromAttribute = __mfAttr78,
                                 HasMapIgnore = false,
                                 MapIgnoreDirection = 0,
                                 HasOverrideIgnore = false,
@@ -10478,7 +11481,7 @@ namespace NCMapper.Runtime
                                 TypeName = "System.Collections.Generic.List<string>?",
                                 TypeRef = typeof(System.Collections.Generic.List<string>),
                                 HasMapFromAttribute = true,
-                                MapFromAttribute = __mfAttr72,
+                                MapFromAttribute = __mfAttr78,
                                 HasMapIgnore = false,
                                 MapIgnoreDirection = 0,
                                 HasOverrideIgnore = false,
@@ -10518,7 +11521,7 @@ namespace NCMapper.Runtime
                                 TypeName = "int[]?",
                                 TypeRef = typeof(int[]),
                                 HasMapFromAttribute = true,
-                                MapFromAttribute = __mfAttr72,
+                                MapFromAttribute = __mfAttr78,
                                 HasMapIgnore = false,
                                 MapIgnoreDirection = 0,
                                 HasOverrideIgnore = false,
@@ -10558,7 +11561,7 @@ namespace NCMapper.Runtime
                         TypeName = "int",
                         TypeRef = typeof(int),
                         HasMapFromAttribute = true,
-                        MapFromAttribute = __mfAttr72,
+                        MapFromAttribute = __mfAttr78,
                         HasMapIgnore = false,
                         MapIgnoreDirection = 0,
                         HasOverrideIgnore = false,
@@ -10581,7 +11584,7 @@ namespace NCMapper.Runtime
                         TypeName = "System.Collections.Generic.List<string>?",
                         TypeRef = typeof(System.Collections.Generic.List<string>),
                         HasMapFromAttribute = true,
-                        MapFromAttribute = __mfAttr72,
+                        MapFromAttribute = __mfAttr78,
                         HasMapIgnore = false,
                         MapIgnoreDirection = 0,
                         HasOverrideIgnore = false,
@@ -10604,7 +11607,7 @@ namespace NCMapper.Runtime
                         TypeName = "int[]?",
                         TypeRef = typeof(int[]),
                         HasMapFromAttribute = true,
-                        MapFromAttribute = __mfAttr72,
+                        MapFromAttribute = __mfAttr78,
                         HasMapIgnore = false,
                         MapIgnoreDirection = 0,
                         HasOverrideIgnore = false,
@@ -10623,11 +11626,11 @@ namespace NCMapper.Runtime
                     },
                 },
             };
-            global::NCMapper.Runtime.RuntimeSnapshotPair<NCMapper.Tests.Models.ICollectionSource, NCMapper.Tests.Models.CollectionFromInterfaceDto>.Metadata = __meta72;
-            global::NCMapper.Runtime.RuntimeSnapshotStore.Register(__meta72);
-            // pair 73: NCMapper.Tests.Models.IOrderSource -> NCMapper.Tests.Models.OrderFromInterfaceDto (MapFrom channel)
-            var __mfAttr73 = new global::NCMapper.Attributes.MapFromAttribute(typeof(NCMapper.Tests.Models.IOrderSource));
-            var __meta73 = new global::NCMapper.Runtime.RuntimeMapperMetadata
+            global::NCMapper.Runtime.RuntimeSnapshotPair<NCMapper.Tests.Models.ICollectionSource, NCMapper.Tests.Models.CollectionFromInterfaceDto>.Metadata = __meta78;
+            global::NCMapper.Runtime.RuntimeSnapshotStore.Register(__meta78);
+            // pair 79: NCMapper.Tests.Models.IOrderSource -> NCMapper.Tests.Models.OrderFromInterfaceDto (MapFrom channel)
+            var __mfAttr79 = new global::NCMapper.Attributes.MapFromAttribute(typeof(NCMapper.Tests.Models.IOrderSource));
+            var __meta79 = new global::NCMapper.Runtime.RuntimeMapperMetadata
             {
                 SourceType = typeof(NCMapper.Tests.Models.IOrderSource),
                 TargetType = typeof(NCMapper.Tests.Models.OrderFromInterfaceDto),
@@ -10648,7 +11651,7 @@ namespace NCMapper.Runtime
                                 TypeName = "int",
                                 TypeRef = typeof(int),
                                 HasMapFromAttribute = true,
-                                MapFromAttribute = __mfAttr73,
+                                MapFromAttribute = __mfAttr79,
                                 HasMapIgnore = false,
                                 MapIgnoreDirection = 0,
                                 HasOverrideIgnore = false,
@@ -10688,7 +11691,7 @@ namespace NCMapper.Runtime
                                 TypeName = "NCMapper.Tests.Models.OrderAddressDto?",
                                 TypeRef = typeof(NCMapper.Tests.Models.OrderAddressDto),
                                 HasMapFromAttribute = true,
-                                MapFromAttribute = __mfAttr73,
+                                MapFromAttribute = __mfAttr79,
                                 HasMapIgnore = false,
                                 MapIgnoreDirection = 0,
                                 HasOverrideIgnore = false,
@@ -10728,7 +11731,7 @@ namespace NCMapper.Runtime
                         TypeName = "int",
                         TypeRef = typeof(int),
                         HasMapFromAttribute = true,
-                        MapFromAttribute = __mfAttr73,
+                        MapFromAttribute = __mfAttr79,
                         HasMapIgnore = false,
                         MapIgnoreDirection = 0,
                         HasOverrideIgnore = false,
@@ -10751,7 +11754,7 @@ namespace NCMapper.Runtime
                         TypeName = "NCMapper.Tests.Models.OrderAddressDto?",
                         TypeRef = typeof(NCMapper.Tests.Models.OrderAddressDto),
                         HasMapFromAttribute = true,
-                        MapFromAttribute = __mfAttr73,
+                        MapFromAttribute = __mfAttr79,
                         HasMapIgnore = false,
                         MapIgnoreDirection = 0,
                         HasOverrideIgnore = false,
@@ -10770,11 +11773,11 @@ namespace NCMapper.Runtime
                     },
                 },
             };
-            global::NCMapper.Runtime.RuntimeSnapshotPair<NCMapper.Tests.Models.IOrderSource, NCMapper.Tests.Models.OrderFromInterfaceDto>.Metadata = __meta73;
-            global::NCMapper.Runtime.RuntimeSnapshotStore.Register(__meta73);
-            // pair 74: NCMapper.Tests.Models.IProductEntity -> NCMapper.Tests.Models.ProductFromInterfaceDto (MapFrom channel)
-            var __mfAttr74 = new global::NCMapper.Attributes.MapFromAttribute(typeof(NCMapper.Tests.Models.IProductEntity));
-            var __meta74 = new global::NCMapper.Runtime.RuntimeMapperMetadata
+            global::NCMapper.Runtime.RuntimeSnapshotPair<NCMapper.Tests.Models.IOrderSource, NCMapper.Tests.Models.OrderFromInterfaceDto>.Metadata = __meta79;
+            global::NCMapper.Runtime.RuntimeSnapshotStore.Register(__meta79);
+            // pair 80: NCMapper.Tests.Models.IProductEntity -> NCMapper.Tests.Models.ProductFromInterfaceDto (MapFrom channel)
+            var __mfAttr80 = new global::NCMapper.Attributes.MapFromAttribute(typeof(NCMapper.Tests.Models.IProductEntity));
+            var __meta80 = new global::NCMapper.Runtime.RuntimeMapperMetadata
             {
                 SourceType = typeof(NCMapper.Tests.Models.IProductEntity),
                 TargetType = typeof(NCMapper.Tests.Models.ProductFromInterfaceDto),
@@ -10795,7 +11798,7 @@ namespace NCMapper.Runtime
                                 TypeName = "int",
                                 TypeRef = typeof(int),
                                 HasMapFromAttribute = true,
-                                MapFromAttribute = __mfAttr74,
+                                MapFromAttribute = __mfAttr80,
                                 HasMapIgnore = false,
                                 MapIgnoreDirection = 0,
                                 HasOverrideIgnore = false,
@@ -10835,7 +11838,7 @@ namespace NCMapper.Runtime
                                 TypeName = "System.DateTime",
                                 TypeRef = typeof(System.DateTime),
                                 HasMapFromAttribute = true,
-                                MapFromAttribute = __mfAttr74,
+                                MapFromAttribute = __mfAttr80,
                                 HasMapIgnore = false,
                                 MapIgnoreDirection = 0,
                                 HasOverrideIgnore = false,
@@ -10875,7 +11878,7 @@ namespace NCMapper.Runtime
                                 TypeName = "string",
                                 TypeRef = typeof(string),
                                 HasMapFromAttribute = true,
-                                MapFromAttribute = __mfAttr74,
+                                MapFromAttribute = __mfAttr80,
                                 HasMapIgnore = false,
                                 MapIgnoreDirection = 0,
                                 HasOverrideIgnore = false,
@@ -10915,7 +11918,7 @@ namespace NCMapper.Runtime
                                 TypeName = "decimal",
                                 TypeRef = typeof(decimal),
                                 HasMapFromAttribute = true,
-                                MapFromAttribute = __mfAttr74,
+                                MapFromAttribute = __mfAttr80,
                                 HasMapIgnore = false,
                                 MapIgnoreDirection = 0,
                                 HasOverrideIgnore = false,
@@ -10955,7 +11958,7 @@ namespace NCMapper.Runtime
                                 TypeName = "string",
                                 TypeRef = typeof(string),
                                 HasMapFromAttribute = true,
-                                MapFromAttribute = __mfAttr74,
+                                MapFromAttribute = __mfAttr80,
                                 HasMapIgnore = false,
                                 MapIgnoreDirection = 0,
                                 HasOverrideIgnore = false,
@@ -10995,7 +11998,7 @@ namespace NCMapper.Runtime
                         TypeName = "int",
                         TypeRef = typeof(int),
                         HasMapFromAttribute = true,
-                        MapFromAttribute = __mfAttr74,
+                        MapFromAttribute = __mfAttr80,
                         HasMapIgnore = false,
                         MapIgnoreDirection = 0,
                         HasOverrideIgnore = false,
@@ -11018,7 +12021,7 @@ namespace NCMapper.Runtime
                         TypeName = "System.DateTime",
                         TypeRef = typeof(System.DateTime),
                         HasMapFromAttribute = true,
-                        MapFromAttribute = __mfAttr74,
+                        MapFromAttribute = __mfAttr80,
                         HasMapIgnore = false,
                         MapIgnoreDirection = 0,
                         HasOverrideIgnore = false,
@@ -11041,7 +12044,7 @@ namespace NCMapper.Runtime
                         TypeName = "string",
                         TypeRef = typeof(string),
                         HasMapFromAttribute = true,
-                        MapFromAttribute = __mfAttr74,
+                        MapFromAttribute = __mfAttr80,
                         HasMapIgnore = false,
                         MapIgnoreDirection = 0,
                         HasOverrideIgnore = false,
@@ -11064,7 +12067,7 @@ namespace NCMapper.Runtime
                         TypeName = "decimal",
                         TypeRef = typeof(decimal),
                         HasMapFromAttribute = true,
-                        MapFromAttribute = __mfAttr74,
+                        MapFromAttribute = __mfAttr80,
                         HasMapIgnore = false,
                         MapIgnoreDirection = 0,
                         HasOverrideIgnore = false,
@@ -11087,7 +12090,7 @@ namespace NCMapper.Runtime
                         TypeName = "string",
                         TypeRef = typeof(string),
                         HasMapFromAttribute = true,
-                        MapFromAttribute = __mfAttr74,
+                        MapFromAttribute = __mfAttr80,
                         HasMapIgnore = false,
                         MapIgnoreDirection = 0,
                         HasOverrideIgnore = false,
@@ -11106,11 +12109,11 @@ namespace NCMapper.Runtime
                     },
                 },
             };
-            global::NCMapper.Runtime.RuntimeSnapshotPair<NCMapper.Tests.Models.IProductEntity, NCMapper.Tests.Models.ProductFromInterfaceDto>.Metadata = __meta74;
-            global::NCMapper.Runtime.RuntimeSnapshotStore.Register(__meta74);
-            // pair 75: NCMapper.Tests.Models.ISimpleService -> NCMapper.Tests.Models.SimpleServiceDto (MapFrom channel)
-            var __mfAttr75 = new global::NCMapper.Attributes.MapFromAttribute(typeof(NCMapper.Tests.Models.ISimpleService));
-            var __meta75 = new global::NCMapper.Runtime.RuntimeMapperMetadata
+            global::NCMapper.Runtime.RuntimeSnapshotPair<NCMapper.Tests.Models.IProductEntity, NCMapper.Tests.Models.ProductFromInterfaceDto>.Metadata = __meta80;
+            global::NCMapper.Runtime.RuntimeSnapshotStore.Register(__meta80);
+            // pair 81: NCMapper.Tests.Models.ISimpleService -> NCMapper.Tests.Models.SimpleServiceDto (MapFrom channel)
+            var __mfAttr81 = new global::NCMapper.Attributes.MapFromAttribute(typeof(NCMapper.Tests.Models.ISimpleService));
+            var __meta81 = new global::NCMapper.Runtime.RuntimeMapperMetadata
             {
                 SourceType = typeof(NCMapper.Tests.Models.ISimpleService),
                 TargetType = typeof(NCMapper.Tests.Models.SimpleServiceDto),
@@ -11131,7 +12134,7 @@ namespace NCMapper.Runtime
                                 TypeName = "string",
                                 TypeRef = typeof(string),
                                 HasMapFromAttribute = true,
-                                MapFromAttribute = __mfAttr75,
+                                MapFromAttribute = __mfAttr81,
                                 HasMapIgnore = false,
                                 MapIgnoreDirection = 0,
                                 HasOverrideIgnore = false,
@@ -11171,7 +12174,7 @@ namespace NCMapper.Runtime
                                 TypeName = "int",
                                 TypeRef = typeof(int),
                                 HasMapFromAttribute = true,
-                                MapFromAttribute = __mfAttr75,
+                                MapFromAttribute = __mfAttr81,
                                 HasMapIgnore = false,
                                 MapIgnoreDirection = 0,
                                 HasOverrideIgnore = false,
@@ -11211,7 +12214,7 @@ namespace NCMapper.Runtime
                                 TypeName = "bool",
                                 TypeRef = typeof(bool),
                                 HasMapFromAttribute = true,
-                                MapFromAttribute = __mfAttr75,
+                                MapFromAttribute = __mfAttr81,
                                 HasMapIgnore = false,
                                 MapIgnoreDirection = 0,
                                 HasOverrideIgnore = false,
@@ -11251,7 +12254,7 @@ namespace NCMapper.Runtime
                         TypeName = "string",
                         TypeRef = typeof(string),
                         HasMapFromAttribute = true,
-                        MapFromAttribute = __mfAttr75,
+                        MapFromAttribute = __mfAttr81,
                         HasMapIgnore = false,
                         MapIgnoreDirection = 0,
                         HasOverrideIgnore = false,
@@ -11274,7 +12277,7 @@ namespace NCMapper.Runtime
                         TypeName = "int",
                         TypeRef = typeof(int),
                         HasMapFromAttribute = true,
-                        MapFromAttribute = __mfAttr75,
+                        MapFromAttribute = __mfAttr81,
                         HasMapIgnore = false,
                         MapIgnoreDirection = 0,
                         HasOverrideIgnore = false,
@@ -11297,7 +12300,7 @@ namespace NCMapper.Runtime
                         TypeName = "bool",
                         TypeRef = typeof(bool),
                         HasMapFromAttribute = true,
-                        MapFromAttribute = __mfAttr75,
+                        MapFromAttribute = __mfAttr81,
                         HasMapIgnore = false,
                         MapIgnoreDirection = 0,
                         HasOverrideIgnore = false,
@@ -11316,11 +12319,11 @@ namespace NCMapper.Runtime
                     },
                 },
             };
-            global::NCMapper.Runtime.RuntimeSnapshotPair<NCMapper.Tests.Models.ISimpleService, NCMapper.Tests.Models.SimpleServiceDto>.Metadata = __meta75;
-            global::NCMapper.Runtime.RuntimeSnapshotStore.Register(__meta75);
-            // pair 76: NCMapper.Tests.Models.JsonFieldEntity -> NCMapper.Tests.Models.JsonEmptyDto (MapFrom channel)
-            var __mfAttr76 = new global::NCMapper.Attributes.MapFromAttribute(typeof(NCMapper.Tests.Models.JsonFieldEntity));
-            var __meta76 = new global::NCMapper.Runtime.RuntimeMapperMetadata
+            global::NCMapper.Runtime.RuntimeSnapshotPair<NCMapper.Tests.Models.ISimpleService, NCMapper.Tests.Models.SimpleServiceDto>.Metadata = __meta81;
+            global::NCMapper.Runtime.RuntimeSnapshotStore.Register(__meta81);
+            // pair 82: NCMapper.Tests.Models.JsonFieldEntity -> NCMapper.Tests.Models.JsonEmptyDto (MapFrom channel)
+            var __mfAttr82 = new global::NCMapper.Attributes.MapFromAttribute(typeof(NCMapper.Tests.Models.JsonFieldEntity));
+            var __meta82 = new global::NCMapper.Runtime.RuntimeMapperMetadata
             {
                 SourceType = typeof(NCMapper.Tests.Models.JsonFieldEntity),
                 TargetType = typeof(NCMapper.Tests.Models.JsonEmptyDto),
@@ -11341,7 +12344,7 @@ namespace NCMapper.Runtime
                                 TypeName = "int",
                                 TypeRef = typeof(int),
                                 HasMapFromAttribute = true,
-                                MapFromAttribute = __mfAttr76,
+                                MapFromAttribute = __mfAttr82,
                                 HasMapIgnore = false,
                                 MapIgnoreDirection = 0,
                                 HasOverrideIgnore = false,
@@ -11381,7 +12384,7 @@ namespace NCMapper.Runtime
                                 TypeName = "System.Collections.Generic.List<string>?",
                                 TypeRef = typeof(System.Collections.Generic.List<string>),
                                 HasMapFromAttribute = true,
-                                MapFromAttribute = __mfAttr76,
+                                MapFromAttribute = __mfAttr82,
                                 HasMapIgnore = false,
                                 MapIgnoreDirection = 0,
                                 HasOverrideIgnore = false,
@@ -11421,7 +12424,7 @@ namespace NCMapper.Runtime
                                 TypeName = "System.Collections.Generic.Dictionary<string, int>?",
                                 TypeRef = typeof(System.Collections.Generic.Dictionary<string, int>),
                                 HasMapFromAttribute = true,
-                                MapFromAttribute = __mfAttr76,
+                                MapFromAttribute = __mfAttr82,
                                 HasMapIgnore = false,
                                 MapIgnoreDirection = 0,
                                 HasOverrideIgnore = false,
@@ -11461,7 +12464,7 @@ namespace NCMapper.Runtime
                         TypeName = "int",
                         TypeRef = typeof(int),
                         HasMapFromAttribute = true,
-                        MapFromAttribute = __mfAttr76,
+                        MapFromAttribute = __mfAttr82,
                         HasMapIgnore = false,
                         MapIgnoreDirection = 0,
                         HasOverrideIgnore = false,
@@ -11484,7 +12487,7 @@ namespace NCMapper.Runtime
                         TypeName = "System.Collections.Generic.List<string>?",
                         TypeRef = typeof(System.Collections.Generic.List<string>),
                         HasMapFromAttribute = true,
-                        MapFromAttribute = __mfAttr76,
+                        MapFromAttribute = __mfAttr82,
                         HasMapIgnore = false,
                         MapIgnoreDirection = 0,
                         HasOverrideIgnore = false,
@@ -11507,7 +12510,7 @@ namespace NCMapper.Runtime
                         TypeName = "System.Collections.Generic.Dictionary<string, int>?",
                         TypeRef = typeof(System.Collections.Generic.Dictionary<string, int>),
                         HasMapFromAttribute = true,
-                        MapFromAttribute = __mfAttr76,
+                        MapFromAttribute = __mfAttr82,
                         HasMapIgnore = false,
                         MapIgnoreDirection = 0,
                         HasOverrideIgnore = false,
@@ -11526,11 +12529,11 @@ namespace NCMapper.Runtime
                     },
                 },
             };
-            global::NCMapper.Runtime.RuntimeSnapshotPair<NCMapper.Tests.Models.JsonFieldEntity, NCMapper.Tests.Models.JsonEmptyDto>.Metadata = __meta76;
-            global::NCMapper.Runtime.RuntimeSnapshotStore.Register(__meta76);
-            // pair 77: NCMapper.Tests.Models.JsonFieldEntity -> NCMapper.Tests.Models.JsonNestedDto (MapFrom channel)
-            var __mfAttr77 = new global::NCMapper.Attributes.MapFromAttribute(typeof(NCMapper.Tests.Models.JsonFieldEntity));
-            var __meta77 = new global::NCMapper.Runtime.RuntimeMapperMetadata
+            global::NCMapper.Runtime.RuntimeSnapshotPair<NCMapper.Tests.Models.JsonFieldEntity, NCMapper.Tests.Models.JsonEmptyDto>.Metadata = __meta82;
+            global::NCMapper.Runtime.RuntimeSnapshotStore.Register(__meta82);
+            // pair 83: NCMapper.Tests.Models.JsonFieldEntity -> NCMapper.Tests.Models.JsonNestedDto (MapFrom channel)
+            var __mfAttr83 = new global::NCMapper.Attributes.MapFromAttribute(typeof(NCMapper.Tests.Models.JsonFieldEntity));
+            var __meta83 = new global::NCMapper.Runtime.RuntimeMapperMetadata
             {
                 SourceType = typeof(NCMapper.Tests.Models.JsonFieldEntity),
                 TargetType = typeof(NCMapper.Tests.Models.JsonNestedDto),
@@ -11551,7 +12554,7 @@ namespace NCMapper.Runtime
                                 TypeName = "int",
                                 TypeRef = typeof(int),
                                 HasMapFromAttribute = true,
-                                MapFromAttribute = __mfAttr77,
+                                MapFromAttribute = __mfAttr83,
                                 HasMapIgnore = false,
                                 MapIgnoreDirection = 0,
                                 HasOverrideIgnore = false,
@@ -11591,7 +12594,7 @@ namespace NCMapper.Runtime
                                 TypeName = "System.Collections.Generic.List<NCMapper.Tests.Models.AppConfig>?",
                                 TypeRef = typeof(System.Collections.Generic.List<NCMapper.Tests.Models.AppConfig>),
                                 HasMapFromAttribute = true,
-                                MapFromAttribute = __mfAttr77,
+                                MapFromAttribute = __mfAttr83,
                                 HasMapIgnore = false,
                                 MapIgnoreDirection = 0,
                                 HasOverrideIgnore = false,
@@ -11631,7 +12634,7 @@ namespace NCMapper.Runtime
                                 TypeName = "System.Collections.Generic.Dictionary<string, int>?",
                                 TypeRef = typeof(System.Collections.Generic.Dictionary<string, int>),
                                 HasMapFromAttribute = true,
-                                MapFromAttribute = __mfAttr77,
+                                MapFromAttribute = __mfAttr83,
                                 HasMapIgnore = false,
                                 MapIgnoreDirection = 0,
                                 HasOverrideIgnore = false,
@@ -11671,7 +12674,7 @@ namespace NCMapper.Runtime
                         TypeName = "int",
                         TypeRef = typeof(int),
                         HasMapFromAttribute = true,
-                        MapFromAttribute = __mfAttr77,
+                        MapFromAttribute = __mfAttr83,
                         HasMapIgnore = false,
                         MapIgnoreDirection = 0,
                         HasOverrideIgnore = false,
@@ -11694,7 +12697,7 @@ namespace NCMapper.Runtime
                         TypeName = "System.Collections.Generic.List<NCMapper.Tests.Models.AppConfig>?",
                         TypeRef = typeof(System.Collections.Generic.List<NCMapper.Tests.Models.AppConfig>),
                         HasMapFromAttribute = true,
-                        MapFromAttribute = __mfAttr77,
+                        MapFromAttribute = __mfAttr83,
                         HasMapIgnore = false,
                         MapIgnoreDirection = 0,
                         HasOverrideIgnore = false,
@@ -11717,7 +12720,7 @@ namespace NCMapper.Runtime
                         TypeName = "System.Collections.Generic.Dictionary<string, int>?",
                         TypeRef = typeof(System.Collections.Generic.Dictionary<string, int>),
                         HasMapFromAttribute = true,
-                        MapFromAttribute = __mfAttr77,
+                        MapFromAttribute = __mfAttr83,
                         HasMapIgnore = false,
                         MapIgnoreDirection = 0,
                         HasOverrideIgnore = false,
@@ -11736,11 +12739,11 @@ namespace NCMapper.Runtime
                     },
                 },
             };
-            global::NCMapper.Runtime.RuntimeSnapshotPair<NCMapper.Tests.Models.JsonFieldEntity, NCMapper.Tests.Models.JsonNestedDto>.Metadata = __meta77;
-            global::NCMapper.Runtime.RuntimeSnapshotStore.Register(__meta77);
-            // pair 78: NCMapper.Tests.Models.JsonFieldEntity -> NCMapper.Tests.Models.JsonToObjectDto (MapFrom channel)
-            var __mfAttr78 = new global::NCMapper.Attributes.MapFromAttribute(typeof(NCMapper.Tests.Models.JsonFieldEntity));
-            var __meta78 = new global::NCMapper.Runtime.RuntimeMapperMetadata
+            global::NCMapper.Runtime.RuntimeSnapshotPair<NCMapper.Tests.Models.JsonFieldEntity, NCMapper.Tests.Models.JsonNestedDto>.Metadata = __meta83;
+            global::NCMapper.Runtime.RuntimeSnapshotStore.Register(__meta83);
+            // pair 84: NCMapper.Tests.Models.JsonFieldEntity -> NCMapper.Tests.Models.JsonToObjectDto (MapFrom channel)
+            var __mfAttr84 = new global::NCMapper.Attributes.MapFromAttribute(typeof(NCMapper.Tests.Models.JsonFieldEntity));
+            var __meta84 = new global::NCMapper.Runtime.RuntimeMapperMetadata
             {
                 SourceType = typeof(NCMapper.Tests.Models.JsonFieldEntity),
                 TargetType = typeof(NCMapper.Tests.Models.JsonToObjectDto),
@@ -11761,7 +12764,7 @@ namespace NCMapper.Runtime
                                 TypeName = "int",
                                 TypeRef = typeof(int),
                                 HasMapFromAttribute = true,
-                                MapFromAttribute = __mfAttr78,
+                                MapFromAttribute = __mfAttr84,
                                 HasMapIgnore = false,
                                 MapIgnoreDirection = 0,
                                 HasOverrideIgnore = false,
@@ -11801,7 +12804,7 @@ namespace NCMapper.Runtime
                                 TypeName = "NCMapper.Tests.Models.AppConfig?",
                                 TypeRef = typeof(NCMapper.Tests.Models.AppConfig),
                                 HasMapFromAttribute = true,
-                                MapFromAttribute = __mfAttr78,
+                                MapFromAttribute = __mfAttr84,
                                 HasMapIgnore = false,
                                 MapIgnoreDirection = 0,
                                 HasOverrideIgnore = false,
@@ -11841,7 +12844,7 @@ namespace NCMapper.Runtime
                                 TypeName = "System.Collections.Generic.List<string>?",
                                 TypeRef = typeof(System.Collections.Generic.List<string>),
                                 HasMapFromAttribute = true,
-                                MapFromAttribute = __mfAttr78,
+                                MapFromAttribute = __mfAttr84,
                                 HasMapIgnore = false,
                                 MapIgnoreDirection = 0,
                                 HasOverrideIgnore = false,
@@ -11881,7 +12884,7 @@ namespace NCMapper.Runtime
                         TypeName = "int",
                         TypeRef = typeof(int),
                         HasMapFromAttribute = true,
-                        MapFromAttribute = __mfAttr78,
+                        MapFromAttribute = __mfAttr84,
                         HasMapIgnore = false,
                         MapIgnoreDirection = 0,
                         HasOverrideIgnore = false,
@@ -11904,7 +12907,7 @@ namespace NCMapper.Runtime
                         TypeName = "NCMapper.Tests.Models.AppConfig?",
                         TypeRef = typeof(NCMapper.Tests.Models.AppConfig),
                         HasMapFromAttribute = true,
-                        MapFromAttribute = __mfAttr78,
+                        MapFromAttribute = __mfAttr84,
                         HasMapIgnore = false,
                         MapIgnoreDirection = 0,
                         HasOverrideIgnore = false,
@@ -11927,7 +12930,7 @@ namespace NCMapper.Runtime
                         TypeName = "System.Collections.Generic.List<string>?",
                         TypeRef = typeof(System.Collections.Generic.List<string>),
                         HasMapFromAttribute = true,
-                        MapFromAttribute = __mfAttr78,
+                        MapFromAttribute = __mfAttr84,
                         HasMapIgnore = false,
                         MapIgnoreDirection = 0,
                         HasOverrideIgnore = false,
@@ -11946,11 +12949,11 @@ namespace NCMapper.Runtime
                     },
                 },
             };
-            global::NCMapper.Runtime.RuntimeSnapshotPair<NCMapper.Tests.Models.JsonFieldEntity, NCMapper.Tests.Models.JsonToObjectDto>.Metadata = __meta78;
-            global::NCMapper.Runtime.RuntimeSnapshotStore.Register(__meta78);
-            // pair 79: NCMapper.Tests.Models.LinkNode -> NCMapper.Tests.Models.LinkNodeDto (MapFrom channel)
-            var __mfAttr79 = new global::NCMapper.Attributes.MapFromAttribute(typeof(NCMapper.Tests.Models.LinkNode));
-            var __meta79 = new global::NCMapper.Runtime.RuntimeMapperMetadata
+            global::NCMapper.Runtime.RuntimeSnapshotPair<NCMapper.Tests.Models.JsonFieldEntity, NCMapper.Tests.Models.JsonToObjectDto>.Metadata = __meta84;
+            global::NCMapper.Runtime.RuntimeSnapshotStore.Register(__meta84);
+            // pair 85: NCMapper.Tests.Models.LinkNode -> NCMapper.Tests.Models.LinkNodeDto (MapFrom channel)
+            var __mfAttr85 = new global::NCMapper.Attributes.MapFromAttribute(typeof(NCMapper.Tests.Models.LinkNode));
+            var __meta85 = new global::NCMapper.Runtime.RuntimeMapperMetadata
             {
                 SourceType = typeof(NCMapper.Tests.Models.LinkNode),
                 TargetType = typeof(NCMapper.Tests.Models.LinkNodeDto),
@@ -11971,7 +12974,7 @@ namespace NCMapper.Runtime
                                 TypeName = "int",
                                 TypeRef = typeof(int),
                                 HasMapFromAttribute = true,
-                                MapFromAttribute = __mfAttr79,
+                                MapFromAttribute = __mfAttr85,
                                 HasMapIgnore = false,
                                 MapIgnoreDirection = 0,
                                 HasOverrideIgnore = false,
@@ -12011,7 +13014,7 @@ namespace NCMapper.Runtime
                                 TypeName = "NCMapper.Tests.Models.LinkNodeDto?",
                                 TypeRef = typeof(NCMapper.Tests.Models.LinkNodeDto),
                                 HasMapFromAttribute = true,
-                                MapFromAttribute = __mfAttr79,
+                                MapFromAttribute = __mfAttr85,
                                 HasMapIgnore = false,
                                 MapIgnoreDirection = 0,
                                 HasOverrideIgnore = false,
@@ -12051,7 +13054,7 @@ namespace NCMapper.Runtime
                         TypeName = "int",
                         TypeRef = typeof(int),
                         HasMapFromAttribute = true,
-                        MapFromAttribute = __mfAttr79,
+                        MapFromAttribute = __mfAttr85,
                         HasMapIgnore = false,
                         MapIgnoreDirection = 0,
                         HasOverrideIgnore = false,
@@ -12074,7 +13077,7 @@ namespace NCMapper.Runtime
                         TypeName = "NCMapper.Tests.Models.LinkNodeDto?",
                         TypeRef = typeof(NCMapper.Tests.Models.LinkNodeDto),
                         HasMapFromAttribute = true,
-                        MapFromAttribute = __mfAttr79,
+                        MapFromAttribute = __mfAttr85,
                         HasMapIgnore = false,
                         MapIgnoreDirection = 0,
                         HasOverrideIgnore = false,
@@ -12093,11 +13096,11 @@ namespace NCMapper.Runtime
                     },
                 },
             };
-            global::NCMapper.Runtime.RuntimeSnapshotPair<NCMapper.Tests.Models.LinkNode, NCMapper.Tests.Models.LinkNodeDto>.Metadata = __meta79;
-            global::NCMapper.Runtime.RuntimeSnapshotStore.Register(__meta79);
-            // pair 80: NCMapper.Tests.Models.ListIntoFlatChild -> NCMapper.Tests.Models.ListIntoFlatChildDto (MapFrom channel)
-            var __mfAttr80 = new global::NCMapper.Attributes.MapFromAttribute(typeof(NCMapper.Tests.Models.ListIntoFlatChild));
-            var __meta80 = new global::NCMapper.Runtime.RuntimeMapperMetadata
+            global::NCMapper.Runtime.RuntimeSnapshotPair<NCMapper.Tests.Models.LinkNode, NCMapper.Tests.Models.LinkNodeDto>.Metadata = __meta85;
+            global::NCMapper.Runtime.RuntimeSnapshotStore.Register(__meta85);
+            // pair 86: NCMapper.Tests.Models.ListIntoFlatChild -> NCMapper.Tests.Models.ListIntoFlatChildDto (MapFrom channel)
+            var __mfAttr86 = new global::NCMapper.Attributes.MapFromAttribute(typeof(NCMapper.Tests.Models.ListIntoFlatChild));
+            var __meta86 = new global::NCMapper.Runtime.RuntimeMapperMetadata
             {
                 SourceType = typeof(NCMapper.Tests.Models.ListIntoFlatChild),
                 TargetType = typeof(NCMapper.Tests.Models.ListIntoFlatChildDto),
@@ -12118,7 +13121,7 @@ namespace NCMapper.Runtime
                                 TypeName = "int",
                                 TypeRef = typeof(int),
                                 HasMapFromAttribute = true,
-                                MapFromAttribute = __mfAttr80,
+                                MapFromAttribute = __mfAttr86,
                                 HasMapIgnore = false,
                                 MapIgnoreDirection = 0,
                                 HasOverrideIgnore = false,
@@ -12158,7 +13161,7 @@ namespace NCMapper.Runtime
                                 TypeName = "string",
                                 TypeRef = typeof(string),
                                 HasMapFromAttribute = true,
-                                MapFromAttribute = __mfAttr80,
+                                MapFromAttribute = __mfAttr86,
                                 HasMapIgnore = false,
                                 MapIgnoreDirection = 0,
                                 HasOverrideIgnore = false,
@@ -12198,7 +13201,7 @@ namespace NCMapper.Runtime
                         TypeName = "int",
                         TypeRef = typeof(int),
                         HasMapFromAttribute = true,
-                        MapFromAttribute = __mfAttr80,
+                        MapFromAttribute = __mfAttr86,
                         HasMapIgnore = false,
                         MapIgnoreDirection = 0,
                         HasOverrideIgnore = false,
@@ -12221,7 +13224,7 @@ namespace NCMapper.Runtime
                         TypeName = "string",
                         TypeRef = typeof(string),
                         HasMapFromAttribute = true,
-                        MapFromAttribute = __mfAttr80,
+                        MapFromAttribute = __mfAttr86,
                         HasMapIgnore = false,
                         MapIgnoreDirection = 0,
                         HasOverrideIgnore = false,
@@ -12240,11 +13243,11 @@ namespace NCMapper.Runtime
                     },
                 },
             };
-            global::NCMapper.Runtime.RuntimeSnapshotPair<NCMapper.Tests.Models.ListIntoFlatChild, NCMapper.Tests.Models.ListIntoFlatChildDto>.Metadata = __meta80;
-            global::NCMapper.Runtime.RuntimeSnapshotStore.Register(__meta80);
-            // pair 81: NCMapper.Tests.Models.ListIntoFlatSource -> NCMapper.Tests.Models.ListIntoFlatDto (MapFrom channel)
-            var __mfAttr81 = new global::NCMapper.Attributes.MapFromAttribute(typeof(NCMapper.Tests.Models.ListIntoFlatSource));
-            var __meta81 = new global::NCMapper.Runtime.RuntimeMapperMetadata
+            global::NCMapper.Runtime.RuntimeSnapshotPair<NCMapper.Tests.Models.ListIntoFlatChild, NCMapper.Tests.Models.ListIntoFlatChildDto>.Metadata = __meta86;
+            global::NCMapper.Runtime.RuntimeSnapshotStore.Register(__meta86);
+            // pair 87: NCMapper.Tests.Models.ListIntoFlatSource -> NCMapper.Tests.Models.ListIntoFlatDto (MapFrom channel)
+            var __mfAttr87 = new global::NCMapper.Attributes.MapFromAttribute(typeof(NCMapper.Tests.Models.ListIntoFlatSource));
+            var __meta87 = new global::NCMapper.Runtime.RuntimeMapperMetadata
             {
                 SourceType = typeof(NCMapper.Tests.Models.ListIntoFlatSource),
                 TargetType = typeof(NCMapper.Tests.Models.ListIntoFlatDto),
@@ -12265,7 +13268,7 @@ namespace NCMapper.Runtime
                                 TypeName = "int",
                                 TypeRef = typeof(int),
                                 HasMapFromAttribute = true,
-                                MapFromAttribute = __mfAttr81,
+                                MapFromAttribute = __mfAttr87,
                                 HasMapIgnore = false,
                                 MapIgnoreDirection = 0,
                                 HasOverrideIgnore = false,
@@ -12305,7 +13308,7 @@ namespace NCMapper.Runtime
                                 TypeName = "string",
                                 TypeRef = typeof(string),
                                 HasMapFromAttribute = true,
-                                MapFromAttribute = __mfAttr81,
+                                MapFromAttribute = __mfAttr87,
                                 HasMapIgnore = false,
                                 MapIgnoreDirection = 0,
                                 HasOverrideIgnore = false,
@@ -12345,7 +13348,7 @@ namespace NCMapper.Runtime
                                 TypeName = "bool",
                                 TypeRef = typeof(bool),
                                 HasMapFromAttribute = true,
-                                MapFromAttribute = __mfAttr81,
+                                MapFromAttribute = __mfAttr87,
                                 HasMapIgnore = false,
                                 MapIgnoreDirection = 0,
                                 HasOverrideIgnore = false,
@@ -12385,7 +13388,7 @@ namespace NCMapper.Runtime
                                 TypeName = "double",
                                 TypeRef = typeof(double),
                                 HasMapFromAttribute = true,
-                                MapFromAttribute = __mfAttr81,
+                                MapFromAttribute = __mfAttr87,
                                 HasMapIgnore = false,
                                 MapIgnoreDirection = 0,
                                 HasOverrideIgnore = false,
@@ -12425,7 +13428,7 @@ namespace NCMapper.Runtime
                                 TypeName = "NCMapper.Tests.Models.ListIntoFlatChildDto?",
                                 TypeRef = typeof(NCMapper.Tests.Models.ListIntoFlatChildDto),
                                 HasMapFromAttribute = true,
-                                MapFromAttribute = __mfAttr81,
+                                MapFromAttribute = __mfAttr87,
                                 HasMapIgnore = false,
                                 MapIgnoreDirection = 0,
                                 HasOverrideIgnore = false,
@@ -12465,7 +13468,7 @@ namespace NCMapper.Runtime
                         TypeName = "int",
                         TypeRef = typeof(int),
                         HasMapFromAttribute = true,
-                        MapFromAttribute = __mfAttr81,
+                        MapFromAttribute = __mfAttr87,
                         HasMapIgnore = false,
                         MapIgnoreDirection = 0,
                         HasOverrideIgnore = false,
@@ -12488,7 +13491,7 @@ namespace NCMapper.Runtime
                         TypeName = "string",
                         TypeRef = typeof(string),
                         HasMapFromAttribute = true,
-                        MapFromAttribute = __mfAttr81,
+                        MapFromAttribute = __mfAttr87,
                         HasMapIgnore = false,
                         MapIgnoreDirection = 0,
                         HasOverrideIgnore = false,
@@ -12511,7 +13514,7 @@ namespace NCMapper.Runtime
                         TypeName = "bool",
                         TypeRef = typeof(bool),
                         HasMapFromAttribute = true,
-                        MapFromAttribute = __mfAttr81,
+                        MapFromAttribute = __mfAttr87,
                         HasMapIgnore = false,
                         MapIgnoreDirection = 0,
                         HasOverrideIgnore = false,
@@ -12534,7 +13537,7 @@ namespace NCMapper.Runtime
                         TypeName = "double",
                         TypeRef = typeof(double),
                         HasMapFromAttribute = true,
-                        MapFromAttribute = __mfAttr81,
+                        MapFromAttribute = __mfAttr87,
                         HasMapIgnore = false,
                         MapIgnoreDirection = 0,
                         HasOverrideIgnore = false,
@@ -12557,7 +13560,7 @@ namespace NCMapper.Runtime
                         TypeName = "NCMapper.Tests.Models.ListIntoFlatChildDto?",
                         TypeRef = typeof(NCMapper.Tests.Models.ListIntoFlatChildDto),
                         HasMapFromAttribute = true,
-                        MapFromAttribute = __mfAttr81,
+                        MapFromAttribute = __mfAttr87,
                         HasMapIgnore = false,
                         MapIgnoreDirection = 0,
                         HasOverrideIgnore = false,
@@ -12580,7 +13583,7 @@ namespace NCMapper.Runtime
                         TypeName = "string",
                         TypeRef = typeof(string),
                         HasMapFromAttribute = true,
-                        MapFromAttribute = __mfAttr81,
+                        MapFromAttribute = __mfAttr87,
                         HasMapIgnore = false,
                         MapIgnoreDirection = 0,
                         HasOverrideIgnore = false,
@@ -12599,11 +13602,11 @@ namespace NCMapper.Runtime
                     },
                 },
             };
-            global::NCMapper.Runtime.RuntimeSnapshotPair<NCMapper.Tests.Models.ListIntoFlatSource, NCMapper.Tests.Models.ListIntoFlatDto>.Metadata = __meta81;
-            global::NCMapper.Runtime.RuntimeSnapshotStore.Register(__meta81);
-            // pair 82: NCMapper.Tests.Models.ListToDictSource -> NCMapper.Tests.Models.ListToDictDto (MapFrom channel)
-            var __mfAttr82 = new global::NCMapper.Attributes.MapFromAttribute(typeof(NCMapper.Tests.Models.ListToDictSource));
-            var __meta82 = new global::NCMapper.Runtime.RuntimeMapperMetadata
+            global::NCMapper.Runtime.RuntimeSnapshotPair<NCMapper.Tests.Models.ListIntoFlatSource, NCMapper.Tests.Models.ListIntoFlatDto>.Metadata = __meta87;
+            global::NCMapper.Runtime.RuntimeSnapshotStore.Register(__meta87);
+            // pair 88: NCMapper.Tests.Models.ListToDictSource -> NCMapper.Tests.Models.ListToDictDto (MapFrom channel)
+            var __mfAttr88 = new global::NCMapper.Attributes.MapFromAttribute(typeof(NCMapper.Tests.Models.ListToDictSource));
+            var __meta88 = new global::NCMapper.Runtime.RuntimeMapperMetadata
             {
                 SourceType = typeof(NCMapper.Tests.Models.ListToDictSource),
                 TargetType = typeof(NCMapper.Tests.Models.ListToDictDto),
@@ -12624,7 +13627,7 @@ namespace NCMapper.Runtime
                                 TypeName = "System.Collections.Generic.Dictionary<string, string>?",
                                 TypeRef = typeof(System.Collections.Generic.Dictionary<string, string>),
                                 HasMapFromAttribute = true,
-                                MapFromAttribute = __mfAttr82,
+                                MapFromAttribute = __mfAttr88,
                                 HasMapIgnore = false,
                                 MapIgnoreDirection = 0,
                                 HasOverrideIgnore = false,
@@ -12664,7 +13667,7 @@ namespace NCMapper.Runtime
                         TypeName = "System.Collections.Generic.Dictionary<string, string>?",
                         TypeRef = typeof(System.Collections.Generic.Dictionary<string, string>),
                         HasMapFromAttribute = true,
-                        MapFromAttribute = __mfAttr82,
+                        MapFromAttribute = __mfAttr88,
                         HasMapIgnore = false,
                         MapIgnoreDirection = 0,
                         HasOverrideIgnore = false,
@@ -12683,11 +13686,11 @@ namespace NCMapper.Runtime
                     },
                 },
             };
-            global::NCMapper.Runtime.RuntimeSnapshotPair<NCMapper.Tests.Models.ListToDictSource, NCMapper.Tests.Models.ListToDictDto>.Metadata = __meta82;
-            global::NCMapper.Runtime.RuntimeSnapshotStore.Register(__meta82);
-            // pair 83: NCMapper.Tests.Models.LongEnumEntity -> NCMapper.Tests.Models.LongEnumToLongDto (MapFrom channel)
-            var __mfAttr83 = new global::NCMapper.Attributes.MapFromAttribute(typeof(NCMapper.Tests.Models.LongEnumEntity));
-            var __meta83 = new global::NCMapper.Runtime.RuntimeMapperMetadata
+            global::NCMapper.Runtime.RuntimeSnapshotPair<NCMapper.Tests.Models.ListToDictSource, NCMapper.Tests.Models.ListToDictDto>.Metadata = __meta88;
+            global::NCMapper.Runtime.RuntimeSnapshotStore.Register(__meta88);
+            // pair 89: NCMapper.Tests.Models.LongEnumEntity -> NCMapper.Tests.Models.LongEnumToLongDto (MapFrom channel)
+            var __mfAttr89 = new global::NCMapper.Attributes.MapFromAttribute(typeof(NCMapper.Tests.Models.LongEnumEntity));
+            var __meta89 = new global::NCMapper.Runtime.RuntimeMapperMetadata
             {
                 SourceType = typeof(NCMapper.Tests.Models.LongEnumEntity),
                 TargetType = typeof(NCMapper.Tests.Models.LongEnumToLongDto),
@@ -12708,7 +13711,7 @@ namespace NCMapper.Runtime
                                 TypeName = "long",
                                 TypeRef = typeof(long),
                                 HasMapFromAttribute = true,
-                                MapFromAttribute = __mfAttr83,
+                                MapFromAttribute = __mfAttr89,
                                 HasMapIgnore = false,
                                 MapIgnoreDirection = 0,
                                 HasOverrideIgnore = false,
@@ -12748,7 +13751,7 @@ namespace NCMapper.Runtime
                         TypeName = "long",
                         TypeRef = typeof(long),
                         HasMapFromAttribute = true,
-                        MapFromAttribute = __mfAttr83,
+                        MapFromAttribute = __mfAttr89,
                         HasMapIgnore = false,
                         MapIgnoreDirection = 0,
                         HasOverrideIgnore = false,
@@ -12767,11 +13770,11 @@ namespace NCMapper.Runtime
                     },
                 },
             };
-            global::NCMapper.Runtime.RuntimeSnapshotPair<NCMapper.Tests.Models.LongEnumEntity, NCMapper.Tests.Models.LongEnumToLongDto>.Metadata = __meta83;
-            global::NCMapper.Runtime.RuntimeSnapshotStore.Register(__meta83);
-            // pair 84: NCMapper.Tests.Models.LongEnumEntity -> NCMapper.Tests.Models.LongEnumToStringDto (MapFrom channel)
-            var __mfAttr84 = new global::NCMapper.Attributes.MapFromAttribute(typeof(NCMapper.Tests.Models.LongEnumEntity));
-            var __meta84 = new global::NCMapper.Runtime.RuntimeMapperMetadata
+            global::NCMapper.Runtime.RuntimeSnapshotPair<NCMapper.Tests.Models.LongEnumEntity, NCMapper.Tests.Models.LongEnumToLongDto>.Metadata = __meta89;
+            global::NCMapper.Runtime.RuntimeSnapshotStore.Register(__meta89);
+            // pair 90: NCMapper.Tests.Models.LongEnumEntity -> NCMapper.Tests.Models.LongEnumToStringDto (MapFrom channel)
+            var __mfAttr90 = new global::NCMapper.Attributes.MapFromAttribute(typeof(NCMapper.Tests.Models.LongEnumEntity));
+            var __meta90 = new global::NCMapper.Runtime.RuntimeMapperMetadata
             {
                 SourceType = typeof(NCMapper.Tests.Models.LongEnumEntity),
                 TargetType = typeof(NCMapper.Tests.Models.LongEnumToStringDto),
@@ -12792,7 +13795,7 @@ namespace NCMapper.Runtime
                                 TypeName = "string",
                                 TypeRef = typeof(string),
                                 HasMapFromAttribute = true,
-                                MapFromAttribute = __mfAttr84,
+                                MapFromAttribute = __mfAttr90,
                                 HasMapIgnore = false,
                                 MapIgnoreDirection = 0,
                                 HasOverrideIgnore = false,
@@ -12832,7 +13835,7 @@ namespace NCMapper.Runtime
                         TypeName = "string",
                         TypeRef = typeof(string),
                         HasMapFromAttribute = true,
-                        MapFromAttribute = __mfAttr84,
+                        MapFromAttribute = __mfAttr90,
                         HasMapIgnore = false,
                         MapIgnoreDirection = 0,
                         HasOverrideIgnore = false,
@@ -12851,11 +13854,11 @@ namespace NCMapper.Runtime
                     },
                 },
             };
-            global::NCMapper.Runtime.RuntimeSnapshotPair<NCMapper.Tests.Models.LongEnumEntity, NCMapper.Tests.Models.LongEnumToStringDto>.Metadata = __meta84;
-            global::NCMapper.Runtime.RuntimeSnapshotStore.Register(__meta84);
-            // pair 85: NCMapper.Tests.Models.MapIgnoreTestEntity -> NCMapper.Tests.Models.MapIgnoreTestDto (MapFrom channel)
-            var __mfAttr85 = new global::NCMapper.Attributes.MapFromAttribute(typeof(NCMapper.Tests.Models.MapIgnoreTestEntity));
-            var __meta85 = new global::NCMapper.Runtime.RuntimeMapperMetadata
+            global::NCMapper.Runtime.RuntimeSnapshotPair<NCMapper.Tests.Models.LongEnumEntity, NCMapper.Tests.Models.LongEnumToStringDto>.Metadata = __meta90;
+            global::NCMapper.Runtime.RuntimeSnapshotStore.Register(__meta90);
+            // pair 91: NCMapper.Tests.Models.MapIgnoreTestEntity -> NCMapper.Tests.Models.MapIgnoreTestDto (MapFrom channel)
+            var __mfAttr91 = new global::NCMapper.Attributes.MapFromAttribute(typeof(NCMapper.Tests.Models.MapIgnoreTestEntity));
+            var __meta91 = new global::NCMapper.Runtime.RuntimeMapperMetadata
             {
                 SourceType = typeof(NCMapper.Tests.Models.MapIgnoreTestEntity),
                 TargetType = typeof(NCMapper.Tests.Models.MapIgnoreTestDto),
@@ -12876,7 +13879,7 @@ namespace NCMapper.Runtime
                                 TypeName = "string?",
                                 TypeRef = typeof(string),
                                 HasMapFromAttribute = true,
-                                MapFromAttribute = __mfAttr85,
+                                MapFromAttribute = __mfAttr91,
                                 HasMapIgnore = false,
                                 MapIgnoreDirection = 0,
                                 HasOverrideIgnore = false,
@@ -12916,7 +13919,7 @@ namespace NCMapper.Runtime
                                 TypeName = "string?",
                                 TypeRef = typeof(string),
                                 HasMapFromAttribute = true,
-                                MapFromAttribute = __mfAttr85,
+                                MapFromAttribute = __mfAttr91,
                                 HasMapIgnore = false,
                                 MapIgnoreDirection = 0,
                                 HasOverrideIgnore = false,
@@ -12956,7 +13959,7 @@ namespace NCMapper.Runtime
                         TypeName = "string?",
                         TypeRef = typeof(string),
                         HasMapFromAttribute = true,
-                        MapFromAttribute = __mfAttr85,
+                        MapFromAttribute = __mfAttr91,
                         HasMapIgnore = false,
                         MapIgnoreDirection = 0,
                         HasOverrideIgnore = false,
@@ -12979,7 +13982,7 @@ namespace NCMapper.Runtime
                         TypeName = "string?",
                         TypeRef = typeof(string),
                         HasMapFromAttribute = true,
-                        MapFromAttribute = __mfAttr85,
+                        MapFromAttribute = __mfAttr91,
                         HasMapIgnore = false,
                         MapIgnoreDirection = 0,
                         HasOverrideIgnore = false,
@@ -12998,11 +14001,11 @@ namespace NCMapper.Runtime
                     },
                 },
             };
-            global::NCMapper.Runtime.RuntimeSnapshotPair<NCMapper.Tests.Models.MapIgnoreTestEntity, NCMapper.Tests.Models.MapIgnoreTestDto>.Metadata = __meta85;
-            global::NCMapper.Runtime.RuntimeSnapshotStore.Register(__meta85);
-            // pair 86: NCMapper.Tests.Models.Member -> NCMapper.Tests.Models.MemberDto (MapFrom channel)
-            var __mfAttr86 = new global::NCMapper.Attributes.MapFromAttribute(typeof(NCMapper.Tests.Models.Member));
-            var __meta86 = new global::NCMapper.Runtime.RuntimeMapperMetadata
+            global::NCMapper.Runtime.RuntimeSnapshotPair<NCMapper.Tests.Models.MapIgnoreTestEntity, NCMapper.Tests.Models.MapIgnoreTestDto>.Metadata = __meta91;
+            global::NCMapper.Runtime.RuntimeSnapshotStore.Register(__meta91);
+            // pair 92: NCMapper.Tests.Models.Member -> NCMapper.Tests.Models.MemberDto (MapFrom channel)
+            var __mfAttr92 = new global::NCMapper.Attributes.MapFromAttribute(typeof(NCMapper.Tests.Models.Member));
+            var __meta92 = new global::NCMapper.Runtime.RuntimeMapperMetadata
             {
                 SourceType = typeof(NCMapper.Tests.Models.Member),
                 TargetType = typeof(NCMapper.Tests.Models.MemberDto),
@@ -13023,7 +14026,7 @@ namespace NCMapper.Runtime
                                 TypeName = "string",
                                 TypeRef = typeof(string),
                                 HasMapFromAttribute = true,
-                                MapFromAttribute = __mfAttr86,
+                                MapFromAttribute = __mfAttr92,
                                 HasMapIgnore = false,
                                 MapIgnoreDirection = 0,
                                 HasOverrideIgnore = false,
@@ -13063,7 +14066,7 @@ namespace NCMapper.Runtime
                                 TypeName = "int",
                                 TypeRef = typeof(int),
                                 HasMapFromAttribute = true,
-                                MapFromAttribute = __mfAttr86,
+                                MapFromAttribute = __mfAttr92,
                                 HasMapIgnore = false,
                                 MapIgnoreDirection = 0,
                                 HasOverrideIgnore = false,
@@ -13103,7 +14106,7 @@ namespace NCMapper.Runtime
                                 TypeName = "bool",
                                 TypeRef = typeof(bool),
                                 HasMapFromAttribute = true,
-                                MapFromAttribute = __mfAttr86,
+                                MapFromAttribute = __mfAttr92,
                                 HasMapIgnore = false,
                                 MapIgnoreDirection = 0,
                                 HasOverrideIgnore = false,
@@ -13143,7 +14146,7 @@ namespace NCMapper.Runtime
                         TypeName = "string",
                         TypeRef = typeof(string),
                         HasMapFromAttribute = true,
-                        MapFromAttribute = __mfAttr86,
+                        MapFromAttribute = __mfAttr92,
                         HasMapIgnore = false,
                         MapIgnoreDirection = 0,
                         HasOverrideIgnore = false,
@@ -13166,7 +14169,7 @@ namespace NCMapper.Runtime
                         TypeName = "int",
                         TypeRef = typeof(int),
                         HasMapFromAttribute = true,
-                        MapFromAttribute = __mfAttr86,
+                        MapFromAttribute = __mfAttr92,
                         HasMapIgnore = false,
                         MapIgnoreDirection = 0,
                         HasOverrideIgnore = false,
@@ -13189,7 +14192,7 @@ namespace NCMapper.Runtime
                         TypeName = "bool",
                         TypeRef = typeof(bool),
                         HasMapFromAttribute = true,
-                        MapFromAttribute = __mfAttr86,
+                        MapFromAttribute = __mfAttr92,
                         HasMapIgnore = false,
                         MapIgnoreDirection = 0,
                         HasOverrideIgnore = false,
@@ -13208,11 +14211,11 @@ namespace NCMapper.Runtime
                     },
                 },
             };
-            global::NCMapper.Runtime.RuntimeSnapshotPair<NCMapper.Tests.Models.Member, NCMapper.Tests.Models.MemberDto>.Metadata = __meta86;
-            global::NCMapper.Runtime.RuntimeSnapshotStore.Register(__meta86);
-            // pair 87: NCMapper.Tests.Models.MultiCollectionEntity -> NCMapper.Tests.Models.MultiCollectionDto (MapFrom channel)
-            var __mfAttr87 = new global::NCMapper.Attributes.MapFromAttribute(typeof(NCMapper.Tests.Models.MultiCollectionEntity));
-            var __meta87 = new global::NCMapper.Runtime.RuntimeMapperMetadata
+            global::NCMapper.Runtime.RuntimeSnapshotPair<NCMapper.Tests.Models.Member, NCMapper.Tests.Models.MemberDto>.Metadata = __meta92;
+            global::NCMapper.Runtime.RuntimeSnapshotStore.Register(__meta92);
+            // pair 93: NCMapper.Tests.Models.MultiCollectionEntity -> NCMapper.Tests.Models.MultiCollectionDto (MapFrom channel)
+            var __mfAttr93 = new global::NCMapper.Attributes.MapFromAttribute(typeof(NCMapper.Tests.Models.MultiCollectionEntity));
+            var __meta93 = new global::NCMapper.Runtime.RuntimeMapperMetadata
             {
                 SourceType = typeof(NCMapper.Tests.Models.MultiCollectionEntity),
                 TargetType = typeof(NCMapper.Tests.Models.MultiCollectionDto),
@@ -13233,7 +14236,7 @@ namespace NCMapper.Runtime
                                 TypeName = "System.Collections.Generic.List<string>?",
                                 TypeRef = typeof(System.Collections.Generic.List<string>),
                                 HasMapFromAttribute = true,
-                                MapFromAttribute = __mfAttr87,
+                                MapFromAttribute = __mfAttr93,
                                 HasMapIgnore = false,
                                 MapIgnoreDirection = 0,
                                 HasOverrideIgnore = false,
@@ -13273,7 +14276,7 @@ namespace NCMapper.Runtime
                                 TypeName = "System.Collections.Generic.HashSet<string>?",
                                 TypeRef = typeof(System.Collections.Generic.HashSet<string>),
                                 HasMapFromAttribute = true,
-                                MapFromAttribute = __mfAttr87,
+                                MapFromAttribute = __mfAttr93,
                                 HasMapIgnore = false,
                                 MapIgnoreDirection = 0,
                                 HasOverrideIgnore = false,
@@ -13313,7 +14316,7 @@ namespace NCMapper.Runtime
                                 TypeName = "System.Collections.Generic.Queue<int>?",
                                 TypeRef = typeof(System.Collections.Generic.Queue<int>),
                                 HasMapFromAttribute = true,
-                                MapFromAttribute = __mfAttr87,
+                                MapFromAttribute = __mfAttr93,
                                 HasMapIgnore = false,
                                 MapIgnoreDirection = 0,
                                 HasOverrideIgnore = false,
@@ -13353,7 +14356,7 @@ namespace NCMapper.Runtime
                                 TypeName = "System.Collections.Generic.Stack<int>?",
                                 TypeRef = typeof(System.Collections.Generic.Stack<int>),
                                 HasMapFromAttribute = true,
-                                MapFromAttribute = __mfAttr87,
+                                MapFromAttribute = __mfAttr93,
                                 HasMapIgnore = false,
                                 MapIgnoreDirection = 0,
                                 HasOverrideIgnore = false,
@@ -13393,7 +14396,7 @@ namespace NCMapper.Runtime
                                 TypeName = "int[]?",
                                 TypeRef = typeof(int[]),
                                 HasMapFromAttribute = true,
-                                MapFromAttribute = __mfAttr87,
+                                MapFromAttribute = __mfAttr93,
                                 HasMapIgnore = false,
                                 MapIgnoreDirection = 0,
                                 HasOverrideIgnore = false,
@@ -13433,7 +14436,7 @@ namespace NCMapper.Runtime
                         TypeName = "System.Collections.Generic.List<string>?",
                         TypeRef = typeof(System.Collections.Generic.List<string>),
                         HasMapFromAttribute = true,
-                        MapFromAttribute = __mfAttr87,
+                        MapFromAttribute = __mfAttr93,
                         HasMapIgnore = false,
                         MapIgnoreDirection = 0,
                         HasOverrideIgnore = false,
@@ -13456,7 +14459,7 @@ namespace NCMapper.Runtime
                         TypeName = "System.Collections.Generic.HashSet<string>?",
                         TypeRef = typeof(System.Collections.Generic.HashSet<string>),
                         HasMapFromAttribute = true,
-                        MapFromAttribute = __mfAttr87,
+                        MapFromAttribute = __mfAttr93,
                         HasMapIgnore = false,
                         MapIgnoreDirection = 0,
                         HasOverrideIgnore = false,
@@ -13479,7 +14482,7 @@ namespace NCMapper.Runtime
                         TypeName = "System.Collections.Generic.Queue<int>?",
                         TypeRef = typeof(System.Collections.Generic.Queue<int>),
                         HasMapFromAttribute = true,
-                        MapFromAttribute = __mfAttr87,
+                        MapFromAttribute = __mfAttr93,
                         HasMapIgnore = false,
                         MapIgnoreDirection = 0,
                         HasOverrideIgnore = false,
@@ -13502,7 +14505,7 @@ namespace NCMapper.Runtime
                         TypeName = "System.Collections.Generic.Stack<int>?",
                         TypeRef = typeof(System.Collections.Generic.Stack<int>),
                         HasMapFromAttribute = true,
-                        MapFromAttribute = __mfAttr87,
+                        MapFromAttribute = __mfAttr93,
                         HasMapIgnore = false,
                         MapIgnoreDirection = 0,
                         HasOverrideIgnore = false,
@@ -13525,7 +14528,7 @@ namespace NCMapper.Runtime
                         TypeName = "int[]?",
                         TypeRef = typeof(int[]),
                         HasMapFromAttribute = true,
-                        MapFromAttribute = __mfAttr87,
+                        MapFromAttribute = __mfAttr93,
                         HasMapIgnore = false,
                         MapIgnoreDirection = 0,
                         HasOverrideIgnore = false,
@@ -13544,11 +14547,11 @@ namespace NCMapper.Runtime
                     },
                 },
             };
-            global::NCMapper.Runtime.RuntimeSnapshotPair<NCMapper.Tests.Models.MultiCollectionEntity, NCMapper.Tests.Models.MultiCollectionDto>.Metadata = __meta87;
-            global::NCMapper.Runtime.RuntimeSnapshotStore.Register(__meta87);
-            // pair 88: NCMapper.Tests.Models.MultiCtorSource -> NCMapper.Tests.Models.MultiCtorDto (MapFrom channel)
-            var __mfAttr88 = new global::NCMapper.Attributes.MapFromAttribute(typeof(NCMapper.Tests.Models.MultiCtorSource));
-            var __meta88 = new global::NCMapper.Runtime.RuntimeMapperMetadata
+            global::NCMapper.Runtime.RuntimeSnapshotPair<NCMapper.Tests.Models.MultiCollectionEntity, NCMapper.Tests.Models.MultiCollectionDto>.Metadata = __meta93;
+            global::NCMapper.Runtime.RuntimeSnapshotStore.Register(__meta93);
+            // pair 94: NCMapper.Tests.Models.MultiCtorSource -> NCMapper.Tests.Models.MultiCtorDto (MapFrom channel)
+            var __mfAttr94 = new global::NCMapper.Attributes.MapFromAttribute(typeof(NCMapper.Tests.Models.MultiCtorSource));
+            var __meta94 = new global::NCMapper.Runtime.RuntimeMapperMetadata
             {
                 SourceType = typeof(NCMapper.Tests.Models.MultiCtorSource),
                 TargetType = typeof(NCMapper.Tests.Models.MultiCtorDto),
@@ -13569,7 +14572,7 @@ namespace NCMapper.Runtime
                                 TypeName = "int",
                                 TypeRef = typeof(int),
                                 HasMapFromAttribute = true,
-                                MapFromAttribute = __mfAttr88,
+                                MapFromAttribute = __mfAttr94,
                                 HasMapIgnore = false,
                                 MapIgnoreDirection = 0,
                                 HasOverrideIgnore = false,
@@ -13609,7 +14612,7 @@ namespace NCMapper.Runtime
                                 TypeName = "string?",
                                 TypeRef = typeof(string),
                                 HasMapFromAttribute = true,
-                                MapFromAttribute = __mfAttr88,
+                                MapFromAttribute = __mfAttr94,
                                 HasMapIgnore = false,
                                 MapIgnoreDirection = 0,
                                 HasOverrideIgnore = false,
@@ -13649,7 +14652,7 @@ namespace NCMapper.Runtime
                                 TypeName = "string?",
                                 TypeRef = typeof(string),
                                 HasMapFromAttribute = true,
-                                MapFromAttribute = __mfAttr88,
+                                MapFromAttribute = __mfAttr94,
                                 HasMapIgnore = false,
                                 MapIgnoreDirection = 0,
                                 HasOverrideIgnore = false,
@@ -13689,7 +14692,7 @@ namespace NCMapper.Runtime
                         TypeName = "int",
                         TypeRef = typeof(int),
                         HasMapFromAttribute = true,
-                        MapFromAttribute = __mfAttr88,
+                        MapFromAttribute = __mfAttr94,
                         HasMapIgnore = false,
                         MapIgnoreDirection = 0,
                         HasOverrideIgnore = false,
@@ -13712,7 +14715,7 @@ namespace NCMapper.Runtime
                         TypeName = "string?",
                         TypeRef = typeof(string),
                         HasMapFromAttribute = true,
-                        MapFromAttribute = __mfAttr88,
+                        MapFromAttribute = __mfAttr94,
                         HasMapIgnore = false,
                         MapIgnoreDirection = 0,
                         HasOverrideIgnore = false,
@@ -13735,7 +14738,7 @@ namespace NCMapper.Runtime
                         TypeName = "string?",
                         TypeRef = typeof(string),
                         HasMapFromAttribute = true,
-                        MapFromAttribute = __mfAttr88,
+                        MapFromAttribute = __mfAttr94,
                         HasMapIgnore = false,
                         MapIgnoreDirection = 0,
                         HasOverrideIgnore = false,
@@ -13754,11 +14757,11 @@ namespace NCMapper.Runtime
                     },
                 },
             };
-            global::NCMapper.Runtime.RuntimeSnapshotPair<NCMapper.Tests.Models.MultiCtorSource, NCMapper.Tests.Models.MultiCtorDto>.Metadata = __meta88;
-            global::NCMapper.Runtime.RuntimeSnapshotStore.Register(__meta88);
-            // pair 89: NCMapper.Tests.Models.MultiFieldSourceEntity -> NCMapper.Tests.Models.MultiFieldDto (MapFrom channel)
-            var __mfAttr89 = new global::NCMapper.Attributes.MapFromAttribute(typeof(NCMapper.Tests.Models.MultiFieldSourceEntity));
-            var __meta89 = new global::NCMapper.Runtime.RuntimeMapperMetadata
+            global::NCMapper.Runtime.RuntimeSnapshotPair<NCMapper.Tests.Models.MultiCtorSource, NCMapper.Tests.Models.MultiCtorDto>.Metadata = __meta94;
+            global::NCMapper.Runtime.RuntimeSnapshotStore.Register(__meta94);
+            // pair 95: NCMapper.Tests.Models.MultiFieldSourceEntity -> NCMapper.Tests.Models.MultiFieldDto (MapFrom channel)
+            var __mfAttr95 = new global::NCMapper.Attributes.MapFromAttribute(typeof(NCMapper.Tests.Models.MultiFieldSourceEntity));
+            var __meta95 = new global::NCMapper.Runtime.RuntimeMapperMetadata
             {
                 SourceType = typeof(NCMapper.Tests.Models.MultiFieldSourceEntity),
                 TargetType = typeof(NCMapper.Tests.Models.MultiFieldDto),
@@ -13779,7 +14782,7 @@ namespace NCMapper.Runtime
                                 TypeName = "int",
                                 TypeRef = typeof(int),
                                 HasMapFromAttribute = true,
-                                MapFromAttribute = __mfAttr89,
+                                MapFromAttribute = __mfAttr95,
                                 HasMapIgnore = false,
                                 MapIgnoreDirection = 0,
                                 HasOverrideIgnore = false,
@@ -13819,7 +14822,7 @@ namespace NCMapper.Runtime
                                 TypeName = "string",
                                 TypeRef = typeof(string),
                                 HasMapFromAttribute = true,
-                                MapFromAttribute = __mfAttr89,
+                                MapFromAttribute = __mfAttr95,
                                 HasMapIgnore = false,
                                 MapIgnoreDirection = 0,
                                 HasOverrideIgnore = false,
@@ -13859,7 +14862,7 @@ namespace NCMapper.Runtime
                                 TypeName = "decimal",
                                 TypeRef = typeof(decimal),
                                 HasMapFromAttribute = true,
-                                MapFromAttribute = __mfAttr89,
+                                MapFromAttribute = __mfAttr95,
                                 HasMapIgnore = false,
                                 MapIgnoreDirection = 0,
                                 HasOverrideIgnore = false,
@@ -13899,7 +14902,7 @@ namespace NCMapper.Runtime
                                 TypeName = "decimal",
                                 TypeRef = typeof(decimal),
                                 HasMapFromAttribute = true,
-                                MapFromAttribute = __mfAttr89,
+                                MapFromAttribute = __mfAttr95,
                                 HasMapIgnore = false,
                                 MapIgnoreDirection = 0,
                                 HasOverrideIgnore = false,
@@ -13939,7 +14942,7 @@ namespace NCMapper.Runtime
                                 TypeName = "string",
                                 TypeRef = typeof(string),
                                 HasMapFromAttribute = true,
-                                MapFromAttribute = __mfAttr89,
+                                MapFromAttribute = __mfAttr95,
                                 HasMapIgnore = false,
                                 MapIgnoreDirection = 0,
                                 HasOverrideIgnore = false,
@@ -13979,7 +14982,7 @@ namespace NCMapper.Runtime
                                 TypeName = "string",
                                 TypeRef = typeof(string),
                                 HasMapFromAttribute = true,
-                                MapFromAttribute = __mfAttr89,
+                                MapFromAttribute = __mfAttr95,
                                 HasMapIgnore = false,
                                 MapIgnoreDirection = 0,
                                 HasOverrideIgnore = false,
@@ -14019,7 +15022,7 @@ namespace NCMapper.Runtime
                                 TypeName = "string",
                                 TypeRef = typeof(string),
                                 HasMapFromAttribute = true,
-                                MapFromAttribute = __mfAttr89,
+                                MapFromAttribute = __mfAttr95,
                                 HasMapIgnore = false,
                                 MapIgnoreDirection = 0,
                                 HasOverrideIgnore = false,
@@ -14059,7 +15062,7 @@ namespace NCMapper.Runtime
                         TypeName = "int",
                         TypeRef = typeof(int),
                         HasMapFromAttribute = true,
-                        MapFromAttribute = __mfAttr89,
+                        MapFromAttribute = __mfAttr95,
                         HasMapIgnore = false,
                         MapIgnoreDirection = 0,
                         HasOverrideIgnore = false,
@@ -14082,7 +15085,7 @@ namespace NCMapper.Runtime
                         TypeName = "string",
                         TypeRef = typeof(string),
                         HasMapFromAttribute = true,
-                        MapFromAttribute = __mfAttr89,
+                        MapFromAttribute = __mfAttr95,
                         HasMapIgnore = false,
                         MapIgnoreDirection = 0,
                         HasOverrideIgnore = false,
@@ -14105,7 +15108,7 @@ namespace NCMapper.Runtime
                         TypeName = "decimal",
                         TypeRef = typeof(decimal),
                         HasMapFromAttribute = true,
-                        MapFromAttribute = __mfAttr89,
+                        MapFromAttribute = __mfAttr95,
                         HasMapIgnore = false,
                         MapIgnoreDirection = 0,
                         HasOverrideIgnore = false,
@@ -14128,7 +15131,7 @@ namespace NCMapper.Runtime
                         TypeName = "decimal",
                         TypeRef = typeof(decimal),
                         HasMapFromAttribute = true,
-                        MapFromAttribute = __mfAttr89,
+                        MapFromAttribute = __mfAttr95,
                         HasMapIgnore = false,
                         MapIgnoreDirection = 0,
                         HasOverrideIgnore = false,
@@ -14151,7 +15154,7 @@ namespace NCMapper.Runtime
                         TypeName = "string",
                         TypeRef = typeof(string),
                         HasMapFromAttribute = true,
-                        MapFromAttribute = __mfAttr89,
+                        MapFromAttribute = __mfAttr95,
                         HasMapIgnore = false,
                         MapIgnoreDirection = 0,
                         HasOverrideIgnore = false,
@@ -14174,7 +15177,7 @@ namespace NCMapper.Runtime
                         TypeName = "string",
                         TypeRef = typeof(string),
                         HasMapFromAttribute = true,
-                        MapFromAttribute = __mfAttr89,
+                        MapFromAttribute = __mfAttr95,
                         HasMapIgnore = false,
                         MapIgnoreDirection = 0,
                         HasOverrideIgnore = false,
@@ -14197,7 +15200,7 @@ namespace NCMapper.Runtime
                         TypeName = "string",
                         TypeRef = typeof(string),
                         HasMapFromAttribute = true,
-                        MapFromAttribute = __mfAttr89,
+                        MapFromAttribute = __mfAttr95,
                         HasMapIgnore = false,
                         MapIgnoreDirection = 0,
                         HasOverrideIgnore = false,
@@ -14216,11 +15219,11 @@ namespace NCMapper.Runtime
                     },
                 },
             };
-            global::NCMapper.Runtime.RuntimeSnapshotPair<NCMapper.Tests.Models.MultiFieldSourceEntity, NCMapper.Tests.Models.MultiFieldDto>.Metadata = __meta89;
-            global::NCMapper.Runtime.RuntimeSnapshotStore.Register(__meta89);
-            // pair 90: NCMapper.Tests.Models.NestedRecordEntity -> NCMapper.Tests.Models.NestedRecordDto (MapFrom channel)
-            var __mfAttr90 = new global::NCMapper.Attributes.MapFromAttribute(typeof(NCMapper.Tests.Models.NestedRecordEntity));
-            var __meta90 = new global::NCMapper.Runtime.RuntimeMapperMetadata
+            global::NCMapper.Runtime.RuntimeSnapshotPair<NCMapper.Tests.Models.MultiFieldSourceEntity, NCMapper.Tests.Models.MultiFieldDto>.Metadata = __meta95;
+            global::NCMapper.Runtime.RuntimeSnapshotStore.Register(__meta95);
+            // pair 96: NCMapper.Tests.Models.NestedRecordEntity -> NCMapper.Tests.Models.NestedRecordDto (MapFrom channel)
+            var __mfAttr96 = new global::NCMapper.Attributes.MapFromAttribute(typeof(NCMapper.Tests.Models.NestedRecordEntity));
+            var __meta96 = new global::NCMapper.Runtime.RuntimeMapperMetadata
             {
                 SourceType = typeof(NCMapper.Tests.Models.NestedRecordEntity),
                 TargetType = typeof(NCMapper.Tests.Models.NestedRecordDto),
@@ -14241,7 +15244,7 @@ namespace NCMapper.Runtime
                                 TypeName = "string",
                                 TypeRef = typeof(string),
                                 HasMapFromAttribute = true,
-                                MapFromAttribute = __mfAttr90,
+                                MapFromAttribute = __mfAttr96,
                                 HasMapIgnore = false,
                                 MapIgnoreDirection = 0,
                                 HasOverrideIgnore = false,
@@ -14281,7 +15284,7 @@ namespace NCMapper.Runtime
                                 TypeName = "NCMapper.Tests.Models.RecordPersonDto?",
                                 TypeRef = typeof(NCMapper.Tests.Models.RecordPersonDto),
                                 HasMapFromAttribute = true,
-                                MapFromAttribute = __mfAttr90,
+                                MapFromAttribute = __mfAttr96,
                                 HasMapIgnore = false,
                                 MapIgnoreDirection = 0,
                                 HasOverrideIgnore = false,
@@ -14321,7 +15324,7 @@ namespace NCMapper.Runtime
                         TypeName = "string",
                         TypeRef = typeof(string),
                         HasMapFromAttribute = true,
-                        MapFromAttribute = __mfAttr90,
+                        MapFromAttribute = __mfAttr96,
                         HasMapIgnore = false,
                         MapIgnoreDirection = 0,
                         HasOverrideIgnore = false,
@@ -14344,7 +15347,7 @@ namespace NCMapper.Runtime
                         TypeName = "NCMapper.Tests.Models.RecordPersonDto?",
                         TypeRef = typeof(NCMapper.Tests.Models.RecordPersonDto),
                         HasMapFromAttribute = true,
-                        MapFromAttribute = __mfAttr90,
+                        MapFromAttribute = __mfAttr96,
                         HasMapIgnore = false,
                         MapIgnoreDirection = 0,
                         HasOverrideIgnore = false,
@@ -14363,11 +15366,11 @@ namespace NCMapper.Runtime
                     },
                 },
             };
-            global::NCMapper.Runtime.RuntimeSnapshotPair<NCMapper.Tests.Models.NestedRecordEntity, NCMapper.Tests.Models.NestedRecordDto>.Metadata = __meta90;
-            global::NCMapper.Runtime.RuntimeSnapshotStore.Register(__meta90);
-            // pair 91: NCMapper.Tests.Models.NullableTypesEntity -> NCMapper.Tests.Models.NonNullToNullableDto (MapFrom channel)
-            var __mfAttr91 = new global::NCMapper.Attributes.MapFromAttribute(typeof(NCMapper.Tests.Models.NullableTypesEntity));
-            var __meta91 = new global::NCMapper.Runtime.RuntimeMapperMetadata
+            global::NCMapper.Runtime.RuntimeSnapshotPair<NCMapper.Tests.Models.NestedRecordEntity, NCMapper.Tests.Models.NestedRecordDto>.Metadata = __meta96;
+            global::NCMapper.Runtime.RuntimeSnapshotStore.Register(__meta96);
+            // pair 97: NCMapper.Tests.Models.NullableTypesEntity -> NCMapper.Tests.Models.NonNullToNullableDto (MapFrom channel)
+            var __mfAttr97 = new global::NCMapper.Attributes.MapFromAttribute(typeof(NCMapper.Tests.Models.NullableTypesEntity));
+            var __meta97 = new global::NCMapper.Runtime.RuntimeMapperMetadata
             {
                 SourceType = typeof(NCMapper.Tests.Models.NullableTypesEntity),
                 TargetType = typeof(NCMapper.Tests.Models.NonNullToNullableDto),
@@ -14388,7 +15391,7 @@ namespace NCMapper.Runtime
                                 TypeName = "System.DateTime?",
                                 TypeRef = typeof(System.DateTime?),
                                 HasMapFromAttribute = true,
-                                MapFromAttribute = __mfAttr91,
+                                MapFromAttribute = __mfAttr97,
                                 HasMapIgnore = false,
                                 MapIgnoreDirection = 0,
                                 HasOverrideIgnore = false,
@@ -14428,7 +15431,7 @@ namespace NCMapper.Runtime
                         TypeName = "System.DateTime?",
                         TypeRef = typeof(System.DateTime?),
                         HasMapFromAttribute = true,
-                        MapFromAttribute = __mfAttr91,
+                        MapFromAttribute = __mfAttr97,
                         HasMapIgnore = false,
                         MapIgnoreDirection = 0,
                         HasOverrideIgnore = false,
@@ -14447,11 +15450,11 @@ namespace NCMapper.Runtime
                     },
                 },
             };
-            global::NCMapper.Runtime.RuntimeSnapshotPair<NCMapper.Tests.Models.NullableTypesEntity, NCMapper.Tests.Models.NonNullToNullableDto>.Metadata = __meta91;
-            global::NCMapper.Runtime.RuntimeSnapshotStore.Register(__meta91);
-            // pair 92: NCMapper.Tests.Models.NullableTypesEntity -> NCMapper.Tests.Models.NullableToNonNullDto (MapFrom channel)
-            var __mfAttr92 = new global::NCMapper.Attributes.MapFromAttribute(typeof(NCMapper.Tests.Models.NullableTypesEntity));
-            var __meta92 = new global::NCMapper.Runtime.RuntimeMapperMetadata
+            global::NCMapper.Runtime.RuntimeSnapshotPair<NCMapper.Tests.Models.NullableTypesEntity, NCMapper.Tests.Models.NonNullToNullableDto>.Metadata = __meta97;
+            global::NCMapper.Runtime.RuntimeSnapshotStore.Register(__meta97);
+            // pair 98: NCMapper.Tests.Models.NullableTypesEntity -> NCMapper.Tests.Models.NullableToNonNullDto (MapFrom channel)
+            var __mfAttr98 = new global::NCMapper.Attributes.MapFromAttribute(typeof(NCMapper.Tests.Models.NullableTypesEntity));
+            var __meta98 = new global::NCMapper.Runtime.RuntimeMapperMetadata
             {
                 SourceType = typeof(NCMapper.Tests.Models.NullableTypesEntity),
                 TargetType = typeof(NCMapper.Tests.Models.NullableToNonNullDto),
@@ -14472,7 +15475,7 @@ namespace NCMapper.Runtime
                                 TypeName = "System.DateTime",
                                 TypeRef = typeof(System.DateTime),
                                 HasMapFromAttribute = true,
-                                MapFromAttribute = __mfAttr92,
+                                MapFromAttribute = __mfAttr98,
                                 HasMapIgnore = false,
                                 MapIgnoreDirection = 0,
                                 HasOverrideIgnore = false,
@@ -14512,7 +15515,7 @@ namespace NCMapper.Runtime
                                 TypeName = "System.DateTime",
                                 TypeRef = typeof(System.DateTime),
                                 HasMapFromAttribute = true,
-                                MapFromAttribute = __mfAttr92,
+                                MapFromAttribute = __mfAttr98,
                                 HasMapIgnore = false,
                                 MapIgnoreDirection = 0,
                                 HasOverrideIgnore = false,
@@ -14552,7 +15555,7 @@ namespace NCMapper.Runtime
                                 TypeName = "System.Guid",
                                 TypeRef = typeof(System.Guid),
                                 HasMapFromAttribute = true,
-                                MapFromAttribute = __mfAttr92,
+                                MapFromAttribute = __mfAttr98,
                                 HasMapIgnore = false,
                                 MapIgnoreDirection = 0,
                                 HasOverrideIgnore = false,
@@ -14592,7 +15595,7 @@ namespace NCMapper.Runtime
                                 TypeName = "System.Guid",
                                 TypeRef = typeof(System.Guid),
                                 HasMapFromAttribute = true,
-                                MapFromAttribute = __mfAttr92,
+                                MapFromAttribute = __mfAttr98,
                                 HasMapIgnore = false,
                                 MapIgnoreDirection = 0,
                                 HasOverrideIgnore = false,
@@ -14632,7 +15635,7 @@ namespace NCMapper.Runtime
                                 TypeName = "decimal",
                                 TypeRef = typeof(decimal),
                                 HasMapFromAttribute = true,
-                                MapFromAttribute = __mfAttr92,
+                                MapFromAttribute = __mfAttr98,
                                 HasMapIgnore = false,
                                 MapIgnoreDirection = 0,
                                 HasOverrideIgnore = false,
@@ -14672,7 +15675,7 @@ namespace NCMapper.Runtime
                                 TypeName = "decimal",
                                 TypeRef = typeof(decimal),
                                 HasMapFromAttribute = true,
-                                MapFromAttribute = __mfAttr92,
+                                MapFromAttribute = __mfAttr98,
                                 HasMapIgnore = false,
                                 MapIgnoreDirection = 0,
                                 HasOverrideIgnore = false,
@@ -14712,7 +15715,7 @@ namespace NCMapper.Runtime
                                 TypeName = "NCMapper.Tests.Models.OrderStatus",
                                 TypeRef = typeof(NCMapper.Tests.Models.OrderStatus),
                                 HasMapFromAttribute = true,
-                                MapFromAttribute = __mfAttr92,
+                                MapFromAttribute = __mfAttr98,
                                 HasMapIgnore = false,
                                 MapIgnoreDirection = 0,
                                 HasOverrideIgnore = false,
@@ -14752,7 +15755,7 @@ namespace NCMapper.Runtime
                                 TypeName = "NCMapper.Tests.Models.OrderStatus",
                                 TypeRef = typeof(NCMapper.Tests.Models.OrderStatus),
                                 HasMapFromAttribute = true,
-                                MapFromAttribute = __mfAttr92,
+                                MapFromAttribute = __mfAttr98,
                                 HasMapIgnore = false,
                                 MapIgnoreDirection = 0,
                                 HasOverrideIgnore = false,
@@ -14792,7 +15795,7 @@ namespace NCMapper.Runtime
                         TypeName = "System.DateTime",
                         TypeRef = typeof(System.DateTime),
                         HasMapFromAttribute = true,
-                        MapFromAttribute = __mfAttr92,
+                        MapFromAttribute = __mfAttr98,
                         HasMapIgnore = false,
                         MapIgnoreDirection = 0,
                         HasOverrideIgnore = false,
@@ -14815,7 +15818,7 @@ namespace NCMapper.Runtime
                         TypeName = "System.DateTime",
                         TypeRef = typeof(System.DateTime),
                         HasMapFromAttribute = true,
-                        MapFromAttribute = __mfAttr92,
+                        MapFromAttribute = __mfAttr98,
                         HasMapIgnore = false,
                         MapIgnoreDirection = 0,
                         HasOverrideIgnore = false,
@@ -14838,7 +15841,7 @@ namespace NCMapper.Runtime
                         TypeName = "System.Guid",
                         TypeRef = typeof(System.Guid),
                         HasMapFromAttribute = true,
-                        MapFromAttribute = __mfAttr92,
+                        MapFromAttribute = __mfAttr98,
                         HasMapIgnore = false,
                         MapIgnoreDirection = 0,
                         HasOverrideIgnore = false,
@@ -14861,7 +15864,7 @@ namespace NCMapper.Runtime
                         TypeName = "System.Guid",
                         TypeRef = typeof(System.Guid),
                         HasMapFromAttribute = true,
-                        MapFromAttribute = __mfAttr92,
+                        MapFromAttribute = __mfAttr98,
                         HasMapIgnore = false,
                         MapIgnoreDirection = 0,
                         HasOverrideIgnore = false,
@@ -14884,7 +15887,7 @@ namespace NCMapper.Runtime
                         TypeName = "decimal",
                         TypeRef = typeof(decimal),
                         HasMapFromAttribute = true,
-                        MapFromAttribute = __mfAttr92,
+                        MapFromAttribute = __mfAttr98,
                         HasMapIgnore = false,
                         MapIgnoreDirection = 0,
                         HasOverrideIgnore = false,
@@ -14907,7 +15910,7 @@ namespace NCMapper.Runtime
                         TypeName = "decimal",
                         TypeRef = typeof(decimal),
                         HasMapFromAttribute = true,
-                        MapFromAttribute = __mfAttr92,
+                        MapFromAttribute = __mfAttr98,
                         HasMapIgnore = false,
                         MapIgnoreDirection = 0,
                         HasOverrideIgnore = false,
@@ -14930,7 +15933,7 @@ namespace NCMapper.Runtime
                         TypeName = "NCMapper.Tests.Models.OrderStatus",
                         TypeRef = typeof(NCMapper.Tests.Models.OrderStatus),
                         HasMapFromAttribute = true,
-                        MapFromAttribute = __mfAttr92,
+                        MapFromAttribute = __mfAttr98,
                         HasMapIgnore = false,
                         MapIgnoreDirection = 0,
                         HasOverrideIgnore = false,
@@ -14953,7 +15956,7 @@ namespace NCMapper.Runtime
                         TypeName = "NCMapper.Tests.Models.OrderStatus",
                         TypeRef = typeof(NCMapper.Tests.Models.OrderStatus),
                         HasMapFromAttribute = true,
-                        MapFromAttribute = __mfAttr92,
+                        MapFromAttribute = __mfAttr98,
                         HasMapIgnore = false,
                         MapIgnoreDirection = 0,
                         HasOverrideIgnore = false,
@@ -14972,11 +15975,11 @@ namespace NCMapper.Runtime
                     },
                 },
             };
-            global::NCMapper.Runtime.RuntimeSnapshotPair<NCMapper.Tests.Models.NullableTypesEntity, NCMapper.Tests.Models.NullableToNonNullDto>.Metadata = __meta92;
-            global::NCMapper.Runtime.RuntimeSnapshotStore.Register(__meta92);
-            // pair 93: NCMapper.Tests.Models.OverrideChildEntity -> NCMapper.Tests.Models.OverrideChildDto (MapFrom channel)
-            var __mfAttr93 = new global::NCMapper.Attributes.MapFromAttribute(typeof(NCMapper.Tests.Models.OverrideChildEntity));
-            var __meta93 = new global::NCMapper.Runtime.RuntimeMapperMetadata
+            global::NCMapper.Runtime.RuntimeSnapshotPair<NCMapper.Tests.Models.NullableTypesEntity, NCMapper.Tests.Models.NullableToNonNullDto>.Metadata = __meta98;
+            global::NCMapper.Runtime.RuntimeSnapshotStore.Register(__meta98);
+            // pair 99: NCMapper.Tests.Models.OverrideChildEntity -> NCMapper.Tests.Models.OverrideChildDto (MapFrom channel)
+            var __mfAttr99 = new global::NCMapper.Attributes.MapFromAttribute(typeof(NCMapper.Tests.Models.OverrideChildEntity));
+            var __meta99 = new global::NCMapper.Runtime.RuntimeMapperMetadata
             {
                 SourceType = typeof(NCMapper.Tests.Models.OverrideChildEntity),
                 TargetType = typeof(NCMapper.Tests.Models.OverrideChildDto),
@@ -14997,7 +16000,7 @@ namespace NCMapper.Runtime
                                 TypeName = "double",
                                 TypeRef = typeof(double),
                                 HasMapFromAttribute = true,
-                                MapFromAttribute = __mfAttr93,
+                                MapFromAttribute = __mfAttr99,
                                 HasMapIgnore = false,
                                 MapIgnoreDirection = 0,
                                 HasOverrideIgnore = false,
@@ -15037,7 +16040,7 @@ namespace NCMapper.Runtime
                                 TypeName = "string",
                                 TypeRef = typeof(string),
                                 HasMapFromAttribute = true,
-                                MapFromAttribute = __mfAttr93,
+                                MapFromAttribute = __mfAttr99,
                                 HasMapIgnore = false,
                                 MapIgnoreDirection = 0,
                                 HasOverrideIgnore = false,
@@ -15077,7 +16080,7 @@ namespace NCMapper.Runtime
                         TypeName = "double",
                         TypeRef = typeof(double),
                         HasMapFromAttribute = true,
-                        MapFromAttribute = __mfAttr93,
+                        MapFromAttribute = __mfAttr99,
                         HasMapIgnore = false,
                         MapIgnoreDirection = 0,
                         HasOverrideIgnore = false,
@@ -15100,7 +16103,7 @@ namespace NCMapper.Runtime
                         TypeName = "string",
                         TypeRef = typeof(string),
                         HasMapFromAttribute = true,
-                        MapFromAttribute = __mfAttr93,
+                        MapFromAttribute = __mfAttr99,
                         HasMapIgnore = false,
                         MapIgnoreDirection = 0,
                         HasOverrideIgnore = false,
@@ -15119,11 +16122,11 @@ namespace NCMapper.Runtime
                     },
                 },
             };
-            global::NCMapper.Runtime.RuntimeSnapshotPair<NCMapper.Tests.Models.OverrideChildEntity, NCMapper.Tests.Models.OverrideChildDto>.Metadata = __meta93;
-            global::NCMapper.Runtime.RuntimeSnapshotStore.Register(__meta93);
-            // pair 94: NCMapper.Tests.Models.Post -> NCMapper.Tests.Models.PostDto (MapFrom channel)
-            var __mfAttr94 = new global::NCMapper.Attributes.MapFromAttribute(typeof(NCMapper.Tests.Models.Post));
-            var __meta94 = new global::NCMapper.Runtime.RuntimeMapperMetadata
+            global::NCMapper.Runtime.RuntimeSnapshotPair<NCMapper.Tests.Models.OverrideChildEntity, NCMapper.Tests.Models.OverrideChildDto>.Metadata = __meta99;
+            global::NCMapper.Runtime.RuntimeSnapshotStore.Register(__meta99);
+            // pair 100: NCMapper.Tests.Models.Post -> NCMapper.Tests.Models.PostDto (MapFrom channel)
+            var __mfAttr100 = new global::NCMapper.Attributes.MapFromAttribute(typeof(NCMapper.Tests.Models.Post));
+            var __meta100 = new global::NCMapper.Runtime.RuntimeMapperMetadata
             {
                 SourceType = typeof(NCMapper.Tests.Models.Post),
                 TargetType = typeof(NCMapper.Tests.Models.PostDto),
@@ -15144,7 +16147,7 @@ namespace NCMapper.Runtime
                                 TypeName = "string",
                                 TypeRef = typeof(string),
                                 HasMapFromAttribute = true,
-                                MapFromAttribute = __mfAttr94,
+                                MapFromAttribute = __mfAttr100,
                                 HasMapIgnore = false,
                                 MapIgnoreDirection = 0,
                                 HasOverrideIgnore = false,
@@ -15184,7 +16187,7 @@ namespace NCMapper.Runtime
                                 TypeName = "int",
                                 TypeRef = typeof(int),
                                 HasMapFromAttribute = true,
-                                MapFromAttribute = __mfAttr94,
+                                MapFromAttribute = __mfAttr100,
                                 HasMapIgnore = false,
                                 MapIgnoreDirection = 0,
                                 HasOverrideIgnore = false,
@@ -15224,7 +16227,7 @@ namespace NCMapper.Runtime
                         TypeName = "string",
                         TypeRef = typeof(string),
                         HasMapFromAttribute = true,
-                        MapFromAttribute = __mfAttr94,
+                        MapFromAttribute = __mfAttr100,
                         HasMapIgnore = false,
                         MapIgnoreDirection = 0,
                         HasOverrideIgnore = false,
@@ -15247,7 +16250,7 @@ namespace NCMapper.Runtime
                         TypeName = "int",
                         TypeRef = typeof(int),
                         HasMapFromAttribute = true,
-                        MapFromAttribute = __mfAttr94,
+                        MapFromAttribute = __mfAttr100,
                         HasMapIgnore = false,
                         MapIgnoreDirection = 0,
                         HasOverrideIgnore = false,
@@ -15266,11 +16269,11 @@ namespace NCMapper.Runtime
                     },
                 },
             };
-            global::NCMapper.Runtime.RuntimeSnapshotPair<NCMapper.Tests.Models.Post, NCMapper.Tests.Models.PostDto>.Metadata = __meta94;
-            global::NCMapper.Runtime.RuntimeSnapshotStore.Register(__meta94);
-            // pair 95: NCMapper.Tests.Models.PrecisionEntity -> NCMapper.Tests.Models.CrossNumericDto (MapFrom channel)
-            var __mfAttr95 = new global::NCMapper.Attributes.MapFromAttribute(typeof(NCMapper.Tests.Models.PrecisionEntity));
-            var __meta95 = new global::NCMapper.Runtime.RuntimeMapperMetadata
+            global::NCMapper.Runtime.RuntimeSnapshotPair<NCMapper.Tests.Models.Post, NCMapper.Tests.Models.PostDto>.Metadata = __meta100;
+            global::NCMapper.Runtime.RuntimeSnapshotStore.Register(__meta100);
+            // pair 101: NCMapper.Tests.Models.PrecisionEntity -> NCMapper.Tests.Models.CrossNumericDto (MapFrom channel)
+            var __mfAttr101 = new global::NCMapper.Attributes.MapFromAttribute(typeof(NCMapper.Tests.Models.PrecisionEntity));
+            var __meta101 = new global::NCMapper.Runtime.RuntimeMapperMetadata
             {
                 SourceType = typeof(NCMapper.Tests.Models.PrecisionEntity),
                 TargetType = typeof(NCMapper.Tests.Models.CrossNumericDto),
@@ -15291,7 +16294,7 @@ namespace NCMapper.Runtime
                                 TypeName = "decimal",
                                 TypeRef = typeof(decimal),
                                 HasMapFromAttribute = true,
-                                MapFromAttribute = __mfAttr95,
+                                MapFromAttribute = __mfAttr101,
                                 HasMapIgnore = false,
                                 MapIgnoreDirection = 0,
                                 HasOverrideIgnore = false,
@@ -15331,7 +16334,7 @@ namespace NCMapper.Runtime
                                 TypeName = "int",
                                 TypeRef = typeof(int),
                                 HasMapFromAttribute = true,
-                                MapFromAttribute = __mfAttr95,
+                                MapFromAttribute = __mfAttr101,
                                 HasMapIgnore = false,
                                 MapIgnoreDirection = 0,
                                 HasOverrideIgnore = false,
@@ -15371,7 +16374,7 @@ namespace NCMapper.Runtime
                         TypeName = "decimal",
                         TypeRef = typeof(decimal),
                         HasMapFromAttribute = true,
-                        MapFromAttribute = __mfAttr95,
+                        MapFromAttribute = __mfAttr101,
                         HasMapIgnore = false,
                         MapIgnoreDirection = 0,
                         HasOverrideIgnore = false,
@@ -15394,7 +16397,7 @@ namespace NCMapper.Runtime
                         TypeName = "int",
                         TypeRef = typeof(int),
                         HasMapFromAttribute = true,
-                        MapFromAttribute = __mfAttr95,
+                        MapFromAttribute = __mfAttr101,
                         HasMapIgnore = false,
                         MapIgnoreDirection = 0,
                         HasOverrideIgnore = false,
@@ -15413,11 +16416,11 @@ namespace NCMapper.Runtime
                     },
                 },
             };
-            global::NCMapper.Runtime.RuntimeSnapshotPair<NCMapper.Tests.Models.PrecisionEntity, NCMapper.Tests.Models.CrossNumericDto>.Metadata = __meta95;
-            global::NCMapper.Runtime.RuntimeSnapshotStore.Register(__meta95);
-            // pair 96: NCMapper.Tests.Models.PrecisionEntity -> NCMapper.Tests.Models.PrecisionDto (MapFrom channel)
-            var __mfAttr96 = new global::NCMapper.Attributes.MapFromAttribute(typeof(NCMapper.Tests.Models.PrecisionEntity));
-            var __meta96 = new global::NCMapper.Runtime.RuntimeMapperMetadata
+            global::NCMapper.Runtime.RuntimeSnapshotPair<NCMapper.Tests.Models.PrecisionEntity, NCMapper.Tests.Models.CrossNumericDto>.Metadata = __meta101;
+            global::NCMapper.Runtime.RuntimeSnapshotStore.Register(__meta101);
+            // pair 102: NCMapper.Tests.Models.PrecisionEntity -> NCMapper.Tests.Models.PrecisionDto (MapFrom channel)
+            var __mfAttr102 = new global::NCMapper.Attributes.MapFromAttribute(typeof(NCMapper.Tests.Models.PrecisionEntity));
+            var __meta102 = new global::NCMapper.Runtime.RuntimeMapperMetadata
             {
                 SourceType = typeof(NCMapper.Tests.Models.PrecisionEntity),
                 TargetType = typeof(NCMapper.Tests.Models.PrecisionDto),
@@ -15438,7 +16441,7 @@ namespace NCMapper.Runtime
                                 TypeName = "long",
                                 TypeRef = typeof(long),
                                 HasMapFromAttribute = true,
-                                MapFromAttribute = __mfAttr96,
+                                MapFromAttribute = __mfAttr102,
                                 HasMapIgnore = false,
                                 MapIgnoreDirection = 0,
                                 HasOverrideIgnore = false,
@@ -15478,7 +16481,7 @@ namespace NCMapper.Runtime
                                 TypeName = "decimal",
                                 TypeRef = typeof(decimal),
                                 HasMapFromAttribute = true,
-                                MapFromAttribute = __mfAttr96,
+                                MapFromAttribute = __mfAttr102,
                                 HasMapIgnore = false,
                                 MapIgnoreDirection = 0,
                                 HasOverrideIgnore = false,
@@ -15518,7 +16521,7 @@ namespace NCMapper.Runtime
                                 TypeName = "decimal",
                                 TypeRef = typeof(decimal),
                                 HasMapFromAttribute = true,
-                                MapFromAttribute = __mfAttr96,
+                                MapFromAttribute = __mfAttr102,
                                 HasMapIgnore = false,
                                 MapIgnoreDirection = 0,
                                 HasOverrideIgnore = false,
@@ -15558,7 +16561,7 @@ namespace NCMapper.Runtime
                                 TypeName = "int",
                                 TypeRef = typeof(int),
                                 HasMapFromAttribute = true,
-                                MapFromAttribute = __mfAttr96,
+                                MapFromAttribute = __mfAttr102,
                                 HasMapIgnore = false,
                                 MapIgnoreDirection = 0,
                                 HasOverrideIgnore = false,
@@ -15598,7 +16601,7 @@ namespace NCMapper.Runtime
                         TypeName = "long",
                         TypeRef = typeof(long),
                         HasMapFromAttribute = true,
-                        MapFromAttribute = __mfAttr96,
+                        MapFromAttribute = __mfAttr102,
                         HasMapIgnore = false,
                         MapIgnoreDirection = 0,
                         HasOverrideIgnore = false,
@@ -15621,7 +16624,7 @@ namespace NCMapper.Runtime
                         TypeName = "decimal",
                         TypeRef = typeof(decimal),
                         HasMapFromAttribute = true,
-                        MapFromAttribute = __mfAttr96,
+                        MapFromAttribute = __mfAttr102,
                         HasMapIgnore = false,
                         MapIgnoreDirection = 0,
                         HasOverrideIgnore = false,
@@ -15644,7 +16647,7 @@ namespace NCMapper.Runtime
                         TypeName = "decimal",
                         TypeRef = typeof(decimal),
                         HasMapFromAttribute = true,
-                        MapFromAttribute = __mfAttr96,
+                        MapFromAttribute = __mfAttr102,
                         HasMapIgnore = false,
                         MapIgnoreDirection = 0,
                         HasOverrideIgnore = false,
@@ -15667,7 +16670,7 @@ namespace NCMapper.Runtime
                         TypeName = "int",
                         TypeRef = typeof(int),
                         HasMapFromAttribute = true,
-                        MapFromAttribute = __mfAttr96,
+                        MapFromAttribute = __mfAttr102,
                         HasMapIgnore = false,
                         MapIgnoreDirection = 0,
                         HasOverrideIgnore = false,
@@ -15686,11 +16689,11 @@ namespace NCMapper.Runtime
                     },
                 },
             };
-            global::NCMapper.Runtime.RuntimeSnapshotPair<NCMapper.Tests.Models.PrecisionEntity, NCMapper.Tests.Models.PrecisionDto>.Metadata = __meta96;
-            global::NCMapper.Runtime.RuntimeSnapshotStore.Register(__meta96);
-            // pair 97: NCMapper.Tests.Models.R1Source -> NCMapper.Tests.Models.R1GenDto (MapFrom channel)
-            var __mfAttr97 = new global::NCMapper.Attributes.MapFromAttribute(typeof(NCMapper.Tests.Models.R1Source));
-            var __meta97 = new global::NCMapper.Runtime.RuntimeMapperMetadata
+            global::NCMapper.Runtime.RuntimeSnapshotPair<NCMapper.Tests.Models.PrecisionEntity, NCMapper.Tests.Models.PrecisionDto>.Metadata = __meta102;
+            global::NCMapper.Runtime.RuntimeSnapshotStore.Register(__meta102);
+            // pair 103: NCMapper.Tests.Models.R1Source -> NCMapper.Tests.Models.R1GenDto (MapFrom channel)
+            var __mfAttr103 = new global::NCMapper.Attributes.MapFromAttribute(typeof(NCMapper.Tests.Models.R1Source));
+            var __meta103 = new global::NCMapper.Runtime.RuntimeMapperMetadata
             {
                 SourceType = typeof(NCMapper.Tests.Models.R1Source),
                 TargetType = typeof(NCMapper.Tests.Models.R1GenDto),
@@ -15711,7 +16714,7 @@ namespace NCMapper.Runtime
                                 TypeName = "NCMapper.Tests.Models.ConvColor",
                                 TypeRef = typeof(NCMapper.Tests.Models.ConvColor),
                                 HasMapFromAttribute = true,
-                                MapFromAttribute = __mfAttr97,
+                                MapFromAttribute = __mfAttr103,
                                 HasMapIgnore = false,
                                 MapIgnoreDirection = 0,
                                 HasOverrideIgnore = false,
@@ -15751,7 +16754,7 @@ namespace NCMapper.Runtime
                         TypeName = "NCMapper.Tests.Models.ConvColor",
                         TypeRef = typeof(NCMapper.Tests.Models.ConvColor),
                         HasMapFromAttribute = true,
-                        MapFromAttribute = __mfAttr97,
+                        MapFromAttribute = __mfAttr103,
                         HasMapIgnore = false,
                         MapIgnoreDirection = 0,
                         HasOverrideIgnore = false,
@@ -15770,11 +16773,11 @@ namespace NCMapper.Runtime
                     },
                 },
             };
-            global::NCMapper.Runtime.RuntimeSnapshotPair<NCMapper.Tests.Models.R1Source, NCMapper.Tests.Models.R1GenDto>.Metadata = __meta97;
-            global::NCMapper.Runtime.RuntimeSnapshotStore.Register(__meta97);
-            // pair 98: NCMapper.Tests.Models.R2Source -> NCMapper.Tests.Models.R2GenDto (MapFrom channel)
-            var __mfAttr98 = new global::NCMapper.Attributes.MapFromAttribute(typeof(NCMapper.Tests.Models.R2Source));
-            var __meta98 = new global::NCMapper.Runtime.RuntimeMapperMetadata
+            global::NCMapper.Runtime.RuntimeSnapshotPair<NCMapper.Tests.Models.R1Source, NCMapper.Tests.Models.R1GenDto>.Metadata = __meta103;
+            global::NCMapper.Runtime.RuntimeSnapshotStore.Register(__meta103);
+            // pair 104: NCMapper.Tests.Models.R2Source -> NCMapper.Tests.Models.R2GenDto (MapFrom channel)
+            var __mfAttr104 = new global::NCMapper.Attributes.MapFromAttribute(typeof(NCMapper.Tests.Models.R2Source));
+            var __meta104 = new global::NCMapper.Runtime.RuntimeMapperMetadata
             {
                 SourceType = typeof(NCMapper.Tests.Models.R2Source),
                 TargetType = typeof(NCMapper.Tests.Models.R2GenDto),
@@ -15795,7 +16798,7 @@ namespace NCMapper.Runtime
                                 TypeName = "string?",
                                 TypeRef = typeof(string),
                                 HasMapFromAttribute = true,
-                                MapFromAttribute = __mfAttr98,
+                                MapFromAttribute = __mfAttr104,
                                 HasMapIgnore = false,
                                 MapIgnoreDirection = 0,
                                 HasOverrideIgnore = false,
@@ -15835,7 +16838,7 @@ namespace NCMapper.Runtime
                         TypeName = "string?",
                         TypeRef = typeof(string),
                         HasMapFromAttribute = true,
-                        MapFromAttribute = __mfAttr98,
+                        MapFromAttribute = __mfAttr104,
                         HasMapIgnore = false,
                         MapIgnoreDirection = 0,
                         HasOverrideIgnore = false,
@@ -15854,11 +16857,11 @@ namespace NCMapper.Runtime
                     },
                 },
             };
-            global::NCMapper.Runtime.RuntimeSnapshotPair<NCMapper.Tests.Models.R2Source, NCMapper.Tests.Models.R2GenDto>.Metadata = __meta98;
-            global::NCMapper.Runtime.RuntimeSnapshotStore.Register(__meta98);
-            // pair 99: NCMapper.Tests.Models.SelfRefNode -> NCMapper.Tests.Models.SelfRefNodeDto (MapFrom channel)
-            var __mfAttr99 = new global::NCMapper.Attributes.MapFromAttribute(typeof(NCMapper.Tests.Models.SelfRefNode));
-            var __meta99 = new global::NCMapper.Runtime.RuntimeMapperMetadata
+            global::NCMapper.Runtime.RuntimeSnapshotPair<NCMapper.Tests.Models.R2Source, NCMapper.Tests.Models.R2GenDto>.Metadata = __meta104;
+            global::NCMapper.Runtime.RuntimeSnapshotStore.Register(__meta104);
+            // pair 105: NCMapper.Tests.Models.SelfRefNode -> NCMapper.Tests.Models.SelfRefNodeDto (MapFrom channel)
+            var __mfAttr105 = new global::NCMapper.Attributes.MapFromAttribute(typeof(NCMapper.Tests.Models.SelfRefNode));
+            var __meta105 = new global::NCMapper.Runtime.RuntimeMapperMetadata
             {
                 SourceType = typeof(NCMapper.Tests.Models.SelfRefNode),
                 TargetType = typeof(NCMapper.Tests.Models.SelfRefNodeDto),
@@ -15879,7 +16882,7 @@ namespace NCMapper.Runtime
                                 TypeName = "int",
                                 TypeRef = typeof(int),
                                 HasMapFromAttribute = true,
-                                MapFromAttribute = __mfAttr99,
+                                MapFromAttribute = __mfAttr105,
                                 HasMapIgnore = false,
                                 MapIgnoreDirection = 0,
                                 HasOverrideIgnore = false,
@@ -15919,7 +16922,7 @@ namespace NCMapper.Runtime
                                 TypeName = "NCMapper.Tests.Models.SelfRefNodeDto?",
                                 TypeRef = typeof(NCMapper.Tests.Models.SelfRefNodeDto),
                                 HasMapFromAttribute = true,
-                                MapFromAttribute = __mfAttr99,
+                                MapFromAttribute = __mfAttr105,
                                 HasMapIgnore = false,
                                 MapIgnoreDirection = 0,
                                 HasOverrideIgnore = false,
@@ -15959,7 +16962,7 @@ namespace NCMapper.Runtime
                         TypeName = "int",
                         TypeRef = typeof(int),
                         HasMapFromAttribute = true,
-                        MapFromAttribute = __mfAttr99,
+                        MapFromAttribute = __mfAttr105,
                         HasMapIgnore = false,
                         MapIgnoreDirection = 0,
                         HasOverrideIgnore = false,
@@ -15982,7 +16985,7 @@ namespace NCMapper.Runtime
                         TypeName = "NCMapper.Tests.Models.SelfRefNodeDto?",
                         TypeRef = typeof(NCMapper.Tests.Models.SelfRefNodeDto),
                         HasMapFromAttribute = true,
-                        MapFromAttribute = __mfAttr99,
+                        MapFromAttribute = __mfAttr105,
                         HasMapIgnore = false,
                         MapIgnoreDirection = 0,
                         HasOverrideIgnore = false,
@@ -16001,11 +17004,11 @@ namespace NCMapper.Runtime
                     },
                 },
             };
-            global::NCMapper.Runtime.RuntimeSnapshotPair<NCMapper.Tests.Models.SelfRefNode, NCMapper.Tests.Models.SelfRefNodeDto>.Metadata = __meta99;
-            global::NCMapper.Runtime.RuntimeSnapshotStore.Register(__meta99);
-            // pair 100: NCMapper.Tests.Models.ShadowChildEntity -> NCMapper.Tests.Models.ShadowChildDto (MapFrom channel)
-            var __mfAttr100 = new global::NCMapper.Attributes.MapFromAttribute(typeof(NCMapper.Tests.Models.ShadowChildEntity));
-            var __meta100 = new global::NCMapper.Runtime.RuntimeMapperMetadata
+            global::NCMapper.Runtime.RuntimeSnapshotPair<NCMapper.Tests.Models.SelfRefNode, NCMapper.Tests.Models.SelfRefNodeDto>.Metadata = __meta105;
+            global::NCMapper.Runtime.RuntimeSnapshotStore.Register(__meta105);
+            // pair 106: NCMapper.Tests.Models.ShadowChildEntity -> NCMapper.Tests.Models.ShadowChildDto (MapFrom channel)
+            var __mfAttr106 = new global::NCMapper.Attributes.MapFromAttribute(typeof(NCMapper.Tests.Models.ShadowChildEntity));
+            var __meta106 = new global::NCMapper.Runtime.RuntimeMapperMetadata
             {
                 SourceType = typeof(NCMapper.Tests.Models.ShadowChildEntity),
                 TargetType = typeof(NCMapper.Tests.Models.ShadowChildDto),
@@ -16026,7 +17029,7 @@ namespace NCMapper.Runtime
                                 TypeName = "int",
                                 TypeRef = typeof(int),
                                 HasMapFromAttribute = true,
-                                MapFromAttribute = __mfAttr100,
+                                MapFromAttribute = __mfAttr106,
                                 HasMapIgnore = false,
                                 MapIgnoreDirection = 0,
                                 HasOverrideIgnore = false,
@@ -16066,7 +17069,7 @@ namespace NCMapper.Runtime
                                 TypeName = "string",
                                 TypeRef = typeof(string),
                                 HasMapFromAttribute = true,
-                                MapFromAttribute = __mfAttr100,
+                                MapFromAttribute = __mfAttr106,
                                 HasMapIgnore = false,
                                 MapIgnoreDirection = 0,
                                 HasOverrideIgnore = false,
@@ -16106,7 +17109,7 @@ namespace NCMapper.Runtime
                                 TypeName = "string",
                                 TypeRef = typeof(string),
                                 HasMapFromAttribute = true,
-                                MapFromAttribute = __mfAttr100,
+                                MapFromAttribute = __mfAttr106,
                                 HasMapIgnore = false,
                                 MapIgnoreDirection = 0,
                                 HasOverrideIgnore = false,
@@ -16146,7 +17149,7 @@ namespace NCMapper.Runtime
                         TypeName = "int",
                         TypeRef = typeof(int),
                         HasMapFromAttribute = true,
-                        MapFromAttribute = __mfAttr100,
+                        MapFromAttribute = __mfAttr106,
                         HasMapIgnore = false,
                         MapIgnoreDirection = 0,
                         HasOverrideIgnore = false,
@@ -16169,7 +17172,7 @@ namespace NCMapper.Runtime
                         TypeName = "string",
                         TypeRef = typeof(string),
                         HasMapFromAttribute = true,
-                        MapFromAttribute = __mfAttr100,
+                        MapFromAttribute = __mfAttr106,
                         HasMapIgnore = false,
                         MapIgnoreDirection = 0,
                         HasOverrideIgnore = false,
@@ -16192,7 +17195,7 @@ namespace NCMapper.Runtime
                         TypeName = "string",
                         TypeRef = typeof(string),
                         HasMapFromAttribute = true,
-                        MapFromAttribute = __mfAttr100,
+                        MapFromAttribute = __mfAttr106,
                         HasMapIgnore = false,
                         MapIgnoreDirection = 0,
                         HasOverrideIgnore = false,
@@ -16211,11 +17214,11 @@ namespace NCMapper.Runtime
                     },
                 },
             };
-            global::NCMapper.Runtime.RuntimeSnapshotPair<NCMapper.Tests.Models.ShadowChildEntity, NCMapper.Tests.Models.ShadowChildDto>.Metadata = __meta100;
-            global::NCMapper.Runtime.RuntimeSnapshotStore.Register(__meta100);
-            // pair 101: NCMapper.Tests.Models.StringArrayEntity -> NCMapper.Tests.Models.StringArrayDto (MapFrom channel)
-            var __mfAttr101 = new global::NCMapper.Attributes.MapFromAttribute(typeof(NCMapper.Tests.Models.StringArrayEntity));
-            var __meta101 = new global::NCMapper.Runtime.RuntimeMapperMetadata
+            global::NCMapper.Runtime.RuntimeSnapshotPair<NCMapper.Tests.Models.ShadowChildEntity, NCMapper.Tests.Models.ShadowChildDto>.Metadata = __meta106;
+            global::NCMapper.Runtime.RuntimeSnapshotStore.Register(__meta106);
+            // pair 107: NCMapper.Tests.Models.StringArrayEntity -> NCMapper.Tests.Models.StringArrayDto (MapFrom channel)
+            var __mfAttr107 = new global::NCMapper.Attributes.MapFromAttribute(typeof(NCMapper.Tests.Models.StringArrayEntity));
+            var __meta107 = new global::NCMapper.Runtime.RuntimeMapperMetadata
             {
                 SourceType = typeof(NCMapper.Tests.Models.StringArrayEntity),
                 TargetType = typeof(NCMapper.Tests.Models.StringArrayDto),
@@ -16236,7 +17239,7 @@ namespace NCMapper.Runtime
                                 TypeName = "string[]?",
                                 TypeRef = typeof(string[]),
                                 HasMapFromAttribute = true,
-                                MapFromAttribute = __mfAttr101,
+                                MapFromAttribute = __mfAttr107,
                                 HasMapIgnore = false,
                                 MapIgnoreDirection = 0,
                                 HasOverrideIgnore = false,
@@ -16276,7 +17279,7 @@ namespace NCMapper.Runtime
                         TypeName = "string[]?",
                         TypeRef = typeof(string[]),
                         HasMapFromAttribute = true,
-                        MapFromAttribute = __mfAttr101,
+                        MapFromAttribute = __mfAttr107,
                         HasMapIgnore = false,
                         MapIgnoreDirection = 0,
                         HasOverrideIgnore = false,
@@ -16295,11 +17298,11 @@ namespace NCMapper.Runtime
                     },
                 },
             };
-            global::NCMapper.Runtime.RuntimeSnapshotPair<NCMapper.Tests.Models.StringArrayEntity, NCMapper.Tests.Models.StringArrayDto>.Metadata = __meta101;
-            global::NCMapper.Runtime.RuntimeSnapshotStore.Register(__meta101);
-            // pair 102: NCMapper.Tests.Models.Team -> NCMapper.Tests.Models.TeamDto (MapFrom channel)
-            var __mfAttr102 = new global::NCMapper.Attributes.MapFromAttribute(typeof(NCMapper.Tests.Models.Team));
-            var __meta102 = new global::NCMapper.Runtime.RuntimeMapperMetadata
+            global::NCMapper.Runtime.RuntimeSnapshotPair<NCMapper.Tests.Models.StringArrayEntity, NCMapper.Tests.Models.StringArrayDto>.Metadata = __meta107;
+            global::NCMapper.Runtime.RuntimeSnapshotStore.Register(__meta107);
+            // pair 108: NCMapper.Tests.Models.Team -> NCMapper.Tests.Models.TeamDto (MapFrom channel)
+            var __mfAttr108 = new global::NCMapper.Attributes.MapFromAttribute(typeof(NCMapper.Tests.Models.Team));
+            var __meta108 = new global::NCMapper.Runtime.RuntimeMapperMetadata
             {
                 SourceType = typeof(NCMapper.Tests.Models.Team),
                 TargetType = typeof(NCMapper.Tests.Models.TeamDto),
@@ -16320,7 +17323,7 @@ namespace NCMapper.Runtime
                                 TypeName = "string",
                                 TypeRef = typeof(string),
                                 HasMapFromAttribute = true,
-                                MapFromAttribute = __mfAttr102,
+                                MapFromAttribute = __mfAttr108,
                                 HasMapIgnore = false,
                                 MapIgnoreDirection = 0,
                                 HasOverrideIgnore = false,
@@ -16360,7 +17363,7 @@ namespace NCMapper.Runtime
                                 TypeName = "System.Collections.Generic.List<NCMapper.Tests.Models.MemberDto>?",
                                 TypeRef = typeof(System.Collections.Generic.List<NCMapper.Tests.Models.MemberDto>),
                                 HasMapFromAttribute = true,
-                                MapFromAttribute = __mfAttr102,
+                                MapFromAttribute = __mfAttr108,
                                 HasMapIgnore = false,
                                 MapIgnoreDirection = 0,
                                 HasOverrideIgnore = false,
@@ -16400,7 +17403,7 @@ namespace NCMapper.Runtime
                         TypeName = "string",
                         TypeRef = typeof(string),
                         HasMapFromAttribute = true,
-                        MapFromAttribute = __mfAttr102,
+                        MapFromAttribute = __mfAttr108,
                         HasMapIgnore = false,
                         MapIgnoreDirection = 0,
                         HasOverrideIgnore = false,
@@ -16423,7 +17426,7 @@ namespace NCMapper.Runtime
                         TypeName = "System.Collections.Generic.List<NCMapper.Tests.Models.MemberDto>?",
                         TypeRef = typeof(System.Collections.Generic.List<NCMapper.Tests.Models.MemberDto>),
                         HasMapFromAttribute = true,
-                        MapFromAttribute = __mfAttr102,
+                        MapFromAttribute = __mfAttr108,
                         HasMapIgnore = false,
                         MapIgnoreDirection = 0,
                         HasOverrideIgnore = false,
@@ -16442,11 +17445,11 @@ namespace NCMapper.Runtime
                     },
                 },
             };
-            global::NCMapper.Runtime.RuntimeSnapshotPair<NCMapper.Tests.Models.Team, NCMapper.Tests.Models.TeamDto>.Metadata = __meta102;
-            global::NCMapper.Runtime.RuntimeSnapshotStore.Register(__meta102);
-            // pair 103: NCMapper.Tests.Runtime.ComposeProjectionKernelSnapshotSwitchTests.T5MainEntity -> NCMapper.Tests.Runtime.ComposeProjectionKernelSnapshotSwitchTests.T5AliasDto (MapFrom channel)
-            var __mfAttr103 = new global::NCMapper.Attributes.MapFromAttribute(typeof(NCMapper.Tests.Runtime.ComposeProjectionKernelSnapshotSwitchTests.T5MainEntity));
-            var __meta103 = new global::NCMapper.Runtime.RuntimeMapperMetadata
+            global::NCMapper.Runtime.RuntimeSnapshotPair<NCMapper.Tests.Models.Team, NCMapper.Tests.Models.TeamDto>.Metadata = __meta108;
+            global::NCMapper.Runtime.RuntimeSnapshotStore.Register(__meta108);
+            // pair 109: NCMapper.Tests.Runtime.ComposeProjectionKernelSnapshotSwitchTests.T5MainEntity -> NCMapper.Tests.Runtime.ComposeProjectionKernelSnapshotSwitchTests.T5AliasDto (MapFrom channel)
+            var __mfAttr109 = new global::NCMapper.Attributes.MapFromAttribute(typeof(NCMapper.Tests.Runtime.ComposeProjectionKernelSnapshotSwitchTests.T5MainEntity));
+            var __meta109 = new global::NCMapper.Runtime.RuntimeMapperMetadata
             {
                 SourceType = typeof(NCMapper.Tests.Runtime.ComposeProjectionKernelSnapshotSwitchTests.T5MainEntity),
                 TargetType = typeof(NCMapper.Tests.Runtime.ComposeProjectionKernelSnapshotSwitchTests.T5AliasDto),
@@ -16467,7 +17470,7 @@ namespace NCMapper.Runtime
                                 TypeName = "int",
                                 TypeRef = typeof(int),
                                 HasMapFromAttribute = true,
-                                MapFromAttribute = __mfAttr103,
+                                MapFromAttribute = __mfAttr109,
                                 HasMapIgnore = false,
                                 MapIgnoreDirection = 0,
                                 HasOverrideIgnore = false,
@@ -16507,7 +17510,7 @@ namespace NCMapper.Runtime
                                 TypeName = "string",
                                 TypeRef = typeof(string),
                                 HasMapFromAttribute = true,
-                                MapFromAttribute = __mfAttr103,
+                                MapFromAttribute = __mfAttr109,
                                 HasMapIgnore = false,
                                 MapIgnoreDirection = 0,
                                 HasOverrideIgnore = false,
@@ -16547,7 +17550,7 @@ namespace NCMapper.Runtime
                         TypeName = "int",
                         TypeRef = typeof(int),
                         HasMapFromAttribute = true,
-                        MapFromAttribute = __mfAttr103,
+                        MapFromAttribute = __mfAttr109,
                         HasMapIgnore = false,
                         MapIgnoreDirection = 0,
                         HasOverrideIgnore = false,
@@ -16570,7 +17573,7 @@ namespace NCMapper.Runtime
                         TypeName = "string",
                         TypeRef = typeof(string),
                         HasMapFromAttribute = true,
-                        MapFromAttribute = __mfAttr103,
+                        MapFromAttribute = __mfAttr109,
                         HasMapIgnore = false,
                         MapIgnoreDirection = 0,
                         HasOverrideIgnore = false,
@@ -16593,7 +17596,7 @@ namespace NCMapper.Runtime
                         TypeName = "string",
                         TypeRef = typeof(string),
                         HasMapFromAttribute = true,
-                        MapFromAttribute = __mfAttr103,
+                        MapFromAttribute = __mfAttr109,
                         HasMapIgnore = true,
                         MapIgnoreDirection = 1,
                         HasOverrideIgnore = false,
@@ -16616,7 +17619,7 @@ namespace NCMapper.Runtime
                         TypeName = "string",
                         TypeRef = typeof(string),
                         HasMapFromAttribute = true,
-                        MapFromAttribute = __mfAttr103,
+                        MapFromAttribute = __mfAttr109,
                         HasMapIgnore = true,
                         MapIgnoreDirection = 2,
                         HasOverrideIgnore = false,
@@ -16635,11 +17638,11 @@ namespace NCMapper.Runtime
                     },
                 },
             };
-            global::NCMapper.Runtime.RuntimeSnapshotPair<NCMapper.Tests.Runtime.ComposeProjectionKernelSnapshotSwitchTests.T5MainEntity, NCMapper.Tests.Runtime.ComposeProjectionKernelSnapshotSwitchTests.T5AliasDto>.Metadata = __meta103;
-            global::NCMapper.Runtime.RuntimeSnapshotStore.Register(__meta103);
-            // pair 104: NCMapper.Tests.Runtime.ComposeProjectionKernelSnapshotSwitchTests.T5MainEntity -> NCMapper.Tests.Runtime.ComposeProjectionKernelSnapshotSwitchTests.T5IntDto (MapFrom channel)
-            var __mfAttr104 = new global::NCMapper.Attributes.MapFromAttribute(typeof(NCMapper.Tests.Runtime.ComposeProjectionKernelSnapshotSwitchTests.T5MainEntity));
-            var __meta104 = new global::NCMapper.Runtime.RuntimeMapperMetadata
+            global::NCMapper.Runtime.RuntimeSnapshotPair<NCMapper.Tests.Runtime.ComposeProjectionKernelSnapshotSwitchTests.T5MainEntity, NCMapper.Tests.Runtime.ComposeProjectionKernelSnapshotSwitchTests.T5AliasDto>.Metadata = __meta109;
+            global::NCMapper.Runtime.RuntimeSnapshotStore.Register(__meta109);
+            // pair 110: NCMapper.Tests.Runtime.ComposeProjectionKernelSnapshotSwitchTests.T5MainEntity -> NCMapper.Tests.Runtime.ComposeProjectionKernelSnapshotSwitchTests.T5IntDto (MapFrom channel)
+            var __mfAttr110 = new global::NCMapper.Attributes.MapFromAttribute(typeof(NCMapper.Tests.Runtime.ComposeProjectionKernelSnapshotSwitchTests.T5MainEntity));
+            var __meta110 = new global::NCMapper.Runtime.RuntimeMapperMetadata
             {
                 SourceType = typeof(NCMapper.Tests.Runtime.ComposeProjectionKernelSnapshotSwitchTests.T5MainEntity),
                 TargetType = typeof(NCMapper.Tests.Runtime.ComposeProjectionKernelSnapshotSwitchTests.T5IntDto),
@@ -16660,7 +17663,7 @@ namespace NCMapper.Runtime
                                 TypeName = "int",
                                 TypeRef = typeof(int),
                                 HasMapFromAttribute = true,
-                                MapFromAttribute = __mfAttr104,
+                                MapFromAttribute = __mfAttr110,
                                 HasMapIgnore = false,
                                 MapIgnoreDirection = 0,
                                 HasOverrideIgnore = false,
@@ -16717,7 +17720,7 @@ namespace NCMapper.Runtime
                         TypeName = "int",
                         TypeRef = typeof(int),
                         HasMapFromAttribute = true,
-                        MapFromAttribute = __mfAttr104,
+                        MapFromAttribute = __mfAttr110,
                         HasMapIgnore = false,
                         MapIgnoreDirection = 0,
                         HasOverrideIgnore = false,
@@ -16740,7 +17743,7 @@ namespace NCMapper.Runtime
                         TypeName = "string",
                         TypeRef = typeof(string),
                         HasMapFromAttribute = true,
-                        MapFromAttribute = __mfAttr104,
+                        MapFromAttribute = __mfAttr110,
                         HasMapIgnore = false,
                         MapIgnoreDirection = 0,
                         HasOverrideIgnore = false,
@@ -16759,11 +17762,11 @@ namespace NCMapper.Runtime
                     },
                 },
             };
-            global::NCMapper.Runtime.RuntimeSnapshotPair<NCMapper.Tests.Runtime.ComposeProjectionKernelSnapshotSwitchTests.T5MainEntity, NCMapper.Tests.Runtime.ComposeProjectionKernelSnapshotSwitchTests.T5IntDto>.Metadata = __meta104;
-            global::NCMapper.Runtime.RuntimeSnapshotStore.Register(__meta104);
-            // pair 105: NCMapper.Tests.Runtime.ComposeProjectionKernelSnapshotSwitchTests.T5MainEntity -> NCMapper.Tests.Runtime.ComposeProjectionKernelSnapshotSwitchTests.T5PubDto (MapFrom channel)
-            var __mfAttr105 = new global::NCMapper.Attributes.MapFromAttribute(typeof(NCMapper.Tests.Runtime.ComposeProjectionKernelSnapshotSwitchTests.T5MainEntity));
-            var __meta105 = new global::NCMapper.Runtime.RuntimeMapperMetadata
+            global::NCMapper.Runtime.RuntimeSnapshotPair<NCMapper.Tests.Runtime.ComposeProjectionKernelSnapshotSwitchTests.T5MainEntity, NCMapper.Tests.Runtime.ComposeProjectionKernelSnapshotSwitchTests.T5IntDto>.Metadata = __meta110;
+            global::NCMapper.Runtime.RuntimeSnapshotStore.Register(__meta110);
+            // pair 111: NCMapper.Tests.Runtime.ComposeProjectionKernelSnapshotSwitchTests.T5MainEntity -> NCMapper.Tests.Runtime.ComposeProjectionKernelSnapshotSwitchTests.T5PubDto (MapFrom channel)
+            var __mfAttr111 = new global::NCMapper.Attributes.MapFromAttribute(typeof(NCMapper.Tests.Runtime.ComposeProjectionKernelSnapshotSwitchTests.T5MainEntity));
+            var __meta111 = new global::NCMapper.Runtime.RuntimeMapperMetadata
             {
                 SourceType = typeof(NCMapper.Tests.Runtime.ComposeProjectionKernelSnapshotSwitchTests.T5MainEntity),
                 TargetType = typeof(NCMapper.Tests.Runtime.ComposeProjectionKernelSnapshotSwitchTests.T5PubDto),
@@ -16784,7 +17787,7 @@ namespace NCMapper.Runtime
                                 TypeName = "int",
                                 TypeRef = typeof(int),
                                 HasMapFromAttribute = true,
-                                MapFromAttribute = __mfAttr105,
+                                MapFromAttribute = __mfAttr111,
                                 HasMapIgnore = false,
                                 MapIgnoreDirection = 0,
                                 HasOverrideIgnore = false,
@@ -16841,7 +17844,7 @@ namespace NCMapper.Runtime
                         TypeName = "int",
                         TypeRef = typeof(int),
                         HasMapFromAttribute = true,
-                        MapFromAttribute = __mfAttr105,
+                        MapFromAttribute = __mfAttr111,
                         HasMapIgnore = false,
                         MapIgnoreDirection = 0,
                         HasOverrideIgnore = false,
@@ -16864,7 +17867,7 @@ namespace NCMapper.Runtime
                         TypeName = "string",
                         TypeRef = typeof(string),
                         HasMapFromAttribute = true,
-                        MapFromAttribute = __mfAttr105,
+                        MapFromAttribute = __mfAttr111,
                         HasMapIgnore = false,
                         MapIgnoreDirection = 0,
                         HasOverrideIgnore = false,
@@ -16883,11 +17886,11 @@ namespace NCMapper.Runtime
                     },
                 },
             };
-            global::NCMapper.Runtime.RuntimeSnapshotPair<NCMapper.Tests.Runtime.ComposeProjectionKernelSnapshotSwitchTests.T5MainEntity, NCMapper.Tests.Runtime.ComposeProjectionKernelSnapshotSwitchTests.T5PubDto>.Metadata = __meta105;
-            global::NCMapper.Runtime.RuntimeSnapshotStore.Register(__meta105);
-            // pair 106: NCMapper.Tests.Runtime.DegradationDetectorThreeStateSwitchTests.DdsMissEntity -> NCMapper.Tests.Runtime.DegradationDetectorThreeStateSwitchTests.DdsMissDto (MapFrom channel)
-            var __mfAttr106 = new global::NCMapper.Attributes.MapFromAttribute(typeof(NCMapper.Tests.Runtime.DegradationDetectorThreeStateSwitchTests.DdsMissEntity));
-            var __meta106 = new global::NCMapper.Runtime.RuntimeMapperMetadata
+            global::NCMapper.Runtime.RuntimeSnapshotPair<NCMapper.Tests.Runtime.ComposeProjectionKernelSnapshotSwitchTests.T5MainEntity, NCMapper.Tests.Runtime.ComposeProjectionKernelSnapshotSwitchTests.T5PubDto>.Metadata = __meta111;
+            global::NCMapper.Runtime.RuntimeSnapshotStore.Register(__meta111);
+            // pair 112: NCMapper.Tests.Runtime.DegradationDetectorThreeStateSwitchTests.DdsMissEntity -> NCMapper.Tests.Runtime.DegradationDetectorThreeStateSwitchTests.DdsMissDto (MapFrom channel)
+            var __mfAttr112 = new global::NCMapper.Attributes.MapFromAttribute(typeof(NCMapper.Tests.Runtime.DegradationDetectorThreeStateSwitchTests.DdsMissEntity));
+            var __meta112 = new global::NCMapper.Runtime.RuntimeMapperMetadata
             {
                 SourceType = typeof(NCMapper.Tests.Runtime.DegradationDetectorThreeStateSwitchTests.DdsMissEntity),
                 TargetType = typeof(NCMapper.Tests.Runtime.DegradationDetectorThreeStateSwitchTests.DdsMissDto),
@@ -16908,7 +17911,7 @@ namespace NCMapper.Runtime
                                 TypeName = "int",
                                 TypeRef = typeof(int),
                                 HasMapFromAttribute = true,
-                                MapFromAttribute = __mfAttr106,
+                                MapFromAttribute = __mfAttr112,
                                 HasMapIgnore = false,
                                 MapIgnoreDirection = 0,
                                 HasOverrideIgnore = false,
@@ -16948,7 +17951,7 @@ namespace NCMapper.Runtime
                                 TypeName = "string",
                                 TypeRef = typeof(string),
                                 HasMapFromAttribute = true,
-                                MapFromAttribute = __mfAttr106,
+                                MapFromAttribute = __mfAttr112,
                                 HasMapIgnore = false,
                                 MapIgnoreDirection = 0,
                                 HasOverrideIgnore = false,
@@ -16988,7 +17991,7 @@ namespace NCMapper.Runtime
                         TypeName = "int",
                         TypeRef = typeof(int),
                         HasMapFromAttribute = true,
-                        MapFromAttribute = __mfAttr106,
+                        MapFromAttribute = __mfAttr112,
                         HasMapIgnore = false,
                         MapIgnoreDirection = 0,
                         HasOverrideIgnore = false,
@@ -17011,7 +18014,7 @@ namespace NCMapper.Runtime
                         TypeName = "string",
                         TypeRef = typeof(string),
                         HasMapFromAttribute = true,
-                        MapFromAttribute = __mfAttr106,
+                        MapFromAttribute = __mfAttr112,
                         HasMapIgnore = false,
                         MapIgnoreDirection = 0,
                         HasOverrideIgnore = false,
@@ -17030,11 +18033,11 @@ namespace NCMapper.Runtime
                     },
                 },
             };
-            global::NCMapper.Runtime.RuntimeSnapshotPair<NCMapper.Tests.Runtime.DegradationDetectorThreeStateSwitchTests.DdsMissEntity, NCMapper.Tests.Runtime.DegradationDetectorThreeStateSwitchTests.DdsMissDto>.Metadata = __meta106;
-            global::NCMapper.Runtime.RuntimeSnapshotStore.Register(__meta106);
-            // pair 107: NCMapper.Tests.Runtime.FluentDegradationFullSemanticsTests.ExistingAttrEntity -> NCMapper.Tests.Runtime.FluentDegradationFullSemanticsTests.ExistingAttrDto (MapFrom channel)
-            var __mfAttr107 = new global::NCMapper.Attributes.MapFromAttribute(typeof(NCMapper.Tests.Runtime.FluentDegradationFullSemanticsTests.ExistingAttrEntity));
-            var __meta107 = new global::NCMapper.Runtime.RuntimeMapperMetadata
+            global::NCMapper.Runtime.RuntimeSnapshotPair<NCMapper.Tests.Runtime.DegradationDetectorThreeStateSwitchTests.DdsMissEntity, NCMapper.Tests.Runtime.DegradationDetectorThreeStateSwitchTests.DdsMissDto>.Metadata = __meta112;
+            global::NCMapper.Runtime.RuntimeSnapshotStore.Register(__meta112);
+            // pair 113: NCMapper.Tests.Runtime.FluentDegradationFullSemanticsTests.ExistingAttrEntity -> NCMapper.Tests.Runtime.FluentDegradationFullSemanticsTests.ExistingAttrDto (MapFrom channel)
+            var __mfAttr113 = new global::NCMapper.Attributes.MapFromAttribute(typeof(NCMapper.Tests.Runtime.FluentDegradationFullSemanticsTests.ExistingAttrEntity));
+            var __meta113 = new global::NCMapper.Runtime.RuntimeMapperMetadata
             {
                 SourceType = typeof(NCMapper.Tests.Runtime.FluentDegradationFullSemanticsTests.ExistingAttrEntity),
                 TargetType = typeof(NCMapper.Tests.Runtime.FluentDegradationFullSemanticsTests.ExistingAttrDto),
@@ -17055,7 +18058,7 @@ namespace NCMapper.Runtime
                                 TypeName = "int",
                                 TypeRef = typeof(int),
                                 HasMapFromAttribute = true,
-                                MapFromAttribute = __mfAttr107,
+                                MapFromAttribute = __mfAttr113,
                                 HasMapIgnore = false,
                                 MapIgnoreDirection = 0,
                                 HasOverrideIgnore = false,
@@ -17095,7 +18098,7 @@ namespace NCMapper.Runtime
                         TypeName = "int",
                         TypeRef = typeof(int),
                         HasMapFromAttribute = true,
-                        MapFromAttribute = __mfAttr107,
+                        MapFromAttribute = __mfAttr113,
                         HasMapIgnore = false,
                         MapIgnoreDirection = 0,
                         HasOverrideIgnore = false,
@@ -17114,10 +18117,10 @@ namespace NCMapper.Runtime
                     },
                 },
             };
-            global::NCMapper.Runtime.RuntimeSnapshotPair<NCMapper.Tests.Runtime.FluentDegradationFullSemanticsTests.ExistingAttrEntity, NCMapper.Tests.Runtime.FluentDegradationFullSemanticsTests.ExistingAttrDto>.Metadata = __meta107;
-            global::NCMapper.Runtime.RuntimeSnapshotStore.Register(__meta107);
-            // pair 108: NCMapper.Tests.Runtime.FluentDegradationFullSemanticsTests.FsEntity -> NCMapper.Tests.Runtime.FluentDegradationFullSemanticsTests.FsView (Fluent channel)
-            var __meta108 = new global::NCMapper.Runtime.RuntimeMapperMetadata
+            global::NCMapper.Runtime.RuntimeSnapshotPair<NCMapper.Tests.Runtime.FluentDegradationFullSemanticsTests.ExistingAttrEntity, NCMapper.Tests.Runtime.FluentDegradationFullSemanticsTests.ExistingAttrDto>.Metadata = __meta113;
+            global::NCMapper.Runtime.RuntimeSnapshotStore.Register(__meta113);
+            // pair 114: NCMapper.Tests.Runtime.FluentDegradationFullSemanticsTests.FsEntity -> NCMapper.Tests.Runtime.FluentDegradationFullSemanticsTests.FsView (Fluent channel)
+            var __meta114 = new global::NCMapper.Runtime.RuntimeMapperMetadata
             {
                 SourceType = typeof(NCMapper.Tests.Runtime.FluentDegradationFullSemanticsTests.FsEntity),
                 TargetType = typeof(NCMapper.Tests.Runtime.FluentDegradationFullSemanticsTests.FsView),
@@ -17386,11 +18389,11 @@ namespace NCMapper.Runtime
                     },
                 },
             };
-            global::NCMapper.Runtime.RuntimeSnapshotPair<NCMapper.Tests.Runtime.FluentDegradationFullSemanticsTests.FsEntity, NCMapper.Tests.Runtime.FluentDegradationFullSemanticsTests.FsView>.Metadata = __meta108;
-            global::NCMapper.Runtime.RuntimeSnapshotStore.Register(__meta108);
-            // pair 109: NCMapper.Tests.Runtime.FluentResidualAttributeProjectionAndDegradationTests.G56Entity -> NCMapper.Tests.Runtime.FluentResidualAttributeProjectionAndDegradationTests.G56AttrDto (MapFrom channel)
-            var __mfAttr109 = new global::NCMapper.Attributes.MapFromAttribute(typeof(NCMapper.Tests.Runtime.FluentResidualAttributeProjectionAndDegradationTests.G56Entity));
-            var __meta109 = new global::NCMapper.Runtime.RuntimeMapperMetadata
+            global::NCMapper.Runtime.RuntimeSnapshotPair<NCMapper.Tests.Runtime.FluentDegradationFullSemanticsTests.FsEntity, NCMapper.Tests.Runtime.FluentDegradationFullSemanticsTests.FsView>.Metadata = __meta114;
+            global::NCMapper.Runtime.RuntimeSnapshotStore.Register(__meta114);
+            // pair 115: NCMapper.Tests.Runtime.FluentResidualAttributeProjectionAndDegradationTests.G56Entity -> NCMapper.Tests.Runtime.FluentResidualAttributeProjectionAndDegradationTests.G56AttrDto (MapFrom channel)
+            var __mfAttr115 = new global::NCMapper.Attributes.MapFromAttribute(typeof(NCMapper.Tests.Runtime.FluentResidualAttributeProjectionAndDegradationTests.G56Entity));
+            var __meta115 = new global::NCMapper.Runtime.RuntimeMapperMetadata
             {
                 SourceType = typeof(NCMapper.Tests.Runtime.FluentResidualAttributeProjectionAndDegradationTests.G56Entity),
                 TargetType = typeof(NCMapper.Tests.Runtime.FluentResidualAttributeProjectionAndDegradationTests.G56AttrDto),
@@ -17411,7 +18414,7 @@ namespace NCMapper.Runtime
                                 TypeName = "int",
                                 TypeRef = typeof(int),
                                 HasMapFromAttribute = true,
-                                MapFromAttribute = __mfAttr109,
+                                MapFromAttribute = __mfAttr115,
                                 HasMapIgnore = false,
                                 MapIgnoreDirection = 0,
                                 HasOverrideIgnore = false,
@@ -17451,7 +18454,7 @@ namespace NCMapper.Runtime
                         TypeName = "int",
                         TypeRef = typeof(int),
                         HasMapFromAttribute = true,
-                        MapFromAttribute = __mfAttr109,
+                        MapFromAttribute = __mfAttr115,
                         HasMapIgnore = false,
                         MapIgnoreDirection = 0,
                         HasOverrideIgnore = false,
@@ -17474,7 +18477,7 @@ namespace NCMapper.Runtime
                         TypeName = "string",
                         TypeRef = typeof(string),
                         HasMapFromAttribute = true,
-                        MapFromAttribute = __mfAttr109,
+                        MapFromAttribute = __mfAttr115,
                         HasMapIgnore = false,
                         MapIgnoreDirection = 0,
                         HasOverrideIgnore = false,
@@ -17493,10 +18496,10 @@ namespace NCMapper.Runtime
                     },
                 },
             };
-            global::NCMapper.Runtime.RuntimeSnapshotPair<NCMapper.Tests.Runtime.FluentResidualAttributeProjectionAndDegradationTests.G56Entity, NCMapper.Tests.Runtime.FluentResidualAttributeProjectionAndDegradationTests.G56AttrDto>.Metadata = __meta109;
-            global::NCMapper.Runtime.RuntimeSnapshotStore.Register(__meta109);
-            // pair 110: NCMapper.Tests.Runtime.FluentRuntimeConfigSegmentConvertBackTests.FcsT0Entity -> NCMapper.Tests.Runtime.FluentRuntimeConfigSegmentConvertBackTests.FcsT0Dto (Fluent channel)
-            var __meta110 = new global::NCMapper.Runtime.RuntimeMapperMetadata
+            global::NCMapper.Runtime.RuntimeSnapshotPair<NCMapper.Tests.Runtime.FluentResidualAttributeProjectionAndDegradationTests.G56Entity, NCMapper.Tests.Runtime.FluentResidualAttributeProjectionAndDegradationTests.G56AttrDto>.Metadata = __meta115;
+            global::NCMapper.Runtime.RuntimeSnapshotStore.Register(__meta115);
+            // pair 116: NCMapper.Tests.Runtime.FluentRuntimeConfigSegmentConvertBackTests.FcsT0Entity -> NCMapper.Tests.Runtime.FluentRuntimeConfigSegmentConvertBackTests.FcsT0Dto (Fluent channel)
+            var __meta116 = new global::NCMapper.Runtime.RuntimeMapperMetadata
             {
                 SourceType = typeof(NCMapper.Tests.Runtime.FluentRuntimeConfigSegmentConvertBackTests.FcsT0Entity),
                 TargetType = typeof(NCMapper.Tests.Runtime.FluentRuntimeConfigSegmentConvertBackTests.FcsT0Dto),
@@ -17576,10 +18579,10 @@ namespace NCMapper.Runtime
                     },
                 },
             };
-            global::NCMapper.Runtime.RuntimeSnapshotPair<NCMapper.Tests.Runtime.FluentRuntimeConfigSegmentConvertBackTests.FcsT0Entity, NCMapper.Tests.Runtime.FluentRuntimeConfigSegmentConvertBackTests.FcsT0Dto>.Metadata = __meta110;
-            global::NCMapper.Runtime.RuntimeSnapshotStore.Register(__meta110);
-            // pair 111: NCMapper.Tests.Runtime.FluentRuntimeConfigSegmentConvertBackTests.FcsT1Entity -> NCMapper.Tests.Runtime.FluentRuntimeConfigSegmentConvertBackTests.FcsT1Dto (Fluent channel)
-            var __meta111 = new global::NCMapper.Runtime.RuntimeMapperMetadata
+            global::NCMapper.Runtime.RuntimeSnapshotPair<NCMapper.Tests.Runtime.FluentRuntimeConfigSegmentConvertBackTests.FcsT0Entity, NCMapper.Tests.Runtime.FluentRuntimeConfigSegmentConvertBackTests.FcsT0Dto>.Metadata = __meta116;
+            global::NCMapper.Runtime.RuntimeSnapshotStore.Register(__meta116);
+            // pair 117: NCMapper.Tests.Runtime.FluentRuntimeConfigSegmentConvertBackTests.FcsT1Entity -> NCMapper.Tests.Runtime.FluentRuntimeConfigSegmentConvertBackTests.FcsT1Dto (Fluent channel)
+            var __meta117 = new global::NCMapper.Runtime.RuntimeMapperMetadata
             {
                 SourceType = typeof(NCMapper.Tests.Runtime.FluentRuntimeConfigSegmentConvertBackTests.FcsT1Entity),
                 TargetType = typeof(NCMapper.Tests.Runtime.FluentRuntimeConfigSegmentConvertBackTests.FcsT1Dto),
@@ -17659,10 +18662,10 @@ namespace NCMapper.Runtime
                     },
                 },
             };
-            global::NCMapper.Runtime.RuntimeSnapshotPair<NCMapper.Tests.Runtime.FluentRuntimeConfigSegmentConvertBackTests.FcsT1Entity, NCMapper.Tests.Runtime.FluentRuntimeConfigSegmentConvertBackTests.FcsT1Dto>.Metadata = __meta111;
-            global::NCMapper.Runtime.RuntimeSnapshotStore.Register(__meta111);
-            // pair 112: NCMapper.Tests.Runtime.FluentRuntimeConfigSegmentConvertBackTests.FcsT2Entity -> NCMapper.Tests.Runtime.FluentRuntimeConfigSegmentConvertBackTests.FcsT2Dto (Fluent channel)
-            var __meta112 = new global::NCMapper.Runtime.RuntimeMapperMetadata
+            global::NCMapper.Runtime.RuntimeSnapshotPair<NCMapper.Tests.Runtime.FluentRuntimeConfigSegmentConvertBackTests.FcsT1Entity, NCMapper.Tests.Runtime.FluentRuntimeConfigSegmentConvertBackTests.FcsT1Dto>.Metadata = __meta117;
+            global::NCMapper.Runtime.RuntimeSnapshotStore.Register(__meta117);
+            // pair 118: NCMapper.Tests.Runtime.FluentRuntimeConfigSegmentConvertBackTests.FcsT2Entity -> NCMapper.Tests.Runtime.FluentRuntimeConfigSegmentConvertBackTests.FcsT2Dto (Fluent channel)
+            var __meta118 = new global::NCMapper.Runtime.RuntimeMapperMetadata
             {
                 SourceType = typeof(NCMapper.Tests.Runtime.FluentRuntimeConfigSegmentConvertBackTests.FcsT2Entity),
                 TargetType = typeof(NCMapper.Tests.Runtime.FluentRuntimeConfigSegmentConvertBackTests.FcsT2Dto),
@@ -17765,10 +18768,10 @@ namespace NCMapper.Runtime
                     },
                 },
             };
-            global::NCMapper.Runtime.RuntimeSnapshotPair<NCMapper.Tests.Runtime.FluentRuntimeConfigSegmentConvertBackTests.FcsT2Entity, NCMapper.Tests.Runtime.FluentRuntimeConfigSegmentConvertBackTests.FcsT2Dto>.Metadata = __meta112;
-            global::NCMapper.Runtime.RuntimeSnapshotStore.Register(__meta112);
-            // pair 113: NCMapper.Tests.Runtime.FluentRuntimeConfigSegmentConvertBackTests.FcsT3Entity -> NCMapper.Tests.Runtime.FluentRuntimeConfigSegmentConvertBackTests.FcsT3Dto (Fluent channel)
-            var __meta113 = new global::NCMapper.Runtime.RuntimeMapperMetadata
+            global::NCMapper.Runtime.RuntimeSnapshotPair<NCMapper.Tests.Runtime.FluentRuntimeConfigSegmentConvertBackTests.FcsT2Entity, NCMapper.Tests.Runtime.FluentRuntimeConfigSegmentConvertBackTests.FcsT2Dto>.Metadata = __meta118;
+            global::NCMapper.Runtime.RuntimeSnapshotStore.Register(__meta118);
+            // pair 119: NCMapper.Tests.Runtime.FluentRuntimeConfigSegmentConvertBackTests.FcsT3Entity -> NCMapper.Tests.Runtime.FluentRuntimeConfigSegmentConvertBackTests.FcsT3Dto (Fluent channel)
+            var __meta119 = new global::NCMapper.Runtime.RuntimeMapperMetadata
             {
                 SourceType = typeof(NCMapper.Tests.Runtime.FluentRuntimeConfigSegmentConvertBackTests.FcsT3Entity),
                 TargetType = typeof(NCMapper.Tests.Runtime.FluentRuntimeConfigSegmentConvertBackTests.FcsT3Dto),
@@ -17848,10 +18851,10 @@ namespace NCMapper.Runtime
                     },
                 },
             };
-            global::NCMapper.Runtime.RuntimeSnapshotPair<NCMapper.Tests.Runtime.FluentRuntimeConfigSegmentConvertBackTests.FcsT3Entity, NCMapper.Tests.Runtime.FluentRuntimeConfigSegmentConvertBackTests.FcsT3Dto>.Metadata = __meta113;
-            global::NCMapper.Runtime.RuntimeSnapshotStore.Register(__meta113);
-            // pair 114: NCMapper.Tests.Runtime.FluentRuntimeConvertTests.FrcBEntity -> NCMapper.Tests.Runtime.FluentRuntimeConvertTests.FrcBDto (Fluent channel)
-            var __meta114 = new global::NCMapper.Runtime.RuntimeMapperMetadata
+            global::NCMapper.Runtime.RuntimeSnapshotPair<NCMapper.Tests.Runtime.FluentRuntimeConfigSegmentConvertBackTests.FcsT3Entity, NCMapper.Tests.Runtime.FluentRuntimeConfigSegmentConvertBackTests.FcsT3Dto>.Metadata = __meta119;
+            global::NCMapper.Runtime.RuntimeSnapshotStore.Register(__meta119);
+            // pair 120: NCMapper.Tests.Runtime.FluentRuntimeConvertTests.FrcBEntity -> NCMapper.Tests.Runtime.FluentRuntimeConvertTests.FrcBDto (Fluent channel)
+            var __meta120 = new global::NCMapper.Runtime.RuntimeMapperMetadata
             {
                 SourceType = typeof(NCMapper.Tests.Runtime.FluentRuntimeConvertTests.FrcBEntity),
                 TargetType = typeof(NCMapper.Tests.Runtime.FluentRuntimeConvertTests.FrcBDto),
@@ -17931,10 +18934,10 @@ namespace NCMapper.Runtime
                     },
                 },
             };
-            global::NCMapper.Runtime.RuntimeSnapshotPair<NCMapper.Tests.Runtime.FluentRuntimeConvertTests.FrcBEntity, NCMapper.Tests.Runtime.FluentRuntimeConvertTests.FrcBDto>.Metadata = __meta114;
-            global::NCMapper.Runtime.RuntimeSnapshotStore.Register(__meta114);
-            // pair 115: NCMapper.Tests.Runtime.FluentRuntimeConvertTests.FrcCmEntity -> NCMapper.Tests.Runtime.FluentRuntimeConvertTests.FrcCmDto (Fluent channel)
-            var __meta115 = new global::NCMapper.Runtime.RuntimeMapperMetadata
+            global::NCMapper.Runtime.RuntimeSnapshotPair<NCMapper.Tests.Runtime.FluentRuntimeConvertTests.FrcBEntity, NCMapper.Tests.Runtime.FluentRuntimeConvertTests.FrcBDto>.Metadata = __meta120;
+            global::NCMapper.Runtime.RuntimeSnapshotStore.Register(__meta120);
+            // pair 121: NCMapper.Tests.Runtime.FluentRuntimeConvertTests.FrcCmEntity -> NCMapper.Tests.Runtime.FluentRuntimeConvertTests.FrcCmDto (Fluent channel)
+            var __meta121 = new global::NCMapper.Runtime.RuntimeMapperMetadata
             {
                 SourceType = typeof(NCMapper.Tests.Runtime.FluentRuntimeConvertTests.FrcCmEntity),
                 TargetType = typeof(NCMapper.Tests.Runtime.FluentRuntimeConvertTests.FrcCmDto),
@@ -18014,10 +19017,10 @@ namespace NCMapper.Runtime
                     },
                 },
             };
-            global::NCMapper.Runtime.RuntimeSnapshotPair<NCMapper.Tests.Runtime.FluentRuntimeConvertTests.FrcCmEntity, NCMapper.Tests.Runtime.FluentRuntimeConvertTests.FrcCmDto>.Metadata = __meta115;
-            global::NCMapper.Runtime.RuntimeSnapshotStore.Register(__meta115);
-            // pair 116: NCMapper.Tests.Runtime.FluentRuntimeConvertTests.FrcExEntity -> NCMapper.Tests.Runtime.FluentRuntimeConvertTests.FrcExDto (Fluent channel)
-            var __meta116 = new global::NCMapper.Runtime.RuntimeMapperMetadata
+            global::NCMapper.Runtime.RuntimeSnapshotPair<NCMapper.Tests.Runtime.FluentRuntimeConvertTests.FrcCmEntity, NCMapper.Tests.Runtime.FluentRuntimeConvertTests.FrcCmDto>.Metadata = __meta121;
+            global::NCMapper.Runtime.RuntimeSnapshotStore.Register(__meta121);
+            // pair 122: NCMapper.Tests.Runtime.FluentRuntimeConvertTests.FrcExEntity -> NCMapper.Tests.Runtime.FluentRuntimeConvertTests.FrcExDto (Fluent channel)
+            var __meta122 = new global::NCMapper.Runtime.RuntimeMapperMetadata
             {
                 SourceType = typeof(NCMapper.Tests.Runtime.FluentRuntimeConvertTests.FrcExEntity),
                 TargetType = typeof(NCMapper.Tests.Runtime.FluentRuntimeConvertTests.FrcExDto),
@@ -18097,10 +19100,10 @@ namespace NCMapper.Runtime
                     },
                 },
             };
-            global::NCMapper.Runtime.RuntimeSnapshotPair<NCMapper.Tests.Runtime.FluentRuntimeConvertTests.FrcExEntity, NCMapper.Tests.Runtime.FluentRuntimeConvertTests.FrcExDto>.Metadata = __meta116;
-            global::NCMapper.Runtime.RuntimeSnapshotStore.Register(__meta116);
-            // pair 117: NCMapper.Tests.Runtime.FluentRuntimeConvertTests.FrcT0Entity -> NCMapper.Tests.Runtime.FluentRuntimeConvertTests.FrcT0Dto (Fluent channel)
-            var __meta117 = new global::NCMapper.Runtime.RuntimeMapperMetadata
+            global::NCMapper.Runtime.RuntimeSnapshotPair<NCMapper.Tests.Runtime.FluentRuntimeConvertTests.FrcExEntity, NCMapper.Tests.Runtime.FluentRuntimeConvertTests.FrcExDto>.Metadata = __meta122;
+            global::NCMapper.Runtime.RuntimeSnapshotStore.Register(__meta122);
+            // pair 123: NCMapper.Tests.Runtime.FluentRuntimeConvertTests.FrcT0Entity -> NCMapper.Tests.Runtime.FluentRuntimeConvertTests.FrcT0Dto (Fluent channel)
+            var __meta123 = new global::NCMapper.Runtime.RuntimeMapperMetadata
             {
                 SourceType = typeof(NCMapper.Tests.Runtime.FluentRuntimeConvertTests.FrcT0Entity),
                 TargetType = typeof(NCMapper.Tests.Runtime.FluentRuntimeConvertTests.FrcT0Dto),
@@ -18180,10 +19183,10 @@ namespace NCMapper.Runtime
                     },
                 },
             };
-            global::NCMapper.Runtime.RuntimeSnapshotPair<NCMapper.Tests.Runtime.FluentRuntimeConvertTests.FrcT0Entity, NCMapper.Tests.Runtime.FluentRuntimeConvertTests.FrcT0Dto>.Metadata = __meta117;
-            global::NCMapper.Runtime.RuntimeSnapshotStore.Register(__meta117);
-            // pair 118: NCMapper.Tests.Runtime.FluentRuntimeConvertTests.FrcT1Entity -> NCMapper.Tests.Runtime.FluentRuntimeConvertTests.FrcT1Dto (Fluent channel)
-            var __meta118 = new global::NCMapper.Runtime.RuntimeMapperMetadata
+            global::NCMapper.Runtime.RuntimeSnapshotPair<NCMapper.Tests.Runtime.FluentRuntimeConvertTests.FrcT0Entity, NCMapper.Tests.Runtime.FluentRuntimeConvertTests.FrcT0Dto>.Metadata = __meta123;
+            global::NCMapper.Runtime.RuntimeSnapshotStore.Register(__meta123);
+            // pair 124: NCMapper.Tests.Runtime.FluentRuntimeConvertTests.FrcT1Entity -> NCMapper.Tests.Runtime.FluentRuntimeConvertTests.FrcT1Dto (Fluent channel)
+            var __meta124 = new global::NCMapper.Runtime.RuntimeMapperMetadata
             {
                 SourceType = typeof(NCMapper.Tests.Runtime.FluentRuntimeConvertTests.FrcT1Entity),
                 TargetType = typeof(NCMapper.Tests.Runtime.FluentRuntimeConvertTests.FrcT1Dto),
@@ -18263,10 +19266,10 @@ namespace NCMapper.Runtime
                     },
                 },
             };
-            global::NCMapper.Runtime.RuntimeSnapshotPair<NCMapper.Tests.Runtime.FluentRuntimeConvertTests.FrcT1Entity, NCMapper.Tests.Runtime.FluentRuntimeConvertTests.FrcT1Dto>.Metadata = __meta118;
-            global::NCMapper.Runtime.RuntimeSnapshotStore.Register(__meta118);
-            // pair 119: NCMapper.Tests.Runtime.FluentRuntimeConvertTests.FrcT2Entity -> NCMapper.Tests.Runtime.FluentRuntimeConvertTests.FrcT2Dto (Fluent channel)
-            var __meta119 = new global::NCMapper.Runtime.RuntimeMapperMetadata
+            global::NCMapper.Runtime.RuntimeSnapshotPair<NCMapper.Tests.Runtime.FluentRuntimeConvertTests.FrcT1Entity, NCMapper.Tests.Runtime.FluentRuntimeConvertTests.FrcT1Dto>.Metadata = __meta124;
+            global::NCMapper.Runtime.RuntimeSnapshotStore.Register(__meta124);
+            // pair 125: NCMapper.Tests.Runtime.FluentRuntimeConvertTests.FrcT2Entity -> NCMapper.Tests.Runtime.FluentRuntimeConvertTests.FrcT2Dto (Fluent channel)
+            var __meta125 = new global::NCMapper.Runtime.RuntimeMapperMetadata
             {
                 SourceType = typeof(NCMapper.Tests.Runtime.FluentRuntimeConvertTests.FrcT2Entity),
                 TargetType = typeof(NCMapper.Tests.Runtime.FluentRuntimeConvertTests.FrcT2Dto),
@@ -18346,10 +19349,10 @@ namespace NCMapper.Runtime
                     },
                 },
             };
-            global::NCMapper.Runtime.RuntimeSnapshotPair<NCMapper.Tests.Runtime.FluentRuntimeConvertTests.FrcT2Entity, NCMapper.Tests.Runtime.FluentRuntimeConvertTests.FrcT2Dto>.Metadata = __meta119;
-            global::NCMapper.Runtime.RuntimeSnapshotStore.Register(__meta119);
-            // pair 120: NCMapper.Tests.Runtime.FluentRuntimeConvertTests.FrcT3Entity -> NCMapper.Tests.Runtime.FluentRuntimeConvertTests.FrcT3Dto (Fluent channel)
-            var __meta120 = new global::NCMapper.Runtime.RuntimeMapperMetadata
+            global::NCMapper.Runtime.RuntimeSnapshotPair<NCMapper.Tests.Runtime.FluentRuntimeConvertTests.FrcT2Entity, NCMapper.Tests.Runtime.FluentRuntimeConvertTests.FrcT2Dto>.Metadata = __meta125;
+            global::NCMapper.Runtime.RuntimeSnapshotStore.Register(__meta125);
+            // pair 126: NCMapper.Tests.Runtime.FluentRuntimeConvertTests.FrcT3Entity -> NCMapper.Tests.Runtime.FluentRuntimeConvertTests.FrcT3Dto (Fluent channel)
+            var __meta126 = new global::NCMapper.Runtime.RuntimeMapperMetadata
             {
                 SourceType = typeof(NCMapper.Tests.Runtime.FluentRuntimeConvertTests.FrcT3Entity),
                 TargetType = typeof(NCMapper.Tests.Runtime.FluentRuntimeConvertTests.FrcT3Dto),
@@ -18429,10 +19432,10 @@ namespace NCMapper.Runtime
                     },
                 },
             };
-            global::NCMapper.Runtime.RuntimeSnapshotPair<NCMapper.Tests.Runtime.FluentRuntimeConvertTests.FrcT3Entity, NCMapper.Tests.Runtime.FluentRuntimeConvertTests.FrcT3Dto>.Metadata = __meta120;
-            global::NCMapper.Runtime.RuntimeSnapshotStore.Register(__meta120);
-            // pair 121: NCMapper.Tests.Runtime.FluentRuntimeCtorParamTests.FcpGenEntity -> NCMapper.Tests.Runtime.FluentRuntimeCtorParamTests.FcpGenDto (Fluent channel)
-            var __meta121 = new global::NCMapper.Runtime.RuntimeMapperMetadata
+            global::NCMapper.Runtime.RuntimeSnapshotPair<NCMapper.Tests.Runtime.FluentRuntimeConvertTests.FrcT3Entity, NCMapper.Tests.Runtime.FluentRuntimeConvertTests.FrcT3Dto>.Metadata = __meta126;
+            global::NCMapper.Runtime.RuntimeSnapshotStore.Register(__meta126);
+            // pair 127: NCMapper.Tests.Runtime.FluentRuntimeCtorParamTests.FcpGenEntity -> NCMapper.Tests.Runtime.FluentRuntimeCtorParamTests.FcpGenDto (Fluent channel)
+            var __meta127 = new global::NCMapper.Runtime.RuntimeMapperMetadata
             {
                 SourceType = typeof(NCMapper.Tests.Runtime.FluentRuntimeCtorParamTests.FcpGenEntity),
                 TargetType = typeof(NCMapper.Tests.Runtime.FluentRuntimeCtorParamTests.FcpGenDto),
@@ -18449,10 +19452,10 @@ namespace NCMapper.Runtime
                 {
                 },
             };
-            global::NCMapper.Runtime.RuntimeSnapshotPair<NCMapper.Tests.Runtime.FluentRuntimeCtorParamTests.FcpGenEntity, NCMapper.Tests.Runtime.FluentRuntimeCtorParamTests.FcpGenDto>.Metadata = __meta121;
-            global::NCMapper.Runtime.RuntimeSnapshotStore.Register(__meta121);
-            // pair 122: NCMapper.Tests.Runtime.FluentRuntimeFormatFromJsonMaskTests.FrfEEntity -> NCMapper.Tests.Runtime.FluentRuntimeFormatFromJsonMaskTests.FrfEDto (Fluent channel)
-            var __meta122 = new global::NCMapper.Runtime.RuntimeMapperMetadata
+            global::NCMapper.Runtime.RuntimeSnapshotPair<NCMapper.Tests.Runtime.FluentRuntimeCtorParamTests.FcpGenEntity, NCMapper.Tests.Runtime.FluentRuntimeCtorParamTests.FcpGenDto>.Metadata = __meta127;
+            global::NCMapper.Runtime.RuntimeSnapshotStore.Register(__meta127);
+            // pair 128: NCMapper.Tests.Runtime.FluentRuntimeFormatFromJsonMaskTests.FrfEEntity -> NCMapper.Tests.Runtime.FluentRuntimeFormatFromJsonMaskTests.FrfEDto (Fluent channel)
+            var __meta128 = new global::NCMapper.Runtime.RuntimeMapperMetadata
             {
                 SourceType = typeof(NCMapper.Tests.Runtime.FluentRuntimeFormatFromJsonMaskTests.FrfEEntity),
                 TargetType = typeof(NCMapper.Tests.Runtime.FluentRuntimeFormatFromJsonMaskTests.FrfEDto),
@@ -18533,10 +19536,10 @@ namespace NCMapper.Runtime
                     },
                 },
             };
-            global::NCMapper.Runtime.RuntimeSnapshotPair<NCMapper.Tests.Runtime.FluentRuntimeFormatFromJsonMaskTests.FrfEEntity, NCMapper.Tests.Runtime.FluentRuntimeFormatFromJsonMaskTests.FrfEDto>.Metadata = __meta122;
-            global::NCMapper.Runtime.RuntimeSnapshotStore.Register(__meta122);
-            // pair 123: NCMapper.Tests.Runtime.FluentRuntimeFormatFromJsonMaskTests.FrfFEntity -> NCMapper.Tests.Runtime.FluentRuntimeFormatFromJsonMaskTests.FrfFDto (Fluent channel)
-            var __meta123 = new global::NCMapper.Runtime.RuntimeMapperMetadata
+            global::NCMapper.Runtime.RuntimeSnapshotPair<NCMapper.Tests.Runtime.FluentRuntimeFormatFromJsonMaskTests.FrfEEntity, NCMapper.Tests.Runtime.FluentRuntimeFormatFromJsonMaskTests.FrfEDto>.Metadata = __meta128;
+            global::NCMapper.Runtime.RuntimeSnapshotStore.Register(__meta128);
+            // pair 129: NCMapper.Tests.Runtime.FluentRuntimeFormatFromJsonMaskTests.FrfFEntity -> NCMapper.Tests.Runtime.FluentRuntimeFormatFromJsonMaskTests.FrfFDto (Fluent channel)
+            var __meta129 = new global::NCMapper.Runtime.RuntimeMapperMetadata
             {
                 SourceType = typeof(NCMapper.Tests.Runtime.FluentRuntimeFormatFromJsonMaskTests.FrfFEntity),
                 TargetType = typeof(NCMapper.Tests.Runtime.FluentRuntimeFormatFromJsonMaskTests.FrfFDto),
@@ -18617,10 +19620,10 @@ namespace NCMapper.Runtime
                     },
                 },
             };
-            global::NCMapper.Runtime.RuntimeSnapshotPair<NCMapper.Tests.Runtime.FluentRuntimeFormatFromJsonMaskTests.FrfFEntity, NCMapper.Tests.Runtime.FluentRuntimeFormatFromJsonMaskTests.FrfFDto>.Metadata = __meta123;
-            global::NCMapper.Runtime.RuntimeSnapshotStore.Register(__meta123);
-            // pair 124: NCMapper.Tests.Runtime.FluentRuntimeFormatFromJsonMaskTests.FrfFmEntity -> NCMapper.Tests.Runtime.FluentRuntimeFormatFromJsonMaskTests.FrfFmDto (Fluent channel)
-            var __meta124 = new global::NCMapper.Runtime.RuntimeMapperMetadata
+            global::NCMapper.Runtime.RuntimeSnapshotPair<NCMapper.Tests.Runtime.FluentRuntimeFormatFromJsonMaskTests.FrfFEntity, NCMapper.Tests.Runtime.FluentRuntimeFormatFromJsonMaskTests.FrfFDto>.Metadata = __meta129;
+            global::NCMapper.Runtime.RuntimeSnapshotStore.Register(__meta129);
+            // pair 130: NCMapper.Tests.Runtime.FluentRuntimeFormatFromJsonMaskTests.FrfFmEntity -> NCMapper.Tests.Runtime.FluentRuntimeFormatFromJsonMaskTests.FrfFmDto (Fluent channel)
+            var __meta130 = new global::NCMapper.Runtime.RuntimeMapperMetadata
             {
                 SourceType = typeof(NCMapper.Tests.Runtime.FluentRuntimeFormatFromJsonMaskTests.FrfFmEntity),
                 TargetType = typeof(NCMapper.Tests.Runtime.FluentRuntimeFormatFromJsonMaskTests.FrfFmDto),
@@ -18701,10 +19704,10 @@ namespace NCMapper.Runtime
                     },
                 },
             };
-            global::NCMapper.Runtime.RuntimeSnapshotPair<NCMapper.Tests.Runtime.FluentRuntimeFormatFromJsonMaskTests.FrfFmEntity, NCMapper.Tests.Runtime.FluentRuntimeFormatFromJsonMaskTests.FrfFmDto>.Metadata = __meta124;
-            global::NCMapper.Runtime.RuntimeSnapshotStore.Register(__meta124);
-            // pair 125: NCMapper.Tests.Runtime.FluentRuntimeFormatFromJsonMaskTests.FrfJEntity -> NCMapper.Tests.Runtime.FluentRuntimeFormatFromJsonMaskTests.FrfJDto (Fluent channel)
-            var __meta125 = new global::NCMapper.Runtime.RuntimeMapperMetadata
+            global::NCMapper.Runtime.RuntimeSnapshotPair<NCMapper.Tests.Runtime.FluentRuntimeFormatFromJsonMaskTests.FrfFmEntity, NCMapper.Tests.Runtime.FluentRuntimeFormatFromJsonMaskTests.FrfFmDto>.Metadata = __meta130;
+            global::NCMapper.Runtime.RuntimeSnapshotStore.Register(__meta130);
+            // pair 131: NCMapper.Tests.Runtime.FluentRuntimeFormatFromJsonMaskTests.FrfJEntity -> NCMapper.Tests.Runtime.FluentRuntimeFormatFromJsonMaskTests.FrfJDto (Fluent channel)
+            var __meta131 = new global::NCMapper.Runtime.RuntimeMapperMetadata
             {
                 SourceType = typeof(NCMapper.Tests.Runtime.FluentRuntimeFormatFromJsonMaskTests.FrfJEntity),
                 TargetType = typeof(NCMapper.Tests.Runtime.FluentRuntimeFormatFromJsonMaskTests.FrfJDto),
@@ -18784,10 +19787,10 @@ namespace NCMapper.Runtime
                     },
                 },
             };
-            global::NCMapper.Runtime.RuntimeSnapshotPair<NCMapper.Tests.Runtime.FluentRuntimeFormatFromJsonMaskTests.FrfJEntity, NCMapper.Tests.Runtime.FluentRuntimeFormatFromJsonMaskTests.FrfJDto>.Metadata = __meta125;
-            global::NCMapper.Runtime.RuntimeSnapshotStore.Register(__meta125);
-            // pair 126: NCMapper.Tests.Runtime.FluentRuntimeFormatFromJsonMaskTests.FrfMEntity -> NCMapper.Tests.Runtime.FluentRuntimeFormatFromJsonMaskTests.FrfMDto (Fluent channel)
-            var __meta126 = new global::NCMapper.Runtime.RuntimeMapperMetadata
+            global::NCMapper.Runtime.RuntimeSnapshotPair<NCMapper.Tests.Runtime.FluentRuntimeFormatFromJsonMaskTests.FrfJEntity, NCMapper.Tests.Runtime.FluentRuntimeFormatFromJsonMaskTests.FrfJDto>.Metadata = __meta131;
+            global::NCMapper.Runtime.RuntimeSnapshotStore.Register(__meta131);
+            // pair 132: NCMapper.Tests.Runtime.FluentRuntimeFormatFromJsonMaskTests.FrfMEntity -> NCMapper.Tests.Runtime.FluentRuntimeFormatFromJsonMaskTests.FrfMDto (Fluent channel)
+            var __meta132 = new global::NCMapper.Runtime.RuntimeMapperMetadata
             {
                 SourceType = typeof(NCMapper.Tests.Runtime.FluentRuntimeFormatFromJsonMaskTests.FrfMEntity),
                 TargetType = typeof(NCMapper.Tests.Runtime.FluentRuntimeFormatFromJsonMaskTests.FrfMDto),
@@ -18867,10 +19870,10 @@ namespace NCMapper.Runtime
                     },
                 },
             };
-            global::NCMapper.Runtime.RuntimeSnapshotPair<NCMapper.Tests.Runtime.FluentRuntimeFormatFromJsonMaskTests.FrfMEntity, NCMapper.Tests.Runtime.FluentRuntimeFormatFromJsonMaskTests.FrfMDto>.Metadata = __meta126;
-            global::NCMapper.Runtime.RuntimeSnapshotStore.Register(__meta126);
-            // pair 127: NCMapper.Tests.Runtime.FluentRuntimeFormatFromJsonMaskTests.FrfNEntity -> NCMapper.Tests.Runtime.FluentRuntimeFormatFromJsonMaskTests.FrfNDto (Fluent channel)
-            var __meta127 = new global::NCMapper.Runtime.RuntimeMapperMetadata
+            global::NCMapper.Runtime.RuntimeSnapshotPair<NCMapper.Tests.Runtime.FluentRuntimeFormatFromJsonMaskTests.FrfMEntity, NCMapper.Tests.Runtime.FluentRuntimeFormatFromJsonMaskTests.FrfMDto>.Metadata = __meta132;
+            global::NCMapper.Runtime.RuntimeSnapshotStore.Register(__meta132);
+            // pair 133: NCMapper.Tests.Runtime.FluentRuntimeFormatFromJsonMaskTests.FrfNEntity -> NCMapper.Tests.Runtime.FluentRuntimeFormatFromJsonMaskTests.FrfNDto (Fluent channel)
+            var __meta133 = new global::NCMapper.Runtime.RuntimeMapperMetadata
             {
                 SourceType = typeof(NCMapper.Tests.Runtime.FluentRuntimeFormatFromJsonMaskTests.FrfNEntity),
                 TargetType = typeof(NCMapper.Tests.Runtime.FluentRuntimeFormatFromJsonMaskTests.FrfNDto),
@@ -18951,10 +19954,10 @@ namespace NCMapper.Runtime
                     },
                 },
             };
-            global::NCMapper.Runtime.RuntimeSnapshotPair<NCMapper.Tests.Runtime.FluentRuntimeFormatFromJsonMaskTests.FrfNEntity, NCMapper.Tests.Runtime.FluentRuntimeFormatFromJsonMaskTests.FrfNDto>.Metadata = __meta127;
-            global::NCMapper.Runtime.RuntimeSnapshotStore.Register(__meta127);
-            // pair 128: NCMapper.Tests.Runtime.FluentRuntimeFormatFromJsonMaskTests.FrfSEntity -> NCMapper.Tests.Runtime.FluentRuntimeFormatFromJsonMaskTests.FrfSDto (Fluent channel)
-            var __meta128 = new global::NCMapper.Runtime.RuntimeMapperMetadata
+            global::NCMapper.Runtime.RuntimeSnapshotPair<NCMapper.Tests.Runtime.FluentRuntimeFormatFromJsonMaskTests.FrfNEntity, NCMapper.Tests.Runtime.FluentRuntimeFormatFromJsonMaskTests.FrfNDto>.Metadata = __meta133;
+            global::NCMapper.Runtime.RuntimeSnapshotStore.Register(__meta133);
+            // pair 134: NCMapper.Tests.Runtime.FluentRuntimeFormatFromJsonMaskTests.FrfSEntity -> NCMapper.Tests.Runtime.FluentRuntimeFormatFromJsonMaskTests.FrfSDto (Fluent channel)
+            var __meta134 = new global::NCMapper.Runtime.RuntimeMapperMetadata
             {
                 SourceType = typeof(NCMapper.Tests.Runtime.FluentRuntimeFormatFromJsonMaskTests.FrfSEntity),
                 TargetType = typeof(NCMapper.Tests.Runtime.FluentRuntimeFormatFromJsonMaskTests.FrfSDto),
@@ -19034,10 +20037,10 @@ namespace NCMapper.Runtime
                     },
                 },
             };
-            global::NCMapper.Runtime.RuntimeSnapshotPair<NCMapper.Tests.Runtime.FluentRuntimeFormatFromJsonMaskTests.FrfSEntity, NCMapper.Tests.Runtime.FluentRuntimeFormatFromJsonMaskTests.FrfSDto>.Metadata = __meta128;
-            global::NCMapper.Runtime.RuntimeSnapshotStore.Register(__meta128);
-            // pair 129: NCMapper.Tests.Runtime.FluentRuntimeFormatFromJsonMaskTests.FrfSmEntity -> NCMapper.Tests.Runtime.FluentRuntimeFormatFromJsonMaskTests.FrfSmDto (Fluent channel)
-            var __meta129 = new global::NCMapper.Runtime.RuntimeMapperMetadata
+            global::NCMapper.Runtime.RuntimeSnapshotPair<NCMapper.Tests.Runtime.FluentRuntimeFormatFromJsonMaskTests.FrfSEntity, NCMapper.Tests.Runtime.FluentRuntimeFormatFromJsonMaskTests.FrfSDto>.Metadata = __meta134;
+            global::NCMapper.Runtime.RuntimeSnapshotStore.Register(__meta134);
+            // pair 135: NCMapper.Tests.Runtime.FluentRuntimeFormatFromJsonMaskTests.FrfSmEntity -> NCMapper.Tests.Runtime.FluentRuntimeFormatFromJsonMaskTests.FrfSmDto (Fluent channel)
+            var __meta135 = new global::NCMapper.Runtime.RuntimeMapperMetadata
             {
                 SourceType = typeof(NCMapper.Tests.Runtime.FluentRuntimeFormatFromJsonMaskTests.FrfSmEntity),
                 TargetType = typeof(NCMapper.Tests.Runtime.FluentRuntimeFormatFromJsonMaskTests.FrfSmDto),
@@ -19117,10 +20120,10 @@ namespace NCMapper.Runtime
                     },
                 },
             };
-            global::NCMapper.Runtime.RuntimeSnapshotPair<NCMapper.Tests.Runtime.FluentRuntimeFormatFromJsonMaskTests.FrfSmEntity, NCMapper.Tests.Runtime.FluentRuntimeFormatFromJsonMaskTests.FrfSmDto>.Metadata = __meta129;
-            global::NCMapper.Runtime.RuntimeSnapshotStore.Register(__meta129);
-            // pair 130: NCMapper.Tests.Runtime.FluentRuntimeHooksTests.HkEntity -> NCMapper.Tests.Runtime.FluentRuntimeHooksTests.HkView (Fluent channel)
-            var __meta130 = new global::NCMapper.Runtime.RuntimeMapperMetadata
+            global::NCMapper.Runtime.RuntimeSnapshotPair<NCMapper.Tests.Runtime.FluentRuntimeFormatFromJsonMaskTests.FrfSmEntity, NCMapper.Tests.Runtime.FluentRuntimeFormatFromJsonMaskTests.FrfSmDto>.Metadata = __meta135;
+            global::NCMapper.Runtime.RuntimeSnapshotStore.Register(__meta135);
+            // pair 136: NCMapper.Tests.Runtime.FluentRuntimeHooksTests.HkEntity -> NCMapper.Tests.Runtime.FluentRuntimeHooksTests.HkView (Fluent channel)
+            var __meta136 = new global::NCMapper.Runtime.RuntimeMapperMetadata
             {
                 SourceType = typeof(NCMapper.Tests.Runtime.FluentRuntimeHooksTests.HkEntity),
                 TargetType = typeof(NCMapper.Tests.Runtime.FluentRuntimeHooksTests.HkView),
@@ -19264,10 +20267,10 @@ namespace NCMapper.Runtime
                     },
                 },
             };
-            global::NCMapper.Runtime.RuntimeSnapshotPair<NCMapper.Tests.Runtime.FluentRuntimeHooksTests.HkEntity, NCMapper.Tests.Runtime.FluentRuntimeHooksTests.HkView>.Metadata = __meta130;
-            global::NCMapper.Runtime.RuntimeSnapshotStore.Register(__meta130);
-            // pair 131: NCMapper.Tests.Runtime.FluentRuntimeIgnoreIndexPathTests.FriE1 -> NCMapper.Tests.Runtime.FluentRuntimeIgnoreIndexPathTests.FriD1 (Fluent channel)
-            var __meta131 = new global::NCMapper.Runtime.RuntimeMapperMetadata
+            global::NCMapper.Runtime.RuntimeSnapshotPair<NCMapper.Tests.Runtime.FluentRuntimeHooksTests.HkEntity, NCMapper.Tests.Runtime.FluentRuntimeHooksTests.HkView>.Metadata = __meta136;
+            global::NCMapper.Runtime.RuntimeSnapshotStore.Register(__meta136);
+            // pair 137: NCMapper.Tests.Runtime.FluentRuntimeIgnoreIndexPathTests.FriE1 -> NCMapper.Tests.Runtime.FluentRuntimeIgnoreIndexPathTests.FriD1 (Fluent channel)
+            var __meta137 = new global::NCMapper.Runtime.RuntimeMapperMetadata
             {
                 SourceType = typeof(NCMapper.Tests.Runtime.FluentRuntimeIgnoreIndexPathTests.FriE1),
                 TargetType = typeof(NCMapper.Tests.Runtime.FluentRuntimeIgnoreIndexPathTests.FriD1),
@@ -19347,10 +20350,10 @@ namespace NCMapper.Runtime
                     },
                 },
             };
-            global::NCMapper.Runtime.RuntimeSnapshotPair<NCMapper.Tests.Runtime.FluentRuntimeIgnoreIndexPathTests.FriE1, NCMapper.Tests.Runtime.FluentRuntimeIgnoreIndexPathTests.FriD1>.Metadata = __meta131;
-            global::NCMapper.Runtime.RuntimeSnapshotStore.Register(__meta131);
-            // pair 132: NCMapper.Tests.Runtime.FluentRuntimeIgnoreIndexPathTests.FriE2 -> NCMapper.Tests.Runtime.FluentRuntimeIgnoreIndexPathTests.FriD2 (Fluent channel)
-            var __meta132 = new global::NCMapper.Runtime.RuntimeMapperMetadata
+            global::NCMapper.Runtime.RuntimeSnapshotPair<NCMapper.Tests.Runtime.FluentRuntimeIgnoreIndexPathTests.FriE1, NCMapper.Tests.Runtime.FluentRuntimeIgnoreIndexPathTests.FriD1>.Metadata = __meta137;
+            global::NCMapper.Runtime.RuntimeSnapshotStore.Register(__meta137);
+            // pair 138: NCMapper.Tests.Runtime.FluentRuntimeIgnoreIndexPathTests.FriE2 -> NCMapper.Tests.Runtime.FluentRuntimeIgnoreIndexPathTests.FriD2 (Fluent channel)
+            var __meta138 = new global::NCMapper.Runtime.RuntimeMapperMetadata
             {
                 SourceType = typeof(NCMapper.Tests.Runtime.FluentRuntimeIgnoreIndexPathTests.FriE2),
                 TargetType = typeof(NCMapper.Tests.Runtime.FluentRuntimeIgnoreIndexPathTests.FriD2),
@@ -19493,10 +20496,10 @@ namespace NCMapper.Runtime
                     },
                 },
             };
-            global::NCMapper.Runtime.RuntimeSnapshotPair<NCMapper.Tests.Runtime.FluentRuntimeIgnoreIndexPathTests.FriE2, NCMapper.Tests.Runtime.FluentRuntimeIgnoreIndexPathTests.FriD2>.Metadata = __meta132;
-            global::NCMapper.Runtime.RuntimeSnapshotStore.Register(__meta132);
-            // pair 133: NCMapper.Tests.Runtime.FluentRuntimeIgnoreIndexPathTests.FriE3 -> NCMapper.Tests.Runtime.FluentRuntimeIgnoreIndexPathTests.FriD3 (Fluent channel)
-            var __meta133 = new global::NCMapper.Runtime.RuntimeMapperMetadata
+            global::NCMapper.Runtime.RuntimeSnapshotPair<NCMapper.Tests.Runtime.FluentRuntimeIgnoreIndexPathTests.FriE2, NCMapper.Tests.Runtime.FluentRuntimeIgnoreIndexPathTests.FriD2>.Metadata = __meta138;
+            global::NCMapper.Runtime.RuntimeSnapshotStore.Register(__meta138);
+            // pair 139: NCMapper.Tests.Runtime.FluentRuntimeIgnoreIndexPathTests.FriE3 -> NCMapper.Tests.Runtime.FluentRuntimeIgnoreIndexPathTests.FriD3 (Fluent channel)
+            var __meta139 = new global::NCMapper.Runtime.RuntimeMapperMetadata
             {
                 SourceType = typeof(NCMapper.Tests.Runtime.FluentRuntimeIgnoreIndexPathTests.FriE3),
                 TargetType = typeof(NCMapper.Tests.Runtime.FluentRuntimeIgnoreIndexPathTests.FriD3),
@@ -19639,10 +20642,10 @@ namespace NCMapper.Runtime
                     },
                 },
             };
-            global::NCMapper.Runtime.RuntimeSnapshotPair<NCMapper.Tests.Runtime.FluentRuntimeIgnoreIndexPathTests.FriE3, NCMapper.Tests.Runtime.FluentRuntimeIgnoreIndexPathTests.FriD3>.Metadata = __meta133;
-            global::NCMapper.Runtime.RuntimeSnapshotStore.Register(__meta133);
-            // pair 134: NCMapper.Tests.Runtime.FluentRuntimeIgnoreIndexPathTests.FriE4 -> NCMapper.Tests.Runtime.FluentRuntimeIgnoreIndexPathTests.FriD4 (Fluent channel)
-            var __meta134 = new global::NCMapper.Runtime.RuntimeMapperMetadata
+            global::NCMapper.Runtime.RuntimeSnapshotPair<NCMapper.Tests.Runtime.FluentRuntimeIgnoreIndexPathTests.FriE3, NCMapper.Tests.Runtime.FluentRuntimeIgnoreIndexPathTests.FriD3>.Metadata = __meta139;
+            global::NCMapper.Runtime.RuntimeSnapshotStore.Register(__meta139);
+            // pair 140: NCMapper.Tests.Runtime.FluentRuntimeIgnoreIndexPathTests.FriE4 -> NCMapper.Tests.Runtime.FluentRuntimeIgnoreIndexPathTests.FriD4 (Fluent channel)
+            var __meta140 = new global::NCMapper.Runtime.RuntimeMapperMetadata
             {
                 SourceType = typeof(NCMapper.Tests.Runtime.FluentRuntimeIgnoreIndexPathTests.FriE4),
                 TargetType = typeof(NCMapper.Tests.Runtime.FluentRuntimeIgnoreIndexPathTests.FriD4),
@@ -19722,10 +20725,10 @@ namespace NCMapper.Runtime
                     },
                 },
             };
-            global::NCMapper.Runtime.RuntimeSnapshotPair<NCMapper.Tests.Runtime.FluentRuntimeIgnoreIndexPathTests.FriE4, NCMapper.Tests.Runtime.FluentRuntimeIgnoreIndexPathTests.FriD4>.Metadata = __meta134;
-            global::NCMapper.Runtime.RuntimeSnapshotStore.Register(__meta134);
-            // pair 135: NCMapper.Tests.Runtime.FluentRuntimeIgnoreIndexPathTests.FriIpE -> NCMapper.Tests.Runtime.FluentRuntimeIgnoreIndexPathTests.FriIpD (Fluent channel)
-            var __meta135 = new global::NCMapper.Runtime.RuntimeMapperMetadata
+            global::NCMapper.Runtime.RuntimeSnapshotPair<NCMapper.Tests.Runtime.FluentRuntimeIgnoreIndexPathTests.FriE4, NCMapper.Tests.Runtime.FluentRuntimeIgnoreIndexPathTests.FriD4>.Metadata = __meta140;
+            global::NCMapper.Runtime.RuntimeSnapshotStore.Register(__meta140);
+            // pair 141: NCMapper.Tests.Runtime.FluentRuntimeIgnoreIndexPathTests.FriIpE -> NCMapper.Tests.Runtime.FluentRuntimeIgnoreIndexPathTests.FriIpD (Fluent channel)
+            var __meta141 = new global::NCMapper.Runtime.RuntimeMapperMetadata
             {
                 SourceType = typeof(NCMapper.Tests.Runtime.FluentRuntimeIgnoreIndexPathTests.FriIpE),
                 TargetType = typeof(NCMapper.Tests.Runtime.FluentRuntimeIgnoreIndexPathTests.FriIpD),
@@ -19869,10 +20872,10 @@ namespace NCMapper.Runtime
                     },
                 },
             };
-            global::NCMapper.Runtime.RuntimeSnapshotPair<NCMapper.Tests.Runtime.FluentRuntimeIgnoreIndexPathTests.FriIpE, NCMapper.Tests.Runtime.FluentRuntimeIgnoreIndexPathTests.FriIpD>.Metadata = __meta135;
-            global::NCMapper.Runtime.RuntimeSnapshotStore.Register(__meta135);
-            // pair 136: NCMapper.Tests.Runtime.FluentRuntimeIgnoreIndexPathTests.FriNae -> NCMapper.Tests.Runtime.FluentRuntimeIgnoreIndexPathTests.FriNad (Fluent channel)
-            var __meta136 = new global::NCMapper.Runtime.RuntimeMapperMetadata
+            global::NCMapper.Runtime.RuntimeSnapshotPair<NCMapper.Tests.Runtime.FluentRuntimeIgnoreIndexPathTests.FriIpE, NCMapper.Tests.Runtime.FluentRuntimeIgnoreIndexPathTests.FriIpD>.Metadata = __meta141;
+            global::NCMapper.Runtime.RuntimeSnapshotStore.Register(__meta141);
+            // pair 142: NCMapper.Tests.Runtime.FluentRuntimeIgnoreIndexPathTests.FriNae -> NCMapper.Tests.Runtime.FluentRuntimeIgnoreIndexPathTests.FriNad (Fluent channel)
+            var __meta142 = new global::NCMapper.Runtime.RuntimeMapperMetadata
             {
                 SourceType = typeof(NCMapper.Tests.Runtime.FluentRuntimeIgnoreIndexPathTests.FriNae),
                 TargetType = typeof(NCMapper.Tests.Runtime.FluentRuntimeIgnoreIndexPathTests.FriNad),
@@ -20017,10 +21020,10 @@ namespace NCMapper.Runtime
                     },
                 },
             };
-            global::NCMapper.Runtime.RuntimeSnapshotPair<NCMapper.Tests.Runtime.FluentRuntimeIgnoreIndexPathTests.FriNae, NCMapper.Tests.Runtime.FluentRuntimeIgnoreIndexPathTests.FriNad>.Metadata = __meta136;
-            global::NCMapper.Runtime.RuntimeSnapshotStore.Register(__meta136);
-            // pair 137: NCMapper.Tests.Runtime.FluentRuntimeIgnoreIndexPathTests.FriNe -> NCMapper.Tests.Runtime.FluentRuntimeIgnoreIndexPathTests.FriNd (Fluent channel)
-            var __meta137 = new global::NCMapper.Runtime.RuntimeMapperMetadata
+            global::NCMapper.Runtime.RuntimeSnapshotPair<NCMapper.Tests.Runtime.FluentRuntimeIgnoreIndexPathTests.FriNae, NCMapper.Tests.Runtime.FluentRuntimeIgnoreIndexPathTests.FriNad>.Metadata = __meta142;
+            global::NCMapper.Runtime.RuntimeSnapshotStore.Register(__meta142);
+            // pair 143: NCMapper.Tests.Runtime.FluentRuntimeIgnoreIndexPathTests.FriNe -> NCMapper.Tests.Runtime.FluentRuntimeIgnoreIndexPathTests.FriNd (Fluent channel)
+            var __meta143 = new global::NCMapper.Runtime.RuntimeMapperMetadata
             {
                 SourceType = typeof(NCMapper.Tests.Runtime.FluentRuntimeIgnoreIndexPathTests.FriNe),
                 TargetType = typeof(NCMapper.Tests.Runtime.FluentRuntimeIgnoreIndexPathTests.FriNd),
@@ -20163,11 +21166,11 @@ namespace NCMapper.Runtime
                     },
                 },
             };
-            global::NCMapper.Runtime.RuntimeSnapshotPair<NCMapper.Tests.Runtime.FluentRuntimeIgnoreIndexPathTests.FriNe, NCMapper.Tests.Runtime.FluentRuntimeIgnoreIndexPathTests.FriNd>.Metadata = __meta137;
-            global::NCMapper.Runtime.RuntimeSnapshotStore.Register(__meta137);
-            // pair 138: NCMapper.Tests.Runtime.IndexPathDegradationTests.ParentEntity -> NCMapper.Tests.Runtime.IndexPathDegradationTests.ParentTarget (MapFrom channel)
-            var __mfAttr138 = new global::NCMapper.Attributes.MapFromAttribute(typeof(NCMapper.Tests.Runtime.IndexPathDegradationTests.ParentEntity));
-            var __meta138 = new global::NCMapper.Runtime.RuntimeMapperMetadata
+            global::NCMapper.Runtime.RuntimeSnapshotPair<NCMapper.Tests.Runtime.FluentRuntimeIgnoreIndexPathTests.FriNe, NCMapper.Tests.Runtime.FluentRuntimeIgnoreIndexPathTests.FriNd>.Metadata = __meta143;
+            global::NCMapper.Runtime.RuntimeSnapshotStore.Register(__meta143);
+            // pair 144: NCMapper.Tests.Runtime.IndexPathDegradationTests.ParentEntity -> NCMapper.Tests.Runtime.IndexPathDegradationTests.ParentTarget (MapFrom channel)
+            var __mfAttr144 = new global::NCMapper.Attributes.MapFromAttribute(typeof(NCMapper.Tests.Runtime.IndexPathDegradationTests.ParentEntity));
+            var __meta144 = new global::NCMapper.Runtime.RuntimeMapperMetadata
             {
                 SourceType = typeof(NCMapper.Tests.Runtime.IndexPathDegradationTests.ParentEntity),
                 TargetType = typeof(NCMapper.Tests.Runtime.IndexPathDegradationTests.ParentTarget),
@@ -20188,7 +21191,7 @@ namespace NCMapper.Runtime
                                 TypeName = "int",
                                 TypeRef = typeof(int),
                                 HasMapFromAttribute = true,
-                                MapFromAttribute = __mfAttr138,
+                                MapFromAttribute = __mfAttr144,
                                 HasMapIgnore = false,
                                 MapIgnoreDirection = 0,
                                 HasOverrideIgnore = false,
@@ -20228,7 +21231,7 @@ namespace NCMapper.Runtime
                                 TypeName = "NCMapper.Tests.Runtime.IndexPathDegradationTests.IdxTarget",
                                 TypeRef = typeof(NCMapper.Tests.Runtime.IndexPathDegradationTests.IdxTarget),
                                 HasMapFromAttribute = true,
-                                MapFromAttribute = __mfAttr138,
+                                MapFromAttribute = __mfAttr144,
                                 HasMapIgnore = false,
                                 MapIgnoreDirection = 0,
                                 HasOverrideIgnore = false,
@@ -20268,7 +21271,7 @@ namespace NCMapper.Runtime
                         TypeName = "int",
                         TypeRef = typeof(int),
                         HasMapFromAttribute = true,
-                        MapFromAttribute = __mfAttr138,
+                        MapFromAttribute = __mfAttr144,
                         HasMapIgnore = false,
                         MapIgnoreDirection = 0,
                         HasOverrideIgnore = false,
@@ -20291,7 +21294,7 @@ namespace NCMapper.Runtime
                         TypeName = "NCMapper.Tests.Runtime.IndexPathDegradationTests.IdxTarget",
                         TypeRef = typeof(NCMapper.Tests.Runtime.IndexPathDegradationTests.IdxTarget),
                         HasMapFromAttribute = true,
-                        MapFromAttribute = __mfAttr138,
+                        MapFromAttribute = __mfAttr144,
                         HasMapIgnore = false,
                         MapIgnoreDirection = 0,
                         HasOverrideIgnore = false,
@@ -20310,11 +21313,11 @@ namespace NCMapper.Runtime
                     },
                 },
             };
-            global::NCMapper.Runtime.RuntimeSnapshotPair<NCMapper.Tests.Runtime.IndexPathDegradationTests.ParentEntity, NCMapper.Tests.Runtime.IndexPathDegradationTests.ParentTarget>.Metadata = __meta138;
-            global::NCMapper.Runtime.RuntimeSnapshotStore.Register(__meta138);
-            // pair 139: NCMapper.Tests.Runtime.IndexPathDegradationTests.VBlogEntity -> NCMapper.Tests.Runtime.IndexPathDegradationTests.VBlogIdxDto (MapFrom channel)
-            var __mfAttr139 = new global::NCMapper.Attributes.MapFromAttribute(typeof(NCMapper.Tests.Runtime.IndexPathDegradationTests.VBlogEntity));
-            var __meta139 = new global::NCMapper.Runtime.RuntimeMapperMetadata
+            global::NCMapper.Runtime.RuntimeSnapshotPair<NCMapper.Tests.Runtime.IndexPathDegradationTests.ParentEntity, NCMapper.Tests.Runtime.IndexPathDegradationTests.ParentTarget>.Metadata = __meta144;
+            global::NCMapper.Runtime.RuntimeSnapshotStore.Register(__meta144);
+            // pair 145: NCMapper.Tests.Runtime.IndexPathDegradationTests.VBlogEntity -> NCMapper.Tests.Runtime.IndexPathDegradationTests.VBlogIdxDto (MapFrom channel)
+            var __mfAttr145 = new global::NCMapper.Attributes.MapFromAttribute(typeof(NCMapper.Tests.Runtime.IndexPathDegradationTests.VBlogEntity));
+            var __meta145 = new global::NCMapper.Runtime.RuntimeMapperMetadata
             {
                 SourceType = typeof(NCMapper.Tests.Runtime.IndexPathDegradationTests.VBlogEntity),
                 TargetType = typeof(NCMapper.Tests.Runtime.IndexPathDegradationTests.VBlogIdxDto),
@@ -20335,7 +21338,7 @@ namespace NCMapper.Runtime
                                 TypeName = "int",
                                 TypeRef = typeof(int),
                                 HasMapFromAttribute = true,
-                                MapFromAttribute = __mfAttr139,
+                                MapFromAttribute = __mfAttr145,
                                 HasMapIgnore = false,
                                 MapIgnoreDirection = 0,
                                 HasOverrideIgnore = false,
@@ -20375,7 +21378,7 @@ namespace NCMapper.Runtime
                                 TypeName = "string",
                                 TypeRef = typeof(string),
                                 HasMapFromAttribute = true,
-                                MapFromAttribute = __mfAttr139,
+                                MapFromAttribute = __mfAttr145,
                                 HasMapIgnore = false,
                                 MapIgnoreDirection = 0,
                                 HasOverrideIgnore = false,
@@ -20416,7 +21419,7 @@ namespace NCMapper.Runtime
                         TypeName = "int",
                         TypeRef = typeof(int),
                         HasMapFromAttribute = true,
-                        MapFromAttribute = __mfAttr139,
+                        MapFromAttribute = __mfAttr145,
                         HasMapIgnore = false,
                         MapIgnoreDirection = 0,
                         HasOverrideIgnore = false,
@@ -20439,7 +21442,7 @@ namespace NCMapper.Runtime
                         TypeName = "string",
                         TypeRef = typeof(string),
                         HasMapFromAttribute = true,
-                        MapFromAttribute = __mfAttr139,
+                        MapFromAttribute = __mfAttr145,
                         HasMapIgnore = false,
                         MapIgnoreDirection = 0,
                         HasOverrideIgnore = false,
@@ -20458,11 +21461,11 @@ namespace NCMapper.Runtime
                     },
                 },
             };
-            global::NCMapper.Runtime.RuntimeSnapshotPair<NCMapper.Tests.Runtime.IndexPathDegradationTests.VBlogEntity, NCMapper.Tests.Runtime.IndexPathDegradationTests.VBlogIdxDto>.Metadata = __meta139;
-            global::NCMapper.Runtime.RuntimeSnapshotStore.Register(__meta139);
-            // pair 140: NCMapper.Tests.Runtime.MapValidatorProjectionDegradationTests.AttrCleanEntity -> NCMapper.Tests.Runtime.MapValidatorProjectionDegradationTests.AttrCleanView (MapFrom channel)
-            var __mfAttr140 = new global::NCMapper.Attributes.MapFromAttribute(typeof(NCMapper.Tests.Runtime.MapValidatorProjectionDegradationTests.AttrCleanEntity));
-            var __meta140 = new global::NCMapper.Runtime.RuntimeMapperMetadata
+            global::NCMapper.Runtime.RuntimeSnapshotPair<NCMapper.Tests.Runtime.IndexPathDegradationTests.VBlogEntity, NCMapper.Tests.Runtime.IndexPathDegradationTests.VBlogIdxDto>.Metadata = __meta145;
+            global::NCMapper.Runtime.RuntimeSnapshotStore.Register(__meta145);
+            // pair 146: NCMapper.Tests.Runtime.MapValidatorProjectionDegradationTests.AttrCleanEntity -> NCMapper.Tests.Runtime.MapValidatorProjectionDegradationTests.AttrCleanView (MapFrom channel)
+            var __mfAttr146 = new global::NCMapper.Attributes.MapFromAttribute(typeof(NCMapper.Tests.Runtime.MapValidatorProjectionDegradationTests.AttrCleanEntity));
+            var __meta146 = new global::NCMapper.Runtime.RuntimeMapperMetadata
             {
                 SourceType = typeof(NCMapper.Tests.Runtime.MapValidatorProjectionDegradationTests.AttrCleanEntity),
                 TargetType = typeof(NCMapper.Tests.Runtime.MapValidatorProjectionDegradationTests.AttrCleanView),
@@ -20483,7 +21486,7 @@ namespace NCMapper.Runtime
                                 TypeName = "int",
                                 TypeRef = typeof(int),
                                 HasMapFromAttribute = true,
-                                MapFromAttribute = __mfAttr140,
+                                MapFromAttribute = __mfAttr146,
                                 HasMapIgnore = false,
                                 MapIgnoreDirection = 0,
                                 HasOverrideIgnore = false,
@@ -20523,7 +21526,7 @@ namespace NCMapper.Runtime
                         TypeName = "int",
                         TypeRef = typeof(int),
                         HasMapFromAttribute = true,
-                        MapFromAttribute = __mfAttr140,
+                        MapFromAttribute = __mfAttr146,
                         HasMapIgnore = false,
                         MapIgnoreDirection = 0,
                         HasOverrideIgnore = false,
@@ -20542,11 +21545,11 @@ namespace NCMapper.Runtime
                     },
                 },
             };
-            global::NCMapper.Runtime.RuntimeSnapshotPair<NCMapper.Tests.Runtime.MapValidatorProjectionDegradationTests.AttrCleanEntity, NCMapper.Tests.Runtime.MapValidatorProjectionDegradationTests.AttrCleanView>.Metadata = __meta140;
-            global::NCMapper.Runtime.RuntimeSnapshotStore.Register(__meta140);
-            // pair 141: NCMapper.Tests.Runtime.MapValidatorProjectionDegradationTests.AttrConvEntity -> NCMapper.Tests.Runtime.MapValidatorProjectionDegradationTests.AttrConvView (MapFrom channel)
-            var __mfAttr141 = new global::NCMapper.Attributes.MapFromAttribute(typeof(NCMapper.Tests.Runtime.MapValidatorProjectionDegradationTests.AttrConvEntity));
-            var __meta141 = new global::NCMapper.Runtime.RuntimeMapperMetadata
+            global::NCMapper.Runtime.RuntimeSnapshotPair<NCMapper.Tests.Runtime.MapValidatorProjectionDegradationTests.AttrCleanEntity, NCMapper.Tests.Runtime.MapValidatorProjectionDegradationTests.AttrCleanView>.Metadata = __meta146;
+            global::NCMapper.Runtime.RuntimeSnapshotStore.Register(__meta146);
+            // pair 147: NCMapper.Tests.Runtime.MapValidatorProjectionDegradationTests.AttrConvEntity -> NCMapper.Tests.Runtime.MapValidatorProjectionDegradationTests.AttrConvView (MapFrom channel)
+            var __mfAttr147 = new global::NCMapper.Attributes.MapFromAttribute(typeof(NCMapper.Tests.Runtime.MapValidatorProjectionDegradationTests.AttrConvEntity));
+            var __meta147 = new global::NCMapper.Runtime.RuntimeMapperMetadata
             {
                 SourceType = typeof(NCMapper.Tests.Runtime.MapValidatorProjectionDegradationTests.AttrConvEntity),
                 TargetType = typeof(NCMapper.Tests.Runtime.MapValidatorProjectionDegradationTests.AttrConvView),
@@ -20567,7 +21570,7 @@ namespace NCMapper.Runtime
                                 TypeName = "string",
                                 TypeRef = typeof(string),
                                 HasMapFromAttribute = true,
-                                MapFromAttribute = __mfAttr141,
+                                MapFromAttribute = __mfAttr147,
                                 HasMapIgnore = false,
                                 MapIgnoreDirection = 0,
                                 HasOverrideIgnore = false,
@@ -20607,7 +21610,7 @@ namespace NCMapper.Runtime
                         TypeName = "string",
                         TypeRef = typeof(string),
                         HasMapFromAttribute = true,
-                        MapFromAttribute = __mfAttr141,
+                        MapFromAttribute = __mfAttr147,
                         HasMapIgnore = false,
                         MapIgnoreDirection = 0,
                         HasOverrideIgnore = false,
@@ -20626,11 +21629,11 @@ namespace NCMapper.Runtime
                     },
                 },
             };
-            global::NCMapper.Runtime.RuntimeSnapshotPair<NCMapper.Tests.Runtime.MapValidatorProjectionDegradationTests.AttrConvEntity, NCMapper.Tests.Runtime.MapValidatorProjectionDegradationTests.AttrConvView>.Metadata = __meta141;
-            global::NCMapper.Runtime.RuntimeSnapshotStore.Register(__meta141);
-            // pair 142: NCMapper.Tests.Runtime.MapValidatorProjectionDegradationTests.DualSourceB -> NCMapper.Tests.Runtime.MapValidatorProjectionDegradationTests.DualView (MapFrom channel)
-            var __mfAttr142 = new global::NCMapper.Attributes.MapFromAttribute(typeof(NCMapper.Tests.Runtime.MapValidatorProjectionDegradationTests.DualSourceB));
-            var __meta142 = new global::NCMapper.Runtime.RuntimeMapperMetadata
+            global::NCMapper.Runtime.RuntimeSnapshotPair<NCMapper.Tests.Runtime.MapValidatorProjectionDegradationTests.AttrConvEntity, NCMapper.Tests.Runtime.MapValidatorProjectionDegradationTests.AttrConvView>.Metadata = __meta147;
+            global::NCMapper.Runtime.RuntimeSnapshotStore.Register(__meta147);
+            // pair 148: NCMapper.Tests.Runtime.MapValidatorProjectionDegradationTests.DualSourceB -> NCMapper.Tests.Runtime.MapValidatorProjectionDegradationTests.DualView (MapFrom channel)
+            var __mfAttr148 = new global::NCMapper.Attributes.MapFromAttribute(typeof(NCMapper.Tests.Runtime.MapValidatorProjectionDegradationTests.DualSourceB));
+            var __meta148 = new global::NCMapper.Runtime.RuntimeMapperMetadata
             {
                 SourceType = typeof(NCMapper.Tests.Runtime.MapValidatorProjectionDegradationTests.DualSourceB),
                 TargetType = typeof(NCMapper.Tests.Runtime.MapValidatorProjectionDegradationTests.DualView),
@@ -20651,7 +21654,7 @@ namespace NCMapper.Runtime
                                 TypeName = "int",
                                 TypeRef = typeof(int),
                                 HasMapFromAttribute = true,
-                                MapFromAttribute = __mfAttr142,
+                                MapFromAttribute = __mfAttr148,
                                 HasMapIgnore = false,
                                 MapIgnoreDirection = 0,
                                 HasOverrideIgnore = false,
@@ -20691,7 +21694,7 @@ namespace NCMapper.Runtime
                         TypeName = "int",
                         TypeRef = typeof(int),
                         HasMapFromAttribute = true,
-                        MapFromAttribute = __mfAttr142,
+                        MapFromAttribute = __mfAttr148,
                         HasMapIgnore = false,
                         MapIgnoreDirection = 0,
                         HasOverrideIgnore = false,
@@ -20710,11 +21713,11 @@ namespace NCMapper.Runtime
                     },
                 },
             };
-            global::NCMapper.Runtime.RuntimeSnapshotPair<NCMapper.Tests.Runtime.MapValidatorProjectionDegradationTests.DualSourceB, NCMapper.Tests.Runtime.MapValidatorProjectionDegradationTests.DualView>.Metadata = __meta142;
-            global::NCMapper.Runtime.RuntimeSnapshotStore.Register(__meta142);
-            // pair 143: NCMapper.Tests.Runtime.MapWhenDegradationTests.MwDEntity -> NCMapper.Tests.Runtime.MapWhenDegradationTests.MwDDto (MapFrom channel)
-            var __mfAttr143 = new global::NCMapper.Attributes.MapFromAttribute(typeof(NCMapper.Tests.Runtime.MapWhenDegradationTests.MwDEntity));
-            var __meta143 = new global::NCMapper.Runtime.RuntimeMapperMetadata
+            global::NCMapper.Runtime.RuntimeSnapshotPair<NCMapper.Tests.Runtime.MapValidatorProjectionDegradationTests.DualSourceB, NCMapper.Tests.Runtime.MapValidatorProjectionDegradationTests.DualView>.Metadata = __meta148;
+            global::NCMapper.Runtime.RuntimeSnapshotStore.Register(__meta148);
+            // pair 149: NCMapper.Tests.Runtime.MapWhenDegradationTests.MwDEntity -> NCMapper.Tests.Runtime.MapWhenDegradationTests.MwDDto (MapFrom channel)
+            var __mfAttr149 = new global::NCMapper.Attributes.MapFromAttribute(typeof(NCMapper.Tests.Runtime.MapWhenDegradationTests.MwDEntity));
+            var __meta149 = new global::NCMapper.Runtime.RuntimeMapperMetadata
             {
                 SourceType = typeof(NCMapper.Tests.Runtime.MapWhenDegradationTests.MwDEntity),
                 TargetType = typeof(NCMapper.Tests.Runtime.MapWhenDegradationTests.MwDDto),
@@ -20735,7 +21738,7 @@ namespace NCMapper.Runtime
                                 TypeName = "int",
                                 TypeRef = typeof(int),
                                 HasMapFromAttribute = true,
-                                MapFromAttribute = __mfAttr143,
+                                MapFromAttribute = __mfAttr149,
                                 HasMapIgnore = false,
                                 MapIgnoreDirection = 0,
                                 HasOverrideIgnore = false,
@@ -20775,7 +21778,7 @@ namespace NCMapper.Runtime
                                 TypeName = "string",
                                 TypeRef = typeof(string),
                                 HasMapFromAttribute = true,
-                                MapFromAttribute = __mfAttr143,
+                                MapFromAttribute = __mfAttr149,
                                 HasMapIgnore = false,
                                 MapIgnoreDirection = 0,
                                 HasOverrideIgnore = false,
@@ -20817,7 +21820,7 @@ namespace NCMapper.Runtime
                         TypeName = "int",
                         TypeRef = typeof(int),
                         HasMapFromAttribute = true,
-                        MapFromAttribute = __mfAttr143,
+                        MapFromAttribute = __mfAttr149,
                         HasMapIgnore = false,
                         MapIgnoreDirection = 0,
                         HasOverrideIgnore = false,
@@ -20840,7 +21843,7 @@ namespace NCMapper.Runtime
                         TypeName = "string",
                         TypeRef = typeof(string),
                         HasMapFromAttribute = true,
-                        MapFromAttribute = __mfAttr143,
+                        MapFromAttribute = __mfAttr149,
                         HasMapIgnore = false,
                         MapIgnoreDirection = 0,
                         HasOverrideIgnore = false,
@@ -20859,10 +21862,10 @@ namespace NCMapper.Runtime
                     },
                 },
             };
-            global::NCMapper.Runtime.RuntimeSnapshotPair<NCMapper.Tests.Runtime.MapWhenDegradationTests.MwDEntity, NCMapper.Tests.Runtime.MapWhenDegradationTests.MwDDto>.Metadata = __meta143;
-            global::NCMapper.Runtime.RuntimeSnapshotStore.Register(__meta143);
-            // pair 144: NCMapper.Tests.Runtime.MapWhenEquivalenceGuardTests.EgA2Entity -> NCMapper.Tests.Runtime.MapWhenEquivalenceGuardTests.EgA2Dto (Fluent channel)
-            var __meta144 = new global::NCMapper.Runtime.RuntimeMapperMetadata
+            global::NCMapper.Runtime.RuntimeSnapshotPair<NCMapper.Tests.Runtime.MapWhenDegradationTests.MwDEntity, NCMapper.Tests.Runtime.MapWhenDegradationTests.MwDDto>.Metadata = __meta149;
+            global::NCMapper.Runtime.RuntimeSnapshotStore.Register(__meta149);
+            // pair 150: NCMapper.Tests.Runtime.MapWhenEquivalenceGuardTests.EgA2Entity -> NCMapper.Tests.Runtime.MapWhenEquivalenceGuardTests.EgA2Dto (Fluent channel)
+            var __meta150 = new global::NCMapper.Runtime.RuntimeMapperMetadata
             {
                 SourceType = typeof(NCMapper.Tests.Runtime.MapWhenEquivalenceGuardTests.EgA2Entity),
                 TargetType = typeof(NCMapper.Tests.Runtime.MapWhenEquivalenceGuardTests.EgA2Dto),
@@ -21007,10 +22010,10 @@ namespace NCMapper.Runtime
                     },
                 },
             };
-            global::NCMapper.Runtime.RuntimeSnapshotPair<NCMapper.Tests.Runtime.MapWhenEquivalenceGuardTests.EgA2Entity, NCMapper.Tests.Runtime.MapWhenEquivalenceGuardTests.EgA2Dto>.Metadata = __meta144;
-            global::NCMapper.Runtime.RuntimeSnapshotStore.Register(__meta144);
-            // pair 145: NCMapper.Tests.Runtime.MapWhenEquivalenceGuardTests.EgAEntity -> NCMapper.Tests.Runtime.MapWhenEquivalenceGuardTests.EgADto (Fluent channel)
-            var __meta145 = new global::NCMapper.Runtime.RuntimeMapperMetadata
+            global::NCMapper.Runtime.RuntimeSnapshotPair<NCMapper.Tests.Runtime.MapWhenEquivalenceGuardTests.EgA2Entity, NCMapper.Tests.Runtime.MapWhenEquivalenceGuardTests.EgA2Dto>.Metadata = __meta150;
+            global::NCMapper.Runtime.RuntimeSnapshotStore.Register(__meta150);
+            // pair 151: NCMapper.Tests.Runtime.MapWhenEquivalenceGuardTests.EgAEntity -> NCMapper.Tests.Runtime.MapWhenEquivalenceGuardTests.EgADto (Fluent channel)
+            var __meta151 = new global::NCMapper.Runtime.RuntimeMapperMetadata
             {
                 SourceType = typeof(NCMapper.Tests.Runtime.MapWhenEquivalenceGuardTests.EgAEntity),
                 TargetType = typeof(NCMapper.Tests.Runtime.MapWhenEquivalenceGuardTests.EgADto),
@@ -21155,10 +22158,10 @@ namespace NCMapper.Runtime
                     },
                 },
             };
-            global::NCMapper.Runtime.RuntimeSnapshotPair<NCMapper.Tests.Runtime.MapWhenEquivalenceGuardTests.EgAEntity, NCMapper.Tests.Runtime.MapWhenEquivalenceGuardTests.EgADto>.Metadata = __meta145;
-            global::NCMapper.Runtime.RuntimeSnapshotStore.Register(__meta145);
-            // pair 146: NCMapper.Tests.Runtime.MapWhenEquivalenceGuardTests.EgB2Entity -> NCMapper.Tests.Runtime.MapWhenEquivalenceGuardTests.EgB2Dto (Fluent channel)
-            var __meta146 = new global::NCMapper.Runtime.RuntimeMapperMetadata
+            global::NCMapper.Runtime.RuntimeSnapshotPair<NCMapper.Tests.Runtime.MapWhenEquivalenceGuardTests.EgAEntity, NCMapper.Tests.Runtime.MapWhenEquivalenceGuardTests.EgADto>.Metadata = __meta151;
+            global::NCMapper.Runtime.RuntimeSnapshotStore.Register(__meta151);
+            // pair 152: NCMapper.Tests.Runtime.MapWhenEquivalenceGuardTests.EgB2Entity -> NCMapper.Tests.Runtime.MapWhenEquivalenceGuardTests.EgB2Dto (Fluent channel)
+            var __meta152 = new global::NCMapper.Runtime.RuntimeMapperMetadata
             {
                 SourceType = typeof(NCMapper.Tests.Runtime.MapWhenEquivalenceGuardTests.EgB2Entity),
                 TargetType = typeof(NCMapper.Tests.Runtime.MapWhenEquivalenceGuardTests.EgB2Dto),
@@ -21303,10 +22306,10 @@ namespace NCMapper.Runtime
                     },
                 },
             };
-            global::NCMapper.Runtime.RuntimeSnapshotPair<NCMapper.Tests.Runtime.MapWhenEquivalenceGuardTests.EgB2Entity, NCMapper.Tests.Runtime.MapWhenEquivalenceGuardTests.EgB2Dto>.Metadata = __meta146;
-            global::NCMapper.Runtime.RuntimeSnapshotStore.Register(__meta146);
-            // pair 147: NCMapper.Tests.Runtime.MapWhenEquivalenceGuardTests.EgBEntity -> NCMapper.Tests.Runtime.MapWhenEquivalenceGuardTests.EgBDto (Fluent channel)
-            var __meta147 = new global::NCMapper.Runtime.RuntimeMapperMetadata
+            global::NCMapper.Runtime.RuntimeSnapshotPair<NCMapper.Tests.Runtime.MapWhenEquivalenceGuardTests.EgB2Entity, NCMapper.Tests.Runtime.MapWhenEquivalenceGuardTests.EgB2Dto>.Metadata = __meta152;
+            global::NCMapper.Runtime.RuntimeSnapshotStore.Register(__meta152);
+            // pair 153: NCMapper.Tests.Runtime.MapWhenEquivalenceGuardTests.EgBEntity -> NCMapper.Tests.Runtime.MapWhenEquivalenceGuardTests.EgBDto (Fluent channel)
+            var __meta153 = new global::NCMapper.Runtime.RuntimeMapperMetadata
             {
                 SourceType = typeof(NCMapper.Tests.Runtime.MapWhenEquivalenceGuardTests.EgBEntity),
                 TargetType = typeof(NCMapper.Tests.Runtime.MapWhenEquivalenceGuardTests.EgBDto),
@@ -21451,10 +22454,10 @@ namespace NCMapper.Runtime
                     },
                 },
             };
-            global::NCMapper.Runtime.RuntimeSnapshotPair<NCMapper.Tests.Runtime.MapWhenEquivalenceGuardTests.EgBEntity, NCMapper.Tests.Runtime.MapWhenEquivalenceGuardTests.EgBDto>.Metadata = __meta147;
-            global::NCMapper.Runtime.RuntimeSnapshotStore.Register(__meta147);
-            // pair 148: NCMapper.Tests.Runtime.MapWhenEquivalenceGuardTests.EgNEntity -> NCMapper.Tests.Runtime.MapWhenEquivalenceGuardTests.EgNDto (Fluent channel)
-            var __meta148 = new global::NCMapper.Runtime.RuntimeMapperMetadata
+            global::NCMapper.Runtime.RuntimeSnapshotPair<NCMapper.Tests.Runtime.MapWhenEquivalenceGuardTests.EgBEntity, NCMapper.Tests.Runtime.MapWhenEquivalenceGuardTests.EgBDto>.Metadata = __meta153;
+            global::NCMapper.Runtime.RuntimeSnapshotStore.Register(__meta153);
+            // pair 154: NCMapper.Tests.Runtime.MapWhenEquivalenceGuardTests.EgNEntity -> NCMapper.Tests.Runtime.MapWhenEquivalenceGuardTests.EgNDto (Fluent channel)
+            var __meta154 = new global::NCMapper.Runtime.RuntimeMapperMetadata
             {
                 SourceType = typeof(NCMapper.Tests.Runtime.MapWhenEquivalenceGuardTests.EgNEntity),
                 TargetType = typeof(NCMapper.Tests.Runtime.MapWhenEquivalenceGuardTests.EgNDto),
@@ -21597,11 +22600,11 @@ namespace NCMapper.Runtime
                     },
                 },
             };
-            global::NCMapper.Runtime.RuntimeSnapshotPair<NCMapper.Tests.Runtime.MapWhenEquivalenceGuardTests.EgNEntity, NCMapper.Tests.Runtime.MapWhenEquivalenceGuardTests.EgNDto>.Metadata = __meta148;
-            global::NCMapper.Runtime.RuntimeSnapshotStore.Register(__meta148);
-            // pair 149: NCMapper.Tests.Runtime.MapWhenExecutionSemanticsTests.WgConvEntity -> NCMapper.Tests.Runtime.MapWhenExecutionSemanticsTests.WgConvDto (MapFrom channel)
-            var __mfAttr149 = new global::NCMapper.Attributes.MapFromAttribute(typeof(NCMapper.Tests.Runtime.MapWhenExecutionSemanticsTests.WgConvEntity));
-            var __meta149 = new global::NCMapper.Runtime.RuntimeMapperMetadata
+            global::NCMapper.Runtime.RuntimeSnapshotPair<NCMapper.Tests.Runtime.MapWhenEquivalenceGuardTests.EgNEntity, NCMapper.Tests.Runtime.MapWhenEquivalenceGuardTests.EgNDto>.Metadata = __meta154;
+            global::NCMapper.Runtime.RuntimeSnapshotStore.Register(__meta154);
+            // pair 155: NCMapper.Tests.Runtime.MapWhenExecutionSemanticsTests.WgConvEntity -> NCMapper.Tests.Runtime.MapWhenExecutionSemanticsTests.WgConvDto (MapFrom channel)
+            var __mfAttr155 = new global::NCMapper.Attributes.MapFromAttribute(typeof(NCMapper.Tests.Runtime.MapWhenExecutionSemanticsTests.WgConvEntity));
+            var __meta155 = new global::NCMapper.Runtime.RuntimeMapperMetadata
             {
                 SourceType = typeof(NCMapper.Tests.Runtime.MapWhenExecutionSemanticsTests.WgConvEntity),
                 TargetType = typeof(NCMapper.Tests.Runtime.MapWhenExecutionSemanticsTests.WgConvDto),
@@ -21622,7 +22625,7 @@ namespace NCMapper.Runtime
                                 TypeName = "int",
                                 TypeRef = typeof(int),
                                 HasMapFromAttribute = true,
-                                MapFromAttribute = __mfAttr149,
+                                MapFromAttribute = __mfAttr155,
                                 HasMapIgnore = false,
                                 MapIgnoreDirection = 0,
                                 HasOverrideIgnore = false,
@@ -21662,7 +22665,7 @@ namespace NCMapper.Runtime
                                 TypeName = "string",
                                 TypeRef = typeof(string),
                                 HasMapFromAttribute = true,
-                                MapFromAttribute = __mfAttr149,
+                                MapFromAttribute = __mfAttr155,
                                 HasMapIgnore = false,
                                 MapIgnoreDirection = 0,
                                 HasOverrideIgnore = false,
@@ -21704,7 +22707,7 @@ namespace NCMapper.Runtime
                         TypeName = "int",
                         TypeRef = typeof(int),
                         HasMapFromAttribute = true,
-                        MapFromAttribute = __mfAttr149,
+                        MapFromAttribute = __mfAttr155,
                         HasMapIgnore = false,
                         MapIgnoreDirection = 0,
                         HasOverrideIgnore = false,
@@ -21727,7 +22730,7 @@ namespace NCMapper.Runtime
                         TypeName = "string",
                         TypeRef = typeof(string),
                         HasMapFromAttribute = true,
-                        MapFromAttribute = __mfAttr149,
+                        MapFromAttribute = __mfAttr155,
                         HasMapIgnore = false,
                         MapIgnoreDirection = 0,
                         HasOverrideIgnore = false,
@@ -21746,11 +22749,11 @@ namespace NCMapper.Runtime
                     },
                 },
             };
-            global::NCMapper.Runtime.RuntimeSnapshotPair<NCMapper.Tests.Runtime.MapWhenExecutionSemanticsTests.WgConvEntity, NCMapper.Tests.Runtime.MapWhenExecutionSemanticsTests.WgConvDto>.Metadata = __meta149;
-            global::NCMapper.Runtime.RuntimeSnapshotStore.Register(__meta149);
-            // pair 150: NCMapper.Tests.Runtime.MapWhenExecutionSemanticsTests.WgCtorEntity -> NCMapper.Tests.Runtime.MapWhenExecutionSemanticsTests.WgCtorDto (MapFrom channel)
-            var __mfAttr150 = new global::NCMapper.Attributes.MapFromAttribute(typeof(NCMapper.Tests.Runtime.MapWhenExecutionSemanticsTests.WgCtorEntity));
-            var __meta150 = new global::NCMapper.Runtime.RuntimeMapperMetadata
+            global::NCMapper.Runtime.RuntimeSnapshotPair<NCMapper.Tests.Runtime.MapWhenExecutionSemanticsTests.WgConvEntity, NCMapper.Tests.Runtime.MapWhenExecutionSemanticsTests.WgConvDto>.Metadata = __meta155;
+            global::NCMapper.Runtime.RuntimeSnapshotStore.Register(__meta155);
+            // pair 156: NCMapper.Tests.Runtime.MapWhenExecutionSemanticsTests.WgCtorEntity -> NCMapper.Tests.Runtime.MapWhenExecutionSemanticsTests.WgCtorDto (MapFrom channel)
+            var __mfAttr156 = new global::NCMapper.Attributes.MapFromAttribute(typeof(NCMapper.Tests.Runtime.MapWhenExecutionSemanticsTests.WgCtorEntity));
+            var __meta156 = new global::NCMapper.Runtime.RuntimeMapperMetadata
             {
                 SourceType = typeof(NCMapper.Tests.Runtime.MapWhenExecutionSemanticsTests.WgCtorEntity),
                 TargetType = typeof(NCMapper.Tests.Runtime.MapWhenExecutionSemanticsTests.WgCtorDto),
@@ -21771,7 +22774,7 @@ namespace NCMapper.Runtime
                                 TypeName = "int",
                                 TypeRef = typeof(int),
                                 HasMapFromAttribute = true,
-                                MapFromAttribute = __mfAttr150,
+                                MapFromAttribute = __mfAttr156,
                                 HasMapIgnore = false,
                                 MapIgnoreDirection = 0,
                                 HasOverrideIgnore = false,
@@ -21811,7 +22814,7 @@ namespace NCMapper.Runtime
                                 TypeName = "string",
                                 TypeRef = typeof(string),
                                 HasMapFromAttribute = true,
-                                MapFromAttribute = __mfAttr150,
+                                MapFromAttribute = __mfAttr156,
                                 HasMapIgnore = false,
                                 MapIgnoreDirection = 0,
                                 HasOverrideIgnore = false,
@@ -21853,7 +22856,7 @@ namespace NCMapper.Runtime
                         TypeName = "int",
                         TypeRef = typeof(int),
                         HasMapFromAttribute = true,
-                        MapFromAttribute = __mfAttr150,
+                        MapFromAttribute = __mfAttr156,
                         HasMapIgnore = false,
                         MapIgnoreDirection = 0,
                         HasOverrideIgnore = false,
@@ -21876,7 +22879,7 @@ namespace NCMapper.Runtime
                         TypeName = "string",
                         TypeRef = typeof(string),
                         HasMapFromAttribute = true,
-                        MapFromAttribute = __mfAttr150,
+                        MapFromAttribute = __mfAttr156,
                         HasMapIgnore = false,
                         MapIgnoreDirection = 0,
                         HasOverrideIgnore = false,
@@ -21895,11 +22898,11 @@ namespace NCMapper.Runtime
                     },
                 },
             };
-            global::NCMapper.Runtime.RuntimeSnapshotPair<NCMapper.Tests.Runtime.MapWhenExecutionSemanticsTests.WgCtorEntity, NCMapper.Tests.Runtime.MapWhenExecutionSemanticsTests.WgCtorDto>.Metadata = __meta150;
-            global::NCMapper.Runtime.RuntimeSnapshotStore.Register(__meta150);
-            // pair 151: NCMapper.Tests.Runtime.MapWhenExecutionSemanticsTests.WgEntity -> NCMapper.Tests.Runtime.MapWhenExecutionSemanticsTests.WgDto (MapFrom channel)
-            var __mfAttr151 = new global::NCMapper.Attributes.MapFromAttribute(typeof(NCMapper.Tests.Runtime.MapWhenExecutionSemanticsTests.WgEntity));
-            var __meta151 = new global::NCMapper.Runtime.RuntimeMapperMetadata
+            global::NCMapper.Runtime.RuntimeSnapshotPair<NCMapper.Tests.Runtime.MapWhenExecutionSemanticsTests.WgCtorEntity, NCMapper.Tests.Runtime.MapWhenExecutionSemanticsTests.WgCtorDto>.Metadata = __meta156;
+            global::NCMapper.Runtime.RuntimeSnapshotStore.Register(__meta156);
+            // pair 157: NCMapper.Tests.Runtime.MapWhenExecutionSemanticsTests.WgEntity -> NCMapper.Tests.Runtime.MapWhenExecutionSemanticsTests.WgDto (MapFrom channel)
+            var __mfAttr157 = new global::NCMapper.Attributes.MapFromAttribute(typeof(NCMapper.Tests.Runtime.MapWhenExecutionSemanticsTests.WgEntity));
+            var __meta157 = new global::NCMapper.Runtime.RuntimeMapperMetadata
             {
                 SourceType = typeof(NCMapper.Tests.Runtime.MapWhenExecutionSemanticsTests.WgEntity),
                 TargetType = typeof(NCMapper.Tests.Runtime.MapWhenExecutionSemanticsTests.WgDto),
@@ -21920,7 +22923,7 @@ namespace NCMapper.Runtime
                                 TypeName = "int",
                                 TypeRef = typeof(int),
                                 HasMapFromAttribute = true,
-                                MapFromAttribute = __mfAttr151,
+                                MapFromAttribute = __mfAttr157,
                                 HasMapIgnore = false,
                                 MapIgnoreDirection = 0,
                                 HasOverrideIgnore = false,
@@ -21960,7 +22963,7 @@ namespace NCMapper.Runtime
                                 TypeName = "string",
                                 TypeRef = typeof(string),
                                 HasMapFromAttribute = true,
-                                MapFromAttribute = __mfAttr151,
+                                MapFromAttribute = __mfAttr157,
                                 HasMapIgnore = false,
                                 MapIgnoreDirection = 0,
                                 HasOverrideIgnore = false,
@@ -22002,7 +23005,7 @@ namespace NCMapper.Runtime
                                 TypeName = "string",
                                 TypeRef = typeof(string),
                                 HasMapFromAttribute = true,
-                                MapFromAttribute = __mfAttr151,
+                                MapFromAttribute = __mfAttr157,
                                 HasMapIgnore = false,
                                 MapIgnoreDirection = 0,
                                 HasOverrideIgnore = false,
@@ -22042,7 +23045,7 @@ namespace NCMapper.Runtime
                         TypeName = "int",
                         TypeRef = typeof(int),
                         HasMapFromAttribute = true,
-                        MapFromAttribute = __mfAttr151,
+                        MapFromAttribute = __mfAttr157,
                         HasMapIgnore = false,
                         MapIgnoreDirection = 0,
                         HasOverrideIgnore = false,
@@ -22065,7 +23068,7 @@ namespace NCMapper.Runtime
                         TypeName = "string",
                         TypeRef = typeof(string),
                         HasMapFromAttribute = true,
-                        MapFromAttribute = __mfAttr151,
+                        MapFromAttribute = __mfAttr157,
                         HasMapIgnore = false,
                         MapIgnoreDirection = 0,
                         HasOverrideIgnore = false,
@@ -22088,7 +23091,7 @@ namespace NCMapper.Runtime
                         TypeName = "string",
                         TypeRef = typeof(string),
                         HasMapFromAttribute = true,
-                        MapFromAttribute = __mfAttr151,
+                        MapFromAttribute = __mfAttr157,
                         HasMapIgnore = false,
                         MapIgnoreDirection = 0,
                         HasOverrideIgnore = false,
@@ -22107,11 +23110,11 @@ namespace NCMapper.Runtime
                     },
                 },
             };
-            global::NCMapper.Runtime.RuntimeSnapshotPair<NCMapper.Tests.Runtime.MapWhenExecutionSemanticsTests.WgEntity, NCMapper.Tests.Runtime.MapWhenExecutionSemanticsTests.WgDto>.Metadata = __meta151;
-            global::NCMapper.Runtime.RuntimeSnapshotStore.Register(__meta151);
-            // pair 152: NCMapper.Tests.Runtime.MapWhenExecutionSemanticsTests.WgInitEntity -> NCMapper.Tests.Runtime.MapWhenExecutionSemanticsTests.WgInitDto (MapFrom channel)
-            var __mfAttr152 = new global::NCMapper.Attributes.MapFromAttribute(typeof(NCMapper.Tests.Runtime.MapWhenExecutionSemanticsTests.WgInitEntity));
-            var __meta152 = new global::NCMapper.Runtime.RuntimeMapperMetadata
+            global::NCMapper.Runtime.RuntimeSnapshotPair<NCMapper.Tests.Runtime.MapWhenExecutionSemanticsTests.WgEntity, NCMapper.Tests.Runtime.MapWhenExecutionSemanticsTests.WgDto>.Metadata = __meta157;
+            global::NCMapper.Runtime.RuntimeSnapshotStore.Register(__meta157);
+            // pair 158: NCMapper.Tests.Runtime.MapWhenExecutionSemanticsTests.WgInitEntity -> NCMapper.Tests.Runtime.MapWhenExecutionSemanticsTests.WgInitDto (MapFrom channel)
+            var __mfAttr158 = new global::NCMapper.Attributes.MapFromAttribute(typeof(NCMapper.Tests.Runtime.MapWhenExecutionSemanticsTests.WgInitEntity));
+            var __meta158 = new global::NCMapper.Runtime.RuntimeMapperMetadata
             {
                 SourceType = typeof(NCMapper.Tests.Runtime.MapWhenExecutionSemanticsTests.WgInitEntity),
                 TargetType = typeof(NCMapper.Tests.Runtime.MapWhenExecutionSemanticsTests.WgInitDto),
@@ -22132,7 +23135,7 @@ namespace NCMapper.Runtime
                                 TypeName = "int",
                                 TypeRef = typeof(int),
                                 HasMapFromAttribute = true,
-                                MapFromAttribute = __mfAttr152,
+                                MapFromAttribute = __mfAttr158,
                                 HasMapIgnore = false,
                                 MapIgnoreDirection = 0,
                                 HasOverrideIgnore = false,
@@ -22172,7 +23175,7 @@ namespace NCMapper.Runtime
                                 TypeName = "string",
                                 TypeRef = typeof(string),
                                 HasMapFromAttribute = true,
-                                MapFromAttribute = __mfAttr152,
+                                MapFromAttribute = __mfAttr158,
                                 HasMapIgnore = false,
                                 MapIgnoreDirection = 0,
                                 HasOverrideIgnore = false,
@@ -22214,7 +23217,7 @@ namespace NCMapper.Runtime
                         TypeName = "int",
                         TypeRef = typeof(int),
                         HasMapFromAttribute = true,
-                        MapFromAttribute = __mfAttr152,
+                        MapFromAttribute = __mfAttr158,
                         HasMapIgnore = false,
                         MapIgnoreDirection = 0,
                         HasOverrideIgnore = false,
@@ -22237,7 +23240,7 @@ namespace NCMapper.Runtime
                         TypeName = "string",
                         TypeRef = typeof(string),
                         HasMapFromAttribute = true,
-                        MapFromAttribute = __mfAttr152,
+                        MapFromAttribute = __mfAttr158,
                         HasMapIgnore = false,
                         MapIgnoreDirection = 0,
                         HasOverrideIgnore = false,
@@ -22256,11 +23259,11 @@ namespace NCMapper.Runtime
                     },
                 },
             };
-            global::NCMapper.Runtime.RuntimeSnapshotPair<NCMapper.Tests.Runtime.MapWhenExecutionSemanticsTests.WgInitEntity, NCMapper.Tests.Runtime.MapWhenExecutionSemanticsTests.WgInitDto>.Metadata = __meta152;
-            global::NCMapper.Runtime.RuntimeSnapshotStore.Register(__meta152);
-            // pair 153: NCMapper.Tests.Runtime.MapWhenExecutionSemanticsTests.WgNestedEntity -> NCMapper.Tests.Runtime.MapWhenExecutionSemanticsTests.WgNestedDto (MapFrom channel)
-            var __mfAttr153 = new global::NCMapper.Attributes.MapFromAttribute(typeof(NCMapper.Tests.Runtime.MapWhenExecutionSemanticsTests.WgNestedEntity));
-            var __meta153 = new global::NCMapper.Runtime.RuntimeMapperMetadata
+            global::NCMapper.Runtime.RuntimeSnapshotPair<NCMapper.Tests.Runtime.MapWhenExecutionSemanticsTests.WgInitEntity, NCMapper.Tests.Runtime.MapWhenExecutionSemanticsTests.WgInitDto>.Metadata = __meta158;
+            global::NCMapper.Runtime.RuntimeSnapshotStore.Register(__meta158);
+            // pair 159: NCMapper.Tests.Runtime.MapWhenExecutionSemanticsTests.WgNestedEntity -> NCMapper.Tests.Runtime.MapWhenExecutionSemanticsTests.WgNestedDto (MapFrom channel)
+            var __mfAttr159 = new global::NCMapper.Attributes.MapFromAttribute(typeof(NCMapper.Tests.Runtime.MapWhenExecutionSemanticsTests.WgNestedEntity));
+            var __meta159 = new global::NCMapper.Runtime.RuntimeMapperMetadata
             {
                 SourceType = typeof(NCMapper.Tests.Runtime.MapWhenExecutionSemanticsTests.WgNestedEntity),
                 TargetType = typeof(NCMapper.Tests.Runtime.MapWhenExecutionSemanticsTests.WgNestedDto),
@@ -22281,7 +23284,7 @@ namespace NCMapper.Runtime
                                 TypeName = "int",
                                 TypeRef = typeof(int),
                                 HasMapFromAttribute = true,
-                                MapFromAttribute = __mfAttr153,
+                                MapFromAttribute = __mfAttr159,
                                 HasMapIgnore = false,
                                 MapIgnoreDirection = 0,
                                 HasOverrideIgnore = false,
@@ -22321,7 +23324,7 @@ namespace NCMapper.Runtime
                                 TypeName = "string",
                                 TypeRef = typeof(string),
                                 HasMapFromAttribute = true,
-                                MapFromAttribute = __mfAttr153,
+                                MapFromAttribute = __mfAttr159,
                                 HasMapIgnore = false,
                                 MapIgnoreDirection = 0,
                                 HasOverrideIgnore = false,
@@ -22363,7 +23366,7 @@ namespace NCMapper.Runtime
                         TypeName = "int",
                         TypeRef = typeof(int),
                         HasMapFromAttribute = true,
-                        MapFromAttribute = __mfAttr153,
+                        MapFromAttribute = __mfAttr159,
                         HasMapIgnore = false,
                         MapIgnoreDirection = 0,
                         HasOverrideIgnore = false,
@@ -22386,7 +23389,7 @@ namespace NCMapper.Runtime
                         TypeName = "string",
                         TypeRef = typeof(string),
                         HasMapFromAttribute = true,
-                        MapFromAttribute = __mfAttr153,
+                        MapFromAttribute = __mfAttr159,
                         HasMapIgnore = false,
                         MapIgnoreDirection = 0,
                         HasOverrideIgnore = false,
@@ -22405,11 +23408,11 @@ namespace NCMapper.Runtime
                     },
                 },
             };
-            global::NCMapper.Runtime.RuntimeSnapshotPair<NCMapper.Tests.Runtime.MapWhenExecutionSemanticsTests.WgNestedEntity, NCMapper.Tests.Runtime.MapWhenExecutionSemanticsTests.WgNestedDto>.Metadata = __meta153;
-            global::NCMapper.Runtime.RuntimeSnapshotStore.Register(__meta153);
-            // pair 154: NCMapper.Tests.Runtime.MapWhenExecutionSemanticsTests.WgRtEntity -> NCMapper.Tests.Runtime.MapWhenExecutionSemanticsTests.WgRtDto (MapFrom channel)
-            var __mfAttr154 = new global::NCMapper.Attributes.MapFromAttribute(typeof(NCMapper.Tests.Runtime.MapWhenExecutionSemanticsTests.WgRtEntity));
-            var __meta154 = new global::NCMapper.Runtime.RuntimeMapperMetadata
+            global::NCMapper.Runtime.RuntimeSnapshotPair<NCMapper.Tests.Runtime.MapWhenExecutionSemanticsTests.WgNestedEntity, NCMapper.Tests.Runtime.MapWhenExecutionSemanticsTests.WgNestedDto>.Metadata = __meta159;
+            global::NCMapper.Runtime.RuntimeSnapshotStore.Register(__meta159);
+            // pair 160: NCMapper.Tests.Runtime.MapWhenExecutionSemanticsTests.WgRtEntity -> NCMapper.Tests.Runtime.MapWhenExecutionSemanticsTests.WgRtDto (MapFrom channel)
+            var __mfAttr160 = new global::NCMapper.Attributes.MapFromAttribute(typeof(NCMapper.Tests.Runtime.MapWhenExecutionSemanticsTests.WgRtEntity));
+            var __meta160 = new global::NCMapper.Runtime.RuntimeMapperMetadata
             {
                 SourceType = typeof(NCMapper.Tests.Runtime.MapWhenExecutionSemanticsTests.WgRtEntity),
                 TargetType = typeof(NCMapper.Tests.Runtime.MapWhenExecutionSemanticsTests.WgRtDto),
@@ -22430,7 +23433,7 @@ namespace NCMapper.Runtime
                                 TypeName = "int",
                                 TypeRef = typeof(int),
                                 HasMapFromAttribute = true,
-                                MapFromAttribute = __mfAttr154,
+                                MapFromAttribute = __mfAttr160,
                                 HasMapIgnore = false,
                                 MapIgnoreDirection = 0,
                                 HasOverrideIgnore = false,
@@ -22470,7 +23473,7 @@ namespace NCMapper.Runtime
                                 TypeName = "string",
                                 TypeRef = typeof(string),
                                 HasMapFromAttribute = true,
-                                MapFromAttribute = __mfAttr154,
+                                MapFromAttribute = __mfAttr160,
                                 HasMapIgnore = false,
                                 MapIgnoreDirection = 0,
                                 HasOverrideIgnore = false,
@@ -22512,7 +23515,7 @@ namespace NCMapper.Runtime
                         TypeName = "int",
                         TypeRef = typeof(int),
                         HasMapFromAttribute = true,
-                        MapFromAttribute = __mfAttr154,
+                        MapFromAttribute = __mfAttr160,
                         HasMapIgnore = false,
                         MapIgnoreDirection = 0,
                         HasOverrideIgnore = false,
@@ -22535,7 +23538,7 @@ namespace NCMapper.Runtime
                         TypeName = "string",
                         TypeRef = typeof(string),
                         HasMapFromAttribute = true,
-                        MapFromAttribute = __mfAttr154,
+                        MapFromAttribute = __mfAttr160,
                         HasMapIgnore = false,
                         MapIgnoreDirection = 0,
                         HasOverrideIgnore = false,
@@ -22554,11 +23557,11 @@ namespace NCMapper.Runtime
                     },
                 },
             };
-            global::NCMapper.Runtime.RuntimeSnapshotPair<NCMapper.Tests.Runtime.MapWhenExecutionSemanticsTests.WgRtEntity, NCMapper.Tests.Runtime.MapWhenExecutionSemanticsTests.WgRtDto>.Metadata = __meta154;
-            global::NCMapper.Runtime.RuntimeSnapshotStore.Register(__meta154);
-            // pair 155: NCMapper.Tests.Runtime.MapWhenExecutionSemanticsTests.WgRtT2Entity -> NCMapper.Tests.Runtime.MapWhenExecutionSemanticsTests.WgRtT2Dto (MapFrom channel)
-            var __mfAttr155 = new global::NCMapper.Attributes.MapFromAttribute(typeof(NCMapper.Tests.Runtime.MapWhenExecutionSemanticsTests.WgRtT2Entity));
-            var __meta155 = new global::NCMapper.Runtime.RuntimeMapperMetadata
+            global::NCMapper.Runtime.RuntimeSnapshotPair<NCMapper.Tests.Runtime.MapWhenExecutionSemanticsTests.WgRtEntity, NCMapper.Tests.Runtime.MapWhenExecutionSemanticsTests.WgRtDto>.Metadata = __meta160;
+            global::NCMapper.Runtime.RuntimeSnapshotStore.Register(__meta160);
+            // pair 161: NCMapper.Tests.Runtime.MapWhenExecutionSemanticsTests.WgRtT2Entity -> NCMapper.Tests.Runtime.MapWhenExecutionSemanticsTests.WgRtT2Dto (MapFrom channel)
+            var __mfAttr161 = new global::NCMapper.Attributes.MapFromAttribute(typeof(NCMapper.Tests.Runtime.MapWhenExecutionSemanticsTests.WgRtT2Entity));
+            var __meta161 = new global::NCMapper.Runtime.RuntimeMapperMetadata
             {
                 SourceType = typeof(NCMapper.Tests.Runtime.MapWhenExecutionSemanticsTests.WgRtT2Entity),
                 TargetType = typeof(NCMapper.Tests.Runtime.MapWhenExecutionSemanticsTests.WgRtT2Dto),
@@ -22579,7 +23582,7 @@ namespace NCMapper.Runtime
                                 TypeName = "int",
                                 TypeRef = typeof(int),
                                 HasMapFromAttribute = true,
-                                MapFromAttribute = __mfAttr155,
+                                MapFromAttribute = __mfAttr161,
                                 HasMapIgnore = false,
                                 MapIgnoreDirection = 0,
                                 HasOverrideIgnore = false,
@@ -22619,7 +23622,7 @@ namespace NCMapper.Runtime
                                 TypeName = "int",
                                 TypeRef = typeof(int),
                                 HasMapFromAttribute = true,
-                                MapFromAttribute = __mfAttr155,
+                                MapFromAttribute = __mfAttr161,
                                 HasMapIgnore = false,
                                 MapIgnoreDirection = 0,
                                 HasOverrideIgnore = false,
@@ -22661,7 +23664,7 @@ namespace NCMapper.Runtime
                         TypeName = "int",
                         TypeRef = typeof(int),
                         HasMapFromAttribute = true,
-                        MapFromAttribute = __mfAttr155,
+                        MapFromAttribute = __mfAttr161,
                         HasMapIgnore = false,
                         MapIgnoreDirection = 0,
                         HasOverrideIgnore = false,
@@ -22684,7 +23687,7 @@ namespace NCMapper.Runtime
                         TypeName = "int",
                         TypeRef = typeof(int),
                         HasMapFromAttribute = true,
-                        MapFromAttribute = __mfAttr155,
+                        MapFromAttribute = __mfAttr161,
                         HasMapIgnore = false,
                         MapIgnoreDirection = 0,
                         HasOverrideIgnore = false,
@@ -22703,11 +23706,11 @@ namespace NCMapper.Runtime
                     },
                 },
             };
-            global::NCMapper.Runtime.RuntimeSnapshotPair<NCMapper.Tests.Runtime.MapWhenExecutionSemanticsTests.WgRtT2Entity, NCMapper.Tests.Runtime.MapWhenExecutionSemanticsTests.WgRtT2Dto>.Metadata = __meta155;
-            global::NCMapper.Runtime.RuntimeSnapshotStore.Register(__meta155);
-            // pair 156: NCMapper.Tests.Runtime.MapWhenExecutionSemanticsTests.WgT2Entity -> NCMapper.Tests.Runtime.MapWhenExecutionSemanticsTests.WgT2Dto (MapFrom channel)
-            var __mfAttr156 = new global::NCMapper.Attributes.MapFromAttribute(typeof(NCMapper.Tests.Runtime.MapWhenExecutionSemanticsTests.WgT2Entity));
-            var __meta156 = new global::NCMapper.Runtime.RuntimeMapperMetadata
+            global::NCMapper.Runtime.RuntimeSnapshotPair<NCMapper.Tests.Runtime.MapWhenExecutionSemanticsTests.WgRtT2Entity, NCMapper.Tests.Runtime.MapWhenExecutionSemanticsTests.WgRtT2Dto>.Metadata = __meta161;
+            global::NCMapper.Runtime.RuntimeSnapshotStore.Register(__meta161);
+            // pair 162: NCMapper.Tests.Runtime.MapWhenExecutionSemanticsTests.WgT2Entity -> NCMapper.Tests.Runtime.MapWhenExecutionSemanticsTests.WgT2Dto (MapFrom channel)
+            var __mfAttr162 = new global::NCMapper.Attributes.MapFromAttribute(typeof(NCMapper.Tests.Runtime.MapWhenExecutionSemanticsTests.WgT2Entity));
+            var __meta162 = new global::NCMapper.Runtime.RuntimeMapperMetadata
             {
                 SourceType = typeof(NCMapper.Tests.Runtime.MapWhenExecutionSemanticsTests.WgT2Entity),
                 TargetType = typeof(NCMapper.Tests.Runtime.MapWhenExecutionSemanticsTests.WgT2Dto),
@@ -22728,7 +23731,7 @@ namespace NCMapper.Runtime
                                 TypeName = "int",
                                 TypeRef = typeof(int),
                                 HasMapFromAttribute = true,
-                                MapFromAttribute = __mfAttr156,
+                                MapFromAttribute = __mfAttr162,
                                 HasMapIgnore = false,
                                 MapIgnoreDirection = 0,
                                 HasOverrideIgnore = false,
@@ -22768,7 +23771,7 @@ namespace NCMapper.Runtime
                                 TypeName = "int",
                                 TypeRef = typeof(int),
                                 HasMapFromAttribute = true,
-                                MapFromAttribute = __mfAttr156,
+                                MapFromAttribute = __mfAttr162,
                                 HasMapIgnore = false,
                                 MapIgnoreDirection = 0,
                                 HasOverrideIgnore = false,
@@ -22810,7 +23813,7 @@ namespace NCMapper.Runtime
                         TypeName = "int",
                         TypeRef = typeof(int),
                         HasMapFromAttribute = true,
-                        MapFromAttribute = __mfAttr156,
+                        MapFromAttribute = __mfAttr162,
                         HasMapIgnore = false,
                         MapIgnoreDirection = 0,
                         HasOverrideIgnore = false,
@@ -22833,7 +23836,7 @@ namespace NCMapper.Runtime
                         TypeName = "int",
                         TypeRef = typeof(int),
                         HasMapFromAttribute = true,
-                        MapFromAttribute = __mfAttr156,
+                        MapFromAttribute = __mfAttr162,
                         HasMapIgnore = false,
                         MapIgnoreDirection = 0,
                         HasOverrideIgnore = false,
@@ -22852,10 +23855,10 @@ namespace NCMapper.Runtime
                     },
                 },
             };
-            global::NCMapper.Runtime.RuntimeSnapshotPair<NCMapper.Tests.Runtime.MapWhenExecutionSemanticsTests.WgT2Entity, NCMapper.Tests.Runtime.MapWhenExecutionSemanticsTests.WgT2Dto>.Metadata = __meta156;
-            global::NCMapper.Runtime.RuntimeSnapshotStore.Register(__meta156);
-            // pair 157: NCMapper.Tests.Runtime.MapWhenFluentExecutionTests.WgFAEntity -> NCMapper.Tests.Runtime.MapWhenFluentExecutionTests.WgFADto (Fluent channel)
-            var __meta157 = new global::NCMapper.Runtime.RuntimeMapperMetadata
+            global::NCMapper.Runtime.RuntimeSnapshotPair<NCMapper.Tests.Runtime.MapWhenExecutionSemanticsTests.WgT2Entity, NCMapper.Tests.Runtime.MapWhenExecutionSemanticsTests.WgT2Dto>.Metadata = __meta162;
+            global::NCMapper.Runtime.RuntimeSnapshotStore.Register(__meta162);
+            // pair 163: NCMapper.Tests.Runtime.MapWhenFluentExecutionTests.WgFAEntity -> NCMapper.Tests.Runtime.MapWhenFluentExecutionTests.WgFADto (Fluent channel)
+            var __meta163 = new global::NCMapper.Runtime.RuntimeMapperMetadata
             {
                 SourceType = typeof(NCMapper.Tests.Runtime.MapWhenFluentExecutionTests.WgFAEntity),
                 TargetType = typeof(NCMapper.Tests.Runtime.MapWhenFluentExecutionTests.WgFADto),
@@ -23000,10 +24003,10 @@ namespace NCMapper.Runtime
                     },
                 },
             };
-            global::NCMapper.Runtime.RuntimeSnapshotPair<NCMapper.Tests.Runtime.MapWhenFluentExecutionTests.WgFAEntity, NCMapper.Tests.Runtime.MapWhenFluentExecutionTests.WgFADto>.Metadata = __meta157;
-            global::NCMapper.Runtime.RuntimeSnapshotStore.Register(__meta157);
-            // pair 158: NCMapper.Tests.Runtime.MapWhenFluentExecutionTests.WgFB1Entity -> NCMapper.Tests.Runtime.MapWhenFluentExecutionTests.WgFB1Dto (Fluent channel)
-            var __meta158 = new global::NCMapper.Runtime.RuntimeMapperMetadata
+            global::NCMapper.Runtime.RuntimeSnapshotPair<NCMapper.Tests.Runtime.MapWhenFluentExecutionTests.WgFAEntity, NCMapper.Tests.Runtime.MapWhenFluentExecutionTests.WgFADto>.Metadata = __meta163;
+            global::NCMapper.Runtime.RuntimeSnapshotStore.Register(__meta163);
+            // pair 164: NCMapper.Tests.Runtime.MapWhenFluentExecutionTests.WgFB1Entity -> NCMapper.Tests.Runtime.MapWhenFluentExecutionTests.WgFB1Dto (Fluent channel)
+            var __meta164 = new global::NCMapper.Runtime.RuntimeMapperMetadata
             {
                 SourceType = typeof(NCMapper.Tests.Runtime.MapWhenFluentExecutionTests.WgFB1Entity),
                 TargetType = typeof(NCMapper.Tests.Runtime.MapWhenFluentExecutionTests.WgFB1Dto),
@@ -23148,10 +24151,10 @@ namespace NCMapper.Runtime
                     },
                 },
             };
-            global::NCMapper.Runtime.RuntimeSnapshotPair<NCMapper.Tests.Runtime.MapWhenFluentExecutionTests.WgFB1Entity, NCMapper.Tests.Runtime.MapWhenFluentExecutionTests.WgFB1Dto>.Metadata = __meta158;
-            global::NCMapper.Runtime.RuntimeSnapshotStore.Register(__meta158);
-            // pair 159: NCMapper.Tests.Runtime.MapWhenFluentExecutionTests.WgFB2Entity -> NCMapper.Tests.Runtime.MapWhenFluentExecutionTests.WgFB2Dto (Fluent channel)
-            var __meta159 = new global::NCMapper.Runtime.RuntimeMapperMetadata
+            global::NCMapper.Runtime.RuntimeSnapshotPair<NCMapper.Tests.Runtime.MapWhenFluentExecutionTests.WgFB1Entity, NCMapper.Tests.Runtime.MapWhenFluentExecutionTests.WgFB1Dto>.Metadata = __meta164;
+            global::NCMapper.Runtime.RuntimeSnapshotStore.Register(__meta164);
+            // pair 165: NCMapper.Tests.Runtime.MapWhenFluentExecutionTests.WgFB2Entity -> NCMapper.Tests.Runtime.MapWhenFluentExecutionTests.WgFB2Dto (Fluent channel)
+            var __meta165 = new global::NCMapper.Runtime.RuntimeMapperMetadata
             {
                 SourceType = typeof(NCMapper.Tests.Runtime.MapWhenFluentExecutionTests.WgFB2Entity),
                 TargetType = typeof(NCMapper.Tests.Runtime.MapWhenFluentExecutionTests.WgFB2Dto),
@@ -23296,10 +24299,10 @@ namespace NCMapper.Runtime
                     },
                 },
             };
-            global::NCMapper.Runtime.RuntimeSnapshotPair<NCMapper.Tests.Runtime.MapWhenFluentExecutionTests.WgFB2Entity, NCMapper.Tests.Runtime.MapWhenFluentExecutionTests.WgFB2Dto>.Metadata = __meta159;
-            global::NCMapper.Runtime.RuntimeSnapshotStore.Register(__meta159);
-            // pair 160: NCMapper.Tests.Runtime.MapWhenFluentExecutionTests.WgFBlkEntity -> NCMapper.Tests.Runtime.MapWhenFluentExecutionTests.WgFBlkDto (Fluent channel)
-            var __meta160 = new global::NCMapper.Runtime.RuntimeMapperMetadata
+            global::NCMapper.Runtime.RuntimeSnapshotPair<NCMapper.Tests.Runtime.MapWhenFluentExecutionTests.WgFB2Entity, NCMapper.Tests.Runtime.MapWhenFluentExecutionTests.WgFB2Dto>.Metadata = __meta165;
+            global::NCMapper.Runtime.RuntimeSnapshotStore.Register(__meta165);
+            // pair 166: NCMapper.Tests.Runtime.MapWhenFluentExecutionTests.WgFBlkEntity -> NCMapper.Tests.Runtime.MapWhenFluentExecutionTests.WgFBlkDto (Fluent channel)
+            var __meta166 = new global::NCMapper.Runtime.RuntimeMapperMetadata
             {
                 SourceType = typeof(NCMapper.Tests.Runtime.MapWhenFluentExecutionTests.WgFBlkEntity),
                 TargetType = typeof(NCMapper.Tests.Runtime.MapWhenFluentExecutionTests.WgFBlkDto),
@@ -23421,10 +24424,10 @@ namespace NCMapper.Runtime
                     },
                 },
             };
-            global::NCMapper.Runtime.RuntimeSnapshotPair<NCMapper.Tests.Runtime.MapWhenFluentExecutionTests.WgFBlkEntity, NCMapper.Tests.Runtime.MapWhenFluentExecutionTests.WgFBlkDto>.Metadata = __meta160;
-            global::NCMapper.Runtime.RuntimeSnapshotStore.Register(__meta160);
-            // pair 161: NCMapper.Tests.Runtime.MapWhenFluentExecutionTests.WgFCEntity -> NCMapper.Tests.Runtime.MapWhenFluentExecutionTests.WgFCDto (Fluent channel)
-            var __meta161 = new global::NCMapper.Runtime.RuntimeMapperMetadata
+            global::NCMapper.Runtime.RuntimeSnapshotPair<NCMapper.Tests.Runtime.MapWhenFluentExecutionTests.WgFBlkEntity, NCMapper.Tests.Runtime.MapWhenFluentExecutionTests.WgFBlkDto>.Metadata = __meta166;
+            global::NCMapper.Runtime.RuntimeSnapshotStore.Register(__meta166);
+            // pair 167: NCMapper.Tests.Runtime.MapWhenFluentExecutionTests.WgFCEntity -> NCMapper.Tests.Runtime.MapWhenFluentExecutionTests.WgFCDto (Fluent channel)
+            var __meta167 = new global::NCMapper.Runtime.RuntimeMapperMetadata
             {
                 SourceType = typeof(NCMapper.Tests.Runtime.MapWhenFluentExecutionTests.WgFCEntity),
                 TargetType = typeof(NCMapper.Tests.Runtime.MapWhenFluentExecutionTests.WgFCDto),
@@ -23569,11 +24572,11 @@ namespace NCMapper.Runtime
                     },
                 },
             };
-            global::NCMapper.Runtime.RuntimeSnapshotPair<NCMapper.Tests.Runtime.MapWhenFluentExecutionTests.WgFCEntity, NCMapper.Tests.Runtime.MapWhenFluentExecutionTests.WgFCDto>.Metadata = __meta161;
-            global::NCMapper.Runtime.RuntimeSnapshotStore.Register(__meta161);
-            // pair 162: NCMapper.Tests.Runtime.TreeConfigConsumptionTests.A19Entity -> NCMapper.Tests.Runtime.TreeConfigConsumptionTests.A19AttrDto (MapFrom channel)
-            var __mfAttr162 = new global::NCMapper.Attributes.MapFromAttribute(typeof(NCMapper.Tests.Runtime.TreeConfigConsumptionTests.A19Entity));
-            var __meta162 = new global::NCMapper.Runtime.RuntimeMapperMetadata
+            global::NCMapper.Runtime.RuntimeSnapshotPair<NCMapper.Tests.Runtime.MapWhenFluentExecutionTests.WgFCEntity, NCMapper.Tests.Runtime.MapWhenFluentExecutionTests.WgFCDto>.Metadata = __meta167;
+            global::NCMapper.Runtime.RuntimeSnapshotStore.Register(__meta167);
+            // pair 168: NCMapper.Tests.Runtime.TreeConfigConsumptionTests.A19Entity -> NCMapper.Tests.Runtime.TreeConfigConsumptionTests.A19AttrDto (MapFrom channel)
+            var __mfAttr168 = new global::NCMapper.Attributes.MapFromAttribute(typeof(NCMapper.Tests.Runtime.TreeConfigConsumptionTests.A19Entity));
+            var __meta168 = new global::NCMapper.Runtime.RuntimeMapperMetadata
             {
                 SourceType = typeof(NCMapper.Tests.Runtime.TreeConfigConsumptionTests.A19Entity),
                 TargetType = typeof(NCMapper.Tests.Runtime.TreeConfigConsumptionTests.A19AttrDto),
@@ -23594,7 +24597,7 @@ namespace NCMapper.Runtime
                                 TypeName = "int",
                                 TypeRef = typeof(int),
                                 HasMapFromAttribute = true,
-                                MapFromAttribute = __mfAttr162,
+                                MapFromAttribute = __mfAttr168,
                                 HasMapIgnore = false,
                                 MapIgnoreDirection = 0,
                                 HasOverrideIgnore = false,
@@ -23634,7 +24637,7 @@ namespace NCMapper.Runtime
                         TypeName = "int",
                         TypeRef = typeof(int),
                         HasMapFromAttribute = true,
-                        MapFromAttribute = __mfAttr162,
+                        MapFromAttribute = __mfAttr168,
                         HasMapIgnore = false,
                         MapIgnoreDirection = 0,
                         HasOverrideIgnore = false,
@@ -23657,7 +24660,7 @@ namespace NCMapper.Runtime
                         TypeName = "System.Collections.Generic.List<string>",
                         TypeRef = typeof(System.Collections.Generic.List<string>),
                         HasMapFromAttribute = true,
-                        MapFromAttribute = __mfAttr162,
+                        MapFromAttribute = __mfAttr168,
                         HasMapIgnore = false,
                         MapIgnoreDirection = 0,
                         HasOverrideIgnore = false,
@@ -23676,11 +24679,11 @@ namespace NCMapper.Runtime
                     },
                 },
             };
-            global::NCMapper.Runtime.RuntimeSnapshotPair<NCMapper.Tests.Runtime.TreeConfigConsumptionTests.A19Entity, NCMapper.Tests.Runtime.TreeConfigConsumptionTests.A19AttrDto>.Metadata = __meta162;
-            global::NCMapper.Runtime.RuntimeSnapshotStore.Register(__meta162);
-            // pair 163: NCMapper.Tests.Runtime.TreeConfigConsumptionTests.A19Entity -> NCMapper.Tests.Runtime.TreeConfigConsumptionTests.A19AttrNoAutoNestedDto (MapFrom channel)
-            var __mfAttr163 = new global::NCMapper.Attributes.MapFromAttribute(typeof(NCMapper.Tests.Runtime.TreeConfigConsumptionTests.A19Entity));
-            var __meta163 = new global::NCMapper.Runtime.RuntimeMapperMetadata
+            global::NCMapper.Runtime.RuntimeSnapshotPair<NCMapper.Tests.Runtime.TreeConfigConsumptionTests.A19Entity, NCMapper.Tests.Runtime.TreeConfigConsumptionTests.A19AttrDto>.Metadata = __meta168;
+            global::NCMapper.Runtime.RuntimeSnapshotStore.Register(__meta168);
+            // pair 169: NCMapper.Tests.Runtime.TreeConfigConsumptionTests.A19Entity -> NCMapper.Tests.Runtime.TreeConfigConsumptionTests.A19AttrNoAutoNestedDto (MapFrom channel)
+            var __mfAttr169 = new global::NCMapper.Attributes.MapFromAttribute(typeof(NCMapper.Tests.Runtime.TreeConfigConsumptionTests.A19Entity));
+            var __meta169 = new global::NCMapper.Runtime.RuntimeMapperMetadata
             {
                 SourceType = typeof(NCMapper.Tests.Runtime.TreeConfigConsumptionTests.A19Entity),
                 TargetType = typeof(NCMapper.Tests.Runtime.TreeConfigConsumptionTests.A19AttrNoAutoNestedDto),
@@ -23701,7 +24704,7 @@ namespace NCMapper.Runtime
                                 TypeName = "int",
                                 TypeRef = typeof(int),
                                 HasMapFromAttribute = true,
-                                MapFromAttribute = __mfAttr163,
+                                MapFromAttribute = __mfAttr169,
                                 HasMapIgnore = false,
                                 MapIgnoreDirection = 0,
                                 HasOverrideIgnore = false,
@@ -23741,7 +24744,7 @@ namespace NCMapper.Runtime
                                 TypeName = "System.Collections.Generic.List<NCMapper.Tests.Runtime.TreeConfigConsumptionTests.A19LogDto>",
                                 TypeRef = typeof(System.Collections.Generic.List<NCMapper.Tests.Runtime.TreeConfigConsumptionTests.A19LogDto>),
                                 HasMapFromAttribute = true,
-                                MapFromAttribute = __mfAttr163,
+                                MapFromAttribute = __mfAttr169,
                                 HasMapIgnore = false,
                                 MapIgnoreDirection = 0,
                                 HasOverrideIgnore = false,
@@ -23782,7 +24785,7 @@ namespace NCMapper.Runtime
                         TypeName = "int",
                         TypeRef = typeof(int),
                         HasMapFromAttribute = true,
-                        MapFromAttribute = __mfAttr163,
+                        MapFromAttribute = __mfAttr169,
                         HasMapIgnore = false,
                         MapIgnoreDirection = 0,
                         HasOverrideIgnore = false,
@@ -23805,7 +24808,7 @@ namespace NCMapper.Runtime
                         TypeName = "System.Collections.Generic.List<NCMapper.Tests.Runtime.TreeConfigConsumptionTests.A19LogDto>",
                         TypeRef = typeof(System.Collections.Generic.List<NCMapper.Tests.Runtime.TreeConfigConsumptionTests.A19LogDto>),
                         HasMapFromAttribute = true,
-                        MapFromAttribute = __mfAttr163,
+                        MapFromAttribute = __mfAttr169,
                         HasMapIgnore = false,
                         MapIgnoreDirection = 0,
                         HasOverrideIgnore = false,
@@ -23824,11 +24827,11 @@ namespace NCMapper.Runtime
                     },
                 },
             };
-            global::NCMapper.Runtime.RuntimeSnapshotPair<NCMapper.Tests.Runtime.TreeConfigConsumptionTests.A19Entity, NCMapper.Tests.Runtime.TreeConfigConsumptionTests.A19AttrNoAutoNestedDto>.Metadata = __meta163;
-            global::NCMapper.Runtime.RuntimeSnapshotStore.Register(__meta163);
-            // pair 164: NCMapper.Tests.Runtime.TreeConfigConsumptionTests.A19Entity -> NCMapper.Tests.Runtime.TreeConfigConsumptionTests.A19FluentDto (MapFrom channel)
-            var __mfAttr164 = new global::NCMapper.Attributes.MapFromAttribute(typeof(NCMapper.Tests.Runtime.TreeConfigConsumptionTests.A19Entity));
-            var __meta164 = new global::NCMapper.Runtime.RuntimeMapperMetadata
+            global::NCMapper.Runtime.RuntimeSnapshotPair<NCMapper.Tests.Runtime.TreeConfigConsumptionTests.A19Entity, NCMapper.Tests.Runtime.TreeConfigConsumptionTests.A19AttrNoAutoNestedDto>.Metadata = __meta169;
+            global::NCMapper.Runtime.RuntimeSnapshotStore.Register(__meta169);
+            // pair 170: NCMapper.Tests.Runtime.TreeConfigConsumptionTests.A19Entity -> NCMapper.Tests.Runtime.TreeConfigConsumptionTests.A19FluentDto (MapFrom channel)
+            var __mfAttr170 = new global::NCMapper.Attributes.MapFromAttribute(typeof(NCMapper.Tests.Runtime.TreeConfigConsumptionTests.A19Entity));
+            var __meta170 = new global::NCMapper.Runtime.RuntimeMapperMetadata
             {
                 SourceType = typeof(NCMapper.Tests.Runtime.TreeConfigConsumptionTests.A19Entity),
                 TargetType = typeof(NCMapper.Tests.Runtime.TreeConfigConsumptionTests.A19FluentDto),
@@ -23849,7 +24852,7 @@ namespace NCMapper.Runtime
                                 TypeName = "int",
                                 TypeRef = typeof(int),
                                 HasMapFromAttribute = true,
-                                MapFromAttribute = __mfAttr164,
+                                MapFromAttribute = __mfAttr170,
                                 HasMapIgnore = false,
                                 MapIgnoreDirection = 0,
                                 HasOverrideIgnore = false,
@@ -23889,7 +24892,7 @@ namespace NCMapper.Runtime
                         TypeName = "int",
                         TypeRef = typeof(int),
                         HasMapFromAttribute = true,
-                        MapFromAttribute = __mfAttr164,
+                        MapFromAttribute = __mfAttr170,
                         HasMapIgnore = false,
                         MapIgnoreDirection = 0,
                         HasOverrideIgnore = false,
@@ -23912,7 +24915,7 @@ namespace NCMapper.Runtime
                         TypeName = "System.Collections.Generic.List<string>",
                         TypeRef = typeof(System.Collections.Generic.List<string>),
                         HasMapFromAttribute = true,
-                        MapFromAttribute = __mfAttr164,
+                        MapFromAttribute = __mfAttr170,
                         HasMapIgnore = false,
                         MapIgnoreDirection = 0,
                         HasOverrideIgnore = false,
@@ -23931,11 +24934,11 @@ namespace NCMapper.Runtime
                     },
                 },
             };
-            global::NCMapper.Runtime.RuntimeSnapshotPair<NCMapper.Tests.Runtime.TreeConfigConsumptionTests.A19Entity, NCMapper.Tests.Runtime.TreeConfigConsumptionTests.A19FluentDto>.Metadata = __meta164;
-            global::NCMapper.Runtime.RuntimeSnapshotStore.Register(__meta164);
-            // pair 165: NCMapper.Tests.Runtime.TreeConfigConsumptionTests.A19Entity -> NCMapper.Tests.Runtime.TreeConfigConsumptionTests.A19PairLevelDto (MapFrom channel)
-            var __mfAttr165 = new global::NCMapper.Attributes.MapFromAttribute(typeof(NCMapper.Tests.Runtime.TreeConfigConsumptionTests.A19Entity));
-            var __meta165 = new global::NCMapper.Runtime.RuntimeMapperMetadata
+            global::NCMapper.Runtime.RuntimeSnapshotPair<NCMapper.Tests.Runtime.TreeConfigConsumptionTests.A19Entity, NCMapper.Tests.Runtime.TreeConfigConsumptionTests.A19FluentDto>.Metadata = __meta170;
+            global::NCMapper.Runtime.RuntimeSnapshotStore.Register(__meta170);
+            // pair 171: NCMapper.Tests.Runtime.TreeConfigConsumptionTests.A19Entity -> NCMapper.Tests.Runtime.TreeConfigConsumptionTests.A19PairLevelDto (MapFrom channel)
+            var __mfAttr171 = new global::NCMapper.Attributes.MapFromAttribute(typeof(NCMapper.Tests.Runtime.TreeConfigConsumptionTests.A19Entity));
+            var __meta171 = new global::NCMapper.Runtime.RuntimeMapperMetadata
             {
                 SourceType = typeof(NCMapper.Tests.Runtime.TreeConfigConsumptionTests.A19Entity),
                 TargetType = typeof(NCMapper.Tests.Runtime.TreeConfigConsumptionTests.A19PairLevelDto),
@@ -23956,7 +24959,7 @@ namespace NCMapper.Runtime
                                 TypeName = "int",
                                 TypeRef = typeof(int),
                                 HasMapFromAttribute = true,
-                                MapFromAttribute = __mfAttr165,
+                                MapFromAttribute = __mfAttr171,
                                 HasMapIgnore = false,
                                 MapIgnoreDirection = 0,
                                 HasOverrideIgnore = false,
@@ -23996,7 +24999,7 @@ namespace NCMapper.Runtime
                         TypeName = "int",
                         TypeRef = typeof(int),
                         HasMapFromAttribute = true,
-                        MapFromAttribute = __mfAttr165,
+                        MapFromAttribute = __mfAttr171,
                         HasMapIgnore = false,
                         MapIgnoreDirection = 0,
                         HasOverrideIgnore = false,
@@ -24019,7 +25022,7 @@ namespace NCMapper.Runtime
                         TypeName = "System.Collections.Generic.List<string>",
                         TypeRef = typeof(System.Collections.Generic.List<string>),
                         HasMapFromAttribute = true,
-                        MapFromAttribute = __mfAttr165,
+                        MapFromAttribute = __mfAttr171,
                         HasMapIgnore = false,
                         MapIgnoreDirection = 0,
                         HasOverrideIgnore = false,
@@ -24038,11 +25041,11 @@ namespace NCMapper.Runtime
                     },
                 },
             };
-            global::NCMapper.Runtime.RuntimeSnapshotPair<NCMapper.Tests.Runtime.TreeConfigConsumptionTests.A19Entity, NCMapper.Tests.Runtime.TreeConfigConsumptionTests.A19PairLevelDto>.Metadata = __meta165;
-            global::NCMapper.Runtime.RuntimeSnapshotStore.Register(__meta165);
-            // pair 166: NCMapper.Tests.Runtime.TreeConfigConsumptionTests.TreeDto -> NCMapper.Tests.Runtime.TreeConfigConsumptionTests.AttrTreeDto (MapFrom channel)
-            var __mfAttr166 = new global::NCMapper.Attributes.MapFromAttribute(typeof(NCMapper.Tests.Runtime.TreeConfigConsumptionTests.TreeDto));
-            var __meta166 = new global::NCMapper.Runtime.RuntimeMapperMetadata
+            global::NCMapper.Runtime.RuntimeSnapshotPair<NCMapper.Tests.Runtime.TreeConfigConsumptionTests.A19Entity, NCMapper.Tests.Runtime.TreeConfigConsumptionTests.A19PairLevelDto>.Metadata = __meta171;
+            global::NCMapper.Runtime.RuntimeSnapshotStore.Register(__meta171);
+            // pair 172: NCMapper.Tests.Runtime.TreeConfigConsumptionTests.TreeDto -> NCMapper.Tests.Runtime.TreeConfigConsumptionTests.AttrTreeDto (MapFrom channel)
+            var __mfAttr172 = new global::NCMapper.Attributes.MapFromAttribute(typeof(NCMapper.Tests.Runtime.TreeConfigConsumptionTests.TreeDto));
+            var __meta172 = new global::NCMapper.Runtime.RuntimeMapperMetadata
             {
                 SourceType = typeof(NCMapper.Tests.Runtime.TreeConfigConsumptionTests.TreeDto),
                 TargetType = typeof(NCMapper.Tests.Runtime.TreeConfigConsumptionTests.AttrTreeDto),
@@ -24063,7 +25066,7 @@ namespace NCMapper.Runtime
                                 TypeName = "int",
                                 TypeRef = typeof(int),
                                 HasMapFromAttribute = true,
-                                MapFromAttribute = __mfAttr166,
+                                MapFromAttribute = __mfAttr172,
                                 HasMapIgnore = false,
                                 MapIgnoreDirection = 0,
                                 HasOverrideIgnore = false,
@@ -24103,7 +25106,7 @@ namespace NCMapper.Runtime
                                 TypeName = "int?",
                                 TypeRef = typeof(int?),
                                 HasMapFromAttribute = true,
-                                MapFromAttribute = __mfAttr166,
+                                MapFromAttribute = __mfAttr172,
                                 HasMapIgnore = false,
                                 MapIgnoreDirection = 0,
                                 HasOverrideIgnore = false,
@@ -24143,7 +25146,7 @@ namespace NCMapper.Runtime
                                 TypeName = "System.Collections.Generic.List<NCMapper.Tests.Runtime.TreeConfigConsumptionTests.AttrTreeDto>",
                                 TypeRef = typeof(System.Collections.Generic.List<NCMapper.Tests.Runtime.TreeConfigConsumptionTests.AttrTreeDto>),
                                 HasMapFromAttribute = true,
-                                MapFromAttribute = __mfAttr166,
+                                MapFromAttribute = __mfAttr172,
                                 HasMapIgnore = false,
                                 MapIgnoreDirection = 0,
                                 HasOverrideIgnore = false,
@@ -24183,7 +25186,7 @@ namespace NCMapper.Runtime
                         TypeName = "int",
                         TypeRef = typeof(int),
                         HasMapFromAttribute = true,
-                        MapFromAttribute = __mfAttr166,
+                        MapFromAttribute = __mfAttr172,
                         HasMapIgnore = false,
                         MapIgnoreDirection = 0,
                         HasOverrideIgnore = false,
@@ -24206,7 +25209,7 @@ namespace NCMapper.Runtime
                         TypeName = "int?",
                         TypeRef = typeof(int?),
                         HasMapFromAttribute = true,
-                        MapFromAttribute = __mfAttr166,
+                        MapFromAttribute = __mfAttr172,
                         HasMapIgnore = false,
                         MapIgnoreDirection = 0,
                         HasOverrideIgnore = false,
@@ -24229,7 +25232,7 @@ namespace NCMapper.Runtime
                         TypeName = "System.Collections.Generic.List<NCMapper.Tests.Runtime.TreeConfigConsumptionTests.AttrTreeDto>",
                         TypeRef = typeof(System.Collections.Generic.List<NCMapper.Tests.Runtime.TreeConfigConsumptionTests.AttrTreeDto>),
                         HasMapFromAttribute = true,
-                        MapFromAttribute = __mfAttr166,
+                        MapFromAttribute = __mfAttr172,
                         HasMapIgnore = false,
                         MapIgnoreDirection = 0,
                         HasOverrideIgnore = false,
@@ -24248,11 +25251,11 @@ namespace NCMapper.Runtime
                     },
                 },
             };
-            global::NCMapper.Runtime.RuntimeSnapshotPair<NCMapper.Tests.Runtime.TreeConfigConsumptionTests.TreeDto, NCMapper.Tests.Runtime.TreeConfigConsumptionTests.AttrTreeDto>.Metadata = __meta166;
-            global::NCMapper.Runtime.RuntimeSnapshotStore.Register(__meta166);
-            // pair 167: NCMapper.Tests.Tests.AssignmentKindContractTests.ContractIntSrc -> NCMapper.Tests.Tests.AssignmentKindContractTests.ContractConvUsingDto (MapFrom channel)
-            var __mfAttr167 = new global::NCMapper.Attributes.MapFromAttribute(typeof(NCMapper.Tests.Tests.AssignmentKindContractTests.ContractIntSrc));
-            var __meta167 = new global::NCMapper.Runtime.RuntimeMapperMetadata
+            global::NCMapper.Runtime.RuntimeSnapshotPair<NCMapper.Tests.Runtime.TreeConfigConsumptionTests.TreeDto, NCMapper.Tests.Runtime.TreeConfigConsumptionTests.AttrTreeDto>.Metadata = __meta172;
+            global::NCMapper.Runtime.RuntimeSnapshotStore.Register(__meta172);
+            // pair 173: NCMapper.Tests.Tests.AssignmentKindContractTests.ContractIntSrc -> NCMapper.Tests.Tests.AssignmentKindContractTests.ContractConvUsingDto (MapFrom channel)
+            var __mfAttr173 = new global::NCMapper.Attributes.MapFromAttribute(typeof(NCMapper.Tests.Tests.AssignmentKindContractTests.ContractIntSrc));
+            var __meta173 = new global::NCMapper.Runtime.RuntimeMapperMetadata
             {
                 SourceType = typeof(NCMapper.Tests.Tests.AssignmentKindContractTests.ContractIntSrc),
                 TargetType = typeof(NCMapper.Tests.Tests.AssignmentKindContractTests.ContractConvUsingDto),
@@ -24273,7 +25276,7 @@ namespace NCMapper.Runtime
                                 TypeName = "string",
                                 TypeRef = typeof(string),
                                 HasMapFromAttribute = true,
-                                MapFromAttribute = __mfAttr167,
+                                MapFromAttribute = __mfAttr173,
                                 HasMapIgnore = false,
                                 MapIgnoreDirection = 0,
                                 HasOverrideIgnore = false,
@@ -24313,7 +25316,7 @@ namespace NCMapper.Runtime
                         TypeName = "string",
                         TypeRef = typeof(string),
                         HasMapFromAttribute = true,
-                        MapFromAttribute = __mfAttr167,
+                        MapFromAttribute = __mfAttr173,
                         HasMapIgnore = false,
                         MapIgnoreDirection = 0,
                         HasOverrideIgnore = false,
@@ -24332,11 +25335,11 @@ namespace NCMapper.Runtime
                     },
                 },
             };
-            global::NCMapper.Runtime.RuntimeSnapshotPair<NCMapper.Tests.Tests.AssignmentKindContractTests.ContractIntSrc, NCMapper.Tests.Tests.AssignmentKindContractTests.ContractConvUsingDto>.Metadata = __meta167;
-            global::NCMapper.Runtime.RuntimeSnapshotStore.Register(__meta167);
-            // pair 168: NCMapper.Tests.Tests.AssignmentKindContractTests.ContractIntSrc -> NCMapper.Tests.Tests.AssignmentKindContractTests.ContractDualDto (MapFrom channel)
-            var __mfAttr168 = new global::NCMapper.Attributes.MapFromAttribute(typeof(NCMapper.Tests.Tests.AssignmentKindContractTests.ContractIntSrc));
-            var __meta168 = new global::NCMapper.Runtime.RuntimeMapperMetadata
+            global::NCMapper.Runtime.RuntimeSnapshotPair<NCMapper.Tests.Tests.AssignmentKindContractTests.ContractIntSrc, NCMapper.Tests.Tests.AssignmentKindContractTests.ContractConvUsingDto>.Metadata = __meta173;
+            global::NCMapper.Runtime.RuntimeSnapshotStore.Register(__meta173);
+            // pair 174: NCMapper.Tests.Tests.AssignmentKindContractTests.ContractIntSrc -> NCMapper.Tests.Tests.AssignmentKindContractTests.ContractDualDto (MapFrom channel)
+            var __mfAttr174 = new global::NCMapper.Attributes.MapFromAttribute(typeof(NCMapper.Tests.Tests.AssignmentKindContractTests.ContractIntSrc));
+            var __meta174 = new global::NCMapper.Runtime.RuntimeMapperMetadata
             {
                 SourceType = typeof(NCMapper.Tests.Tests.AssignmentKindContractTests.ContractIntSrc),
                 TargetType = typeof(NCMapper.Tests.Tests.AssignmentKindContractTests.ContractDualDto),
@@ -24357,7 +25360,7 @@ namespace NCMapper.Runtime
                                 TypeName = "string",
                                 TypeRef = typeof(string),
                                 HasMapFromAttribute = true,
-                                MapFromAttribute = __mfAttr168,
+                                MapFromAttribute = __mfAttr174,
                                 HasMapIgnore = false,
                                 MapIgnoreDirection = 0,
                                 HasOverrideIgnore = false,
@@ -24397,7 +25400,7 @@ namespace NCMapper.Runtime
                         TypeName = "string",
                         TypeRef = typeof(string),
                         HasMapFromAttribute = true,
-                        MapFromAttribute = __mfAttr168,
+                        MapFromAttribute = __mfAttr174,
                         HasMapIgnore = false,
                         MapIgnoreDirection = 0,
                         HasOverrideIgnore = false,
@@ -24416,11 +25419,11 @@ namespace NCMapper.Runtime
                     },
                 },
             };
-            global::NCMapper.Runtime.RuntimeSnapshotPair<NCMapper.Tests.Tests.AssignmentKindContractTests.ContractIntSrc, NCMapper.Tests.Tests.AssignmentKindContractTests.ContractDualDto>.Metadata = __meta168;
-            global::NCMapper.Runtime.RuntimeSnapshotStore.Register(__meta168);
-            // pair 169: NCMapper.Tests.Tests.AssignmentKindContractTests.ContractStrSrc -> NCMapper.Tests.Tests.AssignmentKindContractTests.ContractBackConvDto (MapFrom channel)
-            var __mfAttr169 = new global::NCMapper.Attributes.MapFromAttribute(typeof(NCMapper.Tests.Tests.AssignmentKindContractTests.ContractStrSrc));
-            var __meta169 = new global::NCMapper.Runtime.RuntimeMapperMetadata
+            global::NCMapper.Runtime.RuntimeSnapshotPair<NCMapper.Tests.Tests.AssignmentKindContractTests.ContractIntSrc, NCMapper.Tests.Tests.AssignmentKindContractTests.ContractDualDto>.Metadata = __meta174;
+            global::NCMapper.Runtime.RuntimeSnapshotStore.Register(__meta174);
+            // pair 175: NCMapper.Tests.Tests.AssignmentKindContractTests.ContractStrSrc -> NCMapper.Tests.Tests.AssignmentKindContractTests.ContractBackConvDto (MapFrom channel)
+            var __mfAttr175 = new global::NCMapper.Attributes.MapFromAttribute(typeof(NCMapper.Tests.Tests.AssignmentKindContractTests.ContractStrSrc));
+            var __meta175 = new global::NCMapper.Runtime.RuntimeMapperMetadata
             {
                 SourceType = typeof(NCMapper.Tests.Tests.AssignmentKindContractTests.ContractStrSrc),
                 TargetType = typeof(NCMapper.Tests.Tests.AssignmentKindContractTests.ContractBackConvDto),
@@ -24441,7 +25444,7 @@ namespace NCMapper.Runtime
                                 TypeName = "string",
                                 TypeRef = typeof(string),
                                 HasMapFromAttribute = true,
-                                MapFromAttribute = __mfAttr169,
+                                MapFromAttribute = __mfAttr175,
                                 HasMapIgnore = false,
                                 MapIgnoreDirection = 0,
                                 HasOverrideIgnore = false,
@@ -24481,7 +25484,7 @@ namespace NCMapper.Runtime
                         TypeName = "string",
                         TypeRef = typeof(string),
                         HasMapFromAttribute = true,
-                        MapFromAttribute = __mfAttr169,
+                        MapFromAttribute = __mfAttr175,
                         HasMapIgnore = false,
                         MapIgnoreDirection = 0,
                         HasOverrideIgnore = false,
@@ -24500,11 +25503,11 @@ namespace NCMapper.Runtime
                     },
                 },
             };
-            global::NCMapper.Runtime.RuntimeSnapshotPair<NCMapper.Tests.Tests.AssignmentKindContractTests.ContractStrSrc, NCMapper.Tests.Tests.AssignmentKindContractTests.ContractBackConvDto>.Metadata = __meta169;
-            global::NCMapper.Runtime.RuntimeSnapshotStore.Register(__meta169);
-            // pair 170: NCMapper.Tests.Tests.AssignmentKindContractTests.ContractStrSrc -> NCMapper.Tests.Tests.AssignmentKindContractTests.ContractMaskDto (MapFrom channel)
-            var __mfAttr170 = new global::NCMapper.Attributes.MapFromAttribute(typeof(NCMapper.Tests.Tests.AssignmentKindContractTests.ContractStrSrc));
-            var __meta170 = new global::NCMapper.Runtime.RuntimeMapperMetadata
+            global::NCMapper.Runtime.RuntimeSnapshotPair<NCMapper.Tests.Tests.AssignmentKindContractTests.ContractStrSrc, NCMapper.Tests.Tests.AssignmentKindContractTests.ContractBackConvDto>.Metadata = __meta175;
+            global::NCMapper.Runtime.RuntimeSnapshotStore.Register(__meta175);
+            // pair 176: NCMapper.Tests.Tests.AssignmentKindContractTests.ContractStrSrc -> NCMapper.Tests.Tests.AssignmentKindContractTests.ContractMaskDto (MapFrom channel)
+            var __mfAttr176 = new global::NCMapper.Attributes.MapFromAttribute(typeof(NCMapper.Tests.Tests.AssignmentKindContractTests.ContractStrSrc));
+            var __meta176 = new global::NCMapper.Runtime.RuntimeMapperMetadata
             {
                 SourceType = typeof(NCMapper.Tests.Tests.AssignmentKindContractTests.ContractStrSrc),
                 TargetType = typeof(NCMapper.Tests.Tests.AssignmentKindContractTests.ContractMaskDto),
@@ -24525,7 +25528,7 @@ namespace NCMapper.Runtime
                                 TypeName = "string",
                                 TypeRef = typeof(string),
                                 HasMapFromAttribute = true,
-                                MapFromAttribute = __mfAttr170,
+                                MapFromAttribute = __mfAttr176,
                                 HasMapIgnore = false,
                                 MapIgnoreDirection = 0,
                                 HasOverrideIgnore = false,
@@ -24565,7 +25568,7 @@ namespace NCMapper.Runtime
                         TypeName = "string",
                         TypeRef = typeof(string),
                         HasMapFromAttribute = true,
-                        MapFromAttribute = __mfAttr170,
+                        MapFromAttribute = __mfAttr176,
                         HasMapIgnore = false,
                         MapIgnoreDirection = 0,
                         HasOverrideIgnore = false,
@@ -24584,11 +25587,11 @@ namespace NCMapper.Runtime
                     },
                 },
             };
-            global::NCMapper.Runtime.RuntimeSnapshotPair<NCMapper.Tests.Tests.AssignmentKindContractTests.ContractStrSrc, NCMapper.Tests.Tests.AssignmentKindContractTests.ContractMaskDto>.Metadata = __meta170;
-            global::NCMapper.Runtime.RuntimeSnapshotStore.Register(__meta170);
-            // pair 171: NCMapper.Tests.Tests.AssignmentPlanKindTests.ConvertBackUsingEntity -> NCMapper.Tests.Tests.AssignmentPlanKindTests.ConvertBackUsingDto (MapFrom channel)
-            var __mfAttr171 = new global::NCMapper.Attributes.MapFromAttribute(typeof(NCMapper.Tests.Tests.AssignmentPlanKindTests.ConvertBackUsingEntity));
-            var __meta171 = new global::NCMapper.Runtime.RuntimeMapperMetadata
+            global::NCMapper.Runtime.RuntimeSnapshotPair<NCMapper.Tests.Tests.AssignmentKindContractTests.ContractStrSrc, NCMapper.Tests.Tests.AssignmentKindContractTests.ContractMaskDto>.Metadata = __meta176;
+            global::NCMapper.Runtime.RuntimeSnapshotStore.Register(__meta176);
+            // pair 177: NCMapper.Tests.Tests.AssignmentPlanKindTests.ConvertBackUsingEntity -> NCMapper.Tests.Tests.AssignmentPlanKindTests.ConvertBackUsingDto (MapFrom channel)
+            var __mfAttr177 = new global::NCMapper.Attributes.MapFromAttribute(typeof(NCMapper.Tests.Tests.AssignmentPlanKindTests.ConvertBackUsingEntity));
+            var __meta177 = new global::NCMapper.Runtime.RuntimeMapperMetadata
             {
                 SourceType = typeof(NCMapper.Tests.Tests.AssignmentPlanKindTests.ConvertBackUsingEntity),
                 TargetType = typeof(NCMapper.Tests.Tests.AssignmentPlanKindTests.ConvertBackUsingDto),
@@ -24609,7 +25612,7 @@ namespace NCMapper.Runtime
                                 TypeName = "int",
                                 TypeRef = typeof(int),
                                 HasMapFromAttribute = true,
-                                MapFromAttribute = __mfAttr171,
+                                MapFromAttribute = __mfAttr177,
                                 HasMapIgnore = false,
                                 MapIgnoreDirection = 0,
                                 HasOverrideIgnore = false,
@@ -24649,7 +25652,7 @@ namespace NCMapper.Runtime
                         TypeName = "int",
                         TypeRef = typeof(int),
                         HasMapFromAttribute = true,
-                        MapFromAttribute = __mfAttr171,
+                        MapFromAttribute = __mfAttr177,
                         HasMapIgnore = false,
                         MapIgnoreDirection = 0,
                         HasOverrideIgnore = false,
@@ -24668,11 +25671,11 @@ namespace NCMapper.Runtime
                     },
                 },
             };
-            global::NCMapper.Runtime.RuntimeSnapshotPair<NCMapper.Tests.Tests.AssignmentPlanKindTests.ConvertBackUsingEntity, NCMapper.Tests.Tests.AssignmentPlanKindTests.ConvertBackUsingDto>.Metadata = __meta171;
-            global::NCMapper.Runtime.RuntimeSnapshotStore.Register(__meta171);
-            // pair 172: NCMapper.Tests.Tests.AssignmentPlanKindTests.ConvertUsingEntity -> NCMapper.Tests.Tests.AssignmentPlanKindTests.ConvertUsingDto (MapFrom channel)
-            var __mfAttr172 = new global::NCMapper.Attributes.MapFromAttribute(typeof(NCMapper.Tests.Tests.AssignmentPlanKindTests.ConvertUsingEntity));
-            var __meta172 = new global::NCMapper.Runtime.RuntimeMapperMetadata
+            global::NCMapper.Runtime.RuntimeSnapshotPair<NCMapper.Tests.Tests.AssignmentPlanKindTests.ConvertBackUsingEntity, NCMapper.Tests.Tests.AssignmentPlanKindTests.ConvertBackUsingDto>.Metadata = __meta177;
+            global::NCMapper.Runtime.RuntimeSnapshotStore.Register(__meta177);
+            // pair 178: NCMapper.Tests.Tests.AssignmentPlanKindTests.ConvertUsingEntity -> NCMapper.Tests.Tests.AssignmentPlanKindTests.ConvertUsingDto (MapFrom channel)
+            var __mfAttr178 = new global::NCMapper.Attributes.MapFromAttribute(typeof(NCMapper.Tests.Tests.AssignmentPlanKindTests.ConvertUsingEntity));
+            var __meta178 = new global::NCMapper.Runtime.RuntimeMapperMetadata
             {
                 SourceType = typeof(NCMapper.Tests.Tests.AssignmentPlanKindTests.ConvertUsingEntity),
                 TargetType = typeof(NCMapper.Tests.Tests.AssignmentPlanKindTests.ConvertUsingDto),
@@ -24693,7 +25696,7 @@ namespace NCMapper.Runtime
                                 TypeName = "string?",
                                 TypeRef = typeof(string),
                                 HasMapFromAttribute = true,
-                                MapFromAttribute = __mfAttr172,
+                                MapFromAttribute = __mfAttr178,
                                 HasMapIgnore = false,
                                 MapIgnoreDirection = 0,
                                 HasOverrideIgnore = false,
@@ -24733,7 +25736,7 @@ namespace NCMapper.Runtime
                         TypeName = "string?",
                         TypeRef = typeof(string),
                         HasMapFromAttribute = true,
-                        MapFromAttribute = __mfAttr172,
+                        MapFromAttribute = __mfAttr178,
                         HasMapIgnore = false,
                         MapIgnoreDirection = 0,
                         HasOverrideIgnore = false,
@@ -24752,11 +25755,11 @@ namespace NCMapper.Runtime
                     },
                 },
             };
-            global::NCMapper.Runtime.RuntimeSnapshotPair<NCMapper.Tests.Tests.AssignmentPlanKindTests.ConvertUsingEntity, NCMapper.Tests.Tests.AssignmentPlanKindTests.ConvertUsingDto>.Metadata = __meta172;
-            global::NCMapper.Runtime.RuntimeSnapshotStore.Register(__meta172);
-            // pair 173: NCMapper.Tests.Tests.AssignmentPlanKindTests.ConvertUsingThenMaskEntity -> NCMapper.Tests.Tests.AssignmentPlanKindTests.ConvertUsingThenMaskDto (MapFrom channel)
-            var __mfAttr173 = new global::NCMapper.Attributes.MapFromAttribute(typeof(NCMapper.Tests.Tests.AssignmentPlanKindTests.ConvertUsingThenMaskEntity));
-            var __meta173 = new global::NCMapper.Runtime.RuntimeMapperMetadata
+            global::NCMapper.Runtime.RuntimeSnapshotPair<NCMapper.Tests.Tests.AssignmentPlanKindTests.ConvertUsingEntity, NCMapper.Tests.Tests.AssignmentPlanKindTests.ConvertUsingDto>.Metadata = __meta178;
+            global::NCMapper.Runtime.RuntimeSnapshotStore.Register(__meta178);
+            // pair 179: NCMapper.Tests.Tests.AssignmentPlanKindTests.ConvertUsingThenMaskEntity -> NCMapper.Tests.Tests.AssignmentPlanKindTests.ConvertUsingThenMaskDto (MapFrom channel)
+            var __mfAttr179 = new global::NCMapper.Attributes.MapFromAttribute(typeof(NCMapper.Tests.Tests.AssignmentPlanKindTests.ConvertUsingThenMaskEntity));
+            var __meta179 = new global::NCMapper.Runtime.RuntimeMapperMetadata
             {
                 SourceType = typeof(NCMapper.Tests.Tests.AssignmentPlanKindTests.ConvertUsingThenMaskEntity),
                 TargetType = typeof(NCMapper.Tests.Tests.AssignmentPlanKindTests.ConvertUsingThenMaskDto),
@@ -24777,7 +25780,7 @@ namespace NCMapper.Runtime
                                 TypeName = "string?",
                                 TypeRef = typeof(string),
                                 HasMapFromAttribute = true,
-                                MapFromAttribute = __mfAttr173,
+                                MapFromAttribute = __mfAttr179,
                                 HasMapIgnore = false,
                                 MapIgnoreDirection = 0,
                                 HasOverrideIgnore = false,
@@ -24817,7 +25820,7 @@ namespace NCMapper.Runtime
                         TypeName = "string?",
                         TypeRef = typeof(string),
                         HasMapFromAttribute = true,
-                        MapFromAttribute = __mfAttr173,
+                        MapFromAttribute = __mfAttr179,
                         HasMapIgnore = false,
                         MapIgnoreDirection = 0,
                         HasOverrideIgnore = false,
@@ -24836,11 +25839,11 @@ namespace NCMapper.Runtime
                     },
                 },
             };
-            global::NCMapper.Runtime.RuntimeSnapshotPair<NCMapper.Tests.Tests.AssignmentPlanKindTests.ConvertUsingThenMaskEntity, NCMapper.Tests.Tests.AssignmentPlanKindTests.ConvertUsingThenMaskDto>.Metadata = __meta173;
-            global::NCMapper.Runtime.RuntimeSnapshotStore.Register(__meta173);
-            // pair 174: NCMapper.Tests.Tests.AssignmentPlanKindTests.IgnoreEntity -> NCMapper.Tests.Tests.AssignmentPlanKindTests.IgnoreDto (MapFrom channel)
-            var __mfAttr174 = new global::NCMapper.Attributes.MapFromAttribute(typeof(NCMapper.Tests.Tests.AssignmentPlanKindTests.IgnoreEntity));
-            var __meta174 = new global::NCMapper.Runtime.RuntimeMapperMetadata
+            global::NCMapper.Runtime.RuntimeSnapshotPair<NCMapper.Tests.Tests.AssignmentPlanKindTests.ConvertUsingThenMaskEntity, NCMapper.Tests.Tests.AssignmentPlanKindTests.ConvertUsingThenMaskDto>.Metadata = __meta179;
+            global::NCMapper.Runtime.RuntimeSnapshotStore.Register(__meta179);
+            // pair 180: NCMapper.Tests.Tests.AssignmentPlanKindTests.IgnoreEntity -> NCMapper.Tests.Tests.AssignmentPlanKindTests.IgnoreDto (MapFrom channel)
+            var __mfAttr180 = new global::NCMapper.Attributes.MapFromAttribute(typeof(NCMapper.Tests.Tests.AssignmentPlanKindTests.IgnoreEntity));
+            var __meta180 = new global::NCMapper.Runtime.RuntimeMapperMetadata
             {
                 SourceType = typeof(NCMapper.Tests.Tests.AssignmentPlanKindTests.IgnoreEntity),
                 TargetType = typeof(NCMapper.Tests.Tests.AssignmentPlanKindTests.IgnoreDto),
@@ -24857,11 +25860,11 @@ namespace NCMapper.Runtime
                 {
                 },
             };
-            global::NCMapper.Runtime.RuntimeSnapshotPair<NCMapper.Tests.Tests.AssignmentPlanKindTests.IgnoreEntity, NCMapper.Tests.Tests.AssignmentPlanKindTests.IgnoreDto>.Metadata = __meta174;
-            global::NCMapper.Runtime.RuntimeSnapshotStore.Register(__meta174);
-            // pair 175: NCMapper.Tests.Tests.AssignmentPlanKindTests.JsonEntity -> NCMapper.Tests.Tests.AssignmentPlanKindTests.JsonDto (MapFrom channel)
-            var __mfAttr175 = new global::NCMapper.Attributes.MapFromAttribute(typeof(NCMapper.Tests.Tests.AssignmentPlanKindTests.JsonEntity));
-            var __meta175 = new global::NCMapper.Runtime.RuntimeMapperMetadata
+            global::NCMapper.Runtime.RuntimeSnapshotPair<NCMapper.Tests.Tests.AssignmentPlanKindTests.IgnoreEntity, NCMapper.Tests.Tests.AssignmentPlanKindTests.IgnoreDto>.Metadata = __meta180;
+            global::NCMapper.Runtime.RuntimeSnapshotStore.Register(__meta180);
+            // pair 181: NCMapper.Tests.Tests.AssignmentPlanKindTests.JsonEntity -> NCMapper.Tests.Tests.AssignmentPlanKindTests.JsonDto (MapFrom channel)
+            var __mfAttr181 = new global::NCMapper.Attributes.MapFromAttribute(typeof(NCMapper.Tests.Tests.AssignmentPlanKindTests.JsonEntity));
+            var __meta181 = new global::NCMapper.Runtime.RuntimeMapperMetadata
             {
                 SourceType = typeof(NCMapper.Tests.Tests.AssignmentPlanKindTests.JsonEntity),
                 TargetType = typeof(NCMapper.Tests.Tests.AssignmentPlanKindTests.JsonDto),
@@ -24882,7 +25885,7 @@ namespace NCMapper.Runtime
                                 TypeName = "NCMapper.Tests.Tests.AssignmentPlanKindTests.JsonData",
                                 TypeRef = typeof(NCMapper.Tests.Tests.AssignmentPlanKindTests.JsonData),
                                 HasMapFromAttribute = true,
-                                MapFromAttribute = __mfAttr175,
+                                MapFromAttribute = __mfAttr181,
                                 HasMapIgnore = false,
                                 MapIgnoreDirection = 0,
                                 HasOverrideIgnore = false,
@@ -24922,7 +25925,7 @@ namespace NCMapper.Runtime
                         TypeName = "NCMapper.Tests.Tests.AssignmentPlanKindTests.JsonData",
                         TypeRef = typeof(NCMapper.Tests.Tests.AssignmentPlanKindTests.JsonData),
                         HasMapFromAttribute = true,
-                        MapFromAttribute = __mfAttr175,
+                        MapFromAttribute = __mfAttr181,
                         HasMapIgnore = false,
                         MapIgnoreDirection = 0,
                         HasOverrideIgnore = false,
@@ -24941,11 +25944,11 @@ namespace NCMapper.Runtime
                     },
                 },
             };
-            global::NCMapper.Runtime.RuntimeSnapshotPair<NCMapper.Tests.Tests.AssignmentPlanKindTests.JsonEntity, NCMapper.Tests.Tests.AssignmentPlanKindTests.JsonDto>.Metadata = __meta175;
-            global::NCMapper.Runtime.RuntimeSnapshotStore.Register(__meta175);
-            // pair 176: NCMapper.Tests.Tests.AssignmentPlanKindTests.MaskEntity -> NCMapper.Tests.Tests.AssignmentPlanKindTests.MaskDto (MapFrom channel)
-            var __mfAttr176 = new global::NCMapper.Attributes.MapFromAttribute(typeof(NCMapper.Tests.Tests.AssignmentPlanKindTests.MaskEntity));
-            var __meta176 = new global::NCMapper.Runtime.RuntimeMapperMetadata
+            global::NCMapper.Runtime.RuntimeSnapshotPair<NCMapper.Tests.Tests.AssignmentPlanKindTests.JsonEntity, NCMapper.Tests.Tests.AssignmentPlanKindTests.JsonDto>.Metadata = __meta181;
+            global::NCMapper.Runtime.RuntimeSnapshotStore.Register(__meta181);
+            // pair 182: NCMapper.Tests.Tests.AssignmentPlanKindTests.MaskEntity -> NCMapper.Tests.Tests.AssignmentPlanKindTests.MaskDto (MapFrom channel)
+            var __mfAttr182 = new global::NCMapper.Attributes.MapFromAttribute(typeof(NCMapper.Tests.Tests.AssignmentPlanKindTests.MaskEntity));
+            var __meta182 = new global::NCMapper.Runtime.RuntimeMapperMetadata
             {
                 SourceType = typeof(NCMapper.Tests.Tests.AssignmentPlanKindTests.MaskEntity),
                 TargetType = typeof(NCMapper.Tests.Tests.AssignmentPlanKindTests.MaskDto),
@@ -24966,7 +25969,7 @@ namespace NCMapper.Runtime
                                 TypeName = "string",
                                 TypeRef = typeof(string),
                                 HasMapFromAttribute = true,
-                                MapFromAttribute = __mfAttr176,
+                                MapFromAttribute = __mfAttr182,
                                 HasMapIgnore = false,
                                 MapIgnoreDirection = 0,
                                 HasOverrideIgnore = false,
@@ -25006,7 +26009,7 @@ namespace NCMapper.Runtime
                         TypeName = "string",
                         TypeRef = typeof(string),
                         HasMapFromAttribute = true,
-                        MapFromAttribute = __mfAttr176,
+                        MapFromAttribute = __mfAttr182,
                         HasMapIgnore = false,
                         MapIgnoreDirection = 0,
                         HasOverrideIgnore = false,
@@ -25025,11 +26028,11 @@ namespace NCMapper.Runtime
                     },
                 },
             };
-            global::NCMapper.Runtime.RuntimeSnapshotPair<NCMapper.Tests.Tests.AssignmentPlanKindTests.MaskEntity, NCMapper.Tests.Tests.AssignmentPlanKindTests.MaskDto>.Metadata = __meta176;
-            global::NCMapper.Runtime.RuntimeSnapshotStore.Register(__meta176);
-            // pair 177: NCMapper.Tests.Tests.AuditAcceptanceTests.AccessControlSource -> NCMapper.Tests.Tests.AuditAcceptanceTests.AccessControlDto (MapFrom channel)
-            var __mfAttr177 = new global::NCMapper.Attributes.MapFromAttribute(typeof(NCMapper.Tests.Tests.AuditAcceptanceTests.AccessControlSource));
-            var __meta177 = new global::NCMapper.Runtime.RuntimeMapperMetadata
+            global::NCMapper.Runtime.RuntimeSnapshotPair<NCMapper.Tests.Tests.AssignmentPlanKindTests.MaskEntity, NCMapper.Tests.Tests.AssignmentPlanKindTests.MaskDto>.Metadata = __meta182;
+            global::NCMapper.Runtime.RuntimeSnapshotStore.Register(__meta182);
+            // pair 183: NCMapper.Tests.Tests.AuditAcceptanceTests.AccessControlSource -> NCMapper.Tests.Tests.AuditAcceptanceTests.AccessControlDto (MapFrom channel)
+            var __mfAttr183 = new global::NCMapper.Attributes.MapFromAttribute(typeof(NCMapper.Tests.Tests.AuditAcceptanceTests.AccessControlSource));
+            var __meta183 = new global::NCMapper.Runtime.RuntimeMapperMetadata
             {
                 SourceType = typeof(NCMapper.Tests.Tests.AuditAcceptanceTests.AccessControlSource),
                 TargetType = typeof(NCMapper.Tests.Tests.AuditAcceptanceTests.AccessControlDto),
@@ -25050,7 +26053,7 @@ namespace NCMapper.Runtime
                                 TypeName = "string",
                                 TypeRef = typeof(string),
                                 HasMapFromAttribute = true,
-                                MapFromAttribute = __mfAttr177,
+                                MapFromAttribute = __mfAttr183,
                                 HasMapIgnore = false,
                                 MapIgnoreDirection = 0,
                                 HasOverrideIgnore = false,
@@ -25090,7 +26093,7 @@ namespace NCMapper.Runtime
                                 TypeName = "string",
                                 TypeRef = typeof(string),
                                 HasMapFromAttribute = true,
-                                MapFromAttribute = __mfAttr177,
+                                MapFromAttribute = __mfAttr183,
                                 HasMapIgnore = false,
                                 MapIgnoreDirection = 0,
                                 HasOverrideIgnore = false,
@@ -25130,7 +26133,7 @@ namespace NCMapper.Runtime
                         TypeName = "string",
                         TypeRef = typeof(string),
                         HasMapFromAttribute = true,
-                        MapFromAttribute = __mfAttr177,
+                        MapFromAttribute = __mfAttr183,
                         HasMapIgnore = false,
                         MapIgnoreDirection = 0,
                         HasOverrideIgnore = false,
@@ -25153,7 +26156,7 @@ namespace NCMapper.Runtime
                         TypeName = "string",
                         TypeRef = typeof(string),
                         HasMapFromAttribute = true,
-                        MapFromAttribute = __mfAttr177,
+                        MapFromAttribute = __mfAttr183,
                         HasMapIgnore = false,
                         MapIgnoreDirection = 0,
                         HasOverrideIgnore = false,
@@ -25172,11 +26175,11 @@ namespace NCMapper.Runtime
                     },
                 },
             };
-            global::NCMapper.Runtime.RuntimeSnapshotPair<NCMapper.Tests.Tests.AuditAcceptanceTests.AccessControlSource, NCMapper.Tests.Tests.AuditAcceptanceTests.AccessControlDto>.Metadata = __meta177;
-            global::NCMapper.Runtime.RuntimeSnapshotStore.Register(__meta177);
-            // pair 178: NCMapper.Tests.Tests.AuditAcceptanceTests.DerivedSourceEntity -> NCMapper.Tests.Tests.AuditAcceptanceTests.DerivedDto (MapFrom channel)
-            var __mfAttr178 = new global::NCMapper.Attributes.MapFromAttribute(typeof(NCMapper.Tests.Tests.AuditAcceptanceTests.DerivedSourceEntity));
-            var __meta178 = new global::NCMapper.Runtime.RuntimeMapperMetadata
+            global::NCMapper.Runtime.RuntimeSnapshotPair<NCMapper.Tests.Tests.AuditAcceptanceTests.AccessControlSource, NCMapper.Tests.Tests.AuditAcceptanceTests.AccessControlDto>.Metadata = __meta183;
+            global::NCMapper.Runtime.RuntimeSnapshotStore.Register(__meta183);
+            // pair 184: NCMapper.Tests.Tests.AuditAcceptanceTests.DerivedSourceEntity -> NCMapper.Tests.Tests.AuditAcceptanceTests.DerivedDto (MapFrom channel)
+            var __mfAttr184 = new global::NCMapper.Attributes.MapFromAttribute(typeof(NCMapper.Tests.Tests.AuditAcceptanceTests.DerivedSourceEntity));
+            var __meta184 = new global::NCMapper.Runtime.RuntimeMapperMetadata
             {
                 SourceType = typeof(NCMapper.Tests.Tests.AuditAcceptanceTests.DerivedSourceEntity),
                 TargetType = typeof(NCMapper.Tests.Tests.AuditAcceptanceTests.DerivedDto),
@@ -25197,7 +26200,7 @@ namespace NCMapper.Runtime
                                 TypeName = "string",
                                 TypeRef = typeof(string),
                                 HasMapFromAttribute = true,
-                                MapFromAttribute = __mfAttr178,
+                                MapFromAttribute = __mfAttr184,
                                 HasMapIgnore = false,
                                 MapIgnoreDirection = 0,
                                 HasOverrideIgnore = false,
@@ -25237,7 +26240,7 @@ namespace NCMapper.Runtime
                                 TypeName = "int",
                                 TypeRef = typeof(int),
                                 HasMapFromAttribute = true,
-                                MapFromAttribute = __mfAttr178,
+                                MapFromAttribute = __mfAttr184,
                                 HasMapIgnore = false,
                                 MapIgnoreDirection = 0,
                                 HasOverrideIgnore = false,
@@ -25277,7 +26280,7 @@ namespace NCMapper.Runtime
                                 TypeName = "System.DateTime",
                                 TypeRef = typeof(System.DateTime),
                                 HasMapFromAttribute = true,
-                                MapFromAttribute = __mfAttr178,
+                                MapFromAttribute = __mfAttr184,
                                 HasMapIgnore = false,
                                 MapIgnoreDirection = 0,
                                 HasOverrideIgnore = false,
@@ -25317,7 +26320,7 @@ namespace NCMapper.Runtime
                         TypeName = "string",
                         TypeRef = typeof(string),
                         HasMapFromAttribute = true,
-                        MapFromAttribute = __mfAttr178,
+                        MapFromAttribute = __mfAttr184,
                         HasMapIgnore = false,
                         MapIgnoreDirection = 0,
                         HasOverrideIgnore = false,
@@ -25340,7 +26343,7 @@ namespace NCMapper.Runtime
                         TypeName = "int",
                         TypeRef = typeof(int),
                         HasMapFromAttribute = true,
-                        MapFromAttribute = __mfAttr178,
+                        MapFromAttribute = __mfAttr184,
                         HasMapIgnore = false,
                         MapIgnoreDirection = 0,
                         HasOverrideIgnore = false,
@@ -25363,7 +26366,7 @@ namespace NCMapper.Runtime
                         TypeName = "System.DateTime",
                         TypeRef = typeof(System.DateTime),
                         HasMapFromAttribute = true,
-                        MapFromAttribute = __mfAttr178,
+                        MapFromAttribute = __mfAttr184,
                         HasMapIgnore = false,
                         MapIgnoreDirection = 0,
                         HasOverrideIgnore = false,
@@ -25382,11 +26385,11 @@ namespace NCMapper.Runtime
                     },
                 },
             };
-            global::NCMapper.Runtime.RuntimeSnapshotPair<NCMapper.Tests.Tests.AuditAcceptanceTests.DerivedSourceEntity, NCMapper.Tests.Tests.AuditAcceptanceTests.DerivedDto>.Metadata = __meta178;
-            global::NCMapper.Runtime.RuntimeSnapshotStore.Register(__meta178);
-            // pair 179: NCMapper.Tests.Tests.AuditAcceptanceTests.NonNullToNullableSource -> NCMapper.Tests.Tests.AuditAcceptanceTests.NonNullToNullableDto (MapFrom channel)
-            var __mfAttr179 = new global::NCMapper.Attributes.MapFromAttribute(typeof(NCMapper.Tests.Tests.AuditAcceptanceTests.NonNullToNullableSource));
-            var __meta179 = new global::NCMapper.Runtime.RuntimeMapperMetadata
+            global::NCMapper.Runtime.RuntimeSnapshotPair<NCMapper.Tests.Tests.AuditAcceptanceTests.DerivedSourceEntity, NCMapper.Tests.Tests.AuditAcceptanceTests.DerivedDto>.Metadata = __meta184;
+            global::NCMapper.Runtime.RuntimeSnapshotStore.Register(__meta184);
+            // pair 185: NCMapper.Tests.Tests.AuditAcceptanceTests.NonNullToNullableSource -> NCMapper.Tests.Tests.AuditAcceptanceTests.NonNullToNullableDto (MapFrom channel)
+            var __mfAttr185 = new global::NCMapper.Attributes.MapFromAttribute(typeof(NCMapper.Tests.Tests.AuditAcceptanceTests.NonNullToNullableSource));
+            var __meta185 = new global::NCMapper.Runtime.RuntimeMapperMetadata
             {
                 SourceType = typeof(NCMapper.Tests.Tests.AuditAcceptanceTests.NonNullToNullableSource),
                 TargetType = typeof(NCMapper.Tests.Tests.AuditAcceptanceTests.NonNullToNullableDto),
@@ -25407,7 +26410,7 @@ namespace NCMapper.Runtime
                                 TypeName = "int?",
                                 TypeRef = typeof(int?),
                                 HasMapFromAttribute = true,
-                                MapFromAttribute = __mfAttr179,
+                                MapFromAttribute = __mfAttr185,
                                 HasMapIgnore = false,
                                 MapIgnoreDirection = 0,
                                 HasOverrideIgnore = false,
@@ -25447,7 +26450,7 @@ namespace NCMapper.Runtime
                                 TypeName = "decimal?",
                                 TypeRef = typeof(decimal?),
                                 HasMapFromAttribute = true,
-                                MapFromAttribute = __mfAttr179,
+                                MapFromAttribute = __mfAttr185,
                                 HasMapIgnore = false,
                                 MapIgnoreDirection = 0,
                                 HasOverrideIgnore = false,
@@ -25487,7 +26490,7 @@ namespace NCMapper.Runtime
                         TypeName = "int?",
                         TypeRef = typeof(int?),
                         HasMapFromAttribute = true,
-                        MapFromAttribute = __mfAttr179,
+                        MapFromAttribute = __mfAttr185,
                         HasMapIgnore = false,
                         MapIgnoreDirection = 0,
                         HasOverrideIgnore = false,
@@ -25510,7 +26513,7 @@ namespace NCMapper.Runtime
                         TypeName = "decimal?",
                         TypeRef = typeof(decimal?),
                         HasMapFromAttribute = true,
-                        MapFromAttribute = __mfAttr179,
+                        MapFromAttribute = __mfAttr185,
                         HasMapIgnore = false,
                         MapIgnoreDirection = 0,
                         HasOverrideIgnore = false,
@@ -25529,11 +26532,11 @@ namespace NCMapper.Runtime
                     },
                 },
             };
-            global::NCMapper.Runtime.RuntimeSnapshotPair<NCMapper.Tests.Tests.AuditAcceptanceTests.NonNullToNullableSource, NCMapper.Tests.Tests.AuditAcceptanceTests.NonNullToNullableDto>.Metadata = __meta179;
-            global::NCMapper.Runtime.RuntimeSnapshotStore.Register(__meta179);
-            // pair 180: NCMapper.Tests.Tests.AuditAcceptanceTests.NullableSourceEntity -> NCMapper.Tests.Tests.AuditAcceptanceTests.NullableTargetDto (MapFrom channel)
-            var __mfAttr180 = new global::NCMapper.Attributes.MapFromAttribute(typeof(NCMapper.Tests.Tests.AuditAcceptanceTests.NullableSourceEntity));
-            var __meta180 = new global::NCMapper.Runtime.RuntimeMapperMetadata
+            global::NCMapper.Runtime.RuntimeSnapshotPair<NCMapper.Tests.Tests.AuditAcceptanceTests.NonNullToNullableSource, NCMapper.Tests.Tests.AuditAcceptanceTests.NonNullToNullableDto>.Metadata = __meta185;
+            global::NCMapper.Runtime.RuntimeSnapshotStore.Register(__meta185);
+            // pair 186: NCMapper.Tests.Tests.AuditAcceptanceTests.NullableSourceEntity -> NCMapper.Tests.Tests.AuditAcceptanceTests.NullableTargetDto (MapFrom channel)
+            var __mfAttr186 = new global::NCMapper.Attributes.MapFromAttribute(typeof(NCMapper.Tests.Tests.AuditAcceptanceTests.NullableSourceEntity));
+            var __meta186 = new global::NCMapper.Runtime.RuntimeMapperMetadata
             {
                 SourceType = typeof(NCMapper.Tests.Tests.AuditAcceptanceTests.NullableSourceEntity),
                 TargetType = typeof(NCMapper.Tests.Tests.AuditAcceptanceTests.NullableTargetDto),
@@ -25554,7 +26557,7 @@ namespace NCMapper.Runtime
                                 TypeName = "long?",
                                 TypeRef = typeof(long?),
                                 HasMapFromAttribute = true,
-                                MapFromAttribute = __mfAttr180,
+                                MapFromAttribute = __mfAttr186,
                                 HasMapIgnore = false,
                                 MapIgnoreDirection = 0,
                                 HasOverrideIgnore = false,
@@ -25594,7 +26597,7 @@ namespace NCMapper.Runtime
                                 TypeName = "decimal?",
                                 TypeRef = typeof(decimal?),
                                 HasMapFromAttribute = true,
-                                MapFromAttribute = __mfAttr180,
+                                MapFromAttribute = __mfAttr186,
                                 HasMapIgnore = false,
                                 MapIgnoreDirection = 0,
                                 HasOverrideIgnore = false,
@@ -25634,7 +26637,7 @@ namespace NCMapper.Runtime
                                 TypeName = "decimal?",
                                 TypeRef = typeof(decimal?),
                                 HasMapFromAttribute = true,
-                                MapFromAttribute = __mfAttr180,
+                                MapFromAttribute = __mfAttr186,
                                 HasMapIgnore = false,
                                 MapIgnoreDirection = 0,
                                 HasOverrideIgnore = false,
@@ -25674,7 +26677,7 @@ namespace NCMapper.Runtime
                                 TypeName = "int?",
                                 TypeRef = typeof(int?),
                                 HasMapFromAttribute = true,
-                                MapFromAttribute = __mfAttr180,
+                                MapFromAttribute = __mfAttr186,
                                 HasMapIgnore = false,
                                 MapIgnoreDirection = 0,
                                 HasOverrideIgnore = false,
@@ -25714,7 +26717,7 @@ namespace NCMapper.Runtime
                         TypeName = "long?",
                         TypeRef = typeof(long?),
                         HasMapFromAttribute = true,
-                        MapFromAttribute = __mfAttr180,
+                        MapFromAttribute = __mfAttr186,
                         HasMapIgnore = false,
                         MapIgnoreDirection = 0,
                         HasOverrideIgnore = false,
@@ -25737,7 +26740,7 @@ namespace NCMapper.Runtime
                         TypeName = "decimal?",
                         TypeRef = typeof(decimal?),
                         HasMapFromAttribute = true,
-                        MapFromAttribute = __mfAttr180,
+                        MapFromAttribute = __mfAttr186,
                         HasMapIgnore = false,
                         MapIgnoreDirection = 0,
                         HasOverrideIgnore = false,
@@ -25760,7 +26763,7 @@ namespace NCMapper.Runtime
                         TypeName = "decimal?",
                         TypeRef = typeof(decimal?),
                         HasMapFromAttribute = true,
-                        MapFromAttribute = __mfAttr180,
+                        MapFromAttribute = __mfAttr186,
                         HasMapIgnore = false,
                         MapIgnoreDirection = 0,
                         HasOverrideIgnore = false,
@@ -25783,7 +26786,7 @@ namespace NCMapper.Runtime
                         TypeName = "int?",
                         TypeRef = typeof(int?),
                         HasMapFromAttribute = true,
-                        MapFromAttribute = __mfAttr180,
+                        MapFromAttribute = __mfAttr186,
                         HasMapIgnore = false,
                         MapIgnoreDirection = 0,
                         HasOverrideIgnore = false,
@@ -25802,11 +26805,11 @@ namespace NCMapper.Runtime
                     },
                 },
             };
-            global::NCMapper.Runtime.RuntimeSnapshotPair<NCMapper.Tests.Tests.AuditAcceptanceTests.NullableSourceEntity, NCMapper.Tests.Tests.AuditAcceptanceTests.NullableTargetDto>.Metadata = __meta180;
-            global::NCMapper.Runtime.RuntimeSnapshotStore.Register(__meta180);
-            // pair 181: NCMapper.Tests.Tests.CbuR1Entity -> NCMapper.Tests.Tests.CbuR1Dto (MapFrom channel)
-            var __mfAttr181 = new global::NCMapper.Attributes.MapFromAttribute(typeof(NCMapper.Tests.Tests.CbuR1Entity));
-            var __meta181 = new global::NCMapper.Runtime.RuntimeMapperMetadata
+            global::NCMapper.Runtime.RuntimeSnapshotPair<NCMapper.Tests.Tests.AuditAcceptanceTests.NullableSourceEntity, NCMapper.Tests.Tests.AuditAcceptanceTests.NullableTargetDto>.Metadata = __meta186;
+            global::NCMapper.Runtime.RuntimeSnapshotStore.Register(__meta186);
+            // pair 187: NCMapper.Tests.Tests.CbuR1Entity -> NCMapper.Tests.Tests.CbuR1Dto (MapFrom channel)
+            var __mfAttr187 = new global::NCMapper.Attributes.MapFromAttribute(typeof(NCMapper.Tests.Tests.CbuR1Entity));
+            var __meta187 = new global::NCMapper.Runtime.RuntimeMapperMetadata
             {
                 SourceType = typeof(NCMapper.Tests.Tests.CbuR1Entity),
                 TargetType = typeof(NCMapper.Tests.Tests.CbuR1Dto),
@@ -25827,7 +26830,7 @@ namespace NCMapper.Runtime
                                 TypeName = "string",
                                 TypeRef = typeof(string),
                                 HasMapFromAttribute = true,
-                                MapFromAttribute = __mfAttr181,
+                                MapFromAttribute = __mfAttr187,
                                 HasMapIgnore = false,
                                 MapIgnoreDirection = 0,
                                 HasOverrideIgnore = false,
@@ -25867,7 +26870,7 @@ namespace NCMapper.Runtime
                         TypeName = "string",
                         TypeRef = typeof(string),
                         HasMapFromAttribute = true,
-                        MapFromAttribute = __mfAttr181,
+                        MapFromAttribute = __mfAttr187,
                         HasMapIgnore = false,
                         MapIgnoreDirection = 0,
                         HasOverrideIgnore = false,
@@ -25886,11 +26889,11 @@ namespace NCMapper.Runtime
                     },
                 },
             };
-            global::NCMapper.Runtime.RuntimeSnapshotPair<NCMapper.Tests.Tests.CbuR1Entity, NCMapper.Tests.Tests.CbuR1Dto>.Metadata = __meta181;
-            global::NCMapper.Runtime.RuntimeSnapshotStore.Register(__meta181);
-            // pair 182: NCMapper.Tests.Tests.CbuR2Entity -> NCMapper.Tests.Tests.CbuR2Dto (MapFrom channel)
-            var __mfAttr182 = new global::NCMapper.Attributes.MapFromAttribute(typeof(NCMapper.Tests.Tests.CbuR2Entity));
-            var __meta182 = new global::NCMapper.Runtime.RuntimeMapperMetadata
+            global::NCMapper.Runtime.RuntimeSnapshotPair<NCMapper.Tests.Tests.CbuR1Entity, NCMapper.Tests.Tests.CbuR1Dto>.Metadata = __meta187;
+            global::NCMapper.Runtime.RuntimeSnapshotStore.Register(__meta187);
+            // pair 188: NCMapper.Tests.Tests.CbuR2Entity -> NCMapper.Tests.Tests.CbuR2Dto (MapFrom channel)
+            var __mfAttr188 = new global::NCMapper.Attributes.MapFromAttribute(typeof(NCMapper.Tests.Tests.CbuR2Entity));
+            var __meta188 = new global::NCMapper.Runtime.RuntimeMapperMetadata
             {
                 SourceType = typeof(NCMapper.Tests.Tests.CbuR2Entity),
                 TargetType = typeof(NCMapper.Tests.Tests.CbuR2Dto),
@@ -25911,7 +26914,7 @@ namespace NCMapper.Runtime
                                 TypeName = "string?",
                                 TypeRef = typeof(string),
                                 HasMapFromAttribute = true,
-                                MapFromAttribute = __mfAttr182,
+                                MapFromAttribute = __mfAttr188,
                                 HasMapIgnore = false,
                                 MapIgnoreDirection = 0,
                                 HasOverrideIgnore = false,
@@ -25951,7 +26954,7 @@ namespace NCMapper.Runtime
                         TypeName = "string?",
                         TypeRef = typeof(string),
                         HasMapFromAttribute = true,
-                        MapFromAttribute = __mfAttr182,
+                        MapFromAttribute = __mfAttr188,
                         HasMapIgnore = false,
                         MapIgnoreDirection = 0,
                         HasOverrideIgnore = false,
@@ -25970,11 +26973,11 @@ namespace NCMapper.Runtime
                     },
                 },
             };
-            global::NCMapper.Runtime.RuntimeSnapshotPair<NCMapper.Tests.Tests.CbuR2Entity, NCMapper.Tests.Tests.CbuR2Dto>.Metadata = __meta182;
-            global::NCMapper.Runtime.RuntimeSnapshotStore.Register(__meta182);
-            // pair 183: NCMapper.Tests.Tests.CbuR3Entity -> NCMapper.Tests.Tests.CbuR3Dto (MapFrom channel)
-            var __mfAttr183 = new global::NCMapper.Attributes.MapFromAttribute(typeof(NCMapper.Tests.Tests.CbuR3Entity));
-            var __meta183 = new global::NCMapper.Runtime.RuntimeMapperMetadata
+            global::NCMapper.Runtime.RuntimeSnapshotPair<NCMapper.Tests.Tests.CbuR2Entity, NCMapper.Tests.Tests.CbuR2Dto>.Metadata = __meta188;
+            global::NCMapper.Runtime.RuntimeSnapshotStore.Register(__meta188);
+            // pair 189: NCMapper.Tests.Tests.CbuR3Entity -> NCMapper.Tests.Tests.CbuR3Dto (MapFrom channel)
+            var __mfAttr189 = new global::NCMapper.Attributes.MapFromAttribute(typeof(NCMapper.Tests.Tests.CbuR3Entity));
+            var __meta189 = new global::NCMapper.Runtime.RuntimeMapperMetadata
             {
                 SourceType = typeof(NCMapper.Tests.Tests.CbuR3Entity),
                 TargetType = typeof(NCMapper.Tests.Tests.CbuR3Dto),
@@ -25995,7 +26998,7 @@ namespace NCMapper.Runtime
                                 TypeName = "string",
                                 TypeRef = typeof(string),
                                 HasMapFromAttribute = true,
-                                MapFromAttribute = __mfAttr183,
+                                MapFromAttribute = __mfAttr189,
                                 HasMapIgnore = false,
                                 MapIgnoreDirection = 0,
                                 HasOverrideIgnore = false,
@@ -26035,7 +27038,7 @@ namespace NCMapper.Runtime
                         TypeName = "string",
                         TypeRef = typeof(string),
                         HasMapFromAttribute = true,
-                        MapFromAttribute = __mfAttr183,
+                        MapFromAttribute = __mfAttr189,
                         HasMapIgnore = false,
                         MapIgnoreDirection = 0,
                         HasOverrideIgnore = false,
@@ -26054,11 +27057,11 @@ namespace NCMapper.Runtime
                     },
                 },
             };
-            global::NCMapper.Runtime.RuntimeSnapshotPair<NCMapper.Tests.Tests.CbuR3Entity, NCMapper.Tests.Tests.CbuR3Dto>.Metadata = __meta183;
-            global::NCMapper.Runtime.RuntimeSnapshotStore.Register(__meta183);
-            // pair 184: NCMapper.Tests.Tests.CbuR4Entity -> NCMapper.Tests.Tests.CbuR4Dto (MapFrom channel)
-            var __mfAttr184 = new global::NCMapper.Attributes.MapFromAttribute(typeof(NCMapper.Tests.Tests.CbuR4Entity));
-            var __meta184 = new global::NCMapper.Runtime.RuntimeMapperMetadata
+            global::NCMapper.Runtime.RuntimeSnapshotPair<NCMapper.Tests.Tests.CbuR3Entity, NCMapper.Tests.Tests.CbuR3Dto>.Metadata = __meta189;
+            global::NCMapper.Runtime.RuntimeSnapshotStore.Register(__meta189);
+            // pair 190: NCMapper.Tests.Tests.CbuR4Entity -> NCMapper.Tests.Tests.CbuR4Dto (MapFrom channel)
+            var __mfAttr190 = new global::NCMapper.Attributes.MapFromAttribute(typeof(NCMapper.Tests.Tests.CbuR4Entity));
+            var __meta190 = new global::NCMapper.Runtime.RuntimeMapperMetadata
             {
                 SourceType = typeof(NCMapper.Tests.Tests.CbuR4Entity),
                 TargetType = typeof(NCMapper.Tests.Tests.CbuR4Dto),
@@ -26079,7 +27082,7 @@ namespace NCMapper.Runtime
                                 TypeName = "string",
                                 TypeRef = typeof(string),
                                 HasMapFromAttribute = true,
-                                MapFromAttribute = __mfAttr184,
+                                MapFromAttribute = __mfAttr190,
                                 HasMapIgnore = false,
                                 MapIgnoreDirection = 0,
                                 HasOverrideIgnore = false,
@@ -26119,7 +27122,7 @@ namespace NCMapper.Runtime
                         TypeName = "string",
                         TypeRef = typeof(string),
                         HasMapFromAttribute = true,
-                        MapFromAttribute = __mfAttr184,
+                        MapFromAttribute = __mfAttr190,
                         HasMapIgnore = false,
                         MapIgnoreDirection = 0,
                         HasOverrideIgnore = false,
@@ -26138,11 +27141,11 @@ namespace NCMapper.Runtime
                     },
                 },
             };
-            global::NCMapper.Runtime.RuntimeSnapshotPair<NCMapper.Tests.Tests.CbuR4Entity, NCMapper.Tests.Tests.CbuR4Dto>.Metadata = __meta184;
-            global::NCMapper.Runtime.RuntimeSnapshotStore.Register(__meta184);
-            // pair 185: NCMapper.Tests.Tests.CollectionTestEntity -> NCMapper.Tests.Tests.CollectionTestEntity (MapFrom channel)
-            var __mfAttr185 = new global::NCMapper.Attributes.MapFromAttribute(typeof(NCMapper.Tests.Tests.CollectionTestEntity));
-            var __meta185 = new global::NCMapper.Runtime.RuntimeMapperMetadata
+            global::NCMapper.Runtime.RuntimeSnapshotPair<NCMapper.Tests.Tests.CbuR4Entity, NCMapper.Tests.Tests.CbuR4Dto>.Metadata = __meta190;
+            global::NCMapper.Runtime.RuntimeSnapshotStore.Register(__meta190);
+            // pair 191: NCMapper.Tests.Tests.CollectionTestEntity -> NCMapper.Tests.Tests.CollectionTestEntity (MapFrom channel)
+            var __mfAttr191 = new global::NCMapper.Attributes.MapFromAttribute(typeof(NCMapper.Tests.Tests.CollectionTestEntity));
+            var __meta191 = new global::NCMapper.Runtime.RuntimeMapperMetadata
             {
                 SourceType = typeof(NCMapper.Tests.Tests.CollectionTestEntity),
                 TargetType = typeof(NCMapper.Tests.Tests.CollectionTestEntity),
@@ -26163,7 +27166,7 @@ namespace NCMapper.Runtime
                                 TypeName = "int",
                                 TypeRef = typeof(int),
                                 HasMapFromAttribute = true,
-                                MapFromAttribute = __mfAttr185,
+                                MapFromAttribute = __mfAttr191,
                                 HasMapIgnore = false,
                                 MapIgnoreDirection = 0,
                                 HasOverrideIgnore = false,
@@ -26203,7 +27206,7 @@ namespace NCMapper.Runtime
                                 TypeName = "System.Collections.Generic.List<int>?",
                                 TypeRef = typeof(System.Collections.Generic.List<int>),
                                 HasMapFromAttribute = true,
-                                MapFromAttribute = __mfAttr185,
+                                MapFromAttribute = __mfAttr191,
                                 HasMapIgnore = false,
                                 MapIgnoreDirection = 0,
                                 HasOverrideIgnore = false,
@@ -26243,7 +27246,7 @@ namespace NCMapper.Runtime
                         TypeName = "int",
                         TypeRef = typeof(int),
                         HasMapFromAttribute = true,
-                        MapFromAttribute = __mfAttr185,
+                        MapFromAttribute = __mfAttr191,
                         HasMapIgnore = false,
                         MapIgnoreDirection = 0,
                         HasOverrideIgnore = false,
@@ -26266,7 +27269,7 @@ namespace NCMapper.Runtime
                         TypeName = "System.Collections.Generic.List<int>?",
                         TypeRef = typeof(System.Collections.Generic.List<int>),
                         HasMapFromAttribute = true,
-                        MapFromAttribute = __mfAttr185,
+                        MapFromAttribute = __mfAttr191,
                         HasMapIgnore = false,
                         MapIgnoreDirection = 0,
                         HasOverrideIgnore = false,
@@ -26285,11 +27288,11 @@ namespace NCMapper.Runtime
                     },
                 },
             };
-            global::NCMapper.Runtime.RuntimeSnapshotPair<NCMapper.Tests.Tests.CollectionTestEntity, NCMapper.Tests.Tests.CollectionTestEntity>.Metadata = __meta185;
-            global::NCMapper.Runtime.RuntimeSnapshotStore.Register(__meta185);
-            // pair 186: NCMapper.Tests.Tests.CsmMGenSource -> NCMapper.Tests.Tests.CsmMGenDto (MapFrom channel)
-            var __mfAttr186 = new global::NCMapper.Attributes.MapFromAttribute(typeof(NCMapper.Tests.Tests.CsmMGenSource));
-            var __meta186 = new global::NCMapper.Runtime.RuntimeMapperMetadata
+            global::NCMapper.Runtime.RuntimeSnapshotPair<NCMapper.Tests.Tests.CollectionTestEntity, NCMapper.Tests.Tests.CollectionTestEntity>.Metadata = __meta191;
+            global::NCMapper.Runtime.RuntimeSnapshotStore.Register(__meta191);
+            // pair 192: NCMapper.Tests.Tests.CsmMGenSource -> NCMapper.Tests.Tests.CsmMGenDto (MapFrom channel)
+            var __mfAttr192 = new global::NCMapper.Attributes.MapFromAttribute(typeof(NCMapper.Tests.Tests.CsmMGenSource));
+            var __meta192 = new global::NCMapper.Runtime.RuntimeMapperMetadata
             {
                 SourceType = typeof(NCMapper.Tests.Tests.CsmMGenSource),
                 TargetType = typeof(NCMapper.Tests.Tests.CsmMGenDto),
@@ -26310,7 +27313,7 @@ namespace NCMapper.Runtime
                                 TypeName = "string",
                                 TypeRef = typeof(string),
                                 HasMapFromAttribute = true,
-                                MapFromAttribute = __mfAttr186,
+                                MapFromAttribute = __mfAttr192,
                                 HasMapIgnore = false,
                                 MapIgnoreDirection = 0,
                                 HasOverrideIgnore = false,
@@ -26350,7 +27353,7 @@ namespace NCMapper.Runtime
                         TypeName = "string",
                         TypeRef = typeof(string),
                         HasMapFromAttribute = true,
-                        MapFromAttribute = __mfAttr186,
+                        MapFromAttribute = __mfAttr192,
                         HasMapIgnore = false,
                         MapIgnoreDirection = 0,
                         HasOverrideIgnore = false,
@@ -26369,11 +27372,11 @@ namespace NCMapper.Runtime
                     },
                 },
             };
-            global::NCMapper.Runtime.RuntimeSnapshotPair<NCMapper.Tests.Tests.CsmMGenSource, NCMapper.Tests.Tests.CsmMGenDto>.Metadata = __meta186;
-            global::NCMapper.Runtime.RuntimeSnapshotStore.Register(__meta186);
-            // pair 187: NCMapper.Tests.Tests.CsmMNullSource -> NCMapper.Tests.Tests.CsmMNullGenDto (MapFrom channel)
-            var __mfAttr187 = new global::NCMapper.Attributes.MapFromAttribute(typeof(NCMapper.Tests.Tests.CsmMNullSource));
-            var __meta187 = new global::NCMapper.Runtime.RuntimeMapperMetadata
+            global::NCMapper.Runtime.RuntimeSnapshotPair<NCMapper.Tests.Tests.CsmMGenSource, NCMapper.Tests.Tests.CsmMGenDto>.Metadata = __meta192;
+            global::NCMapper.Runtime.RuntimeSnapshotStore.Register(__meta192);
+            // pair 193: NCMapper.Tests.Tests.CsmMNullSource -> NCMapper.Tests.Tests.CsmMNullGenDto (MapFrom channel)
+            var __mfAttr193 = new global::NCMapper.Attributes.MapFromAttribute(typeof(NCMapper.Tests.Tests.CsmMNullSource));
+            var __meta193 = new global::NCMapper.Runtime.RuntimeMapperMetadata
             {
                 SourceType = typeof(NCMapper.Tests.Tests.CsmMNullSource),
                 TargetType = typeof(NCMapper.Tests.Tests.CsmMNullGenDto),
@@ -26394,7 +27397,7 @@ namespace NCMapper.Runtime
                                 TypeName = "string",
                                 TypeRef = typeof(string),
                                 HasMapFromAttribute = true,
-                                MapFromAttribute = __mfAttr187,
+                                MapFromAttribute = __mfAttr193,
                                 HasMapIgnore = false,
                                 MapIgnoreDirection = 0,
                                 HasOverrideIgnore = false,
@@ -26434,7 +27437,7 @@ namespace NCMapper.Runtime
                         TypeName = "string",
                         TypeRef = typeof(string),
                         HasMapFromAttribute = true,
-                        MapFromAttribute = __mfAttr187,
+                        MapFromAttribute = __mfAttr193,
                         HasMapIgnore = false,
                         MapIgnoreDirection = 0,
                         HasOverrideIgnore = false,
@@ -26453,11 +27456,11 @@ namespace NCMapper.Runtime
                     },
                 },
             };
-            global::NCMapper.Runtime.RuntimeSnapshotPair<NCMapper.Tests.Tests.CsmMNullSource, NCMapper.Tests.Tests.CsmMNullGenDto>.Metadata = __meta187;
-            global::NCMapper.Runtime.RuntimeSnapshotStore.Register(__meta187);
-            // pair 188: NCMapper.Tests.Tests.CsmMParSource -> NCMapper.Tests.Tests.CsmMParGenDto (MapFrom channel)
-            var __mfAttr188 = new global::NCMapper.Attributes.MapFromAttribute(typeof(NCMapper.Tests.Tests.CsmMParSource));
-            var __meta188 = new global::NCMapper.Runtime.RuntimeMapperMetadata
+            global::NCMapper.Runtime.RuntimeSnapshotPair<NCMapper.Tests.Tests.CsmMNullSource, NCMapper.Tests.Tests.CsmMNullGenDto>.Metadata = __meta193;
+            global::NCMapper.Runtime.RuntimeSnapshotStore.Register(__meta193);
+            // pair 194: NCMapper.Tests.Tests.CsmMParSource -> NCMapper.Tests.Tests.CsmMParGenDto (MapFrom channel)
+            var __mfAttr194 = new global::NCMapper.Attributes.MapFromAttribute(typeof(NCMapper.Tests.Tests.CsmMParSource));
+            var __meta194 = new global::NCMapper.Runtime.RuntimeMapperMetadata
             {
                 SourceType = typeof(NCMapper.Tests.Tests.CsmMParSource),
                 TargetType = typeof(NCMapper.Tests.Tests.CsmMParGenDto),
@@ -26478,7 +27481,7 @@ namespace NCMapper.Runtime
                                 TypeName = "string",
                                 TypeRef = typeof(string),
                                 HasMapFromAttribute = true,
-                                MapFromAttribute = __mfAttr188,
+                                MapFromAttribute = __mfAttr194,
                                 HasMapIgnore = false,
                                 MapIgnoreDirection = 0,
                                 HasOverrideIgnore = false,
@@ -26518,7 +27521,7 @@ namespace NCMapper.Runtime
                         TypeName = "string",
                         TypeRef = typeof(string),
                         HasMapFromAttribute = true,
-                        MapFromAttribute = __mfAttr188,
+                        MapFromAttribute = __mfAttr194,
                         HasMapIgnore = false,
                         MapIgnoreDirection = 0,
                         HasOverrideIgnore = false,
@@ -26537,11 +27540,11 @@ namespace NCMapper.Runtime
                     },
                 },
             };
-            global::NCMapper.Runtime.RuntimeSnapshotPair<NCMapper.Tests.Tests.CsmMParSource, NCMapper.Tests.Tests.CsmMParGenDto>.Metadata = __meta188;
-            global::NCMapper.Runtime.RuntimeSnapshotStore.Register(__meta188);
-            // pair 189: NCMapper.Tests.Tests.CsmMQ3Node -> NCMapper.Tests.Tests.CsmMQ3GenDto (MapFrom channel)
-            var __mfAttr189 = new global::NCMapper.Attributes.MapFromAttribute(typeof(NCMapper.Tests.Tests.CsmMQ3Node));
-            var __meta189 = new global::NCMapper.Runtime.RuntimeMapperMetadata
+            global::NCMapper.Runtime.RuntimeSnapshotPair<NCMapper.Tests.Tests.CsmMParSource, NCMapper.Tests.Tests.CsmMParGenDto>.Metadata = __meta194;
+            global::NCMapper.Runtime.RuntimeSnapshotStore.Register(__meta194);
+            // pair 195: NCMapper.Tests.Tests.CsmMQ3Node -> NCMapper.Tests.Tests.CsmMQ3GenDto (MapFrom channel)
+            var __mfAttr195 = new global::NCMapper.Attributes.MapFromAttribute(typeof(NCMapper.Tests.Tests.CsmMQ3Node));
+            var __meta195 = new global::NCMapper.Runtime.RuntimeMapperMetadata
             {
                 SourceType = typeof(NCMapper.Tests.Tests.CsmMQ3Node),
                 TargetType = typeof(NCMapper.Tests.Tests.CsmMQ3GenDto),
@@ -26562,7 +27565,7 @@ namespace NCMapper.Runtime
                                 TypeName = "string",
                                 TypeRef = typeof(string),
                                 HasMapFromAttribute = true,
-                                MapFromAttribute = __mfAttr189,
+                                MapFromAttribute = __mfAttr195,
                                 HasMapIgnore = false,
                                 MapIgnoreDirection = 0,
                                 HasOverrideIgnore = false,
@@ -26602,7 +27605,7 @@ namespace NCMapper.Runtime
                         TypeName = "string",
                         TypeRef = typeof(string),
                         HasMapFromAttribute = true,
-                        MapFromAttribute = __mfAttr189,
+                        MapFromAttribute = __mfAttr195,
                         HasMapIgnore = false,
                         MapIgnoreDirection = 0,
                         HasOverrideIgnore = false,
@@ -26621,11 +27624,11 @@ namespace NCMapper.Runtime
                     },
                 },
             };
-            global::NCMapper.Runtime.RuntimeSnapshotPair<NCMapper.Tests.Tests.CsmMQ3Node, NCMapper.Tests.Tests.CsmMQ3GenDto>.Metadata = __meta189;
-            global::NCMapper.Runtime.RuntimeSnapshotStore.Register(__meta189);
-            // pair 190: NCMapper.Tests.Tests.CsmMT0Entity -> NCMapper.Tests.Tests.CsmMT0Dto (MapFrom channel)
-            var __mfAttr190 = new global::NCMapper.Attributes.MapFromAttribute(typeof(NCMapper.Tests.Tests.CsmMT0Entity));
-            var __meta190 = new global::NCMapper.Runtime.RuntimeMapperMetadata
+            global::NCMapper.Runtime.RuntimeSnapshotPair<NCMapper.Tests.Tests.CsmMQ3Node, NCMapper.Tests.Tests.CsmMQ3GenDto>.Metadata = __meta195;
+            global::NCMapper.Runtime.RuntimeSnapshotStore.Register(__meta195);
+            // pair 196: NCMapper.Tests.Tests.CsmMT0Entity -> NCMapper.Tests.Tests.CsmMT0Dto (MapFrom channel)
+            var __mfAttr196 = new global::NCMapper.Attributes.MapFromAttribute(typeof(NCMapper.Tests.Tests.CsmMT0Entity));
+            var __meta196 = new global::NCMapper.Runtime.RuntimeMapperMetadata
             {
                 SourceType = typeof(NCMapper.Tests.Tests.CsmMT0Entity),
                 TargetType = typeof(NCMapper.Tests.Tests.CsmMT0Dto),
@@ -26646,7 +27649,7 @@ namespace NCMapper.Runtime
                                 TypeName = "string",
                                 TypeRef = typeof(string),
                                 HasMapFromAttribute = true,
-                                MapFromAttribute = __mfAttr190,
+                                MapFromAttribute = __mfAttr196,
                                 HasMapIgnore = false,
                                 MapIgnoreDirection = 0,
                                 HasOverrideIgnore = false,
@@ -26686,7 +27689,7 @@ namespace NCMapper.Runtime
                         TypeName = "string",
                         TypeRef = typeof(string),
                         HasMapFromAttribute = true,
-                        MapFromAttribute = __mfAttr190,
+                        MapFromAttribute = __mfAttr196,
                         HasMapIgnore = false,
                         MapIgnoreDirection = 0,
                         HasOverrideIgnore = false,
@@ -26705,11 +27708,11 @@ namespace NCMapper.Runtime
                     },
                 },
             };
-            global::NCMapper.Runtime.RuntimeSnapshotPair<NCMapper.Tests.Tests.CsmMT0Entity, NCMapper.Tests.Tests.CsmMT0Dto>.Metadata = __meta190;
-            global::NCMapper.Runtime.RuntimeSnapshotStore.Register(__meta190);
-            // pair 191: NCMapper.Tests.Tests.CtDOrderEntity -> NCMapper.Tests.Tests.CtDOrderDto (MapFrom channel)
-            var __mfAttr191 = new global::NCMapper.Attributes.MapFromAttribute(typeof(NCMapper.Tests.Tests.CtDOrderEntity));
-            var __meta191 = new global::NCMapper.Runtime.RuntimeMapperMetadata
+            global::NCMapper.Runtime.RuntimeSnapshotPair<NCMapper.Tests.Tests.CsmMT0Entity, NCMapper.Tests.Tests.CsmMT0Dto>.Metadata = __meta196;
+            global::NCMapper.Runtime.RuntimeSnapshotStore.Register(__meta196);
+            // pair 197: NCMapper.Tests.Tests.CtDOrderEntity -> NCMapper.Tests.Tests.CtDOrderDto (MapFrom channel)
+            var __mfAttr197 = new global::NCMapper.Attributes.MapFromAttribute(typeof(NCMapper.Tests.Tests.CtDOrderEntity));
+            var __meta197 = new global::NCMapper.Runtime.RuntimeMapperMetadata
             {
                 SourceType = typeof(NCMapper.Tests.Tests.CtDOrderEntity),
                 TargetType = typeof(NCMapper.Tests.Tests.CtDOrderDto),
@@ -26747,7 +27750,7 @@ namespace NCMapper.Runtime
                         TypeName = "string",
                         TypeRef = typeof(string),
                         HasMapFromAttribute = true,
-                        MapFromAttribute = __mfAttr191,
+                        MapFromAttribute = __mfAttr197,
                         HasMapIgnore = false,
                         MapIgnoreDirection = 0,
                         HasOverrideIgnore = false,
@@ -26766,11 +27769,11 @@ namespace NCMapper.Runtime
                     },
                 },
             };
-            global::NCMapper.Runtime.RuntimeSnapshotPair<NCMapper.Tests.Tests.CtDOrderEntity, NCMapper.Tests.Tests.CtDOrderDto>.Metadata = __meta191;
-            global::NCMapper.Runtime.RuntimeSnapshotStore.Register(__meta191);
-            // pair 192: NCMapper.Tests.Tests.D3RuntimeClosureLockTests.D3CbEntity -> NCMapper.Tests.Tests.D3RuntimeClosureLockTests.D3CbAnchoredView (MapFrom channel)
-            var __mfAttr192 = new global::NCMapper.Attributes.MapFromAttribute(typeof(NCMapper.Tests.Tests.D3RuntimeClosureLockTests.D3CbEntity));
-            var __meta192 = new global::NCMapper.Runtime.RuntimeMapperMetadata
+            global::NCMapper.Runtime.RuntimeSnapshotPair<NCMapper.Tests.Tests.CtDOrderEntity, NCMapper.Tests.Tests.CtDOrderDto>.Metadata = __meta197;
+            global::NCMapper.Runtime.RuntimeSnapshotStore.Register(__meta197);
+            // pair 198: NCMapper.Tests.Tests.D3RuntimeClosureLockTests.D3CbEntity -> NCMapper.Tests.Tests.D3RuntimeClosureLockTests.D3CbAnchoredView (MapFrom channel)
+            var __mfAttr198 = new global::NCMapper.Attributes.MapFromAttribute(typeof(NCMapper.Tests.Tests.D3RuntimeClosureLockTests.D3CbEntity));
+            var __meta198 = new global::NCMapper.Runtime.RuntimeMapperMetadata
             {
                 SourceType = typeof(NCMapper.Tests.Tests.D3RuntimeClosureLockTests.D3CbEntity),
                 TargetType = typeof(NCMapper.Tests.Tests.D3RuntimeClosureLockTests.D3CbAnchoredView),
@@ -26791,7 +27794,7 @@ namespace NCMapper.Runtime
                                 TypeName = "string",
                                 TypeRef = typeof(string),
                                 HasMapFromAttribute = true,
-                                MapFromAttribute = __mfAttr192,
+                                MapFromAttribute = __mfAttr198,
                                 HasMapIgnore = false,
                                 MapIgnoreDirection = 0,
                                 HasOverrideIgnore = false,
@@ -26831,7 +27834,7 @@ namespace NCMapper.Runtime
                         TypeName = "string",
                         TypeRef = typeof(string),
                         HasMapFromAttribute = true,
-                        MapFromAttribute = __mfAttr192,
+                        MapFromAttribute = __mfAttr198,
                         HasMapIgnore = false,
                         MapIgnoreDirection = 0,
                         HasOverrideIgnore = false,
@@ -26850,11 +27853,11 @@ namespace NCMapper.Runtime
                     },
                 },
             };
-            global::NCMapper.Runtime.RuntimeSnapshotPair<NCMapper.Tests.Tests.D3RuntimeClosureLockTests.D3CbEntity, NCMapper.Tests.Tests.D3RuntimeClosureLockTests.D3CbAnchoredView>.Metadata = __meta192;
-            global::NCMapper.Runtime.RuntimeSnapshotStore.Register(__meta192);
-            // pair 193: NCMapper.Tests.Tests.D3RuntimeClosureLockTests.D3CvEntity -> NCMapper.Tests.Tests.D3RuntimeClosureLockTests.D3CvAnchoredView (MapFrom channel)
-            var __mfAttr193 = new global::NCMapper.Attributes.MapFromAttribute(typeof(NCMapper.Tests.Tests.D3RuntimeClosureLockTests.D3CvEntity));
-            var __meta193 = new global::NCMapper.Runtime.RuntimeMapperMetadata
+            global::NCMapper.Runtime.RuntimeSnapshotPair<NCMapper.Tests.Tests.D3RuntimeClosureLockTests.D3CbEntity, NCMapper.Tests.Tests.D3RuntimeClosureLockTests.D3CbAnchoredView>.Metadata = __meta198;
+            global::NCMapper.Runtime.RuntimeSnapshotStore.Register(__meta198);
+            // pair 199: NCMapper.Tests.Tests.D3RuntimeClosureLockTests.D3CvEntity -> NCMapper.Tests.Tests.D3RuntimeClosureLockTests.D3CvAnchoredView (MapFrom channel)
+            var __mfAttr199 = new global::NCMapper.Attributes.MapFromAttribute(typeof(NCMapper.Tests.Tests.D3RuntimeClosureLockTests.D3CvEntity));
+            var __meta199 = new global::NCMapper.Runtime.RuntimeMapperMetadata
             {
                 SourceType = typeof(NCMapper.Tests.Tests.D3RuntimeClosureLockTests.D3CvEntity),
                 TargetType = typeof(NCMapper.Tests.Tests.D3RuntimeClosureLockTests.D3CvAnchoredView),
@@ -26875,7 +27878,7 @@ namespace NCMapper.Runtime
                                 TypeName = "string",
                                 TypeRef = typeof(string),
                                 HasMapFromAttribute = true,
-                                MapFromAttribute = __mfAttr193,
+                                MapFromAttribute = __mfAttr199,
                                 HasMapIgnore = false,
                                 MapIgnoreDirection = 0,
                                 HasOverrideIgnore = false,
@@ -26915,7 +27918,7 @@ namespace NCMapper.Runtime
                         TypeName = "string",
                         TypeRef = typeof(string),
                         HasMapFromAttribute = true,
-                        MapFromAttribute = __mfAttr193,
+                        MapFromAttribute = __mfAttr199,
                         HasMapIgnore = false,
                         MapIgnoreDirection = 0,
                         HasOverrideIgnore = false,
@@ -26934,11 +27937,11 @@ namespace NCMapper.Runtime
                     },
                 },
             };
-            global::NCMapper.Runtime.RuntimeSnapshotPair<NCMapper.Tests.Tests.D3RuntimeClosureLockTests.D3CvEntity, NCMapper.Tests.Tests.D3RuntimeClosureLockTests.D3CvAnchoredView>.Metadata = __meta193;
-            global::NCMapper.Runtime.RuntimeSnapshotStore.Register(__meta193);
-            // pair 194: NCMapper.Tests.Tests.D3RuntimeClosureLockTests.D3GdChildEntity -> NCMapper.Tests.Tests.D3RuntimeClosureLockTests.D3GdMaskChild (MapFrom channel)
-            var __mfAttr194 = new global::NCMapper.Attributes.MapFromAttribute(typeof(NCMapper.Tests.Tests.D3RuntimeClosureLockTests.D3GdChildEntity));
-            var __meta194 = new global::NCMapper.Runtime.RuntimeMapperMetadata
+            global::NCMapper.Runtime.RuntimeSnapshotPair<NCMapper.Tests.Tests.D3RuntimeClosureLockTests.D3CvEntity, NCMapper.Tests.Tests.D3RuntimeClosureLockTests.D3CvAnchoredView>.Metadata = __meta199;
+            global::NCMapper.Runtime.RuntimeSnapshotStore.Register(__meta199);
+            // pair 200: NCMapper.Tests.Tests.D3RuntimeClosureLockTests.D3GdChildEntity -> NCMapper.Tests.Tests.D3RuntimeClosureLockTests.D3GdMaskChild (MapFrom channel)
+            var __mfAttr200 = new global::NCMapper.Attributes.MapFromAttribute(typeof(NCMapper.Tests.Tests.D3RuntimeClosureLockTests.D3GdChildEntity));
+            var __meta200 = new global::NCMapper.Runtime.RuntimeMapperMetadata
             {
                 SourceType = typeof(NCMapper.Tests.Tests.D3RuntimeClosureLockTests.D3GdChildEntity),
                 TargetType = typeof(NCMapper.Tests.Tests.D3RuntimeClosureLockTests.D3GdMaskChild),
@@ -26959,7 +27962,7 @@ namespace NCMapper.Runtime
                                 TypeName = "string",
                                 TypeRef = typeof(string),
                                 HasMapFromAttribute = true,
-                                MapFromAttribute = __mfAttr194,
+                                MapFromAttribute = __mfAttr200,
                                 HasMapIgnore = false,
                                 MapIgnoreDirection = 0,
                                 HasOverrideIgnore = false,
@@ -26999,7 +28002,7 @@ namespace NCMapper.Runtime
                         TypeName = "int",
                         TypeRef = typeof(int),
                         HasMapFromAttribute = true,
-                        MapFromAttribute = __mfAttr194,
+                        MapFromAttribute = __mfAttr200,
                         HasMapIgnore = false,
                         MapIgnoreDirection = 0,
                         HasOverrideIgnore = false,
@@ -27022,7 +28025,7 @@ namespace NCMapper.Runtime
                         TypeName = "string",
                         TypeRef = typeof(string),
                         HasMapFromAttribute = true,
-                        MapFromAttribute = __mfAttr194,
+                        MapFromAttribute = __mfAttr200,
                         HasMapIgnore = false,
                         MapIgnoreDirection = 0,
                         HasOverrideIgnore = false,
@@ -27041,11 +28044,11 @@ namespace NCMapper.Runtime
                     },
                 },
             };
-            global::NCMapper.Runtime.RuntimeSnapshotPair<NCMapper.Tests.Tests.D3RuntimeClosureLockTests.D3GdChildEntity, NCMapper.Tests.Tests.D3RuntimeClosureLockTests.D3GdMaskChild>.Metadata = __meta194;
-            global::NCMapper.Runtime.RuntimeSnapshotStore.Register(__meta194);
-            // pair 195: NCMapper.Tests.Tests.D3RuntimeClosureLockTests.D3GdChildEntity2 -> NCMapper.Tests.Tests.D3RuntimeClosureLockTests.D3GdConvertChild (MapFrom channel)
-            var __mfAttr195 = new global::NCMapper.Attributes.MapFromAttribute(typeof(NCMapper.Tests.Tests.D3RuntimeClosureLockTests.D3GdChildEntity2));
-            var __meta195 = new global::NCMapper.Runtime.RuntimeMapperMetadata
+            global::NCMapper.Runtime.RuntimeSnapshotPair<NCMapper.Tests.Tests.D3RuntimeClosureLockTests.D3GdChildEntity, NCMapper.Tests.Tests.D3RuntimeClosureLockTests.D3GdMaskChild>.Metadata = __meta200;
+            global::NCMapper.Runtime.RuntimeSnapshotStore.Register(__meta200);
+            // pair 201: NCMapper.Tests.Tests.D3RuntimeClosureLockTests.D3GdChildEntity2 -> NCMapper.Tests.Tests.D3RuntimeClosureLockTests.D3GdConvertChild (MapFrom channel)
+            var __mfAttr201 = new global::NCMapper.Attributes.MapFromAttribute(typeof(NCMapper.Tests.Tests.D3RuntimeClosureLockTests.D3GdChildEntity2));
+            var __meta201 = new global::NCMapper.Runtime.RuntimeMapperMetadata
             {
                 SourceType = typeof(NCMapper.Tests.Tests.D3RuntimeClosureLockTests.D3GdChildEntity2),
                 TargetType = typeof(NCMapper.Tests.Tests.D3RuntimeClosureLockTests.D3GdConvertChild),
@@ -27066,7 +28069,7 @@ namespace NCMapper.Runtime
                                 TypeName = "string",
                                 TypeRef = typeof(string),
                                 HasMapFromAttribute = true,
-                                MapFromAttribute = __mfAttr195,
+                                MapFromAttribute = __mfAttr201,
                                 HasMapIgnore = false,
                                 MapIgnoreDirection = 0,
                                 HasOverrideIgnore = false,
@@ -27106,7 +28109,7 @@ namespace NCMapper.Runtime
                         TypeName = "string",
                         TypeRef = typeof(string),
                         HasMapFromAttribute = true,
-                        MapFromAttribute = __mfAttr195,
+                        MapFromAttribute = __mfAttr201,
                         HasMapIgnore = false,
                         MapIgnoreDirection = 0,
                         HasOverrideIgnore = false,
@@ -27125,11 +28128,11 @@ namespace NCMapper.Runtime
                     },
                 },
             };
-            global::NCMapper.Runtime.RuntimeSnapshotPair<NCMapper.Tests.Tests.D3RuntimeClosureLockTests.D3GdChildEntity2, NCMapper.Tests.Tests.D3RuntimeClosureLockTests.D3GdConvertChild>.Metadata = __meta195;
-            global::NCMapper.Runtime.RuntimeSnapshotStore.Register(__meta195);
-            // pair 196: NCMapper.Tests.Tests.D3RuntimeClosureLockTests.D3GdEntity -> NCMapper.Tests.Tests.D3RuntimeClosureLockTests.D3GdMaskParent (MapFrom channel)
-            var __mfAttr196 = new global::NCMapper.Attributes.MapFromAttribute(typeof(NCMapper.Tests.Tests.D3RuntimeClosureLockTests.D3GdEntity));
-            var __meta196 = new global::NCMapper.Runtime.RuntimeMapperMetadata
+            global::NCMapper.Runtime.RuntimeSnapshotPair<NCMapper.Tests.Tests.D3RuntimeClosureLockTests.D3GdChildEntity2, NCMapper.Tests.Tests.D3RuntimeClosureLockTests.D3GdConvertChild>.Metadata = __meta201;
+            global::NCMapper.Runtime.RuntimeSnapshotStore.Register(__meta201);
+            // pair 202: NCMapper.Tests.Tests.D3RuntimeClosureLockTests.D3GdEntity -> NCMapper.Tests.Tests.D3RuntimeClosureLockTests.D3GdMaskParent (MapFrom channel)
+            var __mfAttr202 = new global::NCMapper.Attributes.MapFromAttribute(typeof(NCMapper.Tests.Tests.D3RuntimeClosureLockTests.D3GdEntity));
+            var __meta202 = new global::NCMapper.Runtime.RuntimeMapperMetadata
             {
                 SourceType = typeof(NCMapper.Tests.Tests.D3RuntimeClosureLockTests.D3GdEntity),
                 TargetType = typeof(NCMapper.Tests.Tests.D3RuntimeClosureLockTests.D3GdMaskParent),
@@ -27150,7 +28153,7 @@ namespace NCMapper.Runtime
                                 TypeName = "int",
                                 TypeRef = typeof(int),
                                 HasMapFromAttribute = true,
-                                MapFromAttribute = __mfAttr196,
+                                MapFromAttribute = __mfAttr202,
                                 HasMapIgnore = false,
                                 MapIgnoreDirection = 0,
                                 HasOverrideIgnore = false,
@@ -27190,7 +28193,7 @@ namespace NCMapper.Runtime
                                 TypeName = "NCMapper.Tests.Tests.D3RuntimeClosureLockTests.D3GdMaskChild",
                                 TypeRef = typeof(NCMapper.Tests.Tests.D3RuntimeClosureLockTests.D3GdMaskChild),
                                 HasMapFromAttribute = true,
-                                MapFromAttribute = __mfAttr196,
+                                MapFromAttribute = __mfAttr202,
                                 HasMapIgnore = false,
                                 MapIgnoreDirection = 0,
                                 HasOverrideIgnore = false,
@@ -27230,7 +28233,7 @@ namespace NCMapper.Runtime
                         TypeName = "int",
                         TypeRef = typeof(int),
                         HasMapFromAttribute = true,
-                        MapFromAttribute = __mfAttr196,
+                        MapFromAttribute = __mfAttr202,
                         HasMapIgnore = false,
                         MapIgnoreDirection = 0,
                         HasOverrideIgnore = false,
@@ -27253,7 +28256,7 @@ namespace NCMapper.Runtime
                         TypeName = "NCMapper.Tests.Tests.D3RuntimeClosureLockTests.D3GdMaskChild",
                         TypeRef = typeof(NCMapper.Tests.Tests.D3RuntimeClosureLockTests.D3GdMaskChild),
                         HasMapFromAttribute = true,
-                        MapFromAttribute = __mfAttr196,
+                        MapFromAttribute = __mfAttr202,
                         HasMapIgnore = false,
                         MapIgnoreDirection = 0,
                         HasOverrideIgnore = false,
@@ -27272,11 +28275,11 @@ namespace NCMapper.Runtime
                     },
                 },
             };
-            global::NCMapper.Runtime.RuntimeSnapshotPair<NCMapper.Tests.Tests.D3RuntimeClosureLockTests.D3GdEntity, NCMapper.Tests.Tests.D3RuntimeClosureLockTests.D3GdMaskParent>.Metadata = __meta196;
-            global::NCMapper.Runtime.RuntimeSnapshotStore.Register(__meta196);
-            // pair 197: NCMapper.Tests.Tests.D3RuntimeClosureLockTests.D3GdEntity2 -> NCMapper.Tests.Tests.D3RuntimeClosureLockTests.D3GdConvertParent (MapFrom channel)
-            var __mfAttr197 = new global::NCMapper.Attributes.MapFromAttribute(typeof(NCMapper.Tests.Tests.D3RuntimeClosureLockTests.D3GdEntity2));
-            var __meta197 = new global::NCMapper.Runtime.RuntimeMapperMetadata
+            global::NCMapper.Runtime.RuntimeSnapshotPair<NCMapper.Tests.Tests.D3RuntimeClosureLockTests.D3GdEntity, NCMapper.Tests.Tests.D3RuntimeClosureLockTests.D3GdMaskParent>.Metadata = __meta202;
+            global::NCMapper.Runtime.RuntimeSnapshotStore.Register(__meta202);
+            // pair 203: NCMapper.Tests.Tests.D3RuntimeClosureLockTests.D3GdEntity2 -> NCMapper.Tests.Tests.D3RuntimeClosureLockTests.D3GdConvertParent (MapFrom channel)
+            var __mfAttr203 = new global::NCMapper.Attributes.MapFromAttribute(typeof(NCMapper.Tests.Tests.D3RuntimeClosureLockTests.D3GdEntity2));
+            var __meta203 = new global::NCMapper.Runtime.RuntimeMapperMetadata
             {
                 SourceType = typeof(NCMapper.Tests.Tests.D3RuntimeClosureLockTests.D3GdEntity2),
                 TargetType = typeof(NCMapper.Tests.Tests.D3RuntimeClosureLockTests.D3GdConvertParent),
@@ -27297,7 +28300,7 @@ namespace NCMapper.Runtime
                                 TypeName = "int",
                                 TypeRef = typeof(int),
                                 HasMapFromAttribute = true,
-                                MapFromAttribute = __mfAttr197,
+                                MapFromAttribute = __mfAttr203,
                                 HasMapIgnore = false,
                                 MapIgnoreDirection = 0,
                                 HasOverrideIgnore = false,
@@ -27337,7 +28340,7 @@ namespace NCMapper.Runtime
                                 TypeName = "NCMapper.Tests.Tests.D3RuntimeClosureLockTests.D3GdConvertChild",
                                 TypeRef = typeof(NCMapper.Tests.Tests.D3RuntimeClosureLockTests.D3GdConvertChild),
                                 HasMapFromAttribute = true,
-                                MapFromAttribute = __mfAttr197,
+                                MapFromAttribute = __mfAttr203,
                                 HasMapIgnore = false,
                                 MapIgnoreDirection = 0,
                                 HasOverrideIgnore = false,
@@ -27377,7 +28380,7 @@ namespace NCMapper.Runtime
                         TypeName = "int",
                         TypeRef = typeof(int),
                         HasMapFromAttribute = true,
-                        MapFromAttribute = __mfAttr197,
+                        MapFromAttribute = __mfAttr203,
                         HasMapIgnore = false,
                         MapIgnoreDirection = 0,
                         HasOverrideIgnore = false,
@@ -27400,7 +28403,7 @@ namespace NCMapper.Runtime
                         TypeName = "NCMapper.Tests.Tests.D3RuntimeClosureLockTests.D3GdConvertChild",
                         TypeRef = typeof(NCMapper.Tests.Tests.D3RuntimeClosureLockTests.D3GdConvertChild),
                         HasMapFromAttribute = true,
-                        MapFromAttribute = __mfAttr197,
+                        MapFromAttribute = __mfAttr203,
                         HasMapIgnore = false,
                         MapIgnoreDirection = 0,
                         HasOverrideIgnore = false,
@@ -27419,11 +28422,11 @@ namespace NCMapper.Runtime
                     },
                 },
             };
-            global::NCMapper.Runtime.RuntimeSnapshotPair<NCMapper.Tests.Tests.D3RuntimeClosureLockTests.D3GdEntity2, NCMapper.Tests.Tests.D3RuntimeClosureLockTests.D3GdConvertParent>.Metadata = __meta197;
-            global::NCMapper.Runtime.RuntimeSnapshotStore.Register(__meta197);
-            // pair 198: NCMapper.Tests.Tests.D3RuntimeClosureLockTests.D3MiEntity -> NCMapper.Tests.Tests.D3RuntimeClosureLockTests.D3MiAnchoredView (MapFrom channel)
-            var __mfAttr198 = new global::NCMapper.Attributes.MapFromAttribute(typeof(NCMapper.Tests.Tests.D3RuntimeClosureLockTests.D3MiEntity));
-            var __meta198 = new global::NCMapper.Runtime.RuntimeMapperMetadata
+            global::NCMapper.Runtime.RuntimeSnapshotPair<NCMapper.Tests.Tests.D3RuntimeClosureLockTests.D3GdEntity2, NCMapper.Tests.Tests.D3RuntimeClosureLockTests.D3GdConvertParent>.Metadata = __meta203;
+            global::NCMapper.Runtime.RuntimeSnapshotStore.Register(__meta203);
+            // pair 204: NCMapper.Tests.Tests.D3RuntimeClosureLockTests.D3MiEntity -> NCMapper.Tests.Tests.D3RuntimeClosureLockTests.D3MiAnchoredView (MapFrom channel)
+            var __mfAttr204 = new global::NCMapper.Attributes.MapFromAttribute(typeof(NCMapper.Tests.Tests.D3RuntimeClosureLockTests.D3MiEntity));
+            var __meta204 = new global::NCMapper.Runtime.RuntimeMapperMetadata
             {
                 SourceType = typeof(NCMapper.Tests.Tests.D3RuntimeClosureLockTests.D3MiEntity),
                 TargetType = typeof(NCMapper.Tests.Tests.D3RuntimeClosureLockTests.D3MiAnchoredView),
@@ -27444,7 +28447,7 @@ namespace NCMapper.Runtime
                                 TypeName = "int",
                                 TypeRef = typeof(int),
                                 HasMapFromAttribute = true,
-                                MapFromAttribute = __mfAttr198,
+                                MapFromAttribute = __mfAttr204,
                                 HasMapIgnore = false,
                                 MapIgnoreDirection = 0,
                                 HasOverrideIgnore = false,
@@ -27484,7 +28487,7 @@ namespace NCMapper.Runtime
                         TypeName = "int",
                         TypeRef = typeof(int),
                         HasMapFromAttribute = true,
-                        MapFromAttribute = __mfAttr198,
+                        MapFromAttribute = __mfAttr204,
                         HasMapIgnore = false,
                         MapIgnoreDirection = 0,
                         HasOverrideIgnore = false,
@@ -27503,11 +28506,11 @@ namespace NCMapper.Runtime
                     },
                 },
             };
-            global::NCMapper.Runtime.RuntimeSnapshotPair<NCMapper.Tests.Tests.D3RuntimeClosureLockTests.D3MiEntity, NCMapper.Tests.Tests.D3RuntimeClosureLockTests.D3MiAnchoredView>.Metadata = __meta198;
-            global::NCMapper.Runtime.RuntimeSnapshotStore.Register(__meta198);
-            // pair 199: NCMapper.Tests.Tests.D3RuntimeClosureLockTests.D3MpEntity -> NCMapper.Tests.Tests.D3RuntimeClosureLockTests.D3MpAliasView (MapFrom channel)
-            var __mfAttr199 = new global::NCMapper.Attributes.MapFromAttribute(typeof(NCMapper.Tests.Tests.D3RuntimeClosureLockTests.D3MpEntity));
-            var __meta199 = new global::NCMapper.Runtime.RuntimeMapperMetadata
+            global::NCMapper.Runtime.RuntimeSnapshotPair<NCMapper.Tests.Tests.D3RuntimeClosureLockTests.D3MiEntity, NCMapper.Tests.Tests.D3RuntimeClosureLockTests.D3MiAnchoredView>.Metadata = __meta204;
+            global::NCMapper.Runtime.RuntimeSnapshotStore.Register(__meta204);
+            // pair 205: NCMapper.Tests.Tests.D3RuntimeClosureLockTests.D3MpEntity -> NCMapper.Tests.Tests.D3RuntimeClosureLockTests.D3MpAliasView (MapFrom channel)
+            var __mfAttr205 = new global::NCMapper.Attributes.MapFromAttribute(typeof(NCMapper.Tests.Tests.D3RuntimeClosureLockTests.D3MpEntity));
+            var __meta205 = new global::NCMapper.Runtime.RuntimeMapperMetadata
             {
                 SourceType = typeof(NCMapper.Tests.Tests.D3RuntimeClosureLockTests.D3MpEntity),
                 TargetType = typeof(NCMapper.Tests.Tests.D3RuntimeClosureLockTests.D3MpAliasView),
@@ -27528,7 +28531,7 @@ namespace NCMapper.Runtime
                                 TypeName = "int",
                                 TypeRef = typeof(int),
                                 HasMapFromAttribute = true,
-                                MapFromAttribute = __mfAttr199,
+                                MapFromAttribute = __mfAttr205,
                                 HasMapIgnore = false,
                                 MapIgnoreDirection = 0,
                                 HasOverrideIgnore = false,
@@ -27568,7 +28571,7 @@ namespace NCMapper.Runtime
                         TypeName = "int",
                         TypeRef = typeof(int),
                         HasMapFromAttribute = true,
-                        MapFromAttribute = __mfAttr199,
+                        MapFromAttribute = __mfAttr205,
                         HasMapIgnore = false,
                         MapIgnoreDirection = 0,
                         HasOverrideIgnore = false,
@@ -27587,11 +28590,11 @@ namespace NCMapper.Runtime
                     },
                 },
             };
-            global::NCMapper.Runtime.RuntimeSnapshotPair<NCMapper.Tests.Tests.D3RuntimeClosureLockTests.D3MpEntity, NCMapper.Tests.Tests.D3RuntimeClosureLockTests.D3MpAliasView>.Metadata = __meta199;
-            global::NCMapper.Runtime.RuntimeSnapshotStore.Register(__meta199);
-            // pair 200: NCMapper.Tests.Tests.D3RuntimeClosureLockTests.D3MwEntity -> NCMapper.Tests.Tests.D3RuntimeClosureLockTests.D3MwAnchoredView (MapFrom channel)
-            var __mfAttr200 = new global::NCMapper.Attributes.MapFromAttribute(typeof(NCMapper.Tests.Tests.D3RuntimeClosureLockTests.D3MwEntity));
-            var __meta200 = new global::NCMapper.Runtime.RuntimeMapperMetadata
+            global::NCMapper.Runtime.RuntimeSnapshotPair<NCMapper.Tests.Tests.D3RuntimeClosureLockTests.D3MpEntity, NCMapper.Tests.Tests.D3RuntimeClosureLockTests.D3MpAliasView>.Metadata = __meta205;
+            global::NCMapper.Runtime.RuntimeSnapshotStore.Register(__meta205);
+            // pair 206: NCMapper.Tests.Tests.D3RuntimeClosureLockTests.D3MwEntity -> NCMapper.Tests.Tests.D3RuntimeClosureLockTests.D3MwAnchoredView (MapFrom channel)
+            var __mfAttr206 = new global::NCMapper.Attributes.MapFromAttribute(typeof(NCMapper.Tests.Tests.D3RuntimeClosureLockTests.D3MwEntity));
+            var __meta206 = new global::NCMapper.Runtime.RuntimeMapperMetadata
             {
                 SourceType = typeof(NCMapper.Tests.Tests.D3RuntimeClosureLockTests.D3MwEntity),
                 TargetType = typeof(NCMapper.Tests.Tests.D3RuntimeClosureLockTests.D3MwAnchoredView),
@@ -27612,7 +28615,7 @@ namespace NCMapper.Runtime
                                 TypeName = "int",
                                 TypeRef = typeof(int),
                                 HasMapFromAttribute = true,
-                                MapFromAttribute = __mfAttr200,
+                                MapFromAttribute = __mfAttr206,
                                 HasMapIgnore = false,
                                 MapIgnoreDirection = 0,
                                 HasOverrideIgnore = false,
@@ -27652,7 +28655,7 @@ namespace NCMapper.Runtime
                                 TypeName = "string",
                                 TypeRef = typeof(string),
                                 HasMapFromAttribute = true,
-                                MapFromAttribute = __mfAttr200,
+                                MapFromAttribute = __mfAttr206,
                                 HasMapIgnore = false,
                                 MapIgnoreDirection = 0,
                                 HasOverrideIgnore = false,
@@ -27694,7 +28697,7 @@ namespace NCMapper.Runtime
                         TypeName = "int",
                         TypeRef = typeof(int),
                         HasMapFromAttribute = true,
-                        MapFromAttribute = __mfAttr200,
+                        MapFromAttribute = __mfAttr206,
                         HasMapIgnore = false,
                         MapIgnoreDirection = 0,
                         HasOverrideIgnore = false,
@@ -27717,7 +28720,7 @@ namespace NCMapper.Runtime
                         TypeName = "string",
                         TypeRef = typeof(string),
                         HasMapFromAttribute = true,
-                        MapFromAttribute = __mfAttr200,
+                        MapFromAttribute = __mfAttr206,
                         HasMapIgnore = false,
                         MapIgnoreDirection = 0,
                         HasOverrideIgnore = false,
@@ -27736,11 +28739,11 @@ namespace NCMapper.Runtime
                     },
                 },
             };
-            global::NCMapper.Runtime.RuntimeSnapshotPair<NCMapper.Tests.Tests.D3RuntimeClosureLockTests.D3MwEntity, NCMapper.Tests.Tests.D3RuntimeClosureLockTests.D3MwAnchoredView>.Metadata = __meta200;
-            global::NCMapper.Runtime.RuntimeSnapshotStore.Register(__meta200);
-            // pair 201: NCMapper.Tests.Tests.DeepCopyModel -> NCMapper.Tests.Tests.DeepCopyModel (MapFrom channel)
-            var __mfAttr201 = new global::NCMapper.Attributes.MapFromAttribute(typeof(NCMapper.Tests.Tests.DeepCopyModel));
-            var __meta201 = new global::NCMapper.Runtime.RuntimeMapperMetadata
+            global::NCMapper.Runtime.RuntimeSnapshotPair<NCMapper.Tests.Tests.D3RuntimeClosureLockTests.D3MwEntity, NCMapper.Tests.Tests.D3RuntimeClosureLockTests.D3MwAnchoredView>.Metadata = __meta206;
+            global::NCMapper.Runtime.RuntimeSnapshotStore.Register(__meta206);
+            // pair 207: NCMapper.Tests.Tests.DeepCopyModel -> NCMapper.Tests.Tests.DeepCopyModel (MapFrom channel)
+            var __mfAttr207 = new global::NCMapper.Attributes.MapFromAttribute(typeof(NCMapper.Tests.Tests.DeepCopyModel));
+            var __meta207 = new global::NCMapper.Runtime.RuntimeMapperMetadata
             {
                 SourceType = typeof(NCMapper.Tests.Tests.DeepCopyModel),
                 TargetType = typeof(NCMapper.Tests.Tests.DeepCopyModel),
@@ -27761,7 +28764,7 @@ namespace NCMapper.Runtime
                                 TypeName = "int",
                                 TypeRef = typeof(int),
                                 HasMapFromAttribute = true,
-                                MapFromAttribute = __mfAttr201,
+                                MapFromAttribute = __mfAttr207,
                                 HasMapIgnore = false,
                                 MapIgnoreDirection = 0,
                                 HasOverrideIgnore = false,
@@ -27801,7 +28804,7 @@ namespace NCMapper.Runtime
                                 TypeName = "string",
                                 TypeRef = typeof(string),
                                 HasMapFromAttribute = true,
-                                MapFromAttribute = __mfAttr201,
+                                MapFromAttribute = __mfAttr207,
                                 HasMapIgnore = false,
                                 MapIgnoreDirection = 0,
                                 HasOverrideIgnore = false,
@@ -27841,7 +28844,7 @@ namespace NCMapper.Runtime
                                 TypeName = "NCMapper.Tests.Tests.DeepCopyChild?",
                                 TypeRef = typeof(NCMapper.Tests.Tests.DeepCopyChild),
                                 HasMapFromAttribute = true,
-                                MapFromAttribute = __mfAttr201,
+                                MapFromAttribute = __mfAttr207,
                                 HasMapIgnore = false,
                                 MapIgnoreDirection = 0,
                                 HasOverrideIgnore = false,
@@ -27881,7 +28884,7 @@ namespace NCMapper.Runtime
                         TypeName = "int",
                         TypeRef = typeof(int),
                         HasMapFromAttribute = true,
-                        MapFromAttribute = __mfAttr201,
+                        MapFromAttribute = __mfAttr207,
                         HasMapIgnore = false,
                         MapIgnoreDirection = 0,
                         HasOverrideIgnore = false,
@@ -27904,7 +28907,7 @@ namespace NCMapper.Runtime
                         TypeName = "string",
                         TypeRef = typeof(string),
                         HasMapFromAttribute = true,
-                        MapFromAttribute = __mfAttr201,
+                        MapFromAttribute = __mfAttr207,
                         HasMapIgnore = false,
                         MapIgnoreDirection = 0,
                         HasOverrideIgnore = false,
@@ -27927,7 +28930,7 @@ namespace NCMapper.Runtime
                         TypeName = "NCMapper.Tests.Tests.DeepCopyChild?",
                         TypeRef = typeof(NCMapper.Tests.Tests.DeepCopyChild),
                         HasMapFromAttribute = true,
-                        MapFromAttribute = __mfAttr201,
+                        MapFromAttribute = __mfAttr207,
                         HasMapIgnore = false,
                         MapIgnoreDirection = 0,
                         HasOverrideIgnore = false,
@@ -27946,11 +28949,11 @@ namespace NCMapper.Runtime
                     },
                 },
             };
-            global::NCMapper.Runtime.RuntimeSnapshotPair<NCMapper.Tests.Tests.DeepCopyModel, NCMapper.Tests.Tests.DeepCopyModel>.Metadata = __meta201;
-            global::NCMapper.Runtime.RuntimeSnapshotStore.Register(__meta201);
-            // pair 202: NCMapper.Tests.Tests.DirectionalSemanticMatrixTests.DsmA1Entity -> NCMapper.Tests.Tests.DirectionalSemanticMatrixTests.DsmA1View (MapFrom channel)
-            var __mfAttr202 = new global::NCMapper.Attributes.MapFromAttribute(typeof(NCMapper.Tests.Tests.DirectionalSemanticMatrixTests.DsmA1Entity));
-            var __meta202 = new global::NCMapper.Runtime.RuntimeMapperMetadata
+            global::NCMapper.Runtime.RuntimeSnapshotPair<NCMapper.Tests.Tests.DeepCopyModel, NCMapper.Tests.Tests.DeepCopyModel>.Metadata = __meta207;
+            global::NCMapper.Runtime.RuntimeSnapshotStore.Register(__meta207);
+            // pair 208: NCMapper.Tests.Tests.DirectionalSemanticMatrixTests.DsmA1Entity -> NCMapper.Tests.Tests.DirectionalSemanticMatrixTests.DsmA1View (MapFrom channel)
+            var __mfAttr208 = new global::NCMapper.Attributes.MapFromAttribute(typeof(NCMapper.Tests.Tests.DirectionalSemanticMatrixTests.DsmA1Entity));
+            var __meta208 = new global::NCMapper.Runtime.RuntimeMapperMetadata
             {
                 SourceType = typeof(NCMapper.Tests.Tests.DirectionalSemanticMatrixTests.DsmA1Entity),
                 TargetType = typeof(NCMapper.Tests.Tests.DirectionalSemanticMatrixTests.DsmA1View),
@@ -27971,7 +28974,7 @@ namespace NCMapper.Runtime
                                 TypeName = "string",
                                 TypeRef = typeof(string),
                                 HasMapFromAttribute = true,
-                                MapFromAttribute = __mfAttr202,
+                                MapFromAttribute = __mfAttr208,
                                 HasMapIgnore = false,
                                 MapIgnoreDirection = 0,
                                 HasOverrideIgnore = false,
@@ -28011,7 +29014,7 @@ namespace NCMapper.Runtime
                                 TypeName = "string",
                                 TypeRef = typeof(string),
                                 HasMapFromAttribute = true,
-                                MapFromAttribute = __mfAttr202,
+                                MapFromAttribute = __mfAttr208,
                                 HasMapIgnore = false,
                                 MapIgnoreDirection = 0,
                                 HasOverrideIgnore = false,
@@ -28051,7 +29054,7 @@ namespace NCMapper.Runtime
                         TypeName = "string",
                         TypeRef = typeof(string),
                         HasMapFromAttribute = true,
-                        MapFromAttribute = __mfAttr202,
+                        MapFromAttribute = __mfAttr208,
                         HasMapIgnore = false,
                         MapIgnoreDirection = 0,
                         HasOverrideIgnore = false,
@@ -28074,7 +29077,7 @@ namespace NCMapper.Runtime
                         TypeName = "string",
                         TypeRef = typeof(string),
                         HasMapFromAttribute = true,
-                        MapFromAttribute = __mfAttr202,
+                        MapFromAttribute = __mfAttr208,
                         HasMapIgnore = false,
                         MapIgnoreDirection = 0,
                         HasOverrideIgnore = false,
@@ -28093,11 +29096,11 @@ namespace NCMapper.Runtime
                     },
                 },
             };
-            global::NCMapper.Runtime.RuntimeSnapshotPair<NCMapper.Tests.Tests.DirectionalSemanticMatrixTests.DsmA1Entity, NCMapper.Tests.Tests.DirectionalSemanticMatrixTests.DsmA1View>.Metadata = __meta202;
-            global::NCMapper.Runtime.RuntimeSnapshotStore.Register(__meta202);
-            // pair 203: NCMapper.Tests.Tests.DirectionalSemanticMatrixTests.DsmA2Entity -> NCMapper.Tests.Tests.DirectionalSemanticMatrixTests.DsmA2View (MapFrom channel)
-            var __mfAttr203 = new global::NCMapper.Attributes.MapFromAttribute(typeof(NCMapper.Tests.Tests.DirectionalSemanticMatrixTests.DsmA2Entity));
-            var __meta203 = new global::NCMapper.Runtime.RuntimeMapperMetadata
+            global::NCMapper.Runtime.RuntimeSnapshotPair<NCMapper.Tests.Tests.DirectionalSemanticMatrixTests.DsmA1Entity, NCMapper.Tests.Tests.DirectionalSemanticMatrixTests.DsmA1View>.Metadata = __meta208;
+            global::NCMapper.Runtime.RuntimeSnapshotStore.Register(__meta208);
+            // pair 209: NCMapper.Tests.Tests.DirectionalSemanticMatrixTests.DsmA2Entity -> NCMapper.Tests.Tests.DirectionalSemanticMatrixTests.DsmA2View (MapFrom channel)
+            var __mfAttr209 = new global::NCMapper.Attributes.MapFromAttribute(typeof(NCMapper.Tests.Tests.DirectionalSemanticMatrixTests.DsmA2Entity));
+            var __meta209 = new global::NCMapper.Runtime.RuntimeMapperMetadata
             {
                 SourceType = typeof(NCMapper.Tests.Tests.DirectionalSemanticMatrixTests.DsmA2Entity),
                 TargetType = typeof(NCMapper.Tests.Tests.DirectionalSemanticMatrixTests.DsmA2View),
@@ -28118,7 +29121,7 @@ namespace NCMapper.Runtime
                                 TypeName = "string",
                                 TypeRef = typeof(string),
                                 HasMapFromAttribute = true,
-                                MapFromAttribute = __mfAttr203,
+                                MapFromAttribute = __mfAttr209,
                                 HasMapIgnore = false,
                                 MapIgnoreDirection = 0,
                                 HasOverrideIgnore = false,
@@ -28158,7 +29161,7 @@ namespace NCMapper.Runtime
                                 TypeName = "string",
                                 TypeRef = typeof(string),
                                 HasMapFromAttribute = true,
-                                MapFromAttribute = __mfAttr203,
+                                MapFromAttribute = __mfAttr209,
                                 HasMapIgnore = false,
                                 MapIgnoreDirection = 0,
                                 HasOverrideIgnore = false,
@@ -28198,7 +29201,7 @@ namespace NCMapper.Runtime
                         TypeName = "string",
                         TypeRef = typeof(string),
                         HasMapFromAttribute = true,
-                        MapFromAttribute = __mfAttr203,
+                        MapFromAttribute = __mfAttr209,
                         HasMapIgnore = false,
                         MapIgnoreDirection = 0,
                         HasOverrideIgnore = false,
@@ -28221,7 +29224,7 @@ namespace NCMapper.Runtime
                         TypeName = "string",
                         TypeRef = typeof(string),
                         HasMapFromAttribute = true,
-                        MapFromAttribute = __mfAttr203,
+                        MapFromAttribute = __mfAttr209,
                         HasMapIgnore = false,
                         MapIgnoreDirection = 0,
                         HasOverrideIgnore = false,
@@ -28240,11 +29243,11 @@ namespace NCMapper.Runtime
                     },
                 },
             };
-            global::NCMapper.Runtime.RuntimeSnapshotPair<NCMapper.Tests.Tests.DirectionalSemanticMatrixTests.DsmA2Entity, NCMapper.Tests.Tests.DirectionalSemanticMatrixTests.DsmA2View>.Metadata = __meta203;
-            global::NCMapper.Runtime.RuntimeSnapshotStore.Register(__meta203);
-            // pair 204: NCMapper.Tests.Tests.DirectionalSemanticMatrixTests.DsmA3View -> NCMapper.Tests.Tests.DirectionalSemanticMatrixTests.DsmA3Entity (MapFrom channel)
-            var __mfAttr204 = new global::NCMapper.Attributes.MapFromAttribute(typeof(NCMapper.Tests.Tests.DirectionalSemanticMatrixTests.DsmA3View));
-            var __meta204 = new global::NCMapper.Runtime.RuntimeMapperMetadata
+            global::NCMapper.Runtime.RuntimeSnapshotPair<NCMapper.Tests.Tests.DirectionalSemanticMatrixTests.DsmA2Entity, NCMapper.Tests.Tests.DirectionalSemanticMatrixTests.DsmA2View>.Metadata = __meta209;
+            global::NCMapper.Runtime.RuntimeSnapshotStore.Register(__meta209);
+            // pair 210: NCMapper.Tests.Tests.DirectionalSemanticMatrixTests.DsmA3View -> NCMapper.Tests.Tests.DirectionalSemanticMatrixTests.DsmA3Entity (MapFrom channel)
+            var __mfAttr210 = new global::NCMapper.Attributes.MapFromAttribute(typeof(NCMapper.Tests.Tests.DirectionalSemanticMatrixTests.DsmA3View));
+            var __meta210 = new global::NCMapper.Runtime.RuntimeMapperMetadata
             {
                 SourceType = typeof(NCMapper.Tests.Tests.DirectionalSemanticMatrixTests.DsmA3View),
                 TargetType = typeof(NCMapper.Tests.Tests.DirectionalSemanticMatrixTests.DsmA3Entity),
@@ -28265,7 +29268,7 @@ namespace NCMapper.Runtime
                                 TypeName = "string",
                                 TypeRef = typeof(string),
                                 HasMapFromAttribute = true,
-                                MapFromAttribute = __mfAttr204,
+                                MapFromAttribute = __mfAttr210,
                                 HasMapIgnore = false,
                                 MapIgnoreDirection = 0,
                                 HasOverrideIgnore = false,
@@ -28305,7 +29308,7 @@ namespace NCMapper.Runtime
                         TypeName = "string",
                         TypeRef = typeof(string),
                         HasMapFromAttribute = true,
-                        MapFromAttribute = __mfAttr204,
+                        MapFromAttribute = __mfAttr210,
                         HasMapIgnore = false,
                         MapIgnoreDirection = 0,
                         HasOverrideIgnore = false,
@@ -28324,11 +29327,11 @@ namespace NCMapper.Runtime
                     },
                 },
             };
-            global::NCMapper.Runtime.RuntimeSnapshotPair<NCMapper.Tests.Tests.DirectionalSemanticMatrixTests.DsmA3View, NCMapper.Tests.Tests.DirectionalSemanticMatrixTests.DsmA3Entity>.Metadata = __meta204;
-            global::NCMapper.Runtime.RuntimeSnapshotStore.Register(__meta204);
-            // pair 205: NCMapper.Tests.Tests.DirectionalSemanticMatrixTests.DsmA4View -> NCMapper.Tests.Tests.DirectionalSemanticMatrixTests.DsmA4Entity (MapFrom channel)
-            var __mfAttr205 = new global::NCMapper.Attributes.MapFromAttribute(typeof(NCMapper.Tests.Tests.DirectionalSemanticMatrixTests.DsmA4View));
-            var __meta205 = new global::NCMapper.Runtime.RuntimeMapperMetadata
+            global::NCMapper.Runtime.RuntimeSnapshotPair<NCMapper.Tests.Tests.DirectionalSemanticMatrixTests.DsmA3View, NCMapper.Tests.Tests.DirectionalSemanticMatrixTests.DsmA3Entity>.Metadata = __meta210;
+            global::NCMapper.Runtime.RuntimeSnapshotStore.Register(__meta210);
+            // pair 211: NCMapper.Tests.Tests.DirectionalSemanticMatrixTests.DsmA4View -> NCMapper.Tests.Tests.DirectionalSemanticMatrixTests.DsmA4Entity (MapFrom channel)
+            var __mfAttr211 = new global::NCMapper.Attributes.MapFromAttribute(typeof(NCMapper.Tests.Tests.DirectionalSemanticMatrixTests.DsmA4View));
+            var __meta211 = new global::NCMapper.Runtime.RuntimeMapperMetadata
             {
                 SourceType = typeof(NCMapper.Tests.Tests.DirectionalSemanticMatrixTests.DsmA4View),
                 TargetType = typeof(NCMapper.Tests.Tests.DirectionalSemanticMatrixTests.DsmA4Entity),
@@ -28349,7 +29352,7 @@ namespace NCMapper.Runtime
                                 TypeName = "string",
                                 TypeRef = typeof(string),
                                 HasMapFromAttribute = true,
-                                MapFromAttribute = __mfAttr205,
+                                MapFromAttribute = __mfAttr211,
                                 HasMapIgnore = false,
                                 MapIgnoreDirection = 0,
                                 HasOverrideIgnore = false,
@@ -28389,7 +29392,7 @@ namespace NCMapper.Runtime
                         TypeName = "string",
                         TypeRef = typeof(string),
                         HasMapFromAttribute = true,
-                        MapFromAttribute = __mfAttr205,
+                        MapFromAttribute = __mfAttr211,
                         HasMapIgnore = false,
                         MapIgnoreDirection = 0,
                         HasOverrideIgnore = false,
@@ -28408,10 +29411,10 @@ namespace NCMapper.Runtime
                     },
                 },
             };
-            global::NCMapper.Runtime.RuntimeSnapshotPair<NCMapper.Tests.Tests.DirectionalSemanticMatrixTests.DsmA4View, NCMapper.Tests.Tests.DirectionalSemanticMatrixTests.DsmA4Entity>.Metadata = __meta205;
-            global::NCMapper.Runtime.RuntimeSnapshotStore.Register(__meta205);
-            // pair 206: NCMapper.Tests.Tests.DirectionalSemanticMatrixTests.DsmF1Entity -> NCMapper.Tests.Tests.DirectionalSemanticMatrixTests.DsmF1View (Fluent channel)
-            var __meta206 = new global::NCMapper.Runtime.RuntimeMapperMetadata
+            global::NCMapper.Runtime.RuntimeSnapshotPair<NCMapper.Tests.Tests.DirectionalSemanticMatrixTests.DsmA4View, NCMapper.Tests.Tests.DirectionalSemanticMatrixTests.DsmA4Entity>.Metadata = __meta211;
+            global::NCMapper.Runtime.RuntimeSnapshotStore.Register(__meta211);
+            // pair 212: NCMapper.Tests.Tests.DirectionalSemanticMatrixTests.DsmF1Entity -> NCMapper.Tests.Tests.DirectionalSemanticMatrixTests.DsmF1View (Fluent channel)
+            var __meta212 = new global::NCMapper.Runtime.RuntimeMapperMetadata
             {
                 SourceType = typeof(NCMapper.Tests.Tests.DirectionalSemanticMatrixTests.DsmF1Entity),
                 TargetType = typeof(NCMapper.Tests.Tests.DirectionalSemanticMatrixTests.DsmF1View),
@@ -28491,10 +29494,10 @@ namespace NCMapper.Runtime
                     },
                 },
             };
-            global::NCMapper.Runtime.RuntimeSnapshotPair<NCMapper.Tests.Tests.DirectionalSemanticMatrixTests.DsmF1Entity, NCMapper.Tests.Tests.DirectionalSemanticMatrixTests.DsmF1View>.Metadata = __meta206;
-            global::NCMapper.Runtime.RuntimeSnapshotStore.Register(__meta206);
-            // pair 207: NCMapper.Tests.Tests.DirectionalSemanticMatrixTests.DsmF2Entity -> NCMapper.Tests.Tests.DirectionalSemanticMatrixTests.DsmF2View (Fluent channel)
-            var __meta207 = new global::NCMapper.Runtime.RuntimeMapperMetadata
+            global::NCMapper.Runtime.RuntimeSnapshotPair<NCMapper.Tests.Tests.DirectionalSemanticMatrixTests.DsmF1Entity, NCMapper.Tests.Tests.DirectionalSemanticMatrixTests.DsmF1View>.Metadata = __meta212;
+            global::NCMapper.Runtime.RuntimeSnapshotStore.Register(__meta212);
+            // pair 213: NCMapper.Tests.Tests.DirectionalSemanticMatrixTests.DsmF2Entity -> NCMapper.Tests.Tests.DirectionalSemanticMatrixTests.DsmF2View (Fluent channel)
+            var __meta213 = new global::NCMapper.Runtime.RuntimeMapperMetadata
             {
                 SourceType = typeof(NCMapper.Tests.Tests.DirectionalSemanticMatrixTests.DsmF2Entity),
                 TargetType = typeof(NCMapper.Tests.Tests.DirectionalSemanticMatrixTests.DsmF2View),
@@ -28574,10 +29577,10 @@ namespace NCMapper.Runtime
                     },
                 },
             };
-            global::NCMapper.Runtime.RuntimeSnapshotPair<NCMapper.Tests.Tests.DirectionalSemanticMatrixTests.DsmF2Entity, NCMapper.Tests.Tests.DirectionalSemanticMatrixTests.DsmF2View>.Metadata = __meta207;
-            global::NCMapper.Runtime.RuntimeSnapshotStore.Register(__meta207);
-            // pair 208: NCMapper.Tests.Tests.DirectionalSemanticMatrixTests.DsmF3View -> NCMapper.Tests.Tests.DirectionalSemanticMatrixTests.DsmF3Entity (Fluent channel)
-            var __meta208 = new global::NCMapper.Runtime.RuntimeMapperMetadata
+            global::NCMapper.Runtime.RuntimeSnapshotPair<NCMapper.Tests.Tests.DirectionalSemanticMatrixTests.DsmF2Entity, NCMapper.Tests.Tests.DirectionalSemanticMatrixTests.DsmF2View>.Metadata = __meta213;
+            global::NCMapper.Runtime.RuntimeSnapshotStore.Register(__meta213);
+            // pair 214: NCMapper.Tests.Tests.DirectionalSemanticMatrixTests.DsmF3View -> NCMapper.Tests.Tests.DirectionalSemanticMatrixTests.DsmF3Entity (Fluent channel)
+            var __meta214 = new global::NCMapper.Runtime.RuntimeMapperMetadata
             {
                 SourceType = typeof(NCMapper.Tests.Tests.DirectionalSemanticMatrixTests.DsmF3View),
                 TargetType = typeof(NCMapper.Tests.Tests.DirectionalSemanticMatrixTests.DsmF3Entity),
@@ -28657,10 +29660,10 @@ namespace NCMapper.Runtime
                     },
                 },
             };
-            global::NCMapper.Runtime.RuntimeSnapshotPair<NCMapper.Tests.Tests.DirectionalSemanticMatrixTests.DsmF3View, NCMapper.Tests.Tests.DirectionalSemanticMatrixTests.DsmF3Entity>.Metadata = __meta208;
-            global::NCMapper.Runtime.RuntimeSnapshotStore.Register(__meta208);
-            // pair 209: NCMapper.Tests.Tests.DirectionalSemanticMatrixTests.DsmF4View -> NCMapper.Tests.Tests.DirectionalSemanticMatrixTests.DsmF4Entity (Fluent channel)
-            var __meta209 = new global::NCMapper.Runtime.RuntimeMapperMetadata
+            global::NCMapper.Runtime.RuntimeSnapshotPair<NCMapper.Tests.Tests.DirectionalSemanticMatrixTests.DsmF3View, NCMapper.Tests.Tests.DirectionalSemanticMatrixTests.DsmF3Entity>.Metadata = __meta214;
+            global::NCMapper.Runtime.RuntimeSnapshotStore.Register(__meta214);
+            // pair 215: NCMapper.Tests.Tests.DirectionalSemanticMatrixTests.DsmF4View -> NCMapper.Tests.Tests.DirectionalSemanticMatrixTests.DsmF4Entity (Fluent channel)
+            var __meta215 = new global::NCMapper.Runtime.RuntimeMapperMetadata
             {
                 SourceType = typeof(NCMapper.Tests.Tests.DirectionalSemanticMatrixTests.DsmF4View),
                 TargetType = typeof(NCMapper.Tests.Tests.DirectionalSemanticMatrixTests.DsmF4Entity),
@@ -28740,10 +29743,10 @@ namespace NCMapper.Runtime
                     },
                 },
             };
-            global::NCMapper.Runtime.RuntimeSnapshotPair<NCMapper.Tests.Tests.DirectionalSemanticMatrixTests.DsmF4View, NCMapper.Tests.Tests.DirectionalSemanticMatrixTests.DsmF4Entity>.Metadata = __meta209;
-            global::NCMapper.Runtime.RuntimeSnapshotStore.Register(__meta209);
-            // pair 210: NCMapper.Tests.Tests.DirectionalSemanticMatrixTests.DsmF5Entity -> NCMapper.Tests.Tests.DirectionalSemanticMatrixTests.DsmF5View (Fluent channel)
-            var __meta210 = new global::NCMapper.Runtime.RuntimeMapperMetadata
+            global::NCMapper.Runtime.RuntimeSnapshotPair<NCMapper.Tests.Tests.DirectionalSemanticMatrixTests.DsmF4View, NCMapper.Tests.Tests.DirectionalSemanticMatrixTests.DsmF4Entity>.Metadata = __meta215;
+            global::NCMapper.Runtime.RuntimeSnapshotStore.Register(__meta215);
+            // pair 216: NCMapper.Tests.Tests.DirectionalSemanticMatrixTests.DsmF5Entity -> NCMapper.Tests.Tests.DirectionalSemanticMatrixTests.DsmF5View (Fluent channel)
+            var __meta216 = new global::NCMapper.Runtime.RuntimeMapperMetadata
             {
                 SourceType = typeof(NCMapper.Tests.Tests.DirectionalSemanticMatrixTests.DsmF5Entity),
                 TargetType = typeof(NCMapper.Tests.Tests.DirectionalSemanticMatrixTests.DsmF5View),
@@ -28823,11 +29826,11 @@ namespace NCMapper.Runtime
                     },
                 },
             };
-            global::NCMapper.Runtime.RuntimeSnapshotPair<NCMapper.Tests.Tests.DirectionalSemanticMatrixTests.DsmF5Entity, NCMapper.Tests.Tests.DirectionalSemanticMatrixTests.DsmF5View>.Metadata = __meta210;
-            global::NCMapper.Runtime.RuntimeSnapshotStore.Register(__meta210);
-            // pair 211: NCMapper.Tests.Tests.Discovery7UpdatePathLockTests.D7Entity -> NCMapper.Tests.Tests.Discovery7UpdatePathLockTests.D7Dto (MapFrom channel)
-            var __mfAttr211 = new global::NCMapper.Attributes.MapFromAttribute(typeof(NCMapper.Tests.Tests.Discovery7UpdatePathLockTests.D7Entity));
-            var __meta211 = new global::NCMapper.Runtime.RuntimeMapperMetadata
+            global::NCMapper.Runtime.RuntimeSnapshotPair<NCMapper.Tests.Tests.DirectionalSemanticMatrixTests.DsmF5Entity, NCMapper.Tests.Tests.DirectionalSemanticMatrixTests.DsmF5View>.Metadata = __meta216;
+            global::NCMapper.Runtime.RuntimeSnapshotStore.Register(__meta216);
+            // pair 217: NCMapper.Tests.Tests.Discovery7UpdatePathLockTests.D7Entity -> NCMapper.Tests.Tests.Discovery7UpdatePathLockTests.D7Dto (MapFrom channel)
+            var __mfAttr217 = new global::NCMapper.Attributes.MapFromAttribute(typeof(NCMapper.Tests.Tests.Discovery7UpdatePathLockTests.D7Entity));
+            var __meta217 = new global::NCMapper.Runtime.RuntimeMapperMetadata
             {
                 SourceType = typeof(NCMapper.Tests.Tests.Discovery7UpdatePathLockTests.D7Entity),
                 TargetType = typeof(NCMapper.Tests.Tests.Discovery7UpdatePathLockTests.D7Dto),
@@ -28848,7 +29851,7 @@ namespace NCMapper.Runtime
                                 TypeName = "int",
                                 TypeRef = typeof(int),
                                 HasMapFromAttribute = true,
-                                MapFromAttribute = __mfAttr211,
+                                MapFromAttribute = __mfAttr217,
                                 HasMapIgnore = false,
                                 MapIgnoreDirection = 0,
                                 HasOverrideIgnore = false,
@@ -28888,7 +29891,7 @@ namespace NCMapper.Runtime
                                 TypeName = "string",
                                 TypeRef = typeof(string),
                                 HasMapFromAttribute = true,
-                                MapFromAttribute = __mfAttr211,
+                                MapFromAttribute = __mfAttr217,
                                 HasMapIgnore = true,
                                 MapIgnoreDirection = 2,
                                 HasOverrideIgnore = false,
@@ -28928,7 +29931,7 @@ namespace NCMapper.Runtime
                         TypeName = "int",
                         TypeRef = typeof(int),
                         HasMapFromAttribute = true,
-                        MapFromAttribute = __mfAttr211,
+                        MapFromAttribute = __mfAttr217,
                         HasMapIgnore = false,
                         MapIgnoreDirection = 0,
                         HasOverrideIgnore = false,
@@ -28951,7 +29954,7 @@ namespace NCMapper.Runtime
                         TypeName = "string",
                         TypeRef = typeof(string),
                         HasMapFromAttribute = true,
-                        MapFromAttribute = __mfAttr211,
+                        MapFromAttribute = __mfAttr217,
                         HasMapIgnore = true,
                         MapIgnoreDirection = 2,
                         HasOverrideIgnore = false,
@@ -28970,11 +29973,11 @@ namespace NCMapper.Runtime
                     },
                 },
             };
-            global::NCMapper.Runtime.RuntimeSnapshotPair<NCMapper.Tests.Tests.Discovery7UpdatePathLockTests.D7Entity, NCMapper.Tests.Tests.Discovery7UpdatePathLockTests.D7Dto>.Metadata = __meta211;
-            global::NCMapper.Runtime.RuntimeSnapshotStore.Register(__meta211);
-            // pair 212: NCMapper.Tests.Tests.DoubleAttributeTests.DoubleAttrEntity -> NCMapper.Tests.Tests.DoubleAttributeTests.DoubleAttrDtoGen (MapFrom channel)
-            var __mfAttr212 = new global::NCMapper.Attributes.MapFromAttribute(typeof(NCMapper.Tests.Tests.DoubleAttributeTests.DoubleAttrEntity));
-            var __meta212 = new global::NCMapper.Runtime.RuntimeMapperMetadata
+            global::NCMapper.Runtime.RuntimeSnapshotPair<NCMapper.Tests.Tests.Discovery7UpdatePathLockTests.D7Entity, NCMapper.Tests.Tests.Discovery7UpdatePathLockTests.D7Dto>.Metadata = __meta217;
+            global::NCMapper.Runtime.RuntimeSnapshotStore.Register(__meta217);
+            // pair 218: NCMapper.Tests.Tests.DoubleAttributeTests.DoubleAttrEntity -> NCMapper.Tests.Tests.DoubleAttributeTests.DoubleAttrDtoGen (MapFrom channel)
+            var __mfAttr218 = new global::NCMapper.Attributes.MapFromAttribute(typeof(NCMapper.Tests.Tests.DoubleAttributeTests.DoubleAttrEntity));
+            var __meta218 = new global::NCMapper.Runtime.RuntimeMapperMetadata
             {
                 SourceType = typeof(NCMapper.Tests.Tests.DoubleAttributeTests.DoubleAttrEntity),
                 TargetType = typeof(NCMapper.Tests.Tests.DoubleAttributeTests.DoubleAttrDtoGen),
@@ -28995,7 +29998,7 @@ namespace NCMapper.Runtime
                                 TypeName = "string",
                                 TypeRef = typeof(string),
                                 HasMapFromAttribute = true,
-                                MapFromAttribute = __mfAttr212,
+                                MapFromAttribute = __mfAttr218,
                                 HasMapIgnore = false,
                                 MapIgnoreDirection = 0,
                                 HasOverrideIgnore = false,
@@ -29035,7 +30038,7 @@ namespace NCMapper.Runtime
                         TypeName = "string",
                         TypeRef = typeof(string),
                         HasMapFromAttribute = true,
-                        MapFromAttribute = __mfAttr212,
+                        MapFromAttribute = __mfAttr218,
                         HasMapIgnore = false,
                         MapIgnoreDirection = 0,
                         HasOverrideIgnore = false,
@@ -29054,11 +30057,11 @@ namespace NCMapper.Runtime
                     },
                 },
             };
-            global::NCMapper.Runtime.RuntimeSnapshotPair<NCMapper.Tests.Tests.DoubleAttributeTests.DoubleAttrEntity, NCMapper.Tests.Tests.DoubleAttributeTests.DoubleAttrDtoGen>.Metadata = __meta212;
-            global::NCMapper.Runtime.RuntimeSnapshotStore.Register(__meta212);
-            // pair 213: NCMapper.Tests.Tests.DoubleAttributeTests.DoubleAttrEntity -> NCMapper.Tests.Tests.DoubleAttributeTests.DoubleAttrDtoGenConvertOnly (MapFrom channel)
-            var __mfAttr213 = new global::NCMapper.Attributes.MapFromAttribute(typeof(NCMapper.Tests.Tests.DoubleAttributeTests.DoubleAttrEntity));
-            var __meta213 = new global::NCMapper.Runtime.RuntimeMapperMetadata
+            global::NCMapper.Runtime.RuntimeSnapshotPair<NCMapper.Tests.Tests.DoubleAttributeTests.DoubleAttrEntity, NCMapper.Tests.Tests.DoubleAttributeTests.DoubleAttrDtoGen>.Metadata = __meta218;
+            global::NCMapper.Runtime.RuntimeSnapshotStore.Register(__meta218);
+            // pair 219: NCMapper.Tests.Tests.DoubleAttributeTests.DoubleAttrEntity -> NCMapper.Tests.Tests.DoubleAttributeTests.DoubleAttrDtoGenConvertOnly (MapFrom channel)
+            var __mfAttr219 = new global::NCMapper.Attributes.MapFromAttribute(typeof(NCMapper.Tests.Tests.DoubleAttributeTests.DoubleAttrEntity));
+            var __meta219 = new global::NCMapper.Runtime.RuntimeMapperMetadata
             {
                 SourceType = typeof(NCMapper.Tests.Tests.DoubleAttributeTests.DoubleAttrEntity),
                 TargetType = typeof(NCMapper.Tests.Tests.DoubleAttributeTests.DoubleAttrDtoGenConvertOnly),
@@ -29079,7 +30082,7 @@ namespace NCMapper.Runtime
                                 TypeName = "string",
                                 TypeRef = typeof(string),
                                 HasMapFromAttribute = true,
-                                MapFromAttribute = __mfAttr213,
+                                MapFromAttribute = __mfAttr219,
                                 HasMapIgnore = false,
                                 MapIgnoreDirection = 0,
                                 HasOverrideIgnore = false,
@@ -29119,7 +30122,7 @@ namespace NCMapper.Runtime
                         TypeName = "string",
                         TypeRef = typeof(string),
                         HasMapFromAttribute = true,
-                        MapFromAttribute = __mfAttr213,
+                        MapFromAttribute = __mfAttr219,
                         HasMapIgnore = false,
                         MapIgnoreDirection = 0,
                         HasOverrideIgnore = false,
@@ -29138,11 +30141,11 @@ namespace NCMapper.Runtime
                     },
                 },
             };
-            global::NCMapper.Runtime.RuntimeSnapshotPair<NCMapper.Tests.Tests.DoubleAttributeTests.DoubleAttrEntity, NCMapper.Tests.Tests.DoubleAttributeTests.DoubleAttrDtoGenConvertOnly>.Metadata = __meta213;
-            global::NCMapper.Runtime.RuntimeSnapshotStore.Register(__meta213);
-            // pair 214: NCMapper.Tests.Tests.DoubleAttributeTests.DoubleAttrEntity -> NCMapper.Tests.Tests.DoubleAttributeTests.DoubleAttrDtoGenMaskOnly (MapFrom channel)
-            var __mfAttr214 = new global::NCMapper.Attributes.MapFromAttribute(typeof(NCMapper.Tests.Tests.DoubleAttributeTests.DoubleAttrEntity));
-            var __meta214 = new global::NCMapper.Runtime.RuntimeMapperMetadata
+            global::NCMapper.Runtime.RuntimeSnapshotPair<NCMapper.Tests.Tests.DoubleAttributeTests.DoubleAttrEntity, NCMapper.Tests.Tests.DoubleAttributeTests.DoubleAttrDtoGenConvertOnly>.Metadata = __meta219;
+            global::NCMapper.Runtime.RuntimeSnapshotStore.Register(__meta219);
+            // pair 220: NCMapper.Tests.Tests.DoubleAttributeTests.DoubleAttrEntity -> NCMapper.Tests.Tests.DoubleAttributeTests.DoubleAttrDtoGenMaskOnly (MapFrom channel)
+            var __mfAttr220 = new global::NCMapper.Attributes.MapFromAttribute(typeof(NCMapper.Tests.Tests.DoubleAttributeTests.DoubleAttrEntity));
+            var __meta220 = new global::NCMapper.Runtime.RuntimeMapperMetadata
             {
                 SourceType = typeof(NCMapper.Tests.Tests.DoubleAttributeTests.DoubleAttrEntity),
                 TargetType = typeof(NCMapper.Tests.Tests.DoubleAttributeTests.DoubleAttrDtoGenMaskOnly),
@@ -29163,7 +30166,7 @@ namespace NCMapper.Runtime
                                 TypeName = "string",
                                 TypeRef = typeof(string),
                                 HasMapFromAttribute = true,
-                                MapFromAttribute = __mfAttr214,
+                                MapFromAttribute = __mfAttr220,
                                 HasMapIgnore = false,
                                 MapIgnoreDirection = 0,
                                 HasOverrideIgnore = false,
@@ -29203,7 +30206,7 @@ namespace NCMapper.Runtime
                         TypeName = "string",
                         TypeRef = typeof(string),
                         HasMapFromAttribute = true,
-                        MapFromAttribute = __mfAttr214,
+                        MapFromAttribute = __mfAttr220,
                         HasMapIgnore = false,
                         MapIgnoreDirection = 0,
                         HasOverrideIgnore = false,
@@ -29222,11 +30225,11 @@ namespace NCMapper.Runtime
                     },
                 },
             };
-            global::NCMapper.Runtime.RuntimeSnapshotPair<NCMapper.Tests.Tests.DoubleAttributeTests.DoubleAttrEntity, NCMapper.Tests.Tests.DoubleAttributeTests.DoubleAttrDtoGenMaskOnly>.Metadata = __meta214;
-            global::NCMapper.Runtime.RuntimeSnapshotStore.Register(__meta214);
-            // pair 215: NCMapper.Tests.Tests.DoubleAttributeTests.DoubleAttrEntity -> NCMapper.Tests.Tests.DoubleAttributeTests.DoubleAttrDtoRt (MapFrom channel)
-            var __mfAttr215 = new global::NCMapper.Attributes.MapFromAttribute(typeof(NCMapper.Tests.Tests.DoubleAttributeTests.DoubleAttrEntity));
-            var __meta215 = new global::NCMapper.Runtime.RuntimeMapperMetadata
+            global::NCMapper.Runtime.RuntimeSnapshotPair<NCMapper.Tests.Tests.DoubleAttributeTests.DoubleAttrEntity, NCMapper.Tests.Tests.DoubleAttributeTests.DoubleAttrDtoGenMaskOnly>.Metadata = __meta220;
+            global::NCMapper.Runtime.RuntimeSnapshotStore.Register(__meta220);
+            // pair 221: NCMapper.Tests.Tests.DoubleAttributeTests.DoubleAttrEntity -> NCMapper.Tests.Tests.DoubleAttributeTests.DoubleAttrDtoRt (MapFrom channel)
+            var __mfAttr221 = new global::NCMapper.Attributes.MapFromAttribute(typeof(NCMapper.Tests.Tests.DoubleAttributeTests.DoubleAttrEntity));
+            var __meta221 = new global::NCMapper.Runtime.RuntimeMapperMetadata
             {
                 SourceType = typeof(NCMapper.Tests.Tests.DoubleAttributeTests.DoubleAttrEntity),
                 TargetType = typeof(NCMapper.Tests.Tests.DoubleAttributeTests.DoubleAttrDtoRt),
@@ -29247,7 +30250,7 @@ namespace NCMapper.Runtime
                                 TypeName = "string",
                                 TypeRef = typeof(string),
                                 HasMapFromAttribute = true,
-                                MapFromAttribute = __mfAttr215,
+                                MapFromAttribute = __mfAttr221,
                                 HasMapIgnore = false,
                                 MapIgnoreDirection = 0,
                                 HasOverrideIgnore = false,
@@ -29287,7 +30290,7 @@ namespace NCMapper.Runtime
                         TypeName = "string",
                         TypeRef = typeof(string),
                         HasMapFromAttribute = true,
-                        MapFromAttribute = __mfAttr215,
+                        MapFromAttribute = __mfAttr221,
                         HasMapIgnore = false,
                         MapIgnoreDirection = 0,
                         HasOverrideIgnore = false,
@@ -29306,11 +30309,11 @@ namespace NCMapper.Runtime
                     },
                 },
             };
-            global::NCMapper.Runtime.RuntimeSnapshotPair<NCMapper.Tests.Tests.DoubleAttributeTests.DoubleAttrEntity, NCMapper.Tests.Tests.DoubleAttributeTests.DoubleAttrDtoRt>.Metadata = __meta215;
-            global::NCMapper.Runtime.RuntimeSnapshotStore.Register(__meta215);
-            // pair 216: NCMapper.Tests.Tests.DoubleAttributeTests.DoubleAttrEntity -> NCMapper.Tests.Tests.DoubleAttributeTests.DoubleAttrDtoRtConvertOnly (MapFrom channel)
-            var __mfAttr216 = new global::NCMapper.Attributes.MapFromAttribute(typeof(NCMapper.Tests.Tests.DoubleAttributeTests.DoubleAttrEntity));
-            var __meta216 = new global::NCMapper.Runtime.RuntimeMapperMetadata
+            global::NCMapper.Runtime.RuntimeSnapshotPair<NCMapper.Tests.Tests.DoubleAttributeTests.DoubleAttrEntity, NCMapper.Tests.Tests.DoubleAttributeTests.DoubleAttrDtoRt>.Metadata = __meta221;
+            global::NCMapper.Runtime.RuntimeSnapshotStore.Register(__meta221);
+            // pair 222: NCMapper.Tests.Tests.DoubleAttributeTests.DoubleAttrEntity -> NCMapper.Tests.Tests.DoubleAttributeTests.DoubleAttrDtoRtConvertOnly (MapFrom channel)
+            var __mfAttr222 = new global::NCMapper.Attributes.MapFromAttribute(typeof(NCMapper.Tests.Tests.DoubleAttributeTests.DoubleAttrEntity));
+            var __meta222 = new global::NCMapper.Runtime.RuntimeMapperMetadata
             {
                 SourceType = typeof(NCMapper.Tests.Tests.DoubleAttributeTests.DoubleAttrEntity),
                 TargetType = typeof(NCMapper.Tests.Tests.DoubleAttributeTests.DoubleAttrDtoRtConvertOnly),
@@ -29331,7 +30334,7 @@ namespace NCMapper.Runtime
                                 TypeName = "string",
                                 TypeRef = typeof(string),
                                 HasMapFromAttribute = true,
-                                MapFromAttribute = __mfAttr216,
+                                MapFromAttribute = __mfAttr222,
                                 HasMapIgnore = false,
                                 MapIgnoreDirection = 0,
                                 HasOverrideIgnore = false,
@@ -29371,7 +30374,7 @@ namespace NCMapper.Runtime
                         TypeName = "string",
                         TypeRef = typeof(string),
                         HasMapFromAttribute = true,
-                        MapFromAttribute = __mfAttr216,
+                        MapFromAttribute = __mfAttr222,
                         HasMapIgnore = false,
                         MapIgnoreDirection = 0,
                         HasOverrideIgnore = false,
@@ -29390,11 +30393,11 @@ namespace NCMapper.Runtime
                     },
                 },
             };
-            global::NCMapper.Runtime.RuntimeSnapshotPair<NCMapper.Tests.Tests.DoubleAttributeTests.DoubleAttrEntity, NCMapper.Tests.Tests.DoubleAttributeTests.DoubleAttrDtoRtConvertOnly>.Metadata = __meta216;
-            global::NCMapper.Runtime.RuntimeSnapshotStore.Register(__meta216);
-            // pair 217: NCMapper.Tests.Tests.DoubleAttributeTests.DoubleAttrEntity -> NCMapper.Tests.Tests.DoubleAttributeTests.DoubleAttrDtoRtMaskOnly (MapFrom channel)
-            var __mfAttr217 = new global::NCMapper.Attributes.MapFromAttribute(typeof(NCMapper.Tests.Tests.DoubleAttributeTests.DoubleAttrEntity));
-            var __meta217 = new global::NCMapper.Runtime.RuntimeMapperMetadata
+            global::NCMapper.Runtime.RuntimeSnapshotPair<NCMapper.Tests.Tests.DoubleAttributeTests.DoubleAttrEntity, NCMapper.Tests.Tests.DoubleAttributeTests.DoubleAttrDtoRtConvertOnly>.Metadata = __meta222;
+            global::NCMapper.Runtime.RuntimeSnapshotStore.Register(__meta222);
+            // pair 223: NCMapper.Tests.Tests.DoubleAttributeTests.DoubleAttrEntity -> NCMapper.Tests.Tests.DoubleAttributeTests.DoubleAttrDtoRtMaskOnly (MapFrom channel)
+            var __mfAttr223 = new global::NCMapper.Attributes.MapFromAttribute(typeof(NCMapper.Tests.Tests.DoubleAttributeTests.DoubleAttrEntity));
+            var __meta223 = new global::NCMapper.Runtime.RuntimeMapperMetadata
             {
                 SourceType = typeof(NCMapper.Tests.Tests.DoubleAttributeTests.DoubleAttrEntity),
                 TargetType = typeof(NCMapper.Tests.Tests.DoubleAttributeTests.DoubleAttrDtoRtMaskOnly),
@@ -29415,7 +30418,7 @@ namespace NCMapper.Runtime
                                 TypeName = "string",
                                 TypeRef = typeof(string),
                                 HasMapFromAttribute = true,
-                                MapFromAttribute = __mfAttr217,
+                                MapFromAttribute = __mfAttr223,
                                 HasMapIgnore = false,
                                 MapIgnoreDirection = 0,
                                 HasOverrideIgnore = false,
@@ -29455,7 +30458,7 @@ namespace NCMapper.Runtime
                         TypeName = "string",
                         TypeRef = typeof(string),
                         HasMapFromAttribute = true,
-                        MapFromAttribute = __mfAttr217,
+                        MapFromAttribute = __mfAttr223,
                         HasMapIgnore = false,
                         MapIgnoreDirection = 0,
                         HasOverrideIgnore = false,
@@ -29474,11 +30477,11 @@ namespace NCMapper.Runtime
                     },
                 },
             };
-            global::NCMapper.Runtime.RuntimeSnapshotPair<NCMapper.Tests.Tests.DoubleAttributeTests.DoubleAttrEntity, NCMapper.Tests.Tests.DoubleAttributeTests.DoubleAttrDtoRtMaskOnly>.Metadata = __meta217;
-            global::NCMapper.Runtime.RuntimeSnapshotStore.Register(__meta217);
-            // pair 218: NCMapper.Tests.Tests.EnumMappingTests.AliasedEnumEntity -> NCMapper.Tests.Tests.EnumMappingTests.AliasedEnumToStringDto (MapFrom channel)
-            var __mfAttr218 = new global::NCMapper.Attributes.MapFromAttribute(typeof(NCMapper.Tests.Tests.EnumMappingTests.AliasedEnumEntity));
-            var __meta218 = new global::NCMapper.Runtime.RuntimeMapperMetadata
+            global::NCMapper.Runtime.RuntimeSnapshotPair<NCMapper.Tests.Tests.DoubleAttributeTests.DoubleAttrEntity, NCMapper.Tests.Tests.DoubleAttributeTests.DoubleAttrDtoRtMaskOnly>.Metadata = __meta223;
+            global::NCMapper.Runtime.RuntimeSnapshotStore.Register(__meta223);
+            // pair 224: NCMapper.Tests.Tests.EnumMappingTests.AliasedEnumEntity -> NCMapper.Tests.Tests.EnumMappingTests.AliasedEnumToStringDto (MapFrom channel)
+            var __mfAttr224 = new global::NCMapper.Attributes.MapFromAttribute(typeof(NCMapper.Tests.Tests.EnumMappingTests.AliasedEnumEntity));
+            var __meta224 = new global::NCMapper.Runtime.RuntimeMapperMetadata
             {
                 SourceType = typeof(NCMapper.Tests.Tests.EnumMappingTests.AliasedEnumEntity),
                 TargetType = typeof(NCMapper.Tests.Tests.EnumMappingTests.AliasedEnumToStringDto),
@@ -29499,7 +30502,7 @@ namespace NCMapper.Runtime
                                 TypeName = "string",
                                 TypeRef = typeof(string),
                                 HasMapFromAttribute = true,
-                                MapFromAttribute = __mfAttr218,
+                                MapFromAttribute = __mfAttr224,
                                 HasMapIgnore = false,
                                 MapIgnoreDirection = 0,
                                 HasOverrideIgnore = false,
@@ -29539,7 +30542,7 @@ namespace NCMapper.Runtime
                         TypeName = "string",
                         TypeRef = typeof(string),
                         HasMapFromAttribute = true,
-                        MapFromAttribute = __mfAttr218,
+                        MapFromAttribute = __mfAttr224,
                         HasMapIgnore = false,
                         MapIgnoreDirection = 0,
                         HasOverrideIgnore = false,
@@ -29558,11 +30561,11 @@ namespace NCMapper.Runtime
                     },
                 },
             };
-            global::NCMapper.Runtime.RuntimeSnapshotPair<NCMapper.Tests.Tests.EnumMappingTests.AliasedEnumEntity, NCMapper.Tests.Tests.EnumMappingTests.AliasedEnumToStringDto>.Metadata = __meta218;
-            global::NCMapper.Runtime.RuntimeSnapshotStore.Register(__meta218);
-            // pair 219: NCMapper.Tests.Tests.ExemptionConvergenceTests.ExempIgnoreEntity -> NCMapper.Tests.Tests.ExemptionConvergenceTests.ExempIgnoreDto (MapFrom channel)
-            var __mfAttr219 = new global::NCMapper.Attributes.MapFromAttribute(typeof(NCMapper.Tests.Tests.ExemptionConvergenceTests.ExempIgnoreEntity));
-            var __meta219 = new global::NCMapper.Runtime.RuntimeMapperMetadata
+            global::NCMapper.Runtime.RuntimeSnapshotPair<NCMapper.Tests.Tests.EnumMappingTests.AliasedEnumEntity, NCMapper.Tests.Tests.EnumMappingTests.AliasedEnumToStringDto>.Metadata = __meta224;
+            global::NCMapper.Runtime.RuntimeSnapshotStore.Register(__meta224);
+            // pair 225: NCMapper.Tests.Tests.ExemptionConvergenceTests.ExempIgnoreEntity -> NCMapper.Tests.Tests.ExemptionConvergenceTests.ExempIgnoreDto (MapFrom channel)
+            var __mfAttr225 = new global::NCMapper.Attributes.MapFromAttribute(typeof(NCMapper.Tests.Tests.ExemptionConvergenceTests.ExempIgnoreEntity));
+            var __meta225 = new global::NCMapper.Runtime.RuntimeMapperMetadata
             {
                 SourceType = typeof(NCMapper.Tests.Tests.ExemptionConvergenceTests.ExempIgnoreEntity),
                 TargetType = typeof(NCMapper.Tests.Tests.ExemptionConvergenceTests.ExempIgnoreDto),
@@ -29583,7 +30586,7 @@ namespace NCMapper.Runtime
                                 TypeName = "int",
                                 TypeRef = typeof(int),
                                 HasMapFromAttribute = true,
-                                MapFromAttribute = __mfAttr219,
+                                MapFromAttribute = __mfAttr225,
                                 HasMapIgnore = false,
                                 MapIgnoreDirection = 0,
                                 HasOverrideIgnore = false,
@@ -29623,7 +30626,7 @@ namespace NCMapper.Runtime
                                 TypeName = "int",
                                 TypeRef = typeof(int),
                                 HasMapFromAttribute = true,
-                                MapFromAttribute = __mfAttr219,
+                                MapFromAttribute = __mfAttr225,
                                 HasMapIgnore = false,
                                 MapIgnoreDirection = 0,
                                 HasOverrideIgnore = false,
@@ -29663,7 +30666,7 @@ namespace NCMapper.Runtime
                         TypeName = "int",
                         TypeRef = typeof(int),
                         HasMapFromAttribute = true,
-                        MapFromAttribute = __mfAttr219,
+                        MapFromAttribute = __mfAttr225,
                         HasMapIgnore = false,
                         MapIgnoreDirection = 0,
                         HasOverrideIgnore = false,
@@ -29686,7 +30689,7 @@ namespace NCMapper.Runtime
                         TypeName = "int",
                         TypeRef = typeof(int),
                         HasMapFromAttribute = true,
-                        MapFromAttribute = __mfAttr219,
+                        MapFromAttribute = __mfAttr225,
                         HasMapIgnore = false,
                         MapIgnoreDirection = 0,
                         HasOverrideIgnore = false,
@@ -29705,11 +30708,11 @@ namespace NCMapper.Runtime
                     },
                 },
             };
-            global::NCMapper.Runtime.RuntimeSnapshotPair<NCMapper.Tests.Tests.ExemptionConvergenceTests.ExempIgnoreEntity, NCMapper.Tests.Tests.ExemptionConvergenceTests.ExempIgnoreDto>.Metadata = __meta219;
-            global::NCMapper.Runtime.RuntimeSnapshotStore.Register(__meta219);
-            // pair 220: NCMapper.Tests.Tests.ExemptionConvergenceTests.ExempNonStringMaskEntity -> NCMapper.Tests.Tests.ExemptionConvergenceTests.ExempIgnoreEntity (MapFrom channel)
-            var __mfAttr220 = new global::NCMapper.Attributes.MapFromAttribute(typeof(NCMapper.Tests.Tests.ExemptionConvergenceTests.ExempNonStringMaskEntity));
-            var __meta220 = new global::NCMapper.Runtime.RuntimeMapperMetadata
+            global::NCMapper.Runtime.RuntimeSnapshotPair<NCMapper.Tests.Tests.ExemptionConvergenceTests.ExempIgnoreEntity, NCMapper.Tests.Tests.ExemptionConvergenceTests.ExempIgnoreDto>.Metadata = __meta225;
+            global::NCMapper.Runtime.RuntimeSnapshotStore.Register(__meta225);
+            // pair 226: NCMapper.Tests.Tests.ExemptionConvergenceTests.ExempNonStringMaskEntity -> NCMapper.Tests.Tests.ExemptionConvergenceTests.ExempIgnoreEntity (MapFrom channel)
+            var __mfAttr226 = new global::NCMapper.Attributes.MapFromAttribute(typeof(NCMapper.Tests.Tests.ExemptionConvergenceTests.ExempNonStringMaskEntity));
+            var __meta226 = new global::NCMapper.Runtime.RuntimeMapperMetadata
             {
                 SourceType = typeof(NCMapper.Tests.Tests.ExemptionConvergenceTests.ExempNonStringMaskEntity),
                 TargetType = typeof(NCMapper.Tests.Tests.ExemptionConvergenceTests.ExempIgnoreEntity),
@@ -29730,7 +30733,7 @@ namespace NCMapper.Runtime
                                 TypeName = "int",
                                 TypeRef = typeof(int),
                                 HasMapFromAttribute = true,
-                                MapFromAttribute = __mfAttr220,
+                                MapFromAttribute = __mfAttr226,
                                 HasMapIgnore = false,
                                 MapIgnoreDirection = 0,
                                 HasOverrideIgnore = false,
@@ -29770,7 +30773,7 @@ namespace NCMapper.Runtime
                         TypeName = "int",
                         TypeRef = typeof(int),
                         HasMapFromAttribute = true,
-                        MapFromAttribute = __mfAttr220,
+                        MapFromAttribute = __mfAttr226,
                         HasMapIgnore = false,
                         MapIgnoreDirection = 0,
                         HasOverrideIgnore = false,
@@ -29789,11 +30792,11 @@ namespace NCMapper.Runtime
                     },
                 },
             };
-            global::NCMapper.Runtime.RuntimeSnapshotPair<NCMapper.Tests.Tests.ExemptionConvergenceTests.ExempNonStringMaskEntity, NCMapper.Tests.Tests.ExemptionConvergenceTests.ExempIgnoreEntity>.Metadata = __meta220;
-            global::NCMapper.Runtime.RuntimeSnapshotStore.Register(__meta220);
-            // pair 221: NCMapper.Tests.Tests.ExpressionBuilderMutantTests.EnumArraySource -> NCMapper.Tests.Tests.ExpressionBuilderMutantTests.EnumArrayDto (MapFrom channel)
-            var __mfAttr221 = new global::NCMapper.Attributes.MapFromAttribute(typeof(NCMapper.Tests.Tests.ExpressionBuilderMutantTests.EnumArraySource));
-            var __meta221 = new global::NCMapper.Runtime.RuntimeMapperMetadata
+            global::NCMapper.Runtime.RuntimeSnapshotPair<NCMapper.Tests.Tests.ExemptionConvergenceTests.ExempNonStringMaskEntity, NCMapper.Tests.Tests.ExemptionConvergenceTests.ExempIgnoreEntity>.Metadata = __meta226;
+            global::NCMapper.Runtime.RuntimeSnapshotStore.Register(__meta226);
+            // pair 227: NCMapper.Tests.Tests.ExpressionBuilderMutantTests.EnumArraySource -> NCMapper.Tests.Tests.ExpressionBuilderMutantTests.EnumArrayDto (MapFrom channel)
+            var __mfAttr227 = new global::NCMapper.Attributes.MapFromAttribute(typeof(NCMapper.Tests.Tests.ExpressionBuilderMutantTests.EnumArraySource));
+            var __meta227 = new global::NCMapper.Runtime.RuntimeMapperMetadata
             {
                 SourceType = typeof(NCMapper.Tests.Tests.ExpressionBuilderMutantTests.EnumArraySource),
                 TargetType = typeof(NCMapper.Tests.Tests.ExpressionBuilderMutantTests.EnumArrayDto),
@@ -29814,7 +30817,7 @@ namespace NCMapper.Runtime
                                 TypeName = "int",
                                 TypeRef = typeof(int),
                                 HasMapFromAttribute = true,
-                                MapFromAttribute = __mfAttr221,
+                                MapFromAttribute = __mfAttr227,
                                 HasMapIgnore = false,
                                 MapIgnoreDirection = 0,
                                 HasOverrideIgnore = false,
@@ -29854,7 +30857,7 @@ namespace NCMapper.Runtime
                                 TypeName = "NCMapper.Tests.Models.OrderStatus[]",
                                 TypeRef = typeof(NCMapper.Tests.Models.OrderStatus[]),
                                 HasMapFromAttribute = true,
-                                MapFromAttribute = __mfAttr221,
+                                MapFromAttribute = __mfAttr227,
                                 HasMapIgnore = false,
                                 MapIgnoreDirection = 0,
                                 HasOverrideIgnore = false,
@@ -29894,7 +30897,7 @@ namespace NCMapper.Runtime
                         TypeName = "int",
                         TypeRef = typeof(int),
                         HasMapFromAttribute = true,
-                        MapFromAttribute = __mfAttr221,
+                        MapFromAttribute = __mfAttr227,
                         HasMapIgnore = false,
                         MapIgnoreDirection = 0,
                         HasOverrideIgnore = false,
@@ -29917,7 +30920,7 @@ namespace NCMapper.Runtime
                         TypeName = "NCMapper.Tests.Models.OrderStatus[]",
                         TypeRef = typeof(NCMapper.Tests.Models.OrderStatus[]),
                         HasMapFromAttribute = true,
-                        MapFromAttribute = __mfAttr221,
+                        MapFromAttribute = __mfAttr227,
                         HasMapIgnore = false,
                         MapIgnoreDirection = 0,
                         HasOverrideIgnore = false,
@@ -29936,11 +30939,11 @@ namespace NCMapper.Runtime
                     },
                 },
             };
-            global::NCMapper.Runtime.RuntimeSnapshotPair<NCMapper.Tests.Tests.ExpressionBuilderMutantTests.EnumArraySource, NCMapper.Tests.Tests.ExpressionBuilderMutantTests.EnumArrayDto>.Metadata = __meta221;
-            global::NCMapper.Runtime.RuntimeSnapshotStore.Register(__meta221);
-            // pair 222: NCMapper.Tests.Tests.ExpressionBuilderMutantTests.NullCollectionSource -> NCMapper.Tests.Tests.ExpressionBuilderMutantTests.NullCollectionDto (MapFrom channel)
-            var __mfAttr222 = new global::NCMapper.Attributes.MapFromAttribute(typeof(NCMapper.Tests.Tests.ExpressionBuilderMutantTests.NullCollectionSource));
-            var __meta222 = new global::NCMapper.Runtime.RuntimeMapperMetadata
+            global::NCMapper.Runtime.RuntimeSnapshotPair<NCMapper.Tests.Tests.ExpressionBuilderMutantTests.EnumArraySource, NCMapper.Tests.Tests.ExpressionBuilderMutantTests.EnumArrayDto>.Metadata = __meta227;
+            global::NCMapper.Runtime.RuntimeSnapshotStore.Register(__meta227);
+            // pair 228: NCMapper.Tests.Tests.ExpressionBuilderMutantTests.NullCollectionSource -> NCMapper.Tests.Tests.ExpressionBuilderMutantTests.NullCollectionDto (MapFrom channel)
+            var __mfAttr228 = new global::NCMapper.Attributes.MapFromAttribute(typeof(NCMapper.Tests.Tests.ExpressionBuilderMutantTests.NullCollectionSource));
+            var __meta228 = new global::NCMapper.Runtime.RuntimeMapperMetadata
             {
                 SourceType = typeof(NCMapper.Tests.Tests.ExpressionBuilderMutantTests.NullCollectionSource),
                 TargetType = typeof(NCMapper.Tests.Tests.ExpressionBuilderMutantTests.NullCollectionDto),
@@ -29961,7 +30964,7 @@ namespace NCMapper.Runtime
                                 TypeName = "int",
                                 TypeRef = typeof(int),
                                 HasMapFromAttribute = true,
-                                MapFromAttribute = __mfAttr222,
+                                MapFromAttribute = __mfAttr228,
                                 HasMapIgnore = false,
                                 MapIgnoreDirection = 0,
                                 HasOverrideIgnore = false,
@@ -30001,7 +31004,7 @@ namespace NCMapper.Runtime
                                 TypeName = "System.Collections.Generic.List<string>?",
                                 TypeRef = typeof(System.Collections.Generic.List<string>),
                                 HasMapFromAttribute = true,
-                                MapFromAttribute = __mfAttr222,
+                                MapFromAttribute = __mfAttr228,
                                 HasMapIgnore = false,
                                 MapIgnoreDirection = 0,
                                 HasOverrideIgnore = false,
@@ -30041,7 +31044,7 @@ namespace NCMapper.Runtime
                                 TypeName = "int[]?",
                                 TypeRef = typeof(int[]),
                                 HasMapFromAttribute = true,
-                                MapFromAttribute = __mfAttr222,
+                                MapFromAttribute = __mfAttr228,
                                 HasMapIgnore = false,
                                 MapIgnoreDirection = 0,
                                 HasOverrideIgnore = false,
@@ -30081,7 +31084,7 @@ namespace NCMapper.Runtime
                                 TypeName = "System.Collections.Generic.Dictionary<string, int>?",
                                 TypeRef = typeof(System.Collections.Generic.Dictionary<string, int>),
                                 HasMapFromAttribute = true,
-                                MapFromAttribute = __mfAttr222,
+                                MapFromAttribute = __mfAttr228,
                                 HasMapIgnore = false,
                                 MapIgnoreDirection = 0,
                                 HasOverrideIgnore = false,
@@ -30121,7 +31124,7 @@ namespace NCMapper.Runtime
                         TypeName = "int",
                         TypeRef = typeof(int),
                         HasMapFromAttribute = true,
-                        MapFromAttribute = __mfAttr222,
+                        MapFromAttribute = __mfAttr228,
                         HasMapIgnore = false,
                         MapIgnoreDirection = 0,
                         HasOverrideIgnore = false,
@@ -30144,7 +31147,7 @@ namespace NCMapper.Runtime
                         TypeName = "System.Collections.Generic.List<string>?",
                         TypeRef = typeof(System.Collections.Generic.List<string>),
                         HasMapFromAttribute = true,
-                        MapFromAttribute = __mfAttr222,
+                        MapFromAttribute = __mfAttr228,
                         HasMapIgnore = false,
                         MapIgnoreDirection = 0,
                         HasOverrideIgnore = false,
@@ -30167,7 +31170,7 @@ namespace NCMapper.Runtime
                         TypeName = "int[]?",
                         TypeRef = typeof(int[]),
                         HasMapFromAttribute = true,
-                        MapFromAttribute = __mfAttr222,
+                        MapFromAttribute = __mfAttr228,
                         HasMapIgnore = false,
                         MapIgnoreDirection = 0,
                         HasOverrideIgnore = false,
@@ -30190,7 +31193,7 @@ namespace NCMapper.Runtime
                         TypeName = "System.Collections.Generic.Dictionary<string, int>?",
                         TypeRef = typeof(System.Collections.Generic.Dictionary<string, int>),
                         HasMapFromAttribute = true,
-                        MapFromAttribute = __mfAttr222,
+                        MapFromAttribute = __mfAttr228,
                         HasMapIgnore = false,
                         MapIgnoreDirection = 0,
                         HasOverrideIgnore = false,
@@ -30209,11 +31212,11 @@ namespace NCMapper.Runtime
                     },
                 },
             };
-            global::NCMapper.Runtime.RuntimeSnapshotPair<NCMapper.Tests.Tests.ExpressionBuilderMutantTests.NullCollectionSource, NCMapper.Tests.Tests.ExpressionBuilderMutantTests.NullCollectionDto>.Metadata = __meta222;
-            global::NCMapper.Runtime.RuntimeSnapshotStore.Register(__meta222);
-            // pair 223: NCMapper.Tests.Tests.ExpressionBuilderMutantTests.NullJsonSource -> NCMapper.Tests.Tests.ExpressionBuilderMutantTests.NullJsonToDto (MapFrom channel)
-            var __mfAttr223 = new global::NCMapper.Attributes.MapFromAttribute(typeof(NCMapper.Tests.Tests.ExpressionBuilderMutantTests.NullJsonSource));
-            var __meta223 = new global::NCMapper.Runtime.RuntimeMapperMetadata
+            global::NCMapper.Runtime.RuntimeSnapshotPair<NCMapper.Tests.Tests.ExpressionBuilderMutantTests.NullCollectionSource, NCMapper.Tests.Tests.ExpressionBuilderMutantTests.NullCollectionDto>.Metadata = __meta228;
+            global::NCMapper.Runtime.RuntimeSnapshotStore.Register(__meta228);
+            // pair 229: NCMapper.Tests.Tests.ExpressionBuilderMutantTests.NullJsonSource -> NCMapper.Tests.Tests.ExpressionBuilderMutantTests.NullJsonToDto (MapFrom channel)
+            var __mfAttr229 = new global::NCMapper.Attributes.MapFromAttribute(typeof(NCMapper.Tests.Tests.ExpressionBuilderMutantTests.NullJsonSource));
+            var __meta229 = new global::NCMapper.Runtime.RuntimeMapperMetadata
             {
                 SourceType = typeof(NCMapper.Tests.Tests.ExpressionBuilderMutantTests.NullJsonSource),
                 TargetType = typeof(NCMapper.Tests.Tests.ExpressionBuilderMutantTests.NullJsonToDto),
@@ -30234,7 +31237,7 @@ namespace NCMapper.Runtime
                                 TypeName = "int",
                                 TypeRef = typeof(int),
                                 HasMapFromAttribute = true,
-                                MapFromAttribute = __mfAttr223,
+                                MapFromAttribute = __mfAttr229,
                                 HasMapIgnore = false,
                                 MapIgnoreDirection = 0,
                                 HasOverrideIgnore = false,
@@ -30274,7 +31277,7 @@ namespace NCMapper.Runtime
                                 TypeName = "NCMapper.Tests.Models.AppConfig?",
                                 TypeRef = typeof(NCMapper.Tests.Models.AppConfig),
                                 HasMapFromAttribute = true,
-                                MapFromAttribute = __mfAttr223,
+                                MapFromAttribute = __mfAttr229,
                                 HasMapIgnore = false,
                                 MapIgnoreDirection = 0,
                                 HasOverrideIgnore = false,
@@ -30314,7 +31317,7 @@ namespace NCMapper.Runtime
                         TypeName = "int",
                         TypeRef = typeof(int),
                         HasMapFromAttribute = true,
-                        MapFromAttribute = __mfAttr223,
+                        MapFromAttribute = __mfAttr229,
                         HasMapIgnore = false,
                         MapIgnoreDirection = 0,
                         HasOverrideIgnore = false,
@@ -30337,7 +31340,7 @@ namespace NCMapper.Runtime
                         TypeName = "NCMapper.Tests.Models.AppConfig?",
                         TypeRef = typeof(NCMapper.Tests.Models.AppConfig),
                         HasMapFromAttribute = true,
-                        MapFromAttribute = __mfAttr223,
+                        MapFromAttribute = __mfAttr229,
                         HasMapIgnore = false,
                         MapIgnoreDirection = 0,
                         HasOverrideIgnore = false,
@@ -30356,11 +31359,11 @@ namespace NCMapper.Runtime
                     },
                 },
             };
-            global::NCMapper.Runtime.RuntimeSnapshotPair<NCMapper.Tests.Tests.ExpressionBuilderMutantTests.NullJsonSource, NCMapper.Tests.Tests.ExpressionBuilderMutantTests.NullJsonToDto>.Metadata = __meta223;
-            global::NCMapper.Runtime.RuntimeSnapshotStore.Register(__meta223);
-            // pair 224: NCMapper.Tests.Tests.ExpressionBuilderMutantTests.NullNestedSource -> NCMapper.Tests.Tests.ExpressionBuilderMutantTests.NullNestedTarget (MapFrom channel)
-            var __mfAttr224 = new global::NCMapper.Attributes.MapFromAttribute(typeof(NCMapper.Tests.Tests.ExpressionBuilderMutantTests.NullNestedSource));
-            var __meta224 = new global::NCMapper.Runtime.RuntimeMapperMetadata
+            global::NCMapper.Runtime.RuntimeSnapshotPair<NCMapper.Tests.Tests.ExpressionBuilderMutantTests.NullJsonSource, NCMapper.Tests.Tests.ExpressionBuilderMutantTests.NullJsonToDto>.Metadata = __meta229;
+            global::NCMapper.Runtime.RuntimeSnapshotStore.Register(__meta229);
+            // pair 230: NCMapper.Tests.Tests.ExpressionBuilderMutantTests.NullNestedSource -> NCMapper.Tests.Tests.ExpressionBuilderMutantTests.NullNestedTarget (MapFrom channel)
+            var __mfAttr230 = new global::NCMapper.Attributes.MapFromAttribute(typeof(NCMapper.Tests.Tests.ExpressionBuilderMutantTests.NullNestedSource));
+            var __meta230 = new global::NCMapper.Runtime.RuntimeMapperMetadata
             {
                 SourceType = typeof(NCMapper.Tests.Tests.ExpressionBuilderMutantTests.NullNestedSource),
                 TargetType = typeof(NCMapper.Tests.Tests.ExpressionBuilderMutantTests.NullNestedTarget),
@@ -30381,7 +31384,7 @@ namespace NCMapper.Runtime
                                 TypeName = "int",
                                 TypeRef = typeof(int),
                                 HasMapFromAttribute = true,
-                                MapFromAttribute = __mfAttr224,
+                                MapFromAttribute = __mfAttr230,
                                 HasMapIgnore = false,
                                 MapIgnoreDirection = 0,
                                 HasOverrideIgnore = false,
@@ -30421,7 +31424,7 @@ namespace NCMapper.Runtime
                                 TypeName = "NCMapper.Tests.Models.AddressDto?",
                                 TypeRef = typeof(NCMapper.Tests.Models.AddressDto),
                                 HasMapFromAttribute = true,
-                                MapFromAttribute = __mfAttr224,
+                                MapFromAttribute = __mfAttr230,
                                 HasMapIgnore = false,
                                 MapIgnoreDirection = 0,
                                 HasOverrideIgnore = false,
@@ -30461,7 +31464,7 @@ namespace NCMapper.Runtime
                         TypeName = "int",
                         TypeRef = typeof(int),
                         HasMapFromAttribute = true,
-                        MapFromAttribute = __mfAttr224,
+                        MapFromAttribute = __mfAttr230,
                         HasMapIgnore = false,
                         MapIgnoreDirection = 0,
                         HasOverrideIgnore = false,
@@ -30484,7 +31487,7 @@ namespace NCMapper.Runtime
                         TypeName = "NCMapper.Tests.Models.AddressDto?",
                         TypeRef = typeof(NCMapper.Tests.Models.AddressDto),
                         HasMapFromAttribute = true,
-                        MapFromAttribute = __mfAttr224,
+                        MapFromAttribute = __mfAttr230,
                         HasMapIgnore = false,
                         MapIgnoreDirection = 0,
                         HasOverrideIgnore = false,
@@ -30503,11 +31506,11 @@ namespace NCMapper.Runtime
                     },
                 },
             };
-            global::NCMapper.Runtime.RuntimeSnapshotPair<NCMapper.Tests.Tests.ExpressionBuilderMutantTests.NullNestedSource, NCMapper.Tests.Tests.ExpressionBuilderMutantTests.NullNestedTarget>.Metadata = __meta224;
-            global::NCMapper.Runtime.RuntimeSnapshotStore.Register(__meta224);
-            // pair 225: NCMapper.Tests.Tests.ExpressionBuilderMutantTests.NullObjectToJsonSource -> NCMapper.Tests.Tests.ExpressionBuilderMutantTests.NullObjectToJsonDto (MapFrom channel)
-            var __mfAttr225 = new global::NCMapper.Attributes.MapFromAttribute(typeof(NCMapper.Tests.Tests.ExpressionBuilderMutantTests.NullObjectToJsonSource));
-            var __meta225 = new global::NCMapper.Runtime.RuntimeMapperMetadata
+            global::NCMapper.Runtime.RuntimeSnapshotPair<NCMapper.Tests.Tests.ExpressionBuilderMutantTests.NullNestedSource, NCMapper.Tests.Tests.ExpressionBuilderMutantTests.NullNestedTarget>.Metadata = __meta230;
+            global::NCMapper.Runtime.RuntimeSnapshotStore.Register(__meta230);
+            // pair 231: NCMapper.Tests.Tests.ExpressionBuilderMutantTests.NullObjectToJsonSource -> NCMapper.Tests.Tests.ExpressionBuilderMutantTests.NullObjectToJsonDto (MapFrom channel)
+            var __mfAttr231 = new global::NCMapper.Attributes.MapFromAttribute(typeof(NCMapper.Tests.Tests.ExpressionBuilderMutantTests.NullObjectToJsonSource));
+            var __meta231 = new global::NCMapper.Runtime.RuntimeMapperMetadata
             {
                 SourceType = typeof(NCMapper.Tests.Tests.ExpressionBuilderMutantTests.NullObjectToJsonSource),
                 TargetType = typeof(NCMapper.Tests.Tests.ExpressionBuilderMutantTests.NullObjectToJsonDto),
@@ -30528,7 +31531,7 @@ namespace NCMapper.Runtime
                                 TypeName = "int",
                                 TypeRef = typeof(int),
                                 HasMapFromAttribute = true,
-                                MapFromAttribute = __mfAttr225,
+                                MapFromAttribute = __mfAttr231,
                                 HasMapIgnore = false,
                                 MapIgnoreDirection = 0,
                                 HasOverrideIgnore = false,
@@ -30568,7 +31571,7 @@ namespace NCMapper.Runtime
                                 TypeName = "string?",
                                 TypeRef = typeof(string),
                                 HasMapFromAttribute = true,
-                                MapFromAttribute = __mfAttr225,
+                                MapFromAttribute = __mfAttr231,
                                 HasMapIgnore = false,
                                 MapIgnoreDirection = 0,
                                 HasOverrideIgnore = false,
@@ -30608,7 +31611,7 @@ namespace NCMapper.Runtime
                         TypeName = "int",
                         TypeRef = typeof(int),
                         HasMapFromAttribute = true,
-                        MapFromAttribute = __mfAttr225,
+                        MapFromAttribute = __mfAttr231,
                         HasMapIgnore = false,
                         MapIgnoreDirection = 0,
                         HasOverrideIgnore = false,
@@ -30631,7 +31634,7 @@ namespace NCMapper.Runtime
                         TypeName = "string?",
                         TypeRef = typeof(string),
                         HasMapFromAttribute = true,
-                        MapFromAttribute = __mfAttr225,
+                        MapFromAttribute = __mfAttr231,
                         HasMapIgnore = false,
                         MapIgnoreDirection = 0,
                         HasOverrideIgnore = false,
@@ -30650,11 +31653,11 @@ namespace NCMapper.Runtime
                     },
                 },
             };
-            global::NCMapper.Runtime.RuntimeSnapshotPair<NCMapper.Tests.Tests.ExpressionBuilderMutantTests.NullObjectToJsonSource, NCMapper.Tests.Tests.ExpressionBuilderMutantTests.NullObjectToJsonDto>.Metadata = __meta225;
-            global::NCMapper.Runtime.RuntimeSnapshotStore.Register(__meta225);
-            // pair 226: NCMapper.Tests.Tests.ExpressionBuilderMutantTests.ObjectToJsonSource -> NCMapper.Tests.Tests.ExpressionBuilderMutantTests.ObjectToJsonDto (MapFrom channel)
-            var __mfAttr226 = new global::NCMapper.Attributes.MapFromAttribute(typeof(NCMapper.Tests.Tests.ExpressionBuilderMutantTests.ObjectToJsonSource));
-            var __meta226 = new global::NCMapper.Runtime.RuntimeMapperMetadata
+            global::NCMapper.Runtime.RuntimeSnapshotPair<NCMapper.Tests.Tests.ExpressionBuilderMutantTests.NullObjectToJsonSource, NCMapper.Tests.Tests.ExpressionBuilderMutantTests.NullObjectToJsonDto>.Metadata = __meta231;
+            global::NCMapper.Runtime.RuntimeSnapshotStore.Register(__meta231);
+            // pair 232: NCMapper.Tests.Tests.ExpressionBuilderMutantTests.ObjectToJsonSource -> NCMapper.Tests.Tests.ExpressionBuilderMutantTests.ObjectToJsonDto (MapFrom channel)
+            var __mfAttr232 = new global::NCMapper.Attributes.MapFromAttribute(typeof(NCMapper.Tests.Tests.ExpressionBuilderMutantTests.ObjectToJsonSource));
+            var __meta232 = new global::NCMapper.Runtime.RuntimeMapperMetadata
             {
                 SourceType = typeof(NCMapper.Tests.Tests.ExpressionBuilderMutantTests.ObjectToJsonSource),
                 TargetType = typeof(NCMapper.Tests.Tests.ExpressionBuilderMutantTests.ObjectToJsonDto),
@@ -30675,7 +31678,7 @@ namespace NCMapper.Runtime
                                 TypeName = "int",
                                 TypeRef = typeof(int),
                                 HasMapFromAttribute = true,
-                                MapFromAttribute = __mfAttr226,
+                                MapFromAttribute = __mfAttr232,
                                 HasMapIgnore = false,
                                 MapIgnoreDirection = 0,
                                 HasOverrideIgnore = false,
@@ -30715,7 +31718,7 @@ namespace NCMapper.Runtime
                                 TypeName = "string?",
                                 TypeRef = typeof(string),
                                 HasMapFromAttribute = true,
-                                MapFromAttribute = __mfAttr226,
+                                MapFromAttribute = __mfAttr232,
                                 HasMapIgnore = false,
                                 MapIgnoreDirection = 0,
                                 HasOverrideIgnore = false,
@@ -30755,7 +31758,7 @@ namespace NCMapper.Runtime
                         TypeName = "int",
                         TypeRef = typeof(int),
                         HasMapFromAttribute = true,
-                        MapFromAttribute = __mfAttr226,
+                        MapFromAttribute = __mfAttr232,
                         HasMapIgnore = false,
                         MapIgnoreDirection = 0,
                         HasOverrideIgnore = false,
@@ -30778,7 +31781,7 @@ namespace NCMapper.Runtime
                         TypeName = "string?",
                         TypeRef = typeof(string),
                         HasMapFromAttribute = true,
-                        MapFromAttribute = __mfAttr226,
+                        MapFromAttribute = __mfAttr232,
                         HasMapIgnore = false,
                         MapIgnoreDirection = 0,
                         HasOverrideIgnore = false,
@@ -30797,11 +31800,11 @@ namespace NCMapper.Runtime
                     },
                 },
             };
-            global::NCMapper.Runtime.RuntimeSnapshotPair<NCMapper.Tests.Tests.ExpressionBuilderMutantTests.ObjectToJsonSource, NCMapper.Tests.Tests.ExpressionBuilderMutantTests.ObjectToJsonDto>.Metadata = __meta226;
-            global::NCMapper.Runtime.RuntimeSnapshotStore.Register(__meta226);
-            // pair 227: NCMapper.Tests.Tests.ExpressionBuilderMutantTests.SimpleSource -> NCMapper.Tests.Tests.ExpressionBuilderMutantTests.TargetWithNoSourceConvertUsing (MapFrom channel)
-            var __mfAttr227 = new global::NCMapper.Attributes.MapFromAttribute(typeof(NCMapper.Tests.Tests.ExpressionBuilderMutantTests.SimpleSource));
-            var __meta227 = new global::NCMapper.Runtime.RuntimeMapperMetadata
+            global::NCMapper.Runtime.RuntimeSnapshotPair<NCMapper.Tests.Tests.ExpressionBuilderMutantTests.ObjectToJsonSource, NCMapper.Tests.Tests.ExpressionBuilderMutantTests.ObjectToJsonDto>.Metadata = __meta232;
+            global::NCMapper.Runtime.RuntimeSnapshotStore.Register(__meta232);
+            // pair 233: NCMapper.Tests.Tests.ExpressionBuilderMutantTests.SimpleSource -> NCMapper.Tests.Tests.ExpressionBuilderMutantTests.TargetWithNoSourceConvertUsing (MapFrom channel)
+            var __mfAttr233 = new global::NCMapper.Attributes.MapFromAttribute(typeof(NCMapper.Tests.Tests.ExpressionBuilderMutantTests.SimpleSource));
+            var __meta233 = new global::NCMapper.Runtime.RuntimeMapperMetadata
             {
                 SourceType = typeof(NCMapper.Tests.Tests.ExpressionBuilderMutantTests.SimpleSource),
                 TargetType = typeof(NCMapper.Tests.Tests.ExpressionBuilderMutantTests.TargetWithNoSourceConvertUsing),
@@ -30822,7 +31825,7 @@ namespace NCMapper.Runtime
                                 TypeName = "int",
                                 TypeRef = typeof(int),
                                 HasMapFromAttribute = true,
-                                MapFromAttribute = __mfAttr227,
+                                MapFromAttribute = __mfAttr233,
                                 HasMapIgnore = false,
                                 MapIgnoreDirection = 0,
                                 HasOverrideIgnore = false,
@@ -30862,7 +31865,7 @@ namespace NCMapper.Runtime
                                 TypeName = "string",
                                 TypeRef = typeof(string),
                                 HasMapFromAttribute = true,
-                                MapFromAttribute = __mfAttr227,
+                                MapFromAttribute = __mfAttr233,
                                 HasMapIgnore = false,
                                 MapIgnoreDirection = 0,
                                 HasOverrideIgnore = false,
@@ -30902,7 +31905,7 @@ namespace NCMapper.Runtime
                         TypeName = "int",
                         TypeRef = typeof(int),
                         HasMapFromAttribute = true,
-                        MapFromAttribute = __mfAttr227,
+                        MapFromAttribute = __mfAttr233,
                         HasMapIgnore = false,
                         MapIgnoreDirection = 0,
                         HasOverrideIgnore = false,
@@ -30925,7 +31928,7 @@ namespace NCMapper.Runtime
                         TypeName = "string",
                         TypeRef = typeof(string),
                         HasMapFromAttribute = true,
-                        MapFromAttribute = __mfAttr227,
+                        MapFromAttribute = __mfAttr233,
                         HasMapIgnore = false,
                         MapIgnoreDirection = 0,
                         HasOverrideIgnore = false,
@@ -30944,962 +31947,16 @@ namespace NCMapper.Runtime
                     },
                 },
             };
-            global::NCMapper.Runtime.RuntimeSnapshotPair<NCMapper.Tests.Tests.ExpressionBuilderMutantTests.SimpleSource, NCMapper.Tests.Tests.ExpressionBuilderMutantTests.TargetWithNoSourceConvertUsing>.Metadata = __meta227;
-            global::NCMapper.Runtime.RuntimeSnapshotStore.Register(__meta227);
-            // pair 228: NCMapper.Tests.Tests.ExpressionBuilderMutantTests.SourceForTargetIgnore -> NCMapper.Tests.Tests.ExpressionBuilderMutantTests.TargetWithMapIgnore (MapFrom channel)
-            var __mfAttr228 = new global::NCMapper.Attributes.MapFromAttribute(typeof(NCMapper.Tests.Tests.ExpressionBuilderMutantTests.SourceForTargetIgnore));
-            var __meta228 = new global::NCMapper.Runtime.RuntimeMapperMetadata
+            global::NCMapper.Runtime.RuntimeSnapshotPair<NCMapper.Tests.Tests.ExpressionBuilderMutantTests.SimpleSource, NCMapper.Tests.Tests.ExpressionBuilderMutantTests.TargetWithNoSourceConvertUsing>.Metadata = __meta233;
+            global::NCMapper.Runtime.RuntimeSnapshotStore.Register(__meta233);
+            // pair 234: NCMapper.Tests.Tests.ExpressionBuilderMutantTests.SourceForTargetIgnore -> NCMapper.Tests.Tests.ExpressionBuilderMutantTests.TargetWithMapIgnore (MapFrom channel)
+            var __mfAttr234 = new global::NCMapper.Attributes.MapFromAttribute(typeof(NCMapper.Tests.Tests.ExpressionBuilderMutantTests.SourceForTargetIgnore));
+            var __meta234 = new global::NCMapper.Runtime.RuntimeMapperMetadata
             {
                 SourceType = typeof(NCMapper.Tests.Tests.ExpressionBuilderMutantTests.SourceForTargetIgnore),
                 TargetType = typeof(NCMapper.Tests.Tests.ExpressionBuilderMutantTests.TargetWithMapIgnore),
                 SourceTypeFqn = "NCMapper.Tests.Tests.ExpressionBuilderMutantTests.SourceForTargetIgnore",
                 TargetTypeFqn = "NCMapper.Tests.Tests.ExpressionBuilderMutantTests.TargetWithMapIgnore",
-                Channel = global::NCMapper.Runtime.RuntimeMappingChannel.MapFrom,
-                NoAutoInclude = false,
-                IsFluentForward = false,
-                AfterMappingMethodRef = null,
-                Properties = new global::NCMapper.Runtime.RuntimePropertyMapping[]
-                {
-                    new global::NCMapper.Runtime.RuntimePropertyMapping
-                    {
-                        Target =
-                            new global::NCMapper.Runtime.RuntimeTargetPropertySlot
-                            {
-                                Name = "Id",
-                                TypeName = "int",
-                                TypeRef = typeof(int),
-                                HasMapFromAttribute = true,
-                                MapFromAttribute = __mfAttr228,
-                                HasMapIgnore = false,
-                                MapIgnoreDirection = 0,
-                                HasOverrideIgnore = false,
-                                HasMapProperty = false,
-                                FromField = null,
-                                FromSourceTypeName = null,
-                                HasMask = false,
-                                MaskTypeName = null,
-                                HasConverter = false,
-                                ConverterDeclaringType = null,
-                                ConverterMethodName = null,
-                                HasConvertBack = false,
-                                ConverterBackDeclaringType = null,
-                                ConverterBackMethodName = null,
-                                IsFromJson = false,
-                            },
-                        SourceName = "Id",
-                        SourcePathNames = new string[] { "Id" },
-                        SourcePropertyTypeName = "int",
-                        SourcePropertyTypeRef = typeof(int),
-                        HasIndex = false,
-                        IsFlattened = false,
-                        IsReverseWriteBack = false,
-                        HasConverter = false,
-                        ConverterDeclaringType = null,
-                        ConverterMethodName = null,
-                        HasMask = false,
-                        MaskTypeName = null,
-                        IsFromJson = false,
-                    },
-                    new global::NCMapper.Runtime.RuntimePropertyMapping
-                    {
-                        Target =
-                            new global::NCMapper.Runtime.RuntimeTargetPropertySlot
-                            {
-                                Name = "Name",
-                                TypeName = "string",
-                                TypeRef = typeof(string),
-                                HasMapFromAttribute = true,
-                                MapFromAttribute = __mfAttr228,
-                                HasMapIgnore = false,
-                                MapIgnoreDirection = 0,
-                                HasOverrideIgnore = false,
-                                HasMapProperty = false,
-                                FromField = null,
-                                FromSourceTypeName = null,
-                                HasMask = false,
-                                MaskTypeName = null,
-                                HasConverter = false,
-                                ConverterDeclaringType = null,
-                                ConverterMethodName = null,
-                                HasConvertBack = false,
-                                ConverterBackDeclaringType = null,
-                                ConverterBackMethodName = null,
-                                IsFromJson = false,
-                            },
-                        SourceName = "Name",
-                        SourcePathNames = new string[] { "Name" },
-                        SourcePropertyTypeName = "string",
-                        SourcePropertyTypeRef = typeof(string),
-                        HasIndex = false,
-                        IsFlattened = false,
-                        IsReverseWriteBack = false,
-                        HasConverter = false,
-                        ConverterDeclaringType = null,
-                        ConverterMethodName = null,
-                        HasMask = false,
-                        MaskTypeName = null,
-                        IsFromJson = false,
-                    },
-                },
-                AllTargetSlots = new global::NCMapper.Runtime.RuntimeTargetPropertySlot[]
-                {
-                    new global::NCMapper.Runtime.RuntimeTargetPropertySlot
-                    {
-                        Name = "Id",
-                        TypeName = "int",
-                        TypeRef = typeof(int),
-                        HasMapFromAttribute = true,
-                        MapFromAttribute = __mfAttr228,
-                        HasMapIgnore = false,
-                        MapIgnoreDirection = 0,
-                        HasOverrideIgnore = false,
-                        HasMapProperty = false,
-                        FromField = null,
-                        FromSourceTypeName = null,
-                        HasMask = false,
-                        MaskTypeName = null,
-                        HasConverter = false,
-                        ConverterDeclaringType = null,
-                        ConverterMethodName = null,
-                        HasConvertBack = false,
-                        ConverterBackDeclaringType = null,
-                        ConverterBackMethodName = null,
-                        IsFromJson = false,
-                    },
-                    new global::NCMapper.Runtime.RuntimeTargetPropertySlot
-                    {
-                        Name = "Name",
-                        TypeName = "string",
-                        TypeRef = typeof(string),
-                        HasMapFromAttribute = true,
-                        MapFromAttribute = __mfAttr228,
-                        HasMapIgnore = false,
-                        MapIgnoreDirection = 0,
-                        HasOverrideIgnore = false,
-                        HasMapProperty = false,
-                        FromField = null,
-                        FromSourceTypeName = null,
-                        HasMask = false,
-                        MaskTypeName = null,
-                        HasConverter = false,
-                        ConverterDeclaringType = null,
-                        ConverterMethodName = null,
-                        HasConvertBack = false,
-                        ConverterBackDeclaringType = null,
-                        ConverterBackMethodName = null,
-                        IsFromJson = false,
-                    },
-                },
-            };
-            global::NCMapper.Runtime.RuntimeSnapshotPair<NCMapper.Tests.Tests.ExpressionBuilderMutantTests.SourceForTargetIgnore, NCMapper.Tests.Tests.ExpressionBuilderMutantTests.TargetWithMapIgnore>.Metadata = __meta228;
-            global::NCMapper.Runtime.RuntimeSnapshotStore.Register(__meta228);
-            // pair 229: NCMapper.Tests.Tests.ExpressionBuilderMutantTests.StringArraySource -> NCMapper.Tests.Tests.ExpressionBuilderMutantTests.StringArrayTarget (MapFrom channel)
-            var __mfAttr229 = new global::NCMapper.Attributes.MapFromAttribute(typeof(NCMapper.Tests.Tests.ExpressionBuilderMutantTests.StringArraySource));
-            var __meta229 = new global::NCMapper.Runtime.RuntimeMapperMetadata
-            {
-                SourceType = typeof(NCMapper.Tests.Tests.ExpressionBuilderMutantTests.StringArraySource),
-                TargetType = typeof(NCMapper.Tests.Tests.ExpressionBuilderMutantTests.StringArrayTarget),
-                SourceTypeFqn = "NCMapper.Tests.Tests.ExpressionBuilderMutantTests.StringArraySource",
-                TargetTypeFqn = "NCMapper.Tests.Tests.ExpressionBuilderMutantTests.StringArrayTarget",
-                Channel = global::NCMapper.Runtime.RuntimeMappingChannel.MapFrom,
-                NoAutoInclude = false,
-                IsFluentForward = false,
-                AfterMappingMethodRef = null,
-                Properties = new global::NCMapper.Runtime.RuntimePropertyMapping[]
-                {
-                    new global::NCMapper.Runtime.RuntimePropertyMapping
-                    {
-                        Target =
-                            new global::NCMapper.Runtime.RuntimeTargetPropertySlot
-                            {
-                                Name = "Id",
-                                TypeName = "int",
-                                TypeRef = typeof(int),
-                                HasMapFromAttribute = true,
-                                MapFromAttribute = __mfAttr229,
-                                HasMapIgnore = false,
-                                MapIgnoreDirection = 0,
-                                HasOverrideIgnore = false,
-                                HasMapProperty = false,
-                                FromField = null,
-                                FromSourceTypeName = null,
-                                HasMask = false,
-                                MaskTypeName = null,
-                                HasConverter = false,
-                                ConverterDeclaringType = null,
-                                ConverterMethodName = null,
-                                HasConvertBack = false,
-                                ConverterBackDeclaringType = null,
-                                ConverterBackMethodName = null,
-                                IsFromJson = false,
-                            },
-                        SourceName = "Id",
-                        SourcePathNames = new string[] { "Id" },
-                        SourcePropertyTypeName = "int",
-                        SourcePropertyTypeRef = typeof(int),
-                        HasIndex = false,
-                        IsFlattened = false,
-                        IsReverseWriteBack = false,
-                        HasConverter = false,
-                        ConverterDeclaringType = null,
-                        ConverterMethodName = null,
-                        HasMask = false,
-                        MaskTypeName = null,
-                        IsFromJson = false,
-                    },
-                    new global::NCMapper.Runtime.RuntimePropertyMapping
-                    {
-                        Target =
-                            new global::NCMapper.Runtime.RuntimeTargetPropertySlot
-                            {
-                                Name = "Tags",
-                                TypeName = "string[]",
-                                TypeRef = typeof(string[]),
-                                HasMapFromAttribute = true,
-                                MapFromAttribute = __mfAttr229,
-                                HasMapIgnore = false,
-                                MapIgnoreDirection = 0,
-                                HasOverrideIgnore = false,
-                                HasMapProperty = false,
-                                FromField = null,
-                                FromSourceTypeName = null,
-                                HasMask = false,
-                                MaskTypeName = null,
-                                HasConverter = false,
-                                ConverterDeclaringType = null,
-                                ConverterMethodName = null,
-                                HasConvertBack = false,
-                                ConverterBackDeclaringType = null,
-                                ConverterBackMethodName = null,
-                                IsFromJson = false,
-                            },
-                        SourceName = "Tags",
-                        SourcePathNames = new string[] { "Tags" },
-                        SourcePropertyTypeName = "string[]",
-                        SourcePropertyTypeRef = typeof(string[]),
-                        HasIndex = false,
-                        IsFlattened = false,
-                        IsReverseWriteBack = false,
-                        HasConverter = false,
-                        ConverterDeclaringType = null,
-                        ConverterMethodName = null,
-                        HasMask = false,
-                        MaskTypeName = null,
-                        IsFromJson = false,
-                    },
-                },
-                AllTargetSlots = new global::NCMapper.Runtime.RuntimeTargetPropertySlot[]
-                {
-                    new global::NCMapper.Runtime.RuntimeTargetPropertySlot
-                    {
-                        Name = "Id",
-                        TypeName = "int",
-                        TypeRef = typeof(int),
-                        HasMapFromAttribute = true,
-                        MapFromAttribute = __mfAttr229,
-                        HasMapIgnore = false,
-                        MapIgnoreDirection = 0,
-                        HasOverrideIgnore = false,
-                        HasMapProperty = false,
-                        FromField = null,
-                        FromSourceTypeName = null,
-                        HasMask = false,
-                        MaskTypeName = null,
-                        HasConverter = false,
-                        ConverterDeclaringType = null,
-                        ConverterMethodName = null,
-                        HasConvertBack = false,
-                        ConverterBackDeclaringType = null,
-                        ConverterBackMethodName = null,
-                        IsFromJson = false,
-                    },
-                    new global::NCMapper.Runtime.RuntimeTargetPropertySlot
-                    {
-                        Name = "Tags",
-                        TypeName = "string[]",
-                        TypeRef = typeof(string[]),
-                        HasMapFromAttribute = true,
-                        MapFromAttribute = __mfAttr229,
-                        HasMapIgnore = false,
-                        MapIgnoreDirection = 0,
-                        HasOverrideIgnore = false,
-                        HasMapProperty = false,
-                        FromField = null,
-                        FromSourceTypeName = null,
-                        HasMask = false,
-                        MaskTypeName = null,
-                        HasConverter = false,
-                        ConverterDeclaringType = null,
-                        ConverterMethodName = null,
-                        HasConvertBack = false,
-                        ConverterBackDeclaringType = null,
-                        ConverterBackMethodName = null,
-                        IsFromJson = false,
-                    },
-                },
-            };
-            global::NCMapper.Runtime.RuntimeSnapshotPair<NCMapper.Tests.Tests.ExpressionBuilderMutantTests.StringArraySource, NCMapper.Tests.Tests.ExpressionBuilderMutantTests.StringArrayTarget>.Metadata = __meta229;
-            global::NCMapper.Runtime.RuntimeSnapshotStore.Register(__meta229);
-            // pair 230: NCMapper.Tests.Tests.FallbackBoundaryTests.AttrSameSourceEntity -> NCMapper.Tests.Tests.FallbackBoundaryTests.AttrSameSourceDto (MapFrom channel)
-            var __mfAttr230 = new global::NCMapper.Attributes.MapFromAttribute(typeof(NCMapper.Tests.Tests.FallbackBoundaryTests.AttrSameSourceEntity));
-            var __meta230 = new global::NCMapper.Runtime.RuntimeMapperMetadata
-            {
-                SourceType = typeof(NCMapper.Tests.Tests.FallbackBoundaryTests.AttrSameSourceEntity),
-                TargetType = typeof(NCMapper.Tests.Tests.FallbackBoundaryTests.AttrSameSourceDto),
-                SourceTypeFqn = "NCMapper.Tests.Tests.FallbackBoundaryTests.AttrSameSourceEntity",
-                TargetTypeFqn = "NCMapper.Tests.Tests.FallbackBoundaryTests.AttrSameSourceDto",
-                Channel = global::NCMapper.Runtime.RuntimeMappingChannel.MapFrom,
-                NoAutoInclude = false,
-                IsFluentForward = false,
-                AfterMappingMethodRef = null,
-                Properties = new global::NCMapper.Runtime.RuntimePropertyMapping[]
-                {
-                    new global::NCMapper.Runtime.RuntimePropertyMapping
-                    {
-                        Target =
-                            new global::NCMapper.Runtime.RuntimeTargetPropertySlot
-                            {
-                                Name = "Value",
-                                TypeName = "int",
-                                TypeRef = typeof(int),
-                                HasMapFromAttribute = true,
-                                MapFromAttribute = __mfAttr230,
-                                HasMapIgnore = false,
-                                MapIgnoreDirection = 0,
-                                HasOverrideIgnore = false,
-                                HasMapProperty = true,
-                                FromField = "Value",
-                                FromSourceTypeName = "NCMapper.Tests.Tests.FallbackBoundaryTests.AttrSameSourceEntity",
-                                HasMask = false,
-                                MaskTypeName = null,
-                                HasConverter = false,
-                                ConverterDeclaringType = null,
-                                ConverterMethodName = null,
-                                HasConvertBack = false,
-                                ConverterBackDeclaringType = null,
-                                ConverterBackMethodName = null,
-                                IsFromJson = false,
-                            },
-                        SourceName = "Value",
-                        SourcePathNames = new string[] { "Value" },
-                        SourcePropertyTypeName = "int",
-                        SourcePropertyTypeRef = typeof(int),
-                        HasIndex = false,
-                        IsFlattened = false,
-                        IsReverseWriteBack = false,
-                        HasConverter = false,
-                        ConverterDeclaringType = null,
-                        ConverterMethodName = null,
-                        HasMask = false,
-                        MaskTypeName = null,
-                        IsFromJson = false,
-                    },
-                },
-                AllTargetSlots = new global::NCMapper.Runtime.RuntimeTargetPropertySlot[]
-                {
-                    new global::NCMapper.Runtime.RuntimeTargetPropertySlot
-                    {
-                        Name = "Value",
-                        TypeName = "int",
-                        TypeRef = typeof(int),
-                        HasMapFromAttribute = true,
-                        MapFromAttribute = __mfAttr230,
-                        HasMapIgnore = false,
-                        MapIgnoreDirection = 0,
-                        HasOverrideIgnore = false,
-                        HasMapProperty = true,
-                        FromField = "Value",
-                        FromSourceTypeName = "NCMapper.Tests.Tests.FallbackBoundaryTests.AttrSameSourceEntity",
-                        HasMask = false,
-                        MaskTypeName = null,
-                        HasConverter = false,
-                        ConverterDeclaringType = null,
-                        ConverterMethodName = null,
-                        HasConvertBack = false,
-                        ConverterBackDeclaringType = null,
-                        ConverterBackMethodName = null,
-                        IsFromJson = false,
-                    },
-                },
-            };
-            global::NCMapper.Runtime.RuntimeSnapshotPair<NCMapper.Tests.Tests.FallbackBoundaryTests.AttrSameSourceEntity, NCMapper.Tests.Tests.FallbackBoundaryTests.AttrSameSourceDto>.Metadata = __meta230;
-            global::NCMapper.Runtime.RuntimeSnapshotStore.Register(__meta230);
-            // pair 231: NCMapper.Tests.Tests.FallbackBoundaryTests.ReverseConvertUsingEntity -> NCMapper.Tests.Tests.FallbackBoundaryTests.ReverseConvertUsingDto (MapFrom channel)
-            var __mfAttr231 = new global::NCMapper.Attributes.MapFromAttribute(typeof(NCMapper.Tests.Tests.FallbackBoundaryTests.ReverseConvertUsingEntity));
-            var __meta231 = new global::NCMapper.Runtime.RuntimeMapperMetadata
-            {
-                SourceType = typeof(NCMapper.Tests.Tests.FallbackBoundaryTests.ReverseConvertUsingEntity),
-                TargetType = typeof(NCMapper.Tests.Tests.FallbackBoundaryTests.ReverseConvertUsingDto),
-                SourceTypeFqn = "NCMapper.Tests.Tests.FallbackBoundaryTests.ReverseConvertUsingEntity",
-                TargetTypeFqn = "NCMapper.Tests.Tests.FallbackBoundaryTests.ReverseConvertUsingDto",
-                Channel = global::NCMapper.Runtime.RuntimeMappingChannel.MapFrom,
-                NoAutoInclude = false,
-                IsFluentForward = false,
-                AfterMappingMethodRef = null,
-                Properties = new global::NCMapper.Runtime.RuntimePropertyMapping[]
-                {
-                    new global::NCMapper.Runtime.RuntimePropertyMapping
-                    {
-                        Target =
-                            new global::NCMapper.Runtime.RuntimeTargetPropertySlot
-                            {
-                                Name = "Value",
-                                TypeName = "string?",
-                                TypeRef = typeof(string),
-                                HasMapFromAttribute = true,
-                                MapFromAttribute = __mfAttr231,
-                                HasMapIgnore = false,
-                                MapIgnoreDirection = 0,
-                                HasOverrideIgnore = false,
-                                HasMapProperty = false,
-                                FromField = null,
-                                FromSourceTypeName = null,
-                                HasMask = false,
-                                MaskTypeName = null,
-                                HasConverter = true,
-                                ConverterDeclaringType = "NCMapper.Tests.Tests.FallbackBoundaryTests.RevLongToStringConverter",
-                                ConverterMethodName = "Convert",
-                                HasConvertBack = false,
-                                ConverterBackDeclaringType = null,
-                                ConverterBackMethodName = null,
-                                IsFromJson = false,
-                            },
-                        SourceName = "Value",
-                        SourcePathNames = new string[] { "Value" },
-                        SourcePropertyTypeName = "long",
-                        SourcePropertyTypeRef = typeof(long),
-                        HasIndex = false,
-                        IsFlattened = false,
-                        IsReverseWriteBack = false,
-                        HasConverter = true,
-                        ConverterDeclaringType = "NCMapper.Tests.Tests.FallbackBoundaryTests.RevLongToStringConverter",
-                        ConverterMethodName = "Convert",
-                        HasMask = false,
-                        MaskTypeName = null,
-                        IsFromJson = false,
-                    },
-                },
-                AllTargetSlots = new global::NCMapper.Runtime.RuntimeTargetPropertySlot[]
-                {
-                    new global::NCMapper.Runtime.RuntimeTargetPropertySlot
-                    {
-                        Name = "Value",
-                        TypeName = "string?",
-                        TypeRef = typeof(string),
-                        HasMapFromAttribute = true,
-                        MapFromAttribute = __mfAttr231,
-                        HasMapIgnore = false,
-                        MapIgnoreDirection = 0,
-                        HasOverrideIgnore = false,
-                        HasMapProperty = false,
-                        FromField = null,
-                        FromSourceTypeName = null,
-                        HasMask = false,
-                        MaskTypeName = null,
-                        HasConverter = true,
-                        ConverterDeclaringType = "NCMapper.Tests.Tests.FallbackBoundaryTests.RevLongToStringConverter",
-                        ConverterMethodName = "Convert",
-                        HasConvertBack = false,
-                        ConverterBackDeclaringType = null,
-                        ConverterBackMethodName = null,
-                        IsFromJson = false,
-                    },
-                },
-            };
-            global::NCMapper.Runtime.RuntimeSnapshotPair<NCMapper.Tests.Tests.FallbackBoundaryTests.ReverseConvertUsingEntity, NCMapper.Tests.Tests.FallbackBoundaryTests.ReverseConvertUsingDto>.Metadata = __meta231;
-            global::NCMapper.Runtime.RuntimeSnapshotStore.Register(__meta231);
-            // pair 232: NCMapper.Tests.Tests.FluentAttributeNonConsumptionTests.FacEntity -> NCMapper.Tests.Tests.FluentAttributeNonConsumptionTests.FacAttrDto (MapFrom channel)
-            var __mfAttr232 = new global::NCMapper.Attributes.MapFromAttribute(typeof(NCMapper.Tests.Tests.FluentAttributeNonConsumptionTests.FacEntity));
-            var __meta232 = new global::NCMapper.Runtime.RuntimeMapperMetadata
-            {
-                SourceType = typeof(NCMapper.Tests.Tests.FluentAttributeNonConsumptionTests.FacEntity),
-                TargetType = typeof(NCMapper.Tests.Tests.FluentAttributeNonConsumptionTests.FacAttrDto),
-                SourceTypeFqn = "NCMapper.Tests.Tests.FluentAttributeNonConsumptionTests.FacEntity",
-                TargetTypeFqn = "NCMapper.Tests.Tests.FluentAttributeNonConsumptionTests.FacAttrDto",
-                Channel = global::NCMapper.Runtime.RuntimeMappingChannel.MapFrom,
-                NoAutoInclude = false,
-                IsFluentForward = false,
-                AfterMappingMethodRef = null,
-                Properties = new global::NCMapper.Runtime.RuntimePropertyMapping[]
-                {
-                    new global::NCMapper.Runtime.RuntimePropertyMapping
-                    {
-                        Target =
-                            new global::NCMapper.Runtime.RuntimeTargetPropertySlot
-                            {
-                                Name = "Id",
-                                TypeName = "int",
-                                TypeRef = typeof(int),
-                                HasMapFromAttribute = true,
-                                MapFromAttribute = __mfAttr232,
-                                HasMapIgnore = false,
-                                MapIgnoreDirection = 0,
-                                HasOverrideIgnore = false,
-                                HasMapProperty = false,
-                                FromField = null,
-                                FromSourceTypeName = null,
-                                HasMask = false,
-                                MaskTypeName = null,
-                                HasConverter = false,
-                                ConverterDeclaringType = null,
-                                ConverterMethodName = null,
-                                HasConvertBack = false,
-                                ConverterBackDeclaringType = null,
-                                ConverterBackMethodName = null,
-                                IsFromJson = false,
-                            },
-                        SourceName = "Id",
-                        SourcePathNames = new string[] { "Id" },
-                        SourcePropertyTypeName = "int",
-                        SourcePropertyTypeRef = typeof(int),
-                        HasIndex = false,
-                        IsFlattened = false,
-                        IsReverseWriteBack = false,
-                        HasConverter = false,
-                        ConverterDeclaringType = null,
-                        ConverterMethodName = null,
-                        HasMask = false,
-                        MaskTypeName = null,
-                        IsFromJson = false,
-                    },
-                    new global::NCMapper.Runtime.RuntimePropertyMapping
-                    {
-                        Target =
-                            new global::NCMapper.Runtime.RuntimeTargetPropertySlot
-                            {
-                                Name = "Tag",
-                                TypeName = "string",
-                                TypeRef = typeof(string),
-                                HasMapFromAttribute = true,
-                                MapFromAttribute = __mfAttr232,
-                                HasMapIgnore = false,
-                                MapIgnoreDirection = 0,
-                                HasOverrideIgnore = false,
-                                HasMapProperty = false,
-                                FromField = null,
-                                FromSourceTypeName = null,
-                                HasMask = false,
-                                MaskTypeName = null,
-                                HasConverter = true,
-                                ConverterDeclaringType = "NCMapper.Tests.Tests.FluentAttributeNonConsumptionTests.FacConv",
-                                ConverterMethodName = "Convert",
-                                HasConvertBack = false,
-                                ConverterBackDeclaringType = null,
-                                ConverterBackMethodName = null,
-                                IsFromJson = false,
-                            },
-                        SourceName = "Tag",
-                        SourcePathNames = new string[] { "Tag" },
-                        SourcePropertyTypeName = "string",
-                        SourcePropertyTypeRef = typeof(string),
-                        HasIndex = false,
-                        IsFlattened = false,
-                        IsReverseWriteBack = false,
-                        HasConverter = true,
-                        ConverterDeclaringType = "NCMapper.Tests.Tests.FluentAttributeNonConsumptionTests.FacConv",
-                        ConverterMethodName = "Convert",
-                        HasMask = false,
-                        MaskTypeName = null,
-                        IsFromJson = false,
-                    },
-                    new global::NCMapper.Runtime.RuntimePropertyMapping
-                    {
-                        Target =
-                            new global::NCMapper.Runtime.RuntimeTargetPropertySlot
-                            {
-                                Name = "AliasTarget",
-                                TypeName = "string",
-                                TypeRef = typeof(string),
-                                HasMapFromAttribute = true,
-                                MapFromAttribute = __mfAttr232,
-                                HasMapIgnore = false,
-                                MapIgnoreDirection = 0,
-                                HasOverrideIgnore = false,
-                                HasMapProperty = true,
-                                FromField = "Alias",
-                                FromSourceTypeName = "NCMapper.Tests.Tests.FluentAttributeNonConsumptionTests.FacEntity",
-                                HasMask = false,
-                                MaskTypeName = null,
-                                HasConverter = false,
-                                ConverterDeclaringType = null,
-                                ConverterMethodName = null,
-                                HasConvertBack = false,
-                                ConverterBackDeclaringType = null,
-                                ConverterBackMethodName = null,
-                                IsFromJson = false,
-                            },
-                        SourceName = "Alias",
-                        SourcePathNames = new string[] { "Alias" },
-                        SourcePropertyTypeName = "string",
-                        SourcePropertyTypeRef = typeof(string),
-                        HasIndex = false,
-                        IsFlattened = false,
-                        IsReverseWriteBack = false,
-                        HasConverter = false,
-                        ConverterDeclaringType = null,
-                        ConverterMethodName = null,
-                        HasMask = false,
-                        MaskTypeName = null,
-                        IsFromJson = false,
-                    },
-                    new global::NCMapper.Runtime.RuntimePropertyMapping
-                    {
-                        Target =
-                            new global::NCMapper.Runtime.RuntimeTargetPropertySlot
-                            {
-                                Name = "Secret",
-                                TypeName = "string",
-                                TypeRef = typeof(string),
-                                HasMapFromAttribute = true,
-                                MapFromAttribute = __mfAttr232,
-                                HasMapIgnore = false,
-                                MapIgnoreDirection = 0,
-                                HasOverrideIgnore = false,
-                                HasMapProperty = false,
-                                FromField = null,
-                                FromSourceTypeName = null,
-                                HasMask = true,
-                                MaskTypeName = "NCMapper.Tests.Tests.FluentAttributeNonConsumptionTests.FacMask",
-                                HasConverter = false,
-                                ConverterDeclaringType = null,
-                                ConverterMethodName = null,
-                                HasConvertBack = false,
-                                ConverterBackDeclaringType = null,
-                                ConverterBackMethodName = null,
-                                IsFromJson = false,
-                            },
-                        SourceName = "Secret",
-                        SourcePathNames = new string[] { "Secret" },
-                        SourcePropertyTypeName = "string",
-                        SourcePropertyTypeRef = typeof(string),
-                        HasIndex = false,
-                        IsFlattened = false,
-                        IsReverseWriteBack = false,
-                        HasConverter = false,
-                        ConverterDeclaringType = null,
-                        ConverterMethodName = null,
-                        HasMask = true,
-                        MaskTypeName = "NCMapper.Tests.Tests.FluentAttributeNonConsumptionTests.FacMask",
-                        IsFromJson = false,
-                    },
-                    new global::NCMapper.Runtime.RuntimePropertyMapping
-                    {
-                        Target =
-                            new global::NCMapper.Runtime.RuntimeTargetPropertySlot
-                            {
-                                Name = "Stamp",
-                                TypeName = "string",
-                                TypeRef = typeof(string),
-                                HasMapFromAttribute = true,
-                                MapFromAttribute = __mfAttr232,
-                                HasMapIgnore = false,
-                                MapIgnoreDirection = 0,
-                                HasOverrideIgnore = false,
-                                HasMapProperty = false,
-                                FromField = null,
-                                FromSourceTypeName = null,
-                                HasMask = false,
-                                MaskTypeName = null,
-                                HasConverter = false,
-                                ConverterDeclaringType = null,
-                                ConverterMethodName = null,
-                                HasConvertBack = false,
-                                ConverterBackDeclaringType = null,
-                                ConverterBackMethodName = null,
-                                IsFromJson = false,
-                            },
-                        SourceName = "Stamp",
-                        SourcePathNames = new string[] { "Stamp" },
-                        SourcePropertyTypeName = "System.DateTime",
-                        SourcePropertyTypeRef = typeof(System.DateTime),
-                        HasIndex = false,
-                        IsFlattened = false,
-                        IsReverseWriteBack = false,
-                        HasConverter = false,
-                        ConverterDeclaringType = null,
-                        ConverterMethodName = null,
-                        HasMask = false,
-                        MaskTypeName = null,
-                        IsFromJson = false,
-                        FormatString = "yyyy",
-                    },
-                },
-                AllTargetSlots = new global::NCMapper.Runtime.RuntimeTargetPropertySlot[]
-                {
-                    new global::NCMapper.Runtime.RuntimeTargetPropertySlot
-                    {
-                        Name = "Id",
-                        TypeName = "int",
-                        TypeRef = typeof(int),
-                        HasMapFromAttribute = true,
-                        MapFromAttribute = __mfAttr232,
-                        HasMapIgnore = false,
-                        MapIgnoreDirection = 0,
-                        HasOverrideIgnore = false,
-                        HasMapProperty = false,
-                        FromField = null,
-                        FromSourceTypeName = null,
-                        HasMask = false,
-                        MaskTypeName = null,
-                        HasConverter = false,
-                        ConverterDeclaringType = null,
-                        ConverterMethodName = null,
-                        HasConvertBack = false,
-                        ConverterBackDeclaringType = null,
-                        ConverterBackMethodName = null,
-                        IsFromJson = false,
-                    },
-                    new global::NCMapper.Runtime.RuntimeTargetPropertySlot
-                    {
-                        Name = "Tag",
-                        TypeName = "string",
-                        TypeRef = typeof(string),
-                        HasMapFromAttribute = true,
-                        MapFromAttribute = __mfAttr232,
-                        HasMapIgnore = false,
-                        MapIgnoreDirection = 0,
-                        HasOverrideIgnore = false,
-                        HasMapProperty = false,
-                        FromField = null,
-                        FromSourceTypeName = null,
-                        HasMask = false,
-                        MaskTypeName = null,
-                        HasConverter = true,
-                        ConverterDeclaringType = "NCMapper.Tests.Tests.FluentAttributeNonConsumptionTests.FacConv",
-                        ConverterMethodName = "Convert",
-                        HasConvertBack = false,
-                        ConverterBackDeclaringType = null,
-                        ConverterBackMethodName = null,
-                        IsFromJson = false,
-                    },
-                    new global::NCMapper.Runtime.RuntimeTargetPropertySlot
-                    {
-                        Name = "AliasTarget",
-                        TypeName = "string",
-                        TypeRef = typeof(string),
-                        HasMapFromAttribute = true,
-                        MapFromAttribute = __mfAttr232,
-                        HasMapIgnore = false,
-                        MapIgnoreDirection = 0,
-                        HasOverrideIgnore = false,
-                        HasMapProperty = true,
-                        FromField = "Alias",
-                        FromSourceTypeName = "NCMapper.Tests.Tests.FluentAttributeNonConsumptionTests.FacEntity",
-                        HasMask = false,
-                        MaskTypeName = null,
-                        HasConverter = false,
-                        ConverterDeclaringType = null,
-                        ConverterMethodName = null,
-                        HasConvertBack = false,
-                        ConverterBackDeclaringType = null,
-                        ConverterBackMethodName = null,
-                        IsFromJson = false,
-                    },
-                    new global::NCMapper.Runtime.RuntimeTargetPropertySlot
-                    {
-                        Name = "Secret",
-                        TypeName = "string",
-                        TypeRef = typeof(string),
-                        HasMapFromAttribute = true,
-                        MapFromAttribute = __mfAttr232,
-                        HasMapIgnore = false,
-                        MapIgnoreDirection = 0,
-                        HasOverrideIgnore = false,
-                        HasMapProperty = false,
-                        FromField = null,
-                        FromSourceTypeName = null,
-                        HasMask = true,
-                        MaskTypeName = "NCMapper.Tests.Tests.FluentAttributeNonConsumptionTests.FacMask",
-                        HasConverter = false,
-                        ConverterDeclaringType = null,
-                        ConverterMethodName = null,
-                        HasConvertBack = false,
-                        ConverterBackDeclaringType = null,
-                        ConverterBackMethodName = null,
-                        IsFromJson = false,
-                    },
-                    new global::NCMapper.Runtime.RuntimeTargetPropertySlot
-                    {
-                        Name = "Stamp",
-                        TypeName = "string",
-                        TypeRef = typeof(string),
-                        HasMapFromAttribute = true,
-                        MapFromAttribute = __mfAttr232,
-                        HasMapIgnore = false,
-                        MapIgnoreDirection = 0,
-                        HasOverrideIgnore = false,
-                        HasMapProperty = false,
-                        FromField = null,
-                        FromSourceTypeName = null,
-                        HasMask = false,
-                        MaskTypeName = null,
-                        HasConverter = false,
-                        ConverterDeclaringType = null,
-                        ConverterMethodName = null,
-                        HasConvertBack = false,
-                        ConverterBackDeclaringType = null,
-                        ConverterBackMethodName = null,
-                        IsFromJson = false,
-                    },
-                },
-            };
-            global::NCMapper.Runtime.RuntimeSnapshotPair<NCMapper.Tests.Tests.FluentAttributeNonConsumptionTests.FacEntity, NCMapper.Tests.Tests.FluentAttributeNonConsumptionTests.FacAttrDto>.Metadata = __meta232;
-            global::NCMapper.Runtime.RuntimeSnapshotStore.Register(__meta232);
-            // pair 233: NCMapper.Tests.Tests.IsFromJsonMaliciousJsonTests.MalJsonEntity -> NCMapper.Tests.Tests.IsFromJsonMaliciousJsonTests.MalJsonDto (MapFrom channel)
-            var __mfAttr233 = new global::NCMapper.Attributes.MapFromAttribute(typeof(NCMapper.Tests.Tests.IsFromJsonMaliciousJsonTests.MalJsonEntity));
-            var __meta233 = new global::NCMapper.Runtime.RuntimeMapperMetadata
-            {
-                SourceType = typeof(NCMapper.Tests.Tests.IsFromJsonMaliciousJsonTests.MalJsonEntity),
-                TargetType = typeof(NCMapper.Tests.Tests.IsFromJsonMaliciousJsonTests.MalJsonDto),
-                SourceTypeFqn = "NCMapper.Tests.Tests.IsFromJsonMaliciousJsonTests.MalJsonEntity",
-                TargetTypeFqn = "NCMapper.Tests.Tests.IsFromJsonMaliciousJsonTests.MalJsonDto",
-                Channel = global::NCMapper.Runtime.RuntimeMappingChannel.MapFrom,
-                NoAutoInclude = false,
-                IsFluentForward = false,
-                AfterMappingMethodRef = null,
-                Properties = new global::NCMapper.Runtime.RuntimePropertyMapping[]
-                {
-                    new global::NCMapper.Runtime.RuntimePropertyMapping
-                    {
-                        Target =
-                            new global::NCMapper.Runtime.RuntimeTargetPropertySlot
-                            {
-                                Name = "Id",
-                                TypeName = "int",
-                                TypeRef = typeof(int),
-                                HasMapFromAttribute = true,
-                                MapFromAttribute = __mfAttr233,
-                                HasMapIgnore = false,
-                                MapIgnoreDirection = 0,
-                                HasOverrideIgnore = false,
-                                HasMapProperty = false,
-                                FromField = null,
-                                FromSourceTypeName = null,
-                                HasMask = false,
-                                MaskTypeName = null,
-                                HasConverter = false,
-                                ConverterDeclaringType = null,
-                                ConverterMethodName = null,
-                                HasConvertBack = false,
-                                ConverterBackDeclaringType = null,
-                                ConverterBackMethodName = null,
-                                IsFromJson = false,
-                            },
-                        SourceName = "Id",
-                        SourcePathNames = new string[] { "Id" },
-                        SourcePropertyTypeName = "int",
-                        SourcePropertyTypeRef = typeof(int),
-                        HasIndex = false,
-                        IsFlattened = false,
-                        IsReverseWriteBack = false,
-                        HasConverter = false,
-                        ConverterDeclaringType = null,
-                        ConverterMethodName = null,
-                        HasMask = false,
-                        MaskTypeName = null,
-                        IsFromJson = false,
-                    },
-                    new global::NCMapper.Runtime.RuntimePropertyMapping
-                    {
-                        Target =
-                            new global::NCMapper.Runtime.RuntimeTargetPropertySlot
-                            {
-                                Name = "Config",
-                                TypeName = "NCMapper.Tests.Tests.IsFromJsonMaliciousJsonTests.MalJsonConfig?",
-                                TypeRef = typeof(NCMapper.Tests.Tests.IsFromJsonMaliciousJsonTests.MalJsonConfig),
-                                HasMapFromAttribute = true,
-                                MapFromAttribute = __mfAttr233,
-                                HasMapIgnore = false,
-                                MapIgnoreDirection = 0,
-                                HasOverrideIgnore = false,
-                                HasMapProperty = true,
-                                FromField = "ConfigJson",
-                                FromSourceTypeName = "NCMapper.Tests.Tests.IsFromJsonMaliciousJsonTests.MalJsonEntity",
-                                HasMask = false,
-                                MaskTypeName = null,
-                                HasConverter = false,
-                                ConverterDeclaringType = null,
-                                ConverterMethodName = null,
-                                HasConvertBack = false,
-                                ConverterBackDeclaringType = null,
-                                ConverterBackMethodName = null,
-                                IsFromJson = true,
-                            },
-                        SourceName = "ConfigJson",
-                        SourcePathNames = new string[] { "ConfigJson" },
-                        SourcePropertyTypeName = "string",
-                        SourcePropertyTypeRef = typeof(string),
-                        HasIndex = false,
-                        IsFlattened = false,
-                        IsReverseWriteBack = false,
-                        HasConverter = false,
-                        ConverterDeclaringType = null,
-                        ConverterMethodName = null,
-                        HasMask = false,
-                        MaskTypeName = null,
-                        IsFromJson = true,
-                    },
-                },
-                AllTargetSlots = new global::NCMapper.Runtime.RuntimeTargetPropertySlot[]
-                {
-                    new global::NCMapper.Runtime.RuntimeTargetPropertySlot
-                    {
-                        Name = "Id",
-                        TypeName = "int",
-                        TypeRef = typeof(int),
-                        HasMapFromAttribute = true,
-                        MapFromAttribute = __mfAttr233,
-                        HasMapIgnore = false,
-                        MapIgnoreDirection = 0,
-                        HasOverrideIgnore = false,
-                        HasMapProperty = false,
-                        FromField = null,
-                        FromSourceTypeName = null,
-                        HasMask = false,
-                        MaskTypeName = null,
-                        HasConverter = false,
-                        ConverterDeclaringType = null,
-                        ConverterMethodName = null,
-                        HasConvertBack = false,
-                        ConverterBackDeclaringType = null,
-                        ConverterBackMethodName = null,
-                        IsFromJson = false,
-                    },
-                    new global::NCMapper.Runtime.RuntimeTargetPropertySlot
-                    {
-                        Name = "Config",
-                        TypeName = "NCMapper.Tests.Tests.IsFromJsonMaliciousJsonTests.MalJsonConfig?",
-                        TypeRef = typeof(NCMapper.Tests.Tests.IsFromJsonMaliciousJsonTests.MalJsonConfig),
-                        HasMapFromAttribute = true,
-                        MapFromAttribute = __mfAttr233,
-                        HasMapIgnore = false,
-                        MapIgnoreDirection = 0,
-                        HasOverrideIgnore = false,
-                        HasMapProperty = true,
-                        FromField = "ConfigJson",
-                        FromSourceTypeName = "NCMapper.Tests.Tests.IsFromJsonMaliciousJsonTests.MalJsonEntity",
-                        HasMask = false,
-                        MaskTypeName = null,
-                        HasConverter = false,
-                        ConverterDeclaringType = null,
-                        ConverterMethodName = null,
-                        HasConvertBack = false,
-                        ConverterBackDeclaringType = null,
-                        ConverterBackMethodName = null,
-                        IsFromJson = true,
-                    },
-                },
-            };
-            global::NCMapper.Runtime.RuntimeSnapshotPair<NCMapper.Tests.Tests.IsFromJsonMaliciousJsonTests.MalJsonEntity, NCMapper.Tests.Tests.IsFromJsonMaliciousJsonTests.MalJsonDto>.Metadata = __meta233;
-            global::NCMapper.Runtime.RuntimeSnapshotStore.Register(__meta233);
-            // pair 234: NCMapper.Tests.Tests.JsonValueTypeEntity -> NCMapper.Tests.Tests.JsonValueTypeDto (MapFrom channel)
-            var __mfAttr234 = new global::NCMapper.Attributes.MapFromAttribute(typeof(NCMapper.Tests.Tests.JsonValueTypeEntity));
-            var __meta234 = new global::NCMapper.Runtime.RuntimeMapperMetadata
-            {
-                SourceType = typeof(NCMapper.Tests.Tests.JsonValueTypeEntity),
-                TargetType = typeof(NCMapper.Tests.Tests.JsonValueTypeDto),
-                SourceTypeFqn = "NCMapper.Tests.Tests.JsonValueTypeEntity",
-                TargetTypeFqn = "NCMapper.Tests.Tests.JsonValueTypeDto",
                 Channel = global::NCMapper.Runtime.RuntimeMappingChannel.MapFrom,
                 NoAutoInclude = false,
                 IsFluentForward = false,
@@ -31946,6 +32003,46 @@ namespace NCMapper.Runtime
                         MaskTypeName = null,
                         IsFromJson = false,
                     },
+                    new global::NCMapper.Runtime.RuntimePropertyMapping
+                    {
+                        Target =
+                            new global::NCMapper.Runtime.RuntimeTargetPropertySlot
+                            {
+                                Name = "Name",
+                                TypeName = "string",
+                                TypeRef = typeof(string),
+                                HasMapFromAttribute = true,
+                                MapFromAttribute = __mfAttr234,
+                                HasMapIgnore = false,
+                                MapIgnoreDirection = 0,
+                                HasOverrideIgnore = false,
+                                HasMapProperty = false,
+                                FromField = null,
+                                FromSourceTypeName = null,
+                                HasMask = false,
+                                MaskTypeName = null,
+                                HasConverter = false,
+                                ConverterDeclaringType = null,
+                                ConverterMethodName = null,
+                                HasConvertBack = false,
+                                ConverterBackDeclaringType = null,
+                                ConverterBackMethodName = null,
+                                IsFromJson = false,
+                            },
+                        SourceName = "Name",
+                        SourcePathNames = new string[] { "Name" },
+                        SourcePropertyTypeName = "string",
+                        SourcePropertyTypeRef = typeof(string),
+                        HasIndex = false,
+                        IsFlattened = false,
+                        IsReverseWriteBack = false,
+                        HasConverter = false,
+                        ConverterDeclaringType = null,
+                        ConverterMethodName = null,
+                        HasMask = false,
+                        MaskTypeName = null,
+                        IsFromJson = false,
+                    },
                 },
                 AllTargetSlots = new global::NCMapper.Runtime.RuntimeTargetPropertySlot[]
                 {
@@ -31974,11 +32071,917 @@ namespace NCMapper.Runtime
                     },
                     new global::NCMapper.Runtime.RuntimeTargetPropertySlot
                     {
+                        Name = "Name",
+                        TypeName = "string",
+                        TypeRef = typeof(string),
+                        HasMapFromAttribute = true,
+                        MapFromAttribute = __mfAttr234,
+                        HasMapIgnore = false,
+                        MapIgnoreDirection = 0,
+                        HasOverrideIgnore = false,
+                        HasMapProperty = false,
+                        FromField = null,
+                        FromSourceTypeName = null,
+                        HasMask = false,
+                        MaskTypeName = null,
+                        HasConverter = false,
+                        ConverterDeclaringType = null,
+                        ConverterMethodName = null,
+                        HasConvertBack = false,
+                        ConverterBackDeclaringType = null,
+                        ConverterBackMethodName = null,
+                        IsFromJson = false,
+                    },
+                },
+            };
+            global::NCMapper.Runtime.RuntimeSnapshotPair<NCMapper.Tests.Tests.ExpressionBuilderMutantTests.SourceForTargetIgnore, NCMapper.Tests.Tests.ExpressionBuilderMutantTests.TargetWithMapIgnore>.Metadata = __meta234;
+            global::NCMapper.Runtime.RuntimeSnapshotStore.Register(__meta234);
+            // pair 235: NCMapper.Tests.Tests.ExpressionBuilderMutantTests.StringArraySource -> NCMapper.Tests.Tests.ExpressionBuilderMutantTests.StringArrayTarget (MapFrom channel)
+            var __mfAttr235 = new global::NCMapper.Attributes.MapFromAttribute(typeof(NCMapper.Tests.Tests.ExpressionBuilderMutantTests.StringArraySource));
+            var __meta235 = new global::NCMapper.Runtime.RuntimeMapperMetadata
+            {
+                SourceType = typeof(NCMapper.Tests.Tests.ExpressionBuilderMutantTests.StringArraySource),
+                TargetType = typeof(NCMapper.Tests.Tests.ExpressionBuilderMutantTests.StringArrayTarget),
+                SourceTypeFqn = "NCMapper.Tests.Tests.ExpressionBuilderMutantTests.StringArraySource",
+                TargetTypeFqn = "NCMapper.Tests.Tests.ExpressionBuilderMutantTests.StringArrayTarget",
+                Channel = global::NCMapper.Runtime.RuntimeMappingChannel.MapFrom,
+                NoAutoInclude = false,
+                IsFluentForward = false,
+                AfterMappingMethodRef = null,
+                Properties = new global::NCMapper.Runtime.RuntimePropertyMapping[]
+                {
+                    new global::NCMapper.Runtime.RuntimePropertyMapping
+                    {
+                        Target =
+                            new global::NCMapper.Runtime.RuntimeTargetPropertySlot
+                            {
+                                Name = "Id",
+                                TypeName = "int",
+                                TypeRef = typeof(int),
+                                HasMapFromAttribute = true,
+                                MapFromAttribute = __mfAttr235,
+                                HasMapIgnore = false,
+                                MapIgnoreDirection = 0,
+                                HasOverrideIgnore = false,
+                                HasMapProperty = false,
+                                FromField = null,
+                                FromSourceTypeName = null,
+                                HasMask = false,
+                                MaskTypeName = null,
+                                HasConverter = false,
+                                ConverterDeclaringType = null,
+                                ConverterMethodName = null,
+                                HasConvertBack = false,
+                                ConverterBackDeclaringType = null,
+                                ConverterBackMethodName = null,
+                                IsFromJson = false,
+                            },
+                        SourceName = "Id",
+                        SourcePathNames = new string[] { "Id" },
+                        SourcePropertyTypeName = "int",
+                        SourcePropertyTypeRef = typeof(int),
+                        HasIndex = false,
+                        IsFlattened = false,
+                        IsReverseWriteBack = false,
+                        HasConverter = false,
+                        ConverterDeclaringType = null,
+                        ConverterMethodName = null,
+                        HasMask = false,
+                        MaskTypeName = null,
+                        IsFromJson = false,
+                    },
+                    new global::NCMapper.Runtime.RuntimePropertyMapping
+                    {
+                        Target =
+                            new global::NCMapper.Runtime.RuntimeTargetPropertySlot
+                            {
+                                Name = "Tags",
+                                TypeName = "string[]",
+                                TypeRef = typeof(string[]),
+                                HasMapFromAttribute = true,
+                                MapFromAttribute = __mfAttr235,
+                                HasMapIgnore = false,
+                                MapIgnoreDirection = 0,
+                                HasOverrideIgnore = false,
+                                HasMapProperty = false,
+                                FromField = null,
+                                FromSourceTypeName = null,
+                                HasMask = false,
+                                MaskTypeName = null,
+                                HasConverter = false,
+                                ConverterDeclaringType = null,
+                                ConverterMethodName = null,
+                                HasConvertBack = false,
+                                ConverterBackDeclaringType = null,
+                                ConverterBackMethodName = null,
+                                IsFromJson = false,
+                            },
+                        SourceName = "Tags",
+                        SourcePathNames = new string[] { "Tags" },
+                        SourcePropertyTypeName = "string[]",
+                        SourcePropertyTypeRef = typeof(string[]),
+                        HasIndex = false,
+                        IsFlattened = false,
+                        IsReverseWriteBack = false,
+                        HasConverter = false,
+                        ConverterDeclaringType = null,
+                        ConverterMethodName = null,
+                        HasMask = false,
+                        MaskTypeName = null,
+                        IsFromJson = false,
+                    },
+                },
+                AllTargetSlots = new global::NCMapper.Runtime.RuntimeTargetPropertySlot[]
+                {
+                    new global::NCMapper.Runtime.RuntimeTargetPropertySlot
+                    {
+                        Name = "Id",
+                        TypeName = "int",
+                        TypeRef = typeof(int),
+                        HasMapFromAttribute = true,
+                        MapFromAttribute = __mfAttr235,
+                        HasMapIgnore = false,
+                        MapIgnoreDirection = 0,
+                        HasOverrideIgnore = false,
+                        HasMapProperty = false,
+                        FromField = null,
+                        FromSourceTypeName = null,
+                        HasMask = false,
+                        MaskTypeName = null,
+                        HasConverter = false,
+                        ConverterDeclaringType = null,
+                        ConverterMethodName = null,
+                        HasConvertBack = false,
+                        ConverterBackDeclaringType = null,
+                        ConverterBackMethodName = null,
+                        IsFromJson = false,
+                    },
+                    new global::NCMapper.Runtime.RuntimeTargetPropertySlot
+                    {
+                        Name = "Tags",
+                        TypeName = "string[]",
+                        TypeRef = typeof(string[]),
+                        HasMapFromAttribute = true,
+                        MapFromAttribute = __mfAttr235,
+                        HasMapIgnore = false,
+                        MapIgnoreDirection = 0,
+                        HasOverrideIgnore = false,
+                        HasMapProperty = false,
+                        FromField = null,
+                        FromSourceTypeName = null,
+                        HasMask = false,
+                        MaskTypeName = null,
+                        HasConverter = false,
+                        ConverterDeclaringType = null,
+                        ConverterMethodName = null,
+                        HasConvertBack = false,
+                        ConverterBackDeclaringType = null,
+                        ConverterBackMethodName = null,
+                        IsFromJson = false,
+                    },
+                },
+            };
+            global::NCMapper.Runtime.RuntimeSnapshotPair<NCMapper.Tests.Tests.ExpressionBuilderMutantTests.StringArraySource, NCMapper.Tests.Tests.ExpressionBuilderMutantTests.StringArrayTarget>.Metadata = __meta235;
+            global::NCMapper.Runtime.RuntimeSnapshotStore.Register(__meta235);
+            // pair 236: NCMapper.Tests.Tests.FallbackBoundaryTests.AttrSameSourceEntity -> NCMapper.Tests.Tests.FallbackBoundaryTests.AttrSameSourceDto (MapFrom channel)
+            var __mfAttr236 = new global::NCMapper.Attributes.MapFromAttribute(typeof(NCMapper.Tests.Tests.FallbackBoundaryTests.AttrSameSourceEntity));
+            var __meta236 = new global::NCMapper.Runtime.RuntimeMapperMetadata
+            {
+                SourceType = typeof(NCMapper.Tests.Tests.FallbackBoundaryTests.AttrSameSourceEntity),
+                TargetType = typeof(NCMapper.Tests.Tests.FallbackBoundaryTests.AttrSameSourceDto),
+                SourceTypeFqn = "NCMapper.Tests.Tests.FallbackBoundaryTests.AttrSameSourceEntity",
+                TargetTypeFqn = "NCMapper.Tests.Tests.FallbackBoundaryTests.AttrSameSourceDto",
+                Channel = global::NCMapper.Runtime.RuntimeMappingChannel.MapFrom,
+                NoAutoInclude = false,
+                IsFluentForward = false,
+                AfterMappingMethodRef = null,
+                Properties = new global::NCMapper.Runtime.RuntimePropertyMapping[]
+                {
+                    new global::NCMapper.Runtime.RuntimePropertyMapping
+                    {
+                        Target =
+                            new global::NCMapper.Runtime.RuntimeTargetPropertySlot
+                            {
+                                Name = "Value",
+                                TypeName = "int",
+                                TypeRef = typeof(int),
+                                HasMapFromAttribute = true,
+                                MapFromAttribute = __mfAttr236,
+                                HasMapIgnore = false,
+                                MapIgnoreDirection = 0,
+                                HasOverrideIgnore = false,
+                                HasMapProperty = true,
+                                FromField = "Value",
+                                FromSourceTypeName = "NCMapper.Tests.Tests.FallbackBoundaryTests.AttrSameSourceEntity",
+                                HasMask = false,
+                                MaskTypeName = null,
+                                HasConverter = false,
+                                ConverterDeclaringType = null,
+                                ConverterMethodName = null,
+                                HasConvertBack = false,
+                                ConverterBackDeclaringType = null,
+                                ConverterBackMethodName = null,
+                                IsFromJson = false,
+                            },
+                        SourceName = "Value",
+                        SourcePathNames = new string[] { "Value" },
+                        SourcePropertyTypeName = "int",
+                        SourcePropertyTypeRef = typeof(int),
+                        HasIndex = false,
+                        IsFlattened = false,
+                        IsReverseWriteBack = false,
+                        HasConverter = false,
+                        ConverterDeclaringType = null,
+                        ConverterMethodName = null,
+                        HasMask = false,
+                        MaskTypeName = null,
+                        IsFromJson = false,
+                    },
+                },
+                AllTargetSlots = new global::NCMapper.Runtime.RuntimeTargetPropertySlot[]
+                {
+                    new global::NCMapper.Runtime.RuntimeTargetPropertySlot
+                    {
+                        Name = "Value",
+                        TypeName = "int",
+                        TypeRef = typeof(int),
+                        HasMapFromAttribute = true,
+                        MapFromAttribute = __mfAttr236,
+                        HasMapIgnore = false,
+                        MapIgnoreDirection = 0,
+                        HasOverrideIgnore = false,
+                        HasMapProperty = true,
+                        FromField = "Value",
+                        FromSourceTypeName = "NCMapper.Tests.Tests.FallbackBoundaryTests.AttrSameSourceEntity",
+                        HasMask = false,
+                        MaskTypeName = null,
+                        HasConverter = false,
+                        ConverterDeclaringType = null,
+                        ConverterMethodName = null,
+                        HasConvertBack = false,
+                        ConverterBackDeclaringType = null,
+                        ConverterBackMethodName = null,
+                        IsFromJson = false,
+                    },
+                },
+            };
+            global::NCMapper.Runtime.RuntimeSnapshotPair<NCMapper.Tests.Tests.FallbackBoundaryTests.AttrSameSourceEntity, NCMapper.Tests.Tests.FallbackBoundaryTests.AttrSameSourceDto>.Metadata = __meta236;
+            global::NCMapper.Runtime.RuntimeSnapshotStore.Register(__meta236);
+            // pair 237: NCMapper.Tests.Tests.FallbackBoundaryTests.ReverseConvertUsingEntity -> NCMapper.Tests.Tests.FallbackBoundaryTests.ReverseConvertUsingDto (MapFrom channel)
+            var __mfAttr237 = new global::NCMapper.Attributes.MapFromAttribute(typeof(NCMapper.Tests.Tests.FallbackBoundaryTests.ReverseConvertUsingEntity));
+            var __meta237 = new global::NCMapper.Runtime.RuntimeMapperMetadata
+            {
+                SourceType = typeof(NCMapper.Tests.Tests.FallbackBoundaryTests.ReverseConvertUsingEntity),
+                TargetType = typeof(NCMapper.Tests.Tests.FallbackBoundaryTests.ReverseConvertUsingDto),
+                SourceTypeFqn = "NCMapper.Tests.Tests.FallbackBoundaryTests.ReverseConvertUsingEntity",
+                TargetTypeFqn = "NCMapper.Tests.Tests.FallbackBoundaryTests.ReverseConvertUsingDto",
+                Channel = global::NCMapper.Runtime.RuntimeMappingChannel.MapFrom,
+                NoAutoInclude = false,
+                IsFluentForward = false,
+                AfterMappingMethodRef = null,
+                Properties = new global::NCMapper.Runtime.RuntimePropertyMapping[]
+                {
+                    new global::NCMapper.Runtime.RuntimePropertyMapping
+                    {
+                        Target =
+                            new global::NCMapper.Runtime.RuntimeTargetPropertySlot
+                            {
+                                Name = "Value",
+                                TypeName = "string?",
+                                TypeRef = typeof(string),
+                                HasMapFromAttribute = true,
+                                MapFromAttribute = __mfAttr237,
+                                HasMapIgnore = false,
+                                MapIgnoreDirection = 0,
+                                HasOverrideIgnore = false,
+                                HasMapProperty = false,
+                                FromField = null,
+                                FromSourceTypeName = null,
+                                HasMask = false,
+                                MaskTypeName = null,
+                                HasConverter = true,
+                                ConverterDeclaringType = "NCMapper.Tests.Tests.FallbackBoundaryTests.RevLongToStringConverter",
+                                ConverterMethodName = "Convert",
+                                HasConvertBack = false,
+                                ConverterBackDeclaringType = null,
+                                ConverterBackMethodName = null,
+                                IsFromJson = false,
+                            },
+                        SourceName = "Value",
+                        SourcePathNames = new string[] { "Value" },
+                        SourcePropertyTypeName = "long",
+                        SourcePropertyTypeRef = typeof(long),
+                        HasIndex = false,
+                        IsFlattened = false,
+                        IsReverseWriteBack = false,
+                        HasConverter = true,
+                        ConverterDeclaringType = "NCMapper.Tests.Tests.FallbackBoundaryTests.RevLongToStringConverter",
+                        ConverterMethodName = "Convert",
+                        HasMask = false,
+                        MaskTypeName = null,
+                        IsFromJson = false,
+                    },
+                },
+                AllTargetSlots = new global::NCMapper.Runtime.RuntimeTargetPropertySlot[]
+                {
+                    new global::NCMapper.Runtime.RuntimeTargetPropertySlot
+                    {
+                        Name = "Value",
+                        TypeName = "string?",
+                        TypeRef = typeof(string),
+                        HasMapFromAttribute = true,
+                        MapFromAttribute = __mfAttr237,
+                        HasMapIgnore = false,
+                        MapIgnoreDirection = 0,
+                        HasOverrideIgnore = false,
+                        HasMapProperty = false,
+                        FromField = null,
+                        FromSourceTypeName = null,
+                        HasMask = false,
+                        MaskTypeName = null,
+                        HasConverter = true,
+                        ConverterDeclaringType = "NCMapper.Tests.Tests.FallbackBoundaryTests.RevLongToStringConverter",
+                        ConverterMethodName = "Convert",
+                        HasConvertBack = false,
+                        ConverterBackDeclaringType = null,
+                        ConverterBackMethodName = null,
+                        IsFromJson = false,
+                    },
+                },
+            };
+            global::NCMapper.Runtime.RuntimeSnapshotPair<NCMapper.Tests.Tests.FallbackBoundaryTests.ReverseConvertUsingEntity, NCMapper.Tests.Tests.FallbackBoundaryTests.ReverseConvertUsingDto>.Metadata = __meta237;
+            global::NCMapper.Runtime.RuntimeSnapshotStore.Register(__meta237);
+            // pair 238: NCMapper.Tests.Tests.FluentAttributeNonConsumptionTests.FacEntity -> NCMapper.Tests.Tests.FluentAttributeNonConsumptionTests.FacAttrDto (MapFrom channel)
+            var __mfAttr238 = new global::NCMapper.Attributes.MapFromAttribute(typeof(NCMapper.Tests.Tests.FluentAttributeNonConsumptionTests.FacEntity));
+            var __meta238 = new global::NCMapper.Runtime.RuntimeMapperMetadata
+            {
+                SourceType = typeof(NCMapper.Tests.Tests.FluentAttributeNonConsumptionTests.FacEntity),
+                TargetType = typeof(NCMapper.Tests.Tests.FluentAttributeNonConsumptionTests.FacAttrDto),
+                SourceTypeFqn = "NCMapper.Tests.Tests.FluentAttributeNonConsumptionTests.FacEntity",
+                TargetTypeFqn = "NCMapper.Tests.Tests.FluentAttributeNonConsumptionTests.FacAttrDto",
+                Channel = global::NCMapper.Runtime.RuntimeMappingChannel.MapFrom,
+                NoAutoInclude = false,
+                IsFluentForward = false,
+                AfterMappingMethodRef = null,
+                Properties = new global::NCMapper.Runtime.RuntimePropertyMapping[]
+                {
+                    new global::NCMapper.Runtime.RuntimePropertyMapping
+                    {
+                        Target =
+                            new global::NCMapper.Runtime.RuntimeTargetPropertySlot
+                            {
+                                Name = "Id",
+                                TypeName = "int",
+                                TypeRef = typeof(int),
+                                HasMapFromAttribute = true,
+                                MapFromAttribute = __mfAttr238,
+                                HasMapIgnore = false,
+                                MapIgnoreDirection = 0,
+                                HasOverrideIgnore = false,
+                                HasMapProperty = false,
+                                FromField = null,
+                                FromSourceTypeName = null,
+                                HasMask = false,
+                                MaskTypeName = null,
+                                HasConverter = false,
+                                ConverterDeclaringType = null,
+                                ConverterMethodName = null,
+                                HasConvertBack = false,
+                                ConverterBackDeclaringType = null,
+                                ConverterBackMethodName = null,
+                                IsFromJson = false,
+                            },
+                        SourceName = "Id",
+                        SourcePathNames = new string[] { "Id" },
+                        SourcePropertyTypeName = "int",
+                        SourcePropertyTypeRef = typeof(int),
+                        HasIndex = false,
+                        IsFlattened = false,
+                        IsReverseWriteBack = false,
+                        HasConverter = false,
+                        ConverterDeclaringType = null,
+                        ConverterMethodName = null,
+                        HasMask = false,
+                        MaskTypeName = null,
+                        IsFromJson = false,
+                    },
+                    new global::NCMapper.Runtime.RuntimePropertyMapping
+                    {
+                        Target =
+                            new global::NCMapper.Runtime.RuntimeTargetPropertySlot
+                            {
+                                Name = "Tag",
+                                TypeName = "string",
+                                TypeRef = typeof(string),
+                                HasMapFromAttribute = true,
+                                MapFromAttribute = __mfAttr238,
+                                HasMapIgnore = false,
+                                MapIgnoreDirection = 0,
+                                HasOverrideIgnore = false,
+                                HasMapProperty = false,
+                                FromField = null,
+                                FromSourceTypeName = null,
+                                HasMask = false,
+                                MaskTypeName = null,
+                                HasConverter = true,
+                                ConverterDeclaringType = "NCMapper.Tests.Tests.FluentAttributeNonConsumptionTests.FacConv",
+                                ConverterMethodName = "Convert",
+                                HasConvertBack = false,
+                                ConverterBackDeclaringType = null,
+                                ConverterBackMethodName = null,
+                                IsFromJson = false,
+                            },
+                        SourceName = "Tag",
+                        SourcePathNames = new string[] { "Tag" },
+                        SourcePropertyTypeName = "string",
+                        SourcePropertyTypeRef = typeof(string),
+                        HasIndex = false,
+                        IsFlattened = false,
+                        IsReverseWriteBack = false,
+                        HasConverter = true,
+                        ConverterDeclaringType = "NCMapper.Tests.Tests.FluentAttributeNonConsumptionTests.FacConv",
+                        ConverterMethodName = "Convert",
+                        HasMask = false,
+                        MaskTypeName = null,
+                        IsFromJson = false,
+                    },
+                    new global::NCMapper.Runtime.RuntimePropertyMapping
+                    {
+                        Target =
+                            new global::NCMapper.Runtime.RuntimeTargetPropertySlot
+                            {
+                                Name = "AliasTarget",
+                                TypeName = "string",
+                                TypeRef = typeof(string),
+                                HasMapFromAttribute = true,
+                                MapFromAttribute = __mfAttr238,
+                                HasMapIgnore = false,
+                                MapIgnoreDirection = 0,
+                                HasOverrideIgnore = false,
+                                HasMapProperty = true,
+                                FromField = "Alias",
+                                FromSourceTypeName = "NCMapper.Tests.Tests.FluentAttributeNonConsumptionTests.FacEntity",
+                                HasMask = false,
+                                MaskTypeName = null,
+                                HasConverter = false,
+                                ConverterDeclaringType = null,
+                                ConverterMethodName = null,
+                                HasConvertBack = false,
+                                ConverterBackDeclaringType = null,
+                                ConverterBackMethodName = null,
+                                IsFromJson = false,
+                            },
+                        SourceName = "Alias",
+                        SourcePathNames = new string[] { "Alias" },
+                        SourcePropertyTypeName = "string",
+                        SourcePropertyTypeRef = typeof(string),
+                        HasIndex = false,
+                        IsFlattened = false,
+                        IsReverseWriteBack = false,
+                        HasConverter = false,
+                        ConverterDeclaringType = null,
+                        ConverterMethodName = null,
+                        HasMask = false,
+                        MaskTypeName = null,
+                        IsFromJson = false,
+                    },
+                    new global::NCMapper.Runtime.RuntimePropertyMapping
+                    {
+                        Target =
+                            new global::NCMapper.Runtime.RuntimeTargetPropertySlot
+                            {
+                                Name = "Secret",
+                                TypeName = "string",
+                                TypeRef = typeof(string),
+                                HasMapFromAttribute = true,
+                                MapFromAttribute = __mfAttr238,
+                                HasMapIgnore = false,
+                                MapIgnoreDirection = 0,
+                                HasOverrideIgnore = false,
+                                HasMapProperty = false,
+                                FromField = null,
+                                FromSourceTypeName = null,
+                                HasMask = true,
+                                MaskTypeName = "NCMapper.Tests.Tests.FluentAttributeNonConsumptionTests.FacMask",
+                                HasConverter = false,
+                                ConverterDeclaringType = null,
+                                ConverterMethodName = null,
+                                HasConvertBack = false,
+                                ConverterBackDeclaringType = null,
+                                ConverterBackMethodName = null,
+                                IsFromJson = false,
+                            },
+                        SourceName = "Secret",
+                        SourcePathNames = new string[] { "Secret" },
+                        SourcePropertyTypeName = "string",
+                        SourcePropertyTypeRef = typeof(string),
+                        HasIndex = false,
+                        IsFlattened = false,
+                        IsReverseWriteBack = false,
+                        HasConverter = false,
+                        ConverterDeclaringType = null,
+                        ConverterMethodName = null,
+                        HasMask = true,
+                        MaskTypeName = "NCMapper.Tests.Tests.FluentAttributeNonConsumptionTests.FacMask",
+                        IsFromJson = false,
+                    },
+                    new global::NCMapper.Runtime.RuntimePropertyMapping
+                    {
+                        Target =
+                            new global::NCMapper.Runtime.RuntimeTargetPropertySlot
+                            {
+                                Name = "Stamp",
+                                TypeName = "string",
+                                TypeRef = typeof(string),
+                                HasMapFromAttribute = true,
+                                MapFromAttribute = __mfAttr238,
+                                HasMapIgnore = false,
+                                MapIgnoreDirection = 0,
+                                HasOverrideIgnore = false,
+                                HasMapProperty = false,
+                                FromField = null,
+                                FromSourceTypeName = null,
+                                HasMask = false,
+                                MaskTypeName = null,
+                                HasConverter = false,
+                                ConverterDeclaringType = null,
+                                ConverterMethodName = null,
+                                HasConvertBack = false,
+                                ConverterBackDeclaringType = null,
+                                ConverterBackMethodName = null,
+                                IsFromJson = false,
+                            },
+                        SourceName = "Stamp",
+                        SourcePathNames = new string[] { "Stamp" },
+                        SourcePropertyTypeName = "System.DateTime",
+                        SourcePropertyTypeRef = typeof(System.DateTime),
+                        HasIndex = false,
+                        IsFlattened = false,
+                        IsReverseWriteBack = false,
+                        HasConverter = false,
+                        ConverterDeclaringType = null,
+                        ConverterMethodName = null,
+                        HasMask = false,
+                        MaskTypeName = null,
+                        IsFromJson = false,
+                        FormatString = "yyyy",
+                    },
+                },
+                AllTargetSlots = new global::NCMapper.Runtime.RuntimeTargetPropertySlot[]
+                {
+                    new global::NCMapper.Runtime.RuntimeTargetPropertySlot
+                    {
+                        Name = "Id",
+                        TypeName = "int",
+                        TypeRef = typeof(int),
+                        HasMapFromAttribute = true,
+                        MapFromAttribute = __mfAttr238,
+                        HasMapIgnore = false,
+                        MapIgnoreDirection = 0,
+                        HasOverrideIgnore = false,
+                        HasMapProperty = false,
+                        FromField = null,
+                        FromSourceTypeName = null,
+                        HasMask = false,
+                        MaskTypeName = null,
+                        HasConverter = false,
+                        ConverterDeclaringType = null,
+                        ConverterMethodName = null,
+                        HasConvertBack = false,
+                        ConverterBackDeclaringType = null,
+                        ConverterBackMethodName = null,
+                        IsFromJson = false,
+                    },
+                    new global::NCMapper.Runtime.RuntimeTargetPropertySlot
+                    {
+                        Name = "Tag",
+                        TypeName = "string",
+                        TypeRef = typeof(string),
+                        HasMapFromAttribute = true,
+                        MapFromAttribute = __mfAttr238,
+                        HasMapIgnore = false,
+                        MapIgnoreDirection = 0,
+                        HasOverrideIgnore = false,
+                        HasMapProperty = false,
+                        FromField = null,
+                        FromSourceTypeName = null,
+                        HasMask = false,
+                        MaskTypeName = null,
+                        HasConverter = true,
+                        ConverterDeclaringType = "NCMapper.Tests.Tests.FluentAttributeNonConsumptionTests.FacConv",
+                        ConverterMethodName = "Convert",
+                        HasConvertBack = false,
+                        ConverterBackDeclaringType = null,
+                        ConverterBackMethodName = null,
+                        IsFromJson = false,
+                    },
+                    new global::NCMapper.Runtime.RuntimeTargetPropertySlot
+                    {
+                        Name = "AliasTarget",
+                        TypeName = "string",
+                        TypeRef = typeof(string),
+                        HasMapFromAttribute = true,
+                        MapFromAttribute = __mfAttr238,
+                        HasMapIgnore = false,
+                        MapIgnoreDirection = 0,
+                        HasOverrideIgnore = false,
+                        HasMapProperty = true,
+                        FromField = "Alias",
+                        FromSourceTypeName = "NCMapper.Tests.Tests.FluentAttributeNonConsumptionTests.FacEntity",
+                        HasMask = false,
+                        MaskTypeName = null,
+                        HasConverter = false,
+                        ConverterDeclaringType = null,
+                        ConverterMethodName = null,
+                        HasConvertBack = false,
+                        ConverterBackDeclaringType = null,
+                        ConverterBackMethodName = null,
+                        IsFromJson = false,
+                    },
+                    new global::NCMapper.Runtime.RuntimeTargetPropertySlot
+                    {
+                        Name = "Secret",
+                        TypeName = "string",
+                        TypeRef = typeof(string),
+                        HasMapFromAttribute = true,
+                        MapFromAttribute = __mfAttr238,
+                        HasMapIgnore = false,
+                        MapIgnoreDirection = 0,
+                        HasOverrideIgnore = false,
+                        HasMapProperty = false,
+                        FromField = null,
+                        FromSourceTypeName = null,
+                        HasMask = true,
+                        MaskTypeName = "NCMapper.Tests.Tests.FluentAttributeNonConsumptionTests.FacMask",
+                        HasConverter = false,
+                        ConverterDeclaringType = null,
+                        ConverterMethodName = null,
+                        HasConvertBack = false,
+                        ConverterBackDeclaringType = null,
+                        ConverterBackMethodName = null,
+                        IsFromJson = false,
+                    },
+                    new global::NCMapper.Runtime.RuntimeTargetPropertySlot
+                    {
+                        Name = "Stamp",
+                        TypeName = "string",
+                        TypeRef = typeof(string),
+                        HasMapFromAttribute = true,
+                        MapFromAttribute = __mfAttr238,
+                        HasMapIgnore = false,
+                        MapIgnoreDirection = 0,
+                        HasOverrideIgnore = false,
+                        HasMapProperty = false,
+                        FromField = null,
+                        FromSourceTypeName = null,
+                        HasMask = false,
+                        MaskTypeName = null,
+                        HasConverter = false,
+                        ConverterDeclaringType = null,
+                        ConverterMethodName = null,
+                        HasConvertBack = false,
+                        ConverterBackDeclaringType = null,
+                        ConverterBackMethodName = null,
+                        IsFromJson = false,
+                    },
+                },
+            };
+            global::NCMapper.Runtime.RuntimeSnapshotPair<NCMapper.Tests.Tests.FluentAttributeNonConsumptionTests.FacEntity, NCMapper.Tests.Tests.FluentAttributeNonConsumptionTests.FacAttrDto>.Metadata = __meta238;
+            global::NCMapper.Runtime.RuntimeSnapshotStore.Register(__meta238);
+            // pair 239: NCMapper.Tests.Tests.IsFromJsonMaliciousJsonTests.MalJsonEntity -> NCMapper.Tests.Tests.IsFromJsonMaliciousJsonTests.MalJsonDto (MapFrom channel)
+            var __mfAttr239 = new global::NCMapper.Attributes.MapFromAttribute(typeof(NCMapper.Tests.Tests.IsFromJsonMaliciousJsonTests.MalJsonEntity));
+            var __meta239 = new global::NCMapper.Runtime.RuntimeMapperMetadata
+            {
+                SourceType = typeof(NCMapper.Tests.Tests.IsFromJsonMaliciousJsonTests.MalJsonEntity),
+                TargetType = typeof(NCMapper.Tests.Tests.IsFromJsonMaliciousJsonTests.MalJsonDto),
+                SourceTypeFqn = "NCMapper.Tests.Tests.IsFromJsonMaliciousJsonTests.MalJsonEntity",
+                TargetTypeFqn = "NCMapper.Tests.Tests.IsFromJsonMaliciousJsonTests.MalJsonDto",
+                Channel = global::NCMapper.Runtime.RuntimeMappingChannel.MapFrom,
+                NoAutoInclude = false,
+                IsFluentForward = false,
+                AfterMappingMethodRef = null,
+                Properties = new global::NCMapper.Runtime.RuntimePropertyMapping[]
+                {
+                    new global::NCMapper.Runtime.RuntimePropertyMapping
+                    {
+                        Target =
+                            new global::NCMapper.Runtime.RuntimeTargetPropertySlot
+                            {
+                                Name = "Id",
+                                TypeName = "int",
+                                TypeRef = typeof(int),
+                                HasMapFromAttribute = true,
+                                MapFromAttribute = __mfAttr239,
+                                HasMapIgnore = false,
+                                MapIgnoreDirection = 0,
+                                HasOverrideIgnore = false,
+                                HasMapProperty = false,
+                                FromField = null,
+                                FromSourceTypeName = null,
+                                HasMask = false,
+                                MaskTypeName = null,
+                                HasConverter = false,
+                                ConverterDeclaringType = null,
+                                ConverterMethodName = null,
+                                HasConvertBack = false,
+                                ConverterBackDeclaringType = null,
+                                ConverterBackMethodName = null,
+                                IsFromJson = false,
+                            },
+                        SourceName = "Id",
+                        SourcePathNames = new string[] { "Id" },
+                        SourcePropertyTypeName = "int",
+                        SourcePropertyTypeRef = typeof(int),
+                        HasIndex = false,
+                        IsFlattened = false,
+                        IsReverseWriteBack = false,
+                        HasConverter = false,
+                        ConverterDeclaringType = null,
+                        ConverterMethodName = null,
+                        HasMask = false,
+                        MaskTypeName = null,
+                        IsFromJson = false,
+                    },
+                    new global::NCMapper.Runtime.RuntimePropertyMapping
+                    {
+                        Target =
+                            new global::NCMapper.Runtime.RuntimeTargetPropertySlot
+                            {
+                                Name = "Config",
+                                TypeName = "NCMapper.Tests.Tests.IsFromJsonMaliciousJsonTests.MalJsonConfig?",
+                                TypeRef = typeof(NCMapper.Tests.Tests.IsFromJsonMaliciousJsonTests.MalJsonConfig),
+                                HasMapFromAttribute = true,
+                                MapFromAttribute = __mfAttr239,
+                                HasMapIgnore = false,
+                                MapIgnoreDirection = 0,
+                                HasOverrideIgnore = false,
+                                HasMapProperty = true,
+                                FromField = "ConfigJson",
+                                FromSourceTypeName = "NCMapper.Tests.Tests.IsFromJsonMaliciousJsonTests.MalJsonEntity",
+                                HasMask = false,
+                                MaskTypeName = null,
+                                HasConverter = false,
+                                ConverterDeclaringType = null,
+                                ConverterMethodName = null,
+                                HasConvertBack = false,
+                                ConverterBackDeclaringType = null,
+                                ConverterBackMethodName = null,
+                                IsFromJson = true,
+                            },
+                        SourceName = "ConfigJson",
+                        SourcePathNames = new string[] { "ConfigJson" },
+                        SourcePropertyTypeName = "string",
+                        SourcePropertyTypeRef = typeof(string),
+                        HasIndex = false,
+                        IsFlattened = false,
+                        IsReverseWriteBack = false,
+                        HasConverter = false,
+                        ConverterDeclaringType = null,
+                        ConverterMethodName = null,
+                        HasMask = false,
+                        MaskTypeName = null,
+                        IsFromJson = true,
+                    },
+                },
+                AllTargetSlots = new global::NCMapper.Runtime.RuntimeTargetPropertySlot[]
+                {
+                    new global::NCMapper.Runtime.RuntimeTargetPropertySlot
+                    {
+                        Name = "Id",
+                        TypeName = "int",
+                        TypeRef = typeof(int),
+                        HasMapFromAttribute = true,
+                        MapFromAttribute = __mfAttr239,
+                        HasMapIgnore = false,
+                        MapIgnoreDirection = 0,
+                        HasOverrideIgnore = false,
+                        HasMapProperty = false,
+                        FromField = null,
+                        FromSourceTypeName = null,
+                        HasMask = false,
+                        MaskTypeName = null,
+                        HasConverter = false,
+                        ConverterDeclaringType = null,
+                        ConverterMethodName = null,
+                        HasConvertBack = false,
+                        ConverterBackDeclaringType = null,
+                        ConverterBackMethodName = null,
+                        IsFromJson = false,
+                    },
+                    new global::NCMapper.Runtime.RuntimeTargetPropertySlot
+                    {
+                        Name = "Config",
+                        TypeName = "NCMapper.Tests.Tests.IsFromJsonMaliciousJsonTests.MalJsonConfig?",
+                        TypeRef = typeof(NCMapper.Tests.Tests.IsFromJsonMaliciousJsonTests.MalJsonConfig),
+                        HasMapFromAttribute = true,
+                        MapFromAttribute = __mfAttr239,
+                        HasMapIgnore = false,
+                        MapIgnoreDirection = 0,
+                        HasOverrideIgnore = false,
+                        HasMapProperty = true,
+                        FromField = "ConfigJson",
+                        FromSourceTypeName = "NCMapper.Tests.Tests.IsFromJsonMaliciousJsonTests.MalJsonEntity",
+                        HasMask = false,
+                        MaskTypeName = null,
+                        HasConverter = false,
+                        ConverterDeclaringType = null,
+                        ConverterMethodName = null,
+                        HasConvertBack = false,
+                        ConverterBackDeclaringType = null,
+                        ConverterBackMethodName = null,
+                        IsFromJson = true,
+                    },
+                },
+            };
+            global::NCMapper.Runtime.RuntimeSnapshotPair<NCMapper.Tests.Tests.IsFromJsonMaliciousJsonTests.MalJsonEntity, NCMapper.Tests.Tests.IsFromJsonMaliciousJsonTests.MalJsonDto>.Metadata = __meta239;
+            global::NCMapper.Runtime.RuntimeSnapshotStore.Register(__meta239);
+            // pair 240: NCMapper.Tests.Tests.JsonValueTypeEntity -> NCMapper.Tests.Tests.JsonValueTypeDto (MapFrom channel)
+            var __mfAttr240 = new global::NCMapper.Attributes.MapFromAttribute(typeof(NCMapper.Tests.Tests.JsonValueTypeEntity));
+            var __meta240 = new global::NCMapper.Runtime.RuntimeMapperMetadata
+            {
+                SourceType = typeof(NCMapper.Tests.Tests.JsonValueTypeEntity),
+                TargetType = typeof(NCMapper.Tests.Tests.JsonValueTypeDto),
+                SourceTypeFqn = "NCMapper.Tests.Tests.JsonValueTypeEntity",
+                TargetTypeFqn = "NCMapper.Tests.Tests.JsonValueTypeDto",
+                Channel = global::NCMapper.Runtime.RuntimeMappingChannel.MapFrom,
+                NoAutoInclude = false,
+                IsFluentForward = false,
+                AfterMappingMethodRef = null,
+                Properties = new global::NCMapper.Runtime.RuntimePropertyMapping[]
+                {
+                    new global::NCMapper.Runtime.RuntimePropertyMapping
+                    {
+                        Target =
+                            new global::NCMapper.Runtime.RuntimeTargetPropertySlot
+                            {
+                                Name = "Id",
+                                TypeName = "int",
+                                TypeRef = typeof(int),
+                                HasMapFromAttribute = true,
+                                MapFromAttribute = __mfAttr240,
+                                HasMapIgnore = false,
+                                MapIgnoreDirection = 0,
+                                HasOverrideIgnore = false,
+                                HasMapProperty = false,
+                                FromField = null,
+                                FromSourceTypeName = null,
+                                HasMask = false,
+                                MaskTypeName = null,
+                                HasConverter = false,
+                                ConverterDeclaringType = null,
+                                ConverterMethodName = null,
+                                HasConvertBack = false,
+                                ConverterBackDeclaringType = null,
+                                ConverterBackMethodName = null,
+                                IsFromJson = false,
+                            },
+                        SourceName = "Id",
+                        SourcePathNames = new string[] { "Id" },
+                        SourcePropertyTypeName = "int",
+                        SourcePropertyTypeRef = typeof(int),
+                        HasIndex = false,
+                        IsFlattened = false,
+                        IsReverseWriteBack = false,
+                        HasConverter = false,
+                        ConverterDeclaringType = null,
+                        ConverterMethodName = null,
+                        HasMask = false,
+                        MaskTypeName = null,
+                        IsFromJson = false,
+                    },
+                },
+                AllTargetSlots = new global::NCMapper.Runtime.RuntimeTargetPropertySlot[]
+                {
+                    new global::NCMapper.Runtime.RuntimeTargetPropertySlot
+                    {
+                        Name = "Id",
+                        TypeName = "int",
+                        TypeRef = typeof(int),
+                        HasMapFromAttribute = true,
+                        MapFromAttribute = __mfAttr240,
+                        HasMapIgnore = false,
+                        MapIgnoreDirection = 0,
+                        HasOverrideIgnore = false,
+                        HasMapProperty = false,
+                        FromField = null,
+                        FromSourceTypeName = null,
+                        HasMask = false,
+                        MaskTypeName = null,
+                        HasConverter = false,
+                        ConverterDeclaringType = null,
+                        ConverterMethodName = null,
+                        HasConvertBack = false,
+                        ConverterBackDeclaringType = null,
+                        ConverterBackMethodName = null,
+                        IsFromJson = false,
+                    },
+                    new global::NCMapper.Runtime.RuntimeTargetPropertySlot
+                    {
                         Name = "IntValue",
                         TypeName = "int",
                         TypeRef = typeof(int),
                         HasMapFromAttribute = true,
-                        MapFromAttribute = __mfAttr234,
+                        MapFromAttribute = __mfAttr240,
                         HasMapIgnore = false,
                         MapIgnoreDirection = 0,
                         HasOverrideIgnore = false,
@@ -32001,7 +33004,7 @@ namespace NCMapper.Runtime
                         TypeName = "System.DateTime",
                         TypeRef = typeof(System.DateTime),
                         HasMapFromAttribute = true,
-                        MapFromAttribute = __mfAttr234,
+                        MapFromAttribute = __mfAttr240,
                         HasMapIgnore = false,
                         MapIgnoreDirection = 0,
                         HasOverrideIgnore = false,
@@ -32024,7 +33027,7 @@ namespace NCMapper.Runtime
                         TypeName = "System.Guid",
                         TypeRef = typeof(System.Guid),
                         HasMapFromAttribute = true,
-                        MapFromAttribute = __mfAttr234,
+                        MapFromAttribute = __mfAttr240,
                         HasMapIgnore = false,
                         MapIgnoreDirection = 0,
                         HasOverrideIgnore = false,
@@ -32043,11 +33046,11 @@ namespace NCMapper.Runtime
                     },
                 },
             };
-            global::NCMapper.Runtime.RuntimeSnapshotPair<NCMapper.Tests.Tests.JsonValueTypeEntity, NCMapper.Tests.Tests.JsonValueTypeDto>.Metadata = __meta234;
-            global::NCMapper.Runtime.RuntimeSnapshotStore.Register(__meta234);
-            // pair 235: NCMapper.Tests.Tests.M15NullableSameSource -> NCMapper.Tests.Tests.M15NullableSameGenDto (MapFrom channel)
-            var __mfAttr235 = new global::NCMapper.Attributes.MapFromAttribute(typeof(NCMapper.Tests.Tests.M15NullableSameSource));
-            var __meta235 = new global::NCMapper.Runtime.RuntimeMapperMetadata
+            global::NCMapper.Runtime.RuntimeSnapshotPair<NCMapper.Tests.Tests.JsonValueTypeEntity, NCMapper.Tests.Tests.JsonValueTypeDto>.Metadata = __meta240;
+            global::NCMapper.Runtime.RuntimeSnapshotStore.Register(__meta240);
+            // pair 241: NCMapper.Tests.Tests.M15NullableSameSource -> NCMapper.Tests.Tests.M15NullableSameGenDto (MapFrom channel)
+            var __mfAttr241 = new global::NCMapper.Attributes.MapFromAttribute(typeof(NCMapper.Tests.Tests.M15NullableSameSource));
+            var __meta241 = new global::NCMapper.Runtime.RuntimeMapperMetadata
             {
                 SourceType = typeof(NCMapper.Tests.Tests.M15NullableSameSource),
                 TargetType = typeof(NCMapper.Tests.Tests.M15NullableSameGenDto),
@@ -32068,7 +33071,7 @@ namespace NCMapper.Runtime
                                 TypeName = "int?",
                                 TypeRef = typeof(int?),
                                 HasMapFromAttribute = true,
-                                MapFromAttribute = __mfAttr235,
+                                MapFromAttribute = __mfAttr241,
                                 HasMapIgnore = false,
                                 MapIgnoreDirection = 0,
                                 HasOverrideIgnore = false,
@@ -32108,7 +33111,7 @@ namespace NCMapper.Runtime
                         TypeName = "int?",
                         TypeRef = typeof(int?),
                         HasMapFromAttribute = true,
-                        MapFromAttribute = __mfAttr235,
+                        MapFromAttribute = __mfAttr241,
                         HasMapIgnore = false,
                         MapIgnoreDirection = 0,
                         HasOverrideIgnore = false,
@@ -32127,11 +33130,11 @@ namespace NCMapper.Runtime
                     },
                 },
             };
-            global::NCMapper.Runtime.RuntimeSnapshotPair<NCMapper.Tests.Tests.M15NullableSameSource, NCMapper.Tests.Tests.M15NullableSameGenDto>.Metadata = __meta235;
-            global::NCMapper.Runtime.RuntimeSnapshotStore.Register(__meta235);
-            // pair 236: NCMapper.Tests.Tests.M15NullableSource -> NCMapper.Tests.Tests.M15NullableGenDto (MapFrom channel)
-            var __mfAttr236 = new global::NCMapper.Attributes.MapFromAttribute(typeof(NCMapper.Tests.Tests.M15NullableSource));
-            var __meta236 = new global::NCMapper.Runtime.RuntimeMapperMetadata
+            global::NCMapper.Runtime.RuntimeSnapshotPair<NCMapper.Tests.Tests.M15NullableSameSource, NCMapper.Tests.Tests.M15NullableSameGenDto>.Metadata = __meta241;
+            global::NCMapper.Runtime.RuntimeSnapshotStore.Register(__meta241);
+            // pair 242: NCMapper.Tests.Tests.M15NullableSource -> NCMapper.Tests.Tests.M15NullableGenDto (MapFrom channel)
+            var __mfAttr242 = new global::NCMapper.Attributes.MapFromAttribute(typeof(NCMapper.Tests.Tests.M15NullableSource));
+            var __meta242 = new global::NCMapper.Runtime.RuntimeMapperMetadata
             {
                 SourceType = typeof(NCMapper.Tests.Tests.M15NullableSource),
                 TargetType = typeof(NCMapper.Tests.Tests.M15NullableGenDto),
@@ -32152,7 +33155,7 @@ namespace NCMapper.Runtime
                                 TypeName = "long?",
                                 TypeRef = typeof(long?),
                                 HasMapFromAttribute = true,
-                                MapFromAttribute = __mfAttr236,
+                                MapFromAttribute = __mfAttr242,
                                 HasMapIgnore = false,
                                 MapIgnoreDirection = 0,
                                 HasOverrideIgnore = false,
@@ -32192,7 +33195,7 @@ namespace NCMapper.Runtime
                         TypeName = "long?",
                         TypeRef = typeof(long?),
                         HasMapFromAttribute = true,
-                        MapFromAttribute = __mfAttr236,
+                        MapFromAttribute = __mfAttr242,
                         HasMapIgnore = false,
                         MapIgnoreDirection = 0,
                         HasOverrideIgnore = false,
@@ -32211,11 +33214,11 @@ namespace NCMapper.Runtime
                     },
                 },
             };
-            global::NCMapper.Runtime.RuntimeSnapshotPair<NCMapper.Tests.Tests.M15NullableSource, NCMapper.Tests.Tests.M15NullableGenDto>.Metadata = __meta236;
-            global::NCMapper.Runtime.RuntimeSnapshotStore.Register(__meta236);
-            // pair 237: NCMapper.Tests.Tests.MapFormatRuntimeTests.MFBEntity -> NCMapper.Tests.Tests.MapFormatRuntimeTests.MFBDto (MapFrom channel)
-            var __mfAttr237 = new global::NCMapper.Attributes.MapFromAttribute(typeof(NCMapper.Tests.Tests.MapFormatRuntimeTests.MFBEntity));
-            var __meta237 = new global::NCMapper.Runtime.RuntimeMapperMetadata
+            global::NCMapper.Runtime.RuntimeSnapshotPair<NCMapper.Tests.Tests.M15NullableSource, NCMapper.Tests.Tests.M15NullableGenDto>.Metadata = __meta242;
+            global::NCMapper.Runtime.RuntimeSnapshotStore.Register(__meta242);
+            // pair 243: NCMapper.Tests.Tests.MapFormatRuntimeTests.MFBEntity -> NCMapper.Tests.Tests.MapFormatRuntimeTests.MFBDto (MapFrom channel)
+            var __mfAttr243 = new global::NCMapper.Attributes.MapFromAttribute(typeof(NCMapper.Tests.Tests.MapFormatRuntimeTests.MFBEntity));
+            var __meta243 = new global::NCMapper.Runtime.RuntimeMapperMetadata
             {
                 SourceType = typeof(NCMapper.Tests.Tests.MapFormatRuntimeTests.MFBEntity),
                 TargetType = typeof(NCMapper.Tests.Tests.MapFormatRuntimeTests.MFBDto),
@@ -32236,7 +33239,7 @@ namespace NCMapper.Runtime
                                 TypeName = "string",
                                 TypeRef = typeof(string),
                                 HasMapFromAttribute = true,
-                                MapFromAttribute = __mfAttr237,
+                                MapFromAttribute = __mfAttr243,
                                 HasMapIgnore = false,
                                 MapIgnoreDirection = 0,
                                 HasOverrideIgnore = false,
@@ -32277,7 +33280,7 @@ namespace NCMapper.Runtime
                         TypeName = "string",
                         TypeRef = typeof(string),
                         HasMapFromAttribute = true,
-                        MapFromAttribute = __mfAttr237,
+                        MapFromAttribute = __mfAttr243,
                         HasMapIgnore = false,
                         MapIgnoreDirection = 0,
                         HasOverrideIgnore = false,
@@ -32296,11 +33299,11 @@ namespace NCMapper.Runtime
                     },
                 },
             };
-            global::NCMapper.Runtime.RuntimeSnapshotPair<NCMapper.Tests.Tests.MapFormatRuntimeTests.MFBEntity, NCMapper.Tests.Tests.MapFormatRuntimeTests.MFBDto>.Metadata = __meta237;
-            global::NCMapper.Runtime.RuntimeSnapshotStore.Register(__meta237);
-            // pair 238: NCMapper.Tests.Tests.MapFormatRuntimeTests.MFCEntity -> NCMapper.Tests.Tests.MapFormatRuntimeTests.MFCDto (MapFrom channel)
-            var __mfAttr238 = new global::NCMapper.Attributes.MapFromAttribute(typeof(NCMapper.Tests.Tests.MapFormatRuntimeTests.MFCEntity));
-            var __meta238 = new global::NCMapper.Runtime.RuntimeMapperMetadata
+            global::NCMapper.Runtime.RuntimeSnapshotPair<NCMapper.Tests.Tests.MapFormatRuntimeTests.MFBEntity, NCMapper.Tests.Tests.MapFormatRuntimeTests.MFBDto>.Metadata = __meta243;
+            global::NCMapper.Runtime.RuntimeSnapshotStore.Register(__meta243);
+            // pair 244: NCMapper.Tests.Tests.MapFormatRuntimeTests.MFCEntity -> NCMapper.Tests.Tests.MapFormatRuntimeTests.MFCDto (MapFrom channel)
+            var __mfAttr244 = new global::NCMapper.Attributes.MapFromAttribute(typeof(NCMapper.Tests.Tests.MapFormatRuntimeTests.MFCEntity));
+            var __meta244 = new global::NCMapper.Runtime.RuntimeMapperMetadata
             {
                 SourceType = typeof(NCMapper.Tests.Tests.MapFormatRuntimeTests.MFCEntity),
                 TargetType = typeof(NCMapper.Tests.Tests.MapFormatRuntimeTests.MFCDto),
@@ -32321,7 +33324,7 @@ namespace NCMapper.Runtime
                                 TypeName = "string",
                                 TypeRef = typeof(string),
                                 HasMapFromAttribute = true,
-                                MapFromAttribute = __mfAttr238,
+                                MapFromAttribute = __mfAttr244,
                                 HasMapIgnore = false,
                                 MapIgnoreDirection = 0,
                                 HasOverrideIgnore = false,
@@ -32361,7 +33364,7 @@ namespace NCMapper.Runtime
                         TypeName = "string",
                         TypeRef = typeof(string),
                         HasMapFromAttribute = true,
-                        MapFromAttribute = __mfAttr238,
+                        MapFromAttribute = __mfAttr244,
                         HasMapIgnore = false,
                         MapIgnoreDirection = 0,
                         HasOverrideIgnore = false,
@@ -32380,11 +33383,11 @@ namespace NCMapper.Runtime
                     },
                 },
             };
-            global::NCMapper.Runtime.RuntimeSnapshotPair<NCMapper.Tests.Tests.MapFormatRuntimeTests.MFCEntity, NCMapper.Tests.Tests.MapFormatRuntimeTests.MFCDto>.Metadata = __meta238;
-            global::NCMapper.Runtime.RuntimeSnapshotStore.Register(__meta238);
-            // pair 239: NCMapper.Tests.Tests.MapFormatRuntimeTests.MFEntity -> NCMapper.Tests.Tests.MapFormatRuntimeTests.MFDto (MapFrom channel)
-            var __mfAttr239 = new global::NCMapper.Attributes.MapFromAttribute(typeof(NCMapper.Tests.Tests.MapFormatRuntimeTests.MFEntity));
-            var __meta239 = new global::NCMapper.Runtime.RuntimeMapperMetadata
+            global::NCMapper.Runtime.RuntimeSnapshotPair<NCMapper.Tests.Tests.MapFormatRuntimeTests.MFCEntity, NCMapper.Tests.Tests.MapFormatRuntimeTests.MFCDto>.Metadata = __meta244;
+            global::NCMapper.Runtime.RuntimeSnapshotStore.Register(__meta244);
+            // pair 245: NCMapper.Tests.Tests.MapFormatRuntimeTests.MFEntity -> NCMapper.Tests.Tests.MapFormatRuntimeTests.MFDto (MapFrom channel)
+            var __mfAttr245 = new global::NCMapper.Attributes.MapFromAttribute(typeof(NCMapper.Tests.Tests.MapFormatRuntimeTests.MFEntity));
+            var __meta245 = new global::NCMapper.Runtime.RuntimeMapperMetadata
             {
                 SourceType = typeof(NCMapper.Tests.Tests.MapFormatRuntimeTests.MFEntity),
                 TargetType = typeof(NCMapper.Tests.Tests.MapFormatRuntimeTests.MFDto),
@@ -32405,7 +33408,7 @@ namespace NCMapper.Runtime
                                 TypeName = "string",
                                 TypeRef = typeof(string),
                                 HasMapFromAttribute = true,
-                                MapFromAttribute = __mfAttr239,
+                                MapFromAttribute = __mfAttr245,
                                 HasMapIgnore = false,
                                 MapIgnoreDirection = 0,
                                 HasOverrideIgnore = false,
@@ -32446,7 +33449,7 @@ namespace NCMapper.Runtime
                                 TypeName = "string",
                                 TypeRef = typeof(string),
                                 HasMapFromAttribute = true,
-                                MapFromAttribute = __mfAttr239,
+                                MapFromAttribute = __mfAttr245,
                                 HasMapIgnore = false,
                                 MapIgnoreDirection = 0,
                                 HasOverrideIgnore = false,
@@ -32487,7 +33490,7 @@ namespace NCMapper.Runtime
                                 TypeName = "string",
                                 TypeRef = typeof(string),
                                 HasMapFromAttribute = true,
-                                MapFromAttribute = __mfAttr239,
+                                MapFromAttribute = __mfAttr245,
                                 HasMapIgnore = false,
                                 MapIgnoreDirection = 0,
                                 HasOverrideIgnore = false,
@@ -32528,7 +33531,7 @@ namespace NCMapper.Runtime
                                 TypeName = "string",
                                 TypeRef = typeof(string),
                                 HasMapFromAttribute = true,
-                                MapFromAttribute = __mfAttr239,
+                                MapFromAttribute = __mfAttr245,
                                 HasMapIgnore = false,
                                 MapIgnoreDirection = 0,
                                 HasOverrideIgnore = false,
@@ -32569,7 +33572,7 @@ namespace NCMapper.Runtime
                                 TypeName = "string",
                                 TypeRef = typeof(string),
                                 HasMapFromAttribute = true,
-                                MapFromAttribute = __mfAttr239,
+                                MapFromAttribute = __mfAttr245,
                                 HasMapIgnore = false,
                                 MapIgnoreDirection = 0,
                                 HasOverrideIgnore = false,
@@ -32610,7 +33613,7 @@ namespace NCMapper.Runtime
                                 TypeName = "string?",
                                 TypeRef = typeof(string),
                                 HasMapFromAttribute = true,
-                                MapFromAttribute = __mfAttr239,
+                                MapFromAttribute = __mfAttr245,
                                 HasMapIgnore = false,
                                 MapIgnoreDirection = 0,
                                 HasOverrideIgnore = false,
@@ -32651,7 +33654,7 @@ namespace NCMapper.Runtime
                                 TypeName = "string",
                                 TypeRef = typeof(string),
                                 HasMapFromAttribute = true,
-                                MapFromAttribute = __mfAttr239,
+                                MapFromAttribute = __mfAttr245,
                                 HasMapIgnore = false,
                                 MapIgnoreDirection = 0,
                                 HasOverrideIgnore = false,
@@ -32692,7 +33695,7 @@ namespace NCMapper.Runtime
                         TypeName = "string",
                         TypeRef = typeof(string),
                         HasMapFromAttribute = true,
-                        MapFromAttribute = __mfAttr239,
+                        MapFromAttribute = __mfAttr245,
                         HasMapIgnore = false,
                         MapIgnoreDirection = 0,
                         HasOverrideIgnore = false,
@@ -32715,7 +33718,7 @@ namespace NCMapper.Runtime
                         TypeName = "string",
                         TypeRef = typeof(string),
                         HasMapFromAttribute = true,
-                        MapFromAttribute = __mfAttr239,
+                        MapFromAttribute = __mfAttr245,
                         HasMapIgnore = false,
                         MapIgnoreDirection = 0,
                         HasOverrideIgnore = false,
@@ -32738,7 +33741,7 @@ namespace NCMapper.Runtime
                         TypeName = "string",
                         TypeRef = typeof(string),
                         HasMapFromAttribute = true,
-                        MapFromAttribute = __mfAttr239,
+                        MapFromAttribute = __mfAttr245,
                         HasMapIgnore = false,
                         MapIgnoreDirection = 0,
                         HasOverrideIgnore = false,
@@ -32761,7 +33764,7 @@ namespace NCMapper.Runtime
                         TypeName = "string",
                         TypeRef = typeof(string),
                         HasMapFromAttribute = true,
-                        MapFromAttribute = __mfAttr239,
+                        MapFromAttribute = __mfAttr245,
                         HasMapIgnore = false,
                         MapIgnoreDirection = 0,
                         HasOverrideIgnore = false,
@@ -32784,7 +33787,7 @@ namespace NCMapper.Runtime
                         TypeName = "string",
                         TypeRef = typeof(string),
                         HasMapFromAttribute = true,
-                        MapFromAttribute = __mfAttr239,
+                        MapFromAttribute = __mfAttr245,
                         HasMapIgnore = false,
                         MapIgnoreDirection = 0,
                         HasOverrideIgnore = false,
@@ -32807,7 +33810,7 @@ namespace NCMapper.Runtime
                         TypeName = "string?",
                         TypeRef = typeof(string),
                         HasMapFromAttribute = true,
-                        MapFromAttribute = __mfAttr239,
+                        MapFromAttribute = __mfAttr245,
                         HasMapIgnore = false,
                         MapIgnoreDirection = 0,
                         HasOverrideIgnore = false,
@@ -32830,7 +33833,7 @@ namespace NCMapper.Runtime
                         TypeName = "string",
                         TypeRef = typeof(string),
                         HasMapFromAttribute = true,
-                        MapFromAttribute = __mfAttr239,
+                        MapFromAttribute = __mfAttr245,
                         HasMapIgnore = false,
                         MapIgnoreDirection = 0,
                         HasOverrideIgnore = false,
@@ -32849,11 +33852,11 @@ namespace NCMapper.Runtime
                     },
                 },
             };
-            global::NCMapper.Runtime.RuntimeSnapshotPair<NCMapper.Tests.Tests.MapFormatRuntimeTests.MFEntity, NCMapper.Tests.Tests.MapFormatRuntimeTests.MFDto>.Metadata = __meta239;
-            global::NCMapper.Runtime.RuntimeSnapshotStore.Register(__meta239);
-            // pair 240: NCMapper.Tests.Tests.MapFormatRuntimeTests.MFSkipEntity -> NCMapper.Tests.Tests.MapFormatRuntimeTests.MFSkipDto (MapFrom channel)
-            var __mfAttr240 = new global::NCMapper.Attributes.MapFromAttribute(typeof(NCMapper.Tests.Tests.MapFormatRuntimeTests.MFSkipEntity));
-            var __meta240 = new global::NCMapper.Runtime.RuntimeMapperMetadata
+            global::NCMapper.Runtime.RuntimeSnapshotPair<NCMapper.Tests.Tests.MapFormatRuntimeTests.MFEntity, NCMapper.Tests.Tests.MapFormatRuntimeTests.MFDto>.Metadata = __meta245;
+            global::NCMapper.Runtime.RuntimeSnapshotStore.Register(__meta245);
+            // pair 246: NCMapper.Tests.Tests.MapFormatRuntimeTests.MFSkipEntity -> NCMapper.Tests.Tests.MapFormatRuntimeTests.MFSkipDto (MapFrom channel)
+            var __mfAttr246 = new global::NCMapper.Attributes.MapFromAttribute(typeof(NCMapper.Tests.Tests.MapFormatRuntimeTests.MFSkipEntity));
+            var __meta246 = new global::NCMapper.Runtime.RuntimeMapperMetadata
             {
                 SourceType = typeof(NCMapper.Tests.Tests.MapFormatRuntimeTests.MFSkipEntity),
                 TargetType = typeof(NCMapper.Tests.Tests.MapFormatRuntimeTests.MFSkipDto),
@@ -32874,7 +33877,7 @@ namespace NCMapper.Runtime
                                 TypeName = "string",
                                 TypeRef = typeof(string),
                                 HasMapFromAttribute = true,
-                                MapFromAttribute = __mfAttr240,
+                                MapFromAttribute = __mfAttr246,
                                 HasMapIgnore = false,
                                 MapIgnoreDirection = 0,
                                 HasOverrideIgnore = false,
@@ -32914,7 +33917,7 @@ namespace NCMapper.Runtime
                                 TypeName = "string",
                                 TypeRef = typeof(string),
                                 HasMapFromAttribute = true,
-                                MapFromAttribute = __mfAttr240,
+                                MapFromAttribute = __mfAttr246,
                                 HasMapIgnore = false,
                                 MapIgnoreDirection = 0,
                                 HasOverrideIgnore = false,
@@ -32955,7 +33958,7 @@ namespace NCMapper.Runtime
                         TypeName = "string",
                         TypeRef = typeof(string),
                         HasMapFromAttribute = true,
-                        MapFromAttribute = __mfAttr240,
+                        MapFromAttribute = __mfAttr246,
                         HasMapIgnore = false,
                         MapIgnoreDirection = 0,
                         HasOverrideIgnore = false,
@@ -32978,7 +33981,7 @@ namespace NCMapper.Runtime
                         TypeName = "string",
                         TypeRef = typeof(string),
                         HasMapFromAttribute = true,
-                        MapFromAttribute = __mfAttr240,
+                        MapFromAttribute = __mfAttr246,
                         HasMapIgnore = false,
                         MapIgnoreDirection = 0,
                         HasOverrideIgnore = false,
@@ -32997,11 +34000,11 @@ namespace NCMapper.Runtime
                     },
                 },
             };
-            global::NCMapper.Runtime.RuntimeSnapshotPair<NCMapper.Tests.Tests.MapFormatRuntimeTests.MFSkipEntity, NCMapper.Tests.Tests.MapFormatRuntimeTests.MFSkipDto>.Metadata = __meta240;
-            global::NCMapper.Runtime.RuntimeSnapshotStore.Register(__meta240);
-            // pair 241: NCMapper.Tests.Tests.MapIgnoreDirectionEntity -> NCMapper.Tests.Tests.MapIgnoreDirectionDto (MapFrom channel)
-            var __mfAttr241 = new global::NCMapper.Attributes.MapFromAttribute(typeof(NCMapper.Tests.Tests.MapIgnoreDirectionEntity));
-            var __meta241 = new global::NCMapper.Runtime.RuntimeMapperMetadata
+            global::NCMapper.Runtime.RuntimeSnapshotPair<NCMapper.Tests.Tests.MapFormatRuntimeTests.MFSkipEntity, NCMapper.Tests.Tests.MapFormatRuntimeTests.MFSkipDto>.Metadata = __meta246;
+            global::NCMapper.Runtime.RuntimeSnapshotStore.Register(__meta246);
+            // pair 247: NCMapper.Tests.Tests.MapIgnoreDirectionEntity -> NCMapper.Tests.Tests.MapIgnoreDirectionDto (MapFrom channel)
+            var __mfAttr247 = new global::NCMapper.Attributes.MapFromAttribute(typeof(NCMapper.Tests.Tests.MapIgnoreDirectionEntity));
+            var __meta247 = new global::NCMapper.Runtime.RuntimeMapperMetadata
             {
                 SourceType = typeof(NCMapper.Tests.Tests.MapIgnoreDirectionEntity),
                 TargetType = typeof(NCMapper.Tests.Tests.MapIgnoreDirectionDto),
@@ -33022,7 +34025,7 @@ namespace NCMapper.Runtime
                                 TypeName = "int",
                                 TypeRef = typeof(int),
                                 HasMapFromAttribute = true,
-                                MapFromAttribute = __mfAttr241,
+                                MapFromAttribute = __mfAttr247,
                                 HasMapIgnore = false,
                                 MapIgnoreDirection = 0,
                                 HasOverrideIgnore = false,
@@ -33062,7 +34065,7 @@ namespace NCMapper.Runtime
                                 TypeName = "string?",
                                 TypeRef = typeof(string),
                                 HasMapFromAttribute = true,
-                                MapFromAttribute = __mfAttr241,
+                                MapFromAttribute = __mfAttr247,
                                 HasMapIgnore = true,
                                 MapIgnoreDirection = 1,
                                 HasOverrideIgnore = false,
@@ -33102,7 +34105,7 @@ namespace NCMapper.Runtime
                                 TypeName = "string",
                                 TypeRef = typeof(string),
                                 HasMapFromAttribute = true,
-                                MapFromAttribute = __mfAttr241,
+                                MapFromAttribute = __mfAttr247,
                                 HasMapIgnore = false,
                                 MapIgnoreDirection = 0,
                                 HasOverrideIgnore = false,
@@ -33142,7 +34145,7 @@ namespace NCMapper.Runtime
                                 TypeName = "System.DateTime",
                                 TypeRef = typeof(System.DateTime),
                                 HasMapFromAttribute = true,
-                                MapFromAttribute = __mfAttr241,
+                                MapFromAttribute = __mfAttr247,
                                 HasMapIgnore = true,
                                 MapIgnoreDirection = 2,
                                 HasOverrideIgnore = false,
@@ -33182,7 +34185,7 @@ namespace NCMapper.Runtime
                         TypeName = "int",
                         TypeRef = typeof(int),
                         HasMapFromAttribute = true,
-                        MapFromAttribute = __mfAttr241,
+                        MapFromAttribute = __mfAttr247,
                         HasMapIgnore = false,
                         MapIgnoreDirection = 0,
                         HasOverrideIgnore = false,
@@ -33205,7 +34208,7 @@ namespace NCMapper.Runtime
                         TypeName = "string?",
                         TypeRef = typeof(string),
                         HasMapFromAttribute = true,
-                        MapFromAttribute = __mfAttr241,
+                        MapFromAttribute = __mfAttr247,
                         HasMapIgnore = true,
                         MapIgnoreDirection = 1,
                         HasOverrideIgnore = false,
@@ -33228,7 +34231,7 @@ namespace NCMapper.Runtime
                         TypeName = "string",
                         TypeRef = typeof(string),
                         HasMapFromAttribute = true,
-                        MapFromAttribute = __mfAttr241,
+                        MapFromAttribute = __mfAttr247,
                         HasMapIgnore = false,
                         MapIgnoreDirection = 0,
                         HasOverrideIgnore = false,
@@ -33251,7 +34254,7 @@ namespace NCMapper.Runtime
                         TypeName = "System.DateTime",
                         TypeRef = typeof(System.DateTime),
                         HasMapFromAttribute = true,
-                        MapFromAttribute = __mfAttr241,
+                        MapFromAttribute = __mfAttr247,
                         HasMapIgnore = true,
                         MapIgnoreDirection = 2,
                         HasOverrideIgnore = false,
@@ -33270,11 +34273,11 @@ namespace NCMapper.Runtime
                     },
                 },
             };
-            global::NCMapper.Runtime.RuntimeSnapshotPair<NCMapper.Tests.Tests.MapIgnoreDirectionEntity, NCMapper.Tests.Tests.MapIgnoreDirectionDto>.Metadata = __meta241;
-            global::NCMapper.Runtime.RuntimeSnapshotStore.Register(__meta241);
-            // pair 242: NCMapper.Tests.Tests.MapTracerAnchorGateReportTests.GateEntity -> NCMapper.Tests.Tests.MapTracerAnchorGateReportTests.AnchoredIgnoreDto (MapFrom channel)
-            var __mfAttr242 = new global::NCMapper.Attributes.MapFromAttribute(typeof(NCMapper.Tests.Tests.MapTracerAnchorGateReportTests.GateEntity));
-            var __meta242 = new global::NCMapper.Runtime.RuntimeMapperMetadata
+            global::NCMapper.Runtime.RuntimeSnapshotPair<NCMapper.Tests.Tests.MapIgnoreDirectionEntity, NCMapper.Tests.Tests.MapIgnoreDirectionDto>.Metadata = __meta247;
+            global::NCMapper.Runtime.RuntimeSnapshotStore.Register(__meta247);
+            // pair 248: NCMapper.Tests.Tests.MapTracerAnchorGateReportTests.GateEntity -> NCMapper.Tests.Tests.MapTracerAnchorGateReportTests.AnchoredIgnoreDto (MapFrom channel)
+            var __mfAttr248 = new global::NCMapper.Attributes.MapFromAttribute(typeof(NCMapper.Tests.Tests.MapTracerAnchorGateReportTests.GateEntity));
+            var __meta248 = new global::NCMapper.Runtime.RuntimeMapperMetadata
             {
                 SourceType = typeof(NCMapper.Tests.Tests.MapTracerAnchorGateReportTests.GateEntity),
                 TargetType = typeof(NCMapper.Tests.Tests.MapTracerAnchorGateReportTests.AnchoredIgnoreDto),
@@ -33295,7 +34298,7 @@ namespace NCMapper.Runtime
                                 TypeName = "int",
                                 TypeRef = typeof(int),
                                 HasMapFromAttribute = true,
-                                MapFromAttribute = __mfAttr242,
+                                MapFromAttribute = __mfAttr248,
                                 HasMapIgnore = false,
                                 MapIgnoreDirection = 0,
                                 HasOverrideIgnore = false,
@@ -33335,7 +34338,7 @@ namespace NCMapper.Runtime
                         TypeName = "int",
                         TypeRef = typeof(int),
                         HasMapFromAttribute = true,
-                        MapFromAttribute = __mfAttr242,
+                        MapFromAttribute = __mfAttr248,
                         HasMapIgnore = false,
                         MapIgnoreDirection = 0,
                         HasOverrideIgnore = false,
@@ -33354,11 +34357,11 @@ namespace NCMapper.Runtime
                     },
                 },
             };
-            global::NCMapper.Runtime.RuntimeSnapshotPair<NCMapper.Tests.Tests.MapTracerAnchorGateReportTests.GateEntity, NCMapper.Tests.Tests.MapTracerAnchorGateReportTests.AnchoredIgnoreDto>.Metadata = __meta242;
-            global::NCMapper.Runtime.RuntimeSnapshotStore.Register(__meta242);
-            // pair 243: NCMapper.Tests.Tests.MapTracerAnchorGateReportTests.GateEntity -> NCMapper.Tests.Tests.MapTracerAnchorGateReportTests.AnchoredIgnoreNoSourceDto (MapFrom channel)
-            var __mfAttr243 = new global::NCMapper.Attributes.MapFromAttribute(typeof(NCMapper.Tests.Tests.MapTracerAnchorGateReportTests.GateEntity));
-            var __meta243 = new global::NCMapper.Runtime.RuntimeMapperMetadata
+            global::NCMapper.Runtime.RuntimeSnapshotPair<NCMapper.Tests.Tests.MapTracerAnchorGateReportTests.GateEntity, NCMapper.Tests.Tests.MapTracerAnchorGateReportTests.AnchoredIgnoreDto>.Metadata = __meta248;
+            global::NCMapper.Runtime.RuntimeSnapshotStore.Register(__meta248);
+            // pair 249: NCMapper.Tests.Tests.MapTracerAnchorGateReportTests.GateEntity -> NCMapper.Tests.Tests.MapTracerAnchorGateReportTests.AnchoredIgnoreNoSourceDto (MapFrom channel)
+            var __mfAttr249 = new global::NCMapper.Attributes.MapFromAttribute(typeof(NCMapper.Tests.Tests.MapTracerAnchorGateReportTests.GateEntity));
+            var __meta249 = new global::NCMapper.Runtime.RuntimeMapperMetadata
             {
                 SourceType = typeof(NCMapper.Tests.Tests.MapTracerAnchorGateReportTests.GateEntity),
                 TargetType = typeof(NCMapper.Tests.Tests.MapTracerAnchorGateReportTests.AnchoredIgnoreNoSourceDto),
@@ -33379,7 +34382,7 @@ namespace NCMapper.Runtime
                                 TypeName = "int",
                                 TypeRef = typeof(int),
                                 HasMapFromAttribute = true,
-                                MapFromAttribute = __mfAttr243,
+                                MapFromAttribute = __mfAttr249,
                                 HasMapIgnore = false,
                                 MapIgnoreDirection = 0,
                                 HasOverrideIgnore = false,
@@ -33419,7 +34422,7 @@ namespace NCMapper.Runtime
                         TypeName = "int",
                         TypeRef = typeof(int),
                         HasMapFromAttribute = true,
-                        MapFromAttribute = __mfAttr243,
+                        MapFromAttribute = __mfAttr249,
                         HasMapIgnore = false,
                         MapIgnoreDirection = 0,
                         HasOverrideIgnore = false,
@@ -33438,11 +34441,11 @@ namespace NCMapper.Runtime
                     },
                 },
             };
-            global::NCMapper.Runtime.RuntimeSnapshotPair<NCMapper.Tests.Tests.MapTracerAnchorGateReportTests.GateEntity, NCMapper.Tests.Tests.MapTracerAnchorGateReportTests.AnchoredIgnoreNoSourceDto>.Metadata = __meta243;
-            global::NCMapper.Runtime.RuntimeSnapshotStore.Register(__meta243);
-            // pair 244: NCMapper.Tests.Tests.MapTracerAnchorGateReportTests.GateEntity -> NCMapper.Tests.Tests.MapTracerAnchorGateReportTests.AnchoredMapPropertyDto (MapFrom channel)
-            var __mfAttr244 = new global::NCMapper.Attributes.MapFromAttribute(typeof(NCMapper.Tests.Tests.MapTracerAnchorGateReportTests.GateEntity));
-            var __meta244 = new global::NCMapper.Runtime.RuntimeMapperMetadata
+            global::NCMapper.Runtime.RuntimeSnapshotPair<NCMapper.Tests.Tests.MapTracerAnchorGateReportTests.GateEntity, NCMapper.Tests.Tests.MapTracerAnchorGateReportTests.AnchoredIgnoreNoSourceDto>.Metadata = __meta249;
+            global::NCMapper.Runtime.RuntimeSnapshotStore.Register(__meta249);
+            // pair 250: NCMapper.Tests.Tests.MapTracerAnchorGateReportTests.GateEntity -> NCMapper.Tests.Tests.MapTracerAnchorGateReportTests.AnchoredMapPropertyDto (MapFrom channel)
+            var __mfAttr250 = new global::NCMapper.Attributes.MapFromAttribute(typeof(NCMapper.Tests.Tests.MapTracerAnchorGateReportTests.GateEntity));
+            var __meta250 = new global::NCMapper.Runtime.RuntimeMapperMetadata
             {
                 SourceType = typeof(NCMapper.Tests.Tests.MapTracerAnchorGateReportTests.GateEntity),
                 TargetType = typeof(NCMapper.Tests.Tests.MapTracerAnchorGateReportTests.AnchoredMapPropertyDto),
@@ -33463,7 +34466,7 @@ namespace NCMapper.Runtime
                                 TypeName = "int",
                                 TypeRef = typeof(int),
                                 HasMapFromAttribute = true,
-                                MapFromAttribute = __mfAttr244,
+                                MapFromAttribute = __mfAttr250,
                                 HasMapIgnore = false,
                                 MapIgnoreDirection = 0,
                                 HasOverrideIgnore = false,
@@ -33520,7 +34523,7 @@ namespace NCMapper.Runtime
                         TypeName = "int",
                         TypeRef = typeof(int),
                         HasMapFromAttribute = true,
-                        MapFromAttribute = __mfAttr244,
+                        MapFromAttribute = __mfAttr250,
                         HasMapIgnore = false,
                         MapIgnoreDirection = 0,
                         HasOverrideIgnore = false,
@@ -33543,7 +34546,7 @@ namespace NCMapper.Runtime
                         TypeName = "string",
                         TypeRef = typeof(string),
                         HasMapFromAttribute = true,
-                        MapFromAttribute = __mfAttr244,
+                        MapFromAttribute = __mfAttr250,
                         HasMapIgnore = false,
                         MapIgnoreDirection = 0,
                         HasOverrideIgnore = false,
@@ -33562,11 +34565,11 @@ namespace NCMapper.Runtime
                     },
                 },
             };
-            global::NCMapper.Runtime.RuntimeSnapshotPair<NCMapper.Tests.Tests.MapTracerAnchorGateReportTests.GateEntity, NCMapper.Tests.Tests.MapTracerAnchorGateReportTests.AnchoredMapPropertyDto>.Metadata = __meta244;
-            global::NCMapper.Runtime.RuntimeSnapshotStore.Register(__meta244);
-            // pair 245: NCMapper.Tests.Tests.MapTracerAnchorGateReportTests.GateEntity -> NCMapper.Tests.Tests.MapTracerAnchorGateReportTests.AnchoredMaskDto (MapFrom channel)
-            var __mfAttr245 = new global::NCMapper.Attributes.MapFromAttribute(typeof(NCMapper.Tests.Tests.MapTracerAnchorGateReportTests.GateEntity));
-            var __meta245 = new global::NCMapper.Runtime.RuntimeMapperMetadata
+            global::NCMapper.Runtime.RuntimeSnapshotPair<NCMapper.Tests.Tests.MapTracerAnchorGateReportTests.GateEntity, NCMapper.Tests.Tests.MapTracerAnchorGateReportTests.AnchoredMapPropertyDto>.Metadata = __meta250;
+            global::NCMapper.Runtime.RuntimeSnapshotStore.Register(__meta250);
+            // pair 251: NCMapper.Tests.Tests.MapTracerAnchorGateReportTests.GateEntity -> NCMapper.Tests.Tests.MapTracerAnchorGateReportTests.AnchoredMaskDto (MapFrom channel)
+            var __mfAttr251 = new global::NCMapper.Attributes.MapFromAttribute(typeof(NCMapper.Tests.Tests.MapTracerAnchorGateReportTests.GateEntity));
+            var __meta251 = new global::NCMapper.Runtime.RuntimeMapperMetadata
             {
                 SourceType = typeof(NCMapper.Tests.Tests.MapTracerAnchorGateReportTests.GateEntity),
                 TargetType = typeof(NCMapper.Tests.Tests.MapTracerAnchorGateReportTests.AnchoredMaskDto),
@@ -33587,7 +34590,7 @@ namespace NCMapper.Runtime
                                 TypeName = "int",
                                 TypeRef = typeof(int),
                                 HasMapFromAttribute = true,
-                                MapFromAttribute = __mfAttr245,
+                                MapFromAttribute = __mfAttr251,
                                 HasMapIgnore = false,
                                 MapIgnoreDirection = 0,
                                 HasOverrideIgnore = false,
@@ -33627,7 +34630,7 @@ namespace NCMapper.Runtime
                                 TypeName = "string",
                                 TypeRef = typeof(string),
                                 HasMapFromAttribute = true,
-                                MapFromAttribute = __mfAttr245,
+                                MapFromAttribute = __mfAttr251,
                                 HasMapIgnore = false,
                                 MapIgnoreDirection = 0,
                                 HasOverrideIgnore = false,
@@ -33667,7 +34670,7 @@ namespace NCMapper.Runtime
                         TypeName = "int",
                         TypeRef = typeof(int),
                         HasMapFromAttribute = true,
-                        MapFromAttribute = __mfAttr245,
+                        MapFromAttribute = __mfAttr251,
                         HasMapIgnore = false,
                         MapIgnoreDirection = 0,
                         HasOverrideIgnore = false,
@@ -33690,7 +34693,7 @@ namespace NCMapper.Runtime
                         TypeName = "string",
                         TypeRef = typeof(string),
                         HasMapFromAttribute = true,
-                        MapFromAttribute = __mfAttr245,
+                        MapFromAttribute = __mfAttr251,
                         HasMapIgnore = false,
                         MapIgnoreDirection = 0,
                         HasOverrideIgnore = false,
@@ -33709,11 +34712,11 @@ namespace NCMapper.Runtime
                     },
                 },
             };
-            global::NCMapper.Runtime.RuntimeSnapshotPair<NCMapper.Tests.Tests.MapTracerAnchorGateReportTests.GateEntity, NCMapper.Tests.Tests.MapTracerAnchorGateReportTests.AnchoredMaskDto>.Metadata = __meta245;
-            global::NCMapper.Runtime.RuntimeSnapshotStore.Register(__meta245);
-            // pair 246: NCMapper.Tests.Tests.MapValidatorConsistencyTests.FieldSource -> NCMapper.Tests.Tests.MapValidatorConsistencyTests.FieldTarget (MapFrom channel)
-            var __mfAttr246 = new global::NCMapper.Attributes.MapFromAttribute(typeof(NCMapper.Tests.Tests.MapValidatorConsistencyTests.FieldSource));
-            var __meta246 = new global::NCMapper.Runtime.RuntimeMapperMetadata
+            global::NCMapper.Runtime.RuntimeSnapshotPair<NCMapper.Tests.Tests.MapTracerAnchorGateReportTests.GateEntity, NCMapper.Tests.Tests.MapTracerAnchorGateReportTests.AnchoredMaskDto>.Metadata = __meta251;
+            global::NCMapper.Runtime.RuntimeSnapshotStore.Register(__meta251);
+            // pair 252: NCMapper.Tests.Tests.MapValidatorConsistencyTests.FieldSource -> NCMapper.Tests.Tests.MapValidatorConsistencyTests.FieldTarget (MapFrom channel)
+            var __mfAttr252 = new global::NCMapper.Attributes.MapFromAttribute(typeof(NCMapper.Tests.Tests.MapValidatorConsistencyTests.FieldSource));
+            var __meta252 = new global::NCMapper.Runtime.RuntimeMapperMetadata
             {
                 SourceType = typeof(NCMapper.Tests.Tests.MapValidatorConsistencyTests.FieldSource),
                 TargetType = typeof(NCMapper.Tests.Tests.MapValidatorConsistencyTests.FieldTarget),
@@ -33734,7 +34737,7 @@ namespace NCMapper.Runtime
                                 TypeName = "string",
                                 TypeRef = typeof(string),
                                 HasMapFromAttribute = true,
-                                MapFromAttribute = __mfAttr246,
+                                MapFromAttribute = __mfAttr252,
                                 HasMapIgnore = false,
                                 MapIgnoreDirection = 0,
                                 HasOverrideIgnore = false,
@@ -33774,7 +34777,7 @@ namespace NCMapper.Runtime
                         TypeName = "string",
                         TypeRef = typeof(string),
                         HasMapFromAttribute = true,
-                        MapFromAttribute = __mfAttr246,
+                        MapFromAttribute = __mfAttr252,
                         HasMapIgnore = false,
                         MapIgnoreDirection = 0,
                         HasOverrideIgnore = false,
@@ -33793,10 +34796,10 @@ namespace NCMapper.Runtime
                     },
                 },
             };
-            global::NCMapper.Runtime.RuntimeSnapshotPair<NCMapper.Tests.Tests.MapValidatorConsistencyTests.FieldSource, NCMapper.Tests.Tests.MapValidatorConsistencyTests.FieldTarget>.Metadata = __meta246;
-            global::NCMapper.Runtime.RuntimeSnapshotStore.Register(__meta246);
-            // pair 247: NCMapper.Tests.Tests.MsRAnimal -> NCMapper.Tests.Tests.MsRAnimalDto (Fluent channel)
-            var __meta247 = new global::NCMapper.Runtime.RuntimeMapperMetadata
+            global::NCMapper.Runtime.RuntimeSnapshotPair<NCMapper.Tests.Tests.MapValidatorConsistencyTests.FieldSource, NCMapper.Tests.Tests.MapValidatorConsistencyTests.FieldTarget>.Metadata = __meta252;
+            global::NCMapper.Runtime.RuntimeSnapshotStore.Register(__meta252);
+            // pair 253: NCMapper.Tests.Tests.MsRAnimal -> NCMapper.Tests.Tests.MsRAnimalDto (Fluent channel)
+            var __meta253 = new global::NCMapper.Runtime.RuntimeMapperMetadata
             {
                 SourceType = typeof(NCMapper.Tests.Tests.MsRAnimal),
                 TargetType = typeof(NCMapper.Tests.Tests.MsRAnimalDto),
@@ -33877,10 +34880,10 @@ namespace NCMapper.Runtime
                     },
                 },
             };
-            global::NCMapper.Runtime.RuntimeSnapshotPair<NCMapper.Tests.Tests.MsRAnimal, NCMapper.Tests.Tests.MsRAnimalDto>.Metadata = __meta247;
-            global::NCMapper.Runtime.RuntimeSnapshotStore.Register(__meta247);
-            // pair 248: NCMapper.Tests.Tests.MsRCat -> NCMapper.Tests.Tests.MsRCatDto (Fluent channel)
-            var __meta248 = new global::NCMapper.Runtime.RuntimeMapperMetadata
+            global::NCMapper.Runtime.RuntimeSnapshotPair<NCMapper.Tests.Tests.MsRAnimal, NCMapper.Tests.Tests.MsRAnimalDto>.Metadata = __meta253;
+            global::NCMapper.Runtime.RuntimeSnapshotStore.Register(__meta253);
+            // pair 254: NCMapper.Tests.Tests.MsRCat -> NCMapper.Tests.Tests.MsRCatDto (Fluent channel)
+            var __meta254 = new global::NCMapper.Runtime.RuntimeMapperMetadata
             {
                 SourceType = typeof(NCMapper.Tests.Tests.MsRCat),
                 TargetType = typeof(NCMapper.Tests.Tests.MsRCatDto),
@@ -34023,10 +35026,10 @@ namespace NCMapper.Runtime
                     },
                 },
             };
-            global::NCMapper.Runtime.RuntimeSnapshotPair<NCMapper.Tests.Tests.MsRCat, NCMapper.Tests.Tests.MsRCatDto>.Metadata = __meta248;
-            global::NCMapper.Runtime.RuntimeSnapshotStore.Register(__meta248);
-            // pair 249: NCMapper.Tests.Tests.MsRDog -> NCMapper.Tests.Tests.MsRDogDto (Fluent channel)
-            var __meta249 = new global::NCMapper.Runtime.RuntimeMapperMetadata
+            global::NCMapper.Runtime.RuntimeSnapshotPair<NCMapper.Tests.Tests.MsRCat, NCMapper.Tests.Tests.MsRCatDto>.Metadata = __meta254;
+            global::NCMapper.Runtime.RuntimeSnapshotStore.Register(__meta254);
+            // pair 255: NCMapper.Tests.Tests.MsRDog -> NCMapper.Tests.Tests.MsRDogDto (Fluent channel)
+            var __meta255 = new global::NCMapper.Runtime.RuntimeMapperMetadata
             {
                 SourceType = typeof(NCMapper.Tests.Tests.MsRDog),
                 TargetType = typeof(NCMapper.Tests.Tests.MsRDogDto),
@@ -34169,10 +35172,10 @@ namespace NCMapper.Runtime
                     },
                 },
             };
-            global::NCMapper.Runtime.RuntimeSnapshotPair<NCMapper.Tests.Tests.MsRDog, NCMapper.Tests.Tests.MsRDogDto>.Metadata = __meta249;
-            global::NCMapper.Runtime.RuntimeSnapshotStore.Register(__meta249);
-            // pair 250: NCMapper.Tests.Tests.MsROAnimal -> NCMapper.Tests.Tests.MsROAnimalDto (Fluent channel)
-            var __meta250 = new global::NCMapper.Runtime.RuntimeMapperMetadata
+            global::NCMapper.Runtime.RuntimeSnapshotPair<NCMapper.Tests.Tests.MsRDog, NCMapper.Tests.Tests.MsRDogDto>.Metadata = __meta255;
+            global::NCMapper.Runtime.RuntimeSnapshotStore.Register(__meta255);
+            // pair 256: NCMapper.Tests.Tests.MsROAnimal -> NCMapper.Tests.Tests.MsROAnimalDto (Fluent channel)
+            var __meta256 = new global::NCMapper.Runtime.RuntimeMapperMetadata
             {
                 SourceType = typeof(NCMapper.Tests.Tests.MsROAnimal),
                 TargetType = typeof(NCMapper.Tests.Tests.MsROAnimalDto),
@@ -34253,10 +35256,10 @@ namespace NCMapper.Runtime
                     },
                 },
             };
-            global::NCMapper.Runtime.RuntimeSnapshotPair<NCMapper.Tests.Tests.MsROAnimal, NCMapper.Tests.Tests.MsROAnimalDto>.Metadata = __meta250;
-            global::NCMapper.Runtime.RuntimeSnapshotStore.Register(__meta250);
-            // pair 251: NCMapper.Tests.Tests.MsRODog -> NCMapper.Tests.Tests.MsRODogDto (Fluent channel)
-            var __meta251 = new global::NCMapper.Runtime.RuntimeMapperMetadata
+            global::NCMapper.Runtime.RuntimeSnapshotPair<NCMapper.Tests.Tests.MsROAnimal, NCMapper.Tests.Tests.MsROAnimalDto>.Metadata = __meta256;
+            global::NCMapper.Runtime.RuntimeSnapshotStore.Register(__meta256);
+            // pair 257: NCMapper.Tests.Tests.MsRODog -> NCMapper.Tests.Tests.MsRODogDto (Fluent channel)
+            var __meta257 = new global::NCMapper.Runtime.RuntimeMapperMetadata
             {
                 SourceType = typeof(NCMapper.Tests.Tests.MsRODog),
                 TargetType = typeof(NCMapper.Tests.Tests.MsRODogDto),
@@ -34399,10 +35402,10 @@ namespace NCMapper.Runtime
                     },
                 },
             };
-            global::NCMapper.Runtime.RuntimeSnapshotPair<NCMapper.Tests.Tests.MsRODog, NCMapper.Tests.Tests.MsRODogDto>.Metadata = __meta251;
-            global::NCMapper.Runtime.RuntimeSnapshotStore.Register(__meta251);
-            // pair 252: NCMapper.Tests.Tests.MsROPuppy -> NCMapper.Tests.Tests.MsROPuppyDto (Fluent channel)
-            var __meta252 = new global::NCMapper.Runtime.RuntimeMapperMetadata
+            global::NCMapper.Runtime.RuntimeSnapshotPair<NCMapper.Tests.Tests.MsRODog, NCMapper.Tests.Tests.MsRODogDto>.Metadata = __meta257;
+            global::NCMapper.Runtime.RuntimeSnapshotStore.Register(__meta257);
+            // pair 258: NCMapper.Tests.Tests.MsROPuppy -> NCMapper.Tests.Tests.MsROPuppyDto (Fluent channel)
+            var __meta258 = new global::NCMapper.Runtime.RuntimeMapperMetadata
             {
                 SourceType = typeof(NCMapper.Tests.Tests.MsROPuppy),
                 TargetType = typeof(NCMapper.Tests.Tests.MsROPuppyDto),
@@ -34608,11 +35611,11 @@ namespace NCMapper.Runtime
                     },
                 },
             };
-            global::NCMapper.Runtime.RuntimeSnapshotPair<NCMapper.Tests.Tests.MsROPuppy, NCMapper.Tests.Tests.MsROPuppyDto>.Metadata = __meta252;
-            global::NCMapper.Runtime.RuntimeSnapshotStore.Register(__meta252);
-            // pair 253: NCMapper.Tests.Tests.MultiSourceOrderEntity -> NCMapper.Tests.Tests.MultiSourceComposeDto (MapFrom channel)
-            var __mfAttr253 = new global::NCMapper.Attributes.MapFromAttribute(typeof(NCMapper.Tests.Tests.MultiSourceOrderEntity));
-            var __meta253 = new global::NCMapper.Runtime.RuntimeMapperMetadata
+            global::NCMapper.Runtime.RuntimeSnapshotPair<NCMapper.Tests.Tests.MsROPuppy, NCMapper.Tests.Tests.MsROPuppyDto>.Metadata = __meta258;
+            global::NCMapper.Runtime.RuntimeSnapshotStore.Register(__meta258);
+            // pair 259: NCMapper.Tests.Tests.MultiSourceOrderEntity -> NCMapper.Tests.Tests.MultiSourceComposeDto (MapFrom channel)
+            var __mfAttr259 = new global::NCMapper.Attributes.MapFromAttribute(typeof(NCMapper.Tests.Tests.MultiSourceOrderEntity));
+            var __meta259 = new global::NCMapper.Runtime.RuntimeMapperMetadata
             {
                 SourceType = typeof(NCMapper.Tests.Tests.MultiSourceOrderEntity),
                 TargetType = typeof(NCMapper.Tests.Tests.MultiSourceComposeDto),
@@ -34633,7 +35636,7 @@ namespace NCMapper.Runtime
                                 TypeName = "int",
                                 TypeRef = typeof(int),
                                 HasMapFromAttribute = true,
-                                MapFromAttribute = __mfAttr253,
+                                MapFromAttribute = __mfAttr259,
                                 HasMapIgnore = false,
                                 MapIgnoreDirection = 0,
                                 HasOverrideIgnore = false,
@@ -34673,7 +35676,7 @@ namespace NCMapper.Runtime
                                 TypeName = "decimal",
                                 TypeRef = typeof(decimal),
                                 HasMapFromAttribute = true,
-                                MapFromAttribute = __mfAttr253,
+                                MapFromAttribute = __mfAttr259,
                                 HasMapIgnore = false,
                                 MapIgnoreDirection = 0,
                                 HasOverrideIgnore = false,
@@ -34744,7 +35747,7 @@ namespace NCMapper.Runtime
                         TypeName = "int",
                         TypeRef = typeof(int),
                         HasMapFromAttribute = true,
-                        MapFromAttribute = __mfAttr253,
+                        MapFromAttribute = __mfAttr259,
                         HasMapIgnore = false,
                         MapIgnoreDirection = 0,
                         HasOverrideIgnore = false,
@@ -34767,7 +35770,7 @@ namespace NCMapper.Runtime
                         TypeName = "decimal",
                         TypeRef = typeof(decimal),
                         HasMapFromAttribute = true,
-                        MapFromAttribute = __mfAttr253,
+                        MapFromAttribute = __mfAttr259,
                         HasMapIgnore = false,
                         MapIgnoreDirection = 0,
                         HasOverrideIgnore = false,
@@ -34790,7 +35793,7 @@ namespace NCMapper.Runtime
                         TypeName = "string",
                         TypeRef = typeof(string),
                         HasMapFromAttribute = true,
-                        MapFromAttribute = __mfAttr253,
+                        MapFromAttribute = __mfAttr259,
                         HasMapIgnore = false,
                         MapIgnoreDirection = 0,
                         HasOverrideIgnore = false,
@@ -34813,7 +35816,7 @@ namespace NCMapper.Runtime
                         TypeName = "int",
                         TypeRef = typeof(int),
                         HasMapFromAttribute = true,
-                        MapFromAttribute = __mfAttr253,
+                        MapFromAttribute = __mfAttr259,
                         HasMapIgnore = false,
                         MapIgnoreDirection = 0,
                         HasOverrideIgnore = false,
@@ -34832,11 +35835,11 @@ namespace NCMapper.Runtime
                     },
                 },
             };
-            global::NCMapper.Runtime.RuntimeSnapshotPair<NCMapper.Tests.Tests.MultiSourceOrderEntity, NCMapper.Tests.Tests.MultiSourceComposeDto>.Metadata = __meta253;
-            global::NCMapper.Runtime.RuntimeSnapshotStore.Register(__meta253);
-            // pair 254: NCMapper.Tests.Tests.MultiSourceOrderEntity -> NCMapper.Tests.Tests.MultiSourceWithProductDto (MapFrom channel)
-            var __mfAttr254 = new global::NCMapper.Attributes.MapFromAttribute(typeof(NCMapper.Tests.Tests.MultiSourceOrderEntity));
-            var __meta254 = new global::NCMapper.Runtime.RuntimeMapperMetadata
+            global::NCMapper.Runtime.RuntimeSnapshotPair<NCMapper.Tests.Tests.MultiSourceOrderEntity, NCMapper.Tests.Tests.MultiSourceComposeDto>.Metadata = __meta259;
+            global::NCMapper.Runtime.RuntimeSnapshotStore.Register(__meta259);
+            // pair 260: NCMapper.Tests.Tests.MultiSourceOrderEntity -> NCMapper.Tests.Tests.MultiSourceWithProductDto (MapFrom channel)
+            var __mfAttr260 = new global::NCMapper.Attributes.MapFromAttribute(typeof(NCMapper.Tests.Tests.MultiSourceOrderEntity));
+            var __meta260 = new global::NCMapper.Runtime.RuntimeMapperMetadata
             {
                 SourceType = typeof(NCMapper.Tests.Tests.MultiSourceOrderEntity),
                 TargetType = typeof(NCMapper.Tests.Tests.MultiSourceWithProductDto),
@@ -34857,7 +35860,7 @@ namespace NCMapper.Runtime
                                 TypeName = "int",
                                 TypeRef = typeof(int),
                                 HasMapFromAttribute = true,
-                                MapFromAttribute = __mfAttr254,
+                                MapFromAttribute = __mfAttr260,
                                 HasMapIgnore = false,
                                 MapIgnoreDirection = 0,
                                 HasOverrideIgnore = false,
@@ -34897,7 +35900,7 @@ namespace NCMapper.Runtime
                                 TypeName = "decimal",
                                 TypeRef = typeof(decimal),
                                 HasMapFromAttribute = true,
-                                MapFromAttribute = __mfAttr254,
+                                MapFromAttribute = __mfAttr260,
                                 HasMapIgnore = false,
                                 MapIgnoreDirection = 0,
                                 HasOverrideIgnore = false,
@@ -34968,7 +35971,7 @@ namespace NCMapper.Runtime
                         TypeName = "int",
                         TypeRef = typeof(int),
                         HasMapFromAttribute = true,
-                        MapFromAttribute = __mfAttr254,
+                        MapFromAttribute = __mfAttr260,
                         HasMapIgnore = false,
                         MapIgnoreDirection = 0,
                         HasOverrideIgnore = false,
@@ -34991,7 +35994,7 @@ namespace NCMapper.Runtime
                         TypeName = "decimal",
                         TypeRef = typeof(decimal),
                         HasMapFromAttribute = true,
-                        MapFromAttribute = __mfAttr254,
+                        MapFromAttribute = __mfAttr260,
                         HasMapIgnore = false,
                         MapIgnoreDirection = 0,
                         HasOverrideIgnore = false,
@@ -35014,7 +36017,7 @@ namespace NCMapper.Runtime
                         TypeName = "string",
                         TypeRef = typeof(string),
                         HasMapFromAttribute = true,
-                        MapFromAttribute = __mfAttr254,
+                        MapFromAttribute = __mfAttr260,
                         HasMapIgnore = false,
                         MapIgnoreDirection = 0,
                         HasOverrideIgnore = false,
@@ -35037,7 +36040,7 @@ namespace NCMapper.Runtime
                         TypeName = "string",
                         TypeRef = typeof(string),
                         HasMapFromAttribute = true,
-                        MapFromAttribute = __mfAttr254,
+                        MapFromAttribute = __mfAttr260,
                         HasMapIgnore = false,
                         MapIgnoreDirection = 0,
                         HasOverrideIgnore = false,
@@ -35056,11 +36059,11 @@ namespace NCMapper.Runtime
                     },
                 },
             };
-            global::NCMapper.Runtime.RuntimeSnapshotPair<NCMapper.Tests.Tests.MultiSourceOrderEntity, NCMapper.Tests.Tests.MultiSourceWithProductDto>.Metadata = __meta254;
-            global::NCMapper.Runtime.RuntimeSnapshotStore.Register(__meta254);
-            // pair 255: NCMapper.Tests.Tests.NoPublicConstructorTests.NoPublicCtorSource -> NCMapper.Tests.Tests.NoPublicConstructorTests.InternalCtorDto (MapFrom channel)
-            var __mfAttr255 = new global::NCMapper.Attributes.MapFromAttribute(typeof(NCMapper.Tests.Tests.NoPublicConstructorTests.NoPublicCtorSource));
-            var __meta255 = new global::NCMapper.Runtime.RuntimeMapperMetadata
+            global::NCMapper.Runtime.RuntimeSnapshotPair<NCMapper.Tests.Tests.MultiSourceOrderEntity, NCMapper.Tests.Tests.MultiSourceWithProductDto>.Metadata = __meta260;
+            global::NCMapper.Runtime.RuntimeSnapshotStore.Register(__meta260);
+            // pair 261: NCMapper.Tests.Tests.NoPublicConstructorTests.NoPublicCtorSource -> NCMapper.Tests.Tests.NoPublicConstructorTests.InternalCtorDto (MapFrom channel)
+            var __mfAttr261 = new global::NCMapper.Attributes.MapFromAttribute(typeof(NCMapper.Tests.Tests.NoPublicConstructorTests.NoPublicCtorSource));
+            var __meta261 = new global::NCMapper.Runtime.RuntimeMapperMetadata
             {
                 SourceType = typeof(NCMapper.Tests.Tests.NoPublicConstructorTests.NoPublicCtorSource),
                 TargetType = typeof(NCMapper.Tests.Tests.NoPublicConstructorTests.InternalCtorDto),
@@ -35081,7 +36084,7 @@ namespace NCMapper.Runtime
                                 TypeName = "string",
                                 TypeRef = typeof(string),
                                 HasMapFromAttribute = true,
-                                MapFromAttribute = __mfAttr255,
+                                MapFromAttribute = __mfAttr261,
                                 HasMapIgnore = false,
                                 MapIgnoreDirection = 0,
                                 HasOverrideIgnore = false,
@@ -35121,7 +36124,7 @@ namespace NCMapper.Runtime
                                 TypeName = "int",
                                 TypeRef = typeof(int),
                                 HasMapFromAttribute = true,
-                                MapFromAttribute = __mfAttr255,
+                                MapFromAttribute = __mfAttr261,
                                 HasMapIgnore = false,
                                 MapIgnoreDirection = 0,
                                 HasOverrideIgnore = false,
@@ -35161,7 +36164,7 @@ namespace NCMapper.Runtime
                         TypeName = "string",
                         TypeRef = typeof(string),
                         HasMapFromAttribute = true,
-                        MapFromAttribute = __mfAttr255,
+                        MapFromAttribute = __mfAttr261,
                         HasMapIgnore = false,
                         MapIgnoreDirection = 0,
                         HasOverrideIgnore = false,
@@ -35184,7 +36187,7 @@ namespace NCMapper.Runtime
                         TypeName = "int",
                         TypeRef = typeof(int),
                         HasMapFromAttribute = true,
-                        MapFromAttribute = __mfAttr255,
+                        MapFromAttribute = __mfAttr261,
                         HasMapIgnore = false,
                         MapIgnoreDirection = 0,
                         HasOverrideIgnore = false,
@@ -35203,11 +36206,11 @@ namespace NCMapper.Runtime
                     },
                 },
             };
-            global::NCMapper.Runtime.RuntimeSnapshotPair<NCMapper.Tests.Tests.NoPublicConstructorTests.NoPublicCtorSource, NCMapper.Tests.Tests.NoPublicConstructorTests.InternalCtorDto>.Metadata = __meta255;
-            global::NCMapper.Runtime.RuntimeSnapshotStore.Register(__meta255);
-            // pair 256: NCMapper.Tests.Tests.NoPublicConstructorTests.NoPublicCtorSource -> NCMapper.Tests.Tests.NoPublicConstructorTests.PrivateCtorDto (MapFrom channel)
-            var __mfAttr256 = new global::NCMapper.Attributes.MapFromAttribute(typeof(NCMapper.Tests.Tests.NoPublicConstructorTests.NoPublicCtorSource));
-            var __meta256 = new global::NCMapper.Runtime.RuntimeMapperMetadata
+            global::NCMapper.Runtime.RuntimeSnapshotPair<NCMapper.Tests.Tests.NoPublicConstructorTests.NoPublicCtorSource, NCMapper.Tests.Tests.NoPublicConstructorTests.InternalCtorDto>.Metadata = __meta261;
+            global::NCMapper.Runtime.RuntimeSnapshotStore.Register(__meta261);
+            // pair 262: NCMapper.Tests.Tests.NoPublicConstructorTests.NoPublicCtorSource -> NCMapper.Tests.Tests.NoPublicConstructorTests.PrivateCtorDto (MapFrom channel)
+            var __mfAttr262 = new global::NCMapper.Attributes.MapFromAttribute(typeof(NCMapper.Tests.Tests.NoPublicConstructorTests.NoPublicCtorSource));
+            var __meta262 = new global::NCMapper.Runtime.RuntimeMapperMetadata
             {
                 SourceType = typeof(NCMapper.Tests.Tests.NoPublicConstructorTests.NoPublicCtorSource),
                 TargetType = typeof(NCMapper.Tests.Tests.NoPublicConstructorTests.PrivateCtorDto),
@@ -35228,7 +36231,7 @@ namespace NCMapper.Runtime
                                 TypeName = "string",
                                 TypeRef = typeof(string),
                                 HasMapFromAttribute = true,
-                                MapFromAttribute = __mfAttr256,
+                                MapFromAttribute = __mfAttr262,
                                 HasMapIgnore = false,
                                 MapIgnoreDirection = 0,
                                 HasOverrideIgnore = false,
@@ -35268,7 +36271,7 @@ namespace NCMapper.Runtime
                                 TypeName = "int",
                                 TypeRef = typeof(int),
                                 HasMapFromAttribute = true,
-                                MapFromAttribute = __mfAttr256,
+                                MapFromAttribute = __mfAttr262,
                                 HasMapIgnore = false,
                                 MapIgnoreDirection = 0,
                                 HasOverrideIgnore = false,
@@ -35308,7 +36311,7 @@ namespace NCMapper.Runtime
                         TypeName = "string",
                         TypeRef = typeof(string),
                         HasMapFromAttribute = true,
-                        MapFromAttribute = __mfAttr256,
+                        MapFromAttribute = __mfAttr262,
                         HasMapIgnore = false,
                         MapIgnoreDirection = 0,
                         HasOverrideIgnore = false,
@@ -35331,7 +36334,7 @@ namespace NCMapper.Runtime
                         TypeName = "int",
                         TypeRef = typeof(int),
                         HasMapFromAttribute = true,
-                        MapFromAttribute = __mfAttr256,
+                        MapFromAttribute = __mfAttr262,
                         HasMapIgnore = false,
                         MapIgnoreDirection = 0,
                         HasOverrideIgnore = false,
@@ -35350,11 +36353,11 @@ namespace NCMapper.Runtime
                     },
                 },
             };
-            global::NCMapper.Runtime.RuntimeSnapshotPair<NCMapper.Tests.Tests.NoPublicConstructorTests.NoPublicCtorSource, NCMapper.Tests.Tests.NoPublicConstructorTests.PrivateCtorDto>.Metadata = __meta256;
-            global::NCMapper.Runtime.RuntimeSnapshotStore.Register(__meta256);
-            // pair 257: NCMapper.Tests.Tests.ObjectToJsonSource -> NCMapper.Tests.Tests.ObjectToJsonDto (MapFrom channel)
-            var __mfAttr257 = new global::NCMapper.Attributes.MapFromAttribute(typeof(NCMapper.Tests.Tests.ObjectToJsonSource));
-            var __meta257 = new global::NCMapper.Runtime.RuntimeMapperMetadata
+            global::NCMapper.Runtime.RuntimeSnapshotPair<NCMapper.Tests.Tests.NoPublicConstructorTests.NoPublicCtorSource, NCMapper.Tests.Tests.NoPublicConstructorTests.PrivateCtorDto>.Metadata = __meta262;
+            global::NCMapper.Runtime.RuntimeSnapshotStore.Register(__meta262);
+            // pair 263: NCMapper.Tests.Tests.ObjectToJsonSource -> NCMapper.Tests.Tests.ObjectToJsonDto (MapFrom channel)
+            var __mfAttr263 = new global::NCMapper.Attributes.MapFromAttribute(typeof(NCMapper.Tests.Tests.ObjectToJsonSource));
+            var __meta263 = new global::NCMapper.Runtime.RuntimeMapperMetadata
             {
                 SourceType = typeof(NCMapper.Tests.Tests.ObjectToJsonSource),
                 TargetType = typeof(NCMapper.Tests.Tests.ObjectToJsonDto),
@@ -35375,7 +36378,7 @@ namespace NCMapper.Runtime
                                 TypeName = "int",
                                 TypeRef = typeof(int),
                                 HasMapFromAttribute = true,
-                                MapFromAttribute = __mfAttr257,
+                                MapFromAttribute = __mfAttr263,
                                 HasMapIgnore = false,
                                 MapIgnoreDirection = 0,
                                 HasOverrideIgnore = false,
@@ -35415,7 +36418,7 @@ namespace NCMapper.Runtime
                                 TypeName = "string",
                                 TypeRef = typeof(string),
                                 HasMapFromAttribute = true,
-                                MapFromAttribute = __mfAttr257,
+                                MapFromAttribute = __mfAttr263,
                                 HasMapIgnore = false,
                                 MapIgnoreDirection = 0,
                                 HasOverrideIgnore = false,
@@ -35455,7 +36458,7 @@ namespace NCMapper.Runtime
                         TypeName = "int",
                         TypeRef = typeof(int),
                         HasMapFromAttribute = true,
-                        MapFromAttribute = __mfAttr257,
+                        MapFromAttribute = __mfAttr263,
                         HasMapIgnore = false,
                         MapIgnoreDirection = 0,
                         HasOverrideIgnore = false,
@@ -35478,7 +36481,7 @@ namespace NCMapper.Runtime
                         TypeName = "string",
                         TypeRef = typeof(string),
                         HasMapFromAttribute = true,
-                        MapFromAttribute = __mfAttr257,
+                        MapFromAttribute = __mfAttr263,
                         HasMapIgnore = false,
                         MapIgnoreDirection = 0,
                         HasOverrideIgnore = false,
@@ -35497,11 +36500,11 @@ namespace NCMapper.Runtime
                     },
                 },
             };
-            global::NCMapper.Runtime.RuntimeSnapshotPair<NCMapper.Tests.Tests.ObjectToJsonSource, NCMapper.Tests.Tests.ObjectToJsonDto>.Metadata = __meta257;
-            global::NCMapper.Runtime.RuntimeSnapshotStore.Register(__meta257);
-            // pair 258: NCMapper.Tests.Tests.OrderOverlapEntity -> NCMapper.Tests.Tests.OverlapDto (MapFrom channel)
-            var __mfAttr258 = new global::NCMapper.Attributes.MapFromAttribute(typeof(NCMapper.Tests.Tests.OrderOverlapEntity));
-            var __meta258 = new global::NCMapper.Runtime.RuntimeMapperMetadata
+            global::NCMapper.Runtime.RuntimeSnapshotPair<NCMapper.Tests.Tests.ObjectToJsonSource, NCMapper.Tests.Tests.ObjectToJsonDto>.Metadata = __meta263;
+            global::NCMapper.Runtime.RuntimeSnapshotStore.Register(__meta263);
+            // pair 264: NCMapper.Tests.Tests.OrderOverlapEntity -> NCMapper.Tests.Tests.OverlapDto (MapFrom channel)
+            var __mfAttr264 = new global::NCMapper.Attributes.MapFromAttribute(typeof(NCMapper.Tests.Tests.OrderOverlapEntity));
+            var __meta264 = new global::NCMapper.Runtime.RuntimeMapperMetadata
             {
                 SourceType = typeof(NCMapper.Tests.Tests.OrderOverlapEntity),
                 TargetType = typeof(NCMapper.Tests.Tests.OverlapDto),
@@ -35522,7 +36525,7 @@ namespace NCMapper.Runtime
                                 TypeName = "string",
                                 TypeRef = typeof(string),
                                 HasMapFromAttribute = true,
-                                MapFromAttribute = __mfAttr258,
+                                MapFromAttribute = __mfAttr264,
                                 HasMapIgnore = false,
                                 MapIgnoreDirection = 0,
                                 HasOverrideIgnore = false,
@@ -35607,7 +36610,7 @@ namespace NCMapper.Runtime
                         TypeName = "string",
                         TypeRef = typeof(string),
                         HasMapFromAttribute = true,
-                        MapFromAttribute = __mfAttr258,
+                        MapFromAttribute = __mfAttr264,
                         HasMapIgnore = false,
                         MapIgnoreDirection = 0,
                         HasOverrideIgnore = false,
@@ -35630,7 +36633,7 @@ namespace NCMapper.Runtime
                         TypeName = "string",
                         TypeRef = typeof(string),
                         HasMapFromAttribute = true,
-                        MapFromAttribute = __mfAttr258,
+                        MapFromAttribute = __mfAttr264,
                         HasMapIgnore = false,
                         MapIgnoreDirection = 0,
                         HasOverrideIgnore = false,
@@ -35653,7 +36656,7 @@ namespace NCMapper.Runtime
                         TypeName = "string",
                         TypeRef = typeof(string),
                         HasMapFromAttribute = true,
-                        MapFromAttribute = __mfAttr258,
+                        MapFromAttribute = __mfAttr264,
                         HasMapIgnore = false,
                         MapIgnoreDirection = 0,
                         HasOverrideIgnore = false,
@@ -35676,7 +36679,7 @@ namespace NCMapper.Runtime
                         TypeName = "string",
                         TypeRef = typeof(string),
                         HasMapFromAttribute = true,
-                        MapFromAttribute = __mfAttr258,
+                        MapFromAttribute = __mfAttr264,
                         HasMapIgnore = false,
                         MapIgnoreDirection = 0,
                         HasOverrideIgnore = false,
@@ -35695,11 +36698,11 @@ namespace NCMapper.Runtime
                     },
                 },
             };
-            global::NCMapper.Runtime.RuntimeSnapshotPair<NCMapper.Tests.Tests.OrderOverlapEntity, NCMapper.Tests.Tests.OverlapDto>.Metadata = __meta258;
-            global::NCMapper.Runtime.RuntimeSnapshotStore.Register(__meta258);
-            // pair 259: NCMapper.Tests.Tests.P1Fix_T001_CacheConcurrency.B3PrimarySource -> NCMapper.Tests.Tests.P1Fix_T001_CacheConcurrency.B3ComposeDto (MapFrom channel)
-            var __mfAttr259 = new global::NCMapper.Attributes.MapFromAttribute(typeof(NCMapper.Tests.Tests.P1Fix_T001_CacheConcurrency.B3PrimarySource));
-            var __meta259 = new global::NCMapper.Runtime.RuntimeMapperMetadata
+            global::NCMapper.Runtime.RuntimeSnapshotPair<NCMapper.Tests.Tests.OrderOverlapEntity, NCMapper.Tests.Tests.OverlapDto>.Metadata = __meta264;
+            global::NCMapper.Runtime.RuntimeSnapshotStore.Register(__meta264);
+            // pair 265: NCMapper.Tests.Tests.P1Fix_T001_CacheConcurrency.B3PrimarySource -> NCMapper.Tests.Tests.P1Fix_T001_CacheConcurrency.B3ComposeDto (MapFrom channel)
+            var __mfAttr265 = new global::NCMapper.Attributes.MapFromAttribute(typeof(NCMapper.Tests.Tests.P1Fix_T001_CacheConcurrency.B3PrimarySource));
+            var __meta265 = new global::NCMapper.Runtime.RuntimeMapperMetadata
             {
                 SourceType = typeof(NCMapper.Tests.Tests.P1Fix_T001_CacheConcurrency.B3PrimarySource),
                 TargetType = typeof(NCMapper.Tests.Tests.P1Fix_T001_CacheConcurrency.B3ComposeDto),
@@ -35720,7 +36723,7 @@ namespace NCMapper.Runtime
                                 TypeName = "string",
                                 TypeRef = typeof(string),
                                 HasMapFromAttribute = true,
-                                MapFromAttribute = __mfAttr259,
+                                MapFromAttribute = __mfAttr265,
                                 HasMapIgnore = false,
                                 MapIgnoreDirection = 0,
                                 HasOverrideIgnore = false,
@@ -35760,7 +36763,7 @@ namespace NCMapper.Runtime
                                 TypeName = "int",
                                 TypeRef = typeof(int),
                                 HasMapFromAttribute = true,
-                                MapFromAttribute = __mfAttr259,
+                                MapFromAttribute = __mfAttr265,
                                 HasMapIgnore = false,
                                 MapIgnoreDirection = 0,
                                 HasOverrideIgnore = false,
@@ -35800,7 +36803,7 @@ namespace NCMapper.Runtime
                         TypeName = "string",
                         TypeRef = typeof(string),
                         HasMapFromAttribute = true,
-                        MapFromAttribute = __mfAttr259,
+                        MapFromAttribute = __mfAttr265,
                         HasMapIgnore = false,
                         MapIgnoreDirection = 0,
                         HasOverrideIgnore = false,
@@ -35823,7 +36826,7 @@ namespace NCMapper.Runtime
                         TypeName = "int",
                         TypeRef = typeof(int),
                         HasMapFromAttribute = true,
-                        MapFromAttribute = __mfAttr259,
+                        MapFromAttribute = __mfAttr265,
                         HasMapIgnore = false,
                         MapIgnoreDirection = 0,
                         HasOverrideIgnore = false,
@@ -35842,11 +36845,11 @@ namespace NCMapper.Runtime
                     },
                 },
             };
-            global::NCMapper.Runtime.RuntimeSnapshotPair<NCMapper.Tests.Tests.P1Fix_T001_CacheConcurrency.B3PrimarySource, NCMapper.Tests.Tests.P1Fix_T001_CacheConcurrency.B3ComposeDto>.Metadata = __meta259;
-            global::NCMapper.Runtime.RuntimeSnapshotStore.Register(__meta259);
-            // pair 260: NCMapper.Tests.Tests.P1Fix_T003_PipelineIdempotency.T3Derived -> NCMapper.Tests.Tests.P1Fix_T003_PipelineIdempotency.T3CDto (MapFrom channel)
-            var __mfAttr260 = new global::NCMapper.Attributes.MapFromAttribute(typeof(NCMapper.Tests.Tests.P1Fix_T003_PipelineIdempotency.T3Derived));
-            var __meta260 = new global::NCMapper.Runtime.RuntimeMapperMetadata
+            global::NCMapper.Runtime.RuntimeSnapshotPair<NCMapper.Tests.Tests.P1Fix_T001_CacheConcurrency.B3PrimarySource, NCMapper.Tests.Tests.P1Fix_T001_CacheConcurrency.B3ComposeDto>.Metadata = __meta265;
+            global::NCMapper.Runtime.RuntimeSnapshotStore.Register(__meta265);
+            // pair 266: NCMapper.Tests.Tests.P1Fix_T003_PipelineIdempotency.T3Derived -> NCMapper.Tests.Tests.P1Fix_T003_PipelineIdempotency.T3CDto (MapFrom channel)
+            var __mfAttr266 = new global::NCMapper.Attributes.MapFromAttribute(typeof(NCMapper.Tests.Tests.P1Fix_T003_PipelineIdempotency.T3Derived));
+            var __meta266 = new global::NCMapper.Runtime.RuntimeMapperMetadata
             {
                 SourceType = typeof(NCMapper.Tests.Tests.P1Fix_T003_PipelineIdempotency.T3Derived),
                 TargetType = typeof(NCMapper.Tests.Tests.P1Fix_T003_PipelineIdempotency.T3CDto),
@@ -35867,7 +36870,7 @@ namespace NCMapper.Runtime
                                 TypeName = "int",
                                 TypeRef = typeof(int),
                                 HasMapFromAttribute = true,
-                                MapFromAttribute = __mfAttr260,
+                                MapFromAttribute = __mfAttr266,
                                 HasMapIgnore = false,
                                 MapIgnoreDirection = 0,
                                 HasOverrideIgnore = false,
@@ -35907,7 +36910,7 @@ namespace NCMapper.Runtime
                         TypeName = "int",
                         TypeRef = typeof(int),
                         HasMapFromAttribute = true,
-                        MapFromAttribute = __mfAttr260,
+                        MapFromAttribute = __mfAttr266,
                         HasMapIgnore = false,
                         MapIgnoreDirection = 0,
                         HasOverrideIgnore = false,
@@ -35926,11 +36929,11 @@ namespace NCMapper.Runtime
                     },
                 },
             };
-            global::NCMapper.Runtime.RuntimeSnapshotPair<NCMapper.Tests.Tests.P1Fix_T003_PipelineIdempotency.T3Derived, NCMapper.Tests.Tests.P1Fix_T003_PipelineIdempotency.T3CDto>.Metadata = __meta260;
-            global::NCMapper.Runtime.RuntimeSnapshotStore.Register(__meta260);
-            // pair 261: NCMapper.Tests.Tests.PlanConsistencyExtendedTests.OldNewConvertUsingEntity -> NCMapper.Tests.Tests.PlanConsistencyExtendedTests.OldNewConvertUsingDto (MapFrom channel)
-            var __mfAttr261 = new global::NCMapper.Attributes.MapFromAttribute(typeof(NCMapper.Tests.Tests.PlanConsistencyExtendedTests.OldNewConvertUsingEntity));
-            var __meta261 = new global::NCMapper.Runtime.RuntimeMapperMetadata
+            global::NCMapper.Runtime.RuntimeSnapshotPair<NCMapper.Tests.Tests.P1Fix_T003_PipelineIdempotency.T3Derived, NCMapper.Tests.Tests.P1Fix_T003_PipelineIdempotency.T3CDto>.Metadata = __meta266;
+            global::NCMapper.Runtime.RuntimeSnapshotStore.Register(__meta266);
+            // pair 267: NCMapper.Tests.Tests.PlanConsistencyExtendedTests.OldNewConvertUsingEntity -> NCMapper.Tests.Tests.PlanConsistencyExtendedTests.OldNewConvertUsingDto (MapFrom channel)
+            var __mfAttr267 = new global::NCMapper.Attributes.MapFromAttribute(typeof(NCMapper.Tests.Tests.PlanConsistencyExtendedTests.OldNewConvertUsingEntity));
+            var __meta267 = new global::NCMapper.Runtime.RuntimeMapperMetadata
             {
                 SourceType = typeof(NCMapper.Tests.Tests.PlanConsistencyExtendedTests.OldNewConvertUsingEntity),
                 TargetType = typeof(NCMapper.Tests.Tests.PlanConsistencyExtendedTests.OldNewConvertUsingDto),
@@ -35951,7 +36954,7 @@ namespace NCMapper.Runtime
                                 TypeName = "string?",
                                 TypeRef = typeof(string),
                                 HasMapFromAttribute = true,
-                                MapFromAttribute = __mfAttr261,
+                                MapFromAttribute = __mfAttr267,
                                 HasMapIgnore = false,
                                 MapIgnoreDirection = 0,
                                 HasOverrideIgnore = false,
@@ -35991,7 +36994,7 @@ namespace NCMapper.Runtime
                         TypeName = "string?",
                         TypeRef = typeof(string),
                         HasMapFromAttribute = true,
-                        MapFromAttribute = __mfAttr261,
+                        MapFromAttribute = __mfAttr267,
                         HasMapIgnore = false,
                         MapIgnoreDirection = 0,
                         HasOverrideIgnore = false,
@@ -36010,11 +37013,11 @@ namespace NCMapper.Runtime
                     },
                 },
             };
-            global::NCMapper.Runtime.RuntimeSnapshotPair<NCMapper.Tests.Tests.PlanConsistencyExtendedTests.OldNewConvertUsingEntity, NCMapper.Tests.Tests.PlanConsistencyExtendedTests.OldNewConvertUsingDto>.Metadata = __meta261;
-            global::NCMapper.Runtime.RuntimeSnapshotStore.Register(__meta261);
-            // pair 262: NCMapper.Tests.Tests.PlanConsistencyExtendedTests.OldNewMaskEntity -> NCMapper.Tests.Tests.PlanConsistencyExtendedTests.OldNewMaskDto (MapFrom channel)
-            var __mfAttr262 = new global::NCMapper.Attributes.MapFromAttribute(typeof(NCMapper.Tests.Tests.PlanConsistencyExtendedTests.OldNewMaskEntity));
-            var __meta262 = new global::NCMapper.Runtime.RuntimeMapperMetadata
+            global::NCMapper.Runtime.RuntimeSnapshotPair<NCMapper.Tests.Tests.PlanConsistencyExtendedTests.OldNewConvertUsingEntity, NCMapper.Tests.Tests.PlanConsistencyExtendedTests.OldNewConvertUsingDto>.Metadata = __meta267;
+            global::NCMapper.Runtime.RuntimeSnapshotStore.Register(__meta267);
+            // pair 268: NCMapper.Tests.Tests.PlanConsistencyExtendedTests.OldNewMaskEntity -> NCMapper.Tests.Tests.PlanConsistencyExtendedTests.OldNewMaskDto (MapFrom channel)
+            var __mfAttr268 = new global::NCMapper.Attributes.MapFromAttribute(typeof(NCMapper.Tests.Tests.PlanConsistencyExtendedTests.OldNewMaskEntity));
+            var __meta268 = new global::NCMapper.Runtime.RuntimeMapperMetadata
             {
                 SourceType = typeof(NCMapper.Tests.Tests.PlanConsistencyExtendedTests.OldNewMaskEntity),
                 TargetType = typeof(NCMapper.Tests.Tests.PlanConsistencyExtendedTests.OldNewMaskDto),
@@ -36035,7 +37038,7 @@ namespace NCMapper.Runtime
                                 TypeName = "string",
                                 TypeRef = typeof(string),
                                 HasMapFromAttribute = true,
-                                MapFromAttribute = __mfAttr262,
+                                MapFromAttribute = __mfAttr268,
                                 HasMapIgnore = false,
                                 MapIgnoreDirection = 0,
                                 HasOverrideIgnore = false,
@@ -36075,7 +37078,7 @@ namespace NCMapper.Runtime
                         TypeName = "string",
                         TypeRef = typeof(string),
                         HasMapFromAttribute = true,
-                        MapFromAttribute = __mfAttr262,
+                        MapFromAttribute = __mfAttr268,
                         HasMapIgnore = false,
                         MapIgnoreDirection = 0,
                         HasOverrideIgnore = false,
@@ -36094,11 +37097,11 @@ namespace NCMapper.Runtime
                     },
                 },
             };
-            global::NCMapper.Runtime.RuntimeSnapshotPair<NCMapper.Tests.Tests.PlanConsistencyExtendedTests.OldNewMaskEntity, NCMapper.Tests.Tests.PlanConsistencyExtendedTests.OldNewMaskDto>.Metadata = __meta262;
-            global::NCMapper.Runtime.RuntimeSnapshotStore.Register(__meta262);
-            // pair 263: NCMapper.Tests.Tests.ProbeConvMaskAPrimary -> NCMapper.Tests.Tests.ProbeConvMaskADto (MapFrom channel)
-            var __mfAttr263 = new global::NCMapper.Attributes.MapFromAttribute(typeof(NCMapper.Tests.Tests.ProbeConvMaskAPrimary));
-            var __meta263 = new global::NCMapper.Runtime.RuntimeMapperMetadata
+            global::NCMapper.Runtime.RuntimeSnapshotPair<NCMapper.Tests.Tests.PlanConsistencyExtendedTests.OldNewMaskEntity, NCMapper.Tests.Tests.PlanConsistencyExtendedTests.OldNewMaskDto>.Metadata = __meta268;
+            global::NCMapper.Runtime.RuntimeSnapshotStore.Register(__meta268);
+            // pair 269: NCMapper.Tests.Tests.ProbeConvMaskAPrimary -> NCMapper.Tests.Tests.ProbeConvMaskADto (MapFrom channel)
+            var __mfAttr269 = new global::NCMapper.Attributes.MapFromAttribute(typeof(NCMapper.Tests.Tests.ProbeConvMaskAPrimary));
+            var __meta269 = new global::NCMapper.Runtime.RuntimeMapperMetadata
             {
                 SourceType = typeof(NCMapper.Tests.Tests.ProbeConvMaskAPrimary),
                 TargetType = typeof(NCMapper.Tests.Tests.ProbeConvMaskADto),
@@ -36119,7 +37122,7 @@ namespace NCMapper.Runtime
                                 TypeName = "int",
                                 TypeRef = typeof(int),
                                 HasMapFromAttribute = true,
-                                MapFromAttribute = __mfAttr263,
+                                MapFromAttribute = __mfAttr269,
                                 HasMapIgnore = false,
                                 MapIgnoreDirection = 0,
                                 HasOverrideIgnore = false,
@@ -36176,7 +37179,7 @@ namespace NCMapper.Runtime
                         TypeName = "int",
                         TypeRef = typeof(int),
                         HasMapFromAttribute = true,
-                        MapFromAttribute = __mfAttr263,
+                        MapFromAttribute = __mfAttr269,
                         HasMapIgnore = false,
                         MapIgnoreDirection = 0,
                         HasOverrideIgnore = false,
@@ -36199,7 +37202,7 @@ namespace NCMapper.Runtime
                         TypeName = "string?",
                         TypeRef = typeof(string),
                         HasMapFromAttribute = true,
-                        MapFromAttribute = __mfAttr263,
+                        MapFromAttribute = __mfAttr269,
                         HasMapIgnore = false,
                         MapIgnoreDirection = 0,
                         HasOverrideIgnore = false,
@@ -36218,11 +37221,11 @@ namespace NCMapper.Runtime
                     },
                 },
             };
-            global::NCMapper.Runtime.RuntimeSnapshotPair<NCMapper.Tests.Tests.ProbeConvMaskAPrimary, NCMapper.Tests.Tests.ProbeConvMaskADto>.Metadata = __meta263;
-            global::NCMapper.Runtime.RuntimeSnapshotStore.Register(__meta263);
-            // pair 264: NCMapper.Tests.Tests.ProbeConvMaskBPrimary -> NCMapper.Tests.Tests.ProbeConvMaskBDto (MapFrom channel)
-            var __mfAttr264 = new global::NCMapper.Attributes.MapFromAttribute(typeof(NCMapper.Tests.Tests.ProbeConvMaskBPrimary));
-            var __meta264 = new global::NCMapper.Runtime.RuntimeMapperMetadata
+            global::NCMapper.Runtime.RuntimeSnapshotPair<NCMapper.Tests.Tests.ProbeConvMaskAPrimary, NCMapper.Tests.Tests.ProbeConvMaskADto>.Metadata = __meta269;
+            global::NCMapper.Runtime.RuntimeSnapshotStore.Register(__meta269);
+            // pair 270: NCMapper.Tests.Tests.ProbeConvMaskBPrimary -> NCMapper.Tests.Tests.ProbeConvMaskBDto (MapFrom channel)
+            var __mfAttr270 = new global::NCMapper.Attributes.MapFromAttribute(typeof(NCMapper.Tests.Tests.ProbeConvMaskBPrimary));
+            var __meta270 = new global::NCMapper.Runtime.RuntimeMapperMetadata
             {
                 SourceType = typeof(NCMapper.Tests.Tests.ProbeConvMaskBPrimary),
                 TargetType = typeof(NCMapper.Tests.Tests.ProbeConvMaskBDto),
@@ -36243,7 +37246,7 @@ namespace NCMapper.Runtime
                                 TypeName = "int",
                                 TypeRef = typeof(int),
                                 HasMapFromAttribute = true,
-                                MapFromAttribute = __mfAttr264,
+                                MapFromAttribute = __mfAttr270,
                                 HasMapIgnore = false,
                                 MapIgnoreDirection = 0,
                                 HasOverrideIgnore = false,
@@ -36300,7 +37303,7 @@ namespace NCMapper.Runtime
                         TypeName = "int",
                         TypeRef = typeof(int),
                         HasMapFromAttribute = true,
-                        MapFromAttribute = __mfAttr264,
+                        MapFromAttribute = __mfAttr270,
                         HasMapIgnore = false,
                         MapIgnoreDirection = 0,
                         HasOverrideIgnore = false,
@@ -36323,7 +37326,7 @@ namespace NCMapper.Runtime
                         TypeName = "string?",
                         TypeRef = typeof(string),
                         HasMapFromAttribute = true,
-                        MapFromAttribute = __mfAttr264,
+                        MapFromAttribute = __mfAttr270,
                         HasMapIgnore = false,
                         MapIgnoreDirection = 0,
                         HasOverrideIgnore = false,
@@ -36342,11 +37345,11 @@ namespace NCMapper.Runtime
                     },
                 },
             };
-            global::NCMapper.Runtime.RuntimeSnapshotPair<NCMapper.Tests.Tests.ProbeConvMaskBPrimary, NCMapper.Tests.Tests.ProbeConvMaskBDto>.Metadata = __meta264;
-            global::NCMapper.Runtime.RuntimeSnapshotStore.Register(__meta264);
-            // pair 265: NCMapper.Tests.Tests.ProbeJsonPrimary -> NCMapper.Tests.Tests.ProbeJsonDto (MapFrom channel)
-            var __mfAttr265 = new global::NCMapper.Attributes.MapFromAttribute(typeof(NCMapper.Tests.Tests.ProbeJsonPrimary));
-            var __meta265 = new global::NCMapper.Runtime.RuntimeMapperMetadata
+            global::NCMapper.Runtime.RuntimeSnapshotPair<NCMapper.Tests.Tests.ProbeConvMaskBPrimary, NCMapper.Tests.Tests.ProbeConvMaskBDto>.Metadata = __meta270;
+            global::NCMapper.Runtime.RuntimeSnapshotStore.Register(__meta270);
+            // pair 271: NCMapper.Tests.Tests.ProbeJsonPrimary -> NCMapper.Tests.Tests.ProbeJsonDto (MapFrom channel)
+            var __mfAttr271 = new global::NCMapper.Attributes.MapFromAttribute(typeof(NCMapper.Tests.Tests.ProbeJsonPrimary));
+            var __meta271 = new global::NCMapper.Runtime.RuntimeMapperMetadata
             {
                 SourceType = typeof(NCMapper.Tests.Tests.ProbeJsonPrimary),
                 TargetType = typeof(NCMapper.Tests.Tests.ProbeJsonDto),
@@ -36367,7 +37370,7 @@ namespace NCMapper.Runtime
                                 TypeName = "int",
                                 TypeRef = typeof(int),
                                 HasMapFromAttribute = true,
-                                MapFromAttribute = __mfAttr265,
+                                MapFromAttribute = __mfAttr271,
                                 HasMapIgnore = false,
                                 MapIgnoreDirection = 0,
                                 HasOverrideIgnore = false,
@@ -36424,7 +37427,7 @@ namespace NCMapper.Runtime
                         TypeName = "int",
                         TypeRef = typeof(int),
                         HasMapFromAttribute = true,
-                        MapFromAttribute = __mfAttr265,
+                        MapFromAttribute = __mfAttr271,
                         HasMapIgnore = false,
                         MapIgnoreDirection = 0,
                         HasOverrideIgnore = false,
@@ -36447,7 +37450,7 @@ namespace NCMapper.Runtime
                         TypeName = "NCMapper.Tests.Tests.ProbeJsonDetail",
                         TypeRef = typeof(NCMapper.Tests.Tests.ProbeJsonDetail),
                         HasMapFromAttribute = true,
-                        MapFromAttribute = __mfAttr265,
+                        MapFromAttribute = __mfAttr271,
                         HasMapIgnore = false,
                         MapIgnoreDirection = 0,
                         HasOverrideIgnore = false,
@@ -36466,11 +37469,11 @@ namespace NCMapper.Runtime
                     },
                 },
             };
-            global::NCMapper.Runtime.RuntimeSnapshotPair<NCMapper.Tests.Tests.ProbeJsonPrimary, NCMapper.Tests.Tests.ProbeJsonDto>.Metadata = __meta265;
-            global::NCMapper.Runtime.RuntimeSnapshotStore.Register(__meta265);
-            // pair 266: NCMapper.Tests.Tests.ProbeMaskAPrimary -> NCMapper.Tests.Tests.ProbeMaskADto (MapFrom channel)
-            var __mfAttr266 = new global::NCMapper.Attributes.MapFromAttribute(typeof(NCMapper.Tests.Tests.ProbeMaskAPrimary));
-            var __meta266 = new global::NCMapper.Runtime.RuntimeMapperMetadata
+            global::NCMapper.Runtime.RuntimeSnapshotPair<NCMapper.Tests.Tests.ProbeJsonPrimary, NCMapper.Tests.Tests.ProbeJsonDto>.Metadata = __meta271;
+            global::NCMapper.Runtime.RuntimeSnapshotStore.Register(__meta271);
+            // pair 272: NCMapper.Tests.Tests.ProbeMaskAPrimary -> NCMapper.Tests.Tests.ProbeMaskADto (MapFrom channel)
+            var __mfAttr272 = new global::NCMapper.Attributes.MapFromAttribute(typeof(NCMapper.Tests.Tests.ProbeMaskAPrimary));
+            var __meta272 = new global::NCMapper.Runtime.RuntimeMapperMetadata
             {
                 SourceType = typeof(NCMapper.Tests.Tests.ProbeMaskAPrimary),
                 TargetType = typeof(NCMapper.Tests.Tests.ProbeMaskADto),
@@ -36491,7 +37494,7 @@ namespace NCMapper.Runtime
                                 TypeName = "int",
                                 TypeRef = typeof(int),
                                 HasMapFromAttribute = true,
-                                MapFromAttribute = __mfAttr266,
+                                MapFromAttribute = __mfAttr272,
                                 HasMapIgnore = false,
                                 MapIgnoreDirection = 0,
                                 HasOverrideIgnore = false,
@@ -36531,7 +37534,7 @@ namespace NCMapper.Runtime
                                 TypeName = "string",
                                 TypeRef = typeof(string),
                                 HasMapFromAttribute = true,
-                                MapFromAttribute = __mfAttr266,
+                                MapFromAttribute = __mfAttr272,
                                 HasMapIgnore = false,
                                 MapIgnoreDirection = 0,
                                 HasOverrideIgnore = false,
@@ -36588,7 +37591,7 @@ namespace NCMapper.Runtime
                         TypeName = "int",
                         TypeRef = typeof(int),
                         HasMapFromAttribute = true,
-                        MapFromAttribute = __mfAttr266,
+                        MapFromAttribute = __mfAttr272,
                         HasMapIgnore = false,
                         MapIgnoreDirection = 0,
                         HasOverrideIgnore = false,
@@ -36611,7 +37614,7 @@ namespace NCMapper.Runtime
                         TypeName = "string",
                         TypeRef = typeof(string),
                         HasMapFromAttribute = true,
-                        MapFromAttribute = __mfAttr266,
+                        MapFromAttribute = __mfAttr272,
                         HasMapIgnore = false,
                         MapIgnoreDirection = 0,
                         HasOverrideIgnore = false,
@@ -36634,7 +37637,7 @@ namespace NCMapper.Runtime
                         TypeName = "string",
                         TypeRef = typeof(string),
                         HasMapFromAttribute = true,
-                        MapFromAttribute = __mfAttr266,
+                        MapFromAttribute = __mfAttr272,
                         HasMapIgnore = false,
                         MapIgnoreDirection = 0,
                         HasOverrideIgnore = false,
@@ -36653,11 +37656,11 @@ namespace NCMapper.Runtime
                     },
                 },
             };
-            global::NCMapper.Runtime.RuntimeSnapshotPair<NCMapper.Tests.Tests.ProbeMaskAPrimary, NCMapper.Tests.Tests.ProbeMaskADto>.Metadata = __meta266;
-            global::NCMapper.Runtime.RuntimeSnapshotStore.Register(__meta266);
-            // pair 267: NCMapper.Tests.Tests.ProbeMaskBPrimary -> NCMapper.Tests.Tests.ProbeMaskBDto (MapFrom channel)
-            var __mfAttr267 = new global::NCMapper.Attributes.MapFromAttribute(typeof(NCMapper.Tests.Tests.ProbeMaskBPrimary));
-            var __meta267 = new global::NCMapper.Runtime.RuntimeMapperMetadata
+            global::NCMapper.Runtime.RuntimeSnapshotPair<NCMapper.Tests.Tests.ProbeMaskAPrimary, NCMapper.Tests.Tests.ProbeMaskADto>.Metadata = __meta272;
+            global::NCMapper.Runtime.RuntimeSnapshotStore.Register(__meta272);
+            // pair 273: NCMapper.Tests.Tests.ProbeMaskBPrimary -> NCMapper.Tests.Tests.ProbeMaskBDto (MapFrom channel)
+            var __mfAttr273 = new global::NCMapper.Attributes.MapFromAttribute(typeof(NCMapper.Tests.Tests.ProbeMaskBPrimary));
+            var __meta273 = new global::NCMapper.Runtime.RuntimeMapperMetadata
             {
                 SourceType = typeof(NCMapper.Tests.Tests.ProbeMaskBPrimary),
                 TargetType = typeof(NCMapper.Tests.Tests.ProbeMaskBDto),
@@ -36678,7 +37681,7 @@ namespace NCMapper.Runtime
                                 TypeName = "int",
                                 TypeRef = typeof(int),
                                 HasMapFromAttribute = true,
-                                MapFromAttribute = __mfAttr267,
+                                MapFromAttribute = __mfAttr273,
                                 HasMapIgnore = false,
                                 MapIgnoreDirection = 0,
                                 HasOverrideIgnore = false,
@@ -36718,7 +37721,7 @@ namespace NCMapper.Runtime
                                 TypeName = "string",
                                 TypeRef = typeof(string),
                                 HasMapFromAttribute = true,
-                                MapFromAttribute = __mfAttr267,
+                                MapFromAttribute = __mfAttr273,
                                 HasMapIgnore = false,
                                 MapIgnoreDirection = 0,
                                 HasOverrideIgnore = false,
@@ -36775,7 +37778,7 @@ namespace NCMapper.Runtime
                         TypeName = "int",
                         TypeRef = typeof(int),
                         HasMapFromAttribute = true,
-                        MapFromAttribute = __mfAttr267,
+                        MapFromAttribute = __mfAttr273,
                         HasMapIgnore = false,
                         MapIgnoreDirection = 0,
                         HasOverrideIgnore = false,
@@ -36798,7 +37801,7 @@ namespace NCMapper.Runtime
                         TypeName = "string",
                         TypeRef = typeof(string),
                         HasMapFromAttribute = true,
-                        MapFromAttribute = __mfAttr267,
+                        MapFromAttribute = __mfAttr273,
                         HasMapIgnore = false,
                         MapIgnoreDirection = 0,
                         HasOverrideIgnore = false,
@@ -36821,7 +37824,7 @@ namespace NCMapper.Runtime
                         TypeName = "string",
                         TypeRef = typeof(string),
                         HasMapFromAttribute = true,
-                        MapFromAttribute = __mfAttr267,
+                        MapFromAttribute = __mfAttr273,
                         HasMapIgnore = false,
                         MapIgnoreDirection = 0,
                         HasOverrideIgnore = false,
@@ -36840,11 +37843,11 @@ namespace NCMapper.Runtime
                     },
                 },
             };
-            global::NCMapper.Runtime.RuntimeSnapshotPair<NCMapper.Tests.Tests.ProbeMaskBPrimary, NCMapper.Tests.Tests.ProbeMaskBDto>.Metadata = __meta267;
-            global::NCMapper.Runtime.RuntimeSnapshotStore.Register(__meta267);
-            // pair 268: NCMapper.Tests.Tests.R18Entity -> NCMapper.Tests.Tests.R18Dto (MapFrom channel)
-            var __mfAttr268 = new global::NCMapper.Attributes.MapFromAttribute(typeof(NCMapper.Tests.Tests.R18Entity));
-            var __meta268 = new global::NCMapper.Runtime.RuntimeMapperMetadata
+            global::NCMapper.Runtime.RuntimeSnapshotPair<NCMapper.Tests.Tests.ProbeMaskBPrimary, NCMapper.Tests.Tests.ProbeMaskBDto>.Metadata = __meta273;
+            global::NCMapper.Runtime.RuntimeSnapshotStore.Register(__meta273);
+            // pair 274: NCMapper.Tests.Tests.R18Entity -> NCMapper.Tests.Tests.R18Dto (MapFrom channel)
+            var __mfAttr274 = new global::NCMapper.Attributes.MapFromAttribute(typeof(NCMapper.Tests.Tests.R18Entity));
+            var __meta274 = new global::NCMapper.Runtime.RuntimeMapperMetadata
             {
                 SourceType = typeof(NCMapper.Tests.Tests.R18Entity),
                 TargetType = typeof(NCMapper.Tests.Tests.R18Dto),
@@ -36865,7 +37868,7 @@ namespace NCMapper.Runtime
                                 TypeName = "int",
                                 TypeRef = typeof(int),
                                 HasMapFromAttribute = true,
-                                MapFromAttribute = __mfAttr268,
+                                MapFromAttribute = __mfAttr274,
                                 HasMapIgnore = false,
                                 MapIgnoreDirection = 0,
                                 HasOverrideIgnore = false,
@@ -36905,7 +37908,7 @@ namespace NCMapper.Runtime
                                 TypeName = "NCMapper.Tests.Tests.R18Config",
                                 TypeRef = typeof(NCMapper.Tests.Tests.R18Config),
                                 HasMapFromAttribute = true,
-                                MapFromAttribute = __mfAttr268,
+                                MapFromAttribute = __mfAttr274,
                                 HasMapIgnore = false,
                                 MapIgnoreDirection = 0,
                                 HasOverrideIgnore = false,
@@ -36945,7 +37948,7 @@ namespace NCMapper.Runtime
                         TypeName = "int",
                         TypeRef = typeof(int),
                         HasMapFromAttribute = true,
-                        MapFromAttribute = __mfAttr268,
+                        MapFromAttribute = __mfAttr274,
                         HasMapIgnore = false,
                         MapIgnoreDirection = 0,
                         HasOverrideIgnore = false,
@@ -36968,7 +37971,7 @@ namespace NCMapper.Runtime
                         TypeName = "NCMapper.Tests.Tests.R18Config",
                         TypeRef = typeof(NCMapper.Tests.Tests.R18Config),
                         HasMapFromAttribute = true,
-                        MapFromAttribute = __mfAttr268,
+                        MapFromAttribute = __mfAttr274,
                         HasMapIgnore = false,
                         MapIgnoreDirection = 0,
                         HasOverrideIgnore = false,
@@ -36987,11 +37990,11 @@ namespace NCMapper.Runtime
                     },
                 },
             };
-            global::NCMapper.Runtime.RuntimeSnapshotPair<NCMapper.Tests.Tests.R18Entity, NCMapper.Tests.Tests.R18Dto>.Metadata = __meta268;
-            global::NCMapper.Runtime.RuntimeSnapshotStore.Register(__meta268);
-            // pair 269: NCMapper.Tests.Tests.R18ValEntity -> NCMapper.Tests.Tests.R18ValDto (MapFrom channel)
-            var __mfAttr269 = new global::NCMapper.Attributes.MapFromAttribute(typeof(NCMapper.Tests.Tests.R18ValEntity));
-            var __meta269 = new global::NCMapper.Runtime.RuntimeMapperMetadata
+            global::NCMapper.Runtime.RuntimeSnapshotPair<NCMapper.Tests.Tests.R18Entity, NCMapper.Tests.Tests.R18Dto>.Metadata = __meta274;
+            global::NCMapper.Runtime.RuntimeSnapshotStore.Register(__meta274);
+            // pair 275: NCMapper.Tests.Tests.R18ValEntity -> NCMapper.Tests.Tests.R18ValDto (MapFrom channel)
+            var __mfAttr275 = new global::NCMapper.Attributes.MapFromAttribute(typeof(NCMapper.Tests.Tests.R18ValEntity));
+            var __meta275 = new global::NCMapper.Runtime.RuntimeMapperMetadata
             {
                 SourceType = typeof(NCMapper.Tests.Tests.R18ValEntity),
                 TargetType = typeof(NCMapper.Tests.Tests.R18ValDto),
@@ -37012,7 +38015,7 @@ namespace NCMapper.Runtime
                                 TypeName = "int",
                                 TypeRef = typeof(int),
                                 HasMapFromAttribute = true,
-                                MapFromAttribute = __mfAttr269,
+                                MapFromAttribute = __mfAttr275,
                                 HasMapIgnore = false,
                                 MapIgnoreDirection = 0,
                                 HasOverrideIgnore = false,
@@ -37052,7 +38055,7 @@ namespace NCMapper.Runtime
                         TypeName = "int",
                         TypeRef = typeof(int),
                         HasMapFromAttribute = true,
-                        MapFromAttribute = __mfAttr269,
+                        MapFromAttribute = __mfAttr275,
                         HasMapIgnore = false,
                         MapIgnoreDirection = 0,
                         HasOverrideIgnore = false,
@@ -37075,7 +38078,7 @@ namespace NCMapper.Runtime
                         TypeName = "int",
                         TypeRef = typeof(int),
                         HasMapFromAttribute = true,
-                        MapFromAttribute = __mfAttr269,
+                        MapFromAttribute = __mfAttr275,
                         HasMapIgnore = false,
                         MapIgnoreDirection = 0,
                         HasOverrideIgnore = false,
@@ -37094,11 +38097,11 @@ namespace NCMapper.Runtime
                     },
                 },
             };
-            global::NCMapper.Runtime.RuntimeSnapshotPair<NCMapper.Tests.Tests.R18ValEntity, NCMapper.Tests.Tests.R18ValDto>.Metadata = __meta269;
-            global::NCMapper.Runtime.RuntimeSnapshotStore.Register(__meta269);
-            // pair 270: NCMapper.Tests.Tests.ReverseDirectCallRuntimeTests.RdRtConvEntity -> NCMapper.Tests.Tests.ReverseDirectCallRuntimeTests.RdRtConvDto (MapFrom channel)
-            var __mfAttr270 = new global::NCMapper.Attributes.MapFromAttribute(typeof(NCMapper.Tests.Tests.ReverseDirectCallRuntimeTests.RdRtConvEntity));
-            var __meta270 = new global::NCMapper.Runtime.RuntimeMapperMetadata
+            global::NCMapper.Runtime.RuntimeSnapshotPair<NCMapper.Tests.Tests.R18ValEntity, NCMapper.Tests.Tests.R18ValDto>.Metadata = __meta275;
+            global::NCMapper.Runtime.RuntimeSnapshotStore.Register(__meta275);
+            // pair 276: NCMapper.Tests.Tests.ReverseDirectCallRuntimeTests.RdRtConvEntity -> NCMapper.Tests.Tests.ReverseDirectCallRuntimeTests.RdRtConvDto (MapFrom channel)
+            var __mfAttr276 = new global::NCMapper.Attributes.MapFromAttribute(typeof(NCMapper.Tests.Tests.ReverseDirectCallRuntimeTests.RdRtConvEntity));
+            var __meta276 = new global::NCMapper.Runtime.RuntimeMapperMetadata
             {
                 SourceType = typeof(NCMapper.Tests.Tests.ReverseDirectCallRuntimeTests.RdRtConvEntity),
                 TargetType = typeof(NCMapper.Tests.Tests.ReverseDirectCallRuntimeTests.RdRtConvDto),
@@ -37119,7 +38122,7 @@ namespace NCMapper.Runtime
                                 TypeName = "int",
                                 TypeRef = typeof(int),
                                 HasMapFromAttribute = true,
-                                MapFromAttribute = __mfAttr270,
+                                MapFromAttribute = __mfAttr276,
                                 HasMapIgnore = false,
                                 MapIgnoreDirection = 0,
                                 HasOverrideIgnore = false,
@@ -37159,7 +38162,7 @@ namespace NCMapper.Runtime
                                 TypeName = "string",
                                 TypeRef = typeof(string),
                                 HasMapFromAttribute = true,
-                                MapFromAttribute = __mfAttr270,
+                                MapFromAttribute = __mfAttr276,
                                 HasMapIgnore = false,
                                 MapIgnoreDirection = 0,
                                 HasOverrideIgnore = false,
@@ -37199,7 +38202,7 @@ namespace NCMapper.Runtime
                         TypeName = "int",
                         TypeRef = typeof(int),
                         HasMapFromAttribute = true,
-                        MapFromAttribute = __mfAttr270,
+                        MapFromAttribute = __mfAttr276,
                         HasMapIgnore = false,
                         MapIgnoreDirection = 0,
                         HasOverrideIgnore = false,
@@ -37222,7 +38225,7 @@ namespace NCMapper.Runtime
                         TypeName = "string",
                         TypeRef = typeof(string),
                         HasMapFromAttribute = true,
-                        MapFromAttribute = __mfAttr270,
+                        MapFromAttribute = __mfAttr276,
                         HasMapIgnore = false,
                         MapIgnoreDirection = 0,
                         HasOverrideIgnore = false,
@@ -37241,11 +38244,11 @@ namespace NCMapper.Runtime
                     },
                 },
             };
-            global::NCMapper.Runtime.RuntimeSnapshotPair<NCMapper.Tests.Tests.ReverseDirectCallRuntimeTests.RdRtConvEntity, NCMapper.Tests.Tests.ReverseDirectCallRuntimeTests.RdRtConvDto>.Metadata = __meta270;
-            global::NCMapper.Runtime.RuntimeSnapshotStore.Register(__meta270);
-            // pair 271: NCMapper.Tests.Tests.ReverseDirectCallRuntimeTests.RdRtEntity -> NCMapper.Tests.Tests.ReverseDirectCallRuntimeTests.RdRtDto (MapFrom channel)
-            var __mfAttr271 = new global::NCMapper.Attributes.MapFromAttribute(typeof(NCMapper.Tests.Tests.ReverseDirectCallRuntimeTests.RdRtEntity));
-            var __meta271 = new global::NCMapper.Runtime.RuntimeMapperMetadata
+            global::NCMapper.Runtime.RuntimeSnapshotPair<NCMapper.Tests.Tests.ReverseDirectCallRuntimeTests.RdRtConvEntity, NCMapper.Tests.Tests.ReverseDirectCallRuntimeTests.RdRtConvDto>.Metadata = __meta276;
+            global::NCMapper.Runtime.RuntimeSnapshotStore.Register(__meta276);
+            // pair 277: NCMapper.Tests.Tests.ReverseDirectCallRuntimeTests.RdRtEntity -> NCMapper.Tests.Tests.ReverseDirectCallRuntimeTests.RdRtDto (MapFrom channel)
+            var __mfAttr277 = new global::NCMapper.Attributes.MapFromAttribute(typeof(NCMapper.Tests.Tests.ReverseDirectCallRuntimeTests.RdRtEntity));
+            var __meta277 = new global::NCMapper.Runtime.RuntimeMapperMetadata
             {
                 SourceType = typeof(NCMapper.Tests.Tests.ReverseDirectCallRuntimeTests.RdRtEntity),
                 TargetType = typeof(NCMapper.Tests.Tests.ReverseDirectCallRuntimeTests.RdRtDto),
@@ -37266,7 +38269,7 @@ namespace NCMapper.Runtime
                                 TypeName = "int",
                                 TypeRef = typeof(int),
                                 HasMapFromAttribute = true,
-                                MapFromAttribute = __mfAttr271,
+                                MapFromAttribute = __mfAttr277,
                                 HasMapIgnore = false,
                                 MapIgnoreDirection = 0,
                                 HasOverrideIgnore = false,
@@ -37306,7 +38309,7 @@ namespace NCMapper.Runtime
                                 TypeName = "string?",
                                 TypeRef = typeof(string),
                                 HasMapFromAttribute = true,
-                                MapFromAttribute = __mfAttr271,
+                                MapFromAttribute = __mfAttr277,
                                 HasMapIgnore = false,
                                 MapIgnoreDirection = 0,
                                 HasOverrideIgnore = false,
@@ -37346,7 +38349,7 @@ namespace NCMapper.Runtime
                                 TypeName = "int?",
                                 TypeRef = typeof(int?),
                                 HasMapFromAttribute = true,
-                                MapFromAttribute = __mfAttr271,
+                                MapFromAttribute = __mfAttr277,
                                 HasMapIgnore = false,
                                 MapIgnoreDirection = 0,
                                 HasOverrideIgnore = false,
@@ -37386,7 +38389,7 @@ namespace NCMapper.Runtime
                         TypeName = "int",
                         TypeRef = typeof(int),
                         HasMapFromAttribute = true,
-                        MapFromAttribute = __mfAttr271,
+                        MapFromAttribute = __mfAttr277,
                         HasMapIgnore = false,
                         MapIgnoreDirection = 0,
                         HasOverrideIgnore = false,
@@ -37409,7 +38412,7 @@ namespace NCMapper.Runtime
                         TypeName = "string?",
                         TypeRef = typeof(string),
                         HasMapFromAttribute = true,
-                        MapFromAttribute = __mfAttr271,
+                        MapFromAttribute = __mfAttr277,
                         HasMapIgnore = false,
                         MapIgnoreDirection = 0,
                         HasOverrideIgnore = false,
@@ -37432,7 +38435,7 @@ namespace NCMapper.Runtime
                         TypeName = "int?",
                         TypeRef = typeof(int?),
                         HasMapFromAttribute = true,
-                        MapFromAttribute = __mfAttr271,
+                        MapFromAttribute = __mfAttr277,
                         HasMapIgnore = false,
                         MapIgnoreDirection = 0,
                         HasOverrideIgnore = false,
@@ -37451,11 +38454,11 @@ namespace NCMapper.Runtime
                     },
                 },
             };
-            global::NCMapper.Runtime.RuntimeSnapshotPair<NCMapper.Tests.Tests.ReverseDirectCallRuntimeTests.RdRtEntity, NCMapper.Tests.Tests.ReverseDirectCallRuntimeTests.RdRtDto>.Metadata = __meta271;
-            global::NCMapper.Runtime.RuntimeSnapshotStore.Register(__meta271);
-            // pair 272: NCMapper.Tests.Tests.ReverseDirectCallRuntimeTests.RdRtFlattenEntity -> NCMapper.Tests.Tests.ReverseDirectCallRuntimeTests.RdRtFlattenDto (MapFrom channel)
-            var __mfAttr272 = new global::NCMapper.Attributes.MapFromAttribute(typeof(NCMapper.Tests.Tests.ReverseDirectCallRuntimeTests.RdRtFlattenEntity));
-            var __meta272 = new global::NCMapper.Runtime.RuntimeMapperMetadata
+            global::NCMapper.Runtime.RuntimeSnapshotPair<NCMapper.Tests.Tests.ReverseDirectCallRuntimeTests.RdRtEntity, NCMapper.Tests.Tests.ReverseDirectCallRuntimeTests.RdRtDto>.Metadata = __meta277;
+            global::NCMapper.Runtime.RuntimeSnapshotStore.Register(__meta277);
+            // pair 278: NCMapper.Tests.Tests.ReverseDirectCallRuntimeTests.RdRtFlattenEntity -> NCMapper.Tests.Tests.ReverseDirectCallRuntimeTests.RdRtFlattenDto (MapFrom channel)
+            var __mfAttr278 = new global::NCMapper.Attributes.MapFromAttribute(typeof(NCMapper.Tests.Tests.ReverseDirectCallRuntimeTests.RdRtFlattenEntity));
+            var __meta278 = new global::NCMapper.Runtime.RuntimeMapperMetadata
             {
                 SourceType = typeof(NCMapper.Tests.Tests.ReverseDirectCallRuntimeTests.RdRtFlattenEntity),
                 TargetType = typeof(NCMapper.Tests.Tests.ReverseDirectCallRuntimeTests.RdRtFlattenDto),
@@ -37476,7 +38479,7 @@ namespace NCMapper.Runtime
                                 TypeName = "int",
                                 TypeRef = typeof(int),
                                 HasMapFromAttribute = true,
-                                MapFromAttribute = __mfAttr272,
+                                MapFromAttribute = __mfAttr278,
                                 HasMapIgnore = false,
                                 MapIgnoreDirection = 0,
                                 HasOverrideIgnore = false,
@@ -37516,7 +38519,7 @@ namespace NCMapper.Runtime
                                 TypeName = "string?",
                                 TypeRef = typeof(string),
                                 HasMapFromAttribute = true,
-                                MapFromAttribute = __mfAttr272,
+                                MapFromAttribute = __mfAttr278,
                                 HasMapIgnore = false,
                                 MapIgnoreDirection = 0,
                                 HasOverrideIgnore = false,
@@ -37556,7 +38559,7 @@ namespace NCMapper.Runtime
                         TypeName = "int",
                         TypeRef = typeof(int),
                         HasMapFromAttribute = true,
-                        MapFromAttribute = __mfAttr272,
+                        MapFromAttribute = __mfAttr278,
                         HasMapIgnore = false,
                         MapIgnoreDirection = 0,
                         HasOverrideIgnore = false,
@@ -37579,7 +38582,7 @@ namespace NCMapper.Runtime
                         TypeName = "string?",
                         TypeRef = typeof(string),
                         HasMapFromAttribute = true,
-                        MapFromAttribute = __mfAttr272,
+                        MapFromAttribute = __mfAttr278,
                         HasMapIgnore = false,
                         MapIgnoreDirection = 0,
                         HasOverrideIgnore = false,
@@ -37598,11 +38601,11 @@ namespace NCMapper.Runtime
                     },
                 },
             };
-            global::NCMapper.Runtime.RuntimeSnapshotPair<NCMapper.Tests.Tests.ReverseDirectCallRuntimeTests.RdRtFlattenEntity, NCMapper.Tests.Tests.ReverseDirectCallRuntimeTests.RdRtFlattenDto>.Metadata = __meta272;
-            global::NCMapper.Runtime.RuntimeSnapshotStore.Register(__meta272);
-            // pair 273: NCMapper.Tests.Tests.ReverseDirectCallRuntimeTests.RdRtUpdateEntity -> NCMapper.Tests.Tests.ReverseDirectCallRuntimeTests.RdRtUpdateDto (MapFrom channel)
-            var __mfAttr273 = new global::NCMapper.Attributes.MapFromAttribute(typeof(NCMapper.Tests.Tests.ReverseDirectCallRuntimeTests.RdRtUpdateEntity));
-            var __meta273 = new global::NCMapper.Runtime.RuntimeMapperMetadata
+            global::NCMapper.Runtime.RuntimeSnapshotPair<NCMapper.Tests.Tests.ReverseDirectCallRuntimeTests.RdRtFlattenEntity, NCMapper.Tests.Tests.ReverseDirectCallRuntimeTests.RdRtFlattenDto>.Metadata = __meta278;
+            global::NCMapper.Runtime.RuntimeSnapshotStore.Register(__meta278);
+            // pair 279: NCMapper.Tests.Tests.ReverseDirectCallRuntimeTests.RdRtUpdateEntity -> NCMapper.Tests.Tests.ReverseDirectCallRuntimeTests.RdRtUpdateDto (MapFrom channel)
+            var __mfAttr279 = new global::NCMapper.Attributes.MapFromAttribute(typeof(NCMapper.Tests.Tests.ReverseDirectCallRuntimeTests.RdRtUpdateEntity));
+            var __meta279 = new global::NCMapper.Runtime.RuntimeMapperMetadata
             {
                 SourceType = typeof(NCMapper.Tests.Tests.ReverseDirectCallRuntimeTests.RdRtUpdateEntity),
                 TargetType = typeof(NCMapper.Tests.Tests.ReverseDirectCallRuntimeTests.RdRtUpdateDto),
@@ -37623,7 +38626,7 @@ namespace NCMapper.Runtime
                                 TypeName = "int",
                                 TypeRef = typeof(int),
                                 HasMapFromAttribute = true,
-                                MapFromAttribute = __mfAttr273,
+                                MapFromAttribute = __mfAttr279,
                                 HasMapIgnore = false,
                                 MapIgnoreDirection = 0,
                                 HasOverrideIgnore = false,
@@ -37663,7 +38666,7 @@ namespace NCMapper.Runtime
                                 TypeName = "string?",
                                 TypeRef = typeof(string),
                                 HasMapFromAttribute = true,
-                                MapFromAttribute = __mfAttr273,
+                                MapFromAttribute = __mfAttr279,
                                 HasMapIgnore = false,
                                 MapIgnoreDirection = 0,
                                 HasOverrideIgnore = false,
@@ -37703,7 +38706,7 @@ namespace NCMapper.Runtime
                         TypeName = "int",
                         TypeRef = typeof(int),
                         HasMapFromAttribute = true,
-                        MapFromAttribute = __mfAttr273,
+                        MapFromAttribute = __mfAttr279,
                         HasMapIgnore = false,
                         MapIgnoreDirection = 0,
                         HasOverrideIgnore = false,
@@ -37726,7 +38729,7 @@ namespace NCMapper.Runtime
                         TypeName = "string?",
                         TypeRef = typeof(string),
                         HasMapFromAttribute = true,
-                        MapFromAttribute = __mfAttr273,
+                        MapFromAttribute = __mfAttr279,
                         HasMapIgnore = false,
                         MapIgnoreDirection = 0,
                         HasOverrideIgnore = false,
@@ -37745,11 +38748,11 @@ namespace NCMapper.Runtime
                     },
                 },
             };
-            global::NCMapper.Runtime.RuntimeSnapshotPair<NCMapper.Tests.Tests.ReverseDirectCallRuntimeTests.RdRtUpdateEntity, NCMapper.Tests.Tests.ReverseDirectCallRuntimeTests.RdRtUpdateDto>.Metadata = __meta273;
-            global::NCMapper.Runtime.RuntimeSnapshotStore.Register(__meta273);
-            // pair 274: NCMapper.Tests.Tests.ReverseExtensionDirectCallTests.RdExtEntity -> NCMapper.Tests.Tests.ReverseExtensionDirectCallTests.RdExtDto (MapFrom channel)
-            var __mfAttr274 = new global::NCMapper.Attributes.MapFromAttribute(typeof(NCMapper.Tests.Tests.ReverseExtensionDirectCallTests.RdExtEntity));
-            var __meta274 = new global::NCMapper.Runtime.RuntimeMapperMetadata
+            global::NCMapper.Runtime.RuntimeSnapshotPair<NCMapper.Tests.Tests.ReverseDirectCallRuntimeTests.RdRtUpdateEntity, NCMapper.Tests.Tests.ReverseDirectCallRuntimeTests.RdRtUpdateDto>.Metadata = __meta279;
+            global::NCMapper.Runtime.RuntimeSnapshotStore.Register(__meta279);
+            // pair 280: NCMapper.Tests.Tests.ReverseExtensionDirectCallTests.RdExtEntity -> NCMapper.Tests.Tests.ReverseExtensionDirectCallTests.RdExtDto (MapFrom channel)
+            var __mfAttr280 = new global::NCMapper.Attributes.MapFromAttribute(typeof(NCMapper.Tests.Tests.ReverseExtensionDirectCallTests.RdExtEntity));
+            var __meta280 = new global::NCMapper.Runtime.RuntimeMapperMetadata
             {
                 SourceType = typeof(NCMapper.Tests.Tests.ReverseExtensionDirectCallTests.RdExtEntity),
                 TargetType = typeof(NCMapper.Tests.Tests.ReverseExtensionDirectCallTests.RdExtDto),
@@ -37770,7 +38773,7 @@ namespace NCMapper.Runtime
                                 TypeName = "int",
                                 TypeRef = typeof(int),
                                 HasMapFromAttribute = true,
-                                MapFromAttribute = __mfAttr274,
+                                MapFromAttribute = __mfAttr280,
                                 HasMapIgnore = false,
                                 MapIgnoreDirection = 0,
                                 HasOverrideIgnore = false,
@@ -37810,7 +38813,7 @@ namespace NCMapper.Runtime
                                 TypeName = "string?",
                                 TypeRef = typeof(string),
                                 HasMapFromAttribute = true,
-                                MapFromAttribute = __mfAttr274,
+                                MapFromAttribute = __mfAttr280,
                                 HasMapIgnore = false,
                                 MapIgnoreDirection = 0,
                                 HasOverrideIgnore = false,
@@ -37850,7 +38853,7 @@ namespace NCMapper.Runtime
                                 TypeName = "int?",
                                 TypeRef = typeof(int?),
                                 HasMapFromAttribute = true,
-                                MapFromAttribute = __mfAttr274,
+                                MapFromAttribute = __mfAttr280,
                                 HasMapIgnore = false,
                                 MapIgnoreDirection = 0,
                                 HasOverrideIgnore = false,
@@ -37890,7 +38893,7 @@ namespace NCMapper.Runtime
                         TypeName = "int",
                         TypeRef = typeof(int),
                         HasMapFromAttribute = true,
-                        MapFromAttribute = __mfAttr274,
+                        MapFromAttribute = __mfAttr280,
                         HasMapIgnore = false,
                         MapIgnoreDirection = 0,
                         HasOverrideIgnore = false,
@@ -37913,7 +38916,7 @@ namespace NCMapper.Runtime
                         TypeName = "string?",
                         TypeRef = typeof(string),
                         HasMapFromAttribute = true,
-                        MapFromAttribute = __mfAttr274,
+                        MapFromAttribute = __mfAttr280,
                         HasMapIgnore = false,
                         MapIgnoreDirection = 0,
                         HasOverrideIgnore = false,
@@ -37936,7 +38939,7 @@ namespace NCMapper.Runtime
                         TypeName = "int?",
                         TypeRef = typeof(int?),
                         HasMapFromAttribute = true,
-                        MapFromAttribute = __mfAttr274,
+                        MapFromAttribute = __mfAttr280,
                         HasMapIgnore = false,
                         MapIgnoreDirection = 0,
                         HasOverrideIgnore = false,
@@ -37955,11 +38958,11 @@ namespace NCMapper.Runtime
                     },
                 },
             };
-            global::NCMapper.Runtime.RuntimeSnapshotPair<NCMapper.Tests.Tests.ReverseExtensionDirectCallTests.RdExtEntity, NCMapper.Tests.Tests.ReverseExtensionDirectCallTests.RdExtDto>.Metadata = __meta274;
-            global::NCMapper.Runtime.RuntimeSnapshotStore.Register(__meta274);
-            // pair 275: NCMapper.Tests.Tests.ReverseExtensionDirectCallTests.RdExtOrderEntity -> NCMapper.Tests.Tests.ReverseExtensionDirectCallTests.RdExtMultiDto (MapFrom channel)
-            var __mfAttr275 = new global::NCMapper.Attributes.MapFromAttribute(typeof(NCMapper.Tests.Tests.ReverseExtensionDirectCallTests.RdExtOrderEntity));
-            var __meta275 = new global::NCMapper.Runtime.RuntimeMapperMetadata
+            global::NCMapper.Runtime.RuntimeSnapshotPair<NCMapper.Tests.Tests.ReverseExtensionDirectCallTests.RdExtEntity, NCMapper.Tests.Tests.ReverseExtensionDirectCallTests.RdExtDto>.Metadata = __meta280;
+            global::NCMapper.Runtime.RuntimeSnapshotStore.Register(__meta280);
+            // pair 281: NCMapper.Tests.Tests.ReverseExtensionDirectCallTests.RdExtOrderEntity -> NCMapper.Tests.Tests.ReverseExtensionDirectCallTests.RdExtMultiDto (MapFrom channel)
+            var __mfAttr281 = new global::NCMapper.Attributes.MapFromAttribute(typeof(NCMapper.Tests.Tests.ReverseExtensionDirectCallTests.RdExtOrderEntity));
+            var __meta281 = new global::NCMapper.Runtime.RuntimeMapperMetadata
             {
                 SourceType = typeof(NCMapper.Tests.Tests.ReverseExtensionDirectCallTests.RdExtOrderEntity),
                 TargetType = typeof(NCMapper.Tests.Tests.ReverseExtensionDirectCallTests.RdExtMultiDto),
@@ -37980,7 +38983,7 @@ namespace NCMapper.Runtime
                                 TypeName = "int",
                                 TypeRef = typeof(int),
                                 HasMapFromAttribute = true,
-                                MapFromAttribute = __mfAttr275,
+                                MapFromAttribute = __mfAttr281,
                                 HasMapIgnore = false,
                                 MapIgnoreDirection = 0,
                                 HasOverrideIgnore = false,
@@ -38020,7 +39023,7 @@ namespace NCMapper.Runtime
                                 TypeName = "decimal",
                                 TypeRef = typeof(decimal),
                                 HasMapFromAttribute = true,
-                                MapFromAttribute = __mfAttr275,
+                                MapFromAttribute = __mfAttr281,
                                 HasMapIgnore = false,
                                 MapIgnoreDirection = 0,
                                 HasOverrideIgnore = false,
@@ -38077,7 +39080,7 @@ namespace NCMapper.Runtime
                         TypeName = "int",
                         TypeRef = typeof(int),
                         HasMapFromAttribute = true,
-                        MapFromAttribute = __mfAttr275,
+                        MapFromAttribute = __mfAttr281,
                         HasMapIgnore = false,
                         MapIgnoreDirection = 0,
                         HasOverrideIgnore = false,
@@ -38100,7 +39103,7 @@ namespace NCMapper.Runtime
                         TypeName = "decimal",
                         TypeRef = typeof(decimal),
                         HasMapFromAttribute = true,
-                        MapFromAttribute = __mfAttr275,
+                        MapFromAttribute = __mfAttr281,
                         HasMapIgnore = false,
                         MapIgnoreDirection = 0,
                         HasOverrideIgnore = false,
@@ -38123,7 +39126,7 @@ namespace NCMapper.Runtime
                         TypeName = "string?",
                         TypeRef = typeof(string),
                         HasMapFromAttribute = true,
-                        MapFromAttribute = __mfAttr275,
+                        MapFromAttribute = __mfAttr281,
                         HasMapIgnore = false,
                         MapIgnoreDirection = 0,
                         HasOverrideIgnore = false,
@@ -38142,11 +39145,11 @@ namespace NCMapper.Runtime
                     },
                 },
             };
-            global::NCMapper.Runtime.RuntimeSnapshotPair<NCMapper.Tests.Tests.ReverseExtensionDirectCallTests.RdExtOrderEntity, NCMapper.Tests.Tests.ReverseExtensionDirectCallTests.RdExtMultiDto>.Metadata = __meta275;
-            global::NCMapper.Runtime.RuntimeSnapshotStore.Register(__meta275);
-            // pair 276: NCMapper.Tests.Tests.RtIntListSource -> NCMapper.Tests.Tests.RtGenHashSetDto (MapFrom channel)
-            var __mfAttr276 = new global::NCMapper.Attributes.MapFromAttribute(typeof(NCMapper.Tests.Tests.RtIntListSource));
-            var __meta276 = new global::NCMapper.Runtime.RuntimeMapperMetadata
+            global::NCMapper.Runtime.RuntimeSnapshotPair<NCMapper.Tests.Tests.ReverseExtensionDirectCallTests.RdExtOrderEntity, NCMapper.Tests.Tests.ReverseExtensionDirectCallTests.RdExtMultiDto>.Metadata = __meta281;
+            global::NCMapper.Runtime.RuntimeSnapshotStore.Register(__meta281);
+            // pair 282: NCMapper.Tests.Tests.RtIntListSource -> NCMapper.Tests.Tests.RtGenHashSetDto (MapFrom channel)
+            var __mfAttr282 = new global::NCMapper.Attributes.MapFromAttribute(typeof(NCMapper.Tests.Tests.RtIntListSource));
+            var __meta282 = new global::NCMapper.Runtime.RuntimeMapperMetadata
             {
                 SourceType = typeof(NCMapper.Tests.Tests.RtIntListSource),
                 TargetType = typeof(NCMapper.Tests.Tests.RtGenHashSetDto),
@@ -38167,7 +39170,7 @@ namespace NCMapper.Runtime
                                 TypeName = "System.Collections.Generic.HashSet<long>?",
                                 TypeRef = typeof(System.Collections.Generic.HashSet<long>),
                                 HasMapFromAttribute = true,
-                                MapFromAttribute = __mfAttr276,
+                                MapFromAttribute = __mfAttr282,
                                 HasMapIgnore = false,
                                 MapIgnoreDirection = 0,
                                 HasOverrideIgnore = false,
@@ -38207,7 +39210,7 @@ namespace NCMapper.Runtime
                         TypeName = "System.Collections.Generic.HashSet<long>?",
                         TypeRef = typeof(System.Collections.Generic.HashSet<long>),
                         HasMapFromAttribute = true,
-                        MapFromAttribute = __mfAttr276,
+                        MapFromAttribute = __mfAttr282,
                         HasMapIgnore = false,
                         MapIgnoreDirection = 0,
                         HasOverrideIgnore = false,
@@ -38226,11 +39229,11 @@ namespace NCMapper.Runtime
                     },
                 },
             };
-            global::NCMapper.Runtime.RuntimeSnapshotPair<NCMapper.Tests.Tests.RtIntListSource, NCMapper.Tests.Tests.RtGenHashSetDto>.Metadata = __meta276;
-            global::NCMapper.Runtime.RuntimeSnapshotStore.Register(__meta276);
-            // pair 277: NCMapper.Tests.Tests.RtIntListSource -> NCMapper.Tests.Tests.RtGenLongListDto (MapFrom channel)
-            var __mfAttr277 = new global::NCMapper.Attributes.MapFromAttribute(typeof(NCMapper.Tests.Tests.RtIntListSource));
-            var __meta277 = new global::NCMapper.Runtime.RuntimeMapperMetadata
+            global::NCMapper.Runtime.RuntimeSnapshotPair<NCMapper.Tests.Tests.RtIntListSource, NCMapper.Tests.Tests.RtGenHashSetDto>.Metadata = __meta282;
+            global::NCMapper.Runtime.RuntimeSnapshotStore.Register(__meta282);
+            // pair 283: NCMapper.Tests.Tests.RtIntListSource -> NCMapper.Tests.Tests.RtGenLongListDto (MapFrom channel)
+            var __mfAttr283 = new global::NCMapper.Attributes.MapFromAttribute(typeof(NCMapper.Tests.Tests.RtIntListSource));
+            var __meta283 = new global::NCMapper.Runtime.RuntimeMapperMetadata
             {
                 SourceType = typeof(NCMapper.Tests.Tests.RtIntListSource),
                 TargetType = typeof(NCMapper.Tests.Tests.RtGenLongListDto),
@@ -38251,7 +39254,7 @@ namespace NCMapper.Runtime
                                 TypeName = "System.Collections.Generic.List<long>?",
                                 TypeRef = typeof(System.Collections.Generic.List<long>),
                                 HasMapFromAttribute = true,
-                                MapFromAttribute = __mfAttr277,
+                                MapFromAttribute = __mfAttr283,
                                 HasMapIgnore = false,
                                 MapIgnoreDirection = 0,
                                 HasOverrideIgnore = false,
@@ -38291,7 +39294,7 @@ namespace NCMapper.Runtime
                         TypeName = "System.Collections.Generic.List<long>?",
                         TypeRef = typeof(System.Collections.Generic.List<long>),
                         HasMapFromAttribute = true,
-                        MapFromAttribute = __mfAttr277,
+                        MapFromAttribute = __mfAttr283,
                         HasMapIgnore = false,
                         MapIgnoreDirection = 0,
                         HasOverrideIgnore = false,
@@ -38310,11 +39313,11 @@ namespace NCMapper.Runtime
                     },
                 },
             };
-            global::NCMapper.Runtime.RuntimeSnapshotPair<NCMapper.Tests.Tests.RtIntListSource, NCMapper.Tests.Tests.RtGenLongListDto>.Metadata = __meta277;
-            global::NCMapper.Runtime.RuntimeSnapshotStore.Register(__meta277);
-            // pair 278: NCMapper.Tests.Tests.RtIntListSource -> NCMapper.Tests.Tests.RtGenQueueDto (MapFrom channel)
-            var __mfAttr278 = new global::NCMapper.Attributes.MapFromAttribute(typeof(NCMapper.Tests.Tests.RtIntListSource));
-            var __meta278 = new global::NCMapper.Runtime.RuntimeMapperMetadata
+            global::NCMapper.Runtime.RuntimeSnapshotPair<NCMapper.Tests.Tests.RtIntListSource, NCMapper.Tests.Tests.RtGenLongListDto>.Metadata = __meta283;
+            global::NCMapper.Runtime.RuntimeSnapshotStore.Register(__meta283);
+            // pair 284: NCMapper.Tests.Tests.RtIntListSource -> NCMapper.Tests.Tests.RtGenQueueDto (MapFrom channel)
+            var __mfAttr284 = new global::NCMapper.Attributes.MapFromAttribute(typeof(NCMapper.Tests.Tests.RtIntListSource));
+            var __meta284 = new global::NCMapper.Runtime.RuntimeMapperMetadata
             {
                 SourceType = typeof(NCMapper.Tests.Tests.RtIntListSource),
                 TargetType = typeof(NCMapper.Tests.Tests.RtGenQueueDto),
@@ -38335,7 +39338,7 @@ namespace NCMapper.Runtime
                                 TypeName = "System.Collections.Generic.Queue<long>?",
                                 TypeRef = typeof(System.Collections.Generic.Queue<long>),
                                 HasMapFromAttribute = true,
-                                MapFromAttribute = __mfAttr278,
+                                MapFromAttribute = __mfAttr284,
                                 HasMapIgnore = false,
                                 MapIgnoreDirection = 0,
                                 HasOverrideIgnore = false,
@@ -38375,7 +39378,7 @@ namespace NCMapper.Runtime
                         TypeName = "System.Collections.Generic.Queue<long>?",
                         TypeRef = typeof(System.Collections.Generic.Queue<long>),
                         HasMapFromAttribute = true,
-                        MapFromAttribute = __mfAttr278,
+                        MapFromAttribute = __mfAttr284,
                         HasMapIgnore = false,
                         MapIgnoreDirection = 0,
                         HasOverrideIgnore = false,
@@ -38394,11 +39397,11 @@ namespace NCMapper.Runtime
                     },
                 },
             };
-            global::NCMapper.Runtime.RuntimeSnapshotPair<NCMapper.Tests.Tests.RtIntListSource, NCMapper.Tests.Tests.RtGenQueueDto>.Metadata = __meta278;
-            global::NCMapper.Runtime.RuntimeSnapshotStore.Register(__meta278);
-            // pair 279: NCMapper.Tests.Tests.RtIntListSource -> NCMapper.Tests.Tests.RtGenStackDto (MapFrom channel)
-            var __mfAttr279 = new global::NCMapper.Attributes.MapFromAttribute(typeof(NCMapper.Tests.Tests.RtIntListSource));
-            var __meta279 = new global::NCMapper.Runtime.RuntimeMapperMetadata
+            global::NCMapper.Runtime.RuntimeSnapshotPair<NCMapper.Tests.Tests.RtIntListSource, NCMapper.Tests.Tests.RtGenQueueDto>.Metadata = __meta284;
+            global::NCMapper.Runtime.RuntimeSnapshotStore.Register(__meta284);
+            // pair 285: NCMapper.Tests.Tests.RtIntListSource -> NCMapper.Tests.Tests.RtGenStackDto (MapFrom channel)
+            var __mfAttr285 = new global::NCMapper.Attributes.MapFromAttribute(typeof(NCMapper.Tests.Tests.RtIntListSource));
+            var __meta285 = new global::NCMapper.Runtime.RuntimeMapperMetadata
             {
                 SourceType = typeof(NCMapper.Tests.Tests.RtIntListSource),
                 TargetType = typeof(NCMapper.Tests.Tests.RtGenStackDto),
@@ -38419,7 +39422,7 @@ namespace NCMapper.Runtime
                                 TypeName = "System.Collections.Generic.Stack<long>?",
                                 TypeRef = typeof(System.Collections.Generic.Stack<long>),
                                 HasMapFromAttribute = true,
-                                MapFromAttribute = __mfAttr279,
+                                MapFromAttribute = __mfAttr285,
                                 HasMapIgnore = false,
                                 MapIgnoreDirection = 0,
                                 HasOverrideIgnore = false,
@@ -38459,7 +39462,7 @@ namespace NCMapper.Runtime
                         TypeName = "System.Collections.Generic.Stack<long>?",
                         TypeRef = typeof(System.Collections.Generic.Stack<long>),
                         HasMapFromAttribute = true,
-                        MapFromAttribute = __mfAttr279,
+                        MapFromAttribute = __mfAttr285,
                         HasMapIgnore = false,
                         MapIgnoreDirection = 0,
                         HasOverrideIgnore = false,
@@ -38478,11 +39481,11 @@ namespace NCMapper.Runtime
                     },
                 },
             };
-            global::NCMapper.Runtime.RuntimeSnapshotPair<NCMapper.Tests.Tests.RtIntListSource, NCMapper.Tests.Tests.RtGenStackDto>.Metadata = __meta279;
-            global::NCMapper.Runtime.RuntimeSnapshotStore.Register(__meta279);
-            // pair 280: NCMapper.Tests.Tests.RuntimeDirectionEntity -> NCMapper.Tests.Tests.RuntimeDirectionDto (MapFrom channel)
-            var __mfAttr280 = new global::NCMapper.Attributes.MapFromAttribute(typeof(NCMapper.Tests.Tests.RuntimeDirectionEntity));
-            var __meta280 = new global::NCMapper.Runtime.RuntimeMapperMetadata
+            global::NCMapper.Runtime.RuntimeSnapshotPair<NCMapper.Tests.Tests.RtIntListSource, NCMapper.Tests.Tests.RtGenStackDto>.Metadata = __meta285;
+            global::NCMapper.Runtime.RuntimeSnapshotStore.Register(__meta285);
+            // pair 286: NCMapper.Tests.Tests.RuntimeDirectionEntity -> NCMapper.Tests.Tests.RuntimeDirectionDto (MapFrom channel)
+            var __mfAttr286 = new global::NCMapper.Attributes.MapFromAttribute(typeof(NCMapper.Tests.Tests.RuntimeDirectionEntity));
+            var __meta286 = new global::NCMapper.Runtime.RuntimeMapperMetadata
             {
                 SourceType = typeof(NCMapper.Tests.Tests.RuntimeDirectionEntity),
                 TargetType = typeof(NCMapper.Tests.Tests.RuntimeDirectionDto),
@@ -38503,7 +39506,7 @@ namespace NCMapper.Runtime
                                 TypeName = "int",
                                 TypeRef = typeof(int),
                                 HasMapFromAttribute = true,
-                                MapFromAttribute = __mfAttr280,
+                                MapFromAttribute = __mfAttr286,
                                 HasMapIgnore = false,
                                 MapIgnoreDirection = 0,
                                 HasOverrideIgnore = false,
@@ -38543,7 +39546,7 @@ namespace NCMapper.Runtime
                                 TypeName = "string?",
                                 TypeRef = typeof(string),
                                 HasMapFromAttribute = true,
-                                MapFromAttribute = __mfAttr280,
+                                MapFromAttribute = __mfAttr286,
                                 HasMapIgnore = true,
                                 MapIgnoreDirection = 1,
                                 HasOverrideIgnore = false,
@@ -38583,7 +39586,7 @@ namespace NCMapper.Runtime
                                 TypeName = "string",
                                 TypeRef = typeof(string),
                                 HasMapFromAttribute = true,
-                                MapFromAttribute = __mfAttr280,
+                                MapFromAttribute = __mfAttr286,
                                 HasMapIgnore = false,
                                 MapIgnoreDirection = 0,
                                 HasOverrideIgnore = false,
@@ -38623,7 +39626,7 @@ namespace NCMapper.Runtime
                                 TypeName = "System.DateTime",
                                 TypeRef = typeof(System.DateTime),
                                 HasMapFromAttribute = true,
-                                MapFromAttribute = __mfAttr280,
+                                MapFromAttribute = __mfAttr286,
                                 HasMapIgnore = true,
                                 MapIgnoreDirection = 2,
                                 HasOverrideIgnore = false,
@@ -38663,7 +39666,7 @@ namespace NCMapper.Runtime
                         TypeName = "int",
                         TypeRef = typeof(int),
                         HasMapFromAttribute = true,
-                        MapFromAttribute = __mfAttr280,
+                        MapFromAttribute = __mfAttr286,
                         HasMapIgnore = false,
                         MapIgnoreDirection = 0,
                         HasOverrideIgnore = false,
@@ -38686,7 +39689,7 @@ namespace NCMapper.Runtime
                         TypeName = "string?",
                         TypeRef = typeof(string),
                         HasMapFromAttribute = true,
-                        MapFromAttribute = __mfAttr280,
+                        MapFromAttribute = __mfAttr286,
                         HasMapIgnore = true,
                         MapIgnoreDirection = 1,
                         HasOverrideIgnore = false,
@@ -38709,7 +39712,7 @@ namespace NCMapper.Runtime
                         TypeName = "string",
                         TypeRef = typeof(string),
                         HasMapFromAttribute = true,
-                        MapFromAttribute = __mfAttr280,
+                        MapFromAttribute = __mfAttr286,
                         HasMapIgnore = false,
                         MapIgnoreDirection = 0,
                         HasOverrideIgnore = false,
@@ -38732,7 +39735,7 @@ namespace NCMapper.Runtime
                         TypeName = "System.DateTime",
                         TypeRef = typeof(System.DateTime),
                         HasMapFromAttribute = true,
-                        MapFromAttribute = __mfAttr280,
+                        MapFromAttribute = __mfAttr286,
                         HasMapIgnore = true,
                         MapIgnoreDirection = 2,
                         HasOverrideIgnore = false,
@@ -38751,11 +39754,11 @@ namespace NCMapper.Runtime
                     },
                 },
             };
-            global::NCMapper.Runtime.RuntimeSnapshotPair<NCMapper.Tests.Tests.RuntimeDirectionEntity, NCMapper.Tests.Tests.RuntimeDirectionDto>.Metadata = __meta280;
-            global::NCMapper.Runtime.RuntimeSnapshotStore.Register(__meta280);
-            // pair 281: NCMapper.Tests.Tests.Strategies.StrategyFullMatrixTests.ComboSrc -> NCMapper.Tests.Tests.Strategies.StrategyFullMatrixTests.ComboDto (MapFrom channel)
-            var __mfAttr281 = new global::NCMapper.Attributes.MapFromAttribute(typeof(NCMapper.Tests.Tests.Strategies.StrategyFullMatrixTests.ComboSrc));
-            var __meta281 = new global::NCMapper.Runtime.RuntimeMapperMetadata
+            global::NCMapper.Runtime.RuntimeSnapshotPair<NCMapper.Tests.Tests.RuntimeDirectionEntity, NCMapper.Tests.Tests.RuntimeDirectionDto>.Metadata = __meta286;
+            global::NCMapper.Runtime.RuntimeSnapshotStore.Register(__meta286);
+            // pair 287: NCMapper.Tests.Tests.Strategies.StrategyFullMatrixTests.ComboSrc -> NCMapper.Tests.Tests.Strategies.StrategyFullMatrixTests.ComboDto (MapFrom channel)
+            var __mfAttr287 = new global::NCMapper.Attributes.MapFromAttribute(typeof(NCMapper.Tests.Tests.Strategies.StrategyFullMatrixTests.ComboSrc));
+            var __meta287 = new global::NCMapper.Runtime.RuntimeMapperMetadata
             {
                 SourceType = typeof(NCMapper.Tests.Tests.Strategies.StrategyFullMatrixTests.ComboSrc),
                 TargetType = typeof(NCMapper.Tests.Tests.Strategies.StrategyFullMatrixTests.ComboDto),
@@ -38776,7 +39779,7 @@ namespace NCMapper.Runtime
                                 TypeName = "string?",
                                 TypeRef = typeof(string),
                                 HasMapFromAttribute = true,
-                                MapFromAttribute = __mfAttr281,
+                                MapFromAttribute = __mfAttr287,
                                 HasMapIgnore = false,
                                 MapIgnoreDirection = 0,
                                 HasOverrideIgnore = false,
@@ -38816,7 +39819,7 @@ namespace NCMapper.Runtime
                         TypeName = "string?",
                         TypeRef = typeof(string),
                         HasMapFromAttribute = true,
-                        MapFromAttribute = __mfAttr281,
+                        MapFromAttribute = __mfAttr287,
                         HasMapIgnore = false,
                         MapIgnoreDirection = 0,
                         HasOverrideIgnore = false,
@@ -38835,11 +39838,11 @@ namespace NCMapper.Runtime
                     },
                 },
             };
-            global::NCMapper.Runtime.RuntimeSnapshotPair<NCMapper.Tests.Tests.Strategies.StrategyFullMatrixTests.ComboSrc, NCMapper.Tests.Tests.Strategies.StrategyFullMatrixTests.ComboDto>.Metadata = __meta281;
-            global::NCMapper.Runtime.RuntimeSnapshotStore.Register(__meta281);
-            // pair 282: NCMapper.Tests.Tests.Strategies.StrategyFullMatrixTests.ConvSrc -> NCMapper.Tests.Tests.Strategies.StrategyFullMatrixTests.ConvDto (MapFrom channel)
-            var __mfAttr282 = new global::NCMapper.Attributes.MapFromAttribute(typeof(NCMapper.Tests.Tests.Strategies.StrategyFullMatrixTests.ConvSrc));
-            var __meta282 = new global::NCMapper.Runtime.RuntimeMapperMetadata
+            global::NCMapper.Runtime.RuntimeSnapshotPair<NCMapper.Tests.Tests.Strategies.StrategyFullMatrixTests.ComboSrc, NCMapper.Tests.Tests.Strategies.StrategyFullMatrixTests.ComboDto>.Metadata = __meta287;
+            global::NCMapper.Runtime.RuntimeSnapshotStore.Register(__meta287);
+            // pair 288: NCMapper.Tests.Tests.Strategies.StrategyFullMatrixTests.ConvSrc -> NCMapper.Tests.Tests.Strategies.StrategyFullMatrixTests.ConvDto (MapFrom channel)
+            var __mfAttr288 = new global::NCMapper.Attributes.MapFromAttribute(typeof(NCMapper.Tests.Tests.Strategies.StrategyFullMatrixTests.ConvSrc));
+            var __meta288 = new global::NCMapper.Runtime.RuntimeMapperMetadata
             {
                 SourceType = typeof(NCMapper.Tests.Tests.Strategies.StrategyFullMatrixTests.ConvSrc),
                 TargetType = typeof(NCMapper.Tests.Tests.Strategies.StrategyFullMatrixTests.ConvDto),
@@ -38860,7 +39863,7 @@ namespace NCMapper.Runtime
                                 TypeName = "string?",
                                 TypeRef = typeof(string),
                                 HasMapFromAttribute = true,
-                                MapFromAttribute = __mfAttr282,
+                                MapFromAttribute = __mfAttr288,
                                 HasMapIgnore = false,
                                 MapIgnoreDirection = 0,
                                 HasOverrideIgnore = false,
@@ -38900,7 +39903,7 @@ namespace NCMapper.Runtime
                         TypeName = "string?",
                         TypeRef = typeof(string),
                         HasMapFromAttribute = true,
-                        MapFromAttribute = __mfAttr282,
+                        MapFromAttribute = __mfAttr288,
                         HasMapIgnore = false,
                         MapIgnoreDirection = 0,
                         HasOverrideIgnore = false,
@@ -38919,11 +39922,11 @@ namespace NCMapper.Runtime
                     },
                 },
             };
-            global::NCMapper.Runtime.RuntimeSnapshotPair<NCMapper.Tests.Tests.Strategies.StrategyFullMatrixTests.ConvSrc, NCMapper.Tests.Tests.Strategies.StrategyFullMatrixTests.ConvDto>.Metadata = __meta282;
-            global::NCMapper.Runtime.RuntimeSnapshotStore.Register(__meta282);
-            // pair 283: NCMapper.Tests.Tests.Strategies.StrategyFullMatrixTests.EmpSrc -> NCMapper.Tests.Tests.Strategies.StrategyFullMatrixTests.EmpDto (MapFrom channel)
-            var __mfAttr283 = new global::NCMapper.Attributes.MapFromAttribute(typeof(NCMapper.Tests.Tests.Strategies.StrategyFullMatrixTests.EmpSrc));
-            var __meta283 = new global::NCMapper.Runtime.RuntimeMapperMetadata
+            global::NCMapper.Runtime.RuntimeSnapshotPair<NCMapper.Tests.Tests.Strategies.StrategyFullMatrixTests.ConvSrc, NCMapper.Tests.Tests.Strategies.StrategyFullMatrixTests.ConvDto>.Metadata = __meta288;
+            global::NCMapper.Runtime.RuntimeSnapshotStore.Register(__meta288);
+            // pair 289: NCMapper.Tests.Tests.Strategies.StrategyFullMatrixTests.EmpSrc -> NCMapper.Tests.Tests.Strategies.StrategyFullMatrixTests.EmpDto (MapFrom channel)
+            var __mfAttr289 = new global::NCMapper.Attributes.MapFromAttribute(typeof(NCMapper.Tests.Tests.Strategies.StrategyFullMatrixTests.EmpSrc));
+            var __meta289 = new global::NCMapper.Runtime.RuntimeMapperMetadata
             {
                 SourceType = typeof(NCMapper.Tests.Tests.Strategies.StrategyFullMatrixTests.EmpSrc),
                 TargetType = typeof(NCMapper.Tests.Tests.Strategies.StrategyFullMatrixTests.EmpDto),
@@ -38944,7 +39947,7 @@ namespace NCMapper.Runtime
                                 TypeName = "int",
                                 TypeRef = typeof(int),
                                 HasMapFromAttribute = true,
-                                MapFromAttribute = __mfAttr283,
+                                MapFromAttribute = __mfAttr289,
                                 HasMapIgnore = false,
                                 MapIgnoreDirection = 0,
                                 HasOverrideIgnore = false,
@@ -39001,7 +40004,7 @@ namespace NCMapper.Runtime
                         TypeName = "int",
                         TypeRef = typeof(int),
                         HasMapFromAttribute = true,
-                        MapFromAttribute = __mfAttr283,
+                        MapFromAttribute = __mfAttr289,
                         HasMapIgnore = false,
                         MapIgnoreDirection = 0,
                         HasOverrideIgnore = false,
@@ -39024,7 +40027,7 @@ namespace NCMapper.Runtime
                         TypeName = "string?",
                         TypeRef = typeof(string),
                         HasMapFromAttribute = true,
-                        MapFromAttribute = __mfAttr283,
+                        MapFromAttribute = __mfAttr289,
                         HasMapIgnore = false,
                         MapIgnoreDirection = 0,
                         HasOverrideIgnore = false,
@@ -39043,11 +40046,11 @@ namespace NCMapper.Runtime
                     },
                 },
             };
-            global::NCMapper.Runtime.RuntimeSnapshotPair<NCMapper.Tests.Tests.Strategies.StrategyFullMatrixTests.EmpSrc, NCMapper.Tests.Tests.Strategies.StrategyFullMatrixTests.EmpDto>.Metadata = __meta283;
-            global::NCMapper.Runtime.RuntimeSnapshotStore.Register(__meta283);
-            // pair 284: NCMapper.Tests.Tests.Strategies.StrategyPilotEquivalenceTests.MaskSrc -> NCMapper.Tests.Tests.Strategies.StrategyPilotEquivalenceTests.MaskDto (MapFrom channel)
-            var __mfAttr284 = new global::NCMapper.Attributes.MapFromAttribute(typeof(NCMapper.Tests.Tests.Strategies.StrategyPilotEquivalenceTests.MaskSrc));
-            var __meta284 = new global::NCMapper.Runtime.RuntimeMapperMetadata
+            global::NCMapper.Runtime.RuntimeSnapshotPair<NCMapper.Tests.Tests.Strategies.StrategyFullMatrixTests.EmpSrc, NCMapper.Tests.Tests.Strategies.StrategyFullMatrixTests.EmpDto>.Metadata = __meta289;
+            global::NCMapper.Runtime.RuntimeSnapshotStore.Register(__meta289);
+            // pair 290: NCMapper.Tests.Tests.Strategies.StrategyPilotEquivalenceTests.MaskSrc -> NCMapper.Tests.Tests.Strategies.StrategyPilotEquivalenceTests.MaskDto (MapFrom channel)
+            var __mfAttr290 = new global::NCMapper.Attributes.MapFromAttribute(typeof(NCMapper.Tests.Tests.Strategies.StrategyPilotEquivalenceTests.MaskSrc));
+            var __meta290 = new global::NCMapper.Runtime.RuntimeMapperMetadata
             {
                 SourceType = typeof(NCMapper.Tests.Tests.Strategies.StrategyPilotEquivalenceTests.MaskSrc),
                 TargetType = typeof(NCMapper.Tests.Tests.Strategies.StrategyPilotEquivalenceTests.MaskDto),
@@ -39068,7 +40071,7 @@ namespace NCMapper.Runtime
                                 TypeName = "string?",
                                 TypeRef = typeof(string),
                                 HasMapFromAttribute = true,
-                                MapFromAttribute = __mfAttr284,
+                                MapFromAttribute = __mfAttr290,
                                 HasMapIgnore = false,
                                 MapIgnoreDirection = 0,
                                 HasOverrideIgnore = false,
@@ -39108,7 +40111,7 @@ namespace NCMapper.Runtime
                         TypeName = "string?",
                         TypeRef = typeof(string),
                         HasMapFromAttribute = true,
-                        MapFromAttribute = __mfAttr284,
+                        MapFromAttribute = __mfAttr290,
                         HasMapIgnore = false,
                         MapIgnoreDirection = 0,
                         HasOverrideIgnore = false,
@@ -39127,11 +40130,11 @@ namespace NCMapper.Runtime
                     },
                 },
             };
-            global::NCMapper.Runtime.RuntimeSnapshotPair<NCMapper.Tests.Tests.Strategies.StrategyPilotEquivalenceTests.MaskSrc, NCMapper.Tests.Tests.Strategies.StrategyPilotEquivalenceTests.MaskDto>.Metadata = __meta284;
-            global::NCMapper.Runtime.RuntimeSnapshotStore.Register(__meta284);
-            // pair 285: NCMapper.Tests.Tests.T7A1Order -> NCMapper.Tests.Tests.T7A1Dto (MapFrom channel)
-            var __mfAttr285 = new global::NCMapper.Attributes.MapFromAttribute(typeof(NCMapper.Tests.Tests.T7A1Order));
-            var __meta285 = new global::NCMapper.Runtime.RuntimeMapperMetadata
+            global::NCMapper.Runtime.RuntimeSnapshotPair<NCMapper.Tests.Tests.Strategies.StrategyPilotEquivalenceTests.MaskSrc, NCMapper.Tests.Tests.Strategies.StrategyPilotEquivalenceTests.MaskDto>.Metadata = __meta290;
+            global::NCMapper.Runtime.RuntimeSnapshotStore.Register(__meta290);
+            // pair 291: NCMapper.Tests.Tests.T7A1Order -> NCMapper.Tests.Tests.T7A1Dto (MapFrom channel)
+            var __mfAttr291 = new global::NCMapper.Attributes.MapFromAttribute(typeof(NCMapper.Tests.Tests.T7A1Order));
+            var __meta291 = new global::NCMapper.Runtime.RuntimeMapperMetadata
             {
                 SourceType = typeof(NCMapper.Tests.Tests.T7A1Order),
                 TargetType = typeof(NCMapper.Tests.Tests.T7A1Dto),
@@ -39152,7 +40155,7 @@ namespace NCMapper.Runtime
                                 TypeName = "int",
                                 TypeRef = typeof(int),
                                 HasMapFromAttribute = true,
-                                MapFromAttribute = __mfAttr285,
+                                MapFromAttribute = __mfAttr291,
                                 HasMapIgnore = false,
                                 MapIgnoreDirection = 0,
                                 HasOverrideIgnore = false,
@@ -39223,7 +40226,7 @@ namespace NCMapper.Runtime
                         TypeName = "int",
                         TypeRef = typeof(int),
                         HasMapFromAttribute = true,
-                        MapFromAttribute = __mfAttr285,
+                        MapFromAttribute = __mfAttr291,
                         HasMapIgnore = false,
                         MapIgnoreDirection = 0,
                         HasOverrideIgnore = false,
@@ -39246,7 +40249,7 @@ namespace NCMapper.Runtime
                         TypeName = "string",
                         TypeRef = typeof(string),
                         HasMapFromAttribute = true,
-                        MapFromAttribute = __mfAttr285,
+                        MapFromAttribute = __mfAttr291,
                         HasMapIgnore = false,
                         MapIgnoreDirection = 0,
                         HasOverrideIgnore = false,
@@ -39269,7 +40272,7 @@ namespace NCMapper.Runtime
                         TypeName = "string",
                         TypeRef = typeof(string),
                         HasMapFromAttribute = true,
-                        MapFromAttribute = __mfAttr285,
+                        MapFromAttribute = __mfAttr291,
                         HasMapIgnore = false,
                         MapIgnoreDirection = 0,
                         HasOverrideIgnore = false,
@@ -39288,11 +40291,11 @@ namespace NCMapper.Runtime
                     },
                 },
             };
-            global::NCMapper.Runtime.RuntimeSnapshotPair<NCMapper.Tests.Tests.T7A1Order, NCMapper.Tests.Tests.T7A1Dto>.Metadata = __meta285;
-            global::NCMapper.Runtime.RuntimeSnapshotStore.Register(__meta285);
-            // pair 286: NCMapper.Tests.Tests.T7B3Entity -> NCMapper.Tests.Tests.T7B3Dto (MapFrom channel)
-            var __mfAttr286 = new global::NCMapper.Attributes.MapFromAttribute(typeof(NCMapper.Tests.Tests.T7B3Entity));
-            var __meta286 = new global::NCMapper.Runtime.RuntimeMapperMetadata
+            global::NCMapper.Runtime.RuntimeSnapshotPair<NCMapper.Tests.Tests.T7A1Order, NCMapper.Tests.Tests.T7A1Dto>.Metadata = __meta291;
+            global::NCMapper.Runtime.RuntimeSnapshotStore.Register(__meta291);
+            // pair 292: NCMapper.Tests.Tests.T7B3Entity -> NCMapper.Tests.Tests.T7B3Dto (MapFrom channel)
+            var __mfAttr292 = new global::NCMapper.Attributes.MapFromAttribute(typeof(NCMapper.Tests.Tests.T7B3Entity));
+            var __meta292 = new global::NCMapper.Runtime.RuntimeMapperMetadata
             {
                 SourceType = typeof(NCMapper.Tests.Tests.T7B3Entity),
                 TargetType = typeof(NCMapper.Tests.Tests.T7B3Dto),
@@ -39313,7 +40316,7 @@ namespace NCMapper.Runtime
                                 TypeName = "int",
                                 TypeRef = typeof(int),
                                 HasMapFromAttribute = true,
-                                MapFromAttribute = __mfAttr286,
+                                MapFromAttribute = __mfAttr292,
                                 HasMapIgnore = false,
                                 MapIgnoreDirection = 0,
                                 HasOverrideIgnore = false,
@@ -39353,7 +40356,7 @@ namespace NCMapper.Runtime
                                 TypeName = "string",
                                 TypeRef = typeof(string),
                                 HasMapFromAttribute = true,
-                                MapFromAttribute = __mfAttr286,
+                                MapFromAttribute = __mfAttr292,
                                 HasMapIgnore = false,
                                 MapIgnoreDirection = 0,
                                 HasOverrideIgnore = false,
@@ -39393,7 +40396,7 @@ namespace NCMapper.Runtime
                                 TypeName = "string",
                                 TypeRef = typeof(string),
                                 HasMapFromAttribute = true,
-                                MapFromAttribute = __mfAttr286,
+                                MapFromAttribute = __mfAttr292,
                                 HasMapIgnore = false,
                                 MapIgnoreDirection = 0,
                                 HasOverrideIgnore = false,
@@ -39435,7 +40438,7 @@ namespace NCMapper.Runtime
                                 TypeName = "string",
                                 TypeRef = typeof(string),
                                 HasMapFromAttribute = true,
-                                MapFromAttribute = __mfAttr286,
+                                MapFromAttribute = __mfAttr292,
                                 HasMapIgnore = false,
                                 MapIgnoreDirection = 0,
                                 HasOverrideIgnore = false,
@@ -39475,7 +40478,7 @@ namespace NCMapper.Runtime
                         TypeName = "int",
                         TypeRef = typeof(int),
                         HasMapFromAttribute = true,
-                        MapFromAttribute = __mfAttr286,
+                        MapFromAttribute = __mfAttr292,
                         HasMapIgnore = false,
                         MapIgnoreDirection = 0,
                         HasOverrideIgnore = false,
@@ -39498,7 +40501,7 @@ namespace NCMapper.Runtime
                         TypeName = "string",
                         TypeRef = typeof(string),
                         HasMapFromAttribute = true,
-                        MapFromAttribute = __mfAttr286,
+                        MapFromAttribute = __mfAttr292,
                         HasMapIgnore = false,
                         MapIgnoreDirection = 0,
                         HasOverrideIgnore = false,
@@ -39521,7 +40524,7 @@ namespace NCMapper.Runtime
                         TypeName = "string",
                         TypeRef = typeof(string),
                         HasMapFromAttribute = true,
-                        MapFromAttribute = __mfAttr286,
+                        MapFromAttribute = __mfAttr292,
                         HasMapIgnore = false,
                         MapIgnoreDirection = 0,
                         HasOverrideIgnore = false,
@@ -39544,7 +40547,7 @@ namespace NCMapper.Runtime
                         TypeName = "string",
                         TypeRef = typeof(string),
                         HasMapFromAttribute = true,
-                        MapFromAttribute = __mfAttr286,
+                        MapFromAttribute = __mfAttr292,
                         HasMapIgnore = false,
                         MapIgnoreDirection = 0,
                         HasOverrideIgnore = false,
@@ -39563,11 +40566,11 @@ namespace NCMapper.Runtime
                     },
                 },
             };
-            global::NCMapper.Runtime.RuntimeSnapshotPair<NCMapper.Tests.Tests.T7B3Entity, NCMapper.Tests.Tests.T7B3Dto>.Metadata = __meta286;
-            global::NCMapper.Runtime.RuntimeSnapshotStore.Register(__meta286);
-            // pair 287: NCMapper.Tests.Tests.ThreeRendererEquivalenceTests.ConvertUsingEquivalenceEntity -> NCMapper.Tests.Tests.ThreeRendererEquivalenceTests.ConvertUsingEquivalenceDto (MapFrom channel)
-            var __mfAttr287 = new global::NCMapper.Attributes.MapFromAttribute(typeof(NCMapper.Tests.Tests.ThreeRendererEquivalenceTests.ConvertUsingEquivalenceEntity));
-            var __meta287 = new global::NCMapper.Runtime.RuntimeMapperMetadata
+            global::NCMapper.Runtime.RuntimeSnapshotPair<NCMapper.Tests.Tests.T7B3Entity, NCMapper.Tests.Tests.T7B3Dto>.Metadata = __meta292;
+            global::NCMapper.Runtime.RuntimeSnapshotStore.Register(__meta292);
+            // pair 293: NCMapper.Tests.Tests.ThreeRendererEquivalenceTests.ConvertUsingEquivalenceEntity -> NCMapper.Tests.Tests.ThreeRendererEquivalenceTests.ConvertUsingEquivalenceDto (MapFrom channel)
+            var __mfAttr293 = new global::NCMapper.Attributes.MapFromAttribute(typeof(NCMapper.Tests.Tests.ThreeRendererEquivalenceTests.ConvertUsingEquivalenceEntity));
+            var __meta293 = new global::NCMapper.Runtime.RuntimeMapperMetadata
             {
                 SourceType = typeof(NCMapper.Tests.Tests.ThreeRendererEquivalenceTests.ConvertUsingEquivalenceEntity),
                 TargetType = typeof(NCMapper.Tests.Tests.ThreeRendererEquivalenceTests.ConvertUsingEquivalenceDto),
@@ -39588,7 +40591,7 @@ namespace NCMapper.Runtime
                                 TypeName = "string?",
                                 TypeRef = typeof(string),
                                 HasMapFromAttribute = true,
-                                MapFromAttribute = __mfAttr287,
+                                MapFromAttribute = __mfAttr293,
                                 HasMapIgnore = false,
                                 MapIgnoreDirection = 0,
                                 HasOverrideIgnore = false,
@@ -39628,7 +40631,7 @@ namespace NCMapper.Runtime
                         TypeName = "string?",
                         TypeRef = typeof(string),
                         HasMapFromAttribute = true,
-                        MapFromAttribute = __mfAttr287,
+                        MapFromAttribute = __mfAttr293,
                         HasMapIgnore = false,
                         MapIgnoreDirection = 0,
                         HasOverrideIgnore = false,
@@ -39647,11 +40650,11 @@ namespace NCMapper.Runtime
                     },
                 },
             };
-            global::NCMapper.Runtime.RuntimeSnapshotPair<NCMapper.Tests.Tests.ThreeRendererEquivalenceTests.ConvertUsingEquivalenceEntity, NCMapper.Tests.Tests.ThreeRendererEquivalenceTests.ConvertUsingEquivalenceDto>.Metadata = __meta287;
-            global::NCMapper.Runtime.RuntimeSnapshotStore.Register(__meta287);
-            // pair 288: NCMapper.Tests.Tests.ThreeRendererEquivalenceTests.DualAnnotationEntity -> NCMapper.Tests.Tests.ThreeRendererEquivalenceTests.DualAnnotationDto (MapFrom channel)
-            var __mfAttr288 = new global::NCMapper.Attributes.MapFromAttribute(typeof(NCMapper.Tests.Tests.ThreeRendererEquivalenceTests.DualAnnotationEntity));
-            var __meta288 = new global::NCMapper.Runtime.RuntimeMapperMetadata
+            global::NCMapper.Runtime.RuntimeSnapshotPair<NCMapper.Tests.Tests.ThreeRendererEquivalenceTests.ConvertUsingEquivalenceEntity, NCMapper.Tests.Tests.ThreeRendererEquivalenceTests.ConvertUsingEquivalenceDto>.Metadata = __meta293;
+            global::NCMapper.Runtime.RuntimeSnapshotStore.Register(__meta293);
+            // pair 294: NCMapper.Tests.Tests.ThreeRendererEquivalenceTests.DualAnnotationEntity -> NCMapper.Tests.Tests.ThreeRendererEquivalenceTests.DualAnnotationDto (MapFrom channel)
+            var __mfAttr294 = new global::NCMapper.Attributes.MapFromAttribute(typeof(NCMapper.Tests.Tests.ThreeRendererEquivalenceTests.DualAnnotationEntity));
+            var __meta294 = new global::NCMapper.Runtime.RuntimeMapperMetadata
             {
                 SourceType = typeof(NCMapper.Tests.Tests.ThreeRendererEquivalenceTests.DualAnnotationEntity),
                 TargetType = typeof(NCMapper.Tests.Tests.ThreeRendererEquivalenceTests.DualAnnotationDto),
@@ -39672,7 +40675,7 @@ namespace NCMapper.Runtime
                                 TypeName = "string?",
                                 TypeRef = typeof(string),
                                 HasMapFromAttribute = true,
-                                MapFromAttribute = __mfAttr288,
+                                MapFromAttribute = __mfAttr294,
                                 HasMapIgnore = false,
                                 MapIgnoreDirection = 0,
                                 HasOverrideIgnore = false,
@@ -39712,7 +40715,7 @@ namespace NCMapper.Runtime
                         TypeName = "string?",
                         TypeRef = typeof(string),
                         HasMapFromAttribute = true,
-                        MapFromAttribute = __mfAttr288,
+                        MapFromAttribute = __mfAttr294,
                         HasMapIgnore = false,
                         MapIgnoreDirection = 0,
                         HasOverrideIgnore = false,
@@ -39731,11 +40734,11 @@ namespace NCMapper.Runtime
                     },
                 },
             };
-            global::NCMapper.Runtime.RuntimeSnapshotPair<NCMapper.Tests.Tests.ThreeRendererEquivalenceTests.DualAnnotationEntity, NCMapper.Tests.Tests.ThreeRendererEquivalenceTests.DualAnnotationDto>.Metadata = __meta288;
-            global::NCMapper.Runtime.RuntimeSnapshotStore.Register(__meta288);
-            // pair 289: NCMapper.Tests.Tests.ThreeRendererEquivalenceTests.IgnoreEquivalenceEntity -> NCMapper.Tests.Tests.ThreeRendererEquivalenceTests.IgnoreEquivalenceDto (MapFrom channel)
-            var __mfAttr289 = new global::NCMapper.Attributes.MapFromAttribute(typeof(NCMapper.Tests.Tests.ThreeRendererEquivalenceTests.IgnoreEquivalenceEntity));
-            var __meta289 = new global::NCMapper.Runtime.RuntimeMapperMetadata
+            global::NCMapper.Runtime.RuntimeSnapshotPair<NCMapper.Tests.Tests.ThreeRendererEquivalenceTests.DualAnnotationEntity, NCMapper.Tests.Tests.ThreeRendererEquivalenceTests.DualAnnotationDto>.Metadata = __meta294;
+            global::NCMapper.Runtime.RuntimeSnapshotStore.Register(__meta294);
+            // pair 295: NCMapper.Tests.Tests.ThreeRendererEquivalenceTests.IgnoreEquivalenceEntity -> NCMapper.Tests.Tests.ThreeRendererEquivalenceTests.IgnoreEquivalenceDto (MapFrom channel)
+            var __mfAttr295 = new global::NCMapper.Attributes.MapFromAttribute(typeof(NCMapper.Tests.Tests.ThreeRendererEquivalenceTests.IgnoreEquivalenceEntity));
+            var __meta295 = new global::NCMapper.Runtime.RuntimeMapperMetadata
             {
                 SourceType = typeof(NCMapper.Tests.Tests.ThreeRendererEquivalenceTests.IgnoreEquivalenceEntity),
                 TargetType = typeof(NCMapper.Tests.Tests.ThreeRendererEquivalenceTests.IgnoreEquivalenceDto),
@@ -39756,7 +40759,7 @@ namespace NCMapper.Runtime
                                 TypeName = "int",
                                 TypeRef = typeof(int),
                                 HasMapFromAttribute = true,
-                                MapFromAttribute = __mfAttr289,
+                                MapFromAttribute = __mfAttr295,
                                 HasMapIgnore = false,
                                 MapIgnoreDirection = 0,
                                 HasOverrideIgnore = false,
@@ -39796,7 +40799,7 @@ namespace NCMapper.Runtime
                         TypeName = "int",
                         TypeRef = typeof(int),
                         HasMapFromAttribute = true,
-                        MapFromAttribute = __mfAttr289,
+                        MapFromAttribute = __mfAttr295,
                         HasMapIgnore = false,
                         MapIgnoreDirection = 0,
                         HasOverrideIgnore = false,
@@ -39815,11 +40818,11 @@ namespace NCMapper.Runtime
                     },
                 },
             };
-            global::NCMapper.Runtime.RuntimeSnapshotPair<NCMapper.Tests.Tests.ThreeRendererEquivalenceTests.IgnoreEquivalenceEntity, NCMapper.Tests.Tests.ThreeRendererEquivalenceTests.IgnoreEquivalenceDto>.Metadata = __meta289;
-            global::NCMapper.Runtime.RuntimeSnapshotStore.Register(__meta289);
-            // pair 290: NCMapper.Tests.Tests.ThreeRendererEquivalenceTests.ImplicitEntity -> NCMapper.Tests.Tests.ThreeRendererEquivalenceTests.ImplicitDto (MapFrom channel)
-            var __mfAttr290 = new global::NCMapper.Attributes.MapFromAttribute(typeof(NCMapper.Tests.Tests.ThreeRendererEquivalenceTests.ImplicitEntity));
-            var __meta290 = new global::NCMapper.Runtime.RuntimeMapperMetadata
+            global::NCMapper.Runtime.RuntimeSnapshotPair<NCMapper.Tests.Tests.ThreeRendererEquivalenceTests.IgnoreEquivalenceEntity, NCMapper.Tests.Tests.ThreeRendererEquivalenceTests.IgnoreEquivalenceDto>.Metadata = __meta295;
+            global::NCMapper.Runtime.RuntimeSnapshotStore.Register(__meta295);
+            // pair 296: NCMapper.Tests.Tests.ThreeRendererEquivalenceTests.ImplicitEntity -> NCMapper.Tests.Tests.ThreeRendererEquivalenceTests.ImplicitDto (MapFrom channel)
+            var __mfAttr296 = new global::NCMapper.Attributes.MapFromAttribute(typeof(NCMapper.Tests.Tests.ThreeRendererEquivalenceTests.ImplicitEntity));
+            var __meta296 = new global::NCMapper.Runtime.RuntimeMapperMetadata
             {
                 SourceType = typeof(NCMapper.Tests.Tests.ThreeRendererEquivalenceTests.ImplicitEntity),
                 TargetType = typeof(NCMapper.Tests.Tests.ThreeRendererEquivalenceTests.ImplicitDto),
@@ -39840,7 +40843,7 @@ namespace NCMapper.Runtime
                                 TypeName = "long",
                                 TypeRef = typeof(long),
                                 HasMapFromAttribute = true,
-                                MapFromAttribute = __mfAttr290,
+                                MapFromAttribute = __mfAttr296,
                                 HasMapIgnore = false,
                                 MapIgnoreDirection = 0,
                                 HasOverrideIgnore = false,
@@ -39880,7 +40883,7 @@ namespace NCMapper.Runtime
                         TypeName = "long",
                         TypeRef = typeof(long),
                         HasMapFromAttribute = true,
-                        MapFromAttribute = __mfAttr290,
+                        MapFromAttribute = __mfAttr296,
                         HasMapIgnore = false,
                         MapIgnoreDirection = 0,
                         HasOverrideIgnore = false,
@@ -39899,11 +40902,11 @@ namespace NCMapper.Runtime
                     },
                 },
             };
-            global::NCMapper.Runtime.RuntimeSnapshotPair<NCMapper.Tests.Tests.ThreeRendererEquivalenceTests.ImplicitEntity, NCMapper.Tests.Tests.ThreeRendererEquivalenceTests.ImplicitDto>.Metadata = __meta290;
-            global::NCMapper.Runtime.RuntimeSnapshotStore.Register(__meta290);
-            // pair 291: NCMapper.Tests.Tests.ThreeRendererEquivalenceTests.MaskEquivalenceEntity -> NCMapper.Tests.Tests.ThreeRendererEquivalenceTests.MaskEquivalenceDto (MapFrom channel)
-            var __mfAttr291 = new global::NCMapper.Attributes.MapFromAttribute(typeof(NCMapper.Tests.Tests.ThreeRendererEquivalenceTests.MaskEquivalenceEntity));
-            var __meta291 = new global::NCMapper.Runtime.RuntimeMapperMetadata
+            global::NCMapper.Runtime.RuntimeSnapshotPair<NCMapper.Tests.Tests.ThreeRendererEquivalenceTests.ImplicitEntity, NCMapper.Tests.Tests.ThreeRendererEquivalenceTests.ImplicitDto>.Metadata = __meta296;
+            global::NCMapper.Runtime.RuntimeSnapshotStore.Register(__meta296);
+            // pair 297: NCMapper.Tests.Tests.ThreeRendererEquivalenceTests.MaskEquivalenceEntity -> NCMapper.Tests.Tests.ThreeRendererEquivalenceTests.MaskEquivalenceDto (MapFrom channel)
+            var __mfAttr297 = new global::NCMapper.Attributes.MapFromAttribute(typeof(NCMapper.Tests.Tests.ThreeRendererEquivalenceTests.MaskEquivalenceEntity));
+            var __meta297 = new global::NCMapper.Runtime.RuntimeMapperMetadata
             {
                 SourceType = typeof(NCMapper.Tests.Tests.ThreeRendererEquivalenceTests.MaskEquivalenceEntity),
                 TargetType = typeof(NCMapper.Tests.Tests.ThreeRendererEquivalenceTests.MaskEquivalenceDto),
@@ -39924,7 +40927,7 @@ namespace NCMapper.Runtime
                                 TypeName = "string",
                                 TypeRef = typeof(string),
                                 HasMapFromAttribute = true,
-                                MapFromAttribute = __mfAttr291,
+                                MapFromAttribute = __mfAttr297,
                                 HasMapIgnore = false,
                                 MapIgnoreDirection = 0,
                                 HasOverrideIgnore = false,
@@ -39964,7 +40967,7 @@ namespace NCMapper.Runtime
                         TypeName = "string",
                         TypeRef = typeof(string),
                         HasMapFromAttribute = true,
-                        MapFromAttribute = __mfAttr291,
+                        MapFromAttribute = __mfAttr297,
                         HasMapIgnore = false,
                         MapIgnoreDirection = 0,
                         HasOverrideIgnore = false,
@@ -39983,11 +40986,11 @@ namespace NCMapper.Runtime
                     },
                 },
             };
-            global::NCMapper.Runtime.RuntimeSnapshotPair<NCMapper.Tests.Tests.ThreeRendererEquivalenceTests.MaskEquivalenceEntity, NCMapper.Tests.Tests.ThreeRendererEquivalenceTests.MaskEquivalenceDto>.Metadata = __meta291;
-            global::NCMapper.Runtime.RuntimeSnapshotStore.Register(__meta291);
-            // pair 292: NCMapper.Tests.Tests.ThreeRendererEquivalenceTests.NullableEntity -> NCMapper.Tests.Tests.ThreeRendererEquivalenceTests.NonNullableDto (MapFrom channel)
-            var __mfAttr292 = new global::NCMapper.Attributes.MapFromAttribute(typeof(NCMapper.Tests.Tests.ThreeRendererEquivalenceTests.NullableEntity));
-            var __meta292 = new global::NCMapper.Runtime.RuntimeMapperMetadata
+            global::NCMapper.Runtime.RuntimeSnapshotPair<NCMapper.Tests.Tests.ThreeRendererEquivalenceTests.MaskEquivalenceEntity, NCMapper.Tests.Tests.ThreeRendererEquivalenceTests.MaskEquivalenceDto>.Metadata = __meta297;
+            global::NCMapper.Runtime.RuntimeSnapshotStore.Register(__meta297);
+            // pair 298: NCMapper.Tests.Tests.ThreeRendererEquivalenceTests.NullableEntity -> NCMapper.Tests.Tests.ThreeRendererEquivalenceTests.NonNullableDto (MapFrom channel)
+            var __mfAttr298 = new global::NCMapper.Attributes.MapFromAttribute(typeof(NCMapper.Tests.Tests.ThreeRendererEquivalenceTests.NullableEntity));
+            var __meta298 = new global::NCMapper.Runtime.RuntimeMapperMetadata
             {
                 SourceType = typeof(NCMapper.Tests.Tests.ThreeRendererEquivalenceTests.NullableEntity),
                 TargetType = typeof(NCMapper.Tests.Tests.ThreeRendererEquivalenceTests.NonNullableDto),
@@ -40008,7 +41011,7 @@ namespace NCMapper.Runtime
                                 TypeName = "int",
                                 TypeRef = typeof(int),
                                 HasMapFromAttribute = true,
-                                MapFromAttribute = __mfAttr292,
+                                MapFromAttribute = __mfAttr298,
                                 HasMapIgnore = false,
                                 MapIgnoreDirection = 0,
                                 HasOverrideIgnore = false,
@@ -40048,7 +41051,7 @@ namespace NCMapper.Runtime
                         TypeName = "int",
                         TypeRef = typeof(int),
                         HasMapFromAttribute = true,
-                        MapFromAttribute = __mfAttr292,
+                        MapFromAttribute = __mfAttr298,
                         HasMapIgnore = false,
                         MapIgnoreDirection = 0,
                         HasOverrideIgnore = false,
@@ -40067,11 +41070,11 @@ namespace NCMapper.Runtime
                     },
                 },
             };
-            global::NCMapper.Runtime.RuntimeSnapshotPair<NCMapper.Tests.Tests.ThreeRendererEquivalenceTests.NullableEntity, NCMapper.Tests.Tests.ThreeRendererEquivalenceTests.NonNullableDto>.Metadata = __meta292;
-            global::NCMapper.Runtime.RuntimeSnapshotStore.Register(__meta292);
-            // pair 293: NCMapper.Tests.Tests.ThreeRendererEquivalenceTests.SimpleEntity -> NCMapper.Tests.Tests.ThreeRendererEquivalenceTests.SimpleDto (MapFrom channel)
-            var __mfAttr293 = new global::NCMapper.Attributes.MapFromAttribute(typeof(NCMapper.Tests.Tests.ThreeRendererEquivalenceTests.SimpleEntity));
-            var __meta293 = new global::NCMapper.Runtime.RuntimeMapperMetadata
+            global::NCMapper.Runtime.RuntimeSnapshotPair<NCMapper.Tests.Tests.ThreeRendererEquivalenceTests.NullableEntity, NCMapper.Tests.Tests.ThreeRendererEquivalenceTests.NonNullableDto>.Metadata = __meta298;
+            global::NCMapper.Runtime.RuntimeSnapshotStore.Register(__meta298);
+            // pair 299: NCMapper.Tests.Tests.ThreeRendererEquivalenceTests.SimpleEntity -> NCMapper.Tests.Tests.ThreeRendererEquivalenceTests.SimpleDto (MapFrom channel)
+            var __mfAttr299 = new global::NCMapper.Attributes.MapFromAttribute(typeof(NCMapper.Tests.Tests.ThreeRendererEquivalenceTests.SimpleEntity));
+            var __meta299 = new global::NCMapper.Runtime.RuntimeMapperMetadata
             {
                 SourceType = typeof(NCMapper.Tests.Tests.ThreeRendererEquivalenceTests.SimpleEntity),
                 TargetType = typeof(NCMapper.Tests.Tests.ThreeRendererEquivalenceTests.SimpleDto),
@@ -40092,7 +41095,7 @@ namespace NCMapper.Runtime
                                 TypeName = "int",
                                 TypeRef = typeof(int),
                                 HasMapFromAttribute = true,
-                                MapFromAttribute = __mfAttr293,
+                                MapFromAttribute = __mfAttr299,
                                 HasMapIgnore = false,
                                 MapIgnoreDirection = 0,
                                 HasOverrideIgnore = false,
@@ -40132,7 +41135,7 @@ namespace NCMapper.Runtime
                                 TypeName = "string",
                                 TypeRef = typeof(string),
                                 HasMapFromAttribute = true,
-                                MapFromAttribute = __mfAttr293,
+                                MapFromAttribute = __mfAttr299,
                                 HasMapIgnore = false,
                                 MapIgnoreDirection = 0,
                                 HasOverrideIgnore = false,
@@ -40172,7 +41175,7 @@ namespace NCMapper.Runtime
                                 TypeName = "long",
                                 TypeRef = typeof(long),
                                 HasMapFromAttribute = true,
-                                MapFromAttribute = __mfAttr293,
+                                MapFromAttribute = __mfAttr299,
                                 HasMapIgnore = false,
                                 MapIgnoreDirection = 0,
                                 HasOverrideIgnore = false,
@@ -40212,7 +41215,7 @@ namespace NCMapper.Runtime
                         TypeName = "int",
                         TypeRef = typeof(int),
                         HasMapFromAttribute = true,
-                        MapFromAttribute = __mfAttr293,
+                        MapFromAttribute = __mfAttr299,
                         HasMapIgnore = false,
                         MapIgnoreDirection = 0,
                         HasOverrideIgnore = false,
@@ -40235,7 +41238,7 @@ namespace NCMapper.Runtime
                         TypeName = "string",
                         TypeRef = typeof(string),
                         HasMapFromAttribute = true,
-                        MapFromAttribute = __mfAttr293,
+                        MapFromAttribute = __mfAttr299,
                         HasMapIgnore = false,
                         MapIgnoreDirection = 0,
                         HasOverrideIgnore = false,
@@ -40258,7 +41261,7 @@ namespace NCMapper.Runtime
                         TypeName = "long",
                         TypeRef = typeof(long),
                         HasMapFromAttribute = true,
-                        MapFromAttribute = __mfAttr293,
+                        MapFromAttribute = __mfAttr299,
                         HasMapIgnore = false,
                         MapIgnoreDirection = 0,
                         HasOverrideIgnore = false,
@@ -40277,11 +41280,11 @@ namespace NCMapper.Runtime
                     },
                 },
             };
-            global::NCMapper.Runtime.RuntimeSnapshotPair<NCMapper.Tests.Tests.ThreeRendererEquivalenceTests.SimpleEntity, NCMapper.Tests.Tests.ThreeRendererEquivalenceTests.SimpleDto>.Metadata = __meta293;
-            global::NCMapper.Runtime.RuntimeSnapshotStore.Register(__meta293);
-            // pair 294: NCMapper.Tests.Tests.TraceObservabilityTests.TraceNonStringMaskEntity -> NCMapper.Tests.Tests.TraceObservabilityTests.TraceIgnoreEntity (MapFrom channel)
-            var __mfAttr294 = new global::NCMapper.Attributes.MapFromAttribute(typeof(NCMapper.Tests.Tests.TraceObservabilityTests.TraceNonStringMaskEntity));
-            var __meta294 = new global::NCMapper.Runtime.RuntimeMapperMetadata
+            global::NCMapper.Runtime.RuntimeSnapshotPair<NCMapper.Tests.Tests.ThreeRendererEquivalenceTests.SimpleEntity, NCMapper.Tests.Tests.ThreeRendererEquivalenceTests.SimpleDto>.Metadata = __meta299;
+            global::NCMapper.Runtime.RuntimeSnapshotStore.Register(__meta299);
+            // pair 300: NCMapper.Tests.Tests.TraceObservabilityTests.TraceNonStringMaskEntity -> NCMapper.Tests.Tests.TraceObservabilityTests.TraceIgnoreEntity (MapFrom channel)
+            var __mfAttr300 = new global::NCMapper.Attributes.MapFromAttribute(typeof(NCMapper.Tests.Tests.TraceObservabilityTests.TraceNonStringMaskEntity));
+            var __meta300 = new global::NCMapper.Runtime.RuntimeMapperMetadata
             {
                 SourceType = typeof(NCMapper.Tests.Tests.TraceObservabilityTests.TraceNonStringMaskEntity),
                 TargetType = typeof(NCMapper.Tests.Tests.TraceObservabilityTests.TraceIgnoreEntity),
@@ -40302,7 +41305,7 @@ namespace NCMapper.Runtime
                                 TypeName = "int",
                                 TypeRef = typeof(int),
                                 HasMapFromAttribute = true,
-                                MapFromAttribute = __mfAttr294,
+                                MapFromAttribute = __mfAttr300,
                                 HasMapIgnore = false,
                                 MapIgnoreDirection = 0,
                                 HasOverrideIgnore = false,
@@ -40342,7 +41345,7 @@ namespace NCMapper.Runtime
                         TypeName = "int",
                         TypeRef = typeof(int),
                         HasMapFromAttribute = true,
-                        MapFromAttribute = __mfAttr294,
+                        MapFromAttribute = __mfAttr300,
                         HasMapIgnore = false,
                         MapIgnoreDirection = 0,
                         HasOverrideIgnore = false,
@@ -40361,11 +41364,11 @@ namespace NCMapper.Runtime
                     },
                 },
             };
-            global::NCMapper.Runtime.RuntimeSnapshotPair<NCMapper.Tests.Tests.TraceObservabilityTests.TraceNonStringMaskEntity, NCMapper.Tests.Tests.TraceObservabilityTests.TraceIgnoreEntity>.Metadata = __meta294;
-            global::NCMapper.Runtime.RuntimeSnapshotStore.Register(__meta294);
-            // pair 295: NCMapper.Tests.Tests.TraceObservabilityTests.TraceReverseConvertUsingEntity -> NCMapper.Tests.Tests.TraceObservabilityTests.TraceReverseConvertUsingDto (MapFrom channel)
-            var __mfAttr295 = new global::NCMapper.Attributes.MapFromAttribute(typeof(NCMapper.Tests.Tests.TraceObservabilityTests.TraceReverseConvertUsingEntity));
-            var __meta295 = new global::NCMapper.Runtime.RuntimeMapperMetadata
+            global::NCMapper.Runtime.RuntimeSnapshotPair<NCMapper.Tests.Tests.TraceObservabilityTests.TraceNonStringMaskEntity, NCMapper.Tests.Tests.TraceObservabilityTests.TraceIgnoreEntity>.Metadata = __meta300;
+            global::NCMapper.Runtime.RuntimeSnapshotStore.Register(__meta300);
+            // pair 301: NCMapper.Tests.Tests.TraceObservabilityTests.TraceReverseConvertUsingEntity -> NCMapper.Tests.Tests.TraceObservabilityTests.TraceReverseConvertUsingDto (MapFrom channel)
+            var __mfAttr301 = new global::NCMapper.Attributes.MapFromAttribute(typeof(NCMapper.Tests.Tests.TraceObservabilityTests.TraceReverseConvertUsingEntity));
+            var __meta301 = new global::NCMapper.Runtime.RuntimeMapperMetadata
             {
                 SourceType = typeof(NCMapper.Tests.Tests.TraceObservabilityTests.TraceReverseConvertUsingEntity),
                 TargetType = typeof(NCMapper.Tests.Tests.TraceObservabilityTests.TraceReverseConvertUsingDto),
@@ -40386,7 +41389,7 @@ namespace NCMapper.Runtime
                                 TypeName = "string?",
                                 TypeRef = typeof(string),
                                 HasMapFromAttribute = true,
-                                MapFromAttribute = __mfAttr295,
+                                MapFromAttribute = __mfAttr301,
                                 HasMapIgnore = false,
                                 MapIgnoreDirection = 0,
                                 HasOverrideIgnore = false,
@@ -40426,7 +41429,7 @@ namespace NCMapper.Runtime
                         TypeName = "string?",
                         TypeRef = typeof(string),
                         HasMapFromAttribute = true,
-                        MapFromAttribute = __mfAttr295,
+                        MapFromAttribute = __mfAttr301,
                         HasMapIgnore = false,
                         MapIgnoreDirection = 0,
                         HasOverrideIgnore = false,
@@ -40445,11 +41448,11 @@ namespace NCMapper.Runtime
                     },
                 },
             };
-            global::NCMapper.Runtime.RuntimeSnapshotPair<NCMapper.Tests.Tests.TraceObservabilityTests.TraceReverseConvertUsingEntity, NCMapper.Tests.Tests.TraceObservabilityTests.TraceReverseConvertUsingDto>.Metadata = __meta295;
-            global::NCMapper.Runtime.RuntimeSnapshotStore.Register(__meta295);
-            // pair 296: NCMapper.Tests.Tests.ValidatorGuidSource -> NCMapper.Tests.Tests.ValidatorGuidToIntDto (MapFrom channel)
-            var __mfAttr296 = new global::NCMapper.Attributes.MapFromAttribute(typeof(NCMapper.Tests.Tests.ValidatorGuidSource));
-            var __meta296 = new global::NCMapper.Runtime.RuntimeMapperMetadata
+            global::NCMapper.Runtime.RuntimeSnapshotPair<NCMapper.Tests.Tests.TraceObservabilityTests.TraceReverseConvertUsingEntity, NCMapper.Tests.Tests.TraceObservabilityTests.TraceReverseConvertUsingDto>.Metadata = __meta301;
+            global::NCMapper.Runtime.RuntimeSnapshotStore.Register(__meta301);
+            // pair 302: NCMapper.Tests.Tests.ValidatorGuidSource -> NCMapper.Tests.Tests.ValidatorGuidToIntDto (MapFrom channel)
+            var __mfAttr302 = new global::NCMapper.Attributes.MapFromAttribute(typeof(NCMapper.Tests.Tests.ValidatorGuidSource));
+            var __meta302 = new global::NCMapper.Runtime.RuntimeMapperMetadata
             {
                 SourceType = typeof(NCMapper.Tests.Tests.ValidatorGuidSource),
                 TargetType = typeof(NCMapper.Tests.Tests.ValidatorGuidToIntDto),
@@ -40470,7 +41473,7 @@ namespace NCMapper.Runtime
                                 TypeName = "int",
                                 TypeRef = typeof(int),
                                 HasMapFromAttribute = true,
-                                MapFromAttribute = __mfAttr296,
+                                MapFromAttribute = __mfAttr302,
                                 HasMapIgnore = false,
                                 MapIgnoreDirection = 0,
                                 HasOverrideIgnore = false,
@@ -40510,7 +41513,7 @@ namespace NCMapper.Runtime
                         TypeName = "int",
                         TypeRef = typeof(int),
                         HasMapFromAttribute = true,
-                        MapFromAttribute = __mfAttr296,
+                        MapFromAttribute = __mfAttr302,
                         HasMapIgnore = false,
                         MapIgnoreDirection = 0,
                         HasOverrideIgnore = false,
@@ -40529,11 +41532,11 @@ namespace NCMapper.Runtime
                     },
                 },
             };
-            global::NCMapper.Runtime.RuntimeSnapshotPair<NCMapper.Tests.Tests.ValidatorGuidSource, NCMapper.Tests.Tests.ValidatorGuidToIntDto>.Metadata = __meta296;
-            global::NCMapper.Runtime.RuntimeSnapshotStore.Register(__meta296);
-            // pair 297: NCMapper.Tests.Tests.ValidatorGuidSource -> NCMapper.Tests.Tests.ValidatorGuidToStringDto (MapFrom channel)
-            var __mfAttr297 = new global::NCMapper.Attributes.MapFromAttribute(typeof(NCMapper.Tests.Tests.ValidatorGuidSource));
-            var __meta297 = new global::NCMapper.Runtime.RuntimeMapperMetadata
+            global::NCMapper.Runtime.RuntimeSnapshotPair<NCMapper.Tests.Tests.ValidatorGuidSource, NCMapper.Tests.Tests.ValidatorGuidToIntDto>.Metadata = __meta302;
+            global::NCMapper.Runtime.RuntimeSnapshotStore.Register(__meta302);
+            // pair 303: NCMapper.Tests.Tests.ValidatorGuidSource -> NCMapper.Tests.Tests.ValidatorGuidToStringDto (MapFrom channel)
+            var __mfAttr303 = new global::NCMapper.Attributes.MapFromAttribute(typeof(NCMapper.Tests.Tests.ValidatorGuidSource));
+            var __meta303 = new global::NCMapper.Runtime.RuntimeMapperMetadata
             {
                 SourceType = typeof(NCMapper.Tests.Tests.ValidatorGuidSource),
                 TargetType = typeof(NCMapper.Tests.Tests.ValidatorGuidToStringDto),
@@ -40554,7 +41557,7 @@ namespace NCMapper.Runtime
                                 TypeName = "string",
                                 TypeRef = typeof(string),
                                 HasMapFromAttribute = true,
-                                MapFromAttribute = __mfAttr297,
+                                MapFromAttribute = __mfAttr303,
                                 HasMapIgnore = false,
                                 MapIgnoreDirection = 0,
                                 HasOverrideIgnore = false,
@@ -40594,7 +41597,7 @@ namespace NCMapper.Runtime
                         TypeName = "string",
                         TypeRef = typeof(string),
                         HasMapFromAttribute = true,
-                        MapFromAttribute = __mfAttr297,
+                        MapFromAttribute = __mfAttr303,
                         HasMapIgnore = false,
                         MapIgnoreDirection = 0,
                         HasOverrideIgnore = false,
@@ -40613,11 +41616,11 @@ namespace NCMapper.Runtime
                     },
                 },
             };
-            global::NCMapper.Runtime.RuntimeSnapshotPair<NCMapper.Tests.Tests.ValidatorGuidSource, NCMapper.Tests.Tests.ValidatorGuidToStringDto>.Metadata = __meta297;
-            global::NCMapper.Runtime.RuntimeSnapshotStore.Register(__meta297);
-            // pair 298: NCMapper.Tests.Tests.ValidatorStringSource -> NCMapper.Tests.Tests.ValidatorStringToGuidDto (MapFrom channel)
-            var __mfAttr298 = new global::NCMapper.Attributes.MapFromAttribute(typeof(NCMapper.Tests.Tests.ValidatorStringSource));
-            var __meta298 = new global::NCMapper.Runtime.RuntimeMapperMetadata
+            global::NCMapper.Runtime.RuntimeSnapshotPair<NCMapper.Tests.Tests.ValidatorGuidSource, NCMapper.Tests.Tests.ValidatorGuidToStringDto>.Metadata = __meta303;
+            global::NCMapper.Runtime.RuntimeSnapshotStore.Register(__meta303);
+            // pair 304: NCMapper.Tests.Tests.ValidatorStringSource -> NCMapper.Tests.Tests.ValidatorStringToGuidDto (MapFrom channel)
+            var __mfAttr304 = new global::NCMapper.Attributes.MapFromAttribute(typeof(NCMapper.Tests.Tests.ValidatorStringSource));
+            var __meta304 = new global::NCMapper.Runtime.RuntimeMapperMetadata
             {
                 SourceType = typeof(NCMapper.Tests.Tests.ValidatorStringSource),
                 TargetType = typeof(NCMapper.Tests.Tests.ValidatorStringToGuidDto),
@@ -40638,7 +41641,7 @@ namespace NCMapper.Runtime
                                 TypeName = "System.Guid",
                                 TypeRef = typeof(System.Guid),
                                 HasMapFromAttribute = true,
-                                MapFromAttribute = __mfAttr298,
+                                MapFromAttribute = __mfAttr304,
                                 HasMapIgnore = false,
                                 MapIgnoreDirection = 0,
                                 HasOverrideIgnore = false,
@@ -40678,7 +41681,7 @@ namespace NCMapper.Runtime
                         TypeName = "System.Guid",
                         TypeRef = typeof(System.Guid),
                         HasMapFromAttribute = true,
-                        MapFromAttribute = __mfAttr298,
+                        MapFromAttribute = __mfAttr304,
                         HasMapIgnore = false,
                         MapIgnoreDirection = 0,
                         HasOverrideIgnore = false,
@@ -40697,11 +41700,11 @@ namespace NCMapper.Runtime
                     },
                 },
             };
-            global::NCMapper.Runtime.RuntimeSnapshotPair<NCMapper.Tests.Tests.ValidatorStringSource, NCMapper.Tests.Tests.ValidatorStringToGuidDto>.Metadata = __meta298;
-            global::NCMapper.Runtime.RuntimeSnapshotStore.Register(__meta298);
-            // pair 299: NCMapper.Tests.Tests.ValueTypeToJsonSource -> NCMapper.Tests.Tests.ValueTypeToJsonDto (MapFrom channel)
-            var __mfAttr299 = new global::NCMapper.Attributes.MapFromAttribute(typeof(NCMapper.Tests.Tests.ValueTypeToJsonSource));
-            var __meta299 = new global::NCMapper.Runtime.RuntimeMapperMetadata
+            global::NCMapper.Runtime.RuntimeSnapshotPair<NCMapper.Tests.Tests.ValidatorStringSource, NCMapper.Tests.Tests.ValidatorStringToGuidDto>.Metadata = __meta304;
+            global::NCMapper.Runtime.RuntimeSnapshotStore.Register(__meta304);
+            // pair 305: NCMapper.Tests.Tests.ValueTypeToJsonSource -> NCMapper.Tests.Tests.ValueTypeToJsonDto (MapFrom channel)
+            var __mfAttr305 = new global::NCMapper.Attributes.MapFromAttribute(typeof(NCMapper.Tests.Tests.ValueTypeToJsonSource));
+            var __meta305 = new global::NCMapper.Runtime.RuntimeMapperMetadata
             {
                 SourceType = typeof(NCMapper.Tests.Tests.ValueTypeToJsonSource),
                 TargetType = typeof(NCMapper.Tests.Tests.ValueTypeToJsonDto),
@@ -40722,7 +41725,7 @@ namespace NCMapper.Runtime
                                 TypeName = "int",
                                 TypeRef = typeof(int),
                                 HasMapFromAttribute = true,
-                                MapFromAttribute = __mfAttr299,
+                                MapFromAttribute = __mfAttr305,
                                 HasMapIgnore = false,
                                 MapIgnoreDirection = 0,
                                 HasOverrideIgnore = false,
@@ -40762,7 +41765,7 @@ namespace NCMapper.Runtime
                         TypeName = "int",
                         TypeRef = typeof(int),
                         HasMapFromAttribute = true,
-                        MapFromAttribute = __mfAttr299,
+                        MapFromAttribute = __mfAttr305,
                         HasMapIgnore = false,
                         MapIgnoreDirection = 0,
                         HasOverrideIgnore = false,
@@ -40785,7 +41788,7 @@ namespace NCMapper.Runtime
                         TypeName = "string",
                         TypeRef = typeof(string),
                         HasMapFromAttribute = true,
-                        MapFromAttribute = __mfAttr299,
+                        MapFromAttribute = __mfAttr305,
                         HasMapIgnore = false,
                         MapIgnoreDirection = 0,
                         HasOverrideIgnore = false,
@@ -40808,7 +41811,7 @@ namespace NCMapper.Runtime
                         TypeName = "string",
                         TypeRef = typeof(string),
                         HasMapFromAttribute = true,
-                        MapFromAttribute = __mfAttr299,
+                        MapFromAttribute = __mfAttr305,
                         HasMapIgnore = false,
                         MapIgnoreDirection = 0,
                         HasOverrideIgnore = false,
@@ -40827,11 +41830,11 @@ namespace NCMapper.Runtime
                     },
                 },
             };
-            global::NCMapper.Runtime.RuntimeSnapshotPair<NCMapper.Tests.Tests.ValueTypeToJsonSource, NCMapper.Tests.Tests.ValueTypeToJsonDto>.Metadata = __meta299;
-            global::NCMapper.Runtime.RuntimeSnapshotStore.Register(__meta299);
-            // pair 300: NCMapper.Tests.TracerSourceEntity -> NCMapper.Tests.AttributeIgnoreDto (MapFrom channel)
-            var __mfAttr300 = new global::NCMapper.Attributes.MapFromAttribute(typeof(NCMapper.Tests.TracerSourceEntity));
-            var __meta300 = new global::NCMapper.Runtime.RuntimeMapperMetadata
+            global::NCMapper.Runtime.RuntimeSnapshotPair<NCMapper.Tests.Tests.ValueTypeToJsonSource, NCMapper.Tests.Tests.ValueTypeToJsonDto>.Metadata = __meta305;
+            global::NCMapper.Runtime.RuntimeSnapshotStore.Register(__meta305);
+            // pair 306: NCMapper.Tests.TracerSourceEntity -> NCMapper.Tests.AttributeIgnoreDto (MapFrom channel)
+            var __mfAttr306 = new global::NCMapper.Attributes.MapFromAttribute(typeof(NCMapper.Tests.TracerSourceEntity));
+            var __meta306 = new global::NCMapper.Runtime.RuntimeMapperMetadata
             {
                 SourceType = typeof(NCMapper.Tests.TracerSourceEntity),
                 TargetType = typeof(NCMapper.Tests.AttributeIgnoreDto),
@@ -40852,7 +41855,7 @@ namespace NCMapper.Runtime
                                 TypeName = "string",
                                 TypeRef = typeof(string),
                                 HasMapFromAttribute = true,
-                                MapFromAttribute = __mfAttr300,
+                                MapFromAttribute = __mfAttr306,
                                 HasMapIgnore = false,
                                 MapIgnoreDirection = 0,
                                 HasOverrideIgnore = false,
@@ -40892,7 +41895,7 @@ namespace NCMapper.Runtime
                         TypeName = "string",
                         TypeRef = typeof(string),
                         HasMapFromAttribute = true,
-                        MapFromAttribute = __mfAttr300,
+                        MapFromAttribute = __mfAttr306,
                         HasMapIgnore = false,
                         MapIgnoreDirection = 0,
                         HasOverrideIgnore = false,
@@ -40911,11 +41914,11 @@ namespace NCMapper.Runtime
                     },
                 },
             };
-            global::NCMapper.Runtime.RuntimeSnapshotPair<NCMapper.Tests.TracerSourceEntity, NCMapper.Tests.AttributeIgnoreDto>.Metadata = __meta300;
-            global::NCMapper.Runtime.RuntimeSnapshotStore.Register(__meta300);
-            // pair 301: NCMapper.Tests.TracerSourceEntity -> NCMapper.Tests.ExemptTraceDto (MapFrom channel)
-            var __mfAttr301 = new global::NCMapper.Attributes.MapFromAttribute(typeof(NCMapper.Tests.TracerSourceEntity));
-            var __meta301 = new global::NCMapper.Runtime.RuntimeMapperMetadata
+            global::NCMapper.Runtime.RuntimeSnapshotPair<NCMapper.Tests.TracerSourceEntity, NCMapper.Tests.AttributeIgnoreDto>.Metadata = __meta306;
+            global::NCMapper.Runtime.RuntimeSnapshotStore.Register(__meta306);
+            // pair 307: NCMapper.Tests.TracerSourceEntity -> NCMapper.Tests.ExemptTraceDto (MapFrom channel)
+            var __mfAttr307 = new global::NCMapper.Attributes.MapFromAttribute(typeof(NCMapper.Tests.TracerSourceEntity));
+            var __meta307 = new global::NCMapper.Runtime.RuntimeMapperMetadata
             {
                 SourceType = typeof(NCMapper.Tests.TracerSourceEntity),
                 TargetType = typeof(NCMapper.Tests.ExemptTraceDto),
@@ -40936,7 +41939,7 @@ namespace NCMapper.Runtime
                                 TypeName = "string",
                                 TypeRef = typeof(string),
                                 HasMapFromAttribute = true,
-                                MapFromAttribute = __mfAttr301,
+                                MapFromAttribute = __mfAttr307,
                                 HasMapIgnore = false,
                                 MapIgnoreDirection = 0,
                                 HasOverrideIgnore = false,
@@ -40976,7 +41979,7 @@ namespace NCMapper.Runtime
                                 TypeName = "string",
                                 TypeRef = typeof(string),
                                 HasMapFromAttribute = true,
-                                MapFromAttribute = __mfAttr301,
+                                MapFromAttribute = __mfAttr307,
                                 HasMapIgnore = false,
                                 MapIgnoreDirection = 0,
                                 HasOverrideIgnore = true,
@@ -41016,7 +42019,7 @@ namespace NCMapper.Runtime
                         TypeName = "string",
                         TypeRef = typeof(string),
                         HasMapFromAttribute = true,
-                        MapFromAttribute = __mfAttr301,
+                        MapFromAttribute = __mfAttr307,
                         HasMapIgnore = false,
                         MapIgnoreDirection = 0,
                         HasOverrideIgnore = false,
@@ -41039,7 +42042,7 @@ namespace NCMapper.Runtime
                         TypeName = "string",
                         TypeRef = typeof(string),
                         HasMapFromAttribute = true,
-                        MapFromAttribute = __mfAttr301,
+                        MapFromAttribute = __mfAttr307,
                         HasMapIgnore = false,
                         MapIgnoreDirection = 0,
                         HasOverrideIgnore = true,
@@ -41058,11 +42061,11 @@ namespace NCMapper.Runtime
                     },
                 },
             };
-            global::NCMapper.Runtime.RuntimeSnapshotPair<NCMapper.Tests.TracerSourceEntity, NCMapper.Tests.ExemptTraceDto>.Metadata = __meta301;
-            global::NCMapper.Runtime.RuntimeSnapshotStore.Register(__meta301);
-            // pair 302: NCMapper.Tests.TracerSourceEntity -> NCMapper.Tests.GlobalIgnoreDto (MapFrom channel)
-            var __mfAttr302 = new global::NCMapper.Attributes.MapFromAttribute(typeof(NCMapper.Tests.TracerSourceEntity));
-            var __meta302 = new global::NCMapper.Runtime.RuntimeMapperMetadata
+            global::NCMapper.Runtime.RuntimeSnapshotPair<NCMapper.Tests.TracerSourceEntity, NCMapper.Tests.ExemptTraceDto>.Metadata = __meta307;
+            global::NCMapper.Runtime.RuntimeSnapshotStore.Register(__meta307);
+            // pair 308: NCMapper.Tests.TracerSourceEntity -> NCMapper.Tests.GlobalIgnoreDto (MapFrom channel)
+            var __mfAttr308 = new global::NCMapper.Attributes.MapFromAttribute(typeof(NCMapper.Tests.TracerSourceEntity));
+            var __meta308 = new global::NCMapper.Runtime.RuntimeMapperMetadata
             {
                 SourceType = typeof(NCMapper.Tests.TracerSourceEntity),
                 TargetType = typeof(NCMapper.Tests.GlobalIgnoreDto),
@@ -41083,7 +42086,7 @@ namespace NCMapper.Runtime
                                 TypeName = "string",
                                 TypeRef = typeof(string),
                                 HasMapFromAttribute = true,
-                                MapFromAttribute = __mfAttr302,
+                                MapFromAttribute = __mfAttr308,
                                 HasMapIgnore = false,
                                 MapIgnoreDirection = 0,
                                 HasOverrideIgnore = false,
@@ -41123,7 +42126,7 @@ namespace NCMapper.Runtime
                                 TypeName = "string",
                                 TypeRef = typeof(string),
                                 HasMapFromAttribute = true,
-                                MapFromAttribute = __mfAttr302,
+                                MapFromAttribute = __mfAttr308,
                                 HasMapIgnore = false,
                                 MapIgnoreDirection = 0,
                                 HasOverrideIgnore = false,
@@ -41163,7 +42166,7 @@ namespace NCMapper.Runtime
                         TypeName = "string",
                         TypeRef = typeof(string),
                         HasMapFromAttribute = true,
-                        MapFromAttribute = __mfAttr302,
+                        MapFromAttribute = __mfAttr308,
                         HasMapIgnore = false,
                         MapIgnoreDirection = 0,
                         HasOverrideIgnore = false,
@@ -41186,7 +42189,7 @@ namespace NCMapper.Runtime
                         TypeName = "string",
                         TypeRef = typeof(string),
                         HasMapFromAttribute = true,
-                        MapFromAttribute = __mfAttr302,
+                        MapFromAttribute = __mfAttr308,
                         HasMapIgnore = false,
                         MapIgnoreDirection = 0,
                         HasOverrideIgnore = false,
@@ -41205,11 +42208,11 @@ namespace NCMapper.Runtime
                     },
                 },
             };
-            global::NCMapper.Runtime.RuntimeSnapshotPair<NCMapper.Tests.TracerSourceEntity, NCMapper.Tests.GlobalIgnoreDto>.Metadata = __meta302;
-            global::NCMapper.Runtime.RuntimeSnapshotStore.Register(__meta302);
-            // pair 303: NCMapper.Tests.TracerSourceEntity -> NCMapper.Tests.SourceSideTraceDto (MapFrom channel)
-            var __mfAttr303 = new global::NCMapper.Attributes.MapFromAttribute(typeof(NCMapper.Tests.TracerSourceEntity));
-            var __meta303 = new global::NCMapper.Runtime.RuntimeMapperMetadata
+            global::NCMapper.Runtime.RuntimeSnapshotPair<NCMapper.Tests.TracerSourceEntity, NCMapper.Tests.GlobalIgnoreDto>.Metadata = __meta308;
+            global::NCMapper.Runtime.RuntimeSnapshotStore.Register(__meta308);
+            // pair 309: NCMapper.Tests.TracerSourceEntity -> NCMapper.Tests.SourceSideTraceDto (MapFrom channel)
+            var __mfAttr309 = new global::NCMapper.Attributes.MapFromAttribute(typeof(NCMapper.Tests.TracerSourceEntity));
+            var __meta309 = new global::NCMapper.Runtime.RuntimeMapperMetadata
             {
                 SourceType = typeof(NCMapper.Tests.TracerSourceEntity),
                 TargetType = typeof(NCMapper.Tests.SourceSideTraceDto),
@@ -41230,7 +42233,7 @@ namespace NCMapper.Runtime
                                 TypeName = "string",
                                 TypeRef = typeof(string),
                                 HasMapFromAttribute = true,
-                                MapFromAttribute = __mfAttr303,
+                                MapFromAttribute = __mfAttr309,
                                 HasMapIgnore = false,
                                 MapIgnoreDirection = 0,
                                 HasOverrideIgnore = false,
@@ -41270,7 +42273,7 @@ namespace NCMapper.Runtime
                                 TypeName = "string",
                                 TypeRef = typeof(string),
                                 HasMapFromAttribute = true,
-                                MapFromAttribute = __mfAttr303,
+                                MapFromAttribute = __mfAttr309,
                                 HasMapIgnore = false,
                                 MapIgnoreDirection = 0,
                                 HasOverrideIgnore = false,
@@ -41310,7 +42313,7 @@ namespace NCMapper.Runtime
                         TypeName = "string",
                         TypeRef = typeof(string),
                         HasMapFromAttribute = true,
-                        MapFromAttribute = __mfAttr303,
+                        MapFromAttribute = __mfAttr309,
                         HasMapIgnore = false,
                         MapIgnoreDirection = 0,
                         HasOverrideIgnore = false,
@@ -41333,7 +42336,7 @@ namespace NCMapper.Runtime
                         TypeName = "string",
                         TypeRef = typeof(string),
                         HasMapFromAttribute = true,
-                        MapFromAttribute = __mfAttr303,
+                        MapFromAttribute = __mfAttr309,
                         HasMapIgnore = false,
                         MapIgnoreDirection = 0,
                         HasOverrideIgnore = false,
@@ -41352,11 +42355,11 @@ namespace NCMapper.Runtime
                     },
                 },
             };
-            global::NCMapper.Runtime.RuntimeSnapshotPair<NCMapper.Tests.TracerSourceEntity, NCMapper.Tests.SourceSideTraceDto>.Metadata = __meta303;
-            global::NCMapper.Runtime.RuntimeSnapshotStore.Register(__meta303);
-            // pair 304: NCMapper.Tests.TwoTargetA -> NCMapper.Tests.TwoTargetSrcDto (MapFrom channel)
-            var __mfAttr304 = new global::NCMapper.Attributes.MapFromAttribute(typeof(NCMapper.Tests.TwoTargetA));
-            var __meta304 = new global::NCMapper.Runtime.RuntimeMapperMetadata
+            global::NCMapper.Runtime.RuntimeSnapshotPair<NCMapper.Tests.TracerSourceEntity, NCMapper.Tests.SourceSideTraceDto>.Metadata = __meta309;
+            global::NCMapper.Runtime.RuntimeSnapshotStore.Register(__meta309);
+            // pair 310: NCMapper.Tests.TwoTargetA -> NCMapper.Tests.TwoTargetSrcDto (MapFrom channel)
+            var __mfAttr310 = new global::NCMapper.Attributes.MapFromAttribute(typeof(NCMapper.Tests.TwoTargetA));
+            var __meta310 = new global::NCMapper.Runtime.RuntimeMapperMetadata
             {
                 SourceType = typeof(NCMapper.Tests.TwoTargetA),
                 TargetType = typeof(NCMapper.Tests.TwoTargetSrcDto),
@@ -41377,7 +42380,7 @@ namespace NCMapper.Runtime
                                 TypeName = "int",
                                 TypeRef = typeof(int),
                                 HasMapFromAttribute = true,
-                                MapFromAttribute = __mfAttr304,
+                                MapFromAttribute = __mfAttr310,
                                 HasMapIgnore = false,
                                 MapIgnoreDirection = 0,
                                 HasOverrideIgnore = false,
@@ -41417,7 +42420,7 @@ namespace NCMapper.Runtime
                                 TypeName = "string",
                                 TypeRef = typeof(string),
                                 HasMapFromAttribute = true,
-                                MapFromAttribute = __mfAttr304,
+                                MapFromAttribute = __mfAttr310,
                                 HasMapIgnore = false,
                                 MapIgnoreDirection = 0,
                                 HasOverrideIgnore = false,
@@ -41474,7 +42477,7 @@ namespace NCMapper.Runtime
                         TypeName = "int",
                         TypeRef = typeof(int),
                         HasMapFromAttribute = true,
-                        MapFromAttribute = __mfAttr304,
+                        MapFromAttribute = __mfAttr310,
                         HasMapIgnore = false,
                         MapIgnoreDirection = 0,
                         HasOverrideIgnore = false,
@@ -41497,7 +42500,7 @@ namespace NCMapper.Runtime
                         TypeName = "string",
                         TypeRef = typeof(string),
                         HasMapFromAttribute = true,
-                        MapFromAttribute = __mfAttr304,
+                        MapFromAttribute = __mfAttr310,
                         HasMapIgnore = false,
                         MapIgnoreDirection = 0,
                         HasOverrideIgnore = false,
@@ -41520,7 +42523,7 @@ namespace NCMapper.Runtime
                         TypeName = "string",
                         TypeRef = typeof(string),
                         HasMapFromAttribute = true,
-                        MapFromAttribute = __mfAttr304,
+                        MapFromAttribute = __mfAttr310,
                         HasMapIgnore = false,
                         MapIgnoreDirection = 0,
                         HasOverrideIgnore = false,
@@ -41539,11 +42542,11 @@ namespace NCMapper.Runtime
                     },
                 },
             };
-            global::NCMapper.Runtime.RuntimeSnapshotPair<NCMapper.Tests.TwoTargetA, NCMapper.Tests.TwoTargetSrcDto>.Metadata = __meta304;
-            global::NCMapper.Runtime.RuntimeSnapshotStore.Register(__meta304);
-            // pair 305: T001Source -> T001GenDto (MapFrom channel)
-            var __mfAttr305 = new global::NCMapper.Attributes.MapFromAttribute(typeof(T001Source));
-            var __meta305 = new global::NCMapper.Runtime.RuntimeMapperMetadata
+            global::NCMapper.Runtime.RuntimeSnapshotPair<NCMapper.Tests.TwoTargetA, NCMapper.Tests.TwoTargetSrcDto>.Metadata = __meta310;
+            global::NCMapper.Runtime.RuntimeSnapshotStore.Register(__meta310);
+            // pair 311: T001Source -> T001GenDto (MapFrom channel)
+            var __mfAttr311 = new global::NCMapper.Attributes.MapFromAttribute(typeof(T001Source));
+            var __meta311 = new global::NCMapper.Runtime.RuntimeMapperMetadata
             {
                 SourceType = typeof(T001Source),
                 TargetType = typeof(T001GenDto),
@@ -41564,7 +42567,7 @@ namespace NCMapper.Runtime
                                 TypeName = "int",
                                 TypeRef = typeof(int),
                                 HasMapFromAttribute = true,
-                                MapFromAttribute = __mfAttr305,
+                                MapFromAttribute = __mfAttr311,
                                 HasMapIgnore = false,
                                 MapIgnoreDirection = 0,
                                 HasOverrideIgnore = false,
@@ -41604,7 +42607,7 @@ namespace NCMapper.Runtime
                         TypeName = "int",
                         TypeRef = typeof(int),
                         HasMapFromAttribute = true,
-                        MapFromAttribute = __mfAttr305,
+                        MapFromAttribute = __mfAttr311,
                         HasMapIgnore = false,
                         MapIgnoreDirection = 0,
                         HasOverrideIgnore = false,
@@ -41623,8 +42626,8 @@ namespace NCMapper.Runtime
                     },
                 },
             };
-            global::NCMapper.Runtime.RuntimeSnapshotPair<T001Source, T001GenDto>.Metadata = __meta305;
-            global::NCMapper.Runtime.RuntimeSnapshotStore.Register(__meta305);
+            global::NCMapper.Runtime.RuntimeSnapshotPair<T001Source, T001GenDto>.Metadata = __meta311;
+            global::NCMapper.Runtime.RuntimeSnapshotStore.Register(__meta311);
         }
     }
 }

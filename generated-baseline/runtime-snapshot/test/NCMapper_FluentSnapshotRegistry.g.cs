@@ -12,7 +12,57 @@ namespace NCMapper.Runtime
         [System.Runtime.CompilerServices.ModuleInitializer]
         internal static void Initialize()
         {
-            // fluent pair 0: NCMapper.Tests.Models.A13Entity -> NCMapper.Tests.Models.A13Dto
+            // fluent pair 0: NCMapper.Tests.FluentSourceGenNestedPropertyTests.Dept -> NCMapper.Tests.FluentSourceGenNestedPropertyTests.DeptDto
+            global::NCMapper.Runtime.RuntimeSnapshotStore.Register(new global::NCMapper.Runtime.RuntimeMapperMetadata
+            {
+                SourceType = typeof(NCMapper.Tests.FluentSourceGenNestedPropertyTests.Dept),
+                TargetType = typeof(NCMapper.Tests.FluentSourceGenNestedPropertyTests.DeptDto),
+                SourceTypeFqn = "NCMapper.Tests.FluentSourceGenNestedPropertyTests.Dept",
+                TargetTypeFqn = "NCMapper.Tests.FluentSourceGenNestedPropertyTests.DeptDto",
+                Channel = global::NCMapper.Runtime.RuntimeMappingChannel.Fluent,
+                IsFluentForward = true,
+            });
+            // fluent pair 1: NCMapper.Tests.FluentSourceGenNestedPropertyTests.Site -> NCMapper.Tests.FluentSourceGenNestedPropertyTests.SiteNestedDto
+            global::NCMapper.Runtime.RuntimeSnapshotStore.Register(new global::NCMapper.Runtime.RuntimeMapperMetadata
+            {
+                SourceType = typeof(NCMapper.Tests.FluentSourceGenNestedPropertyTests.Site),
+                TargetType = typeof(NCMapper.Tests.FluentSourceGenNestedPropertyTests.SiteNestedDto),
+                SourceTypeFqn = "NCMapper.Tests.FluentSourceGenNestedPropertyTests.Site",
+                TargetTypeFqn = "NCMapper.Tests.FluentSourceGenNestedPropertyTests.SiteNestedDto",
+                Channel = global::NCMapper.Runtime.RuntimeMappingChannel.Fluent,
+                IsFluentForward = true,
+            });
+            // fluent pair 2: NCMapper.Tests.FluentSourceGenNestedPropertyTests.UCfgForSource -> NCMapper.Tests.FluentSourceGenNestedPropertyTests.UCfgForDto
+            global::NCMapper.Runtime.RuntimeSnapshotStore.Register(new global::NCMapper.Runtime.RuntimeMapperMetadata
+            {
+                SourceType = typeof(NCMapper.Tests.FluentSourceGenNestedPropertyTests.UCfgForSource),
+                TargetType = typeof(NCMapper.Tests.FluentSourceGenNestedPropertyTests.UCfgForDto),
+                SourceTypeFqn = "NCMapper.Tests.FluentSourceGenNestedPropertyTests.UCfgForSource",
+                TargetTypeFqn = "NCMapper.Tests.FluentSourceGenNestedPropertyTests.UCfgForDto",
+                Channel = global::NCMapper.Runtime.RuntimeMappingChannel.Fluent,
+                IsFluentForward = true,
+            });
+            // fluent pair 3: NCMapper.Tests.FreeSqlComposePocRegressionUTests.UDept -> NCMapper.Tests.FreeSqlComposePocRegressionUTests.UDeptDto
+            global::NCMapper.Runtime.RuntimeSnapshotStore.Register(new global::NCMapper.Runtime.RuntimeMapperMetadata
+            {
+                SourceType = typeof(NCMapper.Tests.FreeSqlComposePocRegressionUTests.UDept),
+                TargetType = typeof(NCMapper.Tests.FreeSqlComposePocRegressionUTests.UDeptDto),
+                SourceTypeFqn = "NCMapper.Tests.FreeSqlComposePocRegressionUTests.UDept",
+                TargetTypeFqn = "NCMapper.Tests.FreeSqlComposePocRegressionUTests.UDeptDto",
+                Channel = global::NCMapper.Runtime.RuntimeMappingChannel.Fluent,
+                IsFluentForward = true,
+            });
+            // fluent pair 4: NCMapper.Tests.FreeSqlComposePocRegressionUTests.USite -> NCMapper.Tests.FreeSqlComposePocRegressionUTests.USiteNestedDto
+            global::NCMapper.Runtime.RuntimeSnapshotStore.Register(new global::NCMapper.Runtime.RuntimeMapperMetadata
+            {
+                SourceType = typeof(NCMapper.Tests.FreeSqlComposePocRegressionUTests.USite),
+                TargetType = typeof(NCMapper.Tests.FreeSqlComposePocRegressionUTests.USiteNestedDto),
+                SourceTypeFqn = "NCMapper.Tests.FreeSqlComposePocRegressionUTests.USite",
+                TargetTypeFqn = "NCMapper.Tests.FreeSqlComposePocRegressionUTests.USiteNestedDto",
+                Channel = global::NCMapper.Runtime.RuntimeMappingChannel.Fluent,
+                IsFluentForward = true,
+            });
+            // fluent pair 5: NCMapper.Tests.Models.A13Entity -> NCMapper.Tests.Models.A13Dto
             global::NCMapper.Runtime.RuntimeSnapshotStore.Register(new global::NCMapper.Runtime.RuntimeMapperMetadata
             {
                 SourceType = typeof(NCMapper.Tests.Models.A13Entity),
@@ -22,7 +72,7 @@ namespace NCMapper.Runtime
                 Channel = global::NCMapper.Runtime.RuntimeMappingChannel.Fluent,
                 IsFluentForward = true,
             });
-            // fluent pair 1: NCMapper.Tests.Models.Bm2Entity -> NCMapper.Tests.Models.Bm2Dto
+            // fluent pair 6: NCMapper.Tests.Models.Bm2Entity -> NCMapper.Tests.Models.Bm2Dto
             global::NCMapper.Runtime.RuntimeSnapshotStore.Register(new global::NCMapper.Runtime.RuntimeMapperMetadata
             {
                 SourceType = typeof(NCMapper.Tests.Models.Bm2Entity),
@@ -32,7 +82,7 @@ namespace NCMapper.Runtime
                 Channel = global::NCMapper.Runtime.RuntimeMappingChannel.Fluent,
                 IsFluentForward = true,
             });
-            // fluent pair 2: NCMapper.Tests.Models.BmEntity -> NCMapper.Tests.Models.BmDto
+            // fluent pair 7: NCMapper.Tests.Models.BmEntity -> NCMapper.Tests.Models.BmDto
             global::NCMapper.Runtime.RuntimeSnapshotStore.Register(new global::NCMapper.Runtime.RuntimeMapperMetadata
             {
                 SourceType = typeof(NCMapper.Tests.Models.BmEntity),
@@ -42,7 +92,7 @@ namespace NCMapper.Runtime
                 Channel = global::NCMapper.Runtime.RuntimeMappingChannel.Fluent,
                 IsFluentForward = true,
             });
-            // fluent pair 3: NCMapper.Tests.Runtime.FluentDegradationFullSemanticsTests.FsEntity -> NCMapper.Tests.Runtime.FluentDegradationFullSemanticsTests.FsView
+            // fluent pair 8: NCMapper.Tests.Runtime.FluentDegradationFullSemanticsTests.FsEntity -> NCMapper.Tests.Runtime.FluentDegradationFullSemanticsTests.FsView
             global::NCMapper.Runtime.RuntimeSnapshotStore.Register(new global::NCMapper.Runtime.RuntimeMapperMetadata
             {
                 SourceType = typeof(NCMapper.Tests.Runtime.FluentDegradationFullSemanticsTests.FsEntity),
@@ -52,7 +102,7 @@ namespace NCMapper.Runtime
                 Channel = global::NCMapper.Runtime.RuntimeMappingChannel.Fluent,
                 IsFluentForward = true,
             });
-            // fluent pair 4: NCMapper.Tests.Runtime.FluentRuntimeConfigSegmentConvertBackTests.FcsT0Entity -> NCMapper.Tests.Runtime.FluentRuntimeConfigSegmentConvertBackTests.FcsT0Dto
+            // fluent pair 9: NCMapper.Tests.Runtime.FluentRuntimeConfigSegmentConvertBackTests.FcsT0Entity -> NCMapper.Tests.Runtime.FluentRuntimeConfigSegmentConvertBackTests.FcsT0Dto
             global::NCMapper.Runtime.RuntimeSnapshotStore.Register(new global::NCMapper.Runtime.RuntimeMapperMetadata
             {
                 SourceType = typeof(NCMapper.Tests.Runtime.FluentRuntimeConfigSegmentConvertBackTests.FcsT0Entity),
@@ -62,7 +112,7 @@ namespace NCMapper.Runtime
                 Channel = global::NCMapper.Runtime.RuntimeMappingChannel.Fluent,
                 IsFluentForward = true,
             });
-            // fluent pair 5: NCMapper.Tests.Runtime.FluentRuntimeConfigSegmentConvertBackTests.FcsT1Entity -> NCMapper.Tests.Runtime.FluentRuntimeConfigSegmentConvertBackTests.FcsT1Dto
+            // fluent pair 10: NCMapper.Tests.Runtime.FluentRuntimeConfigSegmentConvertBackTests.FcsT1Entity -> NCMapper.Tests.Runtime.FluentRuntimeConfigSegmentConvertBackTests.FcsT1Dto
             global::NCMapper.Runtime.RuntimeSnapshotStore.Register(new global::NCMapper.Runtime.RuntimeMapperMetadata
             {
                 SourceType = typeof(NCMapper.Tests.Runtime.FluentRuntimeConfigSegmentConvertBackTests.FcsT1Entity),
@@ -72,7 +122,7 @@ namespace NCMapper.Runtime
                 Channel = global::NCMapper.Runtime.RuntimeMappingChannel.Fluent,
                 IsFluentForward = true,
             });
-            // fluent pair 6: NCMapper.Tests.Runtime.FluentRuntimeConfigSegmentConvertBackTests.FcsT2Entity -> NCMapper.Tests.Runtime.FluentRuntimeConfigSegmentConvertBackTests.FcsT2Dto
+            // fluent pair 11: NCMapper.Tests.Runtime.FluentRuntimeConfigSegmentConvertBackTests.FcsT2Entity -> NCMapper.Tests.Runtime.FluentRuntimeConfigSegmentConvertBackTests.FcsT2Dto
             global::NCMapper.Runtime.RuntimeSnapshotStore.Register(new global::NCMapper.Runtime.RuntimeMapperMetadata
             {
                 SourceType = typeof(NCMapper.Tests.Runtime.FluentRuntimeConfigSegmentConvertBackTests.FcsT2Entity),
@@ -82,7 +132,7 @@ namespace NCMapper.Runtime
                 Channel = global::NCMapper.Runtime.RuntimeMappingChannel.Fluent,
                 IsFluentForward = true,
             });
-            // fluent pair 7: NCMapper.Tests.Runtime.FluentRuntimeConfigSegmentConvertBackTests.FcsT3Entity -> NCMapper.Tests.Runtime.FluentRuntimeConfigSegmentConvertBackTests.FcsT3Dto
+            // fluent pair 12: NCMapper.Tests.Runtime.FluentRuntimeConfigSegmentConvertBackTests.FcsT3Entity -> NCMapper.Tests.Runtime.FluentRuntimeConfigSegmentConvertBackTests.FcsT3Dto
             global::NCMapper.Runtime.RuntimeSnapshotStore.Register(new global::NCMapper.Runtime.RuntimeMapperMetadata
             {
                 SourceType = typeof(NCMapper.Tests.Runtime.FluentRuntimeConfigSegmentConvertBackTests.FcsT3Entity),
@@ -92,7 +142,7 @@ namespace NCMapper.Runtime
                 Channel = global::NCMapper.Runtime.RuntimeMappingChannel.Fluent,
                 IsFluentForward = true,
             });
-            // fluent pair 8: NCMapper.Tests.Runtime.FluentRuntimeConvertTests.FrcBEntity -> NCMapper.Tests.Runtime.FluentRuntimeConvertTests.FrcBDto
+            // fluent pair 13: NCMapper.Tests.Runtime.FluentRuntimeConvertTests.FrcBEntity -> NCMapper.Tests.Runtime.FluentRuntimeConvertTests.FrcBDto
             global::NCMapper.Runtime.RuntimeSnapshotStore.Register(new global::NCMapper.Runtime.RuntimeMapperMetadata
             {
                 SourceType = typeof(NCMapper.Tests.Runtime.FluentRuntimeConvertTests.FrcBEntity),
@@ -102,7 +152,7 @@ namespace NCMapper.Runtime
                 Channel = global::NCMapper.Runtime.RuntimeMappingChannel.Fluent,
                 IsFluentForward = true,
             });
-            // fluent pair 9: NCMapper.Tests.Runtime.FluentRuntimeConvertTests.FrcCmEntity -> NCMapper.Tests.Runtime.FluentRuntimeConvertTests.FrcCmDto
+            // fluent pair 14: NCMapper.Tests.Runtime.FluentRuntimeConvertTests.FrcCmEntity -> NCMapper.Tests.Runtime.FluentRuntimeConvertTests.FrcCmDto
             global::NCMapper.Runtime.RuntimeSnapshotStore.Register(new global::NCMapper.Runtime.RuntimeMapperMetadata
             {
                 SourceType = typeof(NCMapper.Tests.Runtime.FluentRuntimeConvertTests.FrcCmEntity),
@@ -112,7 +162,7 @@ namespace NCMapper.Runtime
                 Channel = global::NCMapper.Runtime.RuntimeMappingChannel.Fluent,
                 IsFluentForward = true,
             });
-            // fluent pair 10: NCMapper.Tests.Runtime.FluentRuntimeConvertTests.FrcExEntity -> NCMapper.Tests.Runtime.FluentRuntimeConvertTests.FrcExDto
+            // fluent pair 15: NCMapper.Tests.Runtime.FluentRuntimeConvertTests.FrcExEntity -> NCMapper.Tests.Runtime.FluentRuntimeConvertTests.FrcExDto
             global::NCMapper.Runtime.RuntimeSnapshotStore.Register(new global::NCMapper.Runtime.RuntimeMapperMetadata
             {
                 SourceType = typeof(NCMapper.Tests.Runtime.FluentRuntimeConvertTests.FrcExEntity),
@@ -122,7 +172,7 @@ namespace NCMapper.Runtime
                 Channel = global::NCMapper.Runtime.RuntimeMappingChannel.Fluent,
                 IsFluentForward = true,
             });
-            // fluent pair 11: NCMapper.Tests.Runtime.FluentRuntimeConvertTests.FrcT0Entity -> NCMapper.Tests.Runtime.FluentRuntimeConvertTests.FrcT0Dto
+            // fluent pair 16: NCMapper.Tests.Runtime.FluentRuntimeConvertTests.FrcT0Entity -> NCMapper.Tests.Runtime.FluentRuntimeConvertTests.FrcT0Dto
             global::NCMapper.Runtime.RuntimeSnapshotStore.Register(new global::NCMapper.Runtime.RuntimeMapperMetadata
             {
                 SourceType = typeof(NCMapper.Tests.Runtime.FluentRuntimeConvertTests.FrcT0Entity),
@@ -132,7 +182,7 @@ namespace NCMapper.Runtime
                 Channel = global::NCMapper.Runtime.RuntimeMappingChannel.Fluent,
                 IsFluentForward = true,
             });
-            // fluent pair 12: NCMapper.Tests.Runtime.FluentRuntimeConvertTests.FrcT1Entity -> NCMapper.Tests.Runtime.FluentRuntimeConvertTests.FrcT1Dto
+            // fluent pair 17: NCMapper.Tests.Runtime.FluentRuntimeConvertTests.FrcT1Entity -> NCMapper.Tests.Runtime.FluentRuntimeConvertTests.FrcT1Dto
             global::NCMapper.Runtime.RuntimeSnapshotStore.Register(new global::NCMapper.Runtime.RuntimeMapperMetadata
             {
                 SourceType = typeof(NCMapper.Tests.Runtime.FluentRuntimeConvertTests.FrcT1Entity),
@@ -142,7 +192,7 @@ namespace NCMapper.Runtime
                 Channel = global::NCMapper.Runtime.RuntimeMappingChannel.Fluent,
                 IsFluentForward = true,
             });
-            // fluent pair 13: NCMapper.Tests.Runtime.FluentRuntimeConvertTests.FrcT2Entity -> NCMapper.Tests.Runtime.FluentRuntimeConvertTests.FrcT2Dto
+            // fluent pair 18: NCMapper.Tests.Runtime.FluentRuntimeConvertTests.FrcT2Entity -> NCMapper.Tests.Runtime.FluentRuntimeConvertTests.FrcT2Dto
             global::NCMapper.Runtime.RuntimeSnapshotStore.Register(new global::NCMapper.Runtime.RuntimeMapperMetadata
             {
                 SourceType = typeof(NCMapper.Tests.Runtime.FluentRuntimeConvertTests.FrcT2Entity),
@@ -152,7 +202,7 @@ namespace NCMapper.Runtime
                 Channel = global::NCMapper.Runtime.RuntimeMappingChannel.Fluent,
                 IsFluentForward = true,
             });
-            // fluent pair 14: NCMapper.Tests.Runtime.FluentRuntimeConvertTests.FrcT3Entity -> NCMapper.Tests.Runtime.FluentRuntimeConvertTests.FrcT3Dto
+            // fluent pair 19: NCMapper.Tests.Runtime.FluentRuntimeConvertTests.FrcT3Entity -> NCMapper.Tests.Runtime.FluentRuntimeConvertTests.FrcT3Dto
             global::NCMapper.Runtime.RuntimeSnapshotStore.Register(new global::NCMapper.Runtime.RuntimeMapperMetadata
             {
                 SourceType = typeof(NCMapper.Tests.Runtime.FluentRuntimeConvertTests.FrcT3Entity),
@@ -162,7 +212,7 @@ namespace NCMapper.Runtime
                 Channel = global::NCMapper.Runtime.RuntimeMappingChannel.Fluent,
                 IsFluentForward = true,
             });
-            // fluent pair 15: NCMapper.Tests.Runtime.FluentRuntimeCtorParamTests.FcpGenEntity -> NCMapper.Tests.Runtime.FluentRuntimeCtorParamTests.FcpGenDto
+            // fluent pair 20: NCMapper.Tests.Runtime.FluentRuntimeCtorParamTests.FcpGenEntity -> NCMapper.Tests.Runtime.FluentRuntimeCtorParamTests.FcpGenDto
             global::NCMapper.Runtime.RuntimeSnapshotStore.Register(new global::NCMapper.Runtime.RuntimeMapperMetadata
             {
                 SourceType = typeof(NCMapper.Tests.Runtime.FluentRuntimeCtorParamTests.FcpGenEntity),
@@ -172,7 +222,7 @@ namespace NCMapper.Runtime
                 Channel = global::NCMapper.Runtime.RuntimeMappingChannel.Fluent,
                 IsFluentForward = true,
             });
-            // fluent pair 16: NCMapper.Tests.Runtime.FluentRuntimeFormatFromJsonMaskTests.FrfEEntity -> NCMapper.Tests.Runtime.FluentRuntimeFormatFromJsonMaskTests.FrfEDto
+            // fluent pair 21: NCMapper.Tests.Runtime.FluentRuntimeFormatFromJsonMaskTests.FrfEEntity -> NCMapper.Tests.Runtime.FluentRuntimeFormatFromJsonMaskTests.FrfEDto
             global::NCMapper.Runtime.RuntimeSnapshotStore.Register(new global::NCMapper.Runtime.RuntimeMapperMetadata
             {
                 SourceType = typeof(NCMapper.Tests.Runtime.FluentRuntimeFormatFromJsonMaskTests.FrfEEntity),
@@ -182,7 +232,7 @@ namespace NCMapper.Runtime
                 Channel = global::NCMapper.Runtime.RuntimeMappingChannel.Fluent,
                 IsFluentForward = true,
             });
-            // fluent pair 17: NCMapper.Tests.Runtime.FluentRuntimeFormatFromJsonMaskTests.FrfFEntity -> NCMapper.Tests.Runtime.FluentRuntimeFormatFromJsonMaskTests.FrfFDto
+            // fluent pair 22: NCMapper.Tests.Runtime.FluentRuntimeFormatFromJsonMaskTests.FrfFEntity -> NCMapper.Tests.Runtime.FluentRuntimeFormatFromJsonMaskTests.FrfFDto
             global::NCMapper.Runtime.RuntimeSnapshotStore.Register(new global::NCMapper.Runtime.RuntimeMapperMetadata
             {
                 SourceType = typeof(NCMapper.Tests.Runtime.FluentRuntimeFormatFromJsonMaskTests.FrfFEntity),
@@ -192,7 +242,7 @@ namespace NCMapper.Runtime
                 Channel = global::NCMapper.Runtime.RuntimeMappingChannel.Fluent,
                 IsFluentForward = true,
             });
-            // fluent pair 18: NCMapper.Tests.Runtime.FluentRuntimeFormatFromJsonMaskTests.FrfFmEntity -> NCMapper.Tests.Runtime.FluentRuntimeFormatFromJsonMaskTests.FrfFmDto
+            // fluent pair 23: NCMapper.Tests.Runtime.FluentRuntimeFormatFromJsonMaskTests.FrfFmEntity -> NCMapper.Tests.Runtime.FluentRuntimeFormatFromJsonMaskTests.FrfFmDto
             global::NCMapper.Runtime.RuntimeSnapshotStore.Register(new global::NCMapper.Runtime.RuntimeMapperMetadata
             {
                 SourceType = typeof(NCMapper.Tests.Runtime.FluentRuntimeFormatFromJsonMaskTests.FrfFmEntity),
@@ -202,7 +252,7 @@ namespace NCMapper.Runtime
                 Channel = global::NCMapper.Runtime.RuntimeMappingChannel.Fluent,
                 IsFluentForward = true,
             });
-            // fluent pair 19: NCMapper.Tests.Runtime.FluentRuntimeFormatFromJsonMaskTests.FrfJEntity -> NCMapper.Tests.Runtime.FluentRuntimeFormatFromJsonMaskTests.FrfJDto
+            // fluent pair 24: NCMapper.Tests.Runtime.FluentRuntimeFormatFromJsonMaskTests.FrfJEntity -> NCMapper.Tests.Runtime.FluentRuntimeFormatFromJsonMaskTests.FrfJDto
             global::NCMapper.Runtime.RuntimeSnapshotStore.Register(new global::NCMapper.Runtime.RuntimeMapperMetadata
             {
                 SourceType = typeof(NCMapper.Tests.Runtime.FluentRuntimeFormatFromJsonMaskTests.FrfJEntity),
@@ -212,7 +262,7 @@ namespace NCMapper.Runtime
                 Channel = global::NCMapper.Runtime.RuntimeMappingChannel.Fluent,
                 IsFluentForward = true,
             });
-            // fluent pair 20: NCMapper.Tests.Runtime.FluentRuntimeFormatFromJsonMaskTests.FrfMEntity -> NCMapper.Tests.Runtime.FluentRuntimeFormatFromJsonMaskTests.FrfMDto
+            // fluent pair 25: NCMapper.Tests.Runtime.FluentRuntimeFormatFromJsonMaskTests.FrfMEntity -> NCMapper.Tests.Runtime.FluentRuntimeFormatFromJsonMaskTests.FrfMDto
             global::NCMapper.Runtime.RuntimeSnapshotStore.Register(new global::NCMapper.Runtime.RuntimeMapperMetadata
             {
                 SourceType = typeof(NCMapper.Tests.Runtime.FluentRuntimeFormatFromJsonMaskTests.FrfMEntity),
@@ -222,7 +272,7 @@ namespace NCMapper.Runtime
                 Channel = global::NCMapper.Runtime.RuntimeMappingChannel.Fluent,
                 IsFluentForward = true,
             });
-            // fluent pair 21: NCMapper.Tests.Runtime.FluentRuntimeFormatFromJsonMaskTests.FrfNEntity -> NCMapper.Tests.Runtime.FluentRuntimeFormatFromJsonMaskTests.FrfNDto
+            // fluent pair 26: NCMapper.Tests.Runtime.FluentRuntimeFormatFromJsonMaskTests.FrfNEntity -> NCMapper.Tests.Runtime.FluentRuntimeFormatFromJsonMaskTests.FrfNDto
             global::NCMapper.Runtime.RuntimeSnapshotStore.Register(new global::NCMapper.Runtime.RuntimeMapperMetadata
             {
                 SourceType = typeof(NCMapper.Tests.Runtime.FluentRuntimeFormatFromJsonMaskTests.FrfNEntity),
@@ -232,7 +282,7 @@ namespace NCMapper.Runtime
                 Channel = global::NCMapper.Runtime.RuntimeMappingChannel.Fluent,
                 IsFluentForward = true,
             });
-            // fluent pair 22: NCMapper.Tests.Runtime.FluentRuntimeFormatFromJsonMaskTests.FrfSEntity -> NCMapper.Tests.Runtime.FluentRuntimeFormatFromJsonMaskTests.FrfSDto
+            // fluent pair 27: NCMapper.Tests.Runtime.FluentRuntimeFormatFromJsonMaskTests.FrfSEntity -> NCMapper.Tests.Runtime.FluentRuntimeFormatFromJsonMaskTests.FrfSDto
             global::NCMapper.Runtime.RuntimeSnapshotStore.Register(new global::NCMapper.Runtime.RuntimeMapperMetadata
             {
                 SourceType = typeof(NCMapper.Tests.Runtime.FluentRuntimeFormatFromJsonMaskTests.FrfSEntity),
@@ -242,7 +292,7 @@ namespace NCMapper.Runtime
                 Channel = global::NCMapper.Runtime.RuntimeMappingChannel.Fluent,
                 IsFluentForward = true,
             });
-            // fluent pair 23: NCMapper.Tests.Runtime.FluentRuntimeFormatFromJsonMaskTests.FrfSmEntity -> NCMapper.Tests.Runtime.FluentRuntimeFormatFromJsonMaskTests.FrfSmDto
+            // fluent pair 28: NCMapper.Tests.Runtime.FluentRuntimeFormatFromJsonMaskTests.FrfSmEntity -> NCMapper.Tests.Runtime.FluentRuntimeFormatFromJsonMaskTests.FrfSmDto
             global::NCMapper.Runtime.RuntimeSnapshotStore.Register(new global::NCMapper.Runtime.RuntimeMapperMetadata
             {
                 SourceType = typeof(NCMapper.Tests.Runtime.FluentRuntimeFormatFromJsonMaskTests.FrfSmEntity),
@@ -252,7 +302,7 @@ namespace NCMapper.Runtime
                 Channel = global::NCMapper.Runtime.RuntimeMappingChannel.Fluent,
                 IsFluentForward = true,
             });
-            // fluent pair 24: NCMapper.Tests.Runtime.FluentRuntimeHooksTests.HkEntity -> NCMapper.Tests.Runtime.FluentRuntimeHooksTests.HkView
+            // fluent pair 29: NCMapper.Tests.Runtime.FluentRuntimeHooksTests.HkEntity -> NCMapper.Tests.Runtime.FluentRuntimeHooksTests.HkView
             global::NCMapper.Runtime.RuntimeSnapshotStore.Register(new global::NCMapper.Runtime.RuntimeMapperMetadata
             {
                 SourceType = typeof(NCMapper.Tests.Runtime.FluentRuntimeHooksTests.HkEntity),
@@ -262,7 +312,7 @@ namespace NCMapper.Runtime
                 Channel = global::NCMapper.Runtime.RuntimeMappingChannel.Fluent,
                 IsFluentForward = true,
             });
-            // fluent pair 25: NCMapper.Tests.Runtime.FluentRuntimeIgnoreIndexPathTests.FriE1 -> NCMapper.Tests.Runtime.FluentRuntimeIgnoreIndexPathTests.FriD1
+            // fluent pair 30: NCMapper.Tests.Runtime.FluentRuntimeIgnoreIndexPathTests.FriE1 -> NCMapper.Tests.Runtime.FluentRuntimeIgnoreIndexPathTests.FriD1
             global::NCMapper.Runtime.RuntimeSnapshotStore.Register(new global::NCMapper.Runtime.RuntimeMapperMetadata
             {
                 SourceType = typeof(NCMapper.Tests.Runtime.FluentRuntimeIgnoreIndexPathTests.FriE1),
@@ -272,7 +322,7 @@ namespace NCMapper.Runtime
                 Channel = global::NCMapper.Runtime.RuntimeMappingChannel.Fluent,
                 IsFluentForward = true,
             });
-            // fluent pair 26: NCMapper.Tests.Runtime.FluentRuntimeIgnoreIndexPathTests.FriE2 -> NCMapper.Tests.Runtime.FluentRuntimeIgnoreIndexPathTests.FriD2
+            // fluent pair 31: NCMapper.Tests.Runtime.FluentRuntimeIgnoreIndexPathTests.FriE2 -> NCMapper.Tests.Runtime.FluentRuntimeIgnoreIndexPathTests.FriD2
             global::NCMapper.Runtime.RuntimeSnapshotStore.Register(new global::NCMapper.Runtime.RuntimeMapperMetadata
             {
                 SourceType = typeof(NCMapper.Tests.Runtime.FluentRuntimeIgnoreIndexPathTests.FriE2),
@@ -282,7 +332,7 @@ namespace NCMapper.Runtime
                 Channel = global::NCMapper.Runtime.RuntimeMappingChannel.Fluent,
                 IsFluentForward = true,
             });
-            // fluent pair 27: NCMapper.Tests.Runtime.FluentRuntimeIgnoreIndexPathTests.FriE3 -> NCMapper.Tests.Runtime.FluentRuntimeIgnoreIndexPathTests.FriD3
+            // fluent pair 32: NCMapper.Tests.Runtime.FluentRuntimeIgnoreIndexPathTests.FriE3 -> NCMapper.Tests.Runtime.FluentRuntimeIgnoreIndexPathTests.FriD3
             global::NCMapper.Runtime.RuntimeSnapshotStore.Register(new global::NCMapper.Runtime.RuntimeMapperMetadata
             {
                 SourceType = typeof(NCMapper.Tests.Runtime.FluentRuntimeIgnoreIndexPathTests.FriE3),
@@ -292,7 +342,7 @@ namespace NCMapper.Runtime
                 Channel = global::NCMapper.Runtime.RuntimeMappingChannel.Fluent,
                 IsFluentForward = true,
             });
-            // fluent pair 28: NCMapper.Tests.Runtime.FluentRuntimeIgnoreIndexPathTests.FriE4 -> NCMapper.Tests.Runtime.FluentRuntimeIgnoreIndexPathTests.FriD4
+            // fluent pair 33: NCMapper.Tests.Runtime.FluentRuntimeIgnoreIndexPathTests.FriE4 -> NCMapper.Tests.Runtime.FluentRuntimeIgnoreIndexPathTests.FriD4
             global::NCMapper.Runtime.RuntimeSnapshotStore.Register(new global::NCMapper.Runtime.RuntimeMapperMetadata
             {
                 SourceType = typeof(NCMapper.Tests.Runtime.FluentRuntimeIgnoreIndexPathTests.FriE4),
@@ -302,7 +352,7 @@ namespace NCMapper.Runtime
                 Channel = global::NCMapper.Runtime.RuntimeMappingChannel.Fluent,
                 IsFluentForward = true,
             });
-            // fluent pair 29: NCMapper.Tests.Runtime.FluentRuntimeIgnoreIndexPathTests.FriIpE -> NCMapper.Tests.Runtime.FluentRuntimeIgnoreIndexPathTests.FriIpD
+            // fluent pair 34: NCMapper.Tests.Runtime.FluentRuntimeIgnoreIndexPathTests.FriIpE -> NCMapper.Tests.Runtime.FluentRuntimeIgnoreIndexPathTests.FriIpD
             global::NCMapper.Runtime.RuntimeSnapshotStore.Register(new global::NCMapper.Runtime.RuntimeMapperMetadata
             {
                 SourceType = typeof(NCMapper.Tests.Runtime.FluentRuntimeIgnoreIndexPathTests.FriIpE),
@@ -312,7 +362,7 @@ namespace NCMapper.Runtime
                 Channel = global::NCMapper.Runtime.RuntimeMappingChannel.Fluent,
                 IsFluentForward = true,
             });
-            // fluent pair 30: NCMapper.Tests.Runtime.FluentRuntimeIgnoreIndexPathTests.FriNae -> NCMapper.Tests.Runtime.FluentRuntimeIgnoreIndexPathTests.FriNad
+            // fluent pair 35: NCMapper.Tests.Runtime.FluentRuntimeIgnoreIndexPathTests.FriNae -> NCMapper.Tests.Runtime.FluentRuntimeIgnoreIndexPathTests.FriNad
             global::NCMapper.Runtime.RuntimeSnapshotStore.Register(new global::NCMapper.Runtime.RuntimeMapperMetadata
             {
                 SourceType = typeof(NCMapper.Tests.Runtime.FluentRuntimeIgnoreIndexPathTests.FriNae),
@@ -322,7 +372,7 @@ namespace NCMapper.Runtime
                 Channel = global::NCMapper.Runtime.RuntimeMappingChannel.Fluent,
                 IsFluentForward = true,
             });
-            // fluent pair 31: NCMapper.Tests.Runtime.FluentRuntimeIgnoreIndexPathTests.FriNe -> NCMapper.Tests.Runtime.FluentRuntimeIgnoreIndexPathTests.FriNd
+            // fluent pair 36: NCMapper.Tests.Runtime.FluentRuntimeIgnoreIndexPathTests.FriNe -> NCMapper.Tests.Runtime.FluentRuntimeIgnoreIndexPathTests.FriNd
             global::NCMapper.Runtime.RuntimeSnapshotStore.Register(new global::NCMapper.Runtime.RuntimeMapperMetadata
             {
                 SourceType = typeof(NCMapper.Tests.Runtime.FluentRuntimeIgnoreIndexPathTests.FriNe),
@@ -332,7 +382,7 @@ namespace NCMapper.Runtime
                 Channel = global::NCMapper.Runtime.RuntimeMappingChannel.Fluent,
                 IsFluentForward = true,
             });
-            // fluent pair 32: NCMapper.Tests.Runtime.MapWhenEquivalenceGuardTests.EgA2Entity -> NCMapper.Tests.Runtime.MapWhenEquivalenceGuardTests.EgA2Dto
+            // fluent pair 37: NCMapper.Tests.Runtime.MapWhenEquivalenceGuardTests.EgA2Entity -> NCMapper.Tests.Runtime.MapWhenEquivalenceGuardTests.EgA2Dto
             global::NCMapper.Runtime.RuntimeSnapshotStore.Register(new global::NCMapper.Runtime.RuntimeMapperMetadata
             {
                 SourceType = typeof(NCMapper.Tests.Runtime.MapWhenEquivalenceGuardTests.EgA2Entity),
@@ -342,7 +392,7 @@ namespace NCMapper.Runtime
                 Channel = global::NCMapper.Runtime.RuntimeMappingChannel.Fluent,
                 IsFluentForward = true,
             });
-            // fluent pair 33: NCMapper.Tests.Runtime.MapWhenEquivalenceGuardTests.EgAEntity -> NCMapper.Tests.Runtime.MapWhenEquivalenceGuardTests.EgADto
+            // fluent pair 38: NCMapper.Tests.Runtime.MapWhenEquivalenceGuardTests.EgAEntity -> NCMapper.Tests.Runtime.MapWhenEquivalenceGuardTests.EgADto
             global::NCMapper.Runtime.RuntimeSnapshotStore.Register(new global::NCMapper.Runtime.RuntimeMapperMetadata
             {
                 SourceType = typeof(NCMapper.Tests.Runtime.MapWhenEquivalenceGuardTests.EgAEntity),
@@ -352,7 +402,7 @@ namespace NCMapper.Runtime
                 Channel = global::NCMapper.Runtime.RuntimeMappingChannel.Fluent,
                 IsFluentForward = true,
             });
-            // fluent pair 34: NCMapper.Tests.Runtime.MapWhenEquivalenceGuardTests.EgB2Entity -> NCMapper.Tests.Runtime.MapWhenEquivalenceGuardTests.EgB2Dto
+            // fluent pair 39: NCMapper.Tests.Runtime.MapWhenEquivalenceGuardTests.EgB2Entity -> NCMapper.Tests.Runtime.MapWhenEquivalenceGuardTests.EgB2Dto
             global::NCMapper.Runtime.RuntimeSnapshotStore.Register(new global::NCMapper.Runtime.RuntimeMapperMetadata
             {
                 SourceType = typeof(NCMapper.Tests.Runtime.MapWhenEquivalenceGuardTests.EgB2Entity),
@@ -362,7 +412,7 @@ namespace NCMapper.Runtime
                 Channel = global::NCMapper.Runtime.RuntimeMappingChannel.Fluent,
                 IsFluentForward = true,
             });
-            // fluent pair 35: NCMapper.Tests.Runtime.MapWhenEquivalenceGuardTests.EgBEntity -> NCMapper.Tests.Runtime.MapWhenEquivalenceGuardTests.EgBDto
+            // fluent pair 40: NCMapper.Tests.Runtime.MapWhenEquivalenceGuardTests.EgBEntity -> NCMapper.Tests.Runtime.MapWhenEquivalenceGuardTests.EgBDto
             global::NCMapper.Runtime.RuntimeSnapshotStore.Register(new global::NCMapper.Runtime.RuntimeMapperMetadata
             {
                 SourceType = typeof(NCMapper.Tests.Runtime.MapWhenEquivalenceGuardTests.EgBEntity),
@@ -372,7 +422,7 @@ namespace NCMapper.Runtime
                 Channel = global::NCMapper.Runtime.RuntimeMappingChannel.Fluent,
                 IsFluentForward = true,
             });
-            // fluent pair 36: NCMapper.Tests.Runtime.MapWhenEquivalenceGuardTests.EgNEntity -> NCMapper.Tests.Runtime.MapWhenEquivalenceGuardTests.EgNDto
+            // fluent pair 41: NCMapper.Tests.Runtime.MapWhenEquivalenceGuardTests.EgNEntity -> NCMapper.Tests.Runtime.MapWhenEquivalenceGuardTests.EgNDto
             global::NCMapper.Runtime.RuntimeSnapshotStore.Register(new global::NCMapper.Runtime.RuntimeMapperMetadata
             {
                 SourceType = typeof(NCMapper.Tests.Runtime.MapWhenEquivalenceGuardTests.EgNEntity),
@@ -382,7 +432,7 @@ namespace NCMapper.Runtime
                 Channel = global::NCMapper.Runtime.RuntimeMappingChannel.Fluent,
                 IsFluentForward = true,
             });
-            // fluent pair 37: NCMapper.Tests.Runtime.MapWhenFluentExecutionTests.WgFAEntity -> NCMapper.Tests.Runtime.MapWhenFluentExecutionTests.WgFADto
+            // fluent pair 42: NCMapper.Tests.Runtime.MapWhenFluentExecutionTests.WgFAEntity -> NCMapper.Tests.Runtime.MapWhenFluentExecutionTests.WgFADto
             global::NCMapper.Runtime.RuntimeSnapshotStore.Register(new global::NCMapper.Runtime.RuntimeMapperMetadata
             {
                 SourceType = typeof(NCMapper.Tests.Runtime.MapWhenFluentExecutionTests.WgFAEntity),
@@ -392,7 +442,7 @@ namespace NCMapper.Runtime
                 Channel = global::NCMapper.Runtime.RuntimeMappingChannel.Fluent,
                 IsFluentForward = true,
             });
-            // fluent pair 38: NCMapper.Tests.Runtime.MapWhenFluentExecutionTests.WgFB1Entity -> NCMapper.Tests.Runtime.MapWhenFluentExecutionTests.WgFB1Dto
+            // fluent pair 43: NCMapper.Tests.Runtime.MapWhenFluentExecutionTests.WgFB1Entity -> NCMapper.Tests.Runtime.MapWhenFluentExecutionTests.WgFB1Dto
             global::NCMapper.Runtime.RuntimeSnapshotStore.Register(new global::NCMapper.Runtime.RuntimeMapperMetadata
             {
                 SourceType = typeof(NCMapper.Tests.Runtime.MapWhenFluentExecutionTests.WgFB1Entity),
@@ -402,7 +452,7 @@ namespace NCMapper.Runtime
                 Channel = global::NCMapper.Runtime.RuntimeMappingChannel.Fluent,
                 IsFluentForward = true,
             });
-            // fluent pair 39: NCMapper.Tests.Runtime.MapWhenFluentExecutionTests.WgFB2Entity -> NCMapper.Tests.Runtime.MapWhenFluentExecutionTests.WgFB2Dto
+            // fluent pair 44: NCMapper.Tests.Runtime.MapWhenFluentExecutionTests.WgFB2Entity -> NCMapper.Tests.Runtime.MapWhenFluentExecutionTests.WgFB2Dto
             global::NCMapper.Runtime.RuntimeSnapshotStore.Register(new global::NCMapper.Runtime.RuntimeMapperMetadata
             {
                 SourceType = typeof(NCMapper.Tests.Runtime.MapWhenFluentExecutionTests.WgFB2Entity),
@@ -412,7 +462,7 @@ namespace NCMapper.Runtime
                 Channel = global::NCMapper.Runtime.RuntimeMappingChannel.Fluent,
                 IsFluentForward = true,
             });
-            // fluent pair 40: NCMapper.Tests.Runtime.MapWhenFluentExecutionTests.WgFBlkEntity -> NCMapper.Tests.Runtime.MapWhenFluentExecutionTests.WgFBlkDto
+            // fluent pair 45: NCMapper.Tests.Runtime.MapWhenFluentExecutionTests.WgFBlkEntity -> NCMapper.Tests.Runtime.MapWhenFluentExecutionTests.WgFBlkDto
             global::NCMapper.Runtime.RuntimeSnapshotStore.Register(new global::NCMapper.Runtime.RuntimeMapperMetadata
             {
                 SourceType = typeof(NCMapper.Tests.Runtime.MapWhenFluentExecutionTests.WgFBlkEntity),
@@ -422,7 +472,7 @@ namespace NCMapper.Runtime
                 Channel = global::NCMapper.Runtime.RuntimeMappingChannel.Fluent,
                 IsFluentForward = true,
             });
-            // fluent pair 41: NCMapper.Tests.Runtime.MapWhenFluentExecutionTests.WgFCEntity -> NCMapper.Tests.Runtime.MapWhenFluentExecutionTests.WgFCDto
+            // fluent pair 46: NCMapper.Tests.Runtime.MapWhenFluentExecutionTests.WgFCEntity -> NCMapper.Tests.Runtime.MapWhenFluentExecutionTests.WgFCDto
             global::NCMapper.Runtime.RuntimeSnapshotStore.Register(new global::NCMapper.Runtime.RuntimeMapperMetadata
             {
                 SourceType = typeof(NCMapper.Tests.Runtime.MapWhenFluentExecutionTests.WgFCEntity),
@@ -432,7 +482,7 @@ namespace NCMapper.Runtime
                 Channel = global::NCMapper.Runtime.RuntimeMappingChannel.Fluent,
                 IsFluentForward = true,
             });
-            // fluent pair 42: NCMapper.Tests.Tests.DirectionalSemanticMatrixTests.DsmF1Entity -> NCMapper.Tests.Tests.DirectionalSemanticMatrixTests.DsmF1View
+            // fluent pair 47: NCMapper.Tests.Tests.DirectionalSemanticMatrixTests.DsmF1Entity -> NCMapper.Tests.Tests.DirectionalSemanticMatrixTests.DsmF1View
             global::NCMapper.Runtime.RuntimeSnapshotStore.Register(new global::NCMapper.Runtime.RuntimeMapperMetadata
             {
                 SourceType = typeof(NCMapper.Tests.Tests.DirectionalSemanticMatrixTests.DsmF1Entity),
@@ -442,7 +492,7 @@ namespace NCMapper.Runtime
                 Channel = global::NCMapper.Runtime.RuntimeMappingChannel.Fluent,
                 IsFluentForward = true,
             });
-            // fluent pair 43: NCMapper.Tests.Tests.DirectionalSemanticMatrixTests.DsmF2Entity -> NCMapper.Tests.Tests.DirectionalSemanticMatrixTests.DsmF2View
+            // fluent pair 48: NCMapper.Tests.Tests.DirectionalSemanticMatrixTests.DsmF2Entity -> NCMapper.Tests.Tests.DirectionalSemanticMatrixTests.DsmF2View
             global::NCMapper.Runtime.RuntimeSnapshotStore.Register(new global::NCMapper.Runtime.RuntimeMapperMetadata
             {
                 SourceType = typeof(NCMapper.Tests.Tests.DirectionalSemanticMatrixTests.DsmF2Entity),
@@ -452,7 +502,7 @@ namespace NCMapper.Runtime
                 Channel = global::NCMapper.Runtime.RuntimeMappingChannel.Fluent,
                 IsFluentForward = true,
             });
-            // fluent pair 44: NCMapper.Tests.Tests.DirectionalSemanticMatrixTests.DsmF3View -> NCMapper.Tests.Tests.DirectionalSemanticMatrixTests.DsmF3Entity
+            // fluent pair 49: NCMapper.Tests.Tests.DirectionalSemanticMatrixTests.DsmF3View -> NCMapper.Tests.Tests.DirectionalSemanticMatrixTests.DsmF3Entity
             global::NCMapper.Runtime.RuntimeSnapshotStore.Register(new global::NCMapper.Runtime.RuntimeMapperMetadata
             {
                 SourceType = typeof(NCMapper.Tests.Tests.DirectionalSemanticMatrixTests.DsmF3View),
@@ -462,7 +512,7 @@ namespace NCMapper.Runtime
                 Channel = global::NCMapper.Runtime.RuntimeMappingChannel.Fluent,
                 IsFluentForward = true,
             });
-            // fluent pair 45: NCMapper.Tests.Tests.DirectionalSemanticMatrixTests.DsmF4View -> NCMapper.Tests.Tests.DirectionalSemanticMatrixTests.DsmF4Entity
+            // fluent pair 50: NCMapper.Tests.Tests.DirectionalSemanticMatrixTests.DsmF4View -> NCMapper.Tests.Tests.DirectionalSemanticMatrixTests.DsmF4Entity
             global::NCMapper.Runtime.RuntimeSnapshotStore.Register(new global::NCMapper.Runtime.RuntimeMapperMetadata
             {
                 SourceType = typeof(NCMapper.Tests.Tests.DirectionalSemanticMatrixTests.DsmF4View),
@@ -472,7 +522,7 @@ namespace NCMapper.Runtime
                 Channel = global::NCMapper.Runtime.RuntimeMappingChannel.Fluent,
                 IsFluentForward = true,
             });
-            // fluent pair 46: NCMapper.Tests.Tests.DirectionalSemanticMatrixTests.DsmF5Entity -> NCMapper.Tests.Tests.DirectionalSemanticMatrixTests.DsmF5View
+            // fluent pair 51: NCMapper.Tests.Tests.DirectionalSemanticMatrixTests.DsmF5Entity -> NCMapper.Tests.Tests.DirectionalSemanticMatrixTests.DsmF5View
             global::NCMapper.Runtime.RuntimeSnapshotStore.Register(new global::NCMapper.Runtime.RuntimeMapperMetadata
             {
                 SourceType = typeof(NCMapper.Tests.Tests.DirectionalSemanticMatrixTests.DsmF5Entity),
@@ -482,7 +532,7 @@ namespace NCMapper.Runtime
                 Channel = global::NCMapper.Runtime.RuntimeMappingChannel.Fluent,
                 IsFluentForward = true,
             });
-            // fluent pair 47: NCMapper.Tests.Tests.MsRAnimal -> NCMapper.Tests.Tests.MsRAnimalDto
+            // fluent pair 52: NCMapper.Tests.Tests.MsRAnimal -> NCMapper.Tests.Tests.MsRAnimalDto
             global::NCMapper.Runtime.RuntimeSnapshotStore.Register(new global::NCMapper.Runtime.RuntimeMapperMetadata
             {
                 SourceType = typeof(NCMapper.Tests.Tests.MsRAnimal),
@@ -492,7 +542,7 @@ namespace NCMapper.Runtime
                 Channel = global::NCMapper.Runtime.RuntimeMappingChannel.Fluent,
                 IsFluentForward = true,
             });
-            // fluent pair 48: NCMapper.Tests.Tests.MsRCat -> NCMapper.Tests.Tests.MsRCatDto
+            // fluent pair 53: NCMapper.Tests.Tests.MsRCat -> NCMapper.Tests.Tests.MsRCatDto
             global::NCMapper.Runtime.RuntimeSnapshotStore.Register(new global::NCMapper.Runtime.RuntimeMapperMetadata
             {
                 SourceType = typeof(NCMapper.Tests.Tests.MsRCat),
@@ -502,7 +552,7 @@ namespace NCMapper.Runtime
                 Channel = global::NCMapper.Runtime.RuntimeMappingChannel.Fluent,
                 IsFluentForward = true,
             });
-            // fluent pair 49: NCMapper.Tests.Tests.MsRDog -> NCMapper.Tests.Tests.MsRDogDto
+            // fluent pair 54: NCMapper.Tests.Tests.MsRDog -> NCMapper.Tests.Tests.MsRDogDto
             global::NCMapper.Runtime.RuntimeSnapshotStore.Register(new global::NCMapper.Runtime.RuntimeMapperMetadata
             {
                 SourceType = typeof(NCMapper.Tests.Tests.MsRDog),
@@ -512,7 +562,7 @@ namespace NCMapper.Runtime
                 Channel = global::NCMapper.Runtime.RuntimeMappingChannel.Fluent,
                 IsFluentForward = true,
             });
-            // fluent pair 50: NCMapper.Tests.Tests.MsROAnimal -> NCMapper.Tests.Tests.MsROAnimalDto
+            // fluent pair 55: NCMapper.Tests.Tests.MsROAnimal -> NCMapper.Tests.Tests.MsROAnimalDto
             global::NCMapper.Runtime.RuntimeSnapshotStore.Register(new global::NCMapper.Runtime.RuntimeMapperMetadata
             {
                 SourceType = typeof(NCMapper.Tests.Tests.MsROAnimal),
@@ -522,7 +572,7 @@ namespace NCMapper.Runtime
                 Channel = global::NCMapper.Runtime.RuntimeMappingChannel.Fluent,
                 IsFluentForward = true,
             });
-            // fluent pair 51: NCMapper.Tests.Tests.MsRODog -> NCMapper.Tests.Tests.MsRODogDto
+            // fluent pair 56: NCMapper.Tests.Tests.MsRODog -> NCMapper.Tests.Tests.MsRODogDto
             global::NCMapper.Runtime.RuntimeSnapshotStore.Register(new global::NCMapper.Runtime.RuntimeMapperMetadata
             {
                 SourceType = typeof(NCMapper.Tests.Tests.MsRODog),
@@ -532,7 +582,7 @@ namespace NCMapper.Runtime
                 Channel = global::NCMapper.Runtime.RuntimeMappingChannel.Fluent,
                 IsFluentForward = true,
             });
-            // fluent pair 52: NCMapper.Tests.Tests.MsROPuppy -> NCMapper.Tests.Tests.MsROPuppyDto
+            // fluent pair 57: NCMapper.Tests.Tests.MsROPuppy -> NCMapper.Tests.Tests.MsROPuppyDto
             global::NCMapper.Runtime.RuntimeSnapshotStore.Register(new global::NCMapper.Runtime.RuntimeMapperMetadata
             {
                 SourceType = typeof(NCMapper.Tests.Tests.MsROPuppy),

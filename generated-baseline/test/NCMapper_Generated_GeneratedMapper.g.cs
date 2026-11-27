@@ -501,6 +501,380 @@ namespace NCMapper.Generated
         }
 
         /// <summary>
+        /// 源生成器核心映射：NCMapper.Tests.FluentSourceGenNestedPropertyTests.AttrSite → NCMapper.Tests.FluentSourceGenNestedPropertyTests.AttrSiteDto（无 Action，热路径）
+        /// </summary>
+        [System.Runtime.CompilerServices.MethodImpl(System.Runtime.CompilerServices.MethodImplOptions.AggressiveInlining)]
+        public static NCMapper.Tests.FluentSourceGenNestedPropertyTests.AttrSiteDto? Map_AttrSite_To_AttrSiteDto(NCMapper.Tests.FluentSourceGenNestedPropertyTests.AttrSite src)
+        {
+            if (src is null) return null;
+            var dst = new NCMapper.Tests.FluentSourceGenNestedPropertyTests.AttrSiteDto();
+            dst.Id = src.Id;
+            if (src.Dept != null)
+            {
+                // Fallback path: nested mapping runtime fallback (nested type not [MapFrom]-registered). May fail under NativeAOT; see docs 05-Compose
+            #pragma warning disable IL2026, IL3050
+                dst.Dept = NCMapper.Mapper.Map<NCMapper.Tests.FluentSourceGenNestedPropertyTests.AttrDept, NCMapper.Tests.FluentSourceGenNestedPropertyTests.AttrDeptDto>(src.Dept)!;
+            #pragma warning restore IL2026, IL3050
+            }
+            return dst;
+        }
+
+        /// <summary>
+        /// 源生成器映射：NCMapper.Tests.FluentSourceGenNestedPropertyTests.AttrSite → NCMapper.Tests.FluentSourceGenNestedPropertyTests.AttrSiteDto（带 Action 回调）
+        /// </summary>
+        [System.Runtime.CompilerServices.MethodImpl(System.Runtime.CompilerServices.MethodImplOptions.AggressiveInlining)]
+        public static NCMapper.Tests.FluentSourceGenNestedPropertyTests.AttrSiteDto? Map_AttrSite_To_AttrSiteDto_WithAction(NCMapper.Tests.FluentSourceGenNestedPropertyTests.AttrSite src, System.Action<NCMapper.Tests.FluentSourceGenNestedPropertyTests.AttrSite, NCMapper.Tests.FluentSourceGenNestedPropertyTests.AttrSiteDto>? action)
+        {
+            var dst = Map_AttrSite_To_AttrSiteDto(src);
+            if (dst != null) action?.Invoke(src, dst);
+            return dst;
+        }
+
+        /// <summary>
+        /// 源生成器更新映射：NCMapper.Tests.FluentSourceGenNestedPropertyTests.AttrSite → NCMapper.Tests.FluentSourceGenNestedPropertyTests.AttrSiteDto（更新已有目标对象，带 Action 回调）
+        /// </summary>
+        [System.Runtime.CompilerServices.MethodImpl(System.Runtime.CompilerServices.MethodImplOptions.AggressiveInlining)]
+        public static void Map_AttrSite_To_AttrSiteDto_Update(NCMapper.Tests.FluentSourceGenNestedPropertyTests.AttrSite src, NCMapper.Tests.FluentSourceGenNestedPropertyTests.AttrSiteDto dst, System.Action<NCMapper.Tests.FluentSourceGenNestedPropertyTests.AttrSite, NCMapper.Tests.FluentSourceGenNestedPropertyTests.AttrSiteDto>? action)
+        {
+            if (src is null || dst is null) return;
+            dst.Id = src.Id;
+            if (src.Dept != null)
+            {
+                // Fallback path: nested mapping runtime fallback (nested type not [MapFrom]-registered). May fail under NativeAOT; see docs 05-Compose
+            #pragma warning disable IL2026, IL3050
+                dst.Dept = NCMapper.Mapper.Map<NCMapper.Tests.FluentSourceGenNestedPropertyTests.AttrDept, NCMapper.Tests.FluentSourceGenNestedPropertyTests.AttrDeptDto>(src.Dept)!;
+            #pragma warning restore IL2026, IL3050
+            }
+            action?.Invoke(src, dst);
+        }
+
+        /// <summary>
+        /// 源生成器列表映射：NCMapper.Tests.FluentSourceGenNestedPropertyTests.AttrSite → List&lt;NCMapper.Tests.FluentSourceGenNestedPropertyTests.AttrSiteDto&gt;（内联赋值循环 + 预分配容量）
+        /// </summary>
+        /// <param name="sources">源列表</param>
+        /// <returns>映射后的目标列表；sources 为 null 时实际返回 null（null 透传）。签名声明非空仅为满足 Mapper.RegisterGeneratedList 委托契约，运行时 null 语义与简单赋值路径一致</returns>
+        [System.Runtime.CompilerServices.MethodImpl(System.Runtime.CompilerServices.MethodImplOptions.AggressiveInlining)]
+        public static System.Collections.Generic.List<NCMapper.Tests.FluentSourceGenNestedPropertyTests.AttrSiteDto> MapList_AttrSite_To_AttrSiteDto(System.Collections.Generic.IEnumerable<NCMapper.Tests.FluentSourceGenNestedPropertyTests.AttrSite> sources)
+        {
+            // 签名非空仅为满足 Mapper.RegisterGeneratedList 委托契约（Func<List<T>, List<T>>），null 透传与简单赋值路径语义一致
+            if (sources is null) return null!;
+            if (sources is NCMapper.Tests.FluentSourceGenNestedPropertyTests.AttrSite[] arr)
+            {
+                var list = new System.Collections.Generic.List<NCMapper.Tests.FluentSourceGenNestedPropertyTests.AttrSiteDto>(arr.Length);
+                for (int i = 0; i < arr.Length; i++)
+                {
+                    var src = arr[i];
+                    if (src is null)
+                    {
+                        list.Add(null!);
+                        continue;
+                    }
+                    var dst = new NCMapper.Tests.FluentSourceGenNestedPropertyTests.AttrSiteDto();
+                    dst.Id = src.Id;
+                    if (src.Dept != null)
+                    {
+                        // Fallback path: nested mapping runtime fallback (nested type not [MapFrom]-registered). May fail under NativeAOT; see docs 05-Compose
+                    #pragma warning disable IL2026, IL3050
+                        dst.Dept = NCMapper.Mapper.Map<NCMapper.Tests.FluentSourceGenNestedPropertyTests.AttrDept, NCMapper.Tests.FluentSourceGenNestedPropertyTests.AttrDeptDto>(src.Dept)!;
+                    #pragma warning restore IL2026, IL3050
+                    }
+                    list.Add(dst);
+                }
+                return list;
+            }
+            if (sources is System.Collections.Generic.ICollection<NCMapper.Tests.FluentSourceGenNestedPropertyTests.AttrSite> coll)
+            {
+                var list = new System.Collections.Generic.List<NCMapper.Tests.FluentSourceGenNestedPropertyTests.AttrSiteDto>(coll.Count);
+                foreach (var src in coll)
+                {
+                    if (src is null)
+                    {
+                        list.Add(null!);
+                        continue;
+                    }
+                    var dst = new NCMapper.Tests.FluentSourceGenNestedPropertyTests.AttrSiteDto();
+                    dst.Id = src.Id;
+                    if (src.Dept != null)
+                    {
+                        // Fallback path: nested mapping runtime fallback (nested type not [MapFrom]-registered). May fail under NativeAOT; see docs 05-Compose
+                    #pragma warning disable IL2026, IL3050
+                        dst.Dept = NCMapper.Mapper.Map<NCMapper.Tests.FluentSourceGenNestedPropertyTests.AttrDept, NCMapper.Tests.FluentSourceGenNestedPropertyTests.AttrDeptDto>(src.Dept)!;
+                    #pragma warning restore IL2026, IL3050
+                    }
+                    list.Add(dst);
+                }
+                return list;
+            }
+            {
+                var list = new System.Collections.Generic.List<NCMapper.Tests.FluentSourceGenNestedPropertyTests.AttrSiteDto>();
+                foreach (var src in sources)
+                {
+                    if (src is null)
+                    {
+                        list.Add(null!);
+                        continue;
+                    }
+                    var dst = new NCMapper.Tests.FluentSourceGenNestedPropertyTests.AttrSiteDto();
+                    dst.Id = src.Id;
+                    if (src.Dept != null)
+                    {
+                        // Fallback path: nested mapping runtime fallback (nested type not [MapFrom]-registered). May fail under NativeAOT; see docs 05-Compose
+                    #pragma warning disable IL2026, IL3050
+                        dst.Dept = NCMapper.Mapper.Map<NCMapper.Tests.FluentSourceGenNestedPropertyTests.AttrDept, NCMapper.Tests.FluentSourceGenNestedPropertyTests.AttrDeptDto>(src.Dept)!;
+                    #pragma warning restore IL2026, IL3050
+                    }
+                    list.Add(dst);
+                }
+                return list;
+            }
+        }
+
+        /// <summary>
+        /// 源生成器列表映射（带 Action 回调）：NCMapper.Tests.FluentSourceGenNestedPropertyTests.AttrSite → List&lt;NCMapper.Tests.FluentSourceGenNestedPropertyTests.AttrSiteDto&gt;
+        /// </summary>
+        /// <param name="sources">源列表</param>
+        /// <param name="action">每个元素映射后的回调</param>
+        /// <returns>映射后的目标列表；sources 为 null 时实际返回 null（null 透传）。签名声明非空仅为满足 Mapper.RegisterGeneratedList 委托契约，运行时 null 语义与简单赋值路径一致</returns>
+        public static System.Collections.Generic.List<NCMapper.Tests.FluentSourceGenNestedPropertyTests.AttrSiteDto> MapList_AttrSite_To_AttrSiteDto(System.Collections.Generic.IEnumerable<NCMapper.Tests.FluentSourceGenNestedPropertyTests.AttrSite> sources, System.Action<NCMapper.Tests.FluentSourceGenNestedPropertyTests.AttrSite, NCMapper.Tests.FluentSourceGenNestedPropertyTests.AttrSiteDto>? action)
+        {
+            // 签名非空仅为满足 Mapper.RegisterGeneratedList 委托契约（Func<List<T>, List<T>>），null 透传与简单赋值路径语义一致
+            if (sources is null) return null!;
+            if (action is null) return MapList_AttrSite_To_AttrSiteDto(sources);
+            var list = new System.Collections.Generic.List<NCMapper.Tests.FluentSourceGenNestedPropertyTests.AttrSiteDto>();
+            foreach (var src in sources)
+            {
+                if (src is null)
+                {
+                    list.Add(null!);
+                    continue;
+                }
+                var dst = new NCMapper.Tests.FluentSourceGenNestedPropertyTests.AttrSiteDto();
+                dst.Id = src.Id;
+                if (src.Dept != null)
+                {
+                    // Fallback path: nested mapping runtime fallback (nested type not [MapFrom]-registered). May fail under NativeAOT; see docs 05-Compose
+                #pragma warning disable IL2026, IL3050
+                    dst.Dept = NCMapper.Mapper.Map<NCMapper.Tests.FluentSourceGenNestedPropertyTests.AttrDept, NCMapper.Tests.FluentSourceGenNestedPropertyTests.AttrDeptDto>(src.Dept)!;
+                #pragma warning restore IL2026, IL3050
+                }
+                action(src, dst);
+                list.Add(dst);
+            }
+            return list;
+        }
+
+        /// <summary>
+        /// 源生成器批量就地映射：NCMapper.Tests.FluentSourceGenNestedPropertyTests.AttrSite → NCMapper.Tests.FluentSourceGenNestedPropertyTests.AttrSiteDto[]（内联赋值循环，仅覆盖映射字段；复用场景顶层零分配）
+        /// </summary>
+        /// <param name="sources">源集合</param>
+        /// <param name="destination">预分配目标数组（调用方负责初始化每个元素；null 槽位 no-op 跳过，C5）</param>
+        /// <param name="action">每个元素映射后的回调，可为 null</param>
+        [System.Runtime.CompilerServices.MethodImpl(System.Runtime.CompilerServices.MethodImplOptions.AggressiveInlining)]
+        public static void MapListInto_AttrSite_To_AttrSiteDto(System.Collections.Generic.IList<NCMapper.Tests.FluentSourceGenNestedPropertyTests.AttrSite> sources, NCMapper.Tests.FluentSourceGenNestedPropertyTests.AttrSiteDto[] destination, System.Action<NCMapper.Tests.FluentSourceGenNestedPropertyTests.AttrSite, NCMapper.Tests.FluentSourceGenNestedPropertyTests.AttrSiteDto>? action)
+        {
+            if (sources is null || destination is null) return;
+            if (sources is NCMapper.Tests.FluentSourceGenNestedPropertyTests.AttrSite[] srcArr)
+            {
+                for (int i = 0; i < srcArr.Length; i++)
+                {
+                    var src = srcArr[i];
+                    if (src is null) continue;
+                    var dst = destination[i];
+                    if (dst is null) continue;
+                    dst.Id = src.Id;
+                    if (src.Dept != null)
+                    {
+                        // Fallback path: nested mapping runtime fallback (nested type not [MapFrom]-registered). May fail under NativeAOT; see docs 05-Compose
+                    #pragma warning disable IL2026, IL3050
+                        dst.Dept = NCMapper.Mapper.Map<NCMapper.Tests.FluentSourceGenNestedPropertyTests.AttrDept, NCMapper.Tests.FluentSourceGenNestedPropertyTests.AttrDeptDto>(src.Dept)!;
+                    #pragma warning restore IL2026, IL3050
+                    }
+                    action?.Invoke(src, dst);
+                }
+                return;
+            }
+            for (int i = 0; i < sources.Count; i++)
+            {
+                var src = sources[i];
+                if (src is null) continue;
+                var dst = destination[i];
+                if (dst is null) continue;
+                dst.Id = src.Id;
+                if (src.Dept != null)
+                {
+                    // Fallback path: nested mapping runtime fallback (nested type not [MapFrom]-registered). May fail under NativeAOT; see docs 05-Compose
+                #pragma warning disable IL2026, IL3050
+                    dst.Dept = NCMapper.Mapper.Map<NCMapper.Tests.FluentSourceGenNestedPropertyTests.AttrDept, NCMapper.Tests.FluentSourceGenNestedPropertyTests.AttrDeptDto>(src.Dept)!;
+                #pragma warning restore IL2026, IL3050
+                }
+                action?.Invoke(src, dst);
+            }
+        }
+
+        /// <summary>
+        /// 源生成器核心映射：NCMapper.Tests.FluentSourceGenNestedPropertyTests.AttrSiteDto → NCMapper.Tests.FluentSourceGenNestedPropertyTests.AttrSite（无 Action，热路径）
+        /// </summary>
+        [System.Runtime.CompilerServices.MethodImpl(System.Runtime.CompilerServices.MethodImplOptions.AggressiveInlining)]
+        public static NCMapper.Tests.FluentSourceGenNestedPropertyTests.AttrSite? Map_AttrSiteDto_To_AttrSite(NCMapper.Tests.FluentSourceGenNestedPropertyTests.AttrSiteDto src)
+        {
+            if (src is null) return null;
+            var dst = new NCMapper.Tests.FluentSourceGenNestedPropertyTests.AttrSite();
+            dst.Id = src.Id;
+            if (src.Dept != null)
+            {
+                // Fallback path: nested mapping runtime fallback (nested type not [MapFrom]-registered). May fail under NativeAOT; see docs 05-Compose
+            #pragma warning disable IL2026, IL3050
+                dst.Dept = NCMapper.Mapper.Map<NCMapper.Tests.FluentSourceGenNestedPropertyTests.AttrDeptDto, NCMapper.Tests.FluentSourceGenNestedPropertyTests.AttrDept>(src.Dept)!;
+            #pragma warning restore IL2026, IL3050
+            }
+            return dst;
+        }
+
+        /// <summary>
+        /// 源生成器映射：NCMapper.Tests.FluentSourceGenNestedPropertyTests.AttrSiteDto → NCMapper.Tests.FluentSourceGenNestedPropertyTests.AttrSite（带 Action 回调）
+        /// </summary>
+        [System.Runtime.CompilerServices.MethodImpl(System.Runtime.CompilerServices.MethodImplOptions.AggressiveInlining)]
+        public static NCMapper.Tests.FluentSourceGenNestedPropertyTests.AttrSite? Map_AttrSiteDto_To_AttrSite_WithAction(NCMapper.Tests.FluentSourceGenNestedPropertyTests.AttrSiteDto src, System.Action<NCMapper.Tests.FluentSourceGenNestedPropertyTests.AttrSiteDto, NCMapper.Tests.FluentSourceGenNestedPropertyTests.AttrSite>? action)
+        {
+            var dst = Map_AttrSiteDto_To_AttrSite(src);
+            if (dst != null) action?.Invoke(src, dst);
+            return dst;
+        }
+
+        /// <summary>
+        /// 源生成器更新映射：NCMapper.Tests.FluentSourceGenNestedPropertyTests.AttrSiteDto → NCMapper.Tests.FluentSourceGenNestedPropertyTests.AttrSite（更新已有目标对象，带 Action 回调）
+        /// </summary>
+        [System.Runtime.CompilerServices.MethodImpl(System.Runtime.CompilerServices.MethodImplOptions.AggressiveInlining)]
+        public static void Map_AttrSiteDto_To_AttrSite_Update(NCMapper.Tests.FluentSourceGenNestedPropertyTests.AttrSiteDto src, NCMapper.Tests.FluentSourceGenNestedPropertyTests.AttrSite dst, System.Action<NCMapper.Tests.FluentSourceGenNestedPropertyTests.AttrSiteDto, NCMapper.Tests.FluentSourceGenNestedPropertyTests.AttrSite>? action)
+        {
+            if (src is null || dst is null) return;
+            dst.Id = src.Id;
+            if (src.Dept != null)
+            {
+                // Fallback path: nested mapping runtime fallback (nested type not [MapFrom]-registered). May fail under NativeAOT; see docs 05-Compose
+            #pragma warning disable IL2026, IL3050
+                dst.Dept = NCMapper.Mapper.Map<NCMapper.Tests.FluentSourceGenNestedPropertyTests.AttrDeptDto, NCMapper.Tests.FluentSourceGenNestedPropertyTests.AttrDept>(src.Dept)!;
+            #pragma warning restore IL2026, IL3050
+            }
+            action?.Invoke(src, dst);
+        }
+
+        /// <summary>
+        /// 源生成器列表映射：NCMapper.Tests.FluentSourceGenNestedPropertyTests.AttrSiteDto → List&lt;NCMapper.Tests.FluentSourceGenNestedPropertyTests.AttrSite&gt;（内联赋值循环 + 预分配容量）
+        /// </summary>
+        /// <param name="sources">源列表</param>
+        /// <returns>映射后的目标列表；sources 为 null 时实际返回 null（null 透传）。签名声明非空仅为满足 Mapper.RegisterGeneratedList 委托契约，运行时 null 语义与简单赋值路径一致</returns>
+        [System.Runtime.CompilerServices.MethodImpl(System.Runtime.CompilerServices.MethodImplOptions.AggressiveInlining)]
+        public static System.Collections.Generic.List<NCMapper.Tests.FluentSourceGenNestedPropertyTests.AttrSite> MapList_AttrSiteDto_To_AttrSite(System.Collections.Generic.IEnumerable<NCMapper.Tests.FluentSourceGenNestedPropertyTests.AttrSiteDto> sources)
+        {
+            // 签名非空仅为满足 Mapper.RegisterGeneratedList 委托契约（Func<List<T>, List<T>>），null 透传与简单赋值路径语义一致
+            if (sources is null) return null!;
+            if (sources is NCMapper.Tests.FluentSourceGenNestedPropertyTests.AttrSiteDto[] arr)
+            {
+                var list = new System.Collections.Generic.List<NCMapper.Tests.FluentSourceGenNestedPropertyTests.AttrSite>(arr.Length);
+                for (int i = 0; i < arr.Length; i++)
+                {
+                    var src = arr[i];
+                    if (src is null)
+                    {
+                        list.Add(null!);
+                        continue;
+                    }
+                    var dst = new NCMapper.Tests.FluentSourceGenNestedPropertyTests.AttrSite();
+                    dst.Id = src.Id;
+                    if (src.Dept != null)
+                    {
+                        // Fallback path: nested mapping runtime fallback (nested type not [MapFrom]-registered). May fail under NativeAOT; see docs 05-Compose
+                    #pragma warning disable IL2026, IL3050
+                        dst.Dept = NCMapper.Mapper.Map<NCMapper.Tests.FluentSourceGenNestedPropertyTests.AttrDeptDto, NCMapper.Tests.FluentSourceGenNestedPropertyTests.AttrDept>(src.Dept)!;
+                    #pragma warning restore IL2026, IL3050
+                    }
+                    list.Add(dst);
+                }
+                return list;
+            }
+            if (sources is System.Collections.Generic.ICollection<NCMapper.Tests.FluentSourceGenNestedPropertyTests.AttrSiteDto> coll)
+            {
+                var list = new System.Collections.Generic.List<NCMapper.Tests.FluentSourceGenNestedPropertyTests.AttrSite>(coll.Count);
+                foreach (var src in coll)
+                {
+                    if (src is null)
+                    {
+                        list.Add(null!);
+                        continue;
+                    }
+                    var dst = new NCMapper.Tests.FluentSourceGenNestedPropertyTests.AttrSite();
+                    dst.Id = src.Id;
+                    if (src.Dept != null)
+                    {
+                        // Fallback path: nested mapping runtime fallback (nested type not [MapFrom]-registered). May fail under NativeAOT; see docs 05-Compose
+                    #pragma warning disable IL2026, IL3050
+                        dst.Dept = NCMapper.Mapper.Map<NCMapper.Tests.FluentSourceGenNestedPropertyTests.AttrDeptDto, NCMapper.Tests.FluentSourceGenNestedPropertyTests.AttrDept>(src.Dept)!;
+                    #pragma warning restore IL2026, IL3050
+                    }
+                    list.Add(dst);
+                }
+                return list;
+            }
+            {
+                var list = new System.Collections.Generic.List<NCMapper.Tests.FluentSourceGenNestedPropertyTests.AttrSite>();
+                foreach (var src in sources)
+                {
+                    if (src is null)
+                    {
+                        list.Add(null!);
+                        continue;
+                    }
+                    var dst = new NCMapper.Tests.FluentSourceGenNestedPropertyTests.AttrSite();
+                    dst.Id = src.Id;
+                    if (src.Dept != null)
+                    {
+                        // Fallback path: nested mapping runtime fallback (nested type not [MapFrom]-registered). May fail under NativeAOT; see docs 05-Compose
+                    #pragma warning disable IL2026, IL3050
+                        dst.Dept = NCMapper.Mapper.Map<NCMapper.Tests.FluentSourceGenNestedPropertyTests.AttrDeptDto, NCMapper.Tests.FluentSourceGenNestedPropertyTests.AttrDept>(src.Dept)!;
+                    #pragma warning restore IL2026, IL3050
+                    }
+                    list.Add(dst);
+                }
+                return list;
+            }
+        }
+
+        /// <summary>
+        /// 源生成器列表映射（带 Action 回调）：NCMapper.Tests.FluentSourceGenNestedPropertyTests.AttrSiteDto → List&lt;NCMapper.Tests.FluentSourceGenNestedPropertyTests.AttrSite&gt;
+        /// </summary>
+        /// <param name="sources">源列表</param>
+        /// <param name="action">每个元素映射后的回调</param>
+        /// <returns>映射后的目标列表；sources 为 null 时实际返回 null（null 透传）。签名声明非空仅为满足 Mapper.RegisterGeneratedList 委托契约，运行时 null 语义与简单赋值路径一致</returns>
+        public static System.Collections.Generic.List<NCMapper.Tests.FluentSourceGenNestedPropertyTests.AttrSite> MapList_AttrSiteDto_To_AttrSite(System.Collections.Generic.IEnumerable<NCMapper.Tests.FluentSourceGenNestedPropertyTests.AttrSiteDto> sources, System.Action<NCMapper.Tests.FluentSourceGenNestedPropertyTests.AttrSiteDto, NCMapper.Tests.FluentSourceGenNestedPropertyTests.AttrSite>? action)
+        {
+            // 签名非空仅为满足 Mapper.RegisterGeneratedList 委托契约（Func<List<T>, List<T>>），null 透传与简单赋值路径语义一致
+            if (sources is null) return null!;
+            if (action is null) return MapList_AttrSiteDto_To_AttrSite(sources);
+            var list = new System.Collections.Generic.List<NCMapper.Tests.FluentSourceGenNestedPropertyTests.AttrSite>();
+            foreach (var src in sources)
+            {
+                if (src is null)
+                {
+                    list.Add(null!);
+                    continue;
+                }
+                var dst = new NCMapper.Tests.FluentSourceGenNestedPropertyTests.AttrSite();
+                dst.Id = src.Id;
+                if (src.Dept != null)
+                {
+                    // Fallback path: nested mapping runtime fallback (nested type not [MapFrom]-registered). May fail under NativeAOT; see docs 05-Compose
+                #pragma warning disable IL2026, IL3050
+                    dst.Dept = NCMapper.Mapper.Map<NCMapper.Tests.FluentSourceGenNestedPropertyTests.AttrDeptDto, NCMapper.Tests.FluentSourceGenNestedPropertyTests.AttrDept>(src.Dept)!;
+                #pragma warning restore IL2026, IL3050
+                }
+                action(src, dst);
+                list.Add(dst);
+            }
+            return list;
+        }
+
+        /// <summary>
         /// 源生成器核心映射：NCMapper.Tests.Models.ComposeNestedMainSource → NCMapper.Tests.Models.ComposeNestedDto（无 Action，热路径）
         /// </summary>
         [System.Runtime.CompilerServices.MethodImpl(System.Runtime.CompilerServices.MethodImplOptions.AggressiveInlining)]
@@ -79477,6 +79851,1712 @@ namespace NCMapper.Generated
         }
 
         /// <summary>
+        /// 源生成器核心映射：NCMapper.Tests.FluentSourceGenNestedPropertyTests.Site → NCMapper.Tests.FluentSourceGenNestedPropertyTests.SiteNestedDto（无 Action，热路径）
+        /// </summary>
+        [System.Runtime.CompilerServices.MethodImpl(System.Runtime.CompilerServices.MethodImplOptions.AggressiveInlining)]
+        public static NCMapper.Tests.FluentSourceGenNestedPropertyTests.SiteNestedDto? Map_Site_To_SiteNestedDto(NCMapper.Tests.FluentSourceGenNestedPropertyTests.Site src)
+        {
+            if (src is null) return null;
+            var dst = new NCMapper.Tests.FluentSourceGenNestedPropertyTests.SiteNestedDto();
+            dst.Id = src.Id;
+            dst.Name = src.Name;
+            if (src.Dept != null)
+            {
+                // Fallback path: nested mapping runtime fallback (nested type not [MapFrom]-registered). May fail under NativeAOT; see docs 05-Compose
+            #pragma warning disable IL2026, IL3050
+                dst.Dept = NCMapper.Mapper.Map<NCMapper.Tests.FluentSourceGenNestedPropertyTests.Dept, NCMapper.Tests.FluentSourceGenNestedPropertyTests.DeptDto>(src.Dept)!;
+            #pragma warning restore IL2026, IL3050
+            }
+            return dst;
+        }
+
+        /// <summary>
+        /// 源生成器映射：NCMapper.Tests.FluentSourceGenNestedPropertyTests.Site → NCMapper.Tests.FluentSourceGenNestedPropertyTests.SiteNestedDto（带 Action 回调）
+        /// </summary>
+        [System.Runtime.CompilerServices.MethodImpl(System.Runtime.CompilerServices.MethodImplOptions.AggressiveInlining)]
+        public static NCMapper.Tests.FluentSourceGenNestedPropertyTests.SiteNestedDto? Map_Site_To_SiteNestedDto_WithAction(NCMapper.Tests.FluentSourceGenNestedPropertyTests.Site src, System.Action<NCMapper.Tests.FluentSourceGenNestedPropertyTests.Site, NCMapper.Tests.FluentSourceGenNestedPropertyTests.SiteNestedDto>? action)
+        {
+            var dst = Map_Site_To_SiteNestedDto(src);
+            if (dst != null) action?.Invoke(src, dst);
+            return dst;
+        }
+
+        /// <summary>
+        /// 源生成器更新映射：NCMapper.Tests.FluentSourceGenNestedPropertyTests.Site → NCMapper.Tests.FluentSourceGenNestedPropertyTests.SiteNestedDto（更新已有目标对象，带 Action 回调）
+        /// </summary>
+        [System.Runtime.CompilerServices.MethodImpl(System.Runtime.CompilerServices.MethodImplOptions.AggressiveInlining)]
+        public static void Map_Site_To_SiteNestedDto_Update(NCMapper.Tests.FluentSourceGenNestedPropertyTests.Site src, NCMapper.Tests.FluentSourceGenNestedPropertyTests.SiteNestedDto dst, System.Action<NCMapper.Tests.FluentSourceGenNestedPropertyTests.Site, NCMapper.Tests.FluentSourceGenNestedPropertyTests.SiteNestedDto>? action)
+        {
+            if (src is null || dst is null) return;
+            dst.Id = src.Id;
+            dst.Name = src.Name;
+            if (src.Dept != null)
+            {
+                // Fallback path: nested mapping runtime fallback (nested type not [MapFrom]-registered). May fail under NativeAOT; see docs 05-Compose
+            #pragma warning disable IL2026, IL3050
+                dst.Dept = NCMapper.Mapper.Map<NCMapper.Tests.FluentSourceGenNestedPropertyTests.Dept, NCMapper.Tests.FluentSourceGenNestedPropertyTests.DeptDto>(src.Dept)!;
+            #pragma warning restore IL2026, IL3050
+            }
+            action?.Invoke(src, dst);
+        }
+
+        /// <summary>
+        /// 源生成器列表映射：NCMapper.Tests.FluentSourceGenNestedPropertyTests.Site → List&lt;NCMapper.Tests.FluentSourceGenNestedPropertyTests.SiteNestedDto&gt;（内联赋值循环 + 预分配容量）
+        /// </summary>
+        /// <param name="sources">源列表</param>
+        /// <returns>映射后的目标列表；sources 为 null 时实际返回 null（null 透传）。签名声明非空仅为满足 Mapper.RegisterGeneratedList 委托契约，运行时 null 语义与简单赋值路径一致</returns>
+        [System.Runtime.CompilerServices.MethodImpl(System.Runtime.CompilerServices.MethodImplOptions.AggressiveInlining)]
+        public static System.Collections.Generic.List<NCMapper.Tests.FluentSourceGenNestedPropertyTests.SiteNestedDto> MapList_Site_To_SiteNestedDto(System.Collections.Generic.IEnumerable<NCMapper.Tests.FluentSourceGenNestedPropertyTests.Site> sources)
+        {
+            // 签名非空仅为满足 Mapper.RegisterGeneratedList 委托契约（Func<List<T>, List<T>>），null 透传与简单赋值路径语义一致
+            if (sources is null) return null!;
+            if (sources is NCMapper.Tests.FluentSourceGenNestedPropertyTests.Site[] arr)
+            {
+                var list = new System.Collections.Generic.List<NCMapper.Tests.FluentSourceGenNestedPropertyTests.SiteNestedDto>(arr.Length);
+                for (int i = 0; i < arr.Length; i++)
+                {
+                    var src = arr[i];
+                    if (src is null)
+                    {
+                        list.Add(null!);
+                        continue;
+                    }
+                    var dst = new NCMapper.Tests.FluentSourceGenNestedPropertyTests.SiteNestedDto();
+                    dst.Id = src.Id;
+                    dst.Name = src.Name;
+                    if (src.Dept != null)
+                    {
+                        // Fallback path: nested mapping runtime fallback (nested type not [MapFrom]-registered). May fail under NativeAOT; see docs 05-Compose
+                    #pragma warning disable IL2026, IL3050
+                        dst.Dept = NCMapper.Mapper.Map<NCMapper.Tests.FluentSourceGenNestedPropertyTests.Dept, NCMapper.Tests.FluentSourceGenNestedPropertyTests.DeptDto>(src.Dept)!;
+                    #pragma warning restore IL2026, IL3050
+                    }
+                    list.Add(dst);
+                }
+                return list;
+            }
+            if (sources is System.Collections.Generic.ICollection<NCMapper.Tests.FluentSourceGenNestedPropertyTests.Site> coll)
+            {
+                var list = new System.Collections.Generic.List<NCMapper.Tests.FluentSourceGenNestedPropertyTests.SiteNestedDto>(coll.Count);
+                foreach (var src in coll)
+                {
+                    if (src is null)
+                    {
+                        list.Add(null!);
+                        continue;
+                    }
+                    var dst = new NCMapper.Tests.FluentSourceGenNestedPropertyTests.SiteNestedDto();
+                    dst.Id = src.Id;
+                    dst.Name = src.Name;
+                    if (src.Dept != null)
+                    {
+                        // Fallback path: nested mapping runtime fallback (nested type not [MapFrom]-registered). May fail under NativeAOT; see docs 05-Compose
+                    #pragma warning disable IL2026, IL3050
+                        dst.Dept = NCMapper.Mapper.Map<NCMapper.Tests.FluentSourceGenNestedPropertyTests.Dept, NCMapper.Tests.FluentSourceGenNestedPropertyTests.DeptDto>(src.Dept)!;
+                    #pragma warning restore IL2026, IL3050
+                    }
+                    list.Add(dst);
+                }
+                return list;
+            }
+            {
+                var list = new System.Collections.Generic.List<NCMapper.Tests.FluentSourceGenNestedPropertyTests.SiteNestedDto>();
+                foreach (var src in sources)
+                {
+                    if (src is null)
+                    {
+                        list.Add(null!);
+                        continue;
+                    }
+                    var dst = new NCMapper.Tests.FluentSourceGenNestedPropertyTests.SiteNestedDto();
+                    dst.Id = src.Id;
+                    dst.Name = src.Name;
+                    if (src.Dept != null)
+                    {
+                        // Fallback path: nested mapping runtime fallback (nested type not [MapFrom]-registered). May fail under NativeAOT; see docs 05-Compose
+                    #pragma warning disable IL2026, IL3050
+                        dst.Dept = NCMapper.Mapper.Map<NCMapper.Tests.FluentSourceGenNestedPropertyTests.Dept, NCMapper.Tests.FluentSourceGenNestedPropertyTests.DeptDto>(src.Dept)!;
+                    #pragma warning restore IL2026, IL3050
+                    }
+                    list.Add(dst);
+                }
+                return list;
+            }
+        }
+
+        /// <summary>
+        /// 源生成器列表映射（带 Action 回调）：NCMapper.Tests.FluentSourceGenNestedPropertyTests.Site → List&lt;NCMapper.Tests.FluentSourceGenNestedPropertyTests.SiteNestedDto&gt;
+        /// </summary>
+        /// <param name="sources">源列表</param>
+        /// <param name="action">每个元素映射后的回调</param>
+        /// <returns>映射后的目标列表；sources 为 null 时实际返回 null（null 透传）。签名声明非空仅为满足 Mapper.RegisterGeneratedList 委托契约，运行时 null 语义与简单赋值路径一致</returns>
+        public static System.Collections.Generic.List<NCMapper.Tests.FluentSourceGenNestedPropertyTests.SiteNestedDto> MapList_Site_To_SiteNestedDto(System.Collections.Generic.IEnumerable<NCMapper.Tests.FluentSourceGenNestedPropertyTests.Site> sources, System.Action<NCMapper.Tests.FluentSourceGenNestedPropertyTests.Site, NCMapper.Tests.FluentSourceGenNestedPropertyTests.SiteNestedDto>? action)
+        {
+            // 签名非空仅为满足 Mapper.RegisterGeneratedList 委托契约（Func<List<T>, List<T>>），null 透传与简单赋值路径语义一致
+            if (sources is null) return null!;
+            if (action is null) return MapList_Site_To_SiteNestedDto(sources);
+            var list = new System.Collections.Generic.List<NCMapper.Tests.FluentSourceGenNestedPropertyTests.SiteNestedDto>();
+            foreach (var src in sources)
+            {
+                if (src is null)
+                {
+                    list.Add(null!);
+                    continue;
+                }
+                var dst = new NCMapper.Tests.FluentSourceGenNestedPropertyTests.SiteNestedDto();
+                dst.Id = src.Id;
+                dst.Name = src.Name;
+                if (src.Dept != null)
+                {
+                    // Fallback path: nested mapping runtime fallback (nested type not [MapFrom]-registered). May fail under NativeAOT; see docs 05-Compose
+                #pragma warning disable IL2026, IL3050
+                    dst.Dept = NCMapper.Mapper.Map<NCMapper.Tests.FluentSourceGenNestedPropertyTests.Dept, NCMapper.Tests.FluentSourceGenNestedPropertyTests.DeptDto>(src.Dept)!;
+                #pragma warning restore IL2026, IL3050
+                }
+                action(src, dst);
+                list.Add(dst);
+            }
+            return list;
+        }
+
+        /// <summary>
+        /// 源生成器批量就地映射：NCMapper.Tests.FluentSourceGenNestedPropertyTests.Site → NCMapper.Tests.FluentSourceGenNestedPropertyTests.SiteNestedDto[]（内联赋值循环，仅覆盖映射字段；复用场景顶层零分配）
+        /// </summary>
+        /// <param name="sources">源集合</param>
+        /// <param name="destination">预分配目标数组（调用方负责初始化每个元素；null 槽位 no-op 跳过，C5）</param>
+        /// <param name="action">每个元素映射后的回调，可为 null</param>
+        [System.Runtime.CompilerServices.MethodImpl(System.Runtime.CompilerServices.MethodImplOptions.AggressiveInlining)]
+        public static void MapListInto_Site_To_SiteNestedDto(System.Collections.Generic.IList<NCMapper.Tests.FluentSourceGenNestedPropertyTests.Site> sources, NCMapper.Tests.FluentSourceGenNestedPropertyTests.SiteNestedDto[] destination, System.Action<NCMapper.Tests.FluentSourceGenNestedPropertyTests.Site, NCMapper.Tests.FluentSourceGenNestedPropertyTests.SiteNestedDto>? action)
+        {
+            if (sources is null || destination is null) return;
+            if (sources is NCMapper.Tests.FluentSourceGenNestedPropertyTests.Site[] srcArr)
+            {
+                for (int i = 0; i < srcArr.Length; i++)
+                {
+                    var src = srcArr[i];
+                    if (src is null) continue;
+                    var dst = destination[i];
+                    if (dst is null) continue;
+                    dst.Id = src.Id;
+                    dst.Name = src.Name;
+                    if (src.Dept != null)
+                    {
+                        // Fallback path: nested mapping runtime fallback (nested type not [MapFrom]-registered). May fail under NativeAOT; see docs 05-Compose
+                    #pragma warning disable IL2026, IL3050
+                        dst.Dept = NCMapper.Mapper.Map<NCMapper.Tests.FluentSourceGenNestedPropertyTests.Dept, NCMapper.Tests.FluentSourceGenNestedPropertyTests.DeptDto>(src.Dept)!;
+                    #pragma warning restore IL2026, IL3050
+                    }
+                    action?.Invoke(src, dst);
+                }
+                return;
+            }
+            for (int i = 0; i < sources.Count; i++)
+            {
+                var src = sources[i];
+                if (src is null) continue;
+                var dst = destination[i];
+                if (dst is null) continue;
+                dst.Id = src.Id;
+                dst.Name = src.Name;
+                if (src.Dept != null)
+                {
+                    // Fallback path: nested mapping runtime fallback (nested type not [MapFrom]-registered). May fail under NativeAOT; see docs 05-Compose
+                #pragma warning disable IL2026, IL3050
+                    dst.Dept = NCMapper.Mapper.Map<NCMapper.Tests.FluentSourceGenNestedPropertyTests.Dept, NCMapper.Tests.FluentSourceGenNestedPropertyTests.DeptDto>(src.Dept)!;
+                #pragma warning restore IL2026, IL3050
+                }
+                action?.Invoke(src, dst);
+            }
+        }
+
+        /// <summary>
+        /// 源生成器核心映射：NCMapper.Tests.FluentSourceGenNestedPropertyTests.SiteNestedDto → NCMapper.Tests.FluentSourceGenNestedPropertyTests.Site（无 Action，热路径）
+        /// </summary>
+        [System.Runtime.CompilerServices.MethodImpl(System.Runtime.CompilerServices.MethodImplOptions.AggressiveInlining)]
+        public static NCMapper.Tests.FluentSourceGenNestedPropertyTests.Site? Map_SiteNestedDto_To_Site(NCMapper.Tests.FluentSourceGenNestedPropertyTests.SiteNestedDto src)
+        {
+            if (src is null) return null;
+            var dst = new NCMapper.Tests.FluentSourceGenNestedPropertyTests.Site();
+            dst.Id = src.Id;
+            dst.Name = src.Name;
+            if (src.Dept != null)
+            {
+                // Fallback path: nested mapping runtime fallback (nested type not [MapFrom]-registered). May fail under NativeAOT; see docs 05-Compose
+            #pragma warning disable IL2026, IL3050
+                dst.Dept = NCMapper.Mapper.Map<NCMapper.Tests.FluentSourceGenNestedPropertyTests.DeptDto, NCMapper.Tests.FluentSourceGenNestedPropertyTests.Dept>(src.Dept)!;
+            #pragma warning restore IL2026, IL3050
+            }
+            return dst;
+        }
+
+        /// <summary>
+        /// 源生成器映射：NCMapper.Tests.FluentSourceGenNestedPropertyTests.SiteNestedDto → NCMapper.Tests.FluentSourceGenNestedPropertyTests.Site（带 Action 回调）
+        /// </summary>
+        [System.Runtime.CompilerServices.MethodImpl(System.Runtime.CompilerServices.MethodImplOptions.AggressiveInlining)]
+        public static NCMapper.Tests.FluentSourceGenNestedPropertyTests.Site? Map_SiteNestedDto_To_Site_WithAction(NCMapper.Tests.FluentSourceGenNestedPropertyTests.SiteNestedDto src, System.Action<NCMapper.Tests.FluentSourceGenNestedPropertyTests.SiteNestedDto, NCMapper.Tests.FluentSourceGenNestedPropertyTests.Site>? action)
+        {
+            var dst = Map_SiteNestedDto_To_Site(src);
+            if (dst != null) action?.Invoke(src, dst);
+            return dst;
+        }
+
+        /// <summary>
+        /// 源生成器更新映射：NCMapper.Tests.FluentSourceGenNestedPropertyTests.SiteNestedDto → NCMapper.Tests.FluentSourceGenNestedPropertyTests.Site（更新已有目标对象，带 Action 回调）
+        /// </summary>
+        [System.Runtime.CompilerServices.MethodImpl(System.Runtime.CompilerServices.MethodImplOptions.AggressiveInlining)]
+        public static void Map_SiteNestedDto_To_Site_Update(NCMapper.Tests.FluentSourceGenNestedPropertyTests.SiteNestedDto src, NCMapper.Tests.FluentSourceGenNestedPropertyTests.Site dst, System.Action<NCMapper.Tests.FluentSourceGenNestedPropertyTests.SiteNestedDto, NCMapper.Tests.FluentSourceGenNestedPropertyTests.Site>? action)
+        {
+            if (src is null || dst is null) return;
+            dst.Id = src.Id;
+            dst.Name = src.Name;
+            if (src.Dept != null)
+            {
+                // Fallback path: nested mapping runtime fallback (nested type not [MapFrom]-registered). May fail under NativeAOT; see docs 05-Compose
+            #pragma warning disable IL2026, IL3050
+                dst.Dept = NCMapper.Mapper.Map<NCMapper.Tests.FluentSourceGenNestedPropertyTests.DeptDto, NCMapper.Tests.FluentSourceGenNestedPropertyTests.Dept>(src.Dept)!;
+            #pragma warning restore IL2026, IL3050
+            }
+            action?.Invoke(src, dst);
+        }
+
+        /// <summary>
+        /// 源生成器列表映射：NCMapper.Tests.FluentSourceGenNestedPropertyTests.SiteNestedDto → List&lt;NCMapper.Tests.FluentSourceGenNestedPropertyTests.Site&gt;（内联赋值循环 + 预分配容量）
+        /// </summary>
+        /// <param name="sources">源列表</param>
+        /// <returns>映射后的目标列表；sources 为 null 时实际返回 null（null 透传）。签名声明非空仅为满足 Mapper.RegisterGeneratedList 委托契约，运行时 null 语义与简单赋值路径一致</returns>
+        [System.Runtime.CompilerServices.MethodImpl(System.Runtime.CompilerServices.MethodImplOptions.AggressiveInlining)]
+        public static System.Collections.Generic.List<NCMapper.Tests.FluentSourceGenNestedPropertyTests.Site> MapList_SiteNestedDto_To_Site(System.Collections.Generic.IEnumerable<NCMapper.Tests.FluentSourceGenNestedPropertyTests.SiteNestedDto> sources)
+        {
+            // 签名非空仅为满足 Mapper.RegisterGeneratedList 委托契约（Func<List<T>, List<T>>），null 透传与简单赋值路径语义一致
+            if (sources is null) return null!;
+            if (sources is NCMapper.Tests.FluentSourceGenNestedPropertyTests.SiteNestedDto[] arr)
+            {
+                var list = new System.Collections.Generic.List<NCMapper.Tests.FluentSourceGenNestedPropertyTests.Site>(arr.Length);
+                for (int i = 0; i < arr.Length; i++)
+                {
+                    var src = arr[i];
+                    if (src is null)
+                    {
+                        list.Add(null!);
+                        continue;
+                    }
+                    var dst = new NCMapper.Tests.FluentSourceGenNestedPropertyTests.Site();
+                    dst.Id = src.Id;
+                    dst.Name = src.Name;
+                    if (src.Dept != null)
+                    {
+                        // Fallback path: nested mapping runtime fallback (nested type not [MapFrom]-registered). May fail under NativeAOT; see docs 05-Compose
+                    #pragma warning disable IL2026, IL3050
+                        dst.Dept = NCMapper.Mapper.Map<NCMapper.Tests.FluentSourceGenNestedPropertyTests.DeptDto, NCMapper.Tests.FluentSourceGenNestedPropertyTests.Dept>(src.Dept)!;
+                    #pragma warning restore IL2026, IL3050
+                    }
+                    list.Add(dst);
+                }
+                return list;
+            }
+            if (sources is System.Collections.Generic.ICollection<NCMapper.Tests.FluentSourceGenNestedPropertyTests.SiteNestedDto> coll)
+            {
+                var list = new System.Collections.Generic.List<NCMapper.Tests.FluentSourceGenNestedPropertyTests.Site>(coll.Count);
+                foreach (var src in coll)
+                {
+                    if (src is null)
+                    {
+                        list.Add(null!);
+                        continue;
+                    }
+                    var dst = new NCMapper.Tests.FluentSourceGenNestedPropertyTests.Site();
+                    dst.Id = src.Id;
+                    dst.Name = src.Name;
+                    if (src.Dept != null)
+                    {
+                        // Fallback path: nested mapping runtime fallback (nested type not [MapFrom]-registered). May fail under NativeAOT; see docs 05-Compose
+                    #pragma warning disable IL2026, IL3050
+                        dst.Dept = NCMapper.Mapper.Map<NCMapper.Tests.FluentSourceGenNestedPropertyTests.DeptDto, NCMapper.Tests.FluentSourceGenNestedPropertyTests.Dept>(src.Dept)!;
+                    #pragma warning restore IL2026, IL3050
+                    }
+                    list.Add(dst);
+                }
+                return list;
+            }
+            {
+                var list = new System.Collections.Generic.List<NCMapper.Tests.FluentSourceGenNestedPropertyTests.Site>();
+                foreach (var src in sources)
+                {
+                    if (src is null)
+                    {
+                        list.Add(null!);
+                        continue;
+                    }
+                    var dst = new NCMapper.Tests.FluentSourceGenNestedPropertyTests.Site();
+                    dst.Id = src.Id;
+                    dst.Name = src.Name;
+                    if (src.Dept != null)
+                    {
+                        // Fallback path: nested mapping runtime fallback (nested type not [MapFrom]-registered). May fail under NativeAOT; see docs 05-Compose
+                    #pragma warning disable IL2026, IL3050
+                        dst.Dept = NCMapper.Mapper.Map<NCMapper.Tests.FluentSourceGenNestedPropertyTests.DeptDto, NCMapper.Tests.FluentSourceGenNestedPropertyTests.Dept>(src.Dept)!;
+                    #pragma warning restore IL2026, IL3050
+                    }
+                    list.Add(dst);
+                }
+                return list;
+            }
+        }
+
+        /// <summary>
+        /// 源生成器列表映射（带 Action 回调）：NCMapper.Tests.FluentSourceGenNestedPropertyTests.SiteNestedDto → List&lt;NCMapper.Tests.FluentSourceGenNestedPropertyTests.Site&gt;
+        /// </summary>
+        /// <param name="sources">源列表</param>
+        /// <param name="action">每个元素映射后的回调</param>
+        /// <returns>映射后的目标列表；sources 为 null 时实际返回 null（null 透传）。签名声明非空仅为满足 Mapper.RegisterGeneratedList 委托契约，运行时 null 语义与简单赋值路径一致</returns>
+        public static System.Collections.Generic.List<NCMapper.Tests.FluentSourceGenNestedPropertyTests.Site> MapList_SiteNestedDto_To_Site(System.Collections.Generic.IEnumerable<NCMapper.Tests.FluentSourceGenNestedPropertyTests.SiteNestedDto> sources, System.Action<NCMapper.Tests.FluentSourceGenNestedPropertyTests.SiteNestedDto, NCMapper.Tests.FluentSourceGenNestedPropertyTests.Site>? action)
+        {
+            // 签名非空仅为满足 Mapper.RegisterGeneratedList 委托契约（Func<List<T>, List<T>>），null 透传与简单赋值路径语义一致
+            if (sources is null) return null!;
+            if (action is null) return MapList_SiteNestedDto_To_Site(sources);
+            var list = new System.Collections.Generic.List<NCMapper.Tests.FluentSourceGenNestedPropertyTests.Site>();
+            foreach (var src in sources)
+            {
+                if (src is null)
+                {
+                    list.Add(null!);
+                    continue;
+                }
+                var dst = new NCMapper.Tests.FluentSourceGenNestedPropertyTests.Site();
+                dst.Id = src.Id;
+                dst.Name = src.Name;
+                if (src.Dept != null)
+                {
+                    // Fallback path: nested mapping runtime fallback (nested type not [MapFrom]-registered). May fail under NativeAOT; see docs 05-Compose
+                #pragma warning disable IL2026, IL3050
+                    dst.Dept = NCMapper.Mapper.Map<NCMapper.Tests.FluentSourceGenNestedPropertyTests.DeptDto, NCMapper.Tests.FluentSourceGenNestedPropertyTests.Dept>(src.Dept)!;
+                #pragma warning restore IL2026, IL3050
+                }
+                action(src, dst);
+                list.Add(dst);
+            }
+            return list;
+        }
+
+        /// <summary>
+        /// 源生成器核心映射：NCMapper.Tests.FluentSourceGenNestedPropertyTests.Dept → NCMapper.Tests.FluentSourceGenNestedPropertyTests.DeptDto（无 Action，热路径）
+        /// </summary>
+        [System.Runtime.CompilerServices.MethodImpl(System.Runtime.CompilerServices.MethodImplOptions.AggressiveInlining)]
+        public static NCMapper.Tests.FluentSourceGenNestedPropertyTests.DeptDto? Map_Dept_To_DeptDto(NCMapper.Tests.FluentSourceGenNestedPropertyTests.Dept src)
+        {
+            if (src is null) return null;
+            var dst = new NCMapper.Tests.FluentSourceGenNestedPropertyTests.DeptDto
+            {
+                Id = src.Id,
+                Label = src.Label
+            };
+            return dst;
+        }
+
+        /// <summary>
+        /// 源生成器映射：NCMapper.Tests.FluentSourceGenNestedPropertyTests.Dept → NCMapper.Tests.FluentSourceGenNestedPropertyTests.DeptDto（带 Action 回调）
+        /// </summary>
+        [System.Runtime.CompilerServices.MethodImpl(System.Runtime.CompilerServices.MethodImplOptions.AggressiveInlining)]
+        public static NCMapper.Tests.FluentSourceGenNestedPropertyTests.DeptDto? Map_Dept_To_DeptDto_WithAction(NCMapper.Tests.FluentSourceGenNestedPropertyTests.Dept src, System.Action<NCMapper.Tests.FluentSourceGenNestedPropertyTests.Dept, NCMapper.Tests.FluentSourceGenNestedPropertyTests.DeptDto>? action)
+        {
+            var dst = Map_Dept_To_DeptDto(src);
+            if (dst != null) action?.Invoke(src, dst);
+            return dst;
+        }
+
+        /// <summary>
+        /// 源生成器更新映射：NCMapper.Tests.FluentSourceGenNestedPropertyTests.Dept → NCMapper.Tests.FluentSourceGenNestedPropertyTests.DeptDto（更新已有目标对象，带 Action 回调）
+        /// </summary>
+        [System.Runtime.CompilerServices.MethodImpl(System.Runtime.CompilerServices.MethodImplOptions.AggressiveInlining)]
+        public static void Map_Dept_To_DeptDto_Update(NCMapper.Tests.FluentSourceGenNestedPropertyTests.Dept src, NCMapper.Tests.FluentSourceGenNestedPropertyTests.DeptDto dst, System.Action<NCMapper.Tests.FluentSourceGenNestedPropertyTests.Dept, NCMapper.Tests.FluentSourceGenNestedPropertyTests.DeptDto>? action)
+        {
+            if (src is null || dst is null) return;
+            dst.Id = src.Id;
+            dst.Label = src.Label;
+            action?.Invoke(src, dst);
+        }
+
+        /// <summary>
+        /// 源生成器列表映射：NCMapper.Tests.FluentSourceGenNestedPropertyTests.Dept → List&lt;NCMapper.Tests.FluentSourceGenNestedPropertyTests.DeptDto&gt;（内联赋值循环 + 预分配容量）
+        /// </summary>
+        /// <param name="sources">源列表</param>
+        /// <returns>映射后的目标列表；sources 为 null 时实际返回 null（null 透传）。签名声明非空仅为满足 Mapper.RegisterGeneratedList 委托契约，运行时 null 语义与简单赋值路径一致</returns>
+        [System.Runtime.CompilerServices.MethodImpl(System.Runtime.CompilerServices.MethodImplOptions.AggressiveInlining)]
+        public static System.Collections.Generic.List<NCMapper.Tests.FluentSourceGenNestedPropertyTests.DeptDto> MapList_Dept_To_DeptDto(System.Collections.Generic.IEnumerable<NCMapper.Tests.FluentSourceGenNestedPropertyTests.Dept> sources)
+        {
+            // 签名非空仅为满足 Mapper.RegisterGeneratedList 委托契约（Func<List<T>, List<T>>），null 透传与简单赋值路径语义一致
+            if (sources is null) return null!;
+            if (sources is NCMapper.Tests.FluentSourceGenNestedPropertyTests.Dept[] arr)
+            {
+                var list = new System.Collections.Generic.List<NCMapper.Tests.FluentSourceGenNestedPropertyTests.DeptDto>(arr.Length);
+                for (int i = 0; i < arr.Length; i++)
+                {
+                    var src = arr[i];
+                    if (src is null)
+                    {
+                        list.Add(null!);
+                        continue;
+                    }
+                    var dst = new NCMapper.Tests.FluentSourceGenNestedPropertyTests.DeptDto
+                    {
+                        Id = src.Id,
+                        Label = src.Label
+                    };
+                    list.Add(dst);
+                }
+                return list;
+            }
+            if (sources is System.Collections.Generic.ICollection<NCMapper.Tests.FluentSourceGenNestedPropertyTests.Dept> coll)
+            {
+                var list = new System.Collections.Generic.List<NCMapper.Tests.FluentSourceGenNestedPropertyTests.DeptDto>(coll.Count);
+                foreach (var src in coll)
+                {
+                    if (src is null)
+                    {
+                        list.Add(null!);
+                        continue;
+                    }
+                    var dst = new NCMapper.Tests.FluentSourceGenNestedPropertyTests.DeptDto
+                    {
+                        Id = src.Id,
+                        Label = src.Label
+                    };
+                    list.Add(dst);
+                }
+                return list;
+            }
+            {
+                var list = new System.Collections.Generic.List<NCMapper.Tests.FluentSourceGenNestedPropertyTests.DeptDto>();
+                foreach (var src in sources)
+                {
+                    if (src is null)
+                    {
+                        list.Add(null!);
+                        continue;
+                    }
+                    var dst = new NCMapper.Tests.FluentSourceGenNestedPropertyTests.DeptDto
+                    {
+                        Id = src.Id,
+                        Label = src.Label
+                    };
+                    list.Add(dst);
+                }
+                return list;
+            }
+        }
+
+        /// <summary>
+        /// 源生成器列表映射（带 Action 回调）：NCMapper.Tests.FluentSourceGenNestedPropertyTests.Dept → List&lt;NCMapper.Tests.FluentSourceGenNestedPropertyTests.DeptDto&gt;
+        /// </summary>
+        /// <param name="sources">源列表</param>
+        /// <param name="action">每个元素映射后的回调</param>
+        /// <returns>映射后的目标列表；sources 为 null 时实际返回 null（null 透传）。签名声明非空仅为满足 Mapper.RegisterGeneratedList 委托契约，运行时 null 语义与简单赋值路径一致</returns>
+        public static System.Collections.Generic.List<NCMapper.Tests.FluentSourceGenNestedPropertyTests.DeptDto> MapList_Dept_To_DeptDto(System.Collections.Generic.IEnumerable<NCMapper.Tests.FluentSourceGenNestedPropertyTests.Dept> sources, System.Action<NCMapper.Tests.FluentSourceGenNestedPropertyTests.Dept, NCMapper.Tests.FluentSourceGenNestedPropertyTests.DeptDto>? action)
+        {
+            // 签名非空仅为满足 Mapper.RegisterGeneratedList 委托契约（Func<List<T>, List<T>>），null 透传与简单赋值路径语义一致
+            if (sources is null) return null!;
+            if (action is null) return MapList_Dept_To_DeptDto(sources);
+            var list = new System.Collections.Generic.List<NCMapper.Tests.FluentSourceGenNestedPropertyTests.DeptDto>();
+            foreach (var src in sources)
+            {
+                if (src is null)
+                {
+                    list.Add(null!);
+                    continue;
+                }
+                var dst = new NCMapper.Tests.FluentSourceGenNestedPropertyTests.DeptDto
+                {
+                    Id = src.Id,
+                    Label = src.Label
+                };
+                action(src, dst);
+                list.Add(dst);
+            }
+            return list;
+        }
+
+        /// <summary>
+        /// 源生成器批量就地映射：NCMapper.Tests.FluentSourceGenNestedPropertyTests.Dept → NCMapper.Tests.FluentSourceGenNestedPropertyTests.DeptDto[]（内联赋值循环，仅覆盖映射字段；复用场景顶层零分配）
+        /// </summary>
+        /// <param name="sources">源集合</param>
+        /// <param name="destination">预分配目标数组（调用方负责初始化每个元素；null 槽位 no-op 跳过，C5）</param>
+        /// <param name="action">每个元素映射后的回调，可为 null</param>
+        [System.Runtime.CompilerServices.MethodImpl(System.Runtime.CompilerServices.MethodImplOptions.AggressiveInlining)]
+        public static void MapListInto_Dept_To_DeptDto(System.Collections.Generic.IList<NCMapper.Tests.FluentSourceGenNestedPropertyTests.Dept> sources, NCMapper.Tests.FluentSourceGenNestedPropertyTests.DeptDto[] destination, System.Action<NCMapper.Tests.FluentSourceGenNestedPropertyTests.Dept, NCMapper.Tests.FluentSourceGenNestedPropertyTests.DeptDto>? action)
+        {
+            if (sources is null || destination is null) return;
+            if (sources is NCMapper.Tests.FluentSourceGenNestedPropertyTests.Dept[] srcArr)
+            {
+                for (int i = 0; i < srcArr.Length; i++)
+                {
+                    var src = srcArr[i];
+                    if (src is null) continue;
+                    var dst = destination[i];
+                    if (dst is null) continue;
+                    dst.Id = src.Id;
+                    dst.Label = src.Label;
+                    action?.Invoke(src, dst);
+                }
+                return;
+            }
+            for (int i = 0; i < sources.Count; i++)
+            {
+                var src = sources[i];
+                if (src is null) continue;
+                var dst = destination[i];
+                if (dst is null) continue;
+                dst.Id = src.Id;
+                dst.Label = src.Label;
+                action?.Invoke(src, dst);
+            }
+        }
+
+        /// <summary>
+        /// 源生成器核心映射：NCMapper.Tests.FluentSourceGenNestedPropertyTests.DeptDto → NCMapper.Tests.FluentSourceGenNestedPropertyTests.Dept（无 Action，热路径）
+        /// </summary>
+        [System.Runtime.CompilerServices.MethodImpl(System.Runtime.CompilerServices.MethodImplOptions.AggressiveInlining)]
+        public static NCMapper.Tests.FluentSourceGenNestedPropertyTests.Dept? Map_DeptDto_To_Dept(NCMapper.Tests.FluentSourceGenNestedPropertyTests.DeptDto src)
+        {
+            if (src is null) return null;
+            var dst = new NCMapper.Tests.FluentSourceGenNestedPropertyTests.Dept
+            {
+                Id = src.Id,
+                Label = src.Label
+            };
+            return dst;
+        }
+
+        /// <summary>
+        /// 源生成器映射：NCMapper.Tests.FluentSourceGenNestedPropertyTests.DeptDto → NCMapper.Tests.FluentSourceGenNestedPropertyTests.Dept（带 Action 回调）
+        /// </summary>
+        [System.Runtime.CompilerServices.MethodImpl(System.Runtime.CompilerServices.MethodImplOptions.AggressiveInlining)]
+        public static NCMapper.Tests.FluentSourceGenNestedPropertyTests.Dept? Map_DeptDto_To_Dept_WithAction(NCMapper.Tests.FluentSourceGenNestedPropertyTests.DeptDto src, System.Action<NCMapper.Tests.FluentSourceGenNestedPropertyTests.DeptDto, NCMapper.Tests.FluentSourceGenNestedPropertyTests.Dept>? action)
+        {
+            var dst = Map_DeptDto_To_Dept(src);
+            if (dst != null) action?.Invoke(src, dst);
+            return dst;
+        }
+
+        /// <summary>
+        /// 源生成器更新映射：NCMapper.Tests.FluentSourceGenNestedPropertyTests.DeptDto → NCMapper.Tests.FluentSourceGenNestedPropertyTests.Dept（更新已有目标对象，带 Action 回调）
+        /// </summary>
+        [System.Runtime.CompilerServices.MethodImpl(System.Runtime.CompilerServices.MethodImplOptions.AggressiveInlining)]
+        public static void Map_DeptDto_To_Dept_Update(NCMapper.Tests.FluentSourceGenNestedPropertyTests.DeptDto src, NCMapper.Tests.FluentSourceGenNestedPropertyTests.Dept dst, System.Action<NCMapper.Tests.FluentSourceGenNestedPropertyTests.DeptDto, NCMapper.Tests.FluentSourceGenNestedPropertyTests.Dept>? action)
+        {
+            if (src is null || dst is null) return;
+            dst.Id = src.Id;
+            dst.Label = src.Label;
+            action?.Invoke(src, dst);
+        }
+
+        /// <summary>
+        /// 源生成器列表映射：NCMapper.Tests.FluentSourceGenNestedPropertyTests.DeptDto → List&lt;NCMapper.Tests.FluentSourceGenNestedPropertyTests.Dept&gt;（内联赋值循环 + 预分配容量）
+        /// </summary>
+        /// <param name="sources">源列表</param>
+        /// <returns>映射后的目标列表；sources 为 null 时实际返回 null（null 透传）。签名声明非空仅为满足 Mapper.RegisterGeneratedList 委托契约，运行时 null 语义与简单赋值路径一致</returns>
+        [System.Runtime.CompilerServices.MethodImpl(System.Runtime.CompilerServices.MethodImplOptions.AggressiveInlining)]
+        public static System.Collections.Generic.List<NCMapper.Tests.FluentSourceGenNestedPropertyTests.Dept> MapList_DeptDto_To_Dept(System.Collections.Generic.IEnumerable<NCMapper.Tests.FluentSourceGenNestedPropertyTests.DeptDto> sources)
+        {
+            // 签名非空仅为满足 Mapper.RegisterGeneratedList 委托契约（Func<List<T>, List<T>>），null 透传与简单赋值路径语义一致
+            if (sources is null) return null!;
+            if (sources is NCMapper.Tests.FluentSourceGenNestedPropertyTests.DeptDto[] arr)
+            {
+                var list = new System.Collections.Generic.List<NCMapper.Tests.FluentSourceGenNestedPropertyTests.Dept>(arr.Length);
+                for (int i = 0; i < arr.Length; i++)
+                {
+                    var src = arr[i];
+                    if (src is null)
+                    {
+                        list.Add(null!);
+                        continue;
+                    }
+                    var dst = new NCMapper.Tests.FluentSourceGenNestedPropertyTests.Dept
+                    {
+                        Id = src.Id,
+                        Label = src.Label
+                    };
+                    list.Add(dst);
+                }
+                return list;
+            }
+            if (sources is System.Collections.Generic.ICollection<NCMapper.Tests.FluentSourceGenNestedPropertyTests.DeptDto> coll)
+            {
+                var list = new System.Collections.Generic.List<NCMapper.Tests.FluentSourceGenNestedPropertyTests.Dept>(coll.Count);
+                foreach (var src in coll)
+                {
+                    if (src is null)
+                    {
+                        list.Add(null!);
+                        continue;
+                    }
+                    var dst = new NCMapper.Tests.FluentSourceGenNestedPropertyTests.Dept
+                    {
+                        Id = src.Id,
+                        Label = src.Label
+                    };
+                    list.Add(dst);
+                }
+                return list;
+            }
+            {
+                var list = new System.Collections.Generic.List<NCMapper.Tests.FluentSourceGenNestedPropertyTests.Dept>();
+                foreach (var src in sources)
+                {
+                    if (src is null)
+                    {
+                        list.Add(null!);
+                        continue;
+                    }
+                    var dst = new NCMapper.Tests.FluentSourceGenNestedPropertyTests.Dept
+                    {
+                        Id = src.Id,
+                        Label = src.Label
+                    };
+                    list.Add(dst);
+                }
+                return list;
+            }
+        }
+
+        /// <summary>
+        /// 源生成器列表映射（带 Action 回调）：NCMapper.Tests.FluentSourceGenNestedPropertyTests.DeptDto → List&lt;NCMapper.Tests.FluentSourceGenNestedPropertyTests.Dept&gt;
+        /// </summary>
+        /// <param name="sources">源列表</param>
+        /// <param name="action">每个元素映射后的回调</param>
+        /// <returns>映射后的目标列表；sources 为 null 时实际返回 null（null 透传）。签名声明非空仅为满足 Mapper.RegisterGeneratedList 委托契约，运行时 null 语义与简单赋值路径一致</returns>
+        public static System.Collections.Generic.List<NCMapper.Tests.FluentSourceGenNestedPropertyTests.Dept> MapList_DeptDto_To_Dept(System.Collections.Generic.IEnumerable<NCMapper.Tests.FluentSourceGenNestedPropertyTests.DeptDto> sources, System.Action<NCMapper.Tests.FluentSourceGenNestedPropertyTests.DeptDto, NCMapper.Tests.FluentSourceGenNestedPropertyTests.Dept>? action)
+        {
+            // 签名非空仅为满足 Mapper.RegisterGeneratedList 委托契约（Func<List<T>, List<T>>），null 透传与简单赋值路径语义一致
+            if (sources is null) return null!;
+            if (action is null) return MapList_DeptDto_To_Dept(sources);
+            var list = new System.Collections.Generic.List<NCMapper.Tests.FluentSourceGenNestedPropertyTests.Dept>();
+            foreach (var src in sources)
+            {
+                if (src is null)
+                {
+                    list.Add(null!);
+                    continue;
+                }
+                var dst = new NCMapper.Tests.FluentSourceGenNestedPropertyTests.Dept
+                {
+                    Id = src.Id,
+                    Label = src.Label
+                };
+                action(src, dst);
+                list.Add(dst);
+            }
+            return list;
+        }
+
+        /// <summary>
+        /// 源生成器核心映射：NCMapper.Tests.FluentSourceGenNestedPropertyTests.UCfgForSource → NCMapper.Tests.FluentSourceGenNestedPropertyTests.UCfgForDto（无 Action，热路径）
+        /// </summary>
+        [System.Runtime.CompilerServices.MethodImpl(System.Runtime.CompilerServices.MethodImplOptions.AggressiveInlining)]
+        public static NCMapper.Tests.FluentSourceGenNestedPropertyTests.UCfgForDto? Map_UCfgForSource_To_UCfgForDto(NCMapper.Tests.FluentSourceGenNestedPropertyTests.UCfgForSource src)
+        {
+            if (src is null) return null;
+            var dst = new NCMapper.Tests.FluentSourceGenNestedPropertyTests.UCfgForDto
+            {
+                Id = src.Id,
+                Title = src.Title
+            };
+            return dst;
+        }
+
+        /// <summary>
+        /// 源生成器映射：NCMapper.Tests.FluentSourceGenNestedPropertyTests.UCfgForSource → NCMapper.Tests.FluentSourceGenNestedPropertyTests.UCfgForDto（带 Action 回调）
+        /// </summary>
+        [System.Runtime.CompilerServices.MethodImpl(System.Runtime.CompilerServices.MethodImplOptions.AggressiveInlining)]
+        public static NCMapper.Tests.FluentSourceGenNestedPropertyTests.UCfgForDto? Map_UCfgForSource_To_UCfgForDto_WithAction(NCMapper.Tests.FluentSourceGenNestedPropertyTests.UCfgForSource src, System.Action<NCMapper.Tests.FluentSourceGenNestedPropertyTests.UCfgForSource, NCMapper.Tests.FluentSourceGenNestedPropertyTests.UCfgForDto>? action)
+        {
+            var dst = Map_UCfgForSource_To_UCfgForDto(src);
+            if (dst != null) action?.Invoke(src, dst);
+            return dst;
+        }
+
+        /// <summary>
+        /// 源生成器更新映射：NCMapper.Tests.FluentSourceGenNestedPropertyTests.UCfgForSource → NCMapper.Tests.FluentSourceGenNestedPropertyTests.UCfgForDto（更新已有目标对象，带 Action 回调）
+        /// </summary>
+        [System.Runtime.CompilerServices.MethodImpl(System.Runtime.CompilerServices.MethodImplOptions.AggressiveInlining)]
+        public static void Map_UCfgForSource_To_UCfgForDto_Update(NCMapper.Tests.FluentSourceGenNestedPropertyTests.UCfgForSource src, NCMapper.Tests.FluentSourceGenNestedPropertyTests.UCfgForDto dst, System.Action<NCMapper.Tests.FluentSourceGenNestedPropertyTests.UCfgForSource, NCMapper.Tests.FluentSourceGenNestedPropertyTests.UCfgForDto>? action)
+        {
+            if (src is null || dst is null) return;
+            dst.Id = src.Id;
+            dst.Title = src.Title;
+            action?.Invoke(src, dst);
+        }
+
+        /// <summary>
+        /// 源生成器列表映射：NCMapper.Tests.FluentSourceGenNestedPropertyTests.UCfgForSource → List&lt;NCMapper.Tests.FluentSourceGenNestedPropertyTests.UCfgForDto&gt;（内联赋值循环 + 预分配容量）
+        /// </summary>
+        /// <param name="sources">源列表</param>
+        /// <returns>映射后的目标列表；sources 为 null 时实际返回 null（null 透传）。签名声明非空仅为满足 Mapper.RegisterGeneratedList 委托契约，运行时 null 语义与简单赋值路径一致</returns>
+        [System.Runtime.CompilerServices.MethodImpl(System.Runtime.CompilerServices.MethodImplOptions.AggressiveInlining)]
+        public static System.Collections.Generic.List<NCMapper.Tests.FluentSourceGenNestedPropertyTests.UCfgForDto> MapList_UCfgForSource_To_UCfgForDto(System.Collections.Generic.IEnumerable<NCMapper.Tests.FluentSourceGenNestedPropertyTests.UCfgForSource> sources)
+        {
+            // 签名非空仅为满足 Mapper.RegisterGeneratedList 委托契约（Func<List<T>, List<T>>），null 透传与简单赋值路径语义一致
+            if (sources is null) return null!;
+            if (sources is NCMapper.Tests.FluentSourceGenNestedPropertyTests.UCfgForSource[] arr)
+            {
+                var list = new System.Collections.Generic.List<NCMapper.Tests.FluentSourceGenNestedPropertyTests.UCfgForDto>(arr.Length);
+                for (int i = 0; i < arr.Length; i++)
+                {
+                    var src = arr[i];
+                    if (src is null)
+                    {
+                        list.Add(null!);
+                        continue;
+                    }
+                    var dst = new NCMapper.Tests.FluentSourceGenNestedPropertyTests.UCfgForDto
+                    {
+                        Id = src.Id,
+                        Title = src.Title
+                    };
+                    list.Add(dst);
+                }
+                return list;
+            }
+            if (sources is System.Collections.Generic.ICollection<NCMapper.Tests.FluentSourceGenNestedPropertyTests.UCfgForSource> coll)
+            {
+                var list = new System.Collections.Generic.List<NCMapper.Tests.FluentSourceGenNestedPropertyTests.UCfgForDto>(coll.Count);
+                foreach (var src in coll)
+                {
+                    if (src is null)
+                    {
+                        list.Add(null!);
+                        continue;
+                    }
+                    var dst = new NCMapper.Tests.FluentSourceGenNestedPropertyTests.UCfgForDto
+                    {
+                        Id = src.Id,
+                        Title = src.Title
+                    };
+                    list.Add(dst);
+                }
+                return list;
+            }
+            {
+                var list = new System.Collections.Generic.List<NCMapper.Tests.FluentSourceGenNestedPropertyTests.UCfgForDto>();
+                foreach (var src in sources)
+                {
+                    if (src is null)
+                    {
+                        list.Add(null!);
+                        continue;
+                    }
+                    var dst = new NCMapper.Tests.FluentSourceGenNestedPropertyTests.UCfgForDto
+                    {
+                        Id = src.Id,
+                        Title = src.Title
+                    };
+                    list.Add(dst);
+                }
+                return list;
+            }
+        }
+
+        /// <summary>
+        /// 源生成器列表映射（带 Action 回调）：NCMapper.Tests.FluentSourceGenNestedPropertyTests.UCfgForSource → List&lt;NCMapper.Tests.FluentSourceGenNestedPropertyTests.UCfgForDto&gt;
+        /// </summary>
+        /// <param name="sources">源列表</param>
+        /// <param name="action">每个元素映射后的回调</param>
+        /// <returns>映射后的目标列表；sources 为 null 时实际返回 null（null 透传）。签名声明非空仅为满足 Mapper.RegisterGeneratedList 委托契约，运行时 null 语义与简单赋值路径一致</returns>
+        public static System.Collections.Generic.List<NCMapper.Tests.FluentSourceGenNestedPropertyTests.UCfgForDto> MapList_UCfgForSource_To_UCfgForDto(System.Collections.Generic.IEnumerable<NCMapper.Tests.FluentSourceGenNestedPropertyTests.UCfgForSource> sources, System.Action<NCMapper.Tests.FluentSourceGenNestedPropertyTests.UCfgForSource, NCMapper.Tests.FluentSourceGenNestedPropertyTests.UCfgForDto>? action)
+        {
+            // 签名非空仅为满足 Mapper.RegisterGeneratedList 委托契约（Func<List<T>, List<T>>），null 透传与简单赋值路径语义一致
+            if (sources is null) return null!;
+            if (action is null) return MapList_UCfgForSource_To_UCfgForDto(sources);
+            var list = new System.Collections.Generic.List<NCMapper.Tests.FluentSourceGenNestedPropertyTests.UCfgForDto>();
+            foreach (var src in sources)
+            {
+                if (src is null)
+                {
+                    list.Add(null!);
+                    continue;
+                }
+                var dst = new NCMapper.Tests.FluentSourceGenNestedPropertyTests.UCfgForDto
+                {
+                    Id = src.Id,
+                    Title = src.Title
+                };
+                action(src, dst);
+                list.Add(dst);
+            }
+            return list;
+        }
+
+        /// <summary>
+        /// 源生成器批量就地映射：NCMapper.Tests.FluentSourceGenNestedPropertyTests.UCfgForSource → NCMapper.Tests.FluentSourceGenNestedPropertyTests.UCfgForDto[]（内联赋值循环，仅覆盖映射字段；复用场景顶层零分配）
+        /// </summary>
+        /// <param name="sources">源集合</param>
+        /// <param name="destination">预分配目标数组（调用方负责初始化每个元素；null 槽位 no-op 跳过，C5）</param>
+        /// <param name="action">每个元素映射后的回调，可为 null</param>
+        [System.Runtime.CompilerServices.MethodImpl(System.Runtime.CompilerServices.MethodImplOptions.AggressiveInlining)]
+        public static void MapListInto_UCfgForSource_To_UCfgForDto(System.Collections.Generic.IList<NCMapper.Tests.FluentSourceGenNestedPropertyTests.UCfgForSource> sources, NCMapper.Tests.FluentSourceGenNestedPropertyTests.UCfgForDto[] destination, System.Action<NCMapper.Tests.FluentSourceGenNestedPropertyTests.UCfgForSource, NCMapper.Tests.FluentSourceGenNestedPropertyTests.UCfgForDto>? action)
+        {
+            if (sources is null || destination is null) return;
+            if (sources is NCMapper.Tests.FluentSourceGenNestedPropertyTests.UCfgForSource[] srcArr)
+            {
+                for (int i = 0; i < srcArr.Length; i++)
+                {
+                    var src = srcArr[i];
+                    if (src is null) continue;
+                    var dst = destination[i];
+                    if (dst is null) continue;
+                    dst.Id = src.Id;
+                    dst.Title = src.Title;
+                    action?.Invoke(src, dst);
+                }
+                return;
+            }
+            for (int i = 0; i < sources.Count; i++)
+            {
+                var src = sources[i];
+                if (src is null) continue;
+                var dst = destination[i];
+                if (dst is null) continue;
+                dst.Id = src.Id;
+                dst.Title = src.Title;
+                action?.Invoke(src, dst);
+            }
+        }
+
+        /// <summary>
+        /// 源生成器核心映射：NCMapper.Tests.FluentSourceGenNestedPropertyTests.UCfgForDto → NCMapper.Tests.FluentSourceGenNestedPropertyTests.UCfgForSource（无 Action，热路径）
+        /// </summary>
+        [System.Runtime.CompilerServices.MethodImpl(System.Runtime.CompilerServices.MethodImplOptions.AggressiveInlining)]
+        public static NCMapper.Tests.FluentSourceGenNestedPropertyTests.UCfgForSource? Map_UCfgForDto_To_UCfgForSource(NCMapper.Tests.FluentSourceGenNestedPropertyTests.UCfgForDto src)
+        {
+            if (src is null) return null;
+            var dst = new NCMapper.Tests.FluentSourceGenNestedPropertyTests.UCfgForSource
+            {
+                Id = src.Id,
+                Title = src.Title
+            };
+            return dst;
+        }
+
+        /// <summary>
+        /// 源生成器映射：NCMapper.Tests.FluentSourceGenNestedPropertyTests.UCfgForDto → NCMapper.Tests.FluentSourceGenNestedPropertyTests.UCfgForSource（带 Action 回调）
+        /// </summary>
+        [System.Runtime.CompilerServices.MethodImpl(System.Runtime.CompilerServices.MethodImplOptions.AggressiveInlining)]
+        public static NCMapper.Tests.FluentSourceGenNestedPropertyTests.UCfgForSource? Map_UCfgForDto_To_UCfgForSource_WithAction(NCMapper.Tests.FluentSourceGenNestedPropertyTests.UCfgForDto src, System.Action<NCMapper.Tests.FluentSourceGenNestedPropertyTests.UCfgForDto, NCMapper.Tests.FluentSourceGenNestedPropertyTests.UCfgForSource>? action)
+        {
+            var dst = Map_UCfgForDto_To_UCfgForSource(src);
+            if (dst != null) action?.Invoke(src, dst);
+            return dst;
+        }
+
+        /// <summary>
+        /// 源生成器更新映射：NCMapper.Tests.FluentSourceGenNestedPropertyTests.UCfgForDto → NCMapper.Tests.FluentSourceGenNestedPropertyTests.UCfgForSource（更新已有目标对象，带 Action 回调）
+        /// </summary>
+        [System.Runtime.CompilerServices.MethodImpl(System.Runtime.CompilerServices.MethodImplOptions.AggressiveInlining)]
+        public static void Map_UCfgForDto_To_UCfgForSource_Update(NCMapper.Tests.FluentSourceGenNestedPropertyTests.UCfgForDto src, NCMapper.Tests.FluentSourceGenNestedPropertyTests.UCfgForSource dst, System.Action<NCMapper.Tests.FluentSourceGenNestedPropertyTests.UCfgForDto, NCMapper.Tests.FluentSourceGenNestedPropertyTests.UCfgForSource>? action)
+        {
+            if (src is null || dst is null) return;
+            dst.Id = src.Id;
+            dst.Title = src.Title;
+            action?.Invoke(src, dst);
+        }
+
+        /// <summary>
+        /// 源生成器列表映射：NCMapper.Tests.FluentSourceGenNestedPropertyTests.UCfgForDto → List&lt;NCMapper.Tests.FluentSourceGenNestedPropertyTests.UCfgForSource&gt;（内联赋值循环 + 预分配容量）
+        /// </summary>
+        /// <param name="sources">源列表</param>
+        /// <returns>映射后的目标列表；sources 为 null 时实际返回 null（null 透传）。签名声明非空仅为满足 Mapper.RegisterGeneratedList 委托契约，运行时 null 语义与简单赋值路径一致</returns>
+        [System.Runtime.CompilerServices.MethodImpl(System.Runtime.CompilerServices.MethodImplOptions.AggressiveInlining)]
+        public static System.Collections.Generic.List<NCMapper.Tests.FluentSourceGenNestedPropertyTests.UCfgForSource> MapList_UCfgForDto_To_UCfgForSource(System.Collections.Generic.IEnumerable<NCMapper.Tests.FluentSourceGenNestedPropertyTests.UCfgForDto> sources)
+        {
+            // 签名非空仅为满足 Mapper.RegisterGeneratedList 委托契约（Func<List<T>, List<T>>），null 透传与简单赋值路径语义一致
+            if (sources is null) return null!;
+            if (sources is NCMapper.Tests.FluentSourceGenNestedPropertyTests.UCfgForDto[] arr)
+            {
+                var list = new System.Collections.Generic.List<NCMapper.Tests.FluentSourceGenNestedPropertyTests.UCfgForSource>(arr.Length);
+                for (int i = 0; i < arr.Length; i++)
+                {
+                    var src = arr[i];
+                    if (src is null)
+                    {
+                        list.Add(null!);
+                        continue;
+                    }
+                    var dst = new NCMapper.Tests.FluentSourceGenNestedPropertyTests.UCfgForSource
+                    {
+                        Id = src.Id,
+                        Title = src.Title
+                    };
+                    list.Add(dst);
+                }
+                return list;
+            }
+            if (sources is System.Collections.Generic.ICollection<NCMapper.Tests.FluentSourceGenNestedPropertyTests.UCfgForDto> coll)
+            {
+                var list = new System.Collections.Generic.List<NCMapper.Tests.FluentSourceGenNestedPropertyTests.UCfgForSource>(coll.Count);
+                foreach (var src in coll)
+                {
+                    if (src is null)
+                    {
+                        list.Add(null!);
+                        continue;
+                    }
+                    var dst = new NCMapper.Tests.FluentSourceGenNestedPropertyTests.UCfgForSource
+                    {
+                        Id = src.Id,
+                        Title = src.Title
+                    };
+                    list.Add(dst);
+                }
+                return list;
+            }
+            {
+                var list = new System.Collections.Generic.List<NCMapper.Tests.FluentSourceGenNestedPropertyTests.UCfgForSource>();
+                foreach (var src in sources)
+                {
+                    if (src is null)
+                    {
+                        list.Add(null!);
+                        continue;
+                    }
+                    var dst = new NCMapper.Tests.FluentSourceGenNestedPropertyTests.UCfgForSource
+                    {
+                        Id = src.Id,
+                        Title = src.Title
+                    };
+                    list.Add(dst);
+                }
+                return list;
+            }
+        }
+
+        /// <summary>
+        /// 源生成器列表映射（带 Action 回调）：NCMapper.Tests.FluentSourceGenNestedPropertyTests.UCfgForDto → List&lt;NCMapper.Tests.FluentSourceGenNestedPropertyTests.UCfgForSource&gt;
+        /// </summary>
+        /// <param name="sources">源列表</param>
+        /// <param name="action">每个元素映射后的回调</param>
+        /// <returns>映射后的目标列表；sources 为 null 时实际返回 null（null 透传）。签名声明非空仅为满足 Mapper.RegisterGeneratedList 委托契约，运行时 null 语义与简单赋值路径一致</returns>
+        public static System.Collections.Generic.List<NCMapper.Tests.FluentSourceGenNestedPropertyTests.UCfgForSource> MapList_UCfgForDto_To_UCfgForSource(System.Collections.Generic.IEnumerable<NCMapper.Tests.FluentSourceGenNestedPropertyTests.UCfgForDto> sources, System.Action<NCMapper.Tests.FluentSourceGenNestedPropertyTests.UCfgForDto, NCMapper.Tests.FluentSourceGenNestedPropertyTests.UCfgForSource>? action)
+        {
+            // 签名非空仅为满足 Mapper.RegisterGeneratedList 委托契约（Func<List<T>, List<T>>），null 透传与简单赋值路径语义一致
+            if (sources is null) return null!;
+            if (action is null) return MapList_UCfgForDto_To_UCfgForSource(sources);
+            var list = new System.Collections.Generic.List<NCMapper.Tests.FluentSourceGenNestedPropertyTests.UCfgForSource>();
+            foreach (var src in sources)
+            {
+                if (src is null)
+                {
+                    list.Add(null!);
+                    continue;
+                }
+                var dst = new NCMapper.Tests.FluentSourceGenNestedPropertyTests.UCfgForSource
+                {
+                    Id = src.Id,
+                    Title = src.Title
+                };
+                action(src, dst);
+                list.Add(dst);
+            }
+            return list;
+        }
+
+        /// <summary>
+        /// 源生成器核心映射：NCMapper.Tests.FreeSqlComposePocRegressionUTests.USite → NCMapper.Tests.FreeSqlComposePocRegressionUTests.USiteNestedDto（无 Action，热路径）
+        /// </summary>
+        [System.Runtime.CompilerServices.MethodImpl(System.Runtime.CompilerServices.MethodImplOptions.AggressiveInlining)]
+        public static NCMapper.Tests.FreeSqlComposePocRegressionUTests.USiteNestedDto? Map_USite_To_USiteNestedDto(NCMapper.Tests.FreeSqlComposePocRegressionUTests.USite src)
+        {
+            if (src is null) return null;
+            var dst = new NCMapper.Tests.FreeSqlComposePocRegressionUTests.USiteNestedDto();
+            dst.Id = src.Id;
+            dst.Name = src.Name;
+            if (src.Dept != null)
+            {
+                // Fallback path: nested mapping runtime fallback (nested type not [MapFrom]-registered). May fail under NativeAOT; see docs 05-Compose
+            #pragma warning disable IL2026, IL3050
+                dst.Dept = NCMapper.Mapper.Map<NCMapper.Tests.FreeSqlComposePocRegressionUTests.UDept, NCMapper.Tests.FreeSqlComposePocRegressionUTests.UDeptDto>(src.Dept)!;
+            #pragma warning restore IL2026, IL3050
+            }
+            return dst;
+        }
+
+        /// <summary>
+        /// 源生成器映射：NCMapper.Tests.FreeSqlComposePocRegressionUTests.USite → NCMapper.Tests.FreeSqlComposePocRegressionUTests.USiteNestedDto（带 Action 回调）
+        /// </summary>
+        [System.Runtime.CompilerServices.MethodImpl(System.Runtime.CompilerServices.MethodImplOptions.AggressiveInlining)]
+        public static NCMapper.Tests.FreeSqlComposePocRegressionUTests.USiteNestedDto? Map_USite_To_USiteNestedDto_WithAction(NCMapper.Tests.FreeSqlComposePocRegressionUTests.USite src, System.Action<NCMapper.Tests.FreeSqlComposePocRegressionUTests.USite, NCMapper.Tests.FreeSqlComposePocRegressionUTests.USiteNestedDto>? action)
+        {
+            var dst = Map_USite_To_USiteNestedDto(src);
+            if (dst != null) action?.Invoke(src, dst);
+            return dst;
+        }
+
+        /// <summary>
+        /// 源生成器更新映射：NCMapper.Tests.FreeSqlComposePocRegressionUTests.USite → NCMapper.Tests.FreeSqlComposePocRegressionUTests.USiteNestedDto（更新已有目标对象，带 Action 回调）
+        /// </summary>
+        [System.Runtime.CompilerServices.MethodImpl(System.Runtime.CompilerServices.MethodImplOptions.AggressiveInlining)]
+        public static void Map_USite_To_USiteNestedDto_Update(NCMapper.Tests.FreeSqlComposePocRegressionUTests.USite src, NCMapper.Tests.FreeSqlComposePocRegressionUTests.USiteNestedDto dst, System.Action<NCMapper.Tests.FreeSqlComposePocRegressionUTests.USite, NCMapper.Tests.FreeSqlComposePocRegressionUTests.USiteNestedDto>? action)
+        {
+            if (src is null || dst is null) return;
+            dst.Id = src.Id;
+            dst.Name = src.Name;
+            if (src.Dept != null)
+            {
+                // Fallback path: nested mapping runtime fallback (nested type not [MapFrom]-registered). May fail under NativeAOT; see docs 05-Compose
+            #pragma warning disable IL2026, IL3050
+                dst.Dept = NCMapper.Mapper.Map<NCMapper.Tests.FreeSqlComposePocRegressionUTests.UDept, NCMapper.Tests.FreeSqlComposePocRegressionUTests.UDeptDto>(src.Dept)!;
+            #pragma warning restore IL2026, IL3050
+            }
+            action?.Invoke(src, dst);
+        }
+
+        /// <summary>
+        /// 源生成器列表映射：NCMapper.Tests.FreeSqlComposePocRegressionUTests.USite → List&lt;NCMapper.Tests.FreeSqlComposePocRegressionUTests.USiteNestedDto&gt;（内联赋值循环 + 预分配容量）
+        /// </summary>
+        /// <param name="sources">源列表</param>
+        /// <returns>映射后的目标列表；sources 为 null 时实际返回 null（null 透传）。签名声明非空仅为满足 Mapper.RegisterGeneratedList 委托契约，运行时 null 语义与简单赋值路径一致</returns>
+        [System.Runtime.CompilerServices.MethodImpl(System.Runtime.CompilerServices.MethodImplOptions.AggressiveInlining)]
+        public static System.Collections.Generic.List<NCMapper.Tests.FreeSqlComposePocRegressionUTests.USiteNestedDto> MapList_USite_To_USiteNestedDto(System.Collections.Generic.IEnumerable<NCMapper.Tests.FreeSqlComposePocRegressionUTests.USite> sources)
+        {
+            // 签名非空仅为满足 Mapper.RegisterGeneratedList 委托契约（Func<List<T>, List<T>>），null 透传与简单赋值路径语义一致
+            if (sources is null) return null!;
+            if (sources is NCMapper.Tests.FreeSqlComposePocRegressionUTests.USite[] arr)
+            {
+                var list = new System.Collections.Generic.List<NCMapper.Tests.FreeSqlComposePocRegressionUTests.USiteNestedDto>(arr.Length);
+                for (int i = 0; i < arr.Length; i++)
+                {
+                    var src = arr[i];
+                    if (src is null)
+                    {
+                        list.Add(null!);
+                        continue;
+                    }
+                    var dst = new NCMapper.Tests.FreeSqlComposePocRegressionUTests.USiteNestedDto();
+                    dst.Id = src.Id;
+                    dst.Name = src.Name;
+                    if (src.Dept != null)
+                    {
+                        // Fallback path: nested mapping runtime fallback (nested type not [MapFrom]-registered). May fail under NativeAOT; see docs 05-Compose
+                    #pragma warning disable IL2026, IL3050
+                        dst.Dept = NCMapper.Mapper.Map<NCMapper.Tests.FreeSqlComposePocRegressionUTests.UDept, NCMapper.Tests.FreeSqlComposePocRegressionUTests.UDeptDto>(src.Dept)!;
+                    #pragma warning restore IL2026, IL3050
+                    }
+                    list.Add(dst);
+                }
+                return list;
+            }
+            if (sources is System.Collections.Generic.ICollection<NCMapper.Tests.FreeSqlComposePocRegressionUTests.USite> coll)
+            {
+                var list = new System.Collections.Generic.List<NCMapper.Tests.FreeSqlComposePocRegressionUTests.USiteNestedDto>(coll.Count);
+                foreach (var src in coll)
+                {
+                    if (src is null)
+                    {
+                        list.Add(null!);
+                        continue;
+                    }
+                    var dst = new NCMapper.Tests.FreeSqlComposePocRegressionUTests.USiteNestedDto();
+                    dst.Id = src.Id;
+                    dst.Name = src.Name;
+                    if (src.Dept != null)
+                    {
+                        // Fallback path: nested mapping runtime fallback (nested type not [MapFrom]-registered). May fail under NativeAOT; see docs 05-Compose
+                    #pragma warning disable IL2026, IL3050
+                        dst.Dept = NCMapper.Mapper.Map<NCMapper.Tests.FreeSqlComposePocRegressionUTests.UDept, NCMapper.Tests.FreeSqlComposePocRegressionUTests.UDeptDto>(src.Dept)!;
+                    #pragma warning restore IL2026, IL3050
+                    }
+                    list.Add(dst);
+                }
+                return list;
+            }
+            {
+                var list = new System.Collections.Generic.List<NCMapper.Tests.FreeSqlComposePocRegressionUTests.USiteNestedDto>();
+                foreach (var src in sources)
+                {
+                    if (src is null)
+                    {
+                        list.Add(null!);
+                        continue;
+                    }
+                    var dst = new NCMapper.Tests.FreeSqlComposePocRegressionUTests.USiteNestedDto();
+                    dst.Id = src.Id;
+                    dst.Name = src.Name;
+                    if (src.Dept != null)
+                    {
+                        // Fallback path: nested mapping runtime fallback (nested type not [MapFrom]-registered). May fail under NativeAOT; see docs 05-Compose
+                    #pragma warning disable IL2026, IL3050
+                        dst.Dept = NCMapper.Mapper.Map<NCMapper.Tests.FreeSqlComposePocRegressionUTests.UDept, NCMapper.Tests.FreeSqlComposePocRegressionUTests.UDeptDto>(src.Dept)!;
+                    #pragma warning restore IL2026, IL3050
+                    }
+                    list.Add(dst);
+                }
+                return list;
+            }
+        }
+
+        /// <summary>
+        /// 源生成器列表映射（带 Action 回调）：NCMapper.Tests.FreeSqlComposePocRegressionUTests.USite → List&lt;NCMapper.Tests.FreeSqlComposePocRegressionUTests.USiteNestedDto&gt;
+        /// </summary>
+        /// <param name="sources">源列表</param>
+        /// <param name="action">每个元素映射后的回调</param>
+        /// <returns>映射后的目标列表；sources 为 null 时实际返回 null（null 透传）。签名声明非空仅为满足 Mapper.RegisterGeneratedList 委托契约，运行时 null 语义与简单赋值路径一致</returns>
+        public static System.Collections.Generic.List<NCMapper.Tests.FreeSqlComposePocRegressionUTests.USiteNestedDto> MapList_USite_To_USiteNestedDto(System.Collections.Generic.IEnumerable<NCMapper.Tests.FreeSqlComposePocRegressionUTests.USite> sources, System.Action<NCMapper.Tests.FreeSqlComposePocRegressionUTests.USite, NCMapper.Tests.FreeSqlComposePocRegressionUTests.USiteNestedDto>? action)
+        {
+            // 签名非空仅为满足 Mapper.RegisterGeneratedList 委托契约（Func<List<T>, List<T>>），null 透传与简单赋值路径语义一致
+            if (sources is null) return null!;
+            if (action is null) return MapList_USite_To_USiteNestedDto(sources);
+            var list = new System.Collections.Generic.List<NCMapper.Tests.FreeSqlComposePocRegressionUTests.USiteNestedDto>();
+            foreach (var src in sources)
+            {
+                if (src is null)
+                {
+                    list.Add(null!);
+                    continue;
+                }
+                var dst = new NCMapper.Tests.FreeSqlComposePocRegressionUTests.USiteNestedDto();
+                dst.Id = src.Id;
+                dst.Name = src.Name;
+                if (src.Dept != null)
+                {
+                    // Fallback path: nested mapping runtime fallback (nested type not [MapFrom]-registered). May fail under NativeAOT; see docs 05-Compose
+                #pragma warning disable IL2026, IL3050
+                    dst.Dept = NCMapper.Mapper.Map<NCMapper.Tests.FreeSqlComposePocRegressionUTests.UDept, NCMapper.Tests.FreeSqlComposePocRegressionUTests.UDeptDto>(src.Dept)!;
+                #pragma warning restore IL2026, IL3050
+                }
+                action(src, dst);
+                list.Add(dst);
+            }
+            return list;
+        }
+
+        /// <summary>
+        /// 源生成器批量就地映射：NCMapper.Tests.FreeSqlComposePocRegressionUTests.USite → NCMapper.Tests.FreeSqlComposePocRegressionUTests.USiteNestedDto[]（内联赋值循环，仅覆盖映射字段；复用场景顶层零分配）
+        /// </summary>
+        /// <param name="sources">源集合</param>
+        /// <param name="destination">预分配目标数组（调用方负责初始化每个元素；null 槽位 no-op 跳过，C5）</param>
+        /// <param name="action">每个元素映射后的回调，可为 null</param>
+        [System.Runtime.CompilerServices.MethodImpl(System.Runtime.CompilerServices.MethodImplOptions.AggressiveInlining)]
+        public static void MapListInto_USite_To_USiteNestedDto(System.Collections.Generic.IList<NCMapper.Tests.FreeSqlComposePocRegressionUTests.USite> sources, NCMapper.Tests.FreeSqlComposePocRegressionUTests.USiteNestedDto[] destination, System.Action<NCMapper.Tests.FreeSqlComposePocRegressionUTests.USite, NCMapper.Tests.FreeSqlComposePocRegressionUTests.USiteNestedDto>? action)
+        {
+            if (sources is null || destination is null) return;
+            if (sources is NCMapper.Tests.FreeSqlComposePocRegressionUTests.USite[] srcArr)
+            {
+                for (int i = 0; i < srcArr.Length; i++)
+                {
+                    var src = srcArr[i];
+                    if (src is null) continue;
+                    var dst = destination[i];
+                    if (dst is null) continue;
+                    dst.Id = src.Id;
+                    dst.Name = src.Name;
+                    if (src.Dept != null)
+                    {
+                        // Fallback path: nested mapping runtime fallback (nested type not [MapFrom]-registered). May fail under NativeAOT; see docs 05-Compose
+                    #pragma warning disable IL2026, IL3050
+                        dst.Dept = NCMapper.Mapper.Map<NCMapper.Tests.FreeSqlComposePocRegressionUTests.UDept, NCMapper.Tests.FreeSqlComposePocRegressionUTests.UDeptDto>(src.Dept)!;
+                    #pragma warning restore IL2026, IL3050
+                    }
+                    action?.Invoke(src, dst);
+                }
+                return;
+            }
+            for (int i = 0; i < sources.Count; i++)
+            {
+                var src = sources[i];
+                if (src is null) continue;
+                var dst = destination[i];
+                if (dst is null) continue;
+                dst.Id = src.Id;
+                dst.Name = src.Name;
+                if (src.Dept != null)
+                {
+                    // Fallback path: nested mapping runtime fallback (nested type not [MapFrom]-registered). May fail under NativeAOT; see docs 05-Compose
+                #pragma warning disable IL2026, IL3050
+                    dst.Dept = NCMapper.Mapper.Map<NCMapper.Tests.FreeSqlComposePocRegressionUTests.UDept, NCMapper.Tests.FreeSqlComposePocRegressionUTests.UDeptDto>(src.Dept)!;
+                #pragma warning restore IL2026, IL3050
+                }
+                action?.Invoke(src, dst);
+            }
+        }
+
+        /// <summary>
+        /// 源生成器核心映射：NCMapper.Tests.FreeSqlComposePocRegressionUTests.USiteNestedDto → NCMapper.Tests.FreeSqlComposePocRegressionUTests.USite（无 Action，热路径）
+        /// </summary>
+        [System.Runtime.CompilerServices.MethodImpl(System.Runtime.CompilerServices.MethodImplOptions.AggressiveInlining)]
+        public static NCMapper.Tests.FreeSqlComposePocRegressionUTests.USite? Map_USiteNestedDto_To_USite(NCMapper.Tests.FreeSqlComposePocRegressionUTests.USiteNestedDto src)
+        {
+            if (src is null) return null;
+            var dst = new NCMapper.Tests.FreeSqlComposePocRegressionUTests.USite();
+            dst.Id = src.Id;
+            dst.Name = src.Name;
+            if (src.Dept != null)
+            {
+                // Fallback path: nested mapping runtime fallback (nested type not [MapFrom]-registered). May fail under NativeAOT; see docs 05-Compose
+            #pragma warning disable IL2026, IL3050
+                dst.Dept = NCMapper.Mapper.Map<NCMapper.Tests.FreeSqlComposePocRegressionUTests.UDeptDto, NCMapper.Tests.FreeSqlComposePocRegressionUTests.UDept>(src.Dept)!;
+            #pragma warning restore IL2026, IL3050
+            }
+            return dst;
+        }
+
+        /// <summary>
+        /// 源生成器映射：NCMapper.Tests.FreeSqlComposePocRegressionUTests.USiteNestedDto → NCMapper.Tests.FreeSqlComposePocRegressionUTests.USite（带 Action 回调）
+        /// </summary>
+        [System.Runtime.CompilerServices.MethodImpl(System.Runtime.CompilerServices.MethodImplOptions.AggressiveInlining)]
+        public static NCMapper.Tests.FreeSqlComposePocRegressionUTests.USite? Map_USiteNestedDto_To_USite_WithAction(NCMapper.Tests.FreeSqlComposePocRegressionUTests.USiteNestedDto src, System.Action<NCMapper.Tests.FreeSqlComposePocRegressionUTests.USiteNestedDto, NCMapper.Tests.FreeSqlComposePocRegressionUTests.USite>? action)
+        {
+            var dst = Map_USiteNestedDto_To_USite(src);
+            if (dst != null) action?.Invoke(src, dst);
+            return dst;
+        }
+
+        /// <summary>
+        /// 源生成器更新映射：NCMapper.Tests.FreeSqlComposePocRegressionUTests.USiteNestedDto → NCMapper.Tests.FreeSqlComposePocRegressionUTests.USite（更新已有目标对象，带 Action 回调）
+        /// </summary>
+        [System.Runtime.CompilerServices.MethodImpl(System.Runtime.CompilerServices.MethodImplOptions.AggressiveInlining)]
+        public static void Map_USiteNestedDto_To_USite_Update(NCMapper.Tests.FreeSqlComposePocRegressionUTests.USiteNestedDto src, NCMapper.Tests.FreeSqlComposePocRegressionUTests.USite dst, System.Action<NCMapper.Tests.FreeSqlComposePocRegressionUTests.USiteNestedDto, NCMapper.Tests.FreeSqlComposePocRegressionUTests.USite>? action)
+        {
+            if (src is null || dst is null) return;
+            dst.Id = src.Id;
+            dst.Name = src.Name;
+            if (src.Dept != null)
+            {
+                // Fallback path: nested mapping runtime fallback (nested type not [MapFrom]-registered). May fail under NativeAOT; see docs 05-Compose
+            #pragma warning disable IL2026, IL3050
+                dst.Dept = NCMapper.Mapper.Map<NCMapper.Tests.FreeSqlComposePocRegressionUTests.UDeptDto, NCMapper.Tests.FreeSqlComposePocRegressionUTests.UDept>(src.Dept)!;
+            #pragma warning restore IL2026, IL3050
+            }
+            action?.Invoke(src, dst);
+        }
+
+        /// <summary>
+        /// 源生成器列表映射：NCMapper.Tests.FreeSqlComposePocRegressionUTests.USiteNestedDto → List&lt;NCMapper.Tests.FreeSqlComposePocRegressionUTests.USite&gt;（内联赋值循环 + 预分配容量）
+        /// </summary>
+        /// <param name="sources">源列表</param>
+        /// <returns>映射后的目标列表；sources 为 null 时实际返回 null（null 透传）。签名声明非空仅为满足 Mapper.RegisterGeneratedList 委托契约，运行时 null 语义与简单赋值路径一致</returns>
+        [System.Runtime.CompilerServices.MethodImpl(System.Runtime.CompilerServices.MethodImplOptions.AggressiveInlining)]
+        public static System.Collections.Generic.List<NCMapper.Tests.FreeSqlComposePocRegressionUTests.USite> MapList_USiteNestedDto_To_USite(System.Collections.Generic.IEnumerable<NCMapper.Tests.FreeSqlComposePocRegressionUTests.USiteNestedDto> sources)
+        {
+            // 签名非空仅为满足 Mapper.RegisterGeneratedList 委托契约（Func<List<T>, List<T>>），null 透传与简单赋值路径语义一致
+            if (sources is null) return null!;
+            if (sources is NCMapper.Tests.FreeSqlComposePocRegressionUTests.USiteNestedDto[] arr)
+            {
+                var list = new System.Collections.Generic.List<NCMapper.Tests.FreeSqlComposePocRegressionUTests.USite>(arr.Length);
+                for (int i = 0; i < arr.Length; i++)
+                {
+                    var src = arr[i];
+                    if (src is null)
+                    {
+                        list.Add(null!);
+                        continue;
+                    }
+                    var dst = new NCMapper.Tests.FreeSqlComposePocRegressionUTests.USite();
+                    dst.Id = src.Id;
+                    dst.Name = src.Name;
+                    if (src.Dept != null)
+                    {
+                        // Fallback path: nested mapping runtime fallback (nested type not [MapFrom]-registered). May fail under NativeAOT; see docs 05-Compose
+                    #pragma warning disable IL2026, IL3050
+                        dst.Dept = NCMapper.Mapper.Map<NCMapper.Tests.FreeSqlComposePocRegressionUTests.UDeptDto, NCMapper.Tests.FreeSqlComposePocRegressionUTests.UDept>(src.Dept)!;
+                    #pragma warning restore IL2026, IL3050
+                    }
+                    list.Add(dst);
+                }
+                return list;
+            }
+            if (sources is System.Collections.Generic.ICollection<NCMapper.Tests.FreeSqlComposePocRegressionUTests.USiteNestedDto> coll)
+            {
+                var list = new System.Collections.Generic.List<NCMapper.Tests.FreeSqlComposePocRegressionUTests.USite>(coll.Count);
+                foreach (var src in coll)
+                {
+                    if (src is null)
+                    {
+                        list.Add(null!);
+                        continue;
+                    }
+                    var dst = new NCMapper.Tests.FreeSqlComposePocRegressionUTests.USite();
+                    dst.Id = src.Id;
+                    dst.Name = src.Name;
+                    if (src.Dept != null)
+                    {
+                        // Fallback path: nested mapping runtime fallback (nested type not [MapFrom]-registered). May fail under NativeAOT; see docs 05-Compose
+                    #pragma warning disable IL2026, IL3050
+                        dst.Dept = NCMapper.Mapper.Map<NCMapper.Tests.FreeSqlComposePocRegressionUTests.UDeptDto, NCMapper.Tests.FreeSqlComposePocRegressionUTests.UDept>(src.Dept)!;
+                    #pragma warning restore IL2026, IL3050
+                    }
+                    list.Add(dst);
+                }
+                return list;
+            }
+            {
+                var list = new System.Collections.Generic.List<NCMapper.Tests.FreeSqlComposePocRegressionUTests.USite>();
+                foreach (var src in sources)
+                {
+                    if (src is null)
+                    {
+                        list.Add(null!);
+                        continue;
+                    }
+                    var dst = new NCMapper.Tests.FreeSqlComposePocRegressionUTests.USite();
+                    dst.Id = src.Id;
+                    dst.Name = src.Name;
+                    if (src.Dept != null)
+                    {
+                        // Fallback path: nested mapping runtime fallback (nested type not [MapFrom]-registered). May fail under NativeAOT; see docs 05-Compose
+                    #pragma warning disable IL2026, IL3050
+                        dst.Dept = NCMapper.Mapper.Map<NCMapper.Tests.FreeSqlComposePocRegressionUTests.UDeptDto, NCMapper.Tests.FreeSqlComposePocRegressionUTests.UDept>(src.Dept)!;
+                    #pragma warning restore IL2026, IL3050
+                    }
+                    list.Add(dst);
+                }
+                return list;
+            }
+        }
+
+        /// <summary>
+        /// 源生成器列表映射（带 Action 回调）：NCMapper.Tests.FreeSqlComposePocRegressionUTests.USiteNestedDto → List&lt;NCMapper.Tests.FreeSqlComposePocRegressionUTests.USite&gt;
+        /// </summary>
+        /// <param name="sources">源列表</param>
+        /// <param name="action">每个元素映射后的回调</param>
+        /// <returns>映射后的目标列表；sources 为 null 时实际返回 null（null 透传）。签名声明非空仅为满足 Mapper.RegisterGeneratedList 委托契约，运行时 null 语义与简单赋值路径一致</returns>
+        public static System.Collections.Generic.List<NCMapper.Tests.FreeSqlComposePocRegressionUTests.USite> MapList_USiteNestedDto_To_USite(System.Collections.Generic.IEnumerable<NCMapper.Tests.FreeSqlComposePocRegressionUTests.USiteNestedDto> sources, System.Action<NCMapper.Tests.FreeSqlComposePocRegressionUTests.USiteNestedDto, NCMapper.Tests.FreeSqlComposePocRegressionUTests.USite>? action)
+        {
+            // 签名非空仅为满足 Mapper.RegisterGeneratedList 委托契约（Func<List<T>, List<T>>），null 透传与简单赋值路径语义一致
+            if (sources is null) return null!;
+            if (action is null) return MapList_USiteNestedDto_To_USite(sources);
+            var list = new System.Collections.Generic.List<NCMapper.Tests.FreeSqlComposePocRegressionUTests.USite>();
+            foreach (var src in sources)
+            {
+                if (src is null)
+                {
+                    list.Add(null!);
+                    continue;
+                }
+                var dst = new NCMapper.Tests.FreeSqlComposePocRegressionUTests.USite();
+                dst.Id = src.Id;
+                dst.Name = src.Name;
+                if (src.Dept != null)
+                {
+                    // Fallback path: nested mapping runtime fallback (nested type not [MapFrom]-registered). May fail under NativeAOT; see docs 05-Compose
+                #pragma warning disable IL2026, IL3050
+                    dst.Dept = NCMapper.Mapper.Map<NCMapper.Tests.FreeSqlComposePocRegressionUTests.UDeptDto, NCMapper.Tests.FreeSqlComposePocRegressionUTests.UDept>(src.Dept)!;
+                #pragma warning restore IL2026, IL3050
+                }
+                action(src, dst);
+                list.Add(dst);
+            }
+            return list;
+        }
+
+        /// <summary>
+        /// 源生成器核心映射：NCMapper.Tests.FreeSqlComposePocRegressionUTests.UDept → NCMapper.Tests.FreeSqlComposePocRegressionUTests.UDeptDto（无 Action，热路径）
+        /// </summary>
+        [System.Runtime.CompilerServices.MethodImpl(System.Runtime.CompilerServices.MethodImplOptions.AggressiveInlining)]
+        public static NCMapper.Tests.FreeSqlComposePocRegressionUTests.UDeptDto? Map_UDept_To_UDeptDto(NCMapper.Tests.FreeSqlComposePocRegressionUTests.UDept src)
+        {
+            if (src is null) return null;
+            var dst = new NCMapper.Tests.FreeSqlComposePocRegressionUTests.UDeptDto
+            {
+                Id = src.Id,
+                Label = src.Label
+            };
+            return dst;
+        }
+
+        /// <summary>
+        /// 源生成器映射：NCMapper.Tests.FreeSqlComposePocRegressionUTests.UDept → NCMapper.Tests.FreeSqlComposePocRegressionUTests.UDeptDto（带 Action 回调）
+        /// </summary>
+        [System.Runtime.CompilerServices.MethodImpl(System.Runtime.CompilerServices.MethodImplOptions.AggressiveInlining)]
+        public static NCMapper.Tests.FreeSqlComposePocRegressionUTests.UDeptDto? Map_UDept_To_UDeptDto_WithAction(NCMapper.Tests.FreeSqlComposePocRegressionUTests.UDept src, System.Action<NCMapper.Tests.FreeSqlComposePocRegressionUTests.UDept, NCMapper.Tests.FreeSqlComposePocRegressionUTests.UDeptDto>? action)
+        {
+            var dst = Map_UDept_To_UDeptDto(src);
+            if (dst != null) action?.Invoke(src, dst);
+            return dst;
+        }
+
+        /// <summary>
+        /// 源生成器更新映射：NCMapper.Tests.FreeSqlComposePocRegressionUTests.UDept → NCMapper.Tests.FreeSqlComposePocRegressionUTests.UDeptDto（更新已有目标对象，带 Action 回调）
+        /// </summary>
+        [System.Runtime.CompilerServices.MethodImpl(System.Runtime.CompilerServices.MethodImplOptions.AggressiveInlining)]
+        public static void Map_UDept_To_UDeptDto_Update(NCMapper.Tests.FreeSqlComposePocRegressionUTests.UDept src, NCMapper.Tests.FreeSqlComposePocRegressionUTests.UDeptDto dst, System.Action<NCMapper.Tests.FreeSqlComposePocRegressionUTests.UDept, NCMapper.Tests.FreeSqlComposePocRegressionUTests.UDeptDto>? action)
+        {
+            if (src is null || dst is null) return;
+            dst.Id = src.Id;
+            dst.Label = src.Label;
+            action?.Invoke(src, dst);
+        }
+
+        /// <summary>
+        /// 源生成器列表映射：NCMapper.Tests.FreeSqlComposePocRegressionUTests.UDept → List&lt;NCMapper.Tests.FreeSqlComposePocRegressionUTests.UDeptDto&gt;（内联赋值循环 + 预分配容量）
+        /// </summary>
+        /// <param name="sources">源列表</param>
+        /// <returns>映射后的目标列表；sources 为 null 时实际返回 null（null 透传）。签名声明非空仅为满足 Mapper.RegisterGeneratedList 委托契约，运行时 null 语义与简单赋值路径一致</returns>
+        [System.Runtime.CompilerServices.MethodImpl(System.Runtime.CompilerServices.MethodImplOptions.AggressiveInlining)]
+        public static System.Collections.Generic.List<NCMapper.Tests.FreeSqlComposePocRegressionUTests.UDeptDto> MapList_UDept_To_UDeptDto(System.Collections.Generic.IEnumerable<NCMapper.Tests.FreeSqlComposePocRegressionUTests.UDept> sources)
+        {
+            // 签名非空仅为满足 Mapper.RegisterGeneratedList 委托契约（Func<List<T>, List<T>>），null 透传与简单赋值路径语义一致
+            if (sources is null) return null!;
+            if (sources is NCMapper.Tests.FreeSqlComposePocRegressionUTests.UDept[] arr)
+            {
+                var list = new System.Collections.Generic.List<NCMapper.Tests.FreeSqlComposePocRegressionUTests.UDeptDto>(arr.Length);
+                for (int i = 0; i < arr.Length; i++)
+                {
+                    var src = arr[i];
+                    if (src is null)
+                    {
+                        list.Add(null!);
+                        continue;
+                    }
+                    var dst = new NCMapper.Tests.FreeSqlComposePocRegressionUTests.UDeptDto
+                    {
+                        Id = src.Id,
+                        Label = src.Label
+                    };
+                    list.Add(dst);
+                }
+                return list;
+            }
+            if (sources is System.Collections.Generic.ICollection<NCMapper.Tests.FreeSqlComposePocRegressionUTests.UDept> coll)
+            {
+                var list = new System.Collections.Generic.List<NCMapper.Tests.FreeSqlComposePocRegressionUTests.UDeptDto>(coll.Count);
+                foreach (var src in coll)
+                {
+                    if (src is null)
+                    {
+                        list.Add(null!);
+                        continue;
+                    }
+                    var dst = new NCMapper.Tests.FreeSqlComposePocRegressionUTests.UDeptDto
+                    {
+                        Id = src.Id,
+                        Label = src.Label
+                    };
+                    list.Add(dst);
+                }
+                return list;
+            }
+            {
+                var list = new System.Collections.Generic.List<NCMapper.Tests.FreeSqlComposePocRegressionUTests.UDeptDto>();
+                foreach (var src in sources)
+                {
+                    if (src is null)
+                    {
+                        list.Add(null!);
+                        continue;
+                    }
+                    var dst = new NCMapper.Tests.FreeSqlComposePocRegressionUTests.UDeptDto
+                    {
+                        Id = src.Id,
+                        Label = src.Label
+                    };
+                    list.Add(dst);
+                }
+                return list;
+            }
+        }
+
+        /// <summary>
+        /// 源生成器列表映射（带 Action 回调）：NCMapper.Tests.FreeSqlComposePocRegressionUTests.UDept → List&lt;NCMapper.Tests.FreeSqlComposePocRegressionUTests.UDeptDto&gt;
+        /// </summary>
+        /// <param name="sources">源列表</param>
+        /// <param name="action">每个元素映射后的回调</param>
+        /// <returns>映射后的目标列表；sources 为 null 时实际返回 null（null 透传）。签名声明非空仅为满足 Mapper.RegisterGeneratedList 委托契约，运行时 null 语义与简单赋值路径一致</returns>
+        public static System.Collections.Generic.List<NCMapper.Tests.FreeSqlComposePocRegressionUTests.UDeptDto> MapList_UDept_To_UDeptDto(System.Collections.Generic.IEnumerable<NCMapper.Tests.FreeSqlComposePocRegressionUTests.UDept> sources, System.Action<NCMapper.Tests.FreeSqlComposePocRegressionUTests.UDept, NCMapper.Tests.FreeSqlComposePocRegressionUTests.UDeptDto>? action)
+        {
+            // 签名非空仅为满足 Mapper.RegisterGeneratedList 委托契约（Func<List<T>, List<T>>），null 透传与简单赋值路径语义一致
+            if (sources is null) return null!;
+            if (action is null) return MapList_UDept_To_UDeptDto(sources);
+            var list = new System.Collections.Generic.List<NCMapper.Tests.FreeSqlComposePocRegressionUTests.UDeptDto>();
+            foreach (var src in sources)
+            {
+                if (src is null)
+                {
+                    list.Add(null!);
+                    continue;
+                }
+                var dst = new NCMapper.Tests.FreeSqlComposePocRegressionUTests.UDeptDto
+                {
+                    Id = src.Id,
+                    Label = src.Label
+                };
+                action(src, dst);
+                list.Add(dst);
+            }
+            return list;
+        }
+
+        /// <summary>
+        /// 源生成器批量就地映射：NCMapper.Tests.FreeSqlComposePocRegressionUTests.UDept → NCMapper.Tests.FreeSqlComposePocRegressionUTests.UDeptDto[]（内联赋值循环，仅覆盖映射字段；复用场景顶层零分配）
+        /// </summary>
+        /// <param name="sources">源集合</param>
+        /// <param name="destination">预分配目标数组（调用方负责初始化每个元素；null 槽位 no-op 跳过，C5）</param>
+        /// <param name="action">每个元素映射后的回调，可为 null</param>
+        [System.Runtime.CompilerServices.MethodImpl(System.Runtime.CompilerServices.MethodImplOptions.AggressiveInlining)]
+        public static void MapListInto_UDept_To_UDeptDto(System.Collections.Generic.IList<NCMapper.Tests.FreeSqlComposePocRegressionUTests.UDept> sources, NCMapper.Tests.FreeSqlComposePocRegressionUTests.UDeptDto[] destination, System.Action<NCMapper.Tests.FreeSqlComposePocRegressionUTests.UDept, NCMapper.Tests.FreeSqlComposePocRegressionUTests.UDeptDto>? action)
+        {
+            if (sources is null || destination is null) return;
+            if (sources is NCMapper.Tests.FreeSqlComposePocRegressionUTests.UDept[] srcArr)
+            {
+                for (int i = 0; i < srcArr.Length; i++)
+                {
+                    var src = srcArr[i];
+                    if (src is null) continue;
+                    var dst = destination[i];
+                    if (dst is null) continue;
+                    dst.Id = src.Id;
+                    dst.Label = src.Label;
+                    action?.Invoke(src, dst);
+                }
+                return;
+            }
+            for (int i = 0; i < sources.Count; i++)
+            {
+                var src = sources[i];
+                if (src is null) continue;
+                var dst = destination[i];
+                if (dst is null) continue;
+                dst.Id = src.Id;
+                dst.Label = src.Label;
+                action?.Invoke(src, dst);
+            }
+        }
+
+        /// <summary>
+        /// 源生成器核心映射：NCMapper.Tests.FreeSqlComposePocRegressionUTests.UDeptDto → NCMapper.Tests.FreeSqlComposePocRegressionUTests.UDept（无 Action，热路径）
+        /// </summary>
+        [System.Runtime.CompilerServices.MethodImpl(System.Runtime.CompilerServices.MethodImplOptions.AggressiveInlining)]
+        public static NCMapper.Tests.FreeSqlComposePocRegressionUTests.UDept? Map_UDeptDto_To_UDept(NCMapper.Tests.FreeSqlComposePocRegressionUTests.UDeptDto src)
+        {
+            if (src is null) return null;
+            var dst = new NCMapper.Tests.FreeSqlComposePocRegressionUTests.UDept
+            {
+                Id = src.Id,
+                Label = src.Label
+            };
+            return dst;
+        }
+
+        /// <summary>
+        /// 源生成器映射：NCMapper.Tests.FreeSqlComposePocRegressionUTests.UDeptDto → NCMapper.Tests.FreeSqlComposePocRegressionUTests.UDept（带 Action 回调）
+        /// </summary>
+        [System.Runtime.CompilerServices.MethodImpl(System.Runtime.CompilerServices.MethodImplOptions.AggressiveInlining)]
+        public static NCMapper.Tests.FreeSqlComposePocRegressionUTests.UDept? Map_UDeptDto_To_UDept_WithAction(NCMapper.Tests.FreeSqlComposePocRegressionUTests.UDeptDto src, System.Action<NCMapper.Tests.FreeSqlComposePocRegressionUTests.UDeptDto, NCMapper.Tests.FreeSqlComposePocRegressionUTests.UDept>? action)
+        {
+            var dst = Map_UDeptDto_To_UDept(src);
+            if (dst != null) action?.Invoke(src, dst);
+            return dst;
+        }
+
+        /// <summary>
+        /// 源生成器更新映射：NCMapper.Tests.FreeSqlComposePocRegressionUTests.UDeptDto → NCMapper.Tests.FreeSqlComposePocRegressionUTests.UDept（更新已有目标对象，带 Action 回调）
+        /// </summary>
+        [System.Runtime.CompilerServices.MethodImpl(System.Runtime.CompilerServices.MethodImplOptions.AggressiveInlining)]
+        public static void Map_UDeptDto_To_UDept_Update(NCMapper.Tests.FreeSqlComposePocRegressionUTests.UDeptDto src, NCMapper.Tests.FreeSqlComposePocRegressionUTests.UDept dst, System.Action<NCMapper.Tests.FreeSqlComposePocRegressionUTests.UDeptDto, NCMapper.Tests.FreeSqlComposePocRegressionUTests.UDept>? action)
+        {
+            if (src is null || dst is null) return;
+            dst.Id = src.Id;
+            dst.Label = src.Label;
+            action?.Invoke(src, dst);
+        }
+
+        /// <summary>
+        /// 源生成器列表映射：NCMapper.Tests.FreeSqlComposePocRegressionUTests.UDeptDto → List&lt;NCMapper.Tests.FreeSqlComposePocRegressionUTests.UDept&gt;（内联赋值循环 + 预分配容量）
+        /// </summary>
+        /// <param name="sources">源列表</param>
+        /// <returns>映射后的目标列表；sources 为 null 时实际返回 null（null 透传）。签名声明非空仅为满足 Mapper.RegisterGeneratedList 委托契约，运行时 null 语义与简单赋值路径一致</returns>
+        [System.Runtime.CompilerServices.MethodImpl(System.Runtime.CompilerServices.MethodImplOptions.AggressiveInlining)]
+        public static System.Collections.Generic.List<NCMapper.Tests.FreeSqlComposePocRegressionUTests.UDept> MapList_UDeptDto_To_UDept(System.Collections.Generic.IEnumerable<NCMapper.Tests.FreeSqlComposePocRegressionUTests.UDeptDto> sources)
+        {
+            // 签名非空仅为满足 Mapper.RegisterGeneratedList 委托契约（Func<List<T>, List<T>>），null 透传与简单赋值路径语义一致
+            if (sources is null) return null!;
+            if (sources is NCMapper.Tests.FreeSqlComposePocRegressionUTests.UDeptDto[] arr)
+            {
+                var list = new System.Collections.Generic.List<NCMapper.Tests.FreeSqlComposePocRegressionUTests.UDept>(arr.Length);
+                for (int i = 0; i < arr.Length; i++)
+                {
+                    var src = arr[i];
+                    if (src is null)
+                    {
+                        list.Add(null!);
+                        continue;
+                    }
+                    var dst = new NCMapper.Tests.FreeSqlComposePocRegressionUTests.UDept
+                    {
+                        Id = src.Id,
+                        Label = src.Label
+                    };
+                    list.Add(dst);
+                }
+                return list;
+            }
+            if (sources is System.Collections.Generic.ICollection<NCMapper.Tests.FreeSqlComposePocRegressionUTests.UDeptDto> coll)
+            {
+                var list = new System.Collections.Generic.List<NCMapper.Tests.FreeSqlComposePocRegressionUTests.UDept>(coll.Count);
+                foreach (var src in coll)
+                {
+                    if (src is null)
+                    {
+                        list.Add(null!);
+                        continue;
+                    }
+                    var dst = new NCMapper.Tests.FreeSqlComposePocRegressionUTests.UDept
+                    {
+                        Id = src.Id,
+                        Label = src.Label
+                    };
+                    list.Add(dst);
+                }
+                return list;
+            }
+            {
+                var list = new System.Collections.Generic.List<NCMapper.Tests.FreeSqlComposePocRegressionUTests.UDept>();
+                foreach (var src in sources)
+                {
+                    if (src is null)
+                    {
+                        list.Add(null!);
+                        continue;
+                    }
+                    var dst = new NCMapper.Tests.FreeSqlComposePocRegressionUTests.UDept
+                    {
+                        Id = src.Id,
+                        Label = src.Label
+                    };
+                    list.Add(dst);
+                }
+                return list;
+            }
+        }
+
+        /// <summary>
+        /// 源生成器列表映射（带 Action 回调）：NCMapper.Tests.FreeSqlComposePocRegressionUTests.UDeptDto → List&lt;NCMapper.Tests.FreeSqlComposePocRegressionUTests.UDept&gt;
+        /// </summary>
+        /// <param name="sources">源列表</param>
+        /// <param name="action">每个元素映射后的回调</param>
+        /// <returns>映射后的目标列表；sources 为 null 时实际返回 null（null 透传）。签名声明非空仅为满足 Mapper.RegisterGeneratedList 委托契约，运行时 null 语义与简单赋值路径一致</returns>
+        public static System.Collections.Generic.List<NCMapper.Tests.FreeSqlComposePocRegressionUTests.UDept> MapList_UDeptDto_To_UDept(System.Collections.Generic.IEnumerable<NCMapper.Tests.FreeSqlComposePocRegressionUTests.UDeptDto> sources, System.Action<NCMapper.Tests.FreeSqlComposePocRegressionUTests.UDeptDto, NCMapper.Tests.FreeSqlComposePocRegressionUTests.UDept>? action)
+        {
+            // 签名非空仅为满足 Mapper.RegisterGeneratedList 委托契约（Func<List<T>, List<T>>），null 透传与简单赋值路径语义一致
+            if (sources is null) return null!;
+            if (action is null) return MapList_UDeptDto_To_UDept(sources);
+            var list = new System.Collections.Generic.List<NCMapper.Tests.FreeSqlComposePocRegressionUTests.UDept>();
+            foreach (var src in sources)
+            {
+                if (src is null)
+                {
+                    list.Add(null!);
+                    continue;
+                }
+                var dst = new NCMapper.Tests.FreeSqlComposePocRegressionUTests.UDept
+                {
+                    Id = src.Id,
+                    Label = src.Label
+                };
+                action(src, dst);
+                list.Add(dst);
+            }
+            return list;
+        }
+
+        /// <summary>
         /// 源生成器核心映射：NCMapper.Tests.Models.BmEntity → NCMapper.Tests.Models.BmDto（无 Action，热路径）
         /// </summary>
         [System.Runtime.CompilerServices.MethodImpl(System.Runtime.CompilerServices.MethodImplOptions.AggressiveInlining)]
@@ -95187,6 +97267,34 @@ namespace NCMapper.Generated
         }
 
         /// <summary>
+        /// 源生成器深拷贝：NCMapper.Tests.FluentSourceGenNestedPropertyTests.AttrSite → NCMapper.Tests.FluentSourceGenNestedPropertyTests.AttrSite（编译时生成，~100ns）
+        /// </summary>
+        public static NCMapper.Tests.FluentSourceGenNestedPropertyTests.AttrSite DeepCopy_AttrSite(NCMapper.Tests.FluentSourceGenNestedPropertyTests.AttrSite src, NCMapper.DeepCopyContext ctx)
+        {
+            // 签名非空仅为满足 Mapper.RegisterGeneratedDeepCopy 委托契约（Func<T, DeepCopyContext, T>），null 透传与运行时 DeepCopy 入口语义一致
+            if (src is null) return null!;
+            var dst = new NCMapper.Tests.FluentSourceGenNestedPropertyTests.AttrSite();
+            dst.Id = src.Id;
+            if (src.Dept is not null)
+                dst.Dept = NCMapper.Mapper.DeepCopy(src.Dept, ctx)!;
+            return dst;
+        }
+
+        /// <summary>
+        /// 源生成器深拷贝：NCMapper.Tests.FluentSourceGenNestedPropertyTests.AttrSiteDto → NCMapper.Tests.FluentSourceGenNestedPropertyTests.AttrSiteDto（编译时生成，~100ns）
+        /// </summary>
+        public static NCMapper.Tests.FluentSourceGenNestedPropertyTests.AttrSiteDto DeepCopy_AttrSiteDto(NCMapper.Tests.FluentSourceGenNestedPropertyTests.AttrSiteDto src, NCMapper.DeepCopyContext ctx)
+        {
+            // 签名非空仅为满足 Mapper.RegisterGeneratedDeepCopy 委托契约（Func<T, DeepCopyContext, T>），null 透传与运行时 DeepCopy 入口语义一致
+            if (src is null) return null!;
+            var dst = new NCMapper.Tests.FluentSourceGenNestedPropertyTests.AttrSiteDto();
+            dst.Id = src.Id;
+            if (src.Dept is not null)
+                dst.Dept = NCMapper.Mapper.DeepCopy(src.Dept, ctx)!;
+            return dst;
+        }
+
+        /// <summary>
         /// 源生成器深拷贝：NCMapper.Tests.Models.ComposeNestedMainSource → NCMapper.Tests.Models.ComposeNestedMainSource（编译时生成，~100ns）
         /// </summary>
         public static NCMapper.Tests.Models.ComposeNestedMainSource DeepCopy_ComposeNestedMainSource(NCMapper.Tests.Models.ComposeNestedMainSource src, NCMapper.DeepCopyContext ctx)
@@ -101475,6 +103583,144 @@ namespace NCMapper.Generated
         }
 
         /// <summary>
+        /// 源生成器深拷贝：NCMapper.Tests.FluentSourceGenNestedPropertyTests.Site → NCMapper.Tests.FluentSourceGenNestedPropertyTests.Site（编译时生成，~100ns）
+        /// </summary>
+        public static NCMapper.Tests.FluentSourceGenNestedPropertyTests.Site DeepCopy_Site(NCMapper.Tests.FluentSourceGenNestedPropertyTests.Site src, NCMapper.DeepCopyContext ctx)
+        {
+            // 签名非空仅为满足 Mapper.RegisterGeneratedDeepCopy 委托契约（Func<T, DeepCopyContext, T>），null 透传与运行时 DeepCopy 入口语义一致
+            if (src is null) return null!;
+            var dst = new NCMapper.Tests.FluentSourceGenNestedPropertyTests.Site();
+            dst.Id = src.Id;
+            dst.Name = src.Name;
+            if (src.Dept is not null)
+                dst.Dept = NCMapper.Mapper.DeepCopy(src.Dept, ctx)!;
+            return dst;
+        }
+
+        /// <summary>
+        /// 源生成器深拷贝：NCMapper.Tests.FluentSourceGenNestedPropertyTests.SiteNestedDto → NCMapper.Tests.FluentSourceGenNestedPropertyTests.SiteNestedDto（编译时生成，~100ns）
+        /// </summary>
+        public static NCMapper.Tests.FluentSourceGenNestedPropertyTests.SiteNestedDto DeepCopy_SiteNestedDto(NCMapper.Tests.FluentSourceGenNestedPropertyTests.SiteNestedDto src, NCMapper.DeepCopyContext ctx)
+        {
+            // 签名非空仅为满足 Mapper.RegisterGeneratedDeepCopy 委托契约（Func<T, DeepCopyContext, T>），null 透传与运行时 DeepCopy 入口语义一致
+            if (src is null) return null!;
+            var dst = new NCMapper.Tests.FluentSourceGenNestedPropertyTests.SiteNestedDto();
+            dst.Id = src.Id;
+            dst.Name = src.Name;
+            if (src.Dept is not null)
+                dst.Dept = NCMapper.Mapper.DeepCopy(src.Dept, ctx)!;
+            return dst;
+        }
+
+        /// <summary>
+        /// 源生成器深拷贝：NCMapper.Tests.FluentSourceGenNestedPropertyTests.Dept → NCMapper.Tests.FluentSourceGenNestedPropertyTests.Dept（编译时生成，~100ns）
+        /// </summary>
+        public static NCMapper.Tests.FluentSourceGenNestedPropertyTests.Dept DeepCopy_Dept(NCMapper.Tests.FluentSourceGenNestedPropertyTests.Dept src, NCMapper.DeepCopyContext ctx)
+        {
+            // 签名非空仅为满足 Mapper.RegisterGeneratedDeepCopy 委托契约（Func<T, DeepCopyContext, T>），null 透传与运行时 DeepCopy 入口语义一致
+            if (src is null) return null!;
+            var dst = new NCMapper.Tests.FluentSourceGenNestedPropertyTests.Dept();
+            dst.Id = src.Id;
+            dst.Label = src.Label;
+            return dst;
+        }
+
+        /// <summary>
+        /// 源生成器深拷贝：NCMapper.Tests.FluentSourceGenNestedPropertyTests.DeptDto → NCMapper.Tests.FluentSourceGenNestedPropertyTests.DeptDto（编译时生成，~100ns）
+        /// </summary>
+        public static NCMapper.Tests.FluentSourceGenNestedPropertyTests.DeptDto DeepCopy_DeptDto(NCMapper.Tests.FluentSourceGenNestedPropertyTests.DeptDto src, NCMapper.DeepCopyContext ctx)
+        {
+            // 签名非空仅为满足 Mapper.RegisterGeneratedDeepCopy 委托契约（Func<T, DeepCopyContext, T>），null 透传与运行时 DeepCopy 入口语义一致
+            if (src is null) return null!;
+            var dst = new NCMapper.Tests.FluentSourceGenNestedPropertyTests.DeptDto();
+            dst.Id = src.Id;
+            dst.Label = src.Label;
+            return dst;
+        }
+
+        /// <summary>
+        /// 源生成器深拷贝：NCMapper.Tests.FluentSourceGenNestedPropertyTests.UCfgForSource → NCMapper.Tests.FluentSourceGenNestedPropertyTests.UCfgForSource（编译时生成，~100ns）
+        /// </summary>
+        public static NCMapper.Tests.FluentSourceGenNestedPropertyTests.UCfgForSource DeepCopy_UCfgForSource(NCMapper.Tests.FluentSourceGenNestedPropertyTests.UCfgForSource src, NCMapper.DeepCopyContext ctx)
+        {
+            // 签名非空仅为满足 Mapper.RegisterGeneratedDeepCopy 委托契约（Func<T, DeepCopyContext, T>），null 透传与运行时 DeepCopy 入口语义一致
+            if (src is null) return null!;
+            var dst = new NCMapper.Tests.FluentSourceGenNestedPropertyTests.UCfgForSource();
+            dst.Id = src.Id;
+            dst.Title = src.Title;
+            return dst;
+        }
+
+        /// <summary>
+        /// 源生成器深拷贝：NCMapper.Tests.FluentSourceGenNestedPropertyTests.UCfgForDto → NCMapper.Tests.FluentSourceGenNestedPropertyTests.UCfgForDto（编译时生成，~100ns）
+        /// </summary>
+        public static NCMapper.Tests.FluentSourceGenNestedPropertyTests.UCfgForDto DeepCopy_UCfgForDto(NCMapper.Tests.FluentSourceGenNestedPropertyTests.UCfgForDto src, NCMapper.DeepCopyContext ctx)
+        {
+            // 签名非空仅为满足 Mapper.RegisterGeneratedDeepCopy 委托契约（Func<T, DeepCopyContext, T>），null 透传与运行时 DeepCopy 入口语义一致
+            if (src is null) return null!;
+            var dst = new NCMapper.Tests.FluentSourceGenNestedPropertyTests.UCfgForDto();
+            dst.Id = src.Id;
+            dst.Title = src.Title;
+            return dst;
+        }
+
+        /// <summary>
+        /// 源生成器深拷贝：NCMapper.Tests.FreeSqlComposePocRegressionUTests.USite → NCMapper.Tests.FreeSqlComposePocRegressionUTests.USite（编译时生成，~100ns）
+        /// </summary>
+        public static NCMapper.Tests.FreeSqlComposePocRegressionUTests.USite DeepCopy_USite(NCMapper.Tests.FreeSqlComposePocRegressionUTests.USite src, NCMapper.DeepCopyContext ctx)
+        {
+            // 签名非空仅为满足 Mapper.RegisterGeneratedDeepCopy 委托契约（Func<T, DeepCopyContext, T>），null 透传与运行时 DeepCopy 入口语义一致
+            if (src is null) return null!;
+            var dst = new NCMapper.Tests.FreeSqlComposePocRegressionUTests.USite();
+            dst.Id = src.Id;
+            dst.Name = src.Name;
+            if (src.Dept is not null)
+                dst.Dept = NCMapper.Mapper.DeepCopy(src.Dept, ctx)!;
+            return dst;
+        }
+
+        /// <summary>
+        /// 源生成器深拷贝：NCMapper.Tests.FreeSqlComposePocRegressionUTests.USiteNestedDto → NCMapper.Tests.FreeSqlComposePocRegressionUTests.USiteNestedDto（编译时生成，~100ns）
+        /// </summary>
+        public static NCMapper.Tests.FreeSqlComposePocRegressionUTests.USiteNestedDto DeepCopy_USiteNestedDto(NCMapper.Tests.FreeSqlComposePocRegressionUTests.USiteNestedDto src, NCMapper.DeepCopyContext ctx)
+        {
+            // 签名非空仅为满足 Mapper.RegisterGeneratedDeepCopy 委托契约（Func<T, DeepCopyContext, T>），null 透传与运行时 DeepCopy 入口语义一致
+            if (src is null) return null!;
+            var dst = new NCMapper.Tests.FreeSqlComposePocRegressionUTests.USiteNestedDto();
+            dst.Id = src.Id;
+            dst.Name = src.Name;
+            if (src.Dept is not null)
+                dst.Dept = NCMapper.Mapper.DeepCopy(src.Dept, ctx)!;
+            return dst;
+        }
+
+        /// <summary>
+        /// 源生成器深拷贝：NCMapper.Tests.FreeSqlComposePocRegressionUTests.UDept → NCMapper.Tests.FreeSqlComposePocRegressionUTests.UDept（编译时生成，~100ns）
+        /// </summary>
+        public static NCMapper.Tests.FreeSqlComposePocRegressionUTests.UDept DeepCopy_UDept(NCMapper.Tests.FreeSqlComposePocRegressionUTests.UDept src, NCMapper.DeepCopyContext ctx)
+        {
+            // 签名非空仅为满足 Mapper.RegisterGeneratedDeepCopy 委托契约（Func<T, DeepCopyContext, T>），null 透传与运行时 DeepCopy 入口语义一致
+            if (src is null) return null!;
+            var dst = new NCMapper.Tests.FreeSqlComposePocRegressionUTests.UDept();
+            dst.Id = src.Id;
+            dst.Label = src.Label;
+            return dst;
+        }
+
+        /// <summary>
+        /// 源生成器深拷贝：NCMapper.Tests.FreeSqlComposePocRegressionUTests.UDeptDto → NCMapper.Tests.FreeSqlComposePocRegressionUTests.UDeptDto（编译时生成，~100ns）
+        /// </summary>
+        public static NCMapper.Tests.FreeSqlComposePocRegressionUTests.UDeptDto DeepCopy_UDeptDto(NCMapper.Tests.FreeSqlComposePocRegressionUTests.UDeptDto src, NCMapper.DeepCopyContext ctx)
+        {
+            // 签名非空仅为满足 Mapper.RegisterGeneratedDeepCopy 委托契约（Func<T, DeepCopyContext, T>），null 透传与运行时 DeepCopy 入口语义一致
+            if (src is null) return null!;
+            var dst = new NCMapper.Tests.FreeSqlComposePocRegressionUTests.UDeptDto();
+            dst.Id = src.Id;
+            dst.Label = src.Label;
+            return dst;
+        }
+
+        /// <summary>
         /// 源生成器深拷贝：NCMapper.Tests.Models.BmEntity → NCMapper.Tests.Models.BmEntity（编译时生成，~100ns）
         /// </summary>
         public static NCMapper.Tests.Models.BmEntity DeepCopy_BmEntity(NCMapper.Tests.Models.BmEntity src, NCMapper.DeepCopyContext ctx)
@@ -102864,6 +105110,17 @@ namespace NCMapper.Generated
                 UnmappedProperties = new System.Collections.Generic.List<string> { "FirstTag" },
                 TypeMismatchProperties = new System.Collections.Generic.List<string>(),
                 Message = ", 1 unmapped: FirstTag"
+            });
+            results.Add(new NCMapper.MapValidationResult
+            {
+                SourceType = typeof(NCMapper.Tests.FluentSourceGenNestedPropertyTests.AttrSite),
+                TargetType = typeof(NCMapper.Tests.FluentSourceGenNestedPropertyTests.AttrSiteDto),
+                Level = NCMapper.MapValidationLevel.Error,
+                MappedCount = 2,
+                TotalCount = 2,
+                UnmappedProperties = new System.Collections.Generic.List<string>(),
+                TypeMismatchProperties = new System.Collections.Generic.List<string> { "Dept: AttrDeptDto -> AttrDept" },
+                Message = ", 1 incompatible type(s): Dept: AttrDeptDto -> AttrDept"
             });
             results.Add(new NCMapper.MapValidationResult
             {
@@ -105617,6 +107874,61 @@ namespace NCMapper.Generated
             });
             results.Add(new NCMapper.MapValidationResult
             {
+                SourceType = typeof(NCMapper.Tests.FluentSourceGenNestedPropertyTests.Site),
+                TargetType = typeof(NCMapper.Tests.FluentSourceGenNestedPropertyTests.SiteNestedDto),
+                Level = NCMapper.MapValidationLevel.Error,
+                MappedCount = 3,
+                TotalCount = 3,
+                UnmappedProperties = new System.Collections.Generic.List<string>(),
+                TypeMismatchProperties = new System.Collections.Generic.List<string> { "Dept: DeptDto -> Dept" },
+                Message = ", 1 incompatible type(s): Dept: DeptDto -> Dept"
+            });
+            results.Add(new NCMapper.MapValidationResult
+            {
+                SourceType = typeof(NCMapper.Tests.FluentSourceGenNestedPropertyTests.Dept),
+                TargetType = typeof(NCMapper.Tests.FluentSourceGenNestedPropertyTests.DeptDto),
+                Level = NCMapper.MapValidationLevel.OK,
+                MappedCount = 2,
+                TotalCount = 2,
+                UnmappedProperties = new System.Collections.Generic.List<string>(),
+                TypeMismatchProperties = new System.Collections.Generic.List<string>(),
+                Message = ""
+            });
+            results.Add(new NCMapper.MapValidationResult
+            {
+                SourceType = typeof(NCMapper.Tests.FluentSourceGenNestedPropertyTests.UCfgForSource),
+                TargetType = typeof(NCMapper.Tests.FluentSourceGenNestedPropertyTests.UCfgForDto),
+                Level = NCMapper.MapValidationLevel.OK,
+                MappedCount = 2,
+                TotalCount = 2,
+                UnmappedProperties = new System.Collections.Generic.List<string>(),
+                TypeMismatchProperties = new System.Collections.Generic.List<string>(),
+                Message = ""
+            });
+            results.Add(new NCMapper.MapValidationResult
+            {
+                SourceType = typeof(NCMapper.Tests.FreeSqlComposePocRegressionUTests.USite),
+                TargetType = typeof(NCMapper.Tests.FreeSqlComposePocRegressionUTests.USiteNestedDto),
+                Level = NCMapper.MapValidationLevel.Error,
+                MappedCount = 3,
+                TotalCount = 3,
+                UnmappedProperties = new System.Collections.Generic.List<string>(),
+                TypeMismatchProperties = new System.Collections.Generic.List<string> { "Dept: UDeptDto -> UDept" },
+                Message = ", 1 incompatible type(s): Dept: UDeptDto -> UDept"
+            });
+            results.Add(new NCMapper.MapValidationResult
+            {
+                SourceType = typeof(NCMapper.Tests.FreeSqlComposePocRegressionUTests.UDept),
+                TargetType = typeof(NCMapper.Tests.FreeSqlComposePocRegressionUTests.UDeptDto),
+                Level = NCMapper.MapValidationLevel.OK,
+                MappedCount = 2,
+                TotalCount = 2,
+                UnmappedProperties = new System.Collections.Generic.List<string>(),
+                TypeMismatchProperties = new System.Collections.Generic.List<string>(),
+                Message = ""
+            });
+            results.Add(new NCMapper.MapValidationResult
+            {
                 SourceType = typeof(NCMapper.Tests.Models.BmEntity),
                 TargetType = typeof(NCMapper.Tests.Models.BmDto),
                 Level = NCMapper.MapValidationLevel.OK,
@@ -106545,6 +108857,170 @@ namespace NCMapper.Generated
                 return;
             }
             GeneratedMapper.Map_VBlog_To_VBlogDtoInvalid_Update(src, dst, action);
+            NCMapper.MapPipeline.RunPostMap(src, dst);
+        }
+
+        /// <summary>
+        /// 直接映射：NCMapper.Tests.FluentSourceGenNestedPropertyTests.AttrSite → NCMapper.Tests.FluentSourceGenNestedPropertyTests.AttrSiteDto（Pipeline 启用时自动触发 PostMap）
+        /// </summary>
+        public static NCMapper.Tests.FluentSourceGenNestedPropertyTests.AttrSiteDto? MapToAttrSiteDto(this NCMapper.Tests.FluentSourceGenNestedPropertyTests.AttrSite src)
+        {
+            if (!NCMapper.MapPipeline.IsPipelineEnabled)
+                return GeneratedMapper.Map_AttrSite_To_AttrSiteDto(src);
+            var __dst = GeneratedMapper.Map_AttrSite_To_AttrSiteDto(src);
+            if (__dst != null) NCMapper.MapPipeline.RunPostMap(src, __dst);
+            return __dst;
+        }
+
+        /// <summary>
+        /// 直接映射：NCMapper.Tests.FluentSourceGenNestedPropertyTests.AttrSite → NCMapper.Tests.FluentSourceGenNestedPropertyTests.AttrSiteDto（带 Action 回调，Pipeline 启用时自动触发 PostMap）
+        /// </summary>
+        public static NCMapper.Tests.FluentSourceGenNestedPropertyTests.AttrSiteDto? MapToAttrSiteDto(this NCMapper.Tests.FluentSourceGenNestedPropertyTests.AttrSite src, System.Action<NCMapper.Tests.FluentSourceGenNestedPropertyTests.AttrSite, NCMapper.Tests.FluentSourceGenNestedPropertyTests.AttrSiteDto> action)
+        {
+            if (!NCMapper.MapPipeline.IsPipelineEnabled)
+                return GeneratedMapper.Map_AttrSite_To_AttrSiteDto_WithAction(src, action);
+            var __dst = GeneratedMapper.Map_AttrSite_To_AttrSiteDto_WithAction(src, action);
+            if (__dst != null) NCMapper.MapPipeline.RunPostMap(src, __dst);
+            return __dst;
+        }
+
+        /// <summary>
+        /// 列表映射：IEnumerable&lt;AttrSite&gt; → List&lt;AttrSiteDto&gt;（Pipeline 启用时逐元素触发 PostMap）
+        /// </summary>
+        public static System.Collections.Generic.List<NCMapper.Tests.FluentSourceGenNestedPropertyTests.AttrSiteDto>? MapToAttrSiteDtoList(this System.Collections.Generic.IEnumerable<NCMapper.Tests.FluentSourceGenNestedPropertyTests.AttrSite> sources)
+        {
+            if (NCMapper.MapPipeline.IsPipelineEnabled)
+            {
+                // Fallback path: Pipeline degradation to runtime MapList (per-element PostMap). May fail under NativeAOT; see docs 05-Compose
+#pragma warning disable IL2026, IL3050
+                return NCMapper.Mapper.MapList<NCMapper.Tests.FluentSourceGenNestedPropertyTests.AttrSite, NCMapper.Tests.FluentSourceGenNestedPropertyTests.AttrSiteDto>(sources);
+#pragma warning restore IL2026, IL3050
+            }
+            return GeneratedMapper.MapList_AttrSite_To_AttrSiteDto(sources);
+        }
+
+        /// <summary>
+        /// 列表映射（带 Action 回调）：IEnumerable&lt;AttrSite&gt; → List&lt;AttrSiteDto&gt;（Pipeline 启用时逐元素触发 PostMap）
+        /// </summary>
+        public static System.Collections.Generic.List<NCMapper.Tests.FluentSourceGenNestedPropertyTests.AttrSiteDto>? MapToAttrSiteDtoList(this System.Collections.Generic.IEnumerable<NCMapper.Tests.FluentSourceGenNestedPropertyTests.AttrSite> sources, System.Action<NCMapper.Tests.FluentSourceGenNestedPropertyTests.AttrSite, NCMapper.Tests.FluentSourceGenNestedPropertyTests.AttrSiteDto> action)
+        {
+            if (NCMapper.MapPipeline.IsPipelineEnabled)
+            {
+                // Fallback path: Pipeline degradation to runtime MapList with action (per-element PostMap). May fail under NativeAOT; see docs 05-Compose
+#pragma warning disable IL2026, IL3050
+                return NCMapper.Mapper.MapList<NCMapper.Tests.FluentSourceGenNestedPropertyTests.AttrSite, NCMapper.Tests.FluentSourceGenNestedPropertyTests.AttrSiteDto>(sources, action);
+#pragma warning restore IL2026, IL3050
+            }
+            return GeneratedMapper.MapList_AttrSite_To_AttrSiteDto(sources, action);
+        }
+
+        /// <summary>
+        /// 更新映射：NCMapper.Tests.FluentSourceGenNestedPropertyTests.AttrSite → NCMapper.Tests.FluentSourceGenNestedPropertyTests.AttrSiteDto（更新已有目标对象，Pipeline 启用时自动触发 PostMap）
+        /// </summary>
+        public static void MapToAttrSiteDto(this NCMapper.Tests.FluentSourceGenNestedPropertyTests.AttrSite src, NCMapper.Tests.FluentSourceGenNestedPropertyTests.AttrSiteDto dst)
+        {
+            if (!NCMapper.MapPipeline.IsPipelineEnabled)
+            {
+                GeneratedMapper.Map_AttrSite_To_AttrSiteDto_Update(src, dst, null);
+                return;
+            }
+            GeneratedMapper.Map_AttrSite_To_AttrSiteDto_Update(src, dst, null);
+            NCMapper.MapPipeline.RunPostMap(src, dst);
+        }
+
+        /// <summary>
+        /// 更新映射：NCMapper.Tests.FluentSourceGenNestedPropertyTests.AttrSite → NCMapper.Tests.FluentSourceGenNestedPropertyTests.AttrSiteDto（更新已有目标对象，带 Action 回调，Pipeline 启用时自动触发 PostMap）
+        /// </summary>
+        public static void MapToAttrSiteDto(this NCMapper.Tests.FluentSourceGenNestedPropertyTests.AttrSite src, NCMapper.Tests.FluentSourceGenNestedPropertyTests.AttrSiteDto dst, System.Action<NCMapper.Tests.FluentSourceGenNestedPropertyTests.AttrSite, NCMapper.Tests.FluentSourceGenNestedPropertyTests.AttrSiteDto> action)
+        {
+            if (!NCMapper.MapPipeline.IsPipelineEnabled)
+            {
+                GeneratedMapper.Map_AttrSite_To_AttrSiteDto_Update(src, dst, action);
+                return;
+            }
+            GeneratedMapper.Map_AttrSite_To_AttrSiteDto_Update(src, dst, action);
+            NCMapper.MapPipeline.RunPostMap(src, dst);
+        }
+
+        /// <summary>
+        /// 直接映射：NCMapper.Tests.FluentSourceGenNestedPropertyTests.AttrSiteDto → NCMapper.Tests.FluentSourceGenNestedPropertyTests.AttrSite（Pipeline 启用时自动触发 PostMap）
+        /// </summary>
+        public static NCMapper.Tests.FluentSourceGenNestedPropertyTests.AttrSite? MapToAttrSite(this NCMapper.Tests.FluentSourceGenNestedPropertyTests.AttrSiteDto src)
+        {
+            if (!NCMapper.MapPipeline.IsPipelineEnabled)
+                return GeneratedMapper.Map_AttrSiteDto_To_AttrSite(src);
+            var __dst = GeneratedMapper.Map_AttrSiteDto_To_AttrSite(src);
+            if (__dst != null) NCMapper.MapPipeline.RunPostMap(src, __dst);
+            return __dst;
+        }
+
+        /// <summary>
+        /// 直接映射：NCMapper.Tests.FluentSourceGenNestedPropertyTests.AttrSiteDto → NCMapper.Tests.FluentSourceGenNestedPropertyTests.AttrSite（带 Action 回调，Pipeline 启用时自动触发 PostMap）
+        /// </summary>
+        public static NCMapper.Tests.FluentSourceGenNestedPropertyTests.AttrSite? MapToAttrSite(this NCMapper.Tests.FluentSourceGenNestedPropertyTests.AttrSiteDto src, System.Action<NCMapper.Tests.FluentSourceGenNestedPropertyTests.AttrSiteDto, NCMapper.Tests.FluentSourceGenNestedPropertyTests.AttrSite> action)
+        {
+            if (!NCMapper.MapPipeline.IsPipelineEnabled)
+                return GeneratedMapper.Map_AttrSiteDto_To_AttrSite_WithAction(src, action);
+            var __dst = GeneratedMapper.Map_AttrSiteDto_To_AttrSite_WithAction(src, action);
+            if (__dst != null) NCMapper.MapPipeline.RunPostMap(src, __dst);
+            return __dst;
+        }
+
+        /// <summary>
+        /// 列表映射：IEnumerable&lt;AttrSiteDto&gt; → List&lt;AttrSite&gt;（Pipeline 启用时逐元素触发 PostMap）
+        /// </summary>
+        public static System.Collections.Generic.List<NCMapper.Tests.FluentSourceGenNestedPropertyTests.AttrSite>? MapToAttrSiteList(this System.Collections.Generic.IEnumerable<NCMapper.Tests.FluentSourceGenNestedPropertyTests.AttrSiteDto> sources)
+        {
+            if (NCMapper.MapPipeline.IsPipelineEnabled)
+            {
+                // Fallback path: Pipeline degradation to runtime MapList (per-element PostMap). May fail under NativeAOT; see docs 05-Compose
+#pragma warning disable IL2026, IL3050
+                return NCMapper.Mapper.MapList<NCMapper.Tests.FluentSourceGenNestedPropertyTests.AttrSiteDto, NCMapper.Tests.FluentSourceGenNestedPropertyTests.AttrSite>(sources);
+#pragma warning restore IL2026, IL3050
+            }
+            return GeneratedMapper.MapList_AttrSiteDto_To_AttrSite(sources);
+        }
+
+        /// <summary>
+        /// 列表映射（带 Action 回调）：IEnumerable&lt;AttrSiteDto&gt; → List&lt;AttrSite&gt;（Pipeline 启用时逐元素触发 PostMap）
+        /// </summary>
+        public static System.Collections.Generic.List<NCMapper.Tests.FluentSourceGenNestedPropertyTests.AttrSite>? MapToAttrSiteList(this System.Collections.Generic.IEnumerable<NCMapper.Tests.FluentSourceGenNestedPropertyTests.AttrSiteDto> sources, System.Action<NCMapper.Tests.FluentSourceGenNestedPropertyTests.AttrSiteDto, NCMapper.Tests.FluentSourceGenNestedPropertyTests.AttrSite> action)
+        {
+            if (NCMapper.MapPipeline.IsPipelineEnabled)
+            {
+                // Fallback path: Pipeline degradation to runtime MapList with action (per-element PostMap). May fail under NativeAOT; see docs 05-Compose
+#pragma warning disable IL2026, IL3050
+                return NCMapper.Mapper.MapList<NCMapper.Tests.FluentSourceGenNestedPropertyTests.AttrSiteDto, NCMapper.Tests.FluentSourceGenNestedPropertyTests.AttrSite>(sources, action);
+#pragma warning restore IL2026, IL3050
+            }
+            return GeneratedMapper.MapList_AttrSiteDto_To_AttrSite(sources, action);
+        }
+
+        /// <summary>
+        /// 更新映射：NCMapper.Tests.FluentSourceGenNestedPropertyTests.AttrSiteDto → NCMapper.Tests.FluentSourceGenNestedPropertyTests.AttrSite（更新已有目标对象，Pipeline 启用时自动触发 PostMap）
+        /// </summary>
+        public static void MapToAttrSite(this NCMapper.Tests.FluentSourceGenNestedPropertyTests.AttrSiteDto src, NCMapper.Tests.FluentSourceGenNestedPropertyTests.AttrSite dst)
+        {
+            if (!NCMapper.MapPipeline.IsPipelineEnabled)
+            {
+                GeneratedMapper.Map_AttrSiteDto_To_AttrSite_Update(src, dst, null);
+                return;
+            }
+            GeneratedMapper.Map_AttrSiteDto_To_AttrSite_Update(src, dst, null);
+            NCMapper.MapPipeline.RunPostMap(src, dst);
+        }
+
+        /// <summary>
+        /// 更新映射：NCMapper.Tests.FluentSourceGenNestedPropertyTests.AttrSiteDto → NCMapper.Tests.FluentSourceGenNestedPropertyTests.AttrSite（更新已有目标对象，带 Action 回调，Pipeline 启用时自动触发 PostMap）
+        /// </summary>
+        public static void MapToAttrSite(this NCMapper.Tests.FluentSourceGenNestedPropertyTests.AttrSiteDto src, NCMapper.Tests.FluentSourceGenNestedPropertyTests.AttrSite dst, System.Action<NCMapper.Tests.FluentSourceGenNestedPropertyTests.AttrSiteDto, NCMapper.Tests.FluentSourceGenNestedPropertyTests.AttrSite> action)
+        {
+            if (!NCMapper.MapPipeline.IsPipelineEnabled)
+            {
+                GeneratedMapper.Map_AttrSiteDto_To_AttrSite_Update(src, dst, action);
+                return;
+            }
+            GeneratedMapper.Map_AttrSiteDto_To_AttrSite_Update(src, dst, action);
             NCMapper.MapPipeline.RunPostMap(src, dst);
         }
 
@@ -147359,6 +149835,826 @@ namespace NCMapper.Generated
         }
 
         /// <summary>
+        /// 直接映射：NCMapper.Tests.FluentSourceGenNestedPropertyTests.Site → NCMapper.Tests.FluentSourceGenNestedPropertyTests.SiteNestedDto（Pipeline 启用时自动触发 PostMap）
+        /// </summary>
+        public static NCMapper.Tests.FluentSourceGenNestedPropertyTests.SiteNestedDto? MapToSiteNestedDto(this NCMapper.Tests.FluentSourceGenNestedPropertyTests.Site src)
+        {
+            if (!NCMapper.MapPipeline.IsPipelineEnabled)
+                return GeneratedMapper.Map_Site_To_SiteNestedDto(src);
+            var __dst = GeneratedMapper.Map_Site_To_SiteNestedDto(src);
+            if (__dst != null) NCMapper.MapPipeline.RunPostMap(src, __dst);
+            return __dst;
+        }
+
+        /// <summary>
+        /// 直接映射：NCMapper.Tests.FluentSourceGenNestedPropertyTests.Site → NCMapper.Tests.FluentSourceGenNestedPropertyTests.SiteNestedDto（带 Action 回调，Pipeline 启用时自动触发 PostMap）
+        /// </summary>
+        public static NCMapper.Tests.FluentSourceGenNestedPropertyTests.SiteNestedDto? MapToSiteNestedDto(this NCMapper.Tests.FluentSourceGenNestedPropertyTests.Site src, System.Action<NCMapper.Tests.FluentSourceGenNestedPropertyTests.Site, NCMapper.Tests.FluentSourceGenNestedPropertyTests.SiteNestedDto> action)
+        {
+            if (!NCMapper.MapPipeline.IsPipelineEnabled)
+                return GeneratedMapper.Map_Site_To_SiteNestedDto_WithAction(src, action);
+            var __dst = GeneratedMapper.Map_Site_To_SiteNestedDto_WithAction(src, action);
+            if (__dst != null) NCMapper.MapPipeline.RunPostMap(src, __dst);
+            return __dst;
+        }
+
+        /// <summary>
+        /// 列表映射：IEnumerable&lt;Site&gt; → List&lt;SiteNestedDto&gt;（Pipeline 启用时逐元素触发 PostMap）
+        /// </summary>
+        public static System.Collections.Generic.List<NCMapper.Tests.FluentSourceGenNestedPropertyTests.SiteNestedDto>? MapToSiteNestedDtoList(this System.Collections.Generic.IEnumerable<NCMapper.Tests.FluentSourceGenNestedPropertyTests.Site> sources)
+        {
+            if (NCMapper.MapPipeline.IsPipelineEnabled)
+            {
+                // Fallback path: Pipeline degradation to runtime MapList (per-element PostMap). May fail under NativeAOT; see docs 05-Compose
+#pragma warning disable IL2026, IL3050
+                return NCMapper.Mapper.MapList<NCMapper.Tests.FluentSourceGenNestedPropertyTests.Site, NCMapper.Tests.FluentSourceGenNestedPropertyTests.SiteNestedDto>(sources);
+#pragma warning restore IL2026, IL3050
+            }
+            return GeneratedMapper.MapList_Site_To_SiteNestedDto(sources);
+        }
+
+        /// <summary>
+        /// 列表映射（带 Action 回调）：IEnumerable&lt;Site&gt; → List&lt;SiteNestedDto&gt;（Pipeline 启用时逐元素触发 PostMap）
+        /// </summary>
+        public static System.Collections.Generic.List<NCMapper.Tests.FluentSourceGenNestedPropertyTests.SiteNestedDto>? MapToSiteNestedDtoList(this System.Collections.Generic.IEnumerable<NCMapper.Tests.FluentSourceGenNestedPropertyTests.Site> sources, System.Action<NCMapper.Tests.FluentSourceGenNestedPropertyTests.Site, NCMapper.Tests.FluentSourceGenNestedPropertyTests.SiteNestedDto> action)
+        {
+            if (NCMapper.MapPipeline.IsPipelineEnabled)
+            {
+                // Fallback path: Pipeline degradation to runtime MapList with action (per-element PostMap). May fail under NativeAOT; see docs 05-Compose
+#pragma warning disable IL2026, IL3050
+                return NCMapper.Mapper.MapList<NCMapper.Tests.FluentSourceGenNestedPropertyTests.Site, NCMapper.Tests.FluentSourceGenNestedPropertyTests.SiteNestedDto>(sources, action);
+#pragma warning restore IL2026, IL3050
+            }
+            return GeneratedMapper.MapList_Site_To_SiteNestedDto(sources, action);
+        }
+
+        /// <summary>
+        /// 更新映射：NCMapper.Tests.FluentSourceGenNestedPropertyTests.Site → NCMapper.Tests.FluentSourceGenNestedPropertyTests.SiteNestedDto（更新已有目标对象，Pipeline 启用时自动触发 PostMap）
+        /// </summary>
+        public static void MapToSiteNestedDto(this NCMapper.Tests.FluentSourceGenNestedPropertyTests.Site src, NCMapper.Tests.FluentSourceGenNestedPropertyTests.SiteNestedDto dst)
+        {
+            if (!NCMapper.MapPipeline.IsPipelineEnabled)
+            {
+                GeneratedMapper.Map_Site_To_SiteNestedDto_Update(src, dst, null);
+                return;
+            }
+            GeneratedMapper.Map_Site_To_SiteNestedDto_Update(src, dst, null);
+            NCMapper.MapPipeline.RunPostMap(src, dst);
+        }
+
+        /// <summary>
+        /// 更新映射：NCMapper.Tests.FluentSourceGenNestedPropertyTests.Site → NCMapper.Tests.FluentSourceGenNestedPropertyTests.SiteNestedDto（更新已有目标对象，带 Action 回调，Pipeline 启用时自动触发 PostMap）
+        /// </summary>
+        public static void MapToSiteNestedDto(this NCMapper.Tests.FluentSourceGenNestedPropertyTests.Site src, NCMapper.Tests.FluentSourceGenNestedPropertyTests.SiteNestedDto dst, System.Action<NCMapper.Tests.FluentSourceGenNestedPropertyTests.Site, NCMapper.Tests.FluentSourceGenNestedPropertyTests.SiteNestedDto> action)
+        {
+            if (!NCMapper.MapPipeline.IsPipelineEnabled)
+            {
+                GeneratedMapper.Map_Site_To_SiteNestedDto_Update(src, dst, action);
+                return;
+            }
+            GeneratedMapper.Map_Site_To_SiteNestedDto_Update(src, dst, action);
+            NCMapper.MapPipeline.RunPostMap(src, dst);
+        }
+
+        /// <summary>
+        /// 直接映射：NCMapper.Tests.FluentSourceGenNestedPropertyTests.SiteNestedDto → NCMapper.Tests.FluentSourceGenNestedPropertyTests.Site（Pipeline 启用时自动触发 PostMap）
+        /// </summary>
+        public static NCMapper.Tests.FluentSourceGenNestedPropertyTests.Site? MapToSite(this NCMapper.Tests.FluentSourceGenNestedPropertyTests.SiteNestedDto src)
+        {
+            if (!NCMapper.MapPipeline.IsPipelineEnabled)
+                return GeneratedMapper.Map_SiteNestedDto_To_Site(src);
+            var __dst = GeneratedMapper.Map_SiteNestedDto_To_Site(src);
+            if (__dst != null) NCMapper.MapPipeline.RunPostMap(src, __dst);
+            return __dst;
+        }
+
+        /// <summary>
+        /// 直接映射：NCMapper.Tests.FluentSourceGenNestedPropertyTests.SiteNestedDto → NCMapper.Tests.FluentSourceGenNestedPropertyTests.Site（带 Action 回调，Pipeline 启用时自动触发 PostMap）
+        /// </summary>
+        public static NCMapper.Tests.FluentSourceGenNestedPropertyTests.Site? MapToSite(this NCMapper.Tests.FluentSourceGenNestedPropertyTests.SiteNestedDto src, System.Action<NCMapper.Tests.FluentSourceGenNestedPropertyTests.SiteNestedDto, NCMapper.Tests.FluentSourceGenNestedPropertyTests.Site> action)
+        {
+            if (!NCMapper.MapPipeline.IsPipelineEnabled)
+                return GeneratedMapper.Map_SiteNestedDto_To_Site_WithAction(src, action);
+            var __dst = GeneratedMapper.Map_SiteNestedDto_To_Site_WithAction(src, action);
+            if (__dst != null) NCMapper.MapPipeline.RunPostMap(src, __dst);
+            return __dst;
+        }
+
+        /// <summary>
+        /// 列表映射：IEnumerable&lt;SiteNestedDto&gt; → List&lt;Site&gt;（Pipeline 启用时逐元素触发 PostMap）
+        /// </summary>
+        public static System.Collections.Generic.List<NCMapper.Tests.FluentSourceGenNestedPropertyTests.Site>? MapToSiteList(this System.Collections.Generic.IEnumerable<NCMapper.Tests.FluentSourceGenNestedPropertyTests.SiteNestedDto> sources)
+        {
+            if (NCMapper.MapPipeline.IsPipelineEnabled)
+            {
+                // Fallback path: Pipeline degradation to runtime MapList (per-element PostMap). May fail under NativeAOT; see docs 05-Compose
+#pragma warning disable IL2026, IL3050
+                return NCMapper.Mapper.MapList<NCMapper.Tests.FluentSourceGenNestedPropertyTests.SiteNestedDto, NCMapper.Tests.FluentSourceGenNestedPropertyTests.Site>(sources);
+#pragma warning restore IL2026, IL3050
+            }
+            return GeneratedMapper.MapList_SiteNestedDto_To_Site(sources);
+        }
+
+        /// <summary>
+        /// 列表映射（带 Action 回调）：IEnumerable&lt;SiteNestedDto&gt; → List&lt;Site&gt;（Pipeline 启用时逐元素触发 PostMap）
+        /// </summary>
+        public static System.Collections.Generic.List<NCMapper.Tests.FluentSourceGenNestedPropertyTests.Site>? MapToSiteList(this System.Collections.Generic.IEnumerable<NCMapper.Tests.FluentSourceGenNestedPropertyTests.SiteNestedDto> sources, System.Action<NCMapper.Tests.FluentSourceGenNestedPropertyTests.SiteNestedDto, NCMapper.Tests.FluentSourceGenNestedPropertyTests.Site> action)
+        {
+            if (NCMapper.MapPipeline.IsPipelineEnabled)
+            {
+                // Fallback path: Pipeline degradation to runtime MapList with action (per-element PostMap). May fail under NativeAOT; see docs 05-Compose
+#pragma warning disable IL2026, IL3050
+                return NCMapper.Mapper.MapList<NCMapper.Tests.FluentSourceGenNestedPropertyTests.SiteNestedDto, NCMapper.Tests.FluentSourceGenNestedPropertyTests.Site>(sources, action);
+#pragma warning restore IL2026, IL3050
+            }
+            return GeneratedMapper.MapList_SiteNestedDto_To_Site(sources, action);
+        }
+
+        /// <summary>
+        /// 更新映射：NCMapper.Tests.FluentSourceGenNestedPropertyTests.SiteNestedDto → NCMapper.Tests.FluentSourceGenNestedPropertyTests.Site（更新已有目标对象，Pipeline 启用时自动触发 PostMap）
+        /// </summary>
+        public static void MapToSite(this NCMapper.Tests.FluentSourceGenNestedPropertyTests.SiteNestedDto src, NCMapper.Tests.FluentSourceGenNestedPropertyTests.Site dst)
+        {
+            if (!NCMapper.MapPipeline.IsPipelineEnabled)
+            {
+                GeneratedMapper.Map_SiteNestedDto_To_Site_Update(src, dst, null);
+                return;
+            }
+            GeneratedMapper.Map_SiteNestedDto_To_Site_Update(src, dst, null);
+            NCMapper.MapPipeline.RunPostMap(src, dst);
+        }
+
+        /// <summary>
+        /// 更新映射：NCMapper.Tests.FluentSourceGenNestedPropertyTests.SiteNestedDto → NCMapper.Tests.FluentSourceGenNestedPropertyTests.Site（更新已有目标对象，带 Action 回调，Pipeline 启用时自动触发 PostMap）
+        /// </summary>
+        public static void MapToSite(this NCMapper.Tests.FluentSourceGenNestedPropertyTests.SiteNestedDto src, NCMapper.Tests.FluentSourceGenNestedPropertyTests.Site dst, System.Action<NCMapper.Tests.FluentSourceGenNestedPropertyTests.SiteNestedDto, NCMapper.Tests.FluentSourceGenNestedPropertyTests.Site> action)
+        {
+            if (!NCMapper.MapPipeline.IsPipelineEnabled)
+            {
+                GeneratedMapper.Map_SiteNestedDto_To_Site_Update(src, dst, action);
+                return;
+            }
+            GeneratedMapper.Map_SiteNestedDto_To_Site_Update(src, dst, action);
+            NCMapper.MapPipeline.RunPostMap(src, dst);
+        }
+
+        /// <summary>
+        /// 直接映射：NCMapper.Tests.FluentSourceGenNestedPropertyTests.Dept → NCMapper.Tests.FluentSourceGenNestedPropertyTests.DeptDto（Pipeline 启用时自动触发 PostMap）
+        /// </summary>
+        public static NCMapper.Tests.FluentSourceGenNestedPropertyTests.DeptDto? MapToDeptDto(this NCMapper.Tests.FluentSourceGenNestedPropertyTests.Dept src)
+        {
+            if (!NCMapper.MapPipeline.IsPipelineEnabled)
+                return GeneratedMapper.Map_Dept_To_DeptDto(src);
+            var __dst = GeneratedMapper.Map_Dept_To_DeptDto(src);
+            if (__dst != null) NCMapper.MapPipeline.RunPostMap(src, __dst);
+            return __dst;
+        }
+
+        /// <summary>
+        /// 直接映射：NCMapper.Tests.FluentSourceGenNestedPropertyTests.Dept → NCMapper.Tests.FluentSourceGenNestedPropertyTests.DeptDto（带 Action 回调，Pipeline 启用时自动触发 PostMap）
+        /// </summary>
+        public static NCMapper.Tests.FluentSourceGenNestedPropertyTests.DeptDto? MapToDeptDto(this NCMapper.Tests.FluentSourceGenNestedPropertyTests.Dept src, System.Action<NCMapper.Tests.FluentSourceGenNestedPropertyTests.Dept, NCMapper.Tests.FluentSourceGenNestedPropertyTests.DeptDto> action)
+        {
+            if (!NCMapper.MapPipeline.IsPipelineEnabled)
+                return GeneratedMapper.Map_Dept_To_DeptDto_WithAction(src, action);
+            var __dst = GeneratedMapper.Map_Dept_To_DeptDto_WithAction(src, action);
+            if (__dst != null) NCMapper.MapPipeline.RunPostMap(src, __dst);
+            return __dst;
+        }
+
+        /// <summary>
+        /// 列表映射：IEnumerable&lt;Dept&gt; → List&lt;DeptDto&gt;（Pipeline 启用时逐元素触发 PostMap）
+        /// </summary>
+        public static System.Collections.Generic.List<NCMapper.Tests.FluentSourceGenNestedPropertyTests.DeptDto>? MapToDeptDtoList(this System.Collections.Generic.IEnumerable<NCMapper.Tests.FluentSourceGenNestedPropertyTests.Dept> sources)
+        {
+            if (NCMapper.MapPipeline.IsPipelineEnabled)
+            {
+                // Fallback path: Pipeline degradation to runtime MapList (per-element PostMap). May fail under NativeAOT; see docs 05-Compose
+#pragma warning disable IL2026, IL3050
+                return NCMapper.Mapper.MapList<NCMapper.Tests.FluentSourceGenNestedPropertyTests.Dept, NCMapper.Tests.FluentSourceGenNestedPropertyTests.DeptDto>(sources);
+#pragma warning restore IL2026, IL3050
+            }
+            return GeneratedMapper.MapList_Dept_To_DeptDto(sources);
+        }
+
+        /// <summary>
+        /// 列表映射（带 Action 回调）：IEnumerable&lt;Dept&gt; → List&lt;DeptDto&gt;（Pipeline 启用时逐元素触发 PostMap）
+        /// </summary>
+        public static System.Collections.Generic.List<NCMapper.Tests.FluentSourceGenNestedPropertyTests.DeptDto>? MapToDeptDtoList(this System.Collections.Generic.IEnumerable<NCMapper.Tests.FluentSourceGenNestedPropertyTests.Dept> sources, System.Action<NCMapper.Tests.FluentSourceGenNestedPropertyTests.Dept, NCMapper.Tests.FluentSourceGenNestedPropertyTests.DeptDto> action)
+        {
+            if (NCMapper.MapPipeline.IsPipelineEnabled)
+            {
+                // Fallback path: Pipeline degradation to runtime MapList with action (per-element PostMap). May fail under NativeAOT; see docs 05-Compose
+#pragma warning disable IL2026, IL3050
+                return NCMapper.Mapper.MapList<NCMapper.Tests.FluentSourceGenNestedPropertyTests.Dept, NCMapper.Tests.FluentSourceGenNestedPropertyTests.DeptDto>(sources, action);
+#pragma warning restore IL2026, IL3050
+            }
+            return GeneratedMapper.MapList_Dept_To_DeptDto(sources, action);
+        }
+
+        /// <summary>
+        /// 更新映射：NCMapper.Tests.FluentSourceGenNestedPropertyTests.Dept → NCMapper.Tests.FluentSourceGenNestedPropertyTests.DeptDto（更新已有目标对象，Pipeline 启用时自动触发 PostMap）
+        /// </summary>
+        public static void MapToDeptDto(this NCMapper.Tests.FluentSourceGenNestedPropertyTests.Dept src, NCMapper.Tests.FluentSourceGenNestedPropertyTests.DeptDto dst)
+        {
+            if (!NCMapper.MapPipeline.IsPipelineEnabled)
+            {
+                GeneratedMapper.Map_Dept_To_DeptDto_Update(src, dst, null);
+                return;
+            }
+            GeneratedMapper.Map_Dept_To_DeptDto_Update(src, dst, null);
+            NCMapper.MapPipeline.RunPostMap(src, dst);
+        }
+
+        /// <summary>
+        /// 更新映射：NCMapper.Tests.FluentSourceGenNestedPropertyTests.Dept → NCMapper.Tests.FluentSourceGenNestedPropertyTests.DeptDto（更新已有目标对象，带 Action 回调，Pipeline 启用时自动触发 PostMap）
+        /// </summary>
+        public static void MapToDeptDto(this NCMapper.Tests.FluentSourceGenNestedPropertyTests.Dept src, NCMapper.Tests.FluentSourceGenNestedPropertyTests.DeptDto dst, System.Action<NCMapper.Tests.FluentSourceGenNestedPropertyTests.Dept, NCMapper.Tests.FluentSourceGenNestedPropertyTests.DeptDto> action)
+        {
+            if (!NCMapper.MapPipeline.IsPipelineEnabled)
+            {
+                GeneratedMapper.Map_Dept_To_DeptDto_Update(src, dst, action);
+                return;
+            }
+            GeneratedMapper.Map_Dept_To_DeptDto_Update(src, dst, action);
+            NCMapper.MapPipeline.RunPostMap(src, dst);
+        }
+
+        /// <summary>
+        /// 直接映射：NCMapper.Tests.FluentSourceGenNestedPropertyTests.DeptDto → NCMapper.Tests.FluentSourceGenNestedPropertyTests.Dept（Pipeline 启用时自动触发 PostMap）
+        /// </summary>
+        public static NCMapper.Tests.FluentSourceGenNestedPropertyTests.Dept? MapToDept(this NCMapper.Tests.FluentSourceGenNestedPropertyTests.DeptDto src)
+        {
+            if (!NCMapper.MapPipeline.IsPipelineEnabled)
+                return GeneratedMapper.Map_DeptDto_To_Dept(src);
+            var __dst = GeneratedMapper.Map_DeptDto_To_Dept(src);
+            if (__dst != null) NCMapper.MapPipeline.RunPostMap(src, __dst);
+            return __dst;
+        }
+
+        /// <summary>
+        /// 直接映射：NCMapper.Tests.FluentSourceGenNestedPropertyTests.DeptDto → NCMapper.Tests.FluentSourceGenNestedPropertyTests.Dept（带 Action 回调，Pipeline 启用时自动触发 PostMap）
+        /// </summary>
+        public static NCMapper.Tests.FluentSourceGenNestedPropertyTests.Dept? MapToDept(this NCMapper.Tests.FluentSourceGenNestedPropertyTests.DeptDto src, System.Action<NCMapper.Tests.FluentSourceGenNestedPropertyTests.DeptDto, NCMapper.Tests.FluentSourceGenNestedPropertyTests.Dept> action)
+        {
+            if (!NCMapper.MapPipeline.IsPipelineEnabled)
+                return GeneratedMapper.Map_DeptDto_To_Dept_WithAction(src, action);
+            var __dst = GeneratedMapper.Map_DeptDto_To_Dept_WithAction(src, action);
+            if (__dst != null) NCMapper.MapPipeline.RunPostMap(src, __dst);
+            return __dst;
+        }
+
+        /// <summary>
+        /// 列表映射：IEnumerable&lt;DeptDto&gt; → List&lt;Dept&gt;（Pipeline 启用时逐元素触发 PostMap）
+        /// </summary>
+        public static System.Collections.Generic.List<NCMapper.Tests.FluentSourceGenNestedPropertyTests.Dept>? MapToDeptList(this System.Collections.Generic.IEnumerable<NCMapper.Tests.FluentSourceGenNestedPropertyTests.DeptDto> sources)
+        {
+            if (NCMapper.MapPipeline.IsPipelineEnabled)
+            {
+                // Fallback path: Pipeline degradation to runtime MapList (per-element PostMap). May fail under NativeAOT; see docs 05-Compose
+#pragma warning disable IL2026, IL3050
+                return NCMapper.Mapper.MapList<NCMapper.Tests.FluentSourceGenNestedPropertyTests.DeptDto, NCMapper.Tests.FluentSourceGenNestedPropertyTests.Dept>(sources);
+#pragma warning restore IL2026, IL3050
+            }
+            return GeneratedMapper.MapList_DeptDto_To_Dept(sources);
+        }
+
+        /// <summary>
+        /// 列表映射（带 Action 回调）：IEnumerable&lt;DeptDto&gt; → List&lt;Dept&gt;（Pipeline 启用时逐元素触发 PostMap）
+        /// </summary>
+        public static System.Collections.Generic.List<NCMapper.Tests.FluentSourceGenNestedPropertyTests.Dept>? MapToDeptList(this System.Collections.Generic.IEnumerable<NCMapper.Tests.FluentSourceGenNestedPropertyTests.DeptDto> sources, System.Action<NCMapper.Tests.FluentSourceGenNestedPropertyTests.DeptDto, NCMapper.Tests.FluentSourceGenNestedPropertyTests.Dept> action)
+        {
+            if (NCMapper.MapPipeline.IsPipelineEnabled)
+            {
+                // Fallback path: Pipeline degradation to runtime MapList with action (per-element PostMap). May fail under NativeAOT; see docs 05-Compose
+#pragma warning disable IL2026, IL3050
+                return NCMapper.Mapper.MapList<NCMapper.Tests.FluentSourceGenNestedPropertyTests.DeptDto, NCMapper.Tests.FluentSourceGenNestedPropertyTests.Dept>(sources, action);
+#pragma warning restore IL2026, IL3050
+            }
+            return GeneratedMapper.MapList_DeptDto_To_Dept(sources, action);
+        }
+
+        /// <summary>
+        /// 更新映射：NCMapper.Tests.FluentSourceGenNestedPropertyTests.DeptDto → NCMapper.Tests.FluentSourceGenNestedPropertyTests.Dept（更新已有目标对象，Pipeline 启用时自动触发 PostMap）
+        /// </summary>
+        public static void MapToDept(this NCMapper.Tests.FluentSourceGenNestedPropertyTests.DeptDto src, NCMapper.Tests.FluentSourceGenNestedPropertyTests.Dept dst)
+        {
+            if (!NCMapper.MapPipeline.IsPipelineEnabled)
+            {
+                GeneratedMapper.Map_DeptDto_To_Dept_Update(src, dst, null);
+                return;
+            }
+            GeneratedMapper.Map_DeptDto_To_Dept_Update(src, dst, null);
+            NCMapper.MapPipeline.RunPostMap(src, dst);
+        }
+
+        /// <summary>
+        /// 更新映射：NCMapper.Tests.FluentSourceGenNestedPropertyTests.DeptDto → NCMapper.Tests.FluentSourceGenNestedPropertyTests.Dept（更新已有目标对象，带 Action 回调，Pipeline 启用时自动触发 PostMap）
+        /// </summary>
+        public static void MapToDept(this NCMapper.Tests.FluentSourceGenNestedPropertyTests.DeptDto src, NCMapper.Tests.FluentSourceGenNestedPropertyTests.Dept dst, System.Action<NCMapper.Tests.FluentSourceGenNestedPropertyTests.DeptDto, NCMapper.Tests.FluentSourceGenNestedPropertyTests.Dept> action)
+        {
+            if (!NCMapper.MapPipeline.IsPipelineEnabled)
+            {
+                GeneratedMapper.Map_DeptDto_To_Dept_Update(src, dst, action);
+                return;
+            }
+            GeneratedMapper.Map_DeptDto_To_Dept_Update(src, dst, action);
+            NCMapper.MapPipeline.RunPostMap(src, dst);
+        }
+
+        /// <summary>
+        /// 直接映射：NCMapper.Tests.FluentSourceGenNestedPropertyTests.UCfgForSource → NCMapper.Tests.FluentSourceGenNestedPropertyTests.UCfgForDto（Pipeline 启用时自动触发 PostMap）
+        /// </summary>
+        public static NCMapper.Tests.FluentSourceGenNestedPropertyTests.UCfgForDto? MapToUCfgForDto(this NCMapper.Tests.FluentSourceGenNestedPropertyTests.UCfgForSource src)
+        {
+            if (!NCMapper.MapPipeline.IsPipelineEnabled)
+                return GeneratedMapper.Map_UCfgForSource_To_UCfgForDto(src);
+            var __dst = GeneratedMapper.Map_UCfgForSource_To_UCfgForDto(src);
+            if (__dst != null) NCMapper.MapPipeline.RunPostMap(src, __dst);
+            return __dst;
+        }
+
+        /// <summary>
+        /// 直接映射：NCMapper.Tests.FluentSourceGenNestedPropertyTests.UCfgForSource → NCMapper.Tests.FluentSourceGenNestedPropertyTests.UCfgForDto（带 Action 回调，Pipeline 启用时自动触发 PostMap）
+        /// </summary>
+        public static NCMapper.Tests.FluentSourceGenNestedPropertyTests.UCfgForDto? MapToUCfgForDto(this NCMapper.Tests.FluentSourceGenNestedPropertyTests.UCfgForSource src, System.Action<NCMapper.Tests.FluentSourceGenNestedPropertyTests.UCfgForSource, NCMapper.Tests.FluentSourceGenNestedPropertyTests.UCfgForDto> action)
+        {
+            if (!NCMapper.MapPipeline.IsPipelineEnabled)
+                return GeneratedMapper.Map_UCfgForSource_To_UCfgForDto_WithAction(src, action);
+            var __dst = GeneratedMapper.Map_UCfgForSource_To_UCfgForDto_WithAction(src, action);
+            if (__dst != null) NCMapper.MapPipeline.RunPostMap(src, __dst);
+            return __dst;
+        }
+
+        /// <summary>
+        /// 列表映射：IEnumerable&lt;UCfgForSource&gt; → List&lt;UCfgForDto&gt;（Pipeline 启用时逐元素触发 PostMap）
+        /// </summary>
+        public static System.Collections.Generic.List<NCMapper.Tests.FluentSourceGenNestedPropertyTests.UCfgForDto>? MapToUCfgForDtoList(this System.Collections.Generic.IEnumerable<NCMapper.Tests.FluentSourceGenNestedPropertyTests.UCfgForSource> sources)
+        {
+            if (NCMapper.MapPipeline.IsPipelineEnabled)
+            {
+                // Fallback path: Pipeline degradation to runtime MapList (per-element PostMap). May fail under NativeAOT; see docs 05-Compose
+#pragma warning disable IL2026, IL3050
+                return NCMapper.Mapper.MapList<NCMapper.Tests.FluentSourceGenNestedPropertyTests.UCfgForSource, NCMapper.Tests.FluentSourceGenNestedPropertyTests.UCfgForDto>(sources);
+#pragma warning restore IL2026, IL3050
+            }
+            return GeneratedMapper.MapList_UCfgForSource_To_UCfgForDto(sources);
+        }
+
+        /// <summary>
+        /// 列表映射（带 Action 回调）：IEnumerable&lt;UCfgForSource&gt; → List&lt;UCfgForDto&gt;（Pipeline 启用时逐元素触发 PostMap）
+        /// </summary>
+        public static System.Collections.Generic.List<NCMapper.Tests.FluentSourceGenNestedPropertyTests.UCfgForDto>? MapToUCfgForDtoList(this System.Collections.Generic.IEnumerable<NCMapper.Tests.FluentSourceGenNestedPropertyTests.UCfgForSource> sources, System.Action<NCMapper.Tests.FluentSourceGenNestedPropertyTests.UCfgForSource, NCMapper.Tests.FluentSourceGenNestedPropertyTests.UCfgForDto> action)
+        {
+            if (NCMapper.MapPipeline.IsPipelineEnabled)
+            {
+                // Fallback path: Pipeline degradation to runtime MapList with action (per-element PostMap). May fail under NativeAOT; see docs 05-Compose
+#pragma warning disable IL2026, IL3050
+                return NCMapper.Mapper.MapList<NCMapper.Tests.FluentSourceGenNestedPropertyTests.UCfgForSource, NCMapper.Tests.FluentSourceGenNestedPropertyTests.UCfgForDto>(sources, action);
+#pragma warning restore IL2026, IL3050
+            }
+            return GeneratedMapper.MapList_UCfgForSource_To_UCfgForDto(sources, action);
+        }
+
+        /// <summary>
+        /// 更新映射：NCMapper.Tests.FluentSourceGenNestedPropertyTests.UCfgForSource → NCMapper.Tests.FluentSourceGenNestedPropertyTests.UCfgForDto（更新已有目标对象，Pipeline 启用时自动触发 PostMap）
+        /// </summary>
+        public static void MapToUCfgForDto(this NCMapper.Tests.FluentSourceGenNestedPropertyTests.UCfgForSource src, NCMapper.Tests.FluentSourceGenNestedPropertyTests.UCfgForDto dst)
+        {
+            if (!NCMapper.MapPipeline.IsPipelineEnabled)
+            {
+                GeneratedMapper.Map_UCfgForSource_To_UCfgForDto_Update(src, dst, null);
+                return;
+            }
+            GeneratedMapper.Map_UCfgForSource_To_UCfgForDto_Update(src, dst, null);
+            NCMapper.MapPipeline.RunPostMap(src, dst);
+        }
+
+        /// <summary>
+        /// 更新映射：NCMapper.Tests.FluentSourceGenNestedPropertyTests.UCfgForSource → NCMapper.Tests.FluentSourceGenNestedPropertyTests.UCfgForDto（更新已有目标对象，带 Action 回调，Pipeline 启用时自动触发 PostMap）
+        /// </summary>
+        public static void MapToUCfgForDto(this NCMapper.Tests.FluentSourceGenNestedPropertyTests.UCfgForSource src, NCMapper.Tests.FluentSourceGenNestedPropertyTests.UCfgForDto dst, System.Action<NCMapper.Tests.FluentSourceGenNestedPropertyTests.UCfgForSource, NCMapper.Tests.FluentSourceGenNestedPropertyTests.UCfgForDto> action)
+        {
+            if (!NCMapper.MapPipeline.IsPipelineEnabled)
+            {
+                GeneratedMapper.Map_UCfgForSource_To_UCfgForDto_Update(src, dst, action);
+                return;
+            }
+            GeneratedMapper.Map_UCfgForSource_To_UCfgForDto_Update(src, dst, action);
+            NCMapper.MapPipeline.RunPostMap(src, dst);
+        }
+
+        /// <summary>
+        /// 直接映射：NCMapper.Tests.FluentSourceGenNestedPropertyTests.UCfgForDto → NCMapper.Tests.FluentSourceGenNestedPropertyTests.UCfgForSource（Pipeline 启用时自动触发 PostMap）
+        /// </summary>
+        public static NCMapper.Tests.FluentSourceGenNestedPropertyTests.UCfgForSource? MapToUCfgForSource(this NCMapper.Tests.FluentSourceGenNestedPropertyTests.UCfgForDto src)
+        {
+            if (!NCMapper.MapPipeline.IsPipelineEnabled)
+                return GeneratedMapper.Map_UCfgForDto_To_UCfgForSource(src);
+            var __dst = GeneratedMapper.Map_UCfgForDto_To_UCfgForSource(src);
+            if (__dst != null) NCMapper.MapPipeline.RunPostMap(src, __dst);
+            return __dst;
+        }
+
+        /// <summary>
+        /// 直接映射：NCMapper.Tests.FluentSourceGenNestedPropertyTests.UCfgForDto → NCMapper.Tests.FluentSourceGenNestedPropertyTests.UCfgForSource（带 Action 回调，Pipeline 启用时自动触发 PostMap）
+        /// </summary>
+        public static NCMapper.Tests.FluentSourceGenNestedPropertyTests.UCfgForSource? MapToUCfgForSource(this NCMapper.Tests.FluentSourceGenNestedPropertyTests.UCfgForDto src, System.Action<NCMapper.Tests.FluentSourceGenNestedPropertyTests.UCfgForDto, NCMapper.Tests.FluentSourceGenNestedPropertyTests.UCfgForSource> action)
+        {
+            if (!NCMapper.MapPipeline.IsPipelineEnabled)
+                return GeneratedMapper.Map_UCfgForDto_To_UCfgForSource_WithAction(src, action);
+            var __dst = GeneratedMapper.Map_UCfgForDto_To_UCfgForSource_WithAction(src, action);
+            if (__dst != null) NCMapper.MapPipeline.RunPostMap(src, __dst);
+            return __dst;
+        }
+
+        /// <summary>
+        /// 列表映射：IEnumerable&lt;UCfgForDto&gt; → List&lt;UCfgForSource&gt;（Pipeline 启用时逐元素触发 PostMap）
+        /// </summary>
+        public static System.Collections.Generic.List<NCMapper.Tests.FluentSourceGenNestedPropertyTests.UCfgForSource>? MapToUCfgForSourceList(this System.Collections.Generic.IEnumerable<NCMapper.Tests.FluentSourceGenNestedPropertyTests.UCfgForDto> sources)
+        {
+            if (NCMapper.MapPipeline.IsPipelineEnabled)
+            {
+                // Fallback path: Pipeline degradation to runtime MapList (per-element PostMap). May fail under NativeAOT; see docs 05-Compose
+#pragma warning disable IL2026, IL3050
+                return NCMapper.Mapper.MapList<NCMapper.Tests.FluentSourceGenNestedPropertyTests.UCfgForDto, NCMapper.Tests.FluentSourceGenNestedPropertyTests.UCfgForSource>(sources);
+#pragma warning restore IL2026, IL3050
+            }
+            return GeneratedMapper.MapList_UCfgForDto_To_UCfgForSource(sources);
+        }
+
+        /// <summary>
+        /// 列表映射（带 Action 回调）：IEnumerable&lt;UCfgForDto&gt; → List&lt;UCfgForSource&gt;（Pipeline 启用时逐元素触发 PostMap）
+        /// </summary>
+        public static System.Collections.Generic.List<NCMapper.Tests.FluentSourceGenNestedPropertyTests.UCfgForSource>? MapToUCfgForSourceList(this System.Collections.Generic.IEnumerable<NCMapper.Tests.FluentSourceGenNestedPropertyTests.UCfgForDto> sources, System.Action<NCMapper.Tests.FluentSourceGenNestedPropertyTests.UCfgForDto, NCMapper.Tests.FluentSourceGenNestedPropertyTests.UCfgForSource> action)
+        {
+            if (NCMapper.MapPipeline.IsPipelineEnabled)
+            {
+                // Fallback path: Pipeline degradation to runtime MapList with action (per-element PostMap). May fail under NativeAOT; see docs 05-Compose
+#pragma warning disable IL2026, IL3050
+                return NCMapper.Mapper.MapList<NCMapper.Tests.FluentSourceGenNestedPropertyTests.UCfgForDto, NCMapper.Tests.FluentSourceGenNestedPropertyTests.UCfgForSource>(sources, action);
+#pragma warning restore IL2026, IL3050
+            }
+            return GeneratedMapper.MapList_UCfgForDto_To_UCfgForSource(sources, action);
+        }
+
+        /// <summary>
+        /// 更新映射：NCMapper.Tests.FluentSourceGenNestedPropertyTests.UCfgForDto → NCMapper.Tests.FluentSourceGenNestedPropertyTests.UCfgForSource（更新已有目标对象，Pipeline 启用时自动触发 PostMap）
+        /// </summary>
+        public static void MapToUCfgForSource(this NCMapper.Tests.FluentSourceGenNestedPropertyTests.UCfgForDto src, NCMapper.Tests.FluentSourceGenNestedPropertyTests.UCfgForSource dst)
+        {
+            if (!NCMapper.MapPipeline.IsPipelineEnabled)
+            {
+                GeneratedMapper.Map_UCfgForDto_To_UCfgForSource_Update(src, dst, null);
+                return;
+            }
+            GeneratedMapper.Map_UCfgForDto_To_UCfgForSource_Update(src, dst, null);
+            NCMapper.MapPipeline.RunPostMap(src, dst);
+        }
+
+        /// <summary>
+        /// 更新映射：NCMapper.Tests.FluentSourceGenNestedPropertyTests.UCfgForDto → NCMapper.Tests.FluentSourceGenNestedPropertyTests.UCfgForSource（更新已有目标对象，带 Action 回调，Pipeline 启用时自动触发 PostMap）
+        /// </summary>
+        public static void MapToUCfgForSource(this NCMapper.Tests.FluentSourceGenNestedPropertyTests.UCfgForDto src, NCMapper.Tests.FluentSourceGenNestedPropertyTests.UCfgForSource dst, System.Action<NCMapper.Tests.FluentSourceGenNestedPropertyTests.UCfgForDto, NCMapper.Tests.FluentSourceGenNestedPropertyTests.UCfgForSource> action)
+        {
+            if (!NCMapper.MapPipeline.IsPipelineEnabled)
+            {
+                GeneratedMapper.Map_UCfgForDto_To_UCfgForSource_Update(src, dst, action);
+                return;
+            }
+            GeneratedMapper.Map_UCfgForDto_To_UCfgForSource_Update(src, dst, action);
+            NCMapper.MapPipeline.RunPostMap(src, dst);
+        }
+
+        /// <summary>
+        /// 直接映射：NCMapper.Tests.FreeSqlComposePocRegressionUTests.USite → NCMapper.Tests.FreeSqlComposePocRegressionUTests.USiteNestedDto（Pipeline 启用时自动触发 PostMap）
+        /// </summary>
+        public static NCMapper.Tests.FreeSqlComposePocRegressionUTests.USiteNestedDto? MapToUSiteNestedDto(this NCMapper.Tests.FreeSqlComposePocRegressionUTests.USite src)
+        {
+            if (!NCMapper.MapPipeline.IsPipelineEnabled)
+                return GeneratedMapper.Map_USite_To_USiteNestedDto(src);
+            var __dst = GeneratedMapper.Map_USite_To_USiteNestedDto(src);
+            if (__dst != null) NCMapper.MapPipeline.RunPostMap(src, __dst);
+            return __dst;
+        }
+
+        /// <summary>
+        /// 直接映射：NCMapper.Tests.FreeSqlComposePocRegressionUTests.USite → NCMapper.Tests.FreeSqlComposePocRegressionUTests.USiteNestedDto（带 Action 回调，Pipeline 启用时自动触发 PostMap）
+        /// </summary>
+        public static NCMapper.Tests.FreeSqlComposePocRegressionUTests.USiteNestedDto? MapToUSiteNestedDto(this NCMapper.Tests.FreeSqlComposePocRegressionUTests.USite src, System.Action<NCMapper.Tests.FreeSqlComposePocRegressionUTests.USite, NCMapper.Tests.FreeSqlComposePocRegressionUTests.USiteNestedDto> action)
+        {
+            if (!NCMapper.MapPipeline.IsPipelineEnabled)
+                return GeneratedMapper.Map_USite_To_USiteNestedDto_WithAction(src, action);
+            var __dst = GeneratedMapper.Map_USite_To_USiteNestedDto_WithAction(src, action);
+            if (__dst != null) NCMapper.MapPipeline.RunPostMap(src, __dst);
+            return __dst;
+        }
+
+        /// <summary>
+        /// 列表映射：IEnumerable&lt;USite&gt; → List&lt;USiteNestedDto&gt;（Pipeline 启用时逐元素触发 PostMap）
+        /// </summary>
+        public static System.Collections.Generic.List<NCMapper.Tests.FreeSqlComposePocRegressionUTests.USiteNestedDto>? MapToUSiteNestedDtoList(this System.Collections.Generic.IEnumerable<NCMapper.Tests.FreeSqlComposePocRegressionUTests.USite> sources)
+        {
+            if (NCMapper.MapPipeline.IsPipelineEnabled)
+            {
+                // Fallback path: Pipeline degradation to runtime MapList (per-element PostMap). May fail under NativeAOT; see docs 05-Compose
+#pragma warning disable IL2026, IL3050
+                return NCMapper.Mapper.MapList<NCMapper.Tests.FreeSqlComposePocRegressionUTests.USite, NCMapper.Tests.FreeSqlComposePocRegressionUTests.USiteNestedDto>(sources);
+#pragma warning restore IL2026, IL3050
+            }
+            return GeneratedMapper.MapList_USite_To_USiteNestedDto(sources);
+        }
+
+        /// <summary>
+        /// 列表映射（带 Action 回调）：IEnumerable&lt;USite&gt; → List&lt;USiteNestedDto&gt;（Pipeline 启用时逐元素触发 PostMap）
+        /// </summary>
+        public static System.Collections.Generic.List<NCMapper.Tests.FreeSqlComposePocRegressionUTests.USiteNestedDto>? MapToUSiteNestedDtoList(this System.Collections.Generic.IEnumerable<NCMapper.Tests.FreeSqlComposePocRegressionUTests.USite> sources, System.Action<NCMapper.Tests.FreeSqlComposePocRegressionUTests.USite, NCMapper.Tests.FreeSqlComposePocRegressionUTests.USiteNestedDto> action)
+        {
+            if (NCMapper.MapPipeline.IsPipelineEnabled)
+            {
+                // Fallback path: Pipeline degradation to runtime MapList with action (per-element PostMap). May fail under NativeAOT; see docs 05-Compose
+#pragma warning disable IL2026, IL3050
+                return NCMapper.Mapper.MapList<NCMapper.Tests.FreeSqlComposePocRegressionUTests.USite, NCMapper.Tests.FreeSqlComposePocRegressionUTests.USiteNestedDto>(sources, action);
+#pragma warning restore IL2026, IL3050
+            }
+            return GeneratedMapper.MapList_USite_To_USiteNestedDto(sources, action);
+        }
+
+        /// <summary>
+        /// 更新映射：NCMapper.Tests.FreeSqlComposePocRegressionUTests.USite → NCMapper.Tests.FreeSqlComposePocRegressionUTests.USiteNestedDto（更新已有目标对象，Pipeline 启用时自动触发 PostMap）
+        /// </summary>
+        public static void MapToUSiteNestedDto(this NCMapper.Tests.FreeSqlComposePocRegressionUTests.USite src, NCMapper.Tests.FreeSqlComposePocRegressionUTests.USiteNestedDto dst)
+        {
+            if (!NCMapper.MapPipeline.IsPipelineEnabled)
+            {
+                GeneratedMapper.Map_USite_To_USiteNestedDto_Update(src, dst, null);
+                return;
+            }
+            GeneratedMapper.Map_USite_To_USiteNestedDto_Update(src, dst, null);
+            NCMapper.MapPipeline.RunPostMap(src, dst);
+        }
+
+        /// <summary>
+        /// 更新映射：NCMapper.Tests.FreeSqlComposePocRegressionUTests.USite → NCMapper.Tests.FreeSqlComposePocRegressionUTests.USiteNestedDto（更新已有目标对象，带 Action 回调，Pipeline 启用时自动触发 PostMap）
+        /// </summary>
+        public static void MapToUSiteNestedDto(this NCMapper.Tests.FreeSqlComposePocRegressionUTests.USite src, NCMapper.Tests.FreeSqlComposePocRegressionUTests.USiteNestedDto dst, System.Action<NCMapper.Tests.FreeSqlComposePocRegressionUTests.USite, NCMapper.Tests.FreeSqlComposePocRegressionUTests.USiteNestedDto> action)
+        {
+            if (!NCMapper.MapPipeline.IsPipelineEnabled)
+            {
+                GeneratedMapper.Map_USite_To_USiteNestedDto_Update(src, dst, action);
+                return;
+            }
+            GeneratedMapper.Map_USite_To_USiteNestedDto_Update(src, dst, action);
+            NCMapper.MapPipeline.RunPostMap(src, dst);
+        }
+
+        /// <summary>
+        /// 直接映射：NCMapper.Tests.FreeSqlComposePocRegressionUTests.USiteNestedDto → NCMapper.Tests.FreeSqlComposePocRegressionUTests.USite（Pipeline 启用时自动触发 PostMap）
+        /// </summary>
+        public static NCMapper.Tests.FreeSqlComposePocRegressionUTests.USite? MapToUSite(this NCMapper.Tests.FreeSqlComposePocRegressionUTests.USiteNestedDto src)
+        {
+            if (!NCMapper.MapPipeline.IsPipelineEnabled)
+                return GeneratedMapper.Map_USiteNestedDto_To_USite(src);
+            var __dst = GeneratedMapper.Map_USiteNestedDto_To_USite(src);
+            if (__dst != null) NCMapper.MapPipeline.RunPostMap(src, __dst);
+            return __dst;
+        }
+
+        /// <summary>
+        /// 直接映射：NCMapper.Tests.FreeSqlComposePocRegressionUTests.USiteNestedDto → NCMapper.Tests.FreeSqlComposePocRegressionUTests.USite（带 Action 回调，Pipeline 启用时自动触发 PostMap）
+        /// </summary>
+        public static NCMapper.Tests.FreeSqlComposePocRegressionUTests.USite? MapToUSite(this NCMapper.Tests.FreeSqlComposePocRegressionUTests.USiteNestedDto src, System.Action<NCMapper.Tests.FreeSqlComposePocRegressionUTests.USiteNestedDto, NCMapper.Tests.FreeSqlComposePocRegressionUTests.USite> action)
+        {
+            if (!NCMapper.MapPipeline.IsPipelineEnabled)
+                return GeneratedMapper.Map_USiteNestedDto_To_USite_WithAction(src, action);
+            var __dst = GeneratedMapper.Map_USiteNestedDto_To_USite_WithAction(src, action);
+            if (__dst != null) NCMapper.MapPipeline.RunPostMap(src, __dst);
+            return __dst;
+        }
+
+        /// <summary>
+        /// 列表映射：IEnumerable&lt;USiteNestedDto&gt; → List&lt;USite&gt;（Pipeline 启用时逐元素触发 PostMap）
+        /// </summary>
+        public static System.Collections.Generic.List<NCMapper.Tests.FreeSqlComposePocRegressionUTests.USite>? MapToUSiteList(this System.Collections.Generic.IEnumerable<NCMapper.Tests.FreeSqlComposePocRegressionUTests.USiteNestedDto> sources)
+        {
+            if (NCMapper.MapPipeline.IsPipelineEnabled)
+            {
+                // Fallback path: Pipeline degradation to runtime MapList (per-element PostMap). May fail under NativeAOT; see docs 05-Compose
+#pragma warning disable IL2026, IL3050
+                return NCMapper.Mapper.MapList<NCMapper.Tests.FreeSqlComposePocRegressionUTests.USiteNestedDto, NCMapper.Tests.FreeSqlComposePocRegressionUTests.USite>(sources);
+#pragma warning restore IL2026, IL3050
+            }
+            return GeneratedMapper.MapList_USiteNestedDto_To_USite(sources);
+        }
+
+        /// <summary>
+        /// 列表映射（带 Action 回调）：IEnumerable&lt;USiteNestedDto&gt; → List&lt;USite&gt;（Pipeline 启用时逐元素触发 PostMap）
+        /// </summary>
+        public static System.Collections.Generic.List<NCMapper.Tests.FreeSqlComposePocRegressionUTests.USite>? MapToUSiteList(this System.Collections.Generic.IEnumerable<NCMapper.Tests.FreeSqlComposePocRegressionUTests.USiteNestedDto> sources, System.Action<NCMapper.Tests.FreeSqlComposePocRegressionUTests.USiteNestedDto, NCMapper.Tests.FreeSqlComposePocRegressionUTests.USite> action)
+        {
+            if (NCMapper.MapPipeline.IsPipelineEnabled)
+            {
+                // Fallback path: Pipeline degradation to runtime MapList with action (per-element PostMap). May fail under NativeAOT; see docs 05-Compose
+#pragma warning disable IL2026, IL3050
+                return NCMapper.Mapper.MapList<NCMapper.Tests.FreeSqlComposePocRegressionUTests.USiteNestedDto, NCMapper.Tests.FreeSqlComposePocRegressionUTests.USite>(sources, action);
+#pragma warning restore IL2026, IL3050
+            }
+            return GeneratedMapper.MapList_USiteNestedDto_To_USite(sources, action);
+        }
+
+        /// <summary>
+        /// 更新映射：NCMapper.Tests.FreeSqlComposePocRegressionUTests.USiteNestedDto → NCMapper.Tests.FreeSqlComposePocRegressionUTests.USite（更新已有目标对象，Pipeline 启用时自动触发 PostMap）
+        /// </summary>
+        public static void MapToUSite(this NCMapper.Tests.FreeSqlComposePocRegressionUTests.USiteNestedDto src, NCMapper.Tests.FreeSqlComposePocRegressionUTests.USite dst)
+        {
+            if (!NCMapper.MapPipeline.IsPipelineEnabled)
+            {
+                GeneratedMapper.Map_USiteNestedDto_To_USite_Update(src, dst, null);
+                return;
+            }
+            GeneratedMapper.Map_USiteNestedDto_To_USite_Update(src, dst, null);
+            NCMapper.MapPipeline.RunPostMap(src, dst);
+        }
+
+        /// <summary>
+        /// 更新映射：NCMapper.Tests.FreeSqlComposePocRegressionUTests.USiteNestedDto → NCMapper.Tests.FreeSqlComposePocRegressionUTests.USite（更新已有目标对象，带 Action 回调，Pipeline 启用时自动触发 PostMap）
+        /// </summary>
+        public static void MapToUSite(this NCMapper.Tests.FreeSqlComposePocRegressionUTests.USiteNestedDto src, NCMapper.Tests.FreeSqlComposePocRegressionUTests.USite dst, System.Action<NCMapper.Tests.FreeSqlComposePocRegressionUTests.USiteNestedDto, NCMapper.Tests.FreeSqlComposePocRegressionUTests.USite> action)
+        {
+            if (!NCMapper.MapPipeline.IsPipelineEnabled)
+            {
+                GeneratedMapper.Map_USiteNestedDto_To_USite_Update(src, dst, action);
+                return;
+            }
+            GeneratedMapper.Map_USiteNestedDto_To_USite_Update(src, dst, action);
+            NCMapper.MapPipeline.RunPostMap(src, dst);
+        }
+
+        /// <summary>
+        /// 直接映射：NCMapper.Tests.FreeSqlComposePocRegressionUTests.UDept → NCMapper.Tests.FreeSqlComposePocRegressionUTests.UDeptDto（Pipeline 启用时自动触发 PostMap）
+        /// </summary>
+        public static NCMapper.Tests.FreeSqlComposePocRegressionUTests.UDeptDto? MapToUDeptDto(this NCMapper.Tests.FreeSqlComposePocRegressionUTests.UDept src)
+        {
+            if (!NCMapper.MapPipeline.IsPipelineEnabled)
+                return GeneratedMapper.Map_UDept_To_UDeptDto(src);
+            var __dst = GeneratedMapper.Map_UDept_To_UDeptDto(src);
+            if (__dst != null) NCMapper.MapPipeline.RunPostMap(src, __dst);
+            return __dst;
+        }
+
+        /// <summary>
+        /// 直接映射：NCMapper.Tests.FreeSqlComposePocRegressionUTests.UDept → NCMapper.Tests.FreeSqlComposePocRegressionUTests.UDeptDto（带 Action 回调，Pipeline 启用时自动触发 PostMap）
+        /// </summary>
+        public static NCMapper.Tests.FreeSqlComposePocRegressionUTests.UDeptDto? MapToUDeptDto(this NCMapper.Tests.FreeSqlComposePocRegressionUTests.UDept src, System.Action<NCMapper.Tests.FreeSqlComposePocRegressionUTests.UDept, NCMapper.Tests.FreeSqlComposePocRegressionUTests.UDeptDto> action)
+        {
+            if (!NCMapper.MapPipeline.IsPipelineEnabled)
+                return GeneratedMapper.Map_UDept_To_UDeptDto_WithAction(src, action);
+            var __dst = GeneratedMapper.Map_UDept_To_UDeptDto_WithAction(src, action);
+            if (__dst != null) NCMapper.MapPipeline.RunPostMap(src, __dst);
+            return __dst;
+        }
+
+        /// <summary>
+        /// 列表映射：IEnumerable&lt;UDept&gt; → List&lt;UDeptDto&gt;（Pipeline 启用时逐元素触发 PostMap）
+        /// </summary>
+        public static System.Collections.Generic.List<NCMapper.Tests.FreeSqlComposePocRegressionUTests.UDeptDto>? MapToUDeptDtoList(this System.Collections.Generic.IEnumerable<NCMapper.Tests.FreeSqlComposePocRegressionUTests.UDept> sources)
+        {
+            if (NCMapper.MapPipeline.IsPipelineEnabled)
+            {
+                // Fallback path: Pipeline degradation to runtime MapList (per-element PostMap). May fail under NativeAOT; see docs 05-Compose
+#pragma warning disable IL2026, IL3050
+                return NCMapper.Mapper.MapList<NCMapper.Tests.FreeSqlComposePocRegressionUTests.UDept, NCMapper.Tests.FreeSqlComposePocRegressionUTests.UDeptDto>(sources);
+#pragma warning restore IL2026, IL3050
+            }
+            return GeneratedMapper.MapList_UDept_To_UDeptDto(sources);
+        }
+
+        /// <summary>
+        /// 列表映射（带 Action 回调）：IEnumerable&lt;UDept&gt; → List&lt;UDeptDto&gt;（Pipeline 启用时逐元素触发 PostMap）
+        /// </summary>
+        public static System.Collections.Generic.List<NCMapper.Tests.FreeSqlComposePocRegressionUTests.UDeptDto>? MapToUDeptDtoList(this System.Collections.Generic.IEnumerable<NCMapper.Tests.FreeSqlComposePocRegressionUTests.UDept> sources, System.Action<NCMapper.Tests.FreeSqlComposePocRegressionUTests.UDept, NCMapper.Tests.FreeSqlComposePocRegressionUTests.UDeptDto> action)
+        {
+            if (NCMapper.MapPipeline.IsPipelineEnabled)
+            {
+                // Fallback path: Pipeline degradation to runtime MapList with action (per-element PostMap). May fail under NativeAOT; see docs 05-Compose
+#pragma warning disable IL2026, IL3050
+                return NCMapper.Mapper.MapList<NCMapper.Tests.FreeSqlComposePocRegressionUTests.UDept, NCMapper.Tests.FreeSqlComposePocRegressionUTests.UDeptDto>(sources, action);
+#pragma warning restore IL2026, IL3050
+            }
+            return GeneratedMapper.MapList_UDept_To_UDeptDto(sources, action);
+        }
+
+        /// <summary>
+        /// 更新映射：NCMapper.Tests.FreeSqlComposePocRegressionUTests.UDept → NCMapper.Tests.FreeSqlComposePocRegressionUTests.UDeptDto（更新已有目标对象，Pipeline 启用时自动触发 PostMap）
+        /// </summary>
+        public static void MapToUDeptDto(this NCMapper.Tests.FreeSqlComposePocRegressionUTests.UDept src, NCMapper.Tests.FreeSqlComposePocRegressionUTests.UDeptDto dst)
+        {
+            if (!NCMapper.MapPipeline.IsPipelineEnabled)
+            {
+                GeneratedMapper.Map_UDept_To_UDeptDto_Update(src, dst, null);
+                return;
+            }
+            GeneratedMapper.Map_UDept_To_UDeptDto_Update(src, dst, null);
+            NCMapper.MapPipeline.RunPostMap(src, dst);
+        }
+
+        /// <summary>
+        /// 更新映射：NCMapper.Tests.FreeSqlComposePocRegressionUTests.UDept → NCMapper.Tests.FreeSqlComposePocRegressionUTests.UDeptDto（更新已有目标对象，带 Action 回调，Pipeline 启用时自动触发 PostMap）
+        /// </summary>
+        public static void MapToUDeptDto(this NCMapper.Tests.FreeSqlComposePocRegressionUTests.UDept src, NCMapper.Tests.FreeSqlComposePocRegressionUTests.UDeptDto dst, System.Action<NCMapper.Tests.FreeSqlComposePocRegressionUTests.UDept, NCMapper.Tests.FreeSqlComposePocRegressionUTests.UDeptDto> action)
+        {
+            if (!NCMapper.MapPipeline.IsPipelineEnabled)
+            {
+                GeneratedMapper.Map_UDept_To_UDeptDto_Update(src, dst, action);
+                return;
+            }
+            GeneratedMapper.Map_UDept_To_UDeptDto_Update(src, dst, action);
+            NCMapper.MapPipeline.RunPostMap(src, dst);
+        }
+
+        /// <summary>
+        /// 直接映射：NCMapper.Tests.FreeSqlComposePocRegressionUTests.UDeptDto → NCMapper.Tests.FreeSqlComposePocRegressionUTests.UDept（Pipeline 启用时自动触发 PostMap）
+        /// </summary>
+        public static NCMapper.Tests.FreeSqlComposePocRegressionUTests.UDept? MapToUDept(this NCMapper.Tests.FreeSqlComposePocRegressionUTests.UDeptDto src)
+        {
+            if (!NCMapper.MapPipeline.IsPipelineEnabled)
+                return GeneratedMapper.Map_UDeptDto_To_UDept(src);
+            var __dst = GeneratedMapper.Map_UDeptDto_To_UDept(src);
+            if (__dst != null) NCMapper.MapPipeline.RunPostMap(src, __dst);
+            return __dst;
+        }
+
+        /// <summary>
+        /// 直接映射：NCMapper.Tests.FreeSqlComposePocRegressionUTests.UDeptDto → NCMapper.Tests.FreeSqlComposePocRegressionUTests.UDept（带 Action 回调，Pipeline 启用时自动触发 PostMap）
+        /// </summary>
+        public static NCMapper.Tests.FreeSqlComposePocRegressionUTests.UDept? MapToUDept(this NCMapper.Tests.FreeSqlComposePocRegressionUTests.UDeptDto src, System.Action<NCMapper.Tests.FreeSqlComposePocRegressionUTests.UDeptDto, NCMapper.Tests.FreeSqlComposePocRegressionUTests.UDept> action)
+        {
+            if (!NCMapper.MapPipeline.IsPipelineEnabled)
+                return GeneratedMapper.Map_UDeptDto_To_UDept_WithAction(src, action);
+            var __dst = GeneratedMapper.Map_UDeptDto_To_UDept_WithAction(src, action);
+            if (__dst != null) NCMapper.MapPipeline.RunPostMap(src, __dst);
+            return __dst;
+        }
+
+        /// <summary>
+        /// 列表映射：IEnumerable&lt;UDeptDto&gt; → List&lt;UDept&gt;（Pipeline 启用时逐元素触发 PostMap）
+        /// </summary>
+        public static System.Collections.Generic.List<NCMapper.Tests.FreeSqlComposePocRegressionUTests.UDept>? MapToUDeptList(this System.Collections.Generic.IEnumerable<NCMapper.Tests.FreeSqlComposePocRegressionUTests.UDeptDto> sources)
+        {
+            if (NCMapper.MapPipeline.IsPipelineEnabled)
+            {
+                // Fallback path: Pipeline degradation to runtime MapList (per-element PostMap). May fail under NativeAOT; see docs 05-Compose
+#pragma warning disable IL2026, IL3050
+                return NCMapper.Mapper.MapList<NCMapper.Tests.FreeSqlComposePocRegressionUTests.UDeptDto, NCMapper.Tests.FreeSqlComposePocRegressionUTests.UDept>(sources);
+#pragma warning restore IL2026, IL3050
+            }
+            return GeneratedMapper.MapList_UDeptDto_To_UDept(sources);
+        }
+
+        /// <summary>
+        /// 列表映射（带 Action 回调）：IEnumerable&lt;UDeptDto&gt; → List&lt;UDept&gt;（Pipeline 启用时逐元素触发 PostMap）
+        /// </summary>
+        public static System.Collections.Generic.List<NCMapper.Tests.FreeSqlComposePocRegressionUTests.UDept>? MapToUDeptList(this System.Collections.Generic.IEnumerable<NCMapper.Tests.FreeSqlComposePocRegressionUTests.UDeptDto> sources, System.Action<NCMapper.Tests.FreeSqlComposePocRegressionUTests.UDeptDto, NCMapper.Tests.FreeSqlComposePocRegressionUTests.UDept> action)
+        {
+            if (NCMapper.MapPipeline.IsPipelineEnabled)
+            {
+                // Fallback path: Pipeline degradation to runtime MapList with action (per-element PostMap). May fail under NativeAOT; see docs 05-Compose
+#pragma warning disable IL2026, IL3050
+                return NCMapper.Mapper.MapList<NCMapper.Tests.FreeSqlComposePocRegressionUTests.UDeptDto, NCMapper.Tests.FreeSqlComposePocRegressionUTests.UDept>(sources, action);
+#pragma warning restore IL2026, IL3050
+            }
+            return GeneratedMapper.MapList_UDeptDto_To_UDept(sources, action);
+        }
+
+        /// <summary>
+        /// 更新映射：NCMapper.Tests.FreeSqlComposePocRegressionUTests.UDeptDto → NCMapper.Tests.FreeSqlComposePocRegressionUTests.UDept（更新已有目标对象，Pipeline 启用时自动触发 PostMap）
+        /// </summary>
+        public static void MapToUDept(this NCMapper.Tests.FreeSqlComposePocRegressionUTests.UDeptDto src, NCMapper.Tests.FreeSqlComposePocRegressionUTests.UDept dst)
+        {
+            if (!NCMapper.MapPipeline.IsPipelineEnabled)
+            {
+                GeneratedMapper.Map_UDeptDto_To_UDept_Update(src, dst, null);
+                return;
+            }
+            GeneratedMapper.Map_UDeptDto_To_UDept_Update(src, dst, null);
+            NCMapper.MapPipeline.RunPostMap(src, dst);
+        }
+
+        /// <summary>
+        /// 更新映射：NCMapper.Tests.FreeSqlComposePocRegressionUTests.UDeptDto → NCMapper.Tests.FreeSqlComposePocRegressionUTests.UDept（更新已有目标对象，带 Action 回调，Pipeline 启用时自动触发 PostMap）
+        /// </summary>
+        public static void MapToUDept(this NCMapper.Tests.FreeSqlComposePocRegressionUTests.UDeptDto src, NCMapper.Tests.FreeSqlComposePocRegressionUTests.UDept dst, System.Action<NCMapper.Tests.FreeSqlComposePocRegressionUTests.UDeptDto, NCMapper.Tests.FreeSqlComposePocRegressionUTests.UDept> action)
+        {
+            if (!NCMapper.MapPipeline.IsPipelineEnabled)
+            {
+                GeneratedMapper.Map_UDeptDto_To_UDept_Update(src, dst, action);
+                return;
+            }
+            GeneratedMapper.Map_UDeptDto_To_UDept_Update(src, dst, action);
+            NCMapper.MapPipeline.RunPostMap(src, dst);
+        }
+
+        /// <summary>
         /// 直接映射：NCMapper.Tests.Models.BmEntity → NCMapper.Tests.Models.BmDto（Pipeline 启用时自动触发 PostMap）
         /// </summary>
         public static NCMapper.Tests.Models.BmDto? MapToBmDto(this NCMapper.Tests.Models.BmEntity src)
@@ -155695,6 +158991,15 @@ namespace NCMapper.Generated
             NCMapper.Mapper.RegisterGeneratedUpdate<NCMapper.Tests.CollectionIndexValidatorTests.VBlog, NCMapper.Tests.CollectionIndexValidatorTests.VBlogDtoInvalid>(GeneratedMapper.Map_VBlog_To_VBlogDtoInvalid_Update);
             NCMapper.Mapper.RegisterGeneratedList<NCMapper.Tests.CollectionIndexValidatorTests.VBlog, NCMapper.Tests.CollectionIndexValidatorTests.VBlogDtoInvalid>(GeneratedMapper.MapList_VBlog_To_VBlogDtoInvalid);
             NCMapper.Mapper.RegisterGeneratedListInto<NCMapper.Tests.CollectionIndexValidatorTests.VBlog, NCMapper.Tests.CollectionIndexValidatorTests.VBlogDtoInvalid>(GeneratedMapper.MapListInto_VBlog_To_VBlogDtoInvalid);
+            NCMapper.Mapper.RegisterGeneratedCore<NCMapper.Tests.FluentSourceGenNestedPropertyTests.AttrSite, NCMapper.Tests.FluentSourceGenNestedPropertyTests.AttrSiteDto>(GeneratedMapper.Map_AttrSite_To_AttrSiteDto);
+            NCMapper.Mapper.RegisterGenerated<NCMapper.Tests.FluentSourceGenNestedPropertyTests.AttrSite, NCMapper.Tests.FluentSourceGenNestedPropertyTests.AttrSiteDto>(GeneratedMapper.Map_AttrSite_To_AttrSiteDto_WithAction);
+            NCMapper.Mapper.RegisterGeneratedUpdate<NCMapper.Tests.FluentSourceGenNestedPropertyTests.AttrSite, NCMapper.Tests.FluentSourceGenNestedPropertyTests.AttrSiteDto>(GeneratedMapper.Map_AttrSite_To_AttrSiteDto_Update);
+            NCMapper.Mapper.RegisterGeneratedList<NCMapper.Tests.FluentSourceGenNestedPropertyTests.AttrSite, NCMapper.Tests.FluentSourceGenNestedPropertyTests.AttrSiteDto>(GeneratedMapper.MapList_AttrSite_To_AttrSiteDto);
+            NCMapper.Mapper.RegisterGeneratedListInto<NCMapper.Tests.FluentSourceGenNestedPropertyTests.AttrSite, NCMapper.Tests.FluentSourceGenNestedPropertyTests.AttrSiteDto>(GeneratedMapper.MapListInto_AttrSite_To_AttrSiteDto);
+            NCMapper.Mapper.RegisterGeneratedCore<NCMapper.Tests.FluentSourceGenNestedPropertyTests.AttrSiteDto, NCMapper.Tests.FluentSourceGenNestedPropertyTests.AttrSite>(GeneratedMapper.Map_AttrSiteDto_To_AttrSite);
+            NCMapper.Mapper.RegisterGenerated<NCMapper.Tests.FluentSourceGenNestedPropertyTests.AttrSiteDto, NCMapper.Tests.FluentSourceGenNestedPropertyTests.AttrSite>(GeneratedMapper.Map_AttrSiteDto_To_AttrSite_WithAction);
+            NCMapper.Mapper.RegisterGeneratedUpdate<NCMapper.Tests.FluentSourceGenNestedPropertyTests.AttrSiteDto, NCMapper.Tests.FluentSourceGenNestedPropertyTests.AttrSite>(GeneratedMapper.Map_AttrSiteDto_To_AttrSite_Update);
+            NCMapper.Mapper.RegisterGeneratedList<NCMapper.Tests.FluentSourceGenNestedPropertyTests.AttrSiteDto, NCMapper.Tests.FluentSourceGenNestedPropertyTests.AttrSite>(GeneratedMapper.MapList_AttrSiteDto_To_AttrSite);
             NCMapper.Mapper.RegisterGeneratedCore<NCMapper.Tests.Models.ComposeNestedMainSource, NCMapper.Tests.Models.ComposeNestedDto>(GeneratedMapper.Map_ComposeNestedMainSource_To_ComposeNestedDto);
             NCMapper.Mapper.RegisterGenerated<NCMapper.Tests.Models.ComposeNestedMainSource, NCMapper.Tests.Models.ComposeNestedDto>(GeneratedMapper.Map_ComposeNestedMainSource_To_ComposeNestedDto_WithAction);
             NCMapper.Mapper.RegisterGeneratedUpdate<NCMapper.Tests.Models.ComposeNestedMainSource, NCMapper.Tests.Models.ComposeNestedDto>(GeneratedMapper.Map_ComposeNestedMainSource_To_ComposeNestedDto_Update);
@@ -157948,6 +161253,51 @@ namespace NCMapper.Generated
             NCMapper.Mapper.RegisterGenerated<NCMapper.Tests.SourceSideTraceDto, NCMapper.Tests.TracerSourceEntity>(GeneratedMapper.Map_SourceSideTraceDto_To_TracerSourceEntity_WithAction);
             NCMapper.Mapper.RegisterGeneratedUpdate<NCMapper.Tests.SourceSideTraceDto, NCMapper.Tests.TracerSourceEntity>(GeneratedMapper.Map_SourceSideTraceDto_To_TracerSourceEntity_Update);
             NCMapper.Mapper.RegisterGeneratedList<NCMapper.Tests.SourceSideTraceDto, NCMapper.Tests.TracerSourceEntity>(GeneratedMapper.MapList_SourceSideTraceDto_To_TracerSourceEntity);
+            NCMapper.Mapper.RegisterGeneratedCore<NCMapper.Tests.FluentSourceGenNestedPropertyTests.Site, NCMapper.Tests.FluentSourceGenNestedPropertyTests.SiteNestedDto>(GeneratedMapper.Map_Site_To_SiteNestedDto);
+            NCMapper.Mapper.RegisterGenerated<NCMapper.Tests.FluentSourceGenNestedPropertyTests.Site, NCMapper.Tests.FluentSourceGenNestedPropertyTests.SiteNestedDto>(GeneratedMapper.Map_Site_To_SiteNestedDto_WithAction);
+            NCMapper.Mapper.RegisterGeneratedUpdate<NCMapper.Tests.FluentSourceGenNestedPropertyTests.Site, NCMapper.Tests.FluentSourceGenNestedPropertyTests.SiteNestedDto>(GeneratedMapper.Map_Site_To_SiteNestedDto_Update);
+            NCMapper.Mapper.RegisterGeneratedList<NCMapper.Tests.FluentSourceGenNestedPropertyTests.Site, NCMapper.Tests.FluentSourceGenNestedPropertyTests.SiteNestedDto>(GeneratedMapper.MapList_Site_To_SiteNestedDto);
+            NCMapper.Mapper.RegisterGeneratedListInto<NCMapper.Tests.FluentSourceGenNestedPropertyTests.Site, NCMapper.Tests.FluentSourceGenNestedPropertyTests.SiteNestedDto>(GeneratedMapper.MapListInto_Site_To_SiteNestedDto);
+            NCMapper.Mapper.RegisterGeneratedCore<NCMapper.Tests.FluentSourceGenNestedPropertyTests.SiteNestedDto, NCMapper.Tests.FluentSourceGenNestedPropertyTests.Site>(GeneratedMapper.Map_SiteNestedDto_To_Site);
+            NCMapper.Mapper.RegisterGenerated<NCMapper.Tests.FluentSourceGenNestedPropertyTests.SiteNestedDto, NCMapper.Tests.FluentSourceGenNestedPropertyTests.Site>(GeneratedMapper.Map_SiteNestedDto_To_Site_WithAction);
+            NCMapper.Mapper.RegisterGeneratedUpdate<NCMapper.Tests.FluentSourceGenNestedPropertyTests.SiteNestedDto, NCMapper.Tests.FluentSourceGenNestedPropertyTests.Site>(GeneratedMapper.Map_SiteNestedDto_To_Site_Update);
+            NCMapper.Mapper.RegisterGeneratedList<NCMapper.Tests.FluentSourceGenNestedPropertyTests.SiteNestedDto, NCMapper.Tests.FluentSourceGenNestedPropertyTests.Site>(GeneratedMapper.MapList_SiteNestedDto_To_Site);
+            NCMapper.Mapper.RegisterGeneratedCore<NCMapper.Tests.FluentSourceGenNestedPropertyTests.Dept, NCMapper.Tests.FluentSourceGenNestedPropertyTests.DeptDto>(GeneratedMapper.Map_Dept_To_DeptDto);
+            NCMapper.Mapper.RegisterGenerated<NCMapper.Tests.FluentSourceGenNestedPropertyTests.Dept, NCMapper.Tests.FluentSourceGenNestedPropertyTests.DeptDto>(GeneratedMapper.Map_Dept_To_DeptDto_WithAction);
+            NCMapper.Mapper.RegisterGeneratedUpdate<NCMapper.Tests.FluentSourceGenNestedPropertyTests.Dept, NCMapper.Tests.FluentSourceGenNestedPropertyTests.DeptDto>(GeneratedMapper.Map_Dept_To_DeptDto_Update);
+            NCMapper.Mapper.RegisterGeneratedList<NCMapper.Tests.FluentSourceGenNestedPropertyTests.Dept, NCMapper.Tests.FluentSourceGenNestedPropertyTests.DeptDto>(GeneratedMapper.MapList_Dept_To_DeptDto);
+            NCMapper.Mapper.RegisterGeneratedListInto<NCMapper.Tests.FluentSourceGenNestedPropertyTests.Dept, NCMapper.Tests.FluentSourceGenNestedPropertyTests.DeptDto>(GeneratedMapper.MapListInto_Dept_To_DeptDto);
+            NCMapper.Mapper.RegisterGeneratedCore<NCMapper.Tests.FluentSourceGenNestedPropertyTests.DeptDto, NCMapper.Tests.FluentSourceGenNestedPropertyTests.Dept>(GeneratedMapper.Map_DeptDto_To_Dept);
+            NCMapper.Mapper.RegisterGenerated<NCMapper.Tests.FluentSourceGenNestedPropertyTests.DeptDto, NCMapper.Tests.FluentSourceGenNestedPropertyTests.Dept>(GeneratedMapper.Map_DeptDto_To_Dept_WithAction);
+            NCMapper.Mapper.RegisterGeneratedUpdate<NCMapper.Tests.FluentSourceGenNestedPropertyTests.DeptDto, NCMapper.Tests.FluentSourceGenNestedPropertyTests.Dept>(GeneratedMapper.Map_DeptDto_To_Dept_Update);
+            NCMapper.Mapper.RegisterGeneratedList<NCMapper.Tests.FluentSourceGenNestedPropertyTests.DeptDto, NCMapper.Tests.FluentSourceGenNestedPropertyTests.Dept>(GeneratedMapper.MapList_DeptDto_To_Dept);
+            NCMapper.Mapper.RegisterGeneratedCore<NCMapper.Tests.FluentSourceGenNestedPropertyTests.UCfgForSource, NCMapper.Tests.FluentSourceGenNestedPropertyTests.UCfgForDto>(GeneratedMapper.Map_UCfgForSource_To_UCfgForDto);
+            NCMapper.Mapper.RegisterGenerated<NCMapper.Tests.FluentSourceGenNestedPropertyTests.UCfgForSource, NCMapper.Tests.FluentSourceGenNestedPropertyTests.UCfgForDto>(GeneratedMapper.Map_UCfgForSource_To_UCfgForDto_WithAction);
+            NCMapper.Mapper.RegisterGeneratedUpdate<NCMapper.Tests.FluentSourceGenNestedPropertyTests.UCfgForSource, NCMapper.Tests.FluentSourceGenNestedPropertyTests.UCfgForDto>(GeneratedMapper.Map_UCfgForSource_To_UCfgForDto_Update);
+            NCMapper.Mapper.RegisterGeneratedList<NCMapper.Tests.FluentSourceGenNestedPropertyTests.UCfgForSource, NCMapper.Tests.FluentSourceGenNestedPropertyTests.UCfgForDto>(GeneratedMapper.MapList_UCfgForSource_To_UCfgForDto);
+            NCMapper.Mapper.RegisterGeneratedListInto<NCMapper.Tests.FluentSourceGenNestedPropertyTests.UCfgForSource, NCMapper.Tests.FluentSourceGenNestedPropertyTests.UCfgForDto>(GeneratedMapper.MapListInto_UCfgForSource_To_UCfgForDto);
+            NCMapper.Mapper.RegisterGeneratedCore<NCMapper.Tests.FluentSourceGenNestedPropertyTests.UCfgForDto, NCMapper.Tests.FluentSourceGenNestedPropertyTests.UCfgForSource>(GeneratedMapper.Map_UCfgForDto_To_UCfgForSource);
+            NCMapper.Mapper.RegisterGenerated<NCMapper.Tests.FluentSourceGenNestedPropertyTests.UCfgForDto, NCMapper.Tests.FluentSourceGenNestedPropertyTests.UCfgForSource>(GeneratedMapper.Map_UCfgForDto_To_UCfgForSource_WithAction);
+            NCMapper.Mapper.RegisterGeneratedUpdate<NCMapper.Tests.FluentSourceGenNestedPropertyTests.UCfgForDto, NCMapper.Tests.FluentSourceGenNestedPropertyTests.UCfgForSource>(GeneratedMapper.Map_UCfgForDto_To_UCfgForSource_Update);
+            NCMapper.Mapper.RegisterGeneratedList<NCMapper.Tests.FluentSourceGenNestedPropertyTests.UCfgForDto, NCMapper.Tests.FluentSourceGenNestedPropertyTests.UCfgForSource>(GeneratedMapper.MapList_UCfgForDto_To_UCfgForSource);
+            NCMapper.Mapper.RegisterGeneratedCore<NCMapper.Tests.FreeSqlComposePocRegressionUTests.USite, NCMapper.Tests.FreeSqlComposePocRegressionUTests.USiteNestedDto>(GeneratedMapper.Map_USite_To_USiteNestedDto);
+            NCMapper.Mapper.RegisterGenerated<NCMapper.Tests.FreeSqlComposePocRegressionUTests.USite, NCMapper.Tests.FreeSqlComposePocRegressionUTests.USiteNestedDto>(GeneratedMapper.Map_USite_To_USiteNestedDto_WithAction);
+            NCMapper.Mapper.RegisterGeneratedUpdate<NCMapper.Tests.FreeSqlComposePocRegressionUTests.USite, NCMapper.Tests.FreeSqlComposePocRegressionUTests.USiteNestedDto>(GeneratedMapper.Map_USite_To_USiteNestedDto_Update);
+            NCMapper.Mapper.RegisterGeneratedList<NCMapper.Tests.FreeSqlComposePocRegressionUTests.USite, NCMapper.Tests.FreeSqlComposePocRegressionUTests.USiteNestedDto>(GeneratedMapper.MapList_USite_To_USiteNestedDto);
+            NCMapper.Mapper.RegisterGeneratedListInto<NCMapper.Tests.FreeSqlComposePocRegressionUTests.USite, NCMapper.Tests.FreeSqlComposePocRegressionUTests.USiteNestedDto>(GeneratedMapper.MapListInto_USite_To_USiteNestedDto);
+            NCMapper.Mapper.RegisterGeneratedCore<NCMapper.Tests.FreeSqlComposePocRegressionUTests.USiteNestedDto, NCMapper.Tests.FreeSqlComposePocRegressionUTests.USite>(GeneratedMapper.Map_USiteNestedDto_To_USite);
+            NCMapper.Mapper.RegisterGenerated<NCMapper.Tests.FreeSqlComposePocRegressionUTests.USiteNestedDto, NCMapper.Tests.FreeSqlComposePocRegressionUTests.USite>(GeneratedMapper.Map_USiteNestedDto_To_USite_WithAction);
+            NCMapper.Mapper.RegisterGeneratedUpdate<NCMapper.Tests.FreeSqlComposePocRegressionUTests.USiteNestedDto, NCMapper.Tests.FreeSqlComposePocRegressionUTests.USite>(GeneratedMapper.Map_USiteNestedDto_To_USite_Update);
+            NCMapper.Mapper.RegisterGeneratedList<NCMapper.Tests.FreeSqlComposePocRegressionUTests.USiteNestedDto, NCMapper.Tests.FreeSqlComposePocRegressionUTests.USite>(GeneratedMapper.MapList_USiteNestedDto_To_USite);
+            NCMapper.Mapper.RegisterGeneratedCore<NCMapper.Tests.FreeSqlComposePocRegressionUTests.UDept, NCMapper.Tests.FreeSqlComposePocRegressionUTests.UDeptDto>(GeneratedMapper.Map_UDept_To_UDeptDto);
+            NCMapper.Mapper.RegisterGenerated<NCMapper.Tests.FreeSqlComposePocRegressionUTests.UDept, NCMapper.Tests.FreeSqlComposePocRegressionUTests.UDeptDto>(GeneratedMapper.Map_UDept_To_UDeptDto_WithAction);
+            NCMapper.Mapper.RegisterGeneratedUpdate<NCMapper.Tests.FreeSqlComposePocRegressionUTests.UDept, NCMapper.Tests.FreeSqlComposePocRegressionUTests.UDeptDto>(GeneratedMapper.Map_UDept_To_UDeptDto_Update);
+            NCMapper.Mapper.RegisterGeneratedList<NCMapper.Tests.FreeSqlComposePocRegressionUTests.UDept, NCMapper.Tests.FreeSqlComposePocRegressionUTests.UDeptDto>(GeneratedMapper.MapList_UDept_To_UDeptDto);
+            NCMapper.Mapper.RegisterGeneratedListInto<NCMapper.Tests.FreeSqlComposePocRegressionUTests.UDept, NCMapper.Tests.FreeSqlComposePocRegressionUTests.UDeptDto>(GeneratedMapper.MapListInto_UDept_To_UDeptDto);
+            NCMapper.Mapper.RegisterGeneratedCore<NCMapper.Tests.FreeSqlComposePocRegressionUTests.UDeptDto, NCMapper.Tests.FreeSqlComposePocRegressionUTests.UDept>(GeneratedMapper.Map_UDeptDto_To_UDept);
+            NCMapper.Mapper.RegisterGenerated<NCMapper.Tests.FreeSqlComposePocRegressionUTests.UDeptDto, NCMapper.Tests.FreeSqlComposePocRegressionUTests.UDept>(GeneratedMapper.Map_UDeptDto_To_UDept_WithAction);
+            NCMapper.Mapper.RegisterGeneratedUpdate<NCMapper.Tests.FreeSqlComposePocRegressionUTests.UDeptDto, NCMapper.Tests.FreeSqlComposePocRegressionUTests.UDept>(GeneratedMapper.Map_UDeptDto_To_UDept_Update);
+            NCMapper.Mapper.RegisterGeneratedList<NCMapper.Tests.FreeSqlComposePocRegressionUTests.UDeptDto, NCMapper.Tests.FreeSqlComposePocRegressionUTests.UDept>(GeneratedMapper.MapList_UDeptDto_To_UDept);
             NCMapper.Mapper.RegisterGeneratedCore<NCMapper.Tests.Models.BmEntity, NCMapper.Tests.Models.BmDto>(GeneratedMapper.Map_BmEntity_To_BmDto);
             NCMapper.Mapper.RegisterGenerated<NCMapper.Tests.Models.BmEntity, NCMapper.Tests.Models.BmDto>(GeneratedMapper.Map_BmEntity_To_BmDto_WithAction);
             NCMapper.Mapper.RegisterGeneratedUpdate<NCMapper.Tests.Models.BmEntity, NCMapper.Tests.Models.BmDto>(GeneratedMapper.Map_BmEntity_To_BmDto_Update);
@@ -158413,6 +161763,8 @@ namespace NCMapper.Generated
             NCMapper.Mapper.RegisterGeneratedDeepCopy<NCMapper.Tests.CollectionIndexValidatorTests.VBlogDto>(GeneratedMapper.DeepCopy_VBlogDto, acyclic: true);
             NCMapper.Mapper.RegisterGeneratedDeepCopy<NCMapper.Tests.CollectionIndexValidatorTests.VBlogDtoMismatch>(GeneratedMapper.DeepCopy_VBlogDtoMismatch, acyclic: true);
             NCMapper.Mapper.RegisterGeneratedDeepCopy<NCMapper.Tests.CollectionIndexValidatorTests.VBlogDtoInvalid>(GeneratedMapper.DeepCopy_VBlogDtoInvalid, acyclic: true);
+            NCMapper.Mapper.RegisterGeneratedDeepCopy<NCMapper.Tests.FluentSourceGenNestedPropertyTests.AttrSite>(GeneratedMapper.DeepCopy_AttrSite, acyclic: true);
+            NCMapper.Mapper.RegisterGeneratedDeepCopy<NCMapper.Tests.FluentSourceGenNestedPropertyTests.AttrSiteDto>(GeneratedMapper.DeepCopy_AttrSiteDto, acyclic: true);
             NCMapper.Mapper.RegisterGeneratedDeepCopy<NCMapper.Tests.Models.ComposeNestedMainSource>(GeneratedMapper.DeepCopy_ComposeNestedMainSource, acyclic: true);
             NCMapper.Mapper.RegisterGeneratedDeepCopy<NCMapper.Tests.Models.ComposeNestedDto>(GeneratedMapper.DeepCopy_ComposeNestedDto, acyclic: true);
             NCMapper.Mapper.RegisterGeneratedDeepCopy<NCMapper.Tests.Models.MultiCtorSource>(GeneratedMapper.DeepCopy_MultiCtorSource, acyclic: true);
@@ -158862,6 +162214,16 @@ namespace NCMapper.Generated
             NCMapper.Mapper.RegisterGeneratedDeepCopy<NCMapper.Tests.AttributeIgnoreDto>(GeneratedMapper.DeepCopy_AttributeIgnoreDto, acyclic: true);
             NCMapper.Mapper.RegisterGeneratedDeepCopy<NCMapper.Tests.ExemptTraceDto>(GeneratedMapper.DeepCopy_ExemptTraceDto, acyclic: true);
             NCMapper.Mapper.RegisterGeneratedDeepCopy<NCMapper.Tests.SourceSideTraceDto>(GeneratedMapper.DeepCopy_SourceSideTraceDto, acyclic: true);
+            NCMapper.Mapper.RegisterGeneratedDeepCopy<NCMapper.Tests.FluentSourceGenNestedPropertyTests.Site>(GeneratedMapper.DeepCopy_Site, acyclic: true);
+            NCMapper.Mapper.RegisterGeneratedDeepCopy<NCMapper.Tests.FluentSourceGenNestedPropertyTests.SiteNestedDto>(GeneratedMapper.DeepCopy_SiteNestedDto, acyclic: true);
+            NCMapper.Mapper.RegisterGeneratedDeepCopy<NCMapper.Tests.FluentSourceGenNestedPropertyTests.Dept>(GeneratedMapper.DeepCopy_Dept, acyclic: true);
+            NCMapper.Mapper.RegisterGeneratedDeepCopy<NCMapper.Tests.FluentSourceGenNestedPropertyTests.DeptDto>(GeneratedMapper.DeepCopy_DeptDto, acyclic: true);
+            NCMapper.Mapper.RegisterGeneratedDeepCopy<NCMapper.Tests.FluentSourceGenNestedPropertyTests.UCfgForSource>(GeneratedMapper.DeepCopy_UCfgForSource, acyclic: true);
+            NCMapper.Mapper.RegisterGeneratedDeepCopy<NCMapper.Tests.FluentSourceGenNestedPropertyTests.UCfgForDto>(GeneratedMapper.DeepCopy_UCfgForDto, acyclic: true);
+            NCMapper.Mapper.RegisterGeneratedDeepCopy<NCMapper.Tests.FreeSqlComposePocRegressionUTests.USite>(GeneratedMapper.DeepCopy_USite, acyclic: true);
+            NCMapper.Mapper.RegisterGeneratedDeepCopy<NCMapper.Tests.FreeSqlComposePocRegressionUTests.USiteNestedDto>(GeneratedMapper.DeepCopy_USiteNestedDto, acyclic: true);
+            NCMapper.Mapper.RegisterGeneratedDeepCopy<NCMapper.Tests.FreeSqlComposePocRegressionUTests.UDept>(GeneratedMapper.DeepCopy_UDept, acyclic: true);
+            NCMapper.Mapper.RegisterGeneratedDeepCopy<NCMapper.Tests.FreeSqlComposePocRegressionUTests.UDeptDto>(GeneratedMapper.DeepCopy_UDeptDto, acyclic: true);
             NCMapper.Mapper.RegisterGeneratedDeepCopy<NCMapper.Tests.Models.BmEntity>(GeneratedMapper.DeepCopy_BmEntity, acyclic: true);
             NCMapper.Mapper.RegisterGeneratedDeepCopy<NCMapper.Tests.Models.BmDto>(GeneratedMapper.DeepCopy_BmDto, acyclic: true);
             NCMapper.Mapper.RegisterGeneratedDeepCopy<NCMapper.Tests.Models.Bm2Entity>(GeneratedMapper.DeepCopy_Bm2Entity, acyclic: true);

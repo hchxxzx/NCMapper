@@ -86,8 +86,14 @@ namespace NCMapper.IntegrationTests
             var expr3 = FreeSqlProjectionBuilder.BuildCompose3<PocSite, PocDept, PocCompany, PocSiteNestedDto>();
             Assert.Contains("IIF", expr3.ToString());
 
-            var exprDouble = FreeSqlProjectionBuilder.BuildCompose<PocSite, PocDept, PocSiteDoubleNestedDto>();
-            Assert.Contains("IIF", exprDouble.ToString());
+            // A4-b：两表 + 双层嵌套 → 构建期 fail-closed（REQ-20261127-04）
+            // 此前该形态能构建出表达式，但交给 FreeSql 翻译时在 t2.Company 导航链上无限递归，
+            // 最终 StackOverflowException（进程级崩溃、catch 不住）。
+            // 现改为构建期抛 MapConfigurationException：可诊断、可捕获、提示把 PocCompany 加入 join。
+            var exDouble = Assert.Throws<MapConfigurationException>(
+                () => FreeSqlProjectionBuilder.BuildCompose<PocSite, PocDept, PocSiteDoubleNestedDto>());
+            Assert.Contains("PocCompany", exDouble.Message);
+            Assert.Contains("不在本次查询的用户 join 源参数集", exDouble.Message);
 
             // A5：双表实跑（原炸点）→ 修复后 4 行，且嵌套值正确（§11.2：不得只断言「不抛」）
             var d5 = _fsql.Select<PocSite, PocDept>()

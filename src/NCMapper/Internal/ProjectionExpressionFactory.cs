@@ -1062,7 +1062,8 @@ namespace NCMapper.Internal
             // 若不在本入口改指，ORM 仍会自建第二条 LEFT JOIN，绕过用户 join 上的软删/非主键条件（缺陷③）。
             // 非 Compose 通道（作用域外）原样返回，单表/EFCore/Dapper 行为逐字不变。
             // 作用域内匹配不到源参数 → fail-closed（不静默返回 null/空壳）。
-            srcExpr = ComposeNestedSourceScope.RedirectNestedSource(srcType, srcExpr);
+            srcExpr = ComposeNestedSourceScope.RedirectNestedSource(
+                srcType, srcExpr, tgtType.Name, strategy.TracePrefix);
 
             // 补遗：嵌套主源一致性校验（注册表优先 + 反射回退）
             // — Fluent DTO 注册表命中后 PrimarySource 与 srcType 比对通过，不再被主源校验跳过

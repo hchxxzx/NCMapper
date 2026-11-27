@@ -234,16 +234,23 @@ namespace NCMapper.Internal
         }
 
         /// <summary>
-        /// 嵌套投影入口的源改指（Soft）—— 作用域内把「按导航链取到的源表达式」换成用户 join 的源参数。
+        /// 嵌套投影入口的源改指 —— 作用域内把「按导航链取到的源表达式」换成用户 join 的源参数。
         /// <para>必要性：注册表自动匹配出的嵌套条目走 <c>t1.Nav</c> 属性访问，不经
         /// <c>ResolveNavigationProperty</c>；若不在嵌套投影入口改指，ORM 仍会自建第二条 JOIN。</para>
-        /// <para>0 命中保持原表达式（递归/集合元素等合法形态不走改指——严格 fail-closed 由
-        /// <see cref="RequireJoinedSource"/> 在嵌套 DTO 属性面执行）。</para>
+        /// <para><b>fail-closed（REQ-20261127-04）</b>：作用域内、源表达式是导航链（非本作用域参数）、
+        /// 且源类型不在用户 join 参数集中 → 必须抛 <see cref="MapConfigurationException"/>。
+        /// 此前该情形静默保留导航链，会交给 provider 自建 JOIN；多层嵌套时 FreeSql 翻译器
+        /// 在 <c>t2.Company</c> 这类导航链上无限递归直至 <c>StackOverflowException</c>
+        /// （进程级崩溃、catch 不住，实测 Repeated 27 times: ExpressionLambdaToSql ↔ ExpressionBinary）。
+        /// 抛可诊断异常优于进程崩溃：告知用户把该源类型加入 Select 泛型参数并显式 join。</para>
         /// </summary>
         /// <param name="nestedSourceType">嵌套 DTO 的源类型（= 嵌套投影的 <c>srcType</c>）</param>
         /// <param name="sourceExpr">原源表达式（导航链或参数）</param>
-        /// <returns>作用域内的用户 join 源参数；未命中时原样返回</returns>
-        internal static Expression RedirectNestedSource(Type nestedSourceType, Expression sourceExpr)
+        /// <param name="targetName">目标属性/目标 DTO 名（异常消息用）</param>
+        /// <param name="tracePrefix">Trace 前缀</param>
+        /// <returns>作用域内的用户 join 源参数；作用域外原样返回</returns>
+        internal static Expression RedirectNestedSource(
+            Type nestedSourceType, Expression sourceExpr, string? targetName = null, string tracePrefix = "")
         {
             var scope = s_current.Value;
             if (scope is not { IsUsable: true }) return sourceExpr;
@@ -252,7 +259,12 @@ namespace NCMapper.Internal
             if (sourceExpr is ParameterExpression && scope.IsOwnParameter(sourceExpr))
                 return sourceExpr;
 
-            return scope.TryFindByType(nestedSourceType, out var parameter) ? parameter! : sourceExpr;
+            if (scope.TryFindByType(nestedSourceType, out var parameter))
+                return parameter!;
+
+            // 悬浮导航链（非 join 参数）且源类型不在参数集 → 交给 provider 会自建 JOIN，
+            // 多层嵌套下触发翻译器无限递归。fail-closed 拦下（REQ-20261127-04）。
+            throw scope.FailClosedMissing(nestedSourceType.Name, targetName, tracePrefix);
         }
 
         /// <summary>
@@ -274,7 +286,7 @@ namespace NCMapper.Internal
         /// 匹配不到必须抛异常，不得静默返回 null 或常量空壳。
         /// </summary>
         [DoesNotReturn]
-        private Exception FailClosedMissing(string desiredSourceTypeName, string? targetName, string tracePrefix)
+        internal Exception FailClosedMissing(string desiredSourceTypeName, string? targetName, string tracePrefix)
         {
             var typeList = string.Join(", ", _sourceTypes.Select(t => t.Name));
             var target = targetName ?? "(未知)";

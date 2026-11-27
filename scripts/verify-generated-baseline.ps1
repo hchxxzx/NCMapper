@@ -1,7 +1,13 @@
-﻿# 生成产物基线一致性门禁
+# 生成产物基线一致性门禁
 # 构建 samples/test/benchmarks 三项目 → 提取 NCMapper 源生成产物 → 与 generated-baseline/ 逐字节对比
 # （归一化行尾：\r\n 与 \n 等价——生成代码确定性守卫，行尾差异不判失败）。
 # 任一 DIFF → 输出差异摘要并以非零退出（CI 门禁失败）。
+#
+# 判定三态（区分「比对了且不一致」「没比成」「设计上无产物」）：
+#   · 失败：DIFF / 构建失败 / 构建成功但产物缺失 → 计入 $failed，最终 exit 1
+#   · 跳过：仅 -SkipBuild 调试模式下产物缺失（未构建故无产物，属预期）→ 计入 $skipped
+#   · 设计预期：无 Fluent 声明的工程零 FluentSnapshotRegistry 产物 → 既不计失败也不计跳过
+# 汇总行显式给出「比对 N 项 / 跳过 N 项 / 失败 N 项」，使「没比成」无法与「全一致」同形。
 # 本环境构建含以下旗标（-m:1 -p:EnableSourceLink=false）：
 # MSBuild 并行节点 + SourceLink 组合下多节点构建静默失败，-m:1 串行 + 关闭 SourceLink 规避。
 param(
@@ -62,6 +68,7 @@ $projects = @(
 
 $failed = @()
 $skipped = @()
+$compared = 0
 
 foreach ($p in $projects) {
     $baselineFile = Join-Path $baselineRoot "$($p.Name)/NCMapper_Generated_GeneratedMapper.g.cs"
@@ -69,7 +76,9 @@ foreach ($p in $projects) {
         Write-Error "[baseline-check] 基线缺失: $baselineFile"; exit 1
     }
 
-    # 构建（SkipBuild 时跳过；构建失败记跳过——锁等环境干扰不误判 DIFF，CI 无此问题）
+    # 构建（SkipBuild 时跳过）
+    # 构建失败一律计入失败：CI 语义下构建红就是真故障，不得以「环境干扰」为由放行——
+    # 否则 restore/网络/锁文件出问题时，构建红会被呈现为 PASS（假绿）。
     if (-not $SkipBuild) {
         Write-Host "[baseline-check] Building $($p.Name) ..."
         $buildOut = Join-Path $outRoot $p.Out
@@ -81,8 +90,8 @@ foreach ($p in $projects) {
             -p:EmitCompilerGeneratedFiles=true `
             -p:CompilerGeneratedFilesOutputPath=$buildOut 2>&1 | Out-Null
         if ($LASTEXITCODE -ne 0) {
-            Write-Host "[baseline-check] $($p.Name): 构建失败（跳过对比——环境锁等干扰；CI 应无此问题）"
-            $skipped += $p.Name
+            Write-Host "[baseline-check] $($p.Name): 构建失败（未比对——按失败计）"
+            $failed += $p.Name
             continue
         }
     }
@@ -96,8 +105,16 @@ foreach ($p in $projects) {
     elseif ($fromObj) { $current = $fromObj }
 
     if (-not $current) {
-        Write-Host "[baseline-check] $($p.Name): 未找到当前生成产物（跳过）"
-        $skipped += $p.Name
+        # 构建成功却没有产物 = 生成器未运行（配置/开关故障），属真实缺陷；
+        # 仅 -SkipBuild 调试模式下「没构建所以没产物」才是预期跳过。
+        if ($SkipBuild) {
+            Write-Host "[baseline-check] $($p.Name): 未找到当前生成产物（-SkipBuild 调试模式，跳过）"
+            $skipped += $p.Name
+        }
+        else {
+            Write-Host "[baseline-check] $($p.Name): 构建成功但未找到生成产物（生成器未运行——按失败计）"
+            $failed += $p.Name
+        }
         continue
     }
 
@@ -108,6 +125,7 @@ foreach ($p in $projects) {
 
     if ($a -ceq $b) {
         Write-Host "[baseline-check] $($p.Name): IDENTICAL ($shaA)"
+        $compared++
     }
     else {
         Write-Host "[baseline-check] $($p.Name): DIFF (baseline $shaA vs current $shaB)"
@@ -144,8 +162,14 @@ foreach ($p in $projects) {
     elseif ($rsFromObj) { $rsCurrent = $rsFromObj }
 
     if (-not $rsCurrent) {
-        Write-Host "[baseline-check] $($p.Name) RuntimeSnapshot: 未找到当前生成产物（跳过）"
-        $skipped += "$($p.Name)-RuntimeSnapshot"
+        if ($SkipBuild) {
+            Write-Host "[baseline-check] $($p.Name) RuntimeSnapshot: 未找到当前生成产物（-SkipBuild 调试模式，跳过）"
+            $skipped += "$($p.Name)-RuntimeSnapshot"
+        }
+        else {
+            Write-Host "[baseline-check] $($p.Name) RuntimeSnapshot: 构建成功但未找到产物（生成器未运行——按失败计）"
+            $failed += "$($p.Name)-RuntimeSnapshot"
+        }
         continue
     }
 
@@ -156,6 +180,7 @@ foreach ($p in $projects) {
 
     if ($rsa -ceq $rsb) {
         Write-Host "[baseline-check] $($p.Name) RuntimeSnapshot: IDENTICAL ($rsShaA)"
+        $compared++
     }
     else {
         Write-Host "[baseline-check] $($p.Name) RuntimeSnapshot: DIFF (baseline $rsShaA vs current $rsShaB)"
@@ -175,8 +200,10 @@ foreach ($p in $projects) {
 }
 
 # Fluent 身份登记产物基线一致性（NCMapper_FluentSnapshotRegistry.g.cs，独立输出节点）
-# 身份段仅含 Fluent 通道条目——无 Fluent 声明的工程（samples/benchmarks）零产物：当前产物缺失即跳过（不要求基线存在）。
+# 身份段仅含 Fluent 通道条目——无 Fluent 声明的工程（samples/benchmarks）零产物，属设计预期：
+# 不计失败也不计跳过（跳过意味着「本该比对却没比成」，零产物意味着「本就不该有产物」）。
 # 基线目录 generated-baseline/runtime-snapshot/{name}/NCMapper_FluentSnapshotRegistry.g.cs（与明细段基线同居）。
+$zeroProduct = @()
 foreach ($p in $projects) {
     $objGen = Join-Path $repo (Join-Path (Split-Path $p.Proj) 'obj/Generated')
     $idFromOut = Find-GeneratedIdentityRegistry (Join-Path $outRoot $p.Name) | Where-Object { $_ -match 'NCMapper.SourceGen' } | Select-Object -First 1
@@ -186,8 +213,8 @@ foreach ($p in $projects) {
     elseif ($idFromObj) { $idCurrent = $idFromObj }
 
     if (-not $idCurrent) {
-        Write-Host "[baseline-check] $($p.Name) FluentSnapshotRegistry: 零产物（无 Fluent 声明——跳过）"
-        $skipped += "$($p.Name)-FluentSnapshotRegistry"
+        Write-Host "[baseline-check] $($p.Name) FluentSnapshotRegistry: 零产物（无 Fluent 声明——设计预期）"
+        $zeroProduct += $p.Name
         continue
     }
 
@@ -204,6 +231,7 @@ foreach ($p in $projects) {
 
     if ($ida -ceq $idb) {
         Write-Host "[baseline-check] $($p.Name) FluentSnapshotRegistry: IDENTICAL ($idShaA)"
+        $compared++
     }
     else {
         Write-Host "[baseline-check] $($p.Name) FluentSnapshotRegistry: DIFF (baseline $idShaA vs current $idShaB)"
@@ -223,11 +251,13 @@ foreach ($p in $projects) {
 }
 
 if ($failed.Count -gt 0) {
-    Write-Error "[baseline-check] FAILED: $($failed -join ', ') 生成产物与基线不一致（有意变更请更新 generated-baseline/ 并人工审查 diff）"
+    Write-Error "[baseline-check] FAILED: $($failed -join ', ')（比对 $compared 项 / 跳过 $($skipped.Count) 项 / 失败 $($failed.Count) 项）——生成产物与基线不一致，或构建/产物缺失（有意变更请更新 generated-baseline/ 并人工审查 diff）"
     exit 1
 }
 if ($skipped.Count -gt 0) {
-    Write-Host "[baseline-check] SKIPPED: $($skipped -join ', ')（构建失败/产物缺失——CI 环境应无此情况，若 CI 出现请调查）"
+    # 仅 -SkipBuild 调试模式会走到这里（未构建故无产物，属预期）；构建模式下产物缺失已按失败计。
+    Write-Host "[baseline-check] SKIPPED: $($skipped -join ', ')（-SkipBuild 调试模式，未构建故无产物可比对）"
 }
-Write-Host "[baseline-check] PASS: 三项目生成产物与基线逐字节一致（归一化行尾口径）"
+$zeroNote = if ($zeroProduct.Count -gt 0) { "；零产物 $($zeroProduct.Count) 项（无 Fluent 声明，设计预期）" } else { "" }
+Write-Host "[baseline-check] PASS: 比对 $compared 项全部一致（归一化行尾口径；跳过 $($skipped.Count) 项$zeroNote）"
 exit 0

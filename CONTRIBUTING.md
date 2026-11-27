@@ -141,7 +141,7 @@ The stages are `restore` → `build` (Lib filter, `--warnaserror`) → `build sa
 |---|---|
 | .NET SDK matching `global.json` (10.0.403) | `rollForward` is `disable` — a different SDK fails resolution outright |
 | .NET **runtimes** 8.0.x, 9.0.x and 10.0.x | The test stage runs every test project on all three TFMs; an SDK-only install ships the 10.x runtime alone and the net8/net9 runs abort with "You must install or update .NET" |
-| PowerShell 7 (`pwsh`) | The `generated-baseline` stage shells out to `verify-generated-baseline.ps1`. **Without `pwsh` that stage is skipped and the run still reports PASS** — see the note below |
+| PowerShell 7 (`pwsh`) | The `generated-baseline` stage shells out to `verify-generated-baseline.ps1`. Without it that stage **fails** rather than silently skipping — see the note below |
 | `python3`, `rsync` | `check-doc-anchors.py` / `check-fluent-legacy-scan.py`, and the ext4 shadow tree |
 | A `.git` directory in the working tree | The build stage uses `--warnaserror`; SourceLink emits "repository not found" warnings in a non-git tree, and those warnings become errors |
 
@@ -162,16 +162,16 @@ The stages are `restore` → `build` (Lib filter, `--warnaserror`) → `build sa
 
 The set to seed is every package referenced by the `packages.lock.json` files, **plus** the framework packs that the SDK resolves implicitly and therefore never lists: `Microsoft.NETCore.App.Ref`, `Microsoft.AspNetCore.App.Ref`, `Microsoft.NET.ILLink.Tasks` and `Microsoft.NETCore.App.Host.linux-x64`, each at the version matching the TFM (`8.0.33` / `9.0.22` / `10.0.14` for the current lock files). The host pack is the one most easily missed — it is not in any lock file, and its absence fails only the test and benchmark projects.
 
-**Two ways the byte-identity gate can report a false PASS.** Both are worth knowing before you trust a green run:
+**Reading the byte-identity gate's verdict.** The gate distinguishes three outcomes, and the summary line states each count:
 
-- `verify-generated-baseline.ps1` treats a **failed build** as a skipped comparison and still exits 0, so a red build surfaces as `[baseline-check] PASS`. Read the per-project lines, not just the summary.
-- `verify-linux.sh` skips its `generated-baseline` stage entirely when `pwsh` is missing, and the overall run still reports PASS.
+| Outcome | Meaning | Exit |
+|---|---|---|
+| compared | baseline and generated output matched | 0 |
+| skipped | nothing was built to compare against (`-SkipBuild` only) | 0 |
+| zero-product | the project declares no Fluent mapping, so no registry file exists by design | 0 |
+| failed | mismatch, **or a build failure, or a build that produced no output** | 1 |
 
-Because a skip and a match are printed differently but summarised identically, confirm what actually ran:
-
-```bash
-pwsh -NoProfile -File scripts/verify-generated-baseline.ps1   # each project must print IDENTICAL
-```
+A failed build counts as a failure rather than a skip: under CI semantics a red build is a real fault, and treating it as "environment noise" would let restore, network or lock-file problems surface as a green gate. The same applies to a build that succeeds but emits no generated files — that means the generator did not run, which is also a defect. Likewise, `verify-linux.sh` counts a missing `pwsh` as a failure of its `generated-baseline` stage instead of silently skipping it, because that stage is the only guard on generated-output byte stability.
 
 **Do not reimplement the comparison with byte-level tools.** The gate decides with a string comparison (`$a -ceq $b`) over `[System.IO.File]::ReadAllText()`, which strips a UTF-8 BOM on read. Reimplementing it as `sha256sum` over raw bytes reports a difference wherever a BOM is present on one side only — a false alarm, because the gate itself considers those files identical. The `Get-Sha256` hash the gate prints is for display only and takes no part in the verdict. Run the real script instead.
 

@@ -137,12 +137,16 @@ else
 fi
 
 # ---------- [4] 字节门（需 pwsh；-SkipBuild 复用 [2] 产物） ----------
+# 缺 pwsh 时该阶段无法执行，计为失败而非跳过：字节门是本套件里唯一守护生成产物
+# 字节稳定性的环节，「工具缺失」与「比对通过」不得同形（否则整轮报绿而门禁空转）。
 step 4 "generated-baseline（字节一致性）"
 if [ "$HAVE_PWSH" == "1" ]; then
-  pwsh -NoProfile -File scripts/verify-generated-baseline.ps1 -SkipBuild 2>&1 | grep -E "DIFF|IDENTICAL|PASS|FAIL" | head -10
+  pwsh -NoProfile -File scripts/verify-generated-baseline.ps1 -SkipBuild 2>&1 | grep -E "DIFF|IDENTICAL|PASS|FAIL|SKIPPED" | head -12
   pwsh -NoProfile -File scripts/verify-generated-baseline.ps1 -SkipBuild >/dev/null 2>&1 || FAILED+=("baseline")
 else
-  echo "无 pwsh —— 跳过（字节门需 pwsh 执行 verify-generated-baseline.ps1）"
+  echo "[FAIL] 无 pwsh —— 字节门无法执行（本阶段必须真比对，不接受跳过）"
+  echo "       安装：下载 PowerShell 7 linux-x64 解压后将目录加入 PATH（DOTNET_ROOT 需与 SDK 一致）"
+  FAILED+=("baseline(no-pwsh)")
 fi
 
 # ---------- [5] 诊断码三方对账 ----------
